@@ -1,9 +1,31 @@
+"use client";
 import { Button } from "@/components/ui/button";
-
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
 const StyleGuide = () => {
+    const formSchema = z.object({
+        username: z.string().min(2, {
+            message: "Username must be at least 2 characters.",
+        }),
+    })
+    const form = useForm({
+        resolver: zodResolver(formSchema),
+    })
+
     return (
-        <div className="container mx-auto min-h-28 bg-slate-900">
+        <div className="container mx-auto min-h-28">
             <h1 className="text-4xl font-bold mb-4">Style Guide</h1>
 
             <h2 className="text-2xl font-bold mb-2">Typography</h2>
@@ -19,38 +41,28 @@ const StyleGuide = () => {
                 <Button variant="ghost">Ghost</Button>
                 <Button variant="link">Link</Button>
             </div>
+            <Form {...form}>
+                <form className="space-y-8 mt-10 max-w-md">
+                    <FormField
+                        control={form.control}
+                        name="username"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Username</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormDescription>
+                                    This is your public display name.
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <Button type="submit">Submit</Button>
+                </form>
+            </Form>
 
-            <h2 className="text-2xl font-bold mb-2">Forms</h2>
-            <form>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                        Name
-                    </label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="name"
-                        type="text"
-                        placeholder="Enter your name"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                        Email
-                    </label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email"
-                    />
-                </div>
-                <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    type="submit"
-                >
-                    Submit
-                </button>
-            </form>
         </div>
     );
 };
