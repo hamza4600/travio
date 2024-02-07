@@ -36,13 +36,24 @@ const StyleGuide = () => {
 
       <h2 className="text-2xl font-bold mb-2">Buttons</h2>
       <div className="space-x-4">
-        <Button>Default</Button>
-        <Button variant="destructive">Destructive</Button>
-        <Button variant="default">DEFAULT</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="secondary">Secondary</Button>
+        {/* <Button>Default</Button> */}
+        <Button variant="destructive" size="sm">
+          Login
+        </Button>
+        <Button variant="primary" size="default">
+          Primary
+        </Button>
+        <Button variant="secondary" size="md">
+          Secondary
+        </Button>
+        <Button variant="golden" size="base">
+          Golden
+        </Button>
+        <Button variant="sky">Sky</Button>
+        {/* <Button variant="ghost">Sky</Button> */}
+        {/* <Button variant="secondary">Secondary</Button>
         <Button variant="ghost">Ghost</Button>
-        <Button variant="link">Link</Button>
+        <Button variant="link">Link</Button> */}
       </div>
       <Form {...form}>
         <form className="space-y-8 mt-10 max-w-md">

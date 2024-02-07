@@ -31,6 +31,10 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        'dm': ['DM-sans', 'sans-serif'],
+        'outfit': ['Outfit', 'sans-serif']
+      },
       colors: {
         'primary': '#3FA9F5',
         'secondary': '#140D31',
@@ -52,6 +56,18 @@ module.exports = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        golden: {
+          DEFAULT: "hsl(var(--golden))",
+          foreground: "hsl(var(--golden-foreground))",
+        },
+        sky: {
+          DEFAULT: "hsl(var(--sky))",
+          foreground: "hsl(var(--sky-foreground))",
+        },
+        ghost: {
+          DEFAULT: "hsl(var(--ghost))",
+          foreground: "hsl(var(--ghost-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
