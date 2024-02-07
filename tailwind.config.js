@@ -9,6 +9,12 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'primary': '#f2faff',
+      // 'secondary': '#ffed4a',
+      // 'danger': '#e3342f',
+    }),
     container: {
       center: true,
       padding: "2rem",
@@ -17,7 +23,26 @@ module.exports = {
       },
     },
     extend: {
+      lineHeight: {
+        '5.5': '22px',
+        '7.5': '30px',
+        '11': '50px',
+        '12': '76px'
+      },
+      fontSize: {
+        'xss': '10px',
+        '4.5xl': '40px',
+        '5.5xl': '56px',
+      },
+      fontFamily: {
+        'customSans': ['DM Sans', 'sans-serif'],
+        'outfit': ['Outfit', 'sans-serif']
+      },
       colors: {
+        'primary': '#3FA9F5',
+        'secondary': '#140D31',
+        'muted': '#726E83',
+        'destructive': '#D10002',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
