@@ -6,6 +6,9 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -23,20 +26,10 @@ module.exports = {
       },
     },
     extend: {
-      lineHeight: {
-        '5.5': '22px',
-        '7.5': '30px',
-        '11': '50px',
-        '12': '76px'
-      },
-      fontSize: {
-        'xss': '10px',
-        '4.5xl': '40px',
-        '5.5xl': '56px',
-      },
-      fontFamily: {
-        'customSans': ['DM Sans', 'sans-serif'],
-        'outfit': ['Outfit', 'sans-serif']
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
         'primary': '#3FA9F5',
