@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Outfit } from "next/font/google";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmFont = DM_Sans({
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal"],
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-dm",
+});
+
+const outfitFont = Outfit({
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal"],
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
 
 export const metadata: Metadata = {
   title: "Traviio Tours",
@@ -16,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${cn(`${dmFont.variable} ${outfitFont}`)}`}>
+        {children}
+      </body>
     </html>
   );
 }
