@@ -1,4 +1,5 @@
-import React from 'react'
+import { useParams } from 'next/navigation'
+import { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -47,6 +48,16 @@ const CARDS = [
 ]
 
 const Footer = ({ footer }: { footer: SanityGlobals['footer'] }) => {
+  
+  const params = useParams()
+
+  const language = useMemo(() => {
+    return Array.isArray(params!.language)
+      ? params!.language[0]
+      : params!.language
+  }, [params])
+
+  console.log('language', language)
   const ADDRESSES = (footer?.locations as SanityGlobals['footer'])?.locations || []
   const LINKS = footer?.link_groups || []
   return (
