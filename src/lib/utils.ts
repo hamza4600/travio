@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export const getLocalizedText = (localizedString: { [x: string]: any; en: any }, language: string) => {
+  return localizedString[language] || localizedString.en
+}
+
 export function joinStrings(separator: string, ...strings: string[]): string {
   return strings.filter(Boolean).join(` ${separator.trim()} `)
 }
