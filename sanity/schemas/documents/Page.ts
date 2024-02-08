@@ -10,12 +10,12 @@ export default defineType({
   type: 'document',
   icon: Browser as any,
   fields: [
-    // defineField({
-    //   name: 'slug',
-    //   title: 'Slug',
-    //   description: 'Slug for the page',
-    //   type: 'slug',
-    // }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      description: 'Slug for the page',
+      type: 'slug',
+    }),
     defineField({
       name: 'meta_data',
       title: 'Meta Data',
