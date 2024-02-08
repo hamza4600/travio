@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Text } from "@/components/ui/text";
 
 const StyleGuide = () => {
   const formSchema = z.object({
@@ -50,10 +51,25 @@ const StyleGuide = () => {
           Golden
         </Button>
         <Button variant="sky">Sky</Button>
-        {/* <Button variant="ghost">Sky</Button> */}
-        {/* <Button variant="secondary">Secondary</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="link">Link</Button> */}
+        <Text variant="destructive" fontWeight="700" fontFamily="secondary">
+          Hello World! this is working
+        </Text>
+        <Text
+          variant="paragraph"
+          size="2xl"
+          fontWeight="700"
+          fontFamily={"secondary"}
+        >
+          Hello World! this is working
+        </Text>
+        <Text variant="default">Hello World! this is working</Text>
+        <Text variant="secondary">Hello World! this is working</Text>
+        <Text variant="tertiary" fontWeight="300">
+          Hello World! this is working
+        </Text>
+        <Text fontWeight={"700"} variant="gray" size="xss">
+          By Jason Tod On May 22, 2023
+        </Text>
       </div>
       <Form {...form}>
         <form className="space-y-8 mt-10 max-w-md">
