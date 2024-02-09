@@ -20,7 +20,7 @@ export const locale_rich_text = defineType({
         defineField({
             name: lang.id,
             title: lang.title,
-            type: "blockContent",
+            type: "rich_text",
             fieldset: lang.isDefault ? undefined : "translations",
         })
     ),
