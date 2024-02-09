@@ -34,11 +34,12 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        dmSans: ['var(--font-dm)'],
+        // dmSans: ['var(--font-dm)'],
         outfit: ['var(--font-outfit)'],
         satoshi: ['var(--font-satoshi)'],
         montserrat: ['var(--font-montserrat)'],
-        nova: ['var(--font-nova)']
+        nova: ['var(--font-nova)'],
+        plain: ['var(--font-plain)'],
       },
       fontSize: {
         extraSm: ['10px', '12px'],

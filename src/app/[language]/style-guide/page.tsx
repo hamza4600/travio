@@ -169,6 +169,16 @@ const StyleGuide = () => {
         Guided tours tailored
       </Text>
 
+      {/* <p className="font-bold text-4xl">Plain Text</p>
+      <Text
+        className="mt-2 text-xl"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Guided tours tailored Plain Font
+      </Text> */}
+
       <p className="font-bold text-4xl">Font Nova</p>
       <Text
         className="mt-2 text-7xl"
@@ -178,6 +188,17 @@ const StyleGuide = () => {
         fontWeight={"700"}
       >
         Guided tours tailored font Nova
+      </Text>
+
+      <p className="font-bold text-4xl">Font Plain</p>
+      <Text
+        className="mt-2 text-5xl"
+        font={"black"}
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Guided tours tailored font Plain
       </Text>
 
       <p className="font-bold text-4xl">Short Text 2 M</p>
