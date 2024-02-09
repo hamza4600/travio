@@ -1,7 +1,7 @@
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `\src\app\studio\[[...index]]\page.tsx` route
  */
-import { Article, Browsers, Files, Globe, MapTrifold, PenNib, Tag } from '@phosphor-icons/react'
+import { Article, Browsers, Files, Globe, MapTrifold, Newspaper, PenNib, Tag } from '@phosphor-icons/react'
 
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
@@ -18,7 +18,7 @@ import {schemaTypes} from './sanity/schema'
 
 const CustomDocumentTypes = new Set(['page', 'article', 'blog_page', 'tag'])
 
-const Singletons = new Set(['tailor_your_tour', 'globals'])
+const Singletons = new Set(['tailor_your_tour', 'globals', 'newsletter_section'])
 
 const deskToolOptions: DeskToolOptions = {
   name: 'Traviio',
@@ -74,6 +74,12 @@ const deskToolOptions: DeskToolOptions = {
           .icon(MapTrifold)
           .id('tailor_your_tour')
           .child(S.document().schemaType('tailor_your_tour').documentId('tailor_your_tour')),
+          // news Letter Section
+        S.listItem()
+          .title('Newsletter Section')
+          .icon(Newspaper)
+          .id('newsletter_section')
+          .child(S.document().schemaType('newsletter_section').documentId('newsletter_section')),
       ]),
 }
 export default defineConfig({

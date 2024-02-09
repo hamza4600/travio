@@ -1,5 +1,6 @@
 // import { type SchemaTypeDefinition } from "sanity";
 
+import blockContent from "./schemas/atoms/blockContent";
 import layout_group from "./schemas/atoms/content/Group";
 import content_image from "./schemas/atoms/content/Image";
 import content_link_card from "./schemas/atoms/content/LinkCard";
@@ -58,6 +59,7 @@ import { TourSectionExports } from "./schemas/sections/Tours";
 
 export const schemaTypes= [
         // atoms
+        blockContent,
         locale_string,
         locale_number,
         locale_text,
@@ -92,7 +94,6 @@ export const schemaTypes= [
         hero_section,
         image_header_section,
         index_section,
-        newsletter_section,
         office_locations_section,
         reviews_section,
         testimonial_section,
@@ -119,5 +120,6 @@ export const schemaTypes= [
         PromoCode,
         ThingsToDo,
         MemorableExperiences,
+        newsletter_section,
     ];
 // };
