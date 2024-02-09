@@ -36,6 +36,8 @@ module.exports = {
       fontFamily: {
         dmSans: ['var(--font-dm)'],
         outfit: ['var(--font-outfit)'],
+        satoshi: ['var(--font-satoshi)'],
+        montserrat: ['var(--font-montserrat)']
       },
       fontSize: {
         extraSm: ['10px', '12px'],
@@ -46,24 +48,14 @@ module.exports = {
         xll: ['20px', '32px'],
         heading: ['40px', '50px']
       },
-      // fontWeight: {
-      //   "100": "100",
-      //   "200": "200",
-      //   "300": "300",
-      //   "400": "400",
-      //   "500": "500",
-      //   "600": "600",
-      //   "700": "700",
-      //   "800": "800",
-      //   "900": "900",
-      // },
+
       colors: {
-        'primary': '#3FA9F5',
-        'secondary': '#140D31',
-        'tertiary': '#FFFFFF',
-        'gray': '#726E83',
-        'destructive': '#D10002',
-        'topic': 'hsla(252, 58%, 12%, 0.8)',
+        primary: '#3FA9F5',
+        secondary: '#140D31',
+        tertiary: '#FFFFFF',
+        gray: '#726E83',
+        destructive: '#D10002',
+        topic: 'hsla(252, 58%, 12%, 0.8)',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
