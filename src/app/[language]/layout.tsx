@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { DM_Sans, Outfit } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 
-const dmFont = DM_Sans({
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal"],
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-dm",
+const satoshiFont = localFont({
+  // weight: ["300", "400", "500", "600", "700"],
+  src: "../../fonts/Satoshi-Variable.woff2",
+  variable: "--font-satoshi",
 });
 
-const outfitFont = Outfit({
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal"],
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-outfit",
+const montserratFont = localFont({
+  src: "../../fonts/Montserrat-Regular.woff2",
+  variable: "--font-montserrat",
+});
+
+const proximaNovaFont = localFont({
+  src: "../../fonts/ProximaNovaRegular.woff",
+  variable: "--font-nova",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmFont.variable} ${outfitFont.variable} font-sans`}>
+      <body
+        className={`${satoshiFont.variable} ${montserratFont.variable} ${proximaNovaFont.variable} font-sans`}
+      >
         {children}
       </body>
     </html>

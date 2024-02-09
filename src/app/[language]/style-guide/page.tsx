@@ -29,51 +29,267 @@ const StyleGuide = () => {
     <div className="container mx-auto min-h-28">
       <h1 className="text-4xl font-bold mb-4">Style Guide</h1>
 
-      <h2 className="text-2xl font-bold mb-2">Typography</h2>
+      <Text as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Extra Small Golden Button
+      </Text>
+      <Button className="mt-2" size={"xs"} variant={"golden"}>
+        Golden small button
+      </Button>
 
-      <p className="text-lg mb-4 heading1 font-dm">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </p>
-      <p className="text-lg mb-4 heading-outfit-1 font-outfit">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </p>
+      <Text as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Small Secondary Button
+      </Text>
+      <Button className="mt-2" size={"xs"} variant="secondary">
+        Small Secondary Button
+      </Button>
 
-      <h2 className="text-2xl font-bold mb-2">Buttons</h2>
-      <div className="space-x-4">
-        {/* <Button>Default</Button> */}
-        <Button variant="destructive" size="sm">
-          Login
-        </Button>
-        <Button variant="primary" size="default">
-          Primary
-        </Button>
-        <Button variant="secondary" size="md">
-          Secondary
-        </Button>
-        <Button variant="golden" size="base">
-          Golden
-        </Button>
-        <Button variant="sky">Sky</Button>
-        <Text variant="destructive" fontWeight="700" fontFamily="secondary">
-          Hello World! this is working
+      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Base Desctructive Button
+      </Text>
+      <Button className="mt-2" size={"base"} variant="destructive">
+        Base Destructive Button
+      </Button>
+
+      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Default Primary Button
+      </Text>
+      <Button className="mt-2" size={"default"} variant="primary">
+        Primary Default Button
+      </Button>
+
+      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Medium Sky Button
+      </Text>
+      <Button className="mt-2" size={"xs"} variant="sky">
+        Primary Default Button
+      </Button>
+
+      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Large Outline Button
+      </Text>
+      <Button className="mt-2" size={"lg"} variant="outline">
+        Primary Default Button
+      </Button>
+
+      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Rounded Outline Button
+      </Text>
+      <Button className="mt-2" size={"lg"} variant="roundedOutline">
+        Rounded Outline Button
+      </Button>
+
+      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+        Rounded Sky blue
+      </Text>
+      <Button className="mt-2" size={"lg"} variant="roundedSky">
+        Rounded Sky Button
+      </Button>
+
+      {/* <p className="font-bold text-4xl">Navbar Text</p>
+      <Text
+        className="mt-2 text-[16px] leading-6"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"500"}
+      >
+        Destinations
+      </Text> */}
+
+      <p className="font-bold text-4xl">Line 1 B</p>
+      <Text
+        className="mt-2 text-[16px] leading-6"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"900"}
+      >
+        Guided tours tailored by local experts
+      </Text>
+
+      <p className="font-bold text-4xl">below nav text</p>
+      <Text
+        className="mt-2 text-[14px] leading-6"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"500"}
+      >
+        More summer for less. Save up to 20% off selected trips*.{" "}
+        <Text variant={"tertiary"} fontWeight={"700"}>
+          Book now
         </Text>
-        <Text
-          variant="paragraph"
-          size="2xl"
-          fontWeight="700"
-          fontFamily={"secondary"}
-        >
-          Hello World! this is working
-        </Text>
-        <Text variant="default">Hello World! this is working</Text>
-        <Text variant="secondary">Hello World! this is working</Text>
-        <Text variant="tertiary" fontWeight="300">
-          Hello World! this is working
-        </Text>
-        <Text fontWeight={"700"} variant="gray" size="xss">
-          By Jason Tod On May 22, 2023
-        </Text>
-      </div>
+      </Text>
+
+      <p className="font-bold text-4xl">Hero Section Text</p>
+      <Text
+        className="mt-2 text-[50px] leading-[76px]"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"900"}
+      >
+        Guided tours tailored by local experts
+      </Text>
+
+      <p className="font-bold text-4xl">Hero Section Description</p>
+      <Text
+        className="mt-2 text-[20px] leading-[32px]"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Guided tours tailored
+      </Text>
+
+      <p className="font-bold text-4xl">Heading 2 B</p>
+      <Text
+        className="mt-2 text-[40px] leading-[50px]"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Guided tours tailored
+      </Text>
+
+      <p className="font-bold text-4xl">Line 2 M</p>
+
+      <Text
+        className="mt-2 text-[16px] leading-[24px]"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"500"}
+      >
+        Guided tours tailored
+      </Text>
+
+      <p className="font-bold text-4xl">Card Heading</p>
+      <Text
+        className="mt-2 text-xl"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Guided tours tailored
+      </Text>
+
+      <p className="font-bold text-4xl">Font Nova</p>
+      <Text
+        className="mt-2 text-7xl"
+        font={"nova"}
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Guided tours tailored font Nova
+      </Text>
+
+      <p className="font-bold text-4xl">Short Text 2 M</p>
+      <Text
+        className="mt-2 text-[14px] leading-[22px]"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"500"}
+      >
+        Country
+      </Text>
+
+      <p className="font-bold text-4xl">Sub Title 3 B</p>
+      <Text
+        className="mt-2 text-[14px] leading-[22px]"
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Country
+      </Text>
+
+      <p className="font-bold text-4xl">Sub Title 3 B</p>
+      <Text
+        className="mt-2 text-lg"
+        as={"h1"}
+        variant="gray"
+        fontWeight={"700"}
+      >
+        Country
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Card Travel Price text</p>
+      <Text
+        className="mt-2 text-lg"
+        as={"h1"}
+        variant="secondary"
+        fontWeight={"900"}
+      >
+        Country
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Card Travel Save Price text</p>
+      <Text
+        className="mt-2 text-[12px] leading-4"
+        as={"h1"}
+        variant="destructive"
+        fontWeight={"700"}
+      >
+        You Save
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Heading 2 text</p>
+      <Text
+        className="mt-2 text-[20px] leading-8"
+        as={"h1"}
+        variant="secondary"
+        fontWeight={"700"}
+      >
+        Alignment
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Sub Title 5 R</p>
+      <Text
+        className="mt-2 text-lg"
+        as={"h1"}
+        variant="gray"
+        // fontWeight={"400"}
+      >
+        Alignment
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Line 3 R</p>
+      <Text
+        className="mt-2 text-[16px] leading-6"
+        as={"h1"}
+        variant="gray"
+        // fontWeight={"400"}
+      >
+        Alignment
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Short Text 5 M</p>
+      <Text
+        className="mt-2 text-[12px] leading-5"
+        as={"h1"}
+        variant="gray"
+        fontWeight={"500"}
+      >
+        Alignment
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Short Text 6 R</p>
+      <Text
+        className="mt-2 text-[12px] leading-5"
+        as={"h1"}
+        variant="gray"
+        // fontWeight={""}
+      >
+        Alignment
+      </Text>
+
+      <p className="mt-3 font-bold text-4xl">Title 5 M</p>
+      <Text
+        className="mt-2 text-[20px] leading-8"
+        as={"h1"}
+        variant="gray"
+        fontWeight={"500"}
+      >
+        Alignment
+      </Text>
+
       <Form {...form}>
         <form className="space-y-8 mt-10 max-w-md">
           <FormField

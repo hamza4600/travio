@@ -15,22 +15,10 @@ const textVariants = cva("", {
       paragraph: "text-topic",
     },
 
-    size: {
-      default: "text-base", // fon-size = 16x line-height: 24px;
-      extraSm: "text-extraSm", // 10px and 12px
-      xss: "text-xs", // font-size = 12x line-height: 20px;
-      xs: "text-xs", // 14px and 24px
-      smm: "text-smm", // font-size = 14pxpx / line-height: 22px
-      sm: "text-sm", // font-size = 14x line-height: 20px;
-      lg: "text-lg", // font-size = 18x line-height: 28px.
-      xl: "text-xl", // font-size = 20x and 28px
-      xll: "text-xll", // 20px and 32 px
-      "2xl": "text-2xl", // 24px and 32px
-      hero: "text-hero", // 56px and 76px
-      h1: "text-heading", // 40px and 50px
-    },
-    fontFamily: {
-      default: "font-dm",
+    font: {
+      default: "font-satoshi",
+      montserrat: "font-montserrat",
+      nova: "font-nova",
       secondary: "font-outfit",
     },
     fontWeight: {
@@ -44,11 +32,26 @@ const textVariants = cva("", {
       "800": "font-extrabold",
       "900": "font-black",
     },
+
+    // size: {
+    //   default: "text-base", // fon-size = 16x line-height: 24px;
+    //   extraSm: "text-extraSm", // 10px and 12px
+    //   xss: "text-xs", // font-size = 12x line-height: 20px;
+    //   xs: "text-xs", // 14px and 24px
+    //   smm: "text-smm", // font-size = 14pxpx / line-height: 22px
+    //   sm: "text-sm", // font-size = 14x line-height: 20px;
+    //   lg: "text-lg", // font-size = 18x line-height: 28px.
+    //   xl: "text-xl", // font-size = 20x and 28px
+    //   xll: "text-xll", // 20px and 32 px
+    //   "2xl": "text-2xl", // 24px and 32px
+    //   hero: "text-hero", // 56px and 76px
+    //   h1: "text-heading", // 40px and 50px
+    // },
   },
   defaultVariants: {
     variant: "default",
-    fontFamily: "default",
-    size: "default",
+    font: "default",
+    // size: "default",
     fontWeight: "default",
   },
 });
@@ -57,22 +60,23 @@ export interface TextProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof textVariants> {
   asChild?: boolean;
+  as?: React.ElementType; // prop for the HTML element type
 }
 
 const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
   (
     {
       className,
-      fontFamily,
+      font,
       fontWeight,
       variant,
-      size,
       asChild = false,
+      as = "p",
       ...props
     },
     ref
   ) => {
-    const Comp = asChild ? Slot : "p";
+    const Comp = asChild ? Slot : as;
 
     // Filter out undefined and null values from props
     const filteredProps: React.HTMLAttributes<HTMLParagraphElement> =
@@ -84,7 +88,7 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
 
     return (
       <Comp
-        className={cn(textVariants({ variant, size, className }))}
+        className={cn(textVariants({ variant, className, font, fontWeight }))}
         ref={ref}
         {...filteredProps}
       />
