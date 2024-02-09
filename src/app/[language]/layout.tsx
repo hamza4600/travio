@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DM_Sans, Outfit } from "next/font/google";
-import { cn } from "@/lib/utils";
 import "./globals.css";
 
 const dmFont = DM_Sans({
@@ -31,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cn(`${dmFont.variable} ${outfitFont}`)}`}>
+      <body className={`${dmFont.variable} ${outfitFont.variable} font-sans`}>
         {children}
       </body>
     </html>

@@ -1,3 +1,5 @@
+const { fontFamily } = require("tailwindcss/defaultTheme")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -32,8 +34,8 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        'dm': ['DM-sans', 'sans-serif'],
-        'outfit': ['Outfit', 'sans-serif']
+        dmSans: ['var(--font-dm)'],
+        outfit: ['var(--font-outfit)'],
       },
       fontSize: {
         extraSm: ['10px', '12px'],

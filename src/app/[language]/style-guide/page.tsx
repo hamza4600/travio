@@ -31,7 +31,10 @@ const StyleGuide = () => {
 
       <h2 className="text-2xl font-bold mb-2">Typography</h2>
 
-      <p className="text-lg mb-4 heading1">
+      <p className="text-lg mb-4 heading1 font-dm">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+      <p className="text-lg mb-4 heading-outfit-1 font-outfit">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </p>
 

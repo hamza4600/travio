@@ -65,6 +65,13 @@
   line-height: 50px;
 }
 
+.heading-outfit-1 {
+  font-family: var(--font-outfit);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
 .heading2 {
   font-family: var(--font-dm);
   font-size: 24px;
