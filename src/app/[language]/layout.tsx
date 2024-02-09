@@ -13,6 +13,11 @@ const montserratFont = localFont({
   variable: "--font-montserrat",
 });
 
+const proximaNovaFont = localFont({
+  src: "../../fonts/ProximaNovaRegular.woff",
+  variable: "--font-nova",
+});
+
 export const metadata: Metadata = {
   title: "Traviio Tours",
   description: "Traviio Tours",
@@ -26,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${satoshiFont.variable} ${montserratFont.variable} font-sans`}
+        className={`${satoshiFont.variable} ${montserratFont.variable} ${proximaNovaFont.variable} font-sans`}
       >
         {children}
       </body>

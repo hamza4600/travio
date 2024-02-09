@@ -169,6 +169,17 @@ const StyleGuide = () => {
         Guided tours tailored
       </Text>
 
+      <p className="font-bold text-4xl">Font Nova</p>
+      <Text
+        className="mt-2 text-7xl"
+        font={"nova"}
+        as={"h1"}
+        variant={"secondary"}
+        fontWeight={"700"}
+      >
+        Guided tours tailored font Nova
+      </Text>
+
       <p className="font-bold text-4xl">Short Text 2 M</p>
       <Text
         className="mt-2 text-[14px] leading-[22px]"

@@ -37,7 +37,8 @@ module.exports = {
         dmSans: ['var(--font-dm)'],
         outfit: ['var(--font-outfit)'],
         satoshi: ['var(--font-satoshi)'],
-        montserrat: ['var(--font-montserrat)']
+        montserrat: ['var(--font-montserrat)'],
+        nova: ['var(--font-nova)']
       },
       fontSize: {
         extraSm: ['10px', '12px'],
