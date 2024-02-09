@@ -56,7 +56,7 @@ export const testimonial = defineType({
       name: 'name',
       title: 'Name',
       description: 'Name for the testimonial author',
-      type: 'locale_string',
+      type: 'text',
     }),
     defineField({
       name: 'time',

@@ -5,7 +5,7 @@ import { Rss } from '@phosphor-icons/react'
 export default defineType({
   name: 'newsletter_section',
   title: 'Newsletter Section',
-  type: 'object',
+  type: 'document',
   icon: Rss as any,
   fields: [
     defineField({
@@ -20,12 +20,12 @@ export default defineType({
       description: 'Subtitle for the newsletter section',
       type: 'locale_string',
     }),
-    defineField({
-      name: 'image',
-      title: 'Image',
-      description: 'Background image for the newsletter section',
-      type: 'photo',
-    }),
+    // defineField({
+    //   name: 'image',
+    //   title: 'Image',
+    //   description: 'Background image for the newsletter section',
+    //   type: 'photo',
+    // }),
     // defineField({
     //   name: 'email_form',
     //   title: 'Email Form',
