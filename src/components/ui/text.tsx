@@ -17,8 +17,10 @@ const textVariants = cva("", {
 
     font: {
       default: "font-satoshi",
+      black: "font-staoshiblack",
       montserrat: "font-montserrat",
       nova: "font-nova",
+      plain: "font-plain",
       secondary: "font-outfit",
     },
     fontWeight: {
