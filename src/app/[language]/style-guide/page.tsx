@@ -29,56 +29,56 @@ const StyleGuide = () => {
     <div className="container mx-auto min-h-28">
       <h1 className="text-4xl font-bold mb-4">Style Guide</h1>
 
-      <Text as={"h1"} variant={"secondary"} fontWeight={"500"}>
+      <Text as={"h1"} variant={"darkblue"} fontWeight={"500"}>
         Extra Small Golden Button
       </Text>
       <Button className="mt-2" size={"xs"} variant={"golden"}>
         Golden small button
       </Button>
 
-      <Text as={"h1"} variant={"secondary"} fontWeight={"500"}>
-        Small Secondary Button
+      <Text as={"h1"} variant={"darkblue"} fontWeight={"500"}>
+        Small darkblue Button
       </Text>
       <Button className="mt-2" size={"xs"} variant="secondary">
-        Small Secondary Button
+        Small darkblue Button
       </Button>
 
-      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+      <Text className="mt-2" as={"h1"} variant={"darkblue"} fontWeight={"500"}>
         Base Desctructive Button
       </Text>
       <Button className="mt-2" size={"base"} variant="destructive">
         Base Destructive Button
       </Button>
 
-      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+      <Text className="mt-2" as={"h1"} variant={"darkblue"} fontWeight={"500"}>
         Default Primary Button
       </Text>
       <Button className="mt-2" size={"default"} variant="primary">
         Primary Default Button
       </Button>
 
-      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+      <Text className="mt-2" as={"h1"} variant={"darkblue"} fontWeight={"500"}>
         Medium Sky Button
       </Text>
       <Button className="mt-2" size={"xs"} variant="sky">
         Primary Default Button
       </Button>
 
-      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+      <Text className="mt-2" as={"h1"} variant={"darkblue"} fontWeight={"500"}>
         Large Outline Button
       </Text>
       <Button className="mt-2" size={"lg"} variant="outline">
         Primary Default Button
       </Button>
 
-      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+      <Text className="mt-2" as={"h1"} variant={"darkblue"} fontWeight={"500"}>
         Rounded Outline Button
       </Text>
       <Button className="mt-2" size={"lg"} variant="roundedOutline">
         Rounded Outline Button
       </Button>
 
-      <Text className="mt-2" as={"h1"} variant={"secondary"} fontWeight={"500"}>
+      <Text className="mt-2" as={"h1"} variant={"darkblue"} fontWeight={"500"}>
         Rounded Sky blue
       </Text>
       <Button className="mt-2" size={"lg"} variant="roundedSky">
@@ -89,7 +89,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[16px] leading-6"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"500"}
       >
         Destinations
@@ -99,7 +99,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[16px] leading-6"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"900"}
       >
         Guided tours tailored by local experts
@@ -109,7 +109,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[14px] leading-6"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"500"}
       >
         More summer for less. Save up to 20% off selected trips*.{" "}
@@ -122,7 +122,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[50px] leading-[76px]"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"900"}
       >
         Guided tours tailored by local experts
@@ -132,7 +132,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[20px] leading-[32px]"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"700"}
       >
         Guided tours tailored
@@ -142,7 +142,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[40px] leading-[50px]"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"700"}
       >
         Guided tours tailored
@@ -153,7 +153,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[16px] leading-[24px]"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"500"}
       >
         Guided tours tailored
@@ -163,7 +163,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-xl"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"700"}
       >
         Guided tours tailored
@@ -173,7 +173,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-xl"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"700"}
       >
         Guided tours tailored Plain Font
@@ -184,19 +184,19 @@ const StyleGuide = () => {
         className="mt-2 text-7xl"
         font={"nova"}
         as={"h1"}
-        variant={"secondary"}
-        fontWeight={"700"}
+        variant={"darkblue"}
+        fontWeight={"900"}
       >
-        Guided tours tailored font Nova
+        Guided tours tailored font Nova AT j
       </Text>
 
       <p className="font-bold text-4xl">Font Plain</p>
       <Text
         className="mt-2 text-5xl"
-        font={"black"}
+        font={"nova"}
         as={"h1"}
-        variant={"secondary"}
-        fontWeight={"700"}
+        variant={"darkblue"}
+        fontWeight={"900"}
       >
         Guided tours tailored font Plain
       </Text>
@@ -205,7 +205,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[14px] leading-[22px]"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"500"}
       >
         Country
@@ -215,7 +215,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[14px] leading-[22px]"
         as={"h1"}
-        variant={"secondary"}
+        variant={"darkblue"}
         fontWeight={"700"}
       >
         Country
@@ -235,7 +235,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-lg"
         as={"h1"}
-        variant="secondary"
+        variant="darkblue"
         fontWeight={"900"}
       >
         Country
@@ -255,7 +255,7 @@ const StyleGuide = () => {
       <Text
         className="mt-2 text-[20px] leading-8"
         as={"h1"}
-        variant="secondary"
+        variant="darkblue"
         fontWeight={"700"}
       >
         Alignment

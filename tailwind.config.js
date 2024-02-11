@@ -39,7 +39,7 @@ module.exports = {
         satoshi: ['var(--font-satoshi)'],
         montserrat: ['var(--font-montserrat)'],
         nova: ['var(--font-nova)'],
-        plain: ['var(--font-plain)'],
+        // plain: ['var(--font-plain)'],
       },
       fontSize: {
         extraSm: ['10px', '12px'],
@@ -53,7 +53,8 @@ module.exports = {
 
       colors: {
         primary: '#3FA9F5',
-        secondary: '#140D31',
+        darkblue: '#140D31',
+        dimSecondary: 'hsla(252, 58%, 12%, 0.8)',
         tertiary: '#FFFFFF',
         gray: '#726E83',
         destructive: '#D10002',

@@ -9,7 +9,7 @@ const textVariants = cva("", {
     variant: {
       default: "text-primary",
       destructive: "text-destructive",
-      secondary: "text-secondary",
+      darkblue: "text-darkblue",
       tertiary: "text-tertiary",
       gray: "text-gray",
       paragraph: "text-topic",
@@ -17,10 +17,10 @@ const textVariants = cva("", {
 
     font: {
       default: "font-satoshi",
-      black: "font-staoshiblack",
+      // black: "font-staoshiblack",
       montserrat: "font-montserrat",
       nova: "font-nova",
-      plain: "font-plain",
+      // plain: "font-plain",
       secondary: "font-outfit",
     },
     fontWeight: {

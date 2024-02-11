@@ -27,10 +27,10 @@ const buttonVariants = cva(
         roundedOutline: "border rounded-[4px] border-input bg-outline",
       },
       size: {
-        default: "h-10 px-4 py-2", // 40px height
+        default: "h-10 px-[18px] py-[7px]", // 40px height
         xs: "h-[26px] px-5 py-4",
         sm: "h-[36px] px-5 py-4",
-        md: "h-[38px] px-5 py-4",
+        md: "h-[38px] px-[18px] py-[7px]",
         base: "h-[42px] px-4 py-2",
         lg: "h-12 px-8", // 48px height
         icon: "h-10 w-10",
