@@ -1,11 +1,13 @@
 import React from "react";
-import Swiper from "@/components/molecules/carousel";
-import SectionTitle from "@/components/atom/SectionTitle";
-import TourCard from "@/components/atom/Card";
+import Swiper from "@/components/molecules/Swiper";
+import TourCard from "@/components/molecules/cards/Card";
 import Container from "@/components/molecules/container";
+import { Text } from "@/components/ui/text";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 
 const data = [
   {
@@ -104,12 +106,22 @@ const CardsSection = () => {
   return (
     // <div>
     <>
-      <Container className="pt-[50px] pb-[72px]  text-black w-full smd:mr-0  ">
+      <Container className="pt-[50px] pb-[72px] text-black w-full smd:mr-0  ">
         <div className="">
-          <SectionTitle tag="Cheap Trips" title="Hot Travel Deals" />
+          <div className="flex flex-col gap-2">
+            <Text className="font-medium text-base maxs-sm:text[12px] leading-5">
+              Cheap Trips
+            </Text>
+            <Text
+              variant={"darkblue"}
+              className="font-bold leading-[50px] text-[40px] max-sm:text-2xl"
+            >
+              Hot Travel Deals
+            </Text>
+            <hr className="border-b-[#FFBB0B] border-b-[3px] max-w-[117px]" />
+          </div>
 
-          <div className=" h-fit relative">
-            {/* <div className="absolute hidden md:block h-full bg-white opacity-70  right-0 z-30  w-[4.5%] "></div> */}
+          <div className="h-fit relative mt-12">
             <Swiper
               className={"gap-6 pb-3"}
               length={data?.length}

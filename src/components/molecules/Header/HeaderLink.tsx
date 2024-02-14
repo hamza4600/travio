@@ -1,10 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-
-// import { SanityGlobals } from "../../../../sanity/lib/types";
 
 import Card from "./Card";
 import Selector from "./Selector";
@@ -12,13 +9,14 @@ import { localizedString, urlFor } from "../../../../sanity/lib/client";
 // import { link } from "fs";
 
 function HeaderLink({ item }) {
-  // {
-  //   item: NonNullable<NonNullable<SanityGlobals["navbar"]>["links"]>[number];
-  // }
   const [open, setOpen] = React.useState(false);
   const [dest, setDest] = React.useState(0);
-  // const router = useRouter();
+
   const pathname = usePathname();
+
+  const active = pathname === item.path;
+
+  console.log(active);
 
   React.useEffect(() => {
     if (open) {
@@ -30,20 +28,16 @@ function HeaderLink({ item }) {
 
   return (
     <>
-      {/* {item?._type === "link" && ( */}
       <Link
         href={item.path || "/"}
         className={
-          "leading-[24px] flex-none text-darkblue font-medium font-satoshi" +
-          ((item.path || "/") === pathname
-            ? "text-[#3FA9F5] font-bold"
-            : "text-secondary font-medium")
+          "leading-[24px] flex-none font-medium font-satoshi " +
+          (active ? "text-[#3FA9F5] font-bold" : "font-medium text-darkblue")
         }
       >
         {item.name}
-        {/* <LocalizedString text={item.text} /> */}
       </Link>
-      {/* )} */}
+
       {item?._type === "tour_dropdown" && (
         <>
           <div className={"hidden lg:flex items-center"}>

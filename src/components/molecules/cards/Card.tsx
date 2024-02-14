@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Text } from "../ui/text";
-import { Button } from "../ui/button";
+import { Text } from "../../ui/text";
+import { Button } from "../../ui/button";
 
 const type =
   "text-[12px] md:text-sm items-center font-medium leading-[16px] md:leading-[22px] flex gap-1.5";
@@ -16,6 +16,7 @@ const TourCard = ({
   old_price,
   price,
 }) => {
+  const savings = price - old_price;
   return (
     // <Link href={"#"}>
     <Link className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"} href={"#"}>
@@ -116,14 +117,17 @@ const TourCard = ({
                 variant={"destructive"}
                 className="text-[10px] md:-mt-2 md:text-xs font-bold leading-[20px] md:leading-[28px]"
               >
-                You Save ${old_price - price}
+                You Save ${savings}
               </Text>
             </div>
           </div>
           <Button
-            className={"!!mt-3 !mb-0 !py-2.5 !px-7 !leading-[22px]"}
+            className={
+              "!!mt-3 !mb-0 !py-2.5 !px-7 !leading-[22px] max-sm:h-10 h-[42px]"
+            }
             variant={"sky"}
             style={{ width: "100%" }}
+            // size={"base"}
           >
             View Trip
           </Button>

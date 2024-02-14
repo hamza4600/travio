@@ -39,7 +39,7 @@ const Header = ({ navbar }) =>
 
     return (
       <div>
-        <div className="w-full z-50 hidden bg-white lg:block h-[100px] relative">
+        <div className="w-full z-50 hidden bg-white lg:block h-[100px] relative max-w-[1440px] mx-auto box-border">
           <div className={"bg-primary h-[30px]"}>
             <Container className="py-1 px-20">
               <div className="main-content-wrapper">
@@ -51,7 +51,11 @@ const Header = ({ navbar }) =>
                       width={18}
                       alt="Whatsapp logo"
                     />
-                    <p className={"text-sm font-medium leading-[22px]"}>
+                    <p
+                      className={
+                        "text-[14px] font-satoshi font-medium leading-[22px]"
+                      }
+                    >
                       +1 0000 000 000
                     </p>
                   </div>

@@ -53,7 +53,7 @@ export default function FlexibleThings() {
           {data?.map((feature, index) => (
             <div
               key={index}
-              className="flex gap-3 items-center font-medium text-base max-sm:text-[14px] leading-5 max-sm:px-5 max-md:flex-col"
+              className="flex gap-3 items-center font-medium text-base max-sm:text-[14px] leading-5 max-sm:px-5 max-md:flex-col max-[320px]:w-[150px]"
             >
               <Image
                 src={feature.icon}

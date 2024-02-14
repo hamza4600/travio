@@ -1,6 +1,12 @@
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
 
-export default function Swiper({
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import "swiper/css";
+
+export default function SwiperComponent({
   children,
   length,
   scrollCount = 1,
@@ -13,6 +19,7 @@ export default function Swiper({
   const swiperRef = useRef<HTMLDivElement>(null);
   const [showNext, setShowNext] = useState(false);
   const [showPrev, setShowPrev] = useState(false);
+
   useEffect(() => {
     if (
       (swiperRef.current?.scrollWidth || 0) >

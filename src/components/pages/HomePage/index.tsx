@@ -1,42 +1,64 @@
 "use client";
 import React from "react";
 import Layout from "@/components/layout";
+import dynamic from "next/dynamic";
 // import Breadcrumbs from "@/components/atom/Breadcrumbs";
-import HeroSection from "./HeroSection";
-import FlexibleThings from "./FlexibleThings";
-import CardsSection from "./CardsSection";
-import GetEarlyNews from "@/components/molecules/form/Form";
-import FAQSection from "@/components/molecules/faq";
+const HeroSection = dynamic(() => import("./HeroSection"));
 
-const data = [
-  {
-    question: "Can I change or cancel my Tour?",
-    answer:
-      "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
-  },
-  {
-    question: "Can I change or cancel my Tour?",
-    answer:
-      "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
-  },
-  {
-    question: "Can I change or cancel my Tour?",
-    answer:
-      "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
-  },
-];
+const FlexibleThings = dynamic(() => import("./FlexibleThings"));
+const CardsSection = dynamic(() => import("./CardsSection"));
+const GetEarlyNews = dynamic(() => import("@/components/sections/form/Form"));
+const FAQSection = dynamic(() => import("@/components/sections/faq"));
+const TourGallery = dynamic(() => import("@/components/molecules/TourGallery"));
+const FeatureSection = dynamic(() => import("./FeatureSection"));
+const TravlerReviews = dynamic(
+  () => import("@/components/sections/HappyTravelers")
+);
+const Destination = dynamic(() => import("./Destination"));
+const BlogSection = dynamic(() => import("./BlogSection"));
+const OtherTours = dynamic(() => import("./OtherTours"));
+
+import {
+  featureData,
+  data,
+  tourData,
+  reviews,
+  destinations,
+  articles,
+  toursPopular,
+  attractions,
+} from "./data";
 
 const HomePage = () => {
   return (
     <Layout locale="en" breadcrumbs={[]}>
       <HeroSection />
+
       <div className="px-20 max-lg:px-0">
         <FlexibleThings />
       </div>
+
       <div className="px-20 max-lg:px-5">
         <CardsSection />
       </div>
-      <div>
+
+      <TourGallery data={tourData} />
+
+      <div className="lg:px-20">
+        <FeatureSection data={featureData} />
+      </div>
+
+      <div className="px-20 max-md:px-5">
+        <Destination data={destinations} />
+      </div>
+
+      <TravlerReviews data={reviews} />
+
+      <div className="px-20 max-md:px-5">
+        <BlogSection data={articles} />
+      </div>
+
+      <div className="mt-20">
         <GetEarlyNews
           title={"Join Our Travel Community and Unlock Exclusive Deals!"}
           description={
@@ -44,7 +66,13 @@ const HomePage = () => {
           }
         />
       </div>
+
       <FAQSection data={data} />
+
+      <div className="px-20 max-md:px-5">
+        <OtherTours data={toursPopular} />
+        <OtherTours data={attractions} />
+      </div>
     </Layout>
   );
 };

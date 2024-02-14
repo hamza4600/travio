@@ -4,15 +4,16 @@ import Image from "next/image";
 import { WhatsappIcon } from "@/components/icons";
 import useWindowSize from "@/hooks/useWindows";
 
-import Container from "../container";
+import Container from "../../molecules/container";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 
 const GetEarlyNews = ({ title, description }) => {
   const windowSize = useWindowSize();
   const isMobile = windowSize.width < 768;
+
   return (
-    <Container className="px-0 flex justify-center items-center md:px-5">
+    <Container className="px-20 flex justify-center items-center max-md:px-5">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full max-w-[1280px] bg-[#3FA9F5] md:w-full md:rounded-3xl overflow-hidden relative">
         <Image
           width={640}

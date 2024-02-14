@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import Container from "../container";
+import Container from "../../molecules/container";
 
 {
   /* <Schema

@@ -18,7 +18,7 @@ const SectionTitle: React.FC<Props> = ({ tag, title }) => {
       >
         {title}
       </Text>
-      <hr className="border-b-#FFBB0B border-b-[3px]" />
+      <hr className="border-b-[#FFBB0B] border-b-[3px] max-w-[117px]" />
     </div>
   );
 };
