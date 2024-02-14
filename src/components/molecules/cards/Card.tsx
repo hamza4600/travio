@@ -18,29 +18,9 @@ const TourCard = ({
 }) => {
   const savings = price - old_price;
   return (
-    // <Link href={"#"}>
+   
     <Link className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"} href={"#"}>
-      {/* <Schema
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Event",
-          name: title,
-          startDate: new Date().toISOString(),
-          endDate: new Date().toISOString(),
-          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-          eventStatus: "https://schema.org/EventScheduled",
-          image: [image.src],
-          description: duration,
-          offers: {
-            "@type": "Offer",
-            url: "https://www.example.com/event_offer/12345_201803180430",
-            price: ,
-            priceCurrency: currency,
-            availability: "https://schema.org/InStock",
-            validFrom: new Date().toISOString(),
-          },
-        }}
-      /> */}
+     
       <div className="bg-white relative h-min shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
         <Text
           variant={"tertiary"}
@@ -59,8 +39,7 @@ const TourCard = ({
         />
         <div className="p-4">
           <Text className="text-base md:text-xl text-darkblue font-bold">
-            {/* {process.env.NEXT_PUBLIC_DEVELOPMENT */}
-            {/* ?  */}
+          
             {tourType}
           </Text>
           <div className="flex mt-3 justify-between">
@@ -127,15 +106,14 @@ const TourCard = ({
             }
             variant={"sky"}
             style={{ width: "100%" }}
-            // size={"base"}
+            
           >
             View Trip
           </Button>
         </div>
       </div>
     </Link>
-    // </div>
-    // </Link>
+   
   );
 };
 

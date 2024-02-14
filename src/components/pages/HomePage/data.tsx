@@ -53,9 +53,9 @@ export const featureData = {
     },
     {
       icon: "/honeymoon.svg",
-      title: "",
+      title: "Enjoy Your Trip!",
       description:
-        "Let us handle logistics, including accommodation, transportation, and more",
+        "Enjoy a carefree vacation and get the treatment you deserve",
     },
   ],
 };
@@ -240,7 +240,7 @@ export const articles = {
 };
 
 export const toursPopular = {
-  title: "Popular",
+  title: "Popular Tours",
   tours: [
     {
       url: "#",

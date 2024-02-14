@@ -2,101 +2,64 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// import { localizedString, PropsWithLocale } from "@/contexts/LocaleProvider";
-// import { urlFor } from "../../../../sanity/lib/client";
-// import { SanityArticle } from "../../../../sanity/lib/types";
 import DateFormat from "@/utils/utils";
 
 import Container from "@/components/molecules/container";
 import SwiperComponent from "@/components/molecules/Swiper";
 
-// import Schema from "@/components/atom/Schema";
-
 import "swiper/css";
 import "swiper/css/navigation";
 
-// export type BlogSectionProps = {
-//   data: SanityFeaturedBlogsSection;
-// };
-
-// export type BlogCardProps = {
-//   blog: SanityArticle;
-// };
-
-const BlogCard = ({ blog }) =>
-  // : PropsWithLocale<BlogCardProps>
-  {
-    return (
-      blog && (
-        <Link className={"flex-shrink-0 "} href={"/#" + blog?.slug?.current}>
-          {/* <Schema
-            data={{
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: localizedString(blog?.title, locale),
-              image: blog?.cover_image && [urlFor(blog?.cover_image)],
-              datePublished:
-                blog?._updatedAt && new Date(blog?._updatedAt).toISOString(),
-              dateModified:
-                blog?._updatedAt && new Date(blog?._updatedAt).toISOString(),
-              author: [
-                {
-                  "@type": "Person",
-                  name: localizedString(blog?.author?.name, locale),
-                },
-              ],
-            }}
-          /> */}
-          <div className=" w-full">
-            <div
-              className={
-                "  relative rounded-3xl overflow-hidden w-[250px] h-[280px] md:w-[410px] md:h-[460px]"
-              }
-            >
-              {blog?.cover_image && (
-                <Image
-                  width={410}
-                  height={460}
-                  className=" absolute h-full w-full "
-                  src={blog?.cover_image}
-                  alt="cover_image"
-                  sizes={`
+const BlogCard = ({ blog }) => {
+  return (
+    blog && (
+      <Link className={"flex-shrink-0 "} href={"/#" + blog?.slug?.current}>
+        <div className=" w-full">
+          <div
+            className={
+              "  relative rounded-3xl overflow-hidden w-[250px] h-[280px] md:w-[410px] md:h-[460px]"
+            }
+          >
+            {blog?.cover_image && (
+              <Image
+                width={410}
+                height={460}
+                className=" absolute h-full w-full "
+                src={blog?.cover_image}
+                alt="cover_image"
+                sizes={`
               (max-width: 640px) 100vw, 410px
             `}
-                />
-              )}
-            </div>
-            <div className="mt-4 font-satoshi">
-              <h3 className="text-base md:text-xl max-w-[250px] md:max-w-[380px] font-bold md:font-medium leading-normal md:leading-[32px] ">
-                {process.env.NEXT_PUBLIC_DEVELOPMENT
-                  ? "10 Indonesian Destinations you should visit in this year"
-                  : blog?.title}
-              </h3>
-
-              <p className="mt-[6px] md:mt-2 text-[10px] md:text-xs font-normal leading-3 md:leading-[20px]  text-gray ">{`By ${
-                blog?.author?.name
-              } ${
-                blog?._updatedAt
-                  ? "on " + DateFormat(new Date(blog?._updatedAt))
-                  : ""
-              }`}</p>
-            </div>
+              />
+            )}
           </div>
-        </Link>
-      )
-    );
-  };
+          <div className="mt-4 font-satoshi">
+            <h3 className="text-base md:text-xl max-w-[250px] md:max-w-[380px] font-bold md:font-medium leading-normal md:leading-[32px] ">
+              {process.env.NEXT_PUBLIC_DEVELOPMENT
+                ? "10 Indonesian Destinations you should visit in this year"
+                : blog?.title}
+            </h3>
 
-const BlogSection = (
-  props
-  // : PropsWithLocale<BlogSectionProps
-  // >
-) => {
+            <p className="mt-[6px] md:mt-2 text-[10px] md:text-xs font-normal leading-3 md:leading-[20px]  text-gray ">{`By ${
+              blog?.author?.name
+            } ${
+              blog?._updatedAt
+                ? "on " + DateFormat(new Date(blog?._updatedAt))
+                : ""
+            }`}</p>
+          </div>
+        </div>
+      </Link>
+    )
+  );
+};
+
+const BlogSection = (props) => {
   const {
     data: { tagline, title, featured_blogs },
   } = props;
   return (
-    <Container className="pt-20 lg:pt-[84px] text-darkblue">
+    <Container className="text-darkblue">
       <header className="pb-5 font-satoshi">
         <p className="text-[#3FA9F5] text-xs md:text-base font-medium text-center uppercase leading-tight md:leading-normal">
           {tagline}

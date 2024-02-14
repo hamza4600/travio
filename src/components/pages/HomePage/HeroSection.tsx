@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-// import PromoBanner from "@/components/molecules/Promobanner";
-
 import Container from "@/components/molecules/container";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";

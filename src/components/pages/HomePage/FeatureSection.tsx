@@ -41,14 +41,14 @@ export default function FeatureSection({ data }) {
     return (
       <Container
         className={
-          "text-center  pb-[60px] h-fit  mx-auto max-w-[1280px] px-4 md:px-0  md:!spx-[80px] md:pb-0 pt-[50px] md:pt-[84px] text-[#140D31] relative w-full "
+          "text-center h-fit  mx-auto max-w-[1280px] px-4 md:px-0  md:!spx-[80px] pt-[50px] md:pt-[84px] text-[#140D31] relative w-full "
         }
       >
-        {data.title?.en && (
+        {data.title && (
           <>
             <div className=" text-darkblue w-fit -tracking-[1.2px] mx-auto text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px]  text-center ">
               <h2>{data.title}</h2>
-              <hr className="w-1/3 m-auto mt-1 lg:mt-[9px] bg-yellow text-yellow h-[3px] rounded-full  " />
+              <hr className="w-1/3 m-auto mt-1 lg:mt-[9px] border-[#FFBB0B] border-b-[3px] text-yellow h-[3px] rounded-full  " />
             </div>
           </>
         )}
@@ -57,7 +57,7 @@ export default function FeatureSection({ data }) {
           {data?.features?.map((feature, index) => (
             <Feature key={index} data={feature} />
           ))}
-          <div className="absolute left-0 top-32 max-md:hidden w-full  flex items-center -z-[0]">
+          <div className="absolute left-0 top-48 max-md:hidden w-full  flex items-center -z-[0]">
             <svg width="100%" height="135" viewBox="0 0 856 135" fill="none">
               <path
                 d="M1 94.3466C148.5 114.17 412.268 160.821 474 97.7702C514.063 56.8511 475.5 -16.993 405.5 5.00972C343 24.655 349.5 116.234 428 120.226C428 120.226 586 164.478 855 94.3466"

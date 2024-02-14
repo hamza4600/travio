@@ -13,7 +13,7 @@ const GetEarlyNews = ({ title, description }) => {
   const isMobile = windowSize.width < 768;
 
   return (
-    <Container className="px-20 flex justify-center items-center max-md:px-5">
+    <Container className="px-20 flex justify-center items-center max-lg:px-0">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full max-w-[1280px] bg-[#3FA9F5] md:w-full md:rounded-3xl overflow-hidden relative">
         <Image
           width={640}

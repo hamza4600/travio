@@ -14,7 +14,7 @@ const Footer__links = ({
   items: any;
 }) => {
   return (
-    <div className="flex gap-2 flex-col text-darkblue">
+    <div className="flex gap-2 flex-col text-darkblue font-satoshi">
       <Text
         variant={"darkblue"}
         className="psb-2 font-bold text-base md:text-lg leading-[24px]"

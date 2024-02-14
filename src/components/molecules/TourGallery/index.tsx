@@ -48,7 +48,7 @@ const TourGallery = (props: GallerySectionProps) => {
         >
           {title}
         </h2>
-        {/* <div className="w-[335px] text-center"><span style="text-gray-500 text-sm font-medium font-['Satoshi Variable'] leading-normal">Over </span><span style="text-sky-400 text-sm font-medium font-['Satoshi Variable'] leading-normal">200,000 Satisfied Travelers</span><span style="text-gray-500 text-sm font-medium font-['Satoshi Variable'] leading-normal"> in 20 years of travel excellence with our local tour operator</span></div> */}
+
         <p className="text-sm font-satoshi px-5 md:text-lg mt-[10px] md:mt-1.5 text-gray text-center md:leading-[28px] leading-[24px]">
           {subtitle?.substring(0, 5)}
           <span className="text-[#3FA9F5] font-satoshi font-medium opacity-100">
@@ -79,9 +79,6 @@ const TourGallery = (props: GallerySectionProps) => {
                   className={
                     "min-w-[233px] md:min-w-[350px] w-full md:max-w-[350px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl"
                   }
-                  // className={
-                  //   'min-h-[190px] md:min-h-[320px]   md:sh-[320px] overflow-hidden rounded-xl'
-                  // }
                 >
                   <PhotoView key={i} src={image[0]}>
                     <Image
@@ -163,13 +160,9 @@ const TourGallery = (props: GallerySectionProps) => {
                   className={
                     "min-w-[233px] w-full h-[190px]  md:h-[320px]   md:min-w-[310px] md:max-w-[400px]  overflow-hidden rounded-xl"
                   }
-                  // className={
-                  //   'min-h-[190px] md:min-h-[320px]   md:sh-[320px] overflow-hidden rounded-xl'
-                  // }
                 >
                   <PhotoView key={i} src={image[0]}>
                     <Image
-                      //   src={urlFor(image[0])}
                       src={image[0]}
                       width={320}
                       height={320}

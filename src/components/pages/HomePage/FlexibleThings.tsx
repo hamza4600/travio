@@ -4,10 +4,6 @@ import Container from "@/components/molecules/container";
 import { Text } from "@/components/ui/text";
 import useWindowSize from "@/hooks/useWindows";
 
-// export type FeatureSectionProps = {
-//   data: SanityFeatureSection;
-// };
-
 const data = [
   {
     icon: "/wallet.svg",

@@ -2,7 +2,6 @@
 import React from "react";
 import Layout from "@/components/layout";
 import dynamic from "next/dynamic";
-// import Breadcrumbs from "@/components/atom/Breadcrumbs";
 const HeroSection = dynamic(() => import("./HeroSection"));
 
 const FlexibleThings = dynamic(() => import("./FlexibleThings"));
@@ -38,23 +37,27 @@ const HomePage = () => {
         <FlexibleThings />
       </div>
 
-      <div className="px-20 max-lg:px-5">
+      <div className="px-20 max-lg:px-5 mt-[68px]">
         <CardsSection />
       </div>
 
-      <TourGallery data={tourData} />
+      <div className="mt-[84px]">
+        <TourGallery data={tourData} />
+      </div>
 
-      <div className="lg:px-20">
+      <div className="lg:px-20 ">
         <FeatureSection data={featureData} />
       </div>
 
-      <div className="px-20 max-md:px-5">
+      <div className="px-20 max-md:px-5 md:mt-20 mt-[60px]">
         <Destination data={destinations} />
       </div>
 
-      <TravlerReviews data={reviews} />
+      <div className="md:mt-[84px] mt-[50px]">
+        <TravlerReviews data={reviews} />
+      </div>
 
-      <div className="px-20 max-md:px-5">
+      <div className="px-20 max-lg:px-5 md:mt-[84px] mt-[50px]">
         <BlogSection data={articles} />
       </div>
 

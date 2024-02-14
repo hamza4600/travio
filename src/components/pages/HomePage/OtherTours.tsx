@@ -3,25 +3,13 @@ import Link from "next/link";
 
 import Container from "@/components/molecules/container";
 
-// export type IndexSectionProps = {
-//   data: SanityIndexSection
-// }
 const OtherTours = (props) => {
-  //   const [data, setData] = useState<PageData[]>([])
-  //   useEffect(() => {
-  //     const getdata = async () => {
-  //       const result = await getAllPages()
-  //       setData(result)
-  //     }
-  //     getdata()
-  //   }, [getAllPages])
-
   const {
     data: { title, tours },
   } = props;
 
   return (
-    <Container className="my-8 font-satoshi md:my-12 ">
+    <Container className="my-5 font-satoshi md:my-10">
       <h2 className="font-[700] text-darkblue text-[24px] tracking-[-0.72px]">
         {title}
       </h2>
@@ -31,7 +19,7 @@ const OtherTours = (props) => {
           return (
             <div
               key={index}
-              className="text-xs md:text-sm leading-[20px] md:leading-[22px] font-medium flex space-x-2 pr-2"
+              className="text-[12px] md:text-sm leading-[20px] md:leading-[22px] font-normal md:font-medium flex space-x-2 pr-2"
             >
               <Link key={index} href={item?.url ? item?.url : "/#"}>
                 {item?.text ? item?.text : "page"}
@@ -41,8 +29,8 @@ const OtherTours = (props) => {
           );
         })}
       </div>
-      {title?.en === "Popular Tours" && (
-        <hr className="text-[#F2FAFF] w-full rounded-full border-2 max-w-[1280px]" />
+      {title === "Popular Tours" && (
+        <hr className="text-[#F2FAFF] w-full rounded-full border-2 max-w-[1280px] max-md:hidden" />
       )}
     </Container>
   );

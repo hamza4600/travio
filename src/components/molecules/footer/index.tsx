@@ -145,15 +145,12 @@ const Footer = ({ footer }: { footer: SanityGlobals["footer"] }) => {
   }, [params]);
 
   console.log("language", language);
-  // const ADDRESSES =
-  //   (footer?.locations as SanityGlobals["footer"])?.locations || [];
-  // const LINKS = footer?.link_groups || [];
   return (
     <div className="w-full bg-primary px-20 max-lg:px-5 max-w-[1440px] mx-auto box-border">
       <Container>
-        <div className="flex max-lg:flex-wrap justify-between gap-10 lg:gap-[166px] py-5 lg:py-20">
+        <div className="flex max-lg:flex-wrap justify-between gap-5 lg:gap-[166px] py-5 lg:py-20">
           {/* Left side */}
-          <div className="flex flex-col gap-2 mb-0 md:max-w-[364px]">
+          <div className="flex flex-col gap-2 mb-0 md:max-w-[364px] w-full">
             <div className="flex flex-col-reverse lg:flex-col justify-start items-start">
               <div className="mt-9 lg:mt-0">
                 <div className="flex flex-col gap-1 md:gap-2">
@@ -174,15 +171,21 @@ const Footer = ({ footer }: { footer: SanityGlobals["footer"] }) => {
                       href="/"
                       className="flex gap-1 items-center text-[14px] leading-[22px] md:text-base md:font-normal font-medium text-blue"
                     >
-                      {/* {localizedString(footer?.title)} */}A company by
+                      A company by
                       <Text className="font-bold">Promo Travel</Text>
                     </Link>
                   </Text>
+                  <Text
+                    variant={"gray"}
+                    className="font-normal text-[14px] leading-6 lg:text-base mt-[18px]"
+                  >
+                    With 30 years of dedicated experience, our travel agency is
+                    here to curate your dream trip, ensuring exceptional service
+                    at every step.
+                  </Text>
                 </div>
 
-                <p className="text-gray text-sm md:text-base font-medium md:font-normal leading-[24px] mt-5">
-                  {/* {localizedString(footer?.description)} */}
-                </p>
+                <p className="text-gray text-sm md:text-base font-medium md:font-normal leading-[24px] mt-5"></p>
               </div>
               <div className="flex flex-wrap gap-5 md:gap-6 lg:mt-10 mt-0 w-full justify-center lg:justify-start">
                 {SOCIAL_LINKS.map((item, index) => {
@@ -220,7 +223,6 @@ const Footer = ({ footer }: { footer: SanityGlobals["footer"] }) => {
               {socailLinks.map((item, index) => {
                 return (
                   <Footer__links
-                    // heading={localizedString(item.title)}
                     heading={item.name}
                     items={item.links || []}
                     key={index}

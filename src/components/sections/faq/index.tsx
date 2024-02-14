@@ -3,22 +3,6 @@ import Image from "next/image";
 
 import Container from "../../molecules/container";
 
-{
-  /* <Schema
-data={{
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faqs?.map((faq) => ({
-      '@type': 'Question',
-      name: localizedString(faq?.question, locale),
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: localizedString(faq?.answer, locale),
-      },
-    })),
-  }}
-/> */
-}
 const FAQSection = ({ data }) => {
   const [open, setOpen] = React.useState(-1);
   return (
@@ -59,7 +43,7 @@ const FAQSection = ({ data }) => {
                 className={`${
                   open === index ? "" : "hidden"
                 } ml-10 max-w-[90%] text-gray
-              text-xs lg:text-base font-satoshi
+              text-[12px] leading-5 lg:text-base font-satoshi
               `}
               >
                 <p>{faq?.answer}</p>

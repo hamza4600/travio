@@ -104,9 +104,8 @@ const data = [
 
 const CardsSection = () => {
   return (
-    // <div>
     <>
-      <Container className="pt-[50px] pb-[72px] text-black w-full smd:mr-0  ">
+      <Container className="text-black w-full smd:mr-0">
         <div className="">
           <div className="flex flex-col gap-2">
             <Text className="font-medium text-base maxs-sm:text[12px] leading-5">
