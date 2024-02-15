@@ -28,7 +28,7 @@ const TravlerReviews = (props) => {
   } = props;
 
   return (
-    <div className="w-full bg-[#F2FAFF] !mt-[84px]   text-black py-[30px]  md:h-full relative">
+    <div className="w-full bg-[#F2FAFF] text-black py-[30px]  md:h-full relative">
       <Container className={"lg:flex px-5 md:pr-0 items-center gap-x-10 "}>
         <div className="lg:max-w-xs font-satoshi shrink-0 w-full text-center md:text-start">
           <h2 className="text-xl md:text-[40px] leading-[30px] md:leading-tight -tracking-[1.2px] font-bold">
@@ -72,7 +72,7 @@ const TravlerReviews = (props) => {
                     {item.title}
                   </h3>
 
-                  <p className="text-xs md:text-sm font-normal font-satoshi text-darkblue md:font-medium  leading-[20px] md:leading-[22px] max-w-[273px]">
+                  <p className="text-[12px] md:text-sm font-normal font-satoshi text-darkblue md:font-medium  leading-[20px] md:leading-[22px] max-w-[273px]">
                     {item.text}
                   </p>
                   <div className="flex gap-x-3 mt-4 items-center">
@@ -85,7 +85,7 @@ const TravlerReviews = (props) => {
                       />
                     </div>
                     <div className="gap-1 font-satoshi md:gap-0">
-                      <div className="font-bold text-darkblue text-xs md:text-sm leading-[20px] md:leading-[22px]">
+                      <div className="font-bold text-darkblue text-[12px] md:text-sm leading-[20px] md:leading-[22px]">
                         {item?.name}
                       </div>
 
@@ -103,7 +103,7 @@ const TravlerReviews = (props) => {
           src="/plane.svg"
           height={200}
           width={200}
-          className="absolute -left-0 md:-left-5 h-[200px] w-[300px] md:h-[300px] md:w-[400px] -bottom-[90px] md:-bottom-[250px]"
+          className="absolute -left-0 md:-left-5 h-[200px] w-[300px] md:h-[300px] md:w-[400px] -bottom-[75px] md:-bottom-[250px]"
           alt=""
         />
       </Container>

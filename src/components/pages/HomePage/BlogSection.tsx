@@ -17,7 +17,7 @@ const BlogCard = ({ blog }) => {
         <div className=" w-full">
           <div
             className={
-              "  relative rounded-3xl overflow-hidden w-[250px] h-[280px] md:w-[410px] md:h-[460px]"
+              "relative rounded-3xl overflow-hidden w-[250px] h-[280px] md:w-[410px] md:h-[460px]"
             }
           >
             {blog?.cover_image && (
@@ -34,7 +34,7 @@ const BlogCard = ({ blog }) => {
             )}
           </div>
           <div className="mt-4 font-satoshi">
-            <h3 className="text-base md:text-xl max-w-[250px] md:max-w-[380px] font-bold md:font-medium leading-normal md:leading-[32px] ">
+            <h3 className="md:text-[20px] text-base max-w-[250px] md:max-w-[380px] font-bold md:font-medium md:leading-[32px] ">
               {process.env.NEXT_PUBLIC_DEVELOPMENT
                 ? "10 Indonesian Destinations you should visit in this year"
                 : blog?.title}
@@ -61,10 +61,10 @@ const BlogSection = (props) => {
   return (
     <Container className="text-darkblue">
       <header className="pb-5 font-satoshi">
-        <p className="text-[#3FA9F5] text-xs md:text-base font-medium text-center uppercase leading-tight md:leading-normal">
+        <p className="text-[#3FA9F5] text-[12px] md:text-base font-medium text-center uppercase leading-5">
           {tagline}
         </p>
-        <div className="text-2xl mt-2 md:mt-3 -tracking-[1.2px] mb-[30px] md:mb-12 w-fit mx-auto md:text-[40px] font-bold leading-[32px] md:leading-[50px] text-center">
+        <div className="mt-2 md:mt-3 -tracking-[1.2px] mb-[30px] md:mb-12 w-fit mx-auto md:text-[40px] font-bold text-2xl md:leading-[50px] text-center">
           <h2>{title}</h2>
           <hr className=" mt-[4px] md:mt-[12px] w-2/3 md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
         </div>

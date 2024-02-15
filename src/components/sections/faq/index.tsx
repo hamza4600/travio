@@ -8,14 +8,14 @@ const FAQSection = ({ data }) => {
   return (
     <>
       <Container className="bg-white flex flex-col items-center pt-[50px] md:pt-[75px] pb-[50px] md:pb-[60px]">
-        <header className="flex flex-col items-center gap-3">
-          <h2 className="text-[#3FA9F5] text-base font-medium leading-[20px]">
+        <header className="flex flex-col items-center gap-3 font-satoshi">
+          <h2 className="text-[#3FA9F5] text-[12px] font-medium leading-[20px]">
             FAQ
           </h2>
           <p className="text-darkblue text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px] md:tracking-[-1.2px] ">
             Frequently asked questions
           </p>
-          <hr className="w-[85px] md:w-[117px] bg-[#FFBB0B] text-yellow h-1 rounded-full md:rounded-[3px] " />
+          <hr className="w-[85px] md:w-[117px] border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[2px]" />
         </header>
         <div className="w-full px-20 max-sm:px-5 mt-[40px] md:mt-12 space-y-5 md:space-y-6">
           {data.map((faq, index) => (

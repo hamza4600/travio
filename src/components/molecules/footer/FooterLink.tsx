@@ -26,7 +26,7 @@ const Footer__links = ({
           <Link
             href={item.url || ""}
             key={index}
-            className="text-xs md:text-[16px] md:font-medium leading-[24px] md:leading-normal text-dimSecondary"
+            className="text-[12px] md:text-[16px] md:font-medium leading-[24px] md:leading-normal text-dimSecondary"
           >
             {item.name}
             {/* {localizedString(item.text)} */}

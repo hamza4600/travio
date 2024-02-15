@@ -23,13 +23,13 @@ const DestinationsSection = ({ data }) => {
     <Container>
       <div>
         <header>
-          <p className="text-[#3FA9F5] font-satoshi text-xs md:text-base font-medium uppercase leading-tight md:leading-normal ">
+          <p className="text-[#3FA9F5] font-satoshi text-[12px] md:text-base font-medium uppercase leading-5 md:leading-normal ">
             {data.tagline}
           </p>
 
           <div className="text-2xl md:text-[40px] font-satoshi w-fit leading-tight my-3 font-bold -tracking-[1.2px] md:leading-[50px]">
             <h2>{data.title}</h2>
-            <hr className="w-[117px] md:w-1/3 mt-1 lg:mt-[9px] rounded-full border-b-[#FFBB0B] border-b-[3px]" />
+            <hr className="w-[85px] md:w-1/3 mt-1 lg:mt-[9px] rounded-full border-b-[#FFBB0B] md:border-b-[3px] border-b-[2px]" />
           </div>
         </header>
 

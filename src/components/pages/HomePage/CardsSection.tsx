@@ -107,8 +107,8 @@ const CardsSection = () => {
     <>
       <Container className="text-black w-full smd:mr-0">
         <div className="">
-          <div className="flex flex-col gap-2">
-            <Text className="font-medium text-base maxs-sm:text[12px] leading-5">
+          <div className="flex flex-col md:gap-2 gap-2">
+            <Text className="font-medium text-base max-sm:text-[12px] md:leading-6 leading-5">
               Cheap Trips
             </Text>
             <Text
@@ -117,10 +117,10 @@ const CardsSection = () => {
             >
               Hot Travel Deals
             </Text>
-            <hr className="border-b-[#FFBB0B] border-b-[3px] max-w-[117px]" />
           </div>
+          <hr className="border-b-[#FFBB0B] mt-1 md:mt-3 border-b-[2px] md:border-b-[3px] max-w-[117px]" />
 
-          <div className="h-fit relative mt-12">
+          <div className="h-fit relative md:mt-12 mt-6">
             <Swiper
               className={"gap-6 pb-3"}
               length={data?.length}

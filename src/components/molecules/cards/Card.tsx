@@ -5,7 +5,7 @@ import { Text } from "../../ui/text";
 import { Button } from "../../ui/button";
 
 const type =
-  "text-[12px] md:text-sm items-center font-medium leading-[16px] md:leading-[22px] flex gap-1.5";
+  "text-[12px] md:text-sm items-center font-medium leading-[16px] md:leading-[22px] flex gap-1";
 
 const TourCard = ({
   pic,
@@ -18,9 +18,7 @@ const TourCard = ({
 }) => {
   const savings = price - old_price;
   return (
-   
     <Link className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"} href={"#"}>
-     
       <div className="bg-white relative h-min shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
         <Text
           variant={"tertiary"}
@@ -39,7 +37,6 @@ const TourCard = ({
         />
         <div className="p-4">
           <Text className="text-base md:text-xl text-darkblue font-bold">
-          
             {tourType}
           </Text>
           <div className="flex mt-3 justify-between">
@@ -51,10 +48,7 @@ const TourCard = ({
                 src="/calendar.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
               ></Image>
-              <Text
-                variant={"darkblue"}
-                className="text-[14px] leading-[22px] max-sm:text[12px] max-sm:leading-4"
-              >
+              <Text variant={"darkblue"} fontWeight={"500"}>
                 {days}
               </Text>
             </div>
@@ -66,7 +60,7 @@ const TourCard = ({
                 src="/map_plain.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
               ></Image>
-              <Text variant={"darkblue"} className="">
+              <Text variant={"darkblue"} fontWeight={"500"}>
                 {cities}
               </Text>
             </div>
@@ -78,7 +72,7 @@ const TourCard = ({
                 src="/globe.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
               ></Image>
-              <Text variant={"darkblue"} className="">
+              <Text fontWeight={"500"} variant={"darkblue"}>
                 {countries}
               </Text>
             </div>
@@ -102,18 +96,16 @@ const TourCard = ({
           </div>
           <Button
             className={
-              "!!mt-3 !mb-0 !py-2.5 !px-7 !leading-[22px] max-sm:h-10 h-[42px]"
+              "mt-3 !mb-0 !py-2.5 !px-7 md:leading-[22px] leading-6 font-bold max-sm:h-10 h-[42px]"
             }
             variant={"sky"}
             style={{ width: "100%" }}
-            
           >
             View Trip
           </Button>
         </div>
       </div>
     </Link>
-   
   );
 };
 

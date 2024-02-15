@@ -13,7 +13,7 @@ const OtherTours = (props) => {
       <h2 className="font-[700] text-darkblue text-[24px] tracking-[-0.72px]">
         {title}
       </h2>
-      <hr className="text-yellow bg-yellow w-[85px] md:w-1/12 rounded-full border-b-[3px] border-b-[#FFBB0B] mt-2" />
+      <hr className="text-yellow bg-yellow w-[85px] md:w-1/12 rounded-full border-b-[2px] md:border-b-[3px] border-b-[#FFBB0B] mt-2" />
       <div className="md:py-12 py-8 mds:mt-10 flex flex-wrap text-gray ">
         {tours?.map((item: any, index: any) => {
           return (

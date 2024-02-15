@@ -47,8 +47,8 @@ export default function FeatureSection({ data }) {
         {data.title && (
           <>
             <div className=" text-darkblue w-fit -tracking-[1.2px] mx-auto text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px]  text-center ">
-              <h2>{data.title}</h2>
-              <hr className="w-1/3 m-auto mt-1 lg:mt-[9px] border-[#FFBB0B] border-b-[3px] text-yellow h-[3px] rounded-full  " />
+              <h2 className="font-satoshi">{data.title}</h2>
+              <hr className="md:w-[117px] w-[85px] m-auto mt-1 lg:mt-[9px] border-[#FFBB0B] md:border-b-[3px] border-b-[2px] text-yellow rounded-full" />
             </div>
           </>
         )}
@@ -84,9 +84,9 @@ export default function FeatureSection({ data }) {
     );
   }
   return (
-    <div className={"bg-[#F2FAFF] text-center py-5 md:py-3 "}>
+    <div className={"bg-[#F2FAFF] font-satoshi text-center py-5 md:py-3 "}>
       <Container>
-        {data.title?.en && (
+        {data.title && (
           <div className="flex md:items-start  items-center justify-center md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
             <h2>{data.title}</h2>
             <hr className="w-[85px] md:w-1/2 mt-[6px] bg-yellow text-yellow h-0.5  mb-4" />
@@ -110,7 +110,7 @@ const Feature = ({ data }: FeatureProps) => {
       <Image src={data.icon} width={68} height={68} alt="" />
 
       <div
-        className={`md:mt-9 md:mb-2.5 text-start md:text-center max-w-[231px] md:max-w-[348px]`}
+        className={`md:mt-9 font-satoshi md:mb-2.5 text-start md:text-center max-w-[231px] md:max-w-[348px]`}
       >
         <h3 className="font-bold lg:-tracking-[0.6px] text-base md:text-xl leading-normal md:leading-loose">
           {data.title}
@@ -134,7 +134,7 @@ const SmallFeature = ({ data }: FeatureProps) => {
         alt=""
         className={"h-12 w-12"}
       />
-      <h3 className="text-center font-medium md:text-start text-xs md:text-base  leading-[20px] md:leading-[24px] md:ml-3">
+      <h3 className="text-center font-satoshi font-medium md:text-start text-xs md:text-base  leading-[20px] md:leading-[24px] md:ml-3">
         {data.title}
       </h3>
     </div>

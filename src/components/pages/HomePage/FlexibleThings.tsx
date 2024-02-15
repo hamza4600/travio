@@ -38,14 +38,15 @@ export default function FlexibleThings() {
         <div className="flex md:items-start items-center justify-center md:justify-start flex-col -tracking-[0.72px]  w-fit mx-auto">
           <Text
             variant={"darkblue"}
-            className="text-2xl font-bold leading-[30px] md:leading-[34px] max-lg:mt-5"
+            className="text-2xl font-bold leading-[30px] md:leading-[34px] max-lg:mt-5 max-lg:text-[20px]"
           >
             Keep things flexible
           </Text>
           <hr className="w-[85px] md:w-1/2 mt-[6px] bg-[#FFBB0B] h-0.5  mb-4" />
         </div>
 
-        <div className="flex justify-between w-full max-lg:flex-wrap gap-[15px] max-lg:mt-5">
+        {/* <div className="flex justify-between w-full max-lg:flex-wrap gap-[15px] max-lg:mt-5 max-lg:flex-row-reverse"> */}
+        <div className="grid grid-cols-4 max-lg:grid-cols-2 justify-between  max-lg:gap-3">
           {data?.map((feature, index) => (
             <div
               key={index}
@@ -59,13 +60,14 @@ export default function FlexibleThings() {
               />
               <Text
                 variant={"darkblue"}
-                className="font-medium max-sm:w-[140px] max-md:w-[200px] text-base max-sm:text-[14px] leading-5"
+                className="font-medium max-sm:w-[140px] max-md:w-[200px] text-base max-sm:text-[12px] leading-5"
               >
                 {feature.title}
               </Text>
             </div>
           ))}
         </div>
+        {/* </div> */}
       </Container>
     </div>
   );

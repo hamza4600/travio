@@ -52,7 +52,7 @@ const HeroSection = () => {
               <header className="flex mt-10 flex-col gap-2.5 px-5">
                 <Text
                   variant={"tertiary"}
-                  className="text-[28px] max-w-[552px] md:text-[56px] font-[900] -tracking-[1.68px] leading-[38px] md:leading-[76px] text-center md:text-start "
+                  className="text-[28px] max-w-[552px] md:text-[56px] font-[900] -tracking-[1.68px] leading-[38] md:leading-[76px] text-center md:text-start "
                 >
                   Guided tours tailored by local experts
                 </Text>

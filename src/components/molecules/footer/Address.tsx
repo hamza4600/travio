@@ -23,19 +23,28 @@ const Address = ({
       </Text>
       <div className="flex items-start gap-2">
         <Image width={20} height={20} alt="" src="/map_icon.svg"></Image>
-        <Text variant={"gray"} className="font-normal">
+        <Text
+          variant={"gray"}
+          className="font-normal md:leading-5 md:text-[14px] text-[12px]"
+        >
           {address}
         </Text>
       </div>
       <div className="flex items-start gap-2">
         <Image width={20} height={20} alt="" src="/call_icon.svg"></Image>
-        <Text variant={"gray"} className="font-normal">
+        <Text
+          variant={"gray"}
+          className="font-normal md:leading-5 md:text-[14px] text-[12px]"
+        >
           {number}
         </Text>
       </div>
       <div className="flex items-start gap-2">
         <Image width={20} height={20} alt="" src="/email_icon.svg"></Image>
-        <Text variant={"gray"} className="font-normal">
+        <Text
+          variant={"gray"}
+          className="font-normal md:leading-5 md:text-[14px] text-[12px]"
+        >
           {email}
         </Text>
       </div>

@@ -172,12 +172,14 @@ const Footer = ({ footer }: { footer: SanityGlobals["footer"] }) => {
                       className="flex gap-1 items-center text-[14px] leading-[22px] md:text-base md:font-normal font-medium text-blue"
                     >
                       A company by
-                      <Text className="font-bold">Promo Travel</Text>
+                      <Text className="md:font-bold font-medium">
+                        Promo Travel
+                      </Text>
                     </Link>
                   </Text>
                   <Text
                     variant={"gray"}
-                    className="font-normal text-[14px] leading-6 lg:text-base mt-[18px]"
+                    className="md:font-normal font-medium text-[14px] leading-6 md:text-base mt-[18px]"
                   >
                     With 30 years of dedicated experience, our travel agency is
                     here to curate your dream trip, ensuring exceptional service
@@ -274,7 +276,7 @@ const Footer = ({ footer }: { footer: SanityGlobals["footer"] }) => {
       <hr className="border-blue/20" />
       <Text
         variant={"gray"}
-        className="text-xs md:text-base leading-[20px] md:leading-[24px] text-center py-3"
+        className="text-[12px] md:text-base leading-5 md:leading-[24px] text-center py-3"
       >
         {/* {localizedString(footer?.copyright_text)} */}
         {"Copyright © Promo Travel | 2017 All Rights Reserved"}
