@@ -31,7 +31,7 @@ export default function FlexibleThings() {
   return (
     <div
       className={
-        "bg-[#F2FAFF] md:px-20 text-center py-5 md:py-3 mt-5 max-lg:mt-0 max-w-[1280px] rounded-[24px]"
+        "bg-[#F2FAFF] md:px-20 text-center py-5 md:py-3 mt-5 max-lg:mt-0 max-w-[1280px] xl:rounded-[24px] rounded-none"
       }
     >
       <Container>

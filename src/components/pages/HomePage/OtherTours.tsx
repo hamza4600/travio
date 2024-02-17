@@ -30,7 +30,7 @@ const OtherTours = (props) => {
         })}
       </div>
       {title === "Popular Tours" && (
-        <hr className="text-[#F2FAFF] w-full rounded-full border-2 max-w-[1280px] max-md:hidden" />
+        <hr className="text-[#F2FAFF] w-full rounded-full border-[2px] max-w-[1280px] max-md:hidden" />
       )}
     </Container>
   );

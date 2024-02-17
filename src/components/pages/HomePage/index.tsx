@@ -34,7 +34,7 @@ const HomePage = ({pageData}) => {
     <Layout locale="en" breadcrumbs={[]}>
       <HeroSection />
 
-      <div className="px-20 max-lg:px-0">
+      <div className="px-20 max-xl:px-0">
         <FlexibleThings />
       </div>
 

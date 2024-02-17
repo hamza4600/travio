@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import DateFormat from "@/utils/utils";
@@ -21,15 +20,13 @@ const BlogCard = ({ blog }) => {
             }
           >
             {blog?.cover_image && (
-              <Image
-                width={410}
-                height={460}
-                className=" absolute h-full w-full "
+              <img
+                loading="lazy"
+                // width={410}
+                // height={460}
+                className="absolute w-full min-h-[460px] object-contain max-sm:min-h-[210px]"
                 src={blog?.cover_image}
                 alt="cover_image"
-                sizes={`
-              (max-width: 640px) 100vw, 410px
-            `}
               />
             )}
           </div>

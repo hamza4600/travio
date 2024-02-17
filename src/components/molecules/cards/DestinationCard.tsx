@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
 
 import { displayNumber } from "@/utils/utils";
 
@@ -10,10 +10,9 @@ const DestinationCard = ({ data, tourCount }) => {
     <div className="w-full h-fit font-satoshi">
       <div className={"min-h-[250px] md:min-h-[310px]  relative"}>
         {image && (
-          <Image
-            height={310}
-            width={408}
-            className="absolute top-0 left-0 w-full h-full rounded-2xl"
+          <img
+            // loading="lazy"
+            className="w-full h-full rounded-2xl max-w-[408px] min-h-[310px] max-sm:min-h-[250px]"
             src={image}
             alt=""
           />
