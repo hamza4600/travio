@@ -1,30 +1,69 @@
-import groq from 'groq'
 import { CLIENT } from './sanity.const';
 
-const serverQuery = groq`*[_type == 'home_page'] {
-    _id,
-    name,
-    pageSEO,
-    Home_Page_Section_One,
-    Home_Page_Section_Two,
-    Home_Page_Section_Three {
-      subtitle,
-      title,
-      "popularCountries": popularCountries[] | order(order asc) {
+const pageLayout = `*[_type == "globals"][0]{
+  ...,
+  navbar {
+...,
+    links[] {
+      ...,
+      _type == "tour_dropdown" => {
         ...,
-        "country": country-> {
-          name,
-          slug
-        },
-        order
+        destinations[] {
+          ...,
+          destination->,
+          tours[]->,
+          blogs[]->,
+        }
+      }
+    }
+}
+}`
+
+const homePageQuery = `*[_type == "page"  && slug.current == "/"][0]{
+  ...,
+  sections[]{
+    ...,
+    _type == "featured_blogs_section" => {
+      ...,
+      featured_blogs[]->
+    },
+    _type == "deals_section" => {
+      ...,
+      deals[] {
+        ...,
+        tour->
       }
     },
-    Home_Page_Section_Four,
-    Home_Page_Section_Five,
-    Home_Page_Section_Six
-  }`;
+    _type == "destinations_section" => {
+      ...,
+      destinations[] {
+        ...,
+        'destination': {
+          '_ref': destination._ref,
+          'count': (*[_type == "tour_page" && document._ref == ^._id && !(_id in path("drafts.*"))]),
+          ...destination->
+        }
+      }
+    },
+  }
+}`;
 
-// run on server
+const query = `{
+  "layout":  ${pageLayout},
+  "pageData":  ${homePageQuery},
+}`
+
+// run on Srver
+export async function getAllHomePage() {
+  return await CLIENT.fetch(query)
+}
+
+// Home Page SEO 
+
+const seoQuery = `*[_type == "page"  && slug.current == "/"][0]{
+  meta_data
+}`
+
 export async function getHomePageSeo() {
-    return await CLIENT.fetch(serverQuery)
+  return await CLIENT.fetch(seoQuery)
 }

@@ -28,7 +28,8 @@ import {
   attractions,
 } from "./data";
 
-const HomePage = () => {
+const HomePage = ({pageData}) => {
+  console.log(pageData , "pageData");
   return (
     <Layout locale="en" breadcrumbs={[]}>
       <HeroSection />

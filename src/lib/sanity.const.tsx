@@ -13,7 +13,7 @@ export const COMMON_PARAMS = {
 export const baseConfig = {
   projectId,
   dataset,
-  apiVersion,
+  apiVersion : "2023-02-20",
   useCdn: process.env.NODE_ENV === 'production',
   perspective: 'published' as const,
 }
