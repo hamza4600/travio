@@ -1,103 +1,206 @@
-import { useParams } from 'next/navigation'
-import { useMemo } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { useParams } from "next/navigation";
+import { useMemo } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Text } from "@/components/ui/text";
 
-import { urlFor } from '../../../../sanity/lib/client'
-import { SanityGlobals } from '../../../../sanity/lib/types'
+// import { urlFor } from "../../../../sanity/lib/client";
+import { SanityGlobals } from "../../../../sanity/lib/types";
 
-import Footer__links from './FooterLink'
-import Address from './Address'
-import Container from '../container'
+import Footer__links from "./FooterLink";
+import Address from "./Address";
+import Container from "../container";
 
 const SOCIAL_LINKS = [
   {
-    href: 'https://www.facebook.com/promotravels',
-    icon: '/fb_logo.svg',
-    alt: 'Facebook',
+    href: "https://www.facebook.com/promotravels",
+    icon: "/fb_logo.svg",
+    alt: "Facebook",
   },
   {
-    href: 'https://www.facebook.com/promotravels',
-    icon: '/insta.svg',
-    alt: 'Facebook',
+    href: "https://www.facebook.com/promotravels",
+    icon: "/insta.svg",
+    alt: "Facebook",
   },
   {
-    href: 'https://www.facebook.com/promotravels',
-    icon: '/twitter.svg',
-    alt: 'Facebook',
+    href: "https://www.facebook.com/promotravels",
+    icon: "/twitter.svg",
+    alt: "Facebook",
   },
   {
-    href: 'https://www.facebook.com/promotravels',
-    icon: '/youtube.svg',
-    alt: 'Facebook',
+    href: "https://www.facebook.com/promotravels",
+    icon: "/youtube.svg",
+    alt: "Facebook",
   },
   {
-    href: 'https://www.facebook.com/promotravels',
-    icon: '/random.svg',
-    alt: 'Facebook',
+    href: "https://www.facebook.com/promotravels",
+    icon: "/random.svg",
+    alt: "Facebook",
   },
-]
+];
 
 const CARDS = [
-  '/visa_card.png',
-  '/mastercard.png',
-  '/amex.png',
-  '/discover.png',
-  '/paypal.png',
-  '/bank-transfer.png',
-]
+  "/visa_card.png",
+  "/mastercard.png",
+  "/amex.png",
+  "/discover.png",
+  "/paypal.png",
+  "/bank-transfer.png",
+];
 
-const Footer = ({ footer }: { footer: SanityGlobals['footer'] }) => {
-  
-  const params = useParams()
+const Addresses = [
+  {
+    address: "48 Thawra st., Mohandessen, Giza, 12611, Egypt.",
+    number: "+2012 2211 5485",
+    email: "medhat@promotravel-eg.com",
+    heading: "Egypt Address",
+  },
+  {
+    address: "48 Thawra st., Mohandessen, Giza, 12611, Egypt.",
+    number: "+2012 2211 5485",
+    email: "medhat@promotravel-eg.com",
+    heading: "Emirates Address",
+  },
+  {
+    address: "48 Thawra st., Mohandessen, Giza, 12611, Egypt.",
+    number: "+2012 2211 5485",
+    email: "medhat@promotravel-eg.com",
+    heading: "Saudi Arabia",
+  },
+];
+
+const socailLinks = [
+  {
+    name: "Company",
+    links: [
+      {
+        url: "#",
+        name: "Review",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+    ],
+  },
+  {
+    name: "Company",
+    links: [
+      {
+        url: "#",
+        name: "Review",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+    ],
+  },
+  {
+    name: "Company",
+    links: [
+      {
+        url: "#",
+        name: "Review",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+      {
+        url: "#",
+        name: "Group Tours",
+      },
+    ],
+  },
+];
+
+const Footer = ({ footer }: { footer: SanityGlobals["footer"] }) => {
+  const params = useParams();
 
   const language = useMemo(() => {
     return Array.isArray(params!.language)
       ? params!.language[0]
-      : params!.language
-  }, [params])
+      : params!.language;
+  }, [params]);
 
-  console.log('language', language)
-  const ADDRESSES = (footer?.locations as SanityGlobals['footer'])?.locations || []
-  const LINKS = footer?.link_groups || []
+  console.log("language", language);
   return (
-    <div className="w-full bg-primary ">
+    <div className="w-full bg-primary px-20 max-lg:px-5 max-w-[1440px] mx-auto box-border">
       <Container>
-        <div className="flex max-lg:flex-wrap justify-between gap-10 lg:gap-[166px] py-5 lg:py-20">
+        <div className="flex max-lg:flex-wrap justify-between gap-5 lg:gap-[166px] py-5 lg:py-20">
           {/* Left side */}
-          <div className="flex flex-col gap-2 mb-0 md:max-w-[364px]">
+          <div className="flex flex-col gap-2 mb-0 md:max-w-[364px] w-full">
             <div className="flex flex-col-reverse lg:flex-col justify-start items-start">
               <div className="mt-9 lg:mt-0">
                 <div className="flex flex-col gap-1 md:gap-2">
-                  <div className="relative bg-red-400 w-36 flex items-start justify-start md:w-[220px] h-[38px] md:h-[52px]">
+                  <div className="relative w-36 flex items-start justify-start md:w-[220px] h-[38px] md:h-[52px]">
                     <Image
-                      src={(footer?.logo && urlFor(footer?.logo)) || ''}
+                      // src={(footer?.logo && urlFor(footer?.logo)) || ""}
+                      src={"/company_logo.svg" || ""}
                       className=""
                       layout="fill"
                       alt="Company logo"
                     ></Image>
                   </div>
-                  <p>
+                  <Text
+                    variant={"gray"}
+                    className="font-normal leading-[22px] text-[14px]"
+                  >
                     <Link
                       href="/"
-                      className="text-sm md:text-base md:font-normal font-medium leading-normal text-blue"
+                      className="flex gap-1 items-center text-[14px] leading-[22px] md:text-base md:font-normal font-medium text-blue"
                     >
-                      {/* {localizedString(footer?.title)} */}
+                      A company by
+                      <Text className="md:font-bold font-medium">
+                        Promo Travel
+                      </Text>
                     </Link>
-                  </p>
+                  </Text>
+                  <Text
+                    variant={"gray"}
+                    className="md:font-normal font-medium text-[14px] leading-6 md:text-base mt-[18px]"
+                  >
+                    With 30 years of dedicated experience, our travel agency is
+                    here to curate your dream trip, ensuring exceptional service
+                    at every step.
+                  </Text>
                 </div>
 
-                <p className="text-gray text-sm md:text-base font-medium md:font-normal leading-[24px] mt-5">
-                  {/* {localizedString(footer?.description)} */}
-                </p>
+                <p className="text-gray text-sm md:text-base font-medium md:font-normal leading-[24px] mt-5"></p>
               </div>
               <div className="flex flex-wrap gap-5 md:gap-6 lg:mt-10 mt-0 w-full justify-center lg:justify-start">
                 {SOCIAL_LINKS.map((item, index) => {
                   return (
                     <Link href={item.href} key={index}>
-                      <Image width={20} height={20} src={item.icon} alt={item.alt} />
+                      <Image
+                        width={20}
+                        height={20}
+                        src={item.icon}
+                        alt={item.alt}
+                      />
                     </Link>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -112,40 +215,45 @@ const Footer = ({ footer }: { footer: SanityGlobals['footer'] }) => {
                     key={index}
                     className="w-[50px]  h-[32px]"
                   />
-                )
+                );
               })}
             </div>
           </div>
           {/* Right side */}
           <div className="grow flex flex-col gap-4 text-darkblue">
             <div className="grid grid-cols-3 gap-3 justify-between">
-              {LINKS.map((item, index) => {
+              {socailLinks.map((item, index) => {
                 return (
                   <Footer__links
-                    // heading={localizedString(item.title)}
-                    heading={''}
+                    heading={item.name}
                     items={item.links || []}
                     key={index}
                   />
-                )
+                );
               })}
             </div>
             <hr className="hidden md:block border-gray opacity-20" />
-            <p className="psb-2 font-bold text-base md:text-lg leading-[24px] pt-7">Contact Us</p>
+            <Text
+              variant={"darkblue"}
+              className="psb-2 font-bold text-base md:text-lg leading-[24px] pt-7"
+            >
+              Contact Us
+            </Text>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {ADDRESSES.map((item, index) => {
+              {Addresses.map((item, index) => {
                 return (
                   <Address
                     // address={localizedString(item.address)}
-                    address={""}
-                    email={item.email || ''}
+                    address={item.address || ""}
+                    email={item.email || ""}
                     // heading={localizedString(item.title)}
-                    heading={""}
+                    heading={item.heading || ""}
                     // number={localizedString(item.phone_number)}
-                    number={""}
+                    number={item.number || ""}
                     key={index}
                   />
-                )
+                );
               })}
             </div>
           </div>
@@ -161,17 +269,20 @@ const Footer = ({ footer }: { footer: SanityGlobals['footer'] }) => {
                 key={index}
                 className="w-[40px] md:w-[50px] h-[26px] md:h-[32px]"
               />
-            )
+            );
           })}
         </div>
       </Container>
       <hr className="border-blue/20" />
-      <p className="text-xs md:text-base leading-[20px] md:leading-[24px] text-center py-3 text-[#726E83]">
+      <Text
+        variant={"gray"}
+        className="text-[12px] md:text-base leading-5 md:leading-[24px] text-center py-3"
+      >
         {/* {localizedString(footer?.copyright_text)} */}
-        {""}
-      </p>
+        {"Copyright © Promo Travel | 2017 All Rights Reserved"}
+      </Text>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
