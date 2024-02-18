@@ -3,11 +3,11 @@ import dynamic from "next/dynamic";
 
 import {
   SanityGlobals,
-  SanityLocale,
+  // SanityLocale,
   SanityPromoBanner,
 } from "../../../sanity/lib/types";
 
-import { urlFor } from "../../../sanity/lib/client";
+// import { urlFor } from "../../../sanity/lib/client";
 const PromoBanner = dynamic(() => import("../molecules/Promobanner"));
 const Footer = dynamic(() => import("../molecules/footer"));
 import Header from "../molecules/Header";

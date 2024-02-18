@@ -5,7 +5,7 @@ import Container from "../../molecules/container";
 
 import SectionHeader from "@/components/molecules/secHeader";
 
-const FAQSection = ({ data, locale }) => {
+const FAQSection = ({ data, locale }: { data: any; locale: string }) => {
   const [open, setOpen] = React.useState(-1);
   return (
     <>
