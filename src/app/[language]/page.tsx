@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-// import HomePage from "@/components/pages/HomePage";
 const HomePage = dynamic(() => import("@/components/pages/HomePage"));
 import { getAllHomePage, getHomePageSeo } from "@/lib/sanity.HomePage";
 import { urlForImage } from "../../../sanity/lib/image";

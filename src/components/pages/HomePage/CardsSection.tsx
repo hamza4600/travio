@@ -2,10 +2,10 @@ import React from "react";
 import Swiper from "@/components/molecules/Swiper";
 import TourCard from "@/components/molecules/cards/Card";
 import Container from "@/components/molecules/container";
-import { Text } from "@/components/ui/text";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import SectionHeader from "@/components/molecules/secHeader";
 
 const data = [
   {
@@ -102,22 +102,11 @@ const data = [
 
 const CardsSection = () => {
   return (
-    <>
       <Container className="text-black w-full smd:mr-0">
-        <div className="">
-          <div className="flex flex-col md:gap-2 gap-2">
-            <Text className="font-medium text-base max-sm:text-[12px] md:leading-6 leading-5">
-              Cheap Trips
-            </Text>
-            <Text
-              variant={"darkblue"}
-              className="font-bold leading-[50px] text-[40px] max-sm:text-2xl"
-            >
-              Hot Travel Deals
-            </Text>
-          </div>
-          <hr className="border-b-[#FFBB0B] border-b-[2px] md:border-b-[3px] max-w-[117px] max-sm:max-w-[85px] max-sm:mt-1" />
-
+          <SectionHeader
+            title={"Cheap Trips"}
+            subtitle={"Hot Travel Deals"}
+          />
           <div className="h-fit relative md:mt-12 mt-6">
             <Swiper
               className={"gap-6 pb-3"}
@@ -139,10 +128,7 @@ const CardsSection = () => {
             </Swiper>
             <div className=" absolute hidden md:block w-[150px] top-0 p-3 h-full z-[100] bg-gradient-to-r from-transparent  via-[rgba(255,255,255,0.5)] to-white right-0" />
           </div>
-        </div>
       </Container>
-    </>
-    // </div>
   );
 };
 
