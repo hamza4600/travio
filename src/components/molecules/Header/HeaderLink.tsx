@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import Card from "./Card";
 import Selector from "./Selector";
 import { localizedString, urlFor } from "../../../../sanity/lib/client";
-// import { link } from "fs";
 
 function HeaderLink({ item }) {
   const [open, setOpen] = React.useState(false);
@@ -15,8 +14,6 @@ function HeaderLink({ item }) {
   const pathname = usePathname();
 
   const active = pathname === item.path;
-
-  console.log(active);
 
   React.useEffect(() => {
     if (open) {

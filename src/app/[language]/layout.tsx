@@ -103,7 +103,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(satoshiVariable.variable);
+  // console.log(satoshiVariable.variable);
   return (
     <html lang="en">
       <body

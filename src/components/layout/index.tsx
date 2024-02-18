@@ -1,15 +1,14 @@
 import React, { ReactNode } from "react";
-// import localFont from "next/font/local";
+import dynamic from "next/dynamic";
 
 import {
   SanityGlobals,
   SanityLocale,
   SanityPromoBanner,
 } from "../../../sanity/lib/types";
-import dynamic from "next/dynamic";
 
 import { urlFor } from "../../../sanity/lib/client";
-import PromoBanner from "../molecules/Promobanner";
+const PromoBanner = dynamic(() => import("../molecules/Promobanner"));
 const Footer = dynamic(() => import("../molecules/footer"));
 import Header from "../molecules/Header";
 import Schema from "../atom/Schema";

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
-import LanguageDropdown from "./LanguageDropdown";
+const LanguageDropdown = dynamic(() => import("./LanguageDropdown"));
 import Container from "../container";
 import HeaderLink from "./HeaderLink";
 import { OpenSvg } from "./style";
