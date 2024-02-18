@@ -24,10 +24,10 @@ export default MainThemeProvider
 export const AppThemeProvider = ({ children }) => {
   return (
     <StyledComponentsRegistry>
-      <ThemeProvider theme={Them.light}>
-        <GlobalStyle />
+      {/* <ThemeProvider theme={Them.light}> */}
+        {/* <GlobalStyle /> */}
         {children}
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </StyledComponentsRegistry>
   )
 }

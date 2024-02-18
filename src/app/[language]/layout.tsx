@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { AppThemeProvider } from "../../theme/provider";
 
 const satoshiVariable = localFont({
   src: [
@@ -109,7 +110,9 @@ export default function RootLayout({
       <body
         className={`${satoshiVariable.variable} ${montserratFont.variable} ${novo.variable} ${plain.variable} font-sans`}
       >
+        <AppThemeProvider>
         {children}
+        </AppThemeProvider>
       </body>
     </html>
   );
