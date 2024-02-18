@@ -185,7 +185,7 @@ export const articles = {
       slug: {
         current: "#",
       },
-      cover_image: "/cardpic.png",
+      cover_image: "/demo/blogpic.png",
       title: "The most interesting historical monuments in Saudi Arabia",
       _updatedAt: "May 22, 2023",
       author: {
@@ -196,7 +196,7 @@ export const articles = {
       slug: {
         current: "#",
       },
-      cover_image: "/cardpic.png",
+      cover_image: "/demo/blogpic.png",
       title: "The most interesting historical monuments in Saudi Arabia",
       _updatedAt: "May 22, 2023",
       author: {
@@ -207,7 +207,7 @@ export const articles = {
       slug: {
         current: "#",
       },
-      cover_image: "/cardpic.png",
+      cover_image: "/demo/blogpic.png",
       title: "The most interesting historical monuments in Saudi Arabia",
       _updatedAt: "May 22, 2023",
       author: {
@@ -218,7 +218,7 @@ export const articles = {
       slug: {
         current: "#",
       },
-      cover_image: "/cardpic.png",
+      cover_image: "/demo/blogpic.png",
       title: "The most interesting historical monuments in Saudi Arabia",
       _updatedAt: "May 22, 2023",
       author: {
@@ -229,7 +229,7 @@ export const articles = {
       slug: {
         current: "#",
       },
-      cover_image: "/cardpic.png",
+      cover_image: "/demo/blogpic.png",
       title: "The most interesting historical monuments in Saudi Arabia",
       _updatedAt: "May 22, 2023",
       author: {

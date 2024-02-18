@@ -1,54 +1,74 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
+import { i18n } from "@/language";
+import { clean } from "@/utils/utils";
 
-const LANGUAGES = [
-  {
-    image: "/en_icon.svg",
-    title: "English",
-  },
-  {
-    image: "/en_icon.svg",
-    title: "adsfasdfasdfdsf",
-  },
-  {
-    image: "/en_icon.svg",
-    title: "English",
-  },
-];
+type Translation = {
+  title: string;
+  path: string;
+  language: string;
+};
 
 const LanguageDropdown = () => {
-  const [curr, setCurr] = React.useState("English");
-  const [currimg, setCurrimg] = React.useState("/en_icon.svg");
   const [open, setOpen] = React.useState(false);
+
+  const pathname = usePathname();
+  const languageCodes = ["en", "es", "por"];
+  const destinationPath = languageCodes.reduce(
+    (path, code) => (path ? path.replace(`/${code}`, "") : path),
+    pathname
+  );
+
+  const translations = i18n.languages.map((lang) => {
+    return {
+      language: lang.id,
+      path: `/${lang.id}${destinationPath}`,
+      title: lang.title,
+    };
+  });
+
+  const params = useParams();
+
+  const language = Array.isArray(params!.language)
+    ? params!.language[0]
+    : params!.language;
+
+  const availableTranslations = useMemo<Translation[]>(
+    () =>
+      i18n.languages.reduce<Translation[]>((acc, cur) => {
+        const availableTranslation = translations.find(
+          (translation) => translation.language === cur.id
+        );
+        return availableTranslation ? [...acc, availableTranslation] : acc;
+      }, []),
+    [translations]
+  );
+
+  const selectedLanguage = availableTranslations.find(
+    (version) => version.language === language
+  );
   return (
     <div className="relative" style={{ zIndex: "1000" }}>
       <div
-        className="rounded-full bg-opacity-5 bg-[#325EFB] border-[#325EFB] border border-opacity-10 py-1 md:py-[8px] px-1 md:px-[10px] flex items-center cursor-pointer gap-1 md:gap-2.5"
+        className="rounded-full bg-opacity-5 bg-[#325EFB] border-[#325EFB] border border-opacity-10 py-1 md:py-[8px] px-1 md:px-[10px] flex items-center cursor-pointer gap-1 md:gap-2.5 max-sm:h-[24px]"
         onClick={() => setOpen(!open)}
       >
-        <Image
-          className="hidden md:block"
-          height={24}
-          width={24}
-          alt={curr}
-          src={currimg}
+        <img
+          className="h-6 w-6 max-md:w-4 max-md:h-4"
+          alt={"country_flag"}
+          src={
+            selectedLanguage && selectedLanguage.language === "en"
+              ? "/en_icon.svg"
+              : selectedLanguage?.language === "es"
+              ? "/spain.png"
+              : "/por.png"
+          }
         />
-        <Image
-          className="hidden md:block"
-          height={16}
-          width={16}
-          alt=""
-          src="/down_icon.svg"
-        />
-        <Image
-          className="block md:hidden"
-          height={16}
-          width={16}
-          alt={curr}
-          src={currimg}
-        />
-        <Image
-          className="block md:hidden"
+
+        <img
+          className="md:h-4 md:w-4 h-3 w-3"
           height={12}
           width={12}
           alt=""
@@ -56,26 +76,29 @@ const LanguageDropdown = () => {
         />
       </div>
       {open && (
-        <div className="absolute pt-3 px-2 border-blue bg-blue rounded-xl min-w-max right-0 my-2">
-          {LANGUAGES.map((item, index) => {
+        <div className="absolute p-2 bg-white border-blue rounded-lg flex flex-col min-w-max right-0 mt-2">
+          {availableTranslations.map((version, index) => {
             return (
-              <div
-                className="flex cursor-pointer mb-3 gap-2"
+              <Link
+                href={clean(version.path)}
+                locale={version.language}
+                className="flex font-satoshi font-normal cursor-pointer rounded-md hover:bg-orange-300 p-2 mb-3 gap-2"
                 key={index}
-                onClick={() => {
-                  setCurr(item.title);
-                  setCurrimg(item.image);
-                  setOpen(false);
-                }}
               >
                 <Image
-                  height={24}
-                  width={24}
-                  alt={item.title}
-                  src={item.image}
+                  height={32}
+                  width={32}
+                  alt={version.title}
+                  src={
+                    version.language === "en"
+                      ? "/en_icon.svg"
+                      : version.language === "es"
+                      ? "/spain.png"
+                      : "/por.png"
+                  }
                 />
-                <p>{item.title}</p>
-              </div>
+                <p>{version.title}</p>
+              </Link>
             );
           })}
         </div>

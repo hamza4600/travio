@@ -1,3 +1,5 @@
+import { vercelStegaSplit } from "@vercel/stega";
+
 export function displayNumber(
   count: number | undefined,
   singular: string,
@@ -49,4 +51,8 @@ export default function DateFormat(date: Date, short: boolean = false) {
   return (
     months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear()
   );
+}
+
+export function clean(value?: string | null): string {
+  return value ? vercelStegaSplit(value).cleaned : ``;
 }

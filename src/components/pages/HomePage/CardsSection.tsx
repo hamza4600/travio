@@ -6,8 +6,6 @@ import { Text } from "@/components/ui/text";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
 
 const data = [
   {
@@ -118,12 +116,12 @@ const CardsSection = () => {
               Hot Travel Deals
             </Text>
           </div>
-          <hr className="border-b-[#FFBB0B] mt-1 md:mt-3 border-b-[2px] md:border-b-[3px] max-w-[117px]" />
+          <hr className="border-b-[#FFBB0B] border-b-[2px] md:border-b-[3px] max-w-[117px] max-sm:max-w-[85px] max-sm:mt-1" />
 
           <div className="h-fit relative md:mt-12 mt-6">
             <Swiper
               className={"gap-6 pb-3"}
-              length={data?.length}
+              length={data.length}
               scrollCount={4}
             >
               {data.map((data) => (

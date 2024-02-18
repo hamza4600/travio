@@ -1,10 +1,7 @@
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-import "swiper/css";
 
 export default function SwiperComponent({
   children,
@@ -65,12 +62,14 @@ export default function SwiperComponent({
     <div className={"relative"}>
       <div
         className={
-          "flex justify-start pl-2lg:pl-0 overflow-hidden relative overflow-x-auto items-center " +
+          "flex justify-start pl-2 lg:pl-0 overflow-hidden relative overflow-x-auto items-center " +
           className
         }
         ref={swiperRef}
       >
+        {/* <SwiperSlide> */}
         {children}
+        {/* </SwiperSlide> */}
       </div>
       {showNext && (
         <div

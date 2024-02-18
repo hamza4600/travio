@@ -33,7 +33,7 @@ const DestinationsSection = ({ data }) => {
           </div>
         </header>
 
-        <div className="grid grid-flow-row grid-cols-1 lg:grid-cols-3 gap-5 md:gap-7 mt-[30px] md:mt-12">
+        <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 mt-[30px] md:mt-12 max-sm:justify-center">
           {validDestinations.map((destination: any, idx: number) => (
             <Link
               key={idx}

@@ -18,12 +18,12 @@ const GetEarlyNews = ({ title, description }) => {
         <Image
           width={640}
           height={222}
-          src={"/authBackground.png"}
+          src={"/request-bg.png"}
           alt={""}
           sizes={`
               100vw
             `}
-          className={"absolute w-full h-full top-0 left-0 object-cover"}
+          className={"absolute z-50 w-full h-full top-0 left-0 object-cover"}
         />
         <div className="flex relative z-10 flex-col justify-center md:justify-start items-center md:items-start ">
           <header>
