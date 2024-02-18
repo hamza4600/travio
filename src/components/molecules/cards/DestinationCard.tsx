@@ -2,8 +2,9 @@ import React from "react";
 // import Image from "next/image";
 
 import { displayNumber } from "@/utils/utils";
+import { urlFor } from "../../../../sanity/lib/client";
 
-const DestinationCard = ({ data, tourCount }) => {
+const DestinationCard = ({ data, tourCount, locale }) => {
   const image = data?.image;
 
   return (
@@ -13,13 +14,13 @@ const DestinationCard = ({ data, tourCount }) => {
           <img
             // loading="lazy"
             className="w-full h-full rounded-2xl max-w-[408px] min-h-[310px] max-sm:min-h-[250px]"
-            src={image}
+            src={urlFor(image)}
             alt=""
           />
         )}
       </div>
       <h3 className="mt-2 md:mt-4 text-lg font-bold">
-        {data.destination?.name}
+        {data.destination?.name[locale]}
       </h3>
       {tourCount && (
         <p className="text-gray font-medium mt-0 md:mt-[2px] text-[12px] leading-5">

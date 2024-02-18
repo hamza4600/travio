@@ -11,10 +11,17 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { BookingIcon } from "@/components/icons";
 import { Text } from "@/components/ui/text";
+import { SanityGlobals } from "../../../../sanity/lib/types";
 
 // const links =
 
-const Header = ({ navbar }) => {
+const Header = ({
+  navbar,
+  locale,
+}: {
+  navbar: SanityGlobals["navbar"];
+  locale: string;
+}) => {
   const [open, setOpen] = useState(false);
   const [openDropDown, setOpenDropDown] = useState(false);
 
@@ -70,8 +77,8 @@ const Header = ({ navbar }) => {
             </Link>
           </div>
           <div className="flex gap-[38px] justify-evenly text-darkblue">
-            {navbar?.map((link) => {
-              return <HeaderLink item={link} key={link.id} />;
+            {navbar?.links?.map((link, idx) => {
+              return <HeaderLink item={link} key={idx} locale={locale} />;
             })}
           </div>
           <div>
@@ -92,7 +99,7 @@ const Header = ({ navbar }) => {
         </div>
       </div>
       <div className="w-full lg:hidden z-50 lg:h-[80px] h-[60px] p-base">
-        <div className="px-5 flex justify-between items-center w-full bg-white relative h-full  py-[16px] md:py-5 z-[50]">
+        <div className="px-5 flex justify-between items-center w-full relative h-full  py-[16px] md:py-5 z-[50]">
           <Image
             src="/company_logo.svg"
             height={24}
@@ -116,11 +123,11 @@ const Header = ({ navbar }) => {
         {/* Menu For Mobile */}
         <div className="flex flex-col justify-end pr-3  items-end">
           <div
-            className={`relative rounded-[16px] shadow-md text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
+            className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
               open ? "translate-y-1 " : "-translate-y-full opacity-0"
             }`}
           >
-            {navbar.map((item, index) => (
+            {navbar?.links?.map((item, index) => (
               <div className="w-full" key={index}>
                 {item?._type === "link" && (
                   <div
@@ -132,13 +139,13 @@ const Header = ({ navbar }) => {
                     <Link
                       href={item.url || "/"}
                       className={
-                        "font-medium " +
+                        "font-medium font-satoshi" +
                         ((item.url || "/") === pathname
                           ? "text-blue"
                           : "text-darkblue")
                       }
                     >
-                      {/* <LocalizedString text={item.text} /> */}
+                      {item?.text?.[locale]}
                     </Link>
                   </div>
                 )}
@@ -148,7 +155,7 @@ const Header = ({ navbar }) => {
                       onClick={() => setOpenDropDown(!openDropDown)}
                       className="flex hover:bg-primary rounded-[8px] text-blue  p-[12px] text-[16px] px-[18px] items-center justify-between cursor-pointer"
                     >
-                      <p className={"font-medium text-darkblue"}>
+                      <p className={"font-medium font-satoshi text-darkblue"}>
                         Destinations
                       </p>
                       <Image
@@ -166,7 +173,7 @@ const Header = ({ navbar }) => {
                         {dropdownList.map((item, index) => (
                           <div key={index}>
                             <label
-                              className="flex items-center gap-3  text-[#726E83] p-[10px] px-[24px]"
+                              className="flex font-satoshi items-center gap-3  text-[#726E83] p-[10px] px-[24px]"
                               htmlFor={"nav-sub-item" + index}
                             >
                               <input
@@ -174,7 +181,11 @@ const Header = ({ navbar }) => {
                                 name="nav-sub-item"
                                 id={"nav-sub-item" + index}
                               />
-                              <Link key={index} href={"/"}>
+                              <Link
+                                className="font-satoshi"
+                                key={index}
+                                href={"/"}
+                              >
                                 {" "}
                                 {item}
                               </Link>
@@ -191,9 +202,9 @@ const Header = ({ navbar }) => {
         </div>
         {/* Menu for Desktop */}
         <div className="hidden lg:block">
-          {navbar?.links?.map((item, index) => {
+          {/* {navbar?.links?.map((item, index) => {
             // return <HeaderLink key={index} />;
-          })}
+          })} */}
         </div>
         P
       </div>

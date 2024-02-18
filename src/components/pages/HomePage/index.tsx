@@ -18,48 +18,75 @@ const BlogSection = dynamic(() => import("./BlogSection"));
 const OtherTours = dynamic(() => import("./OtherTours"));
 
 import {
-  featureData,
-  data,
-  tourData,
-  reviews,
-  destinations,
-  articles,
+  // featureData,
+  // data,
+  // tourData,
+  // reviews,
+  // destinations,
+  // articles,
   toursPopular,
   attractions,
 } from "./data";
+import { PageSpinner } from "@/components/atom/Spinner";
 
-const HomePage = ({pageData}) => {
-  console.log(pageData , "pageData");
+const HomePage = ({ pageData, language }) => {
+  console.log(pageData, "pageData");
+
+  if (!pageData) return <PageSpinner radius={50} />; // <--
+
+  const { layout, pageData: SECTIONS_DATA } = pageData || {};
+
+  const {
+    // promo_banner,
+    sections: SECTIONS,
+    // slug
+  } = SECTIONS_DATA || {};
+
+  const {
+    [0]: HERO_SECTION,
+    [1]: FEATURE_SECTION_1,
+    [2]: DEALS_SECTION,
+    [3]: GALLERY_SECTION,
+    [4]: FEATURE_SECTION_2,
+    [5]: DESTINATIONS_SECTION,
+    [6]: TESTIMONIAL_SECTION,
+    [7]: FEATURED_BLOGS_SECTION,
+    [8]: FAQ_SECTION,
+    // [9]: INDEX_SECTION,
+  } = SECTIONS || {};
+
+  // console.log("INDEX_SECTION: ", INDEX_SECTION);
+
   return (
-    <Layout locale="en" breadcrumbs={[]}>
-      <HeroSection />
+    <Layout globals={layout} locale={language} breadcrumbs={[]}>
+      <HeroSection data={HERO_SECTION} locale={language} />
 
       <div className="px-20 max-xl:px-0">
-        <FlexibleThings />
+        <FlexibleThings data={FEATURE_SECTION_1} locale={language} />
       </div>
 
       <div className="px-20 max-lg:px-5 mt-[68px]">
-        <CardsSection />
+        <CardsSection data={DEALS_SECTION} locale={language} />
       </div>
 
       <div className="mt-[84px]">
-        <TourGallery data={tourData} />
+        <TourGallery data={GALLERY_SECTION} locale={language} />
       </div>
 
       <div className="lg:px-20 ">
-        <FeatureSection data={featureData} />
+        <FeatureSection data={FEATURE_SECTION_2} locale={language} />
       </div>
 
       <div className="px-20 max-md:px-5 md:mt-20 mt-[60px]">
-        <Destination data={destinations} />
+        <Destination data={DESTINATIONS_SECTION} locale={language} />
       </div>
 
       <div className="md:mt-[84px] mt-[50px]">
-        <TravlerReviews data={reviews} />
+        <TravlerReviews data={TESTIMONIAL_SECTION} locale={language} />
       </div>
 
       <div className="px-20 max-lg:px-5 md:mt-[84px] mt-[50px]">
-        <BlogSection data={articles} />
+        <BlogSection data={FEATURED_BLOGS_SECTION} locale={language} />
       </div>
 
       <div className="mt-20">
@@ -71,7 +98,7 @@ const HomePage = ({pageData}) => {
         />
       </div>
 
-      <FAQSection data={data} />
+      <FAQSection data={FAQ_SECTION} locale={language} />
 
       <div className="px-20 max-md:px-5">
         <OtherTours data={toursPopular} />

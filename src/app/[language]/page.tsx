@@ -4,7 +4,7 @@ import { getAllHomePage, getHomePageSeo } from "@/lib/sanity.HomePage";
 import { urlForImage } from "../../../sanity/lib/image";
 
 export async function generateMetadata({ params }) {
-  const { language } = params
+  const { language } = params;
 
   const seo = await getHomePageSeo();
   const meta = seo?.meta_data || {};
@@ -37,20 +37,19 @@ export async function generateMetadata({ params }) {
           alt: metaTitle,
         },
       ],
-      type: 'website',
-      locale: language
+      type: "website",
+      locale: language,
     },
-  }
+  };
 }
 
-export default async function Home() {
+export default async function Home({ params }) {
   const homePage = await getAllHomePage();
+  const { language } = params;
 
   return (
     <>
-      <HomePage
-        pageData={homePage}
-      />
+      <HomePage pageData={homePage} language={language} />
     </>
   );
 }

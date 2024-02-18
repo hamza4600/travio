@@ -8,24 +8,28 @@ import SwiperComponent from "@/components/molecules/Swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { urlFor } from "../../../../sanity/lib/client";
+import useWindowSize from "@/hooks/useWindows";
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, locale }) => {
+  const windows = useWindowSize();
+  const isMobile = windows.width < 768;
   return (
     blog && (
-      <Link className={"flex-shrink-0 "} href={"/#" + blog?.slug?.current}>
+      <Link className={"flex-shrink-0 "} href={blog?.slug?.current}>
         <div className=" w-full">
-          <div
-            className={
-              "relative rounded-3xl overflow-hidden w-[250px] h-[280px] md:w-[410px] md:h-[460px]"
-            }
-          >
+          <div className={"rounded-3xl max-sm:rounded-[8px] overflow-hidden"}>
             {blog?.cover_image && (
               <img
-                loading="lazy"
+                // loading="lazy"
                 // width={410}
                 // height={460}
-                className="absolute w-full min-h-[460px] object-contain max-sm:min-h-[210px]"
-                src={blog?.cover_image}
+                className="w-full min-h-[460px] max-w-[410px] max-sm:min-h-[280px] max-sm:max-w-[250px]"
+                src={urlFor(
+                  isMobile
+                    ? blog?.cover_image?.mobile?.asset?._ref
+                    : blog?.cover_image?.asset?._ref
+                )}
                 alt="cover_image"
               />
             )}
@@ -34,11 +38,11 @@ const BlogCard = ({ blog }) => {
             <h3 className="md:text-[20px] text-base max-w-[250px] md:max-w-[380px] font-bold md:font-medium md:leading-[32px] ">
               {process.env.NEXT_PUBLIC_DEVELOPMENT
                 ? "10 Indonesian Destinations you should visit in this year"
-                : blog?.title}
+                : blog?.title[locale]}
             </h3>
 
             <p className="mt-[6px] md:mt-2 text-[10px] md:text-xs font-normal leading-3 md:leading-[20px]  text-gray ">{`By ${
-              blog?.author?.name
+              blog?.author?.name[locale]
             } ${
               blog?._updatedAt
                 ? "on " + DateFormat(new Date(blog?._updatedAt))
@@ -54,15 +58,16 @@ const BlogCard = ({ blog }) => {
 const BlogSection = (props) => {
   const {
     data: { tagline, title, featured_blogs },
+    locale,
   } = props;
   return (
     <Container className="text-darkblue">
       <header className="pb-5 font-satoshi">
         <p className="text-[#3FA9F5] text-[12px] md:text-base font-medium text-center uppercase leading-5">
-          {tagline}
+          {tagline[locale]}
         </p>
         <div className="mt-2 md:mt-3 -tracking-[1.2px] mb-[30px] md:mb-12 w-fit mx-auto md:text-[40px] font-bold text-2xl md:leading-[50px] text-center">
-          <h2>{title}</h2>
+          <h2>{title[locale]}</h2>
           <hr className=" mt-[4px] md:mt-[12px] w-2/3 md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
         </div>
       </header>
@@ -73,7 +78,7 @@ const BlogSection = (props) => {
           scrollCount={2}
         >
           {featured_blogs?.map((blog: any, i) => (
-            <BlogCard blog={blog} key={i} />
+            <BlogCard blog={blog} key={i} locale={locale} />
           ))}
         </SwiperComponent>
 

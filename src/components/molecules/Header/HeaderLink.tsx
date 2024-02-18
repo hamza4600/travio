@@ -7,13 +7,15 @@ import Card from "./Card";
 import Selector from "./Selector";
 import { localizedString, urlFor } from "../../../../sanity/lib/client";
 
-function HeaderLink({ item }) {
+function HeaderLink({ item, locale }) {
   const [open, setOpen] = React.useState(false);
   const [dest, setDest] = React.useState(0);
 
+  console.log(item, locale);
+
   const pathname = usePathname();
 
-  const active = pathname === item.path;
+  const active = pathname === `${item.url}/${locale}`;
 
   React.useEffect(() => {
     if (open) {
@@ -26,13 +28,13 @@ function HeaderLink({ item }) {
   return (
     <>
       <Link
-        href={item.path || "/"}
+        href={locale + item.url}
         className={
           "leading-[24px] flex-none font-medium font-satoshi " +
           (active ? "text-[#3FA9F5] font-bold" : "font-medium text-darkblue")
         }
       >
-        {item.name}
+        {item.text && item.text[locale]}
       </Link>
 
       {item?._type === "tour_dropdown" && (
@@ -42,7 +44,9 @@ function HeaderLink({ item }) {
               className="flex items-center cursor-pointer"
               onClick={() => setOpen(!open)}
             >
-              <p className={"font-medium leading-[24px]"}>Destinations</p>
+              <p className={"font-medium font-satoshi leading-[24px]"}>
+                Destinations
+              </p>
               <Image
                 src="/down_icon.svg"
                 height="16"
@@ -72,7 +76,7 @@ function HeaderLink({ item }) {
                     selectedItemToggle={setDest}
                   />
                   <div className="flex flex-col gap-3">
-                    <p className="font-semibold  mb-2">
+                    <p className="font-semibold  mb-2 font-satoshi">
                       {localizedString(item.tours_title)}
                     </p>
                     {(item.destinations as any[])
@@ -81,8 +85,12 @@ function HeaderLink({ item }) {
                       })[0]
                       .blogs?.map((item: any, index: any) => {
                         return (
-                          <Link key={index} href={`/blogs${item.slug.current}`}>
-                            <p>{localizedString(item.title)}</p>
+                          <Link
+                            key={index}
+                            className="font-satoshi"
+                            href={`/blogs${item.slug.current}`}
+                          >
+                            <p>{item.title[locale]}</p>
                           </Link>
                         );
                       })}
@@ -95,15 +103,23 @@ function HeaderLink({ item }) {
                     })[0]
                     .tours?.slice(0, 3)
                     .map((item: any, index) => {
-                      return (
-                        <Card
-                          link={`/tours${item.slug.current}`}
-                          key={index}
-                          excerpt={localizedString(item?.overview_card?.about)}
-                          image={urlFor(item?.hero_section?.image)}
-                          title={localizedString(item?.hero_section?.title)}
-                        />
-                      );
+                      if (item) {
+                        return (
+                          <Card
+                            link={`/tours${item.slug.current}`}
+                            key={index}
+                            excerpt={
+                              item?.overview_card?.about &&
+                              item?.overview_card?.about[locale]
+                            }
+                            image={urlFor(item?.hero_section?.image)}
+                            title={
+                              item?.hero_section?.title &&
+                              item?.hero_section?.title[locale]
+                            }
+                          />
+                        );
+                      }
                     })}
                 </div>
               </div>
