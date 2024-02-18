@@ -1,4 +1,5 @@
-import HomePage from "@/components/pages/HomePage";
+import dynamic from "next/dynamic";
+const HomePage = dynamic(() => import("@/components/pages/HomePage"));
 import { getAllHomePage, getHomePageSeo } from "@/lib/sanity.HomePage";
 import { urlForImage } from "../../../sanity/lib/image";
 
@@ -22,12 +23,20 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      images: {
-        url: imgUrl,
-        width: 1200,
-        height: 630,
-        alt: metaTitle
-      },
+      images: [
+        {
+          url: imgUrl,
+          width: 1200,
+          height: 630,
+          alt: metaTitle,
+        },
+        {
+          url: imgUrl, // Provide a larger image URL here
+          width: 1600, // Adjust the width according to your preference
+          height: 900, // Adjust the height according to your preference
+          alt: metaTitle,
+        },
+      ],
       type: 'website',
       locale: language
     },
