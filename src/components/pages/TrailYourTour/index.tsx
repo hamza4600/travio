@@ -6,6 +6,8 @@ import { data } from "../HomePage/data";
 import SectionHeader from "@/components/molecules/secHeader";
 import { tailorArray } from "./data";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { Suspense } from "react";
 
 const Root = styled.div`
   display: flex;
@@ -82,27 +84,31 @@ const TailorYourTour = () => {
             centerLine
           />
           <div className="img-wraper">
-            {tailorArray.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  id="qwa"
-                  className={`relative w-full h-[224px] rounded-xl overflow-hidden cursor-pointer 
+            <Suspense fallback={<div>Loading...</div>}>
+              {tailorArray.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    id="qwa"
+                    className={`relative w-full h-[224px] rounded-xl overflow-hidden cursor-pointer 
                                         ${
                                           item.size === "lg"
                                             ? "lg:col-span-2"
                                             : "col-span-1"
                                         }`}
-                >
-                  <img
-                    src={item.imgUrl}
-                    className="object-cover object-center w-full h-full"
-                    alt={item.title}
-                  />
-                  <h1 className="name">{item.title}</h1>
-                </div>
-              );
-            })}
+                  >
+                    <Image
+                      src={item.imgUrl}
+                      width={item.size === "lg" ? 500 : 250}
+                      height={item.size === "lg" ? 300 : 150}
+                      className="object-cover object-center w-full h-full"
+                      alt={item.title}
+                    />
+                    <h1 className="name">{item.title}</h1>
+                  </div>
+                );
+              })}
+            </Suspense>
           </div>
           <center>
             <Button variant={"sky"} className="mt-10 w-40 h-12">
