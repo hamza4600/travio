@@ -1,123 +1,90 @@
 "use client";
+
+import dynamic from "next/dynamic";
 import Layout from "@/components/layout";
 import FAQSection from "@/components/sections/faq";
-import styled from "styled-components";
 import { data } from "../HomePage/data";
-import SectionHeader from "@/components/molecules/secHeader";
-import { tailorArray } from "./data";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { Suspense } from "react";
+import { useState } from "react";
+import Steps from "./Steps";
+const SelectDestinationSection = dynamic(() => import('./SelectDestiSection'))
+const Step1 = dynamic(() => import('./Step1'))
+const Step2 = dynamic(() => import('./Step2'))
+import { useForm } from "react-hook-form";
+import { useZodValidationResolver, validationSchema } from "./schema";
 
-const Root = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 50px;
-
-    .img-wraper {
-        display: grid;
-        grid-template-columns: repeat(4,minmax(0,1fr));
-        gap: 20px;
-        margin-top: 50px;
-        padding: 0 20px;
-    }
-
-    .name {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        right: 0;
-        padding: 6px 16px;
-        width: fit-content;
-        border-radius: 30px;
-        background: rgba(255, 255, 255, 0.40);
-        backdrop-filter: blur(5px);
-        color: white;
-        font-weight: 600;
-    }
-
-    #qwa {
-        // onclick change bg color of name to blue 
-
-        &:hover {
-            .name {
-                background: #3FA9F5;
-            }
-        }
-    }
-    @media (max-width: 1024px) {
-        .img-wraper {
-            grid-template-columns: repeat(2,minmax(0,1fr));
-        }
-    }
-
-    @media (max-width: 768px) {
-        .img-wraper {
-            grid-template-columns: repeat(2,minmax(0,1fr));
-        }
-
-        #qwa {
-            height: 150px;
-        }
-
-        .name {
-            bottom: 5px;
-            left: 5px;
-            padding: 6px 16px;
-            font-size: 12px;
-            font-weight: 400;
-        }
-    }
-`;
+export type TailorTripFormData = {
+    selectedDestination: string[]
+    duration: string
+    name: string
+    email: string
+    nationality: string
+    phone: string
+    numberOfAdults: string
+    numberOfChildrens: string
+    budget: string
+    categories: string[]
+    moreInfo: string
+}
 
 const TailorYourTour = () => {
+
+    const [loading] = useState(false)
+    const resolver = useZodValidationResolver(validationSchema);
+    const [selectedDestination, setSelectedDestination] = useState<string[]>([])
+
+    const {
+        control,
+        handleSubmit,
+        // formState: { errors },
+        setValue,
+        getValues,
+    } = useForm<TailorTripFormData>({
+        defaultValues: {
+            categories: [],
+            numberOfAdults: '0',
+            numberOfChildrens: '0',
+            selectedDestination: [],
+        },
+        resolver: resolver,
+    });
+
+    // console.log(getValues(), 'getValues')
     return (
         <Layout locale="en" breadcrumbs={[]}>
-            <Root>
-                <div>
-                    <SectionHeader
-                        title="Tailor your tour"
-                        subtitle="Choose the ultimate place to visit"
-                        centerLine
-                    />
-                    <div className="img-wraper">
-                        <Suspense fallback={<div>Loading...</div>} >
-                            {
-                                tailorArray.map((item, index) => {
-                                    return (
-                                        <div key={index}
-                                            id="qwa"
-                                            className={`relative w-full h-[224px] rounded-xl overflow-hidden cursor-pointer 
-                                        ${item.size === 'lg' ? 'lg:col-span-2' : 'col-span-1'}`}
-                                        >
-                                            <Image
-                                                src={item.imgUrl}
-                                                width={item.size === 'lg' ? 500 : 250}
-                                                height={item.size === 'lg' ? 300 : 150}
-                                                className="object-cover object-center w-full h-full"
-                                                alt={item.title} />
-                                            <h1 className="name">{item.title}</h1>
-                                        </div>
-                                    )
-                                })
+            <div className="flex mt-10 flex-col">
+                <Steps
+                    loading={loading}
+                    disableNext={getValues('duration') == ''}
+                    onSubmit={
+                        handleSubmit((data) => {
+                            console.log(data)
+                        })}
+                >
+                    <SelectDestinationSection
+                        selectedDestination={selectedDestination}
+                        setSelectedDestination={(value: string) => {
+                            const currentSelectedDestinations = getValues('selectedDestination');
+                            if (!currentSelectedDestinations.includes(value)) {
+                                const updatedSelectedDestinations = [...currentSelectedDestinations, value];
+                                setValue('selectedDestination', updatedSelectedDestinations, { shouldValidate: true });
+                                setSelectedDestination(updatedSelectedDestinations);
                             }
-                        </Suspense>
-                    </div>
-                    <center>
-                        <Button
-                            variant={'sky'}
-                            className="mt-10 w-40 h-12"
-                        >
-                            Next Step
-                        </Button>
-                    </center>
-                </div>
+                            console.log(value, "getValues", getValues('selectedDestination'))
+                        }}
+                    />
+                    <Step1
+                        onChange={(value) => {
+                            setValue('duration', value, { shouldValidate: true })
+                        }}
+                    />
+                    <Step2
+                        control={control}
+                        setValue={setValue}
+                    />
+                </Steps>
 
                 <FAQSection data={data} />
-            </Root>
+            </div>
         </Layout>
     )
 }

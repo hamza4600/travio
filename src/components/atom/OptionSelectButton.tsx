@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function OptionSelectButton({
   height = '20px',
   width = '20px',
@@ -14,7 +12,7 @@ export default function OptionSelectButton({
       className="flex flex-col rounded-full border border-gray p-[5px]"
       style={{ width, height }}
     >
-      <div className={`rounded-full w-full h-full ${value ? 'bg-blue' : 'bg-white'}`} />
+      <div className={`rounded-full w-full h-full ${value ? 'bg-blue-700' : 'bg-white'}`} />
     </div>
   )
 }
