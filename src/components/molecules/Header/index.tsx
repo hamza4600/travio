@@ -134,7 +134,7 @@ const Header = ({
                     onClick={() => {
                       setOpen(false);
                     }}
-                    className=" p-[12px] font-[500] text-[16px] px-[18px] "
+                    className=" p-[12px] font-[500] font-satoshi text-[16px] px-[18px] "
                   >
                     <Link
                       href={item.url || "/"}
@@ -201,12 +201,12 @@ const Header = ({
           </div>
         </div>
         {/* Menu for Desktop */}
-        <div className="hidden lg:block">
-          {/* {navbar?.links?.map((item, index) => {
-            // return <HeaderLink key={index} />;
-          })} */}
-        </div>
-        P
+        {/* <div className="hidden lg:block">
+          {navbar?.links?.map((item, index) => {
+            return <HeaderLink key={index} />;
+          })}
+        </div> */}
+        {/* P */}
       </div>
     </div>
   );

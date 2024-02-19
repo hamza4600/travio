@@ -15,7 +15,9 @@ function HeaderLink({ item, locale }) {
 
   const pathname = usePathname();
 
-  const active = pathname === `${item.url}/${locale}`;
+  console.log("url: ", item.url);
+
+  const active = pathname === `${item.url}${locale}`;
 
   React.useEffect(() => {
     if (open) {

@@ -13,6 +13,7 @@ const FAQSection = ({ data, locale }: { data: any; locale: string }) => {
         <SectionHeader
           title={data?.title?.[locale]}
           subtitle={data?.tagline?.[locale]}
+          centerLine
         />
         <div className="w-full px-20 max-sm:px-5 mt-[40px] md:mt-12 space-y-5 md:space-y-6">
           {data.faqs?.map((faq, index) => (

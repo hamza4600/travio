@@ -135,6 +135,15 @@ const TourGallery = (props: GallerySectionProps) => {
                           className={"object-cover w-full h-full"}
                         />
                       </PhotoView>
+                      <PhotoView key={i} src={image[1]}>
+                        <Image
+                          src={urlFor(image[1])}
+                          width={160}
+                          height={160}
+                          alt={"image"}
+                          className={"object-cover w-full h-full"}
+                        />
+                      </PhotoView>
                     </div>
                   )}
                 </div>

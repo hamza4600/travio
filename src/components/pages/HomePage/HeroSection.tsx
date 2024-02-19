@@ -6,10 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { urlFor } from "../../../../sanity/lib/client";
 import useWindowSize from "@/hooks/useWindows";
+import Link from "next/link";
 
-const HeroSection = ({ data, locale }) => {
+const HeroSection = ({ data, locale, banner }) => {
   const windows = useWindowSize();
   const isMobile = windows.width < 768;
+
+  // console.log("banner: ", banner);
 
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
@@ -28,10 +31,13 @@ const HeroSection = ({ data, locale }) => {
         >
           <div className="bg-[#140D31] flex justify-center leading-6 rounded-t-[24px] max-xl:rounded-none max-sm:text-[11px]">
             <Text variant={"tertiary"} className="font-medium text-center py-2">
-              More summer for less. Save up to 20% off selected trips*.
-              <span className="font-bold text-center underline py-2 ml-1 text-white">
-                Book now
-              </span>
+              {banner?.text?.[locale]}
+              <Link
+                href={"#"}
+                className="font-bold text-center underline py-2 ml-1 text-white"
+              >
+                {banner?.cta?.label?.[locale]}
+              </Link>
             </Text>
           </div>
         </div>

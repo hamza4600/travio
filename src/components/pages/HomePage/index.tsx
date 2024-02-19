@@ -5,16 +5,19 @@ import dynamic from "next/dynamic";
 const HeroSection = dynamic(() => import("./HeroSection"));
 
 const FlexibleThings = dynamic(() => import("./FlexibleThings"));
-const CardsSection = dynamic(() => import("./CardsSection"));
+const CardsSection = dynamic(
+  () => import("../../sections/differnetDeals/CardsSection")
+);
 const GetEarlyNews = dynamic(() => import("@/components/sections/form/Form"));
 const FAQSection = dynamic(() => import("@/components/sections/faq"));
 const TourGallery = dynamic(() => import("@/components/molecules/TourGallery"));
 const FeatureSection = dynamic(() => import("./FeatureSection"));
+import SectionHeader from "@/components/molecules/secHeader";
 const TravlerReviews = dynamic(
   () => import("@/components/sections/HappyTravelers")
 );
 const Destination = dynamic(() => import("./Destination"));
-const BlogSection = dynamic(() => import("./BlogSection"));
+const BlogSection = dynamic(() => import("../../sections/blogs/BlogSection"));
 const OtherTours = dynamic(() => import("./OtherTours"));
 
 import {
@@ -59,13 +62,18 @@ const HomePage = ({ pageData, language }) => {
 
   return (
     <Layout globals={layout} locale={language} breadcrumbs={[]}>
-      <HeroSection data={HERO_SECTION} locale={language} />
+      <HeroSection
+        data={HERO_SECTION}
+        banner={layout?.navbar?.info_banner}
+        locale={language}
+      />
 
       <div className="px-20 max-xl:px-0">
         <FlexibleThings data={FEATURE_SECTION_1} locale={language} />
       </div>
 
       <div className="px-20 max-lg:px-5 mt-[68px]">
+        <SectionHeader title={"Cheap Trips"} subtitle={"Hot Travel Deals"} />
         <CardsSection data={DEALS_SECTION} locale={language} />
       </div>
 

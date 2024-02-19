@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import {
   SanityGlobals,
   // SanityLocale,
-  SanityPromoBanner,
+  // SanityPromoBanner,
 } from "../../../sanity/lib/types";
 
 // import { urlFor } from "../../../sanity/lib/client";
@@ -26,7 +26,7 @@ const Layout = ({
   children: ReactNode;
   globals?: SanityGlobals;
   breadcrumbs: Breadcrumb[];
-  promo_banner?: SanityPromoBanner;
+  promo_banner?: any;
   locale: any;
   head?: any;
 }) => {

@@ -5,9 +5,8 @@ import Container from "@/components/molecules/container";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import SectionHeader from "@/components/molecules/secHeader";
 
-const data1 = [
+export const data1 = [
   {
     id: 1,
     pic: "/cardpic.png",
@@ -103,7 +102,6 @@ const data1 = [
 const CardsSection = ({ data, locale }) => {
   return (
     <Container className="text-black w-full smd:mr-0">
-      <SectionHeader title={"Cheap Trips"} subtitle={"Hot Travel Deals"} />
       <div className="h-fit relative md:mt-12 mt-6">
         <Swiper className={"gap-6 pb-3"} length={data.length} scrollCount={4}>
           {data1.map((data) => (

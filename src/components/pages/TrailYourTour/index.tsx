@@ -85,7 +85,7 @@ const TailorYourTour = () => {
           <Step2 control={control} setValue={setValue} />
         </Steps>
 
-        <FAQSection data={data} />
+        <FAQSection data={data} locale={""} />
       </div>
     </Layout>
   );

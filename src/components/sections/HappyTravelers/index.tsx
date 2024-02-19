@@ -4,7 +4,7 @@ import Image from "next/image";
 import Container from "@/components/molecules/container";
 import SwiperComponent from "@/components/molecules/Swiper";
 
-const Star = () => (
+export const Star = () => (
   <svg
     width="20"
     height="20"
