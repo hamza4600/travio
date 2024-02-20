@@ -12,8 +12,13 @@ import { Button } from "@/components/ui/button";
 import { BookingIcon } from "@/components/icons";
 import { Text } from "@/components/ui/text";
 import { SanityGlobals } from "../../../../sanity/lib/types";
+import styled from "styled-components";
 
-// const links =
+const Root = styled.div`
+  a:empty {
+    display: none;
+  }
+`;
 
 const Header = ({
   navbar,
@@ -38,7 +43,7 @@ const Header = ({
   const dropdownList = ["Egypt", "Dubai", "Isreal"];
 
   return (
-    <div>
+    <Root>
       <div className="w-full z-50 hidden bg-white lg:block h-[100px] relative max-w-[1440px] mx-auto box-border">
         <div className={"bg-primary h-[30px]"}>
           <Container className="py-1 px-20">
@@ -123,9 +128,8 @@ const Header = ({
         {/* Menu For Mobile */}
         <div className="flex flex-col justify-end pr-3  items-end">
           <div
-            className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
-              open ? "translate-y-1 " : "-translate-y-full opacity-0"
-            }`}
+            className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${open ? "translate-y-1 " : "-translate-y-full opacity-0"
+              }`}
           >
             {navbar?.links?.map((item, index) => (
               <div className="w-full" key={index}>
@@ -137,14 +141,16 @@ const Header = ({
                     className=" p-[12px] font-[500] font-satoshi text-[16px] px-[18px] "
                   >
                     <Link
-                      href={item.url || "/"}
+                      href={`/${locale}${item.url}`}
+                      title={item?.text?.[locale]}
                       className={
                         "font-medium font-satoshi" +
-                        ((item.url || "/") === pathname
-                          ? "text-blue"
+                        ((pathname == `/${locale}${item.url}`)
+                          ? "text-blue-500"
                           : "text-darkblue")
                       }
                     >
+                      {/* {console.log("pathname", pathname , `/${locale}${item.url}`)} */}
                       {item?.text?.[locale]}
                     </Link>
                   </div>
@@ -163,9 +169,8 @@ const Header = ({
                         height="16"
                         width="16"
                         alt=""
-                        className={`ml-1 ${
-                          openDropDown && "-rotate-180"
-                        } transition-all`}
+                        className={`ml-1 ${openDropDown && "-rotate-180"
+                          } transition-all`}
                       ></Image>
                     </span>
                     {openDropDown && (
@@ -208,7 +213,7 @@ const Header = ({
         </div> */}
         {/* P */}
       </div>
-    </div>
+    </Root>
   );
 };
 
