@@ -1,6 +1,6 @@
 import { CLIENT } from './sanity.const';
 
-const pageLayout = `*[_type == "globals"][0]{
+export const pageLayout = `*[_type == "globals"][0]{
   ...,
   navbar {
 ...,

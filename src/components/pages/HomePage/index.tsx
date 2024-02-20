@@ -30,12 +30,9 @@ import {
   toursPopular,
   attractions,
 } from "./data";
-import { PageSpinner } from "@/components/atom/Spinner";
 
 const HomePage = ({ pageData, language }) => {
   console.log(pageData, "pageData");
-
-  if (!pageData) return <PageSpinner radius={50} />; // <--
 
   const { layout, pageData: SECTIONS_DATA } = pageData || {};
 
@@ -57,8 +54,6 @@ const HomePage = ({ pageData, language }) => {
     [8]: FAQ_SECTION,
     // [9]: INDEX_SECTION,
   } = SECTIONS || {};
-
-  // console.log("INDEX_SECTION: ", INDEX_SECTION);
 
   return (
     <Layout globals={layout} locale={language} breadcrumbs={[]}>

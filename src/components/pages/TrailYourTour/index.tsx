@@ -26,7 +26,10 @@ export type TailorTripFormData = {
   moreInfo: string;
 };
 
-const TailorYourTour = () => {
+const TailorYourTour = ({language, pageData}) => {
+
+  const { layout } = pageData || {};
+
   const [loading] = useState(false);
   const resolver = useZodValidationResolver(validationSchema);
   const [selectedDestination, setSelectedDestination] = useState<string[]>([]);
@@ -47,9 +50,12 @@ const TailorYourTour = () => {
     resolver: resolver,
   });
 
-  // console.log(getValues(), 'getValues')
   return (
-    <Layout locale="en" breadcrumbs={[]}>
+    <Layout 
+      locale={language} 
+      globals={layout}
+      breadcrumbs={[]}
+    >
       <div className="flex mt-10 flex-col">
         <Steps
           loading={loading}

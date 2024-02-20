@@ -11,13 +11,8 @@ function HeaderLink({ item, locale }) {
   const [open, setOpen] = React.useState(false);
   const [dest, setDest] = React.useState(0);
 
-  console.log(item, locale);
-
   const pathname = usePathname();
-
-  console.log("url: ", item.url);
-
-  const active = pathname === `${item.url}${locale}`;
+  const active = pathname === `/${locale}${item.url}`;
 
   React.useEffect(() => {
     if (open) {
@@ -30,11 +25,11 @@ function HeaderLink({ item, locale }) {
   return (
     <>
       <Link
-        href={locale + item.url}
-        className={
-          "leading-[24px] flex-none font-medium font-satoshi " +
-          (active ? "text-[#3FA9F5] font-bold" : "font-medium text-darkblue")
-        }
+        href={`/${locale}${item.url}`}
+        title={item.text && item.text[locale]}
+        className={`leading-[24px] flex-none font-medium font-satoshi ${
+          (active || item.url === '/') ? "text-[#3FA9F5] font-bold" : "font-medium text-darkblue"
+        }`}
       >
         {item.text && item.text[locale]}
       </Link>
