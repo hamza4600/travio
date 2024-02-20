@@ -63,12 +63,15 @@ export default function Input({
     field,
     fieldState: { error },
   } = useController({ control, name, rules, defaultValue })
+  
   const errorMsg = error?.type
     ? ERROR_MESSAGES[error.type as keyof typeof ERROR_MESSAGES] || error.message || 'Error'
     : undefined
-  useEffect(() => {
+
+    useEffect(() => {
     if (defaultValue) field.onChange(defaultValue)
   }, [defaultValue])
+
   if (type == 'buttonNumber')
     return (
       <div className={`flex font-medium text-base text-black flex-col gap-2 ${className}`}>

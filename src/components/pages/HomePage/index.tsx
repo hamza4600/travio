@@ -19,6 +19,7 @@ const TravlerReviews = dynamic(
 const Destination = dynamic(() => import("./Destination"));
 const BlogSection = dynamic(() => import("../../sections/blogs/BlogSection"));
 const OtherTours = dynamic(() => import("./OtherTours"));
+const Popup = dynamic(() => import("@/components/molecules/Popup"));
 
 import {
   // featureData,
@@ -33,7 +34,6 @@ import {
 import { blogSectionData } from "../DynamicDestinations/data";
 
 const HomePage = ({ pageData, language }) => {
-  console.log(pageData, "pageData");
 
   const { layout, pageData: SECTIONS_DATA } = pageData || {};
 
@@ -63,6 +63,7 @@ const HomePage = ({ pageData, language }) => {
         banner={layout?.navbar?.info_banner}
         locale={language}
       />
+      <Popup />
 
       <div className="px-20 max-xl:px-0">
         <FlexibleThings data={FEATURE_SECTION_1} locale={language} />

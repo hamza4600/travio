@@ -44,7 +44,7 @@ export default function Step1({
       );
     else if (!month || !duration) onChange("");
     else onChange(`Month - ${month}, Duration - ${duration}`);
-  }, [duration, month, date]);
+  }, [duration, month, date, onChange]);
 
   return (
     <div className={`flex flex-col   gap-10 lg:px-9`}>

@@ -20,9 +20,6 @@ const TopThingsToDo = (props) => {
           subtitle={data.data.title}
           centerLine
         />
-        {/* <div className="flex gap-6 md:mt-12 overflow-x-auto mt-[30px]"> */}
-        {/* if (!item) return null; */}
-        {/* return ( */}
         <>
           <SwiperComponent
             className={"gap-6 pb-3 md:mt-12 mt-[30px]"}
@@ -40,9 +37,6 @@ const TopThingsToDo = (props) => {
                     <img
                       loading="lazy"
                       alt={""}
-                      // height={300}
-                      // width={300}
-                      // max-w-[250px] min-h-[180px]
                       className="max-w-[302px] min-h-[220px] "
                       src={item?.image}
                     />
@@ -66,7 +60,6 @@ const TopThingsToDo = (props) => {
               );
             })}
           </SwiperComponent>
-          <div className=" absolute hidden md:block w-[150px] top-0 p-3 h-full z-[100] bg-gradient-to-r from-transparent  via-[rgba(255,255,255,0.5)] to-white right-0" />
         </>
       </div>
     </div>

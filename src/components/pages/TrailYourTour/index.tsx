@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Layout from "@/components/layout";
 import FAQSection from "@/components/sections/faq";
 import { data } from "../HomePage/data";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Steps from "./Steps";
 const SelectDestinationSection = dynamic(() => import("./SelectDestiSection"));
 const Step1 = dynamic(() => import("./Step1"));
@@ -26,7 +26,7 @@ export type TailorTripFormData = {
   moreInfo: string;
 };
 
-const TailorYourTour = ({language, pageData}) => {
+const TailorYourTour = ({ language, pageData }) => {
 
   const { layout } = pageData || {};
 
@@ -51,8 +51,8 @@ const TailorYourTour = ({language, pageData}) => {
   });
 
   return (
-    <Layout 
-      locale={language} 
+    <Layout
+      locale={language}
       globals={layout}
       breadcrumbs={[]}
     >
@@ -84,9 +84,11 @@ const TailorYourTour = ({language, pageData}) => {
             }}
           />
           <Step1
-            onChange={(value) => {
-              setValue("duration", value, { shouldValidate: true });
-            }}
+            onChange={
+              useCallback((value) => {
+                setValue("duration", value, { shouldValidate: true });
+              }, [setValue])
+            }
           />
           <Step2 control={control} setValue={setValue} />
         </Steps>

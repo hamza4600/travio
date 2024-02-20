@@ -5,17 +5,18 @@ import Container from "@/components/molecules/container";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { urlFor } from "../../../../sanity/lib/client";
-import useWindowSize from "@/hooks/useWindows";
+// import useWindowSize from "@/hooks/useWindows";
 import Link from "next/link";
 
 const HeroSection = ({ data, locale, banner }) => {
-  const windows = useWindowSize();
-  const isMobile = windows.width < 768;
-
-  // console.log("banner: ", banner);
+  // const windows = useWindowSize();
+  // const isMobile = windows.width < 768;
+  // console.log(isMobile, "isMobile");
+  // const imgURL = isMobile ? data.image?.mobile?.asset?._ref : data.image?.asset?._ref;
 
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
+
   return (
     <section className="px-20 max-xl:px-0">
       <div
@@ -42,23 +43,16 @@ const HeroSection = ({ data, locale, banner }) => {
           </div>
         </div>
 
-        <img
+        <Image
           className={
             "absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
-          style={{ boxShadow: linearGradient }}
+          // style={{ boxShadow: linearGradient }}
           height={538}
           width={1440}
-          // priority={true}
-          // sizes={`
-          //     100vw
-          //   `}
-          src={
-            isMobile
-              ? urlFor(data.image?.mobile?.asset?._ref)
-              : urlFor(data.image?.asset?._ref)
-          }
+          src={urlFor(data.image?.asset?._ref)}
           alt={"hero"}
+          quality={100}
         />
 
         <div className="text-white py-5 z-10 w-full">
@@ -66,13 +60,13 @@ const HeroSection = ({ data, locale, banner }) => {
             <div className="w-full">
               <header className="flex mt-10 flex-col gap-2.5 px-5">
                 <Text
-                  variant={"tertiary"}
+                  variant={"tertiary"} as={'h1'}
                   className="text-[28px]  max-w-[552px] md:text-[56px] font-[900] -tracking-[1.68px] leading-[38px] md:leading-[76px] text-center md:text-start "
                 >
                   {data.title[locale]}
                 </Text>
                 <Text
-                  variant={"tertiary"}
+                  variant={"tertiary"} as={'h2'}
                   className="text-sm md:text-[20px] leading-[20px] md:leading-[32px] text-center md:text-start "
                 >
                   {data.subtitle[locale]}
