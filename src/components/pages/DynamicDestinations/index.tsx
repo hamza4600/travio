@@ -32,7 +32,7 @@ const TopThingsToDo = dynamic(() => import("./TopThings"));
 const CountryFacts = dynamic(() => import("./CountryFacts"));
 import ContactSection from "./ContactSection";
 
-const banner = {
+export const bannerText = {
   text: "More summer for less. Save up to 20% off selected trips*.",
   link: {
     text: "Book now",
@@ -53,7 +53,7 @@ const DynamicDestionations = ({ language }) => {
           value: "/egypt",
         },
       ]}
-      promo_banner={banner}
+      promo_banner={bannerText}
     >
       <HeroSection data={heroData} locale={language} />;
       <div className="md:px-20 px-5 md:mt-12 mt-[50px]">

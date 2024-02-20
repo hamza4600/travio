@@ -13,12 +13,9 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
             "font-medium text-[11px] md:text-sm leading-5 md:leading-[24px] text-center "
           }
         >
-          {banner.text}
-          <Link
-            href={banner.link?.url || ""}
-            className="underline cursor-pointer font-bold"
-          >
-            {banner.link?.text}
+          {banner.text?.[locale]}
+          <Link href={"#"} className="underline cursor-pointer font-bold">
+            {banner.cta?.label?.[locale]}
           </Link>
         </div>
       </Container>

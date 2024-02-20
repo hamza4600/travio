@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Layout from "@/components/layout";
 import FAQSection from "@/components/sections/faq";
-import { data } from "../HomePage/data";
+// import { data } from "../HomePage/data";
 import { useCallback, useState } from "react";
 import Steps from "./Steps";
 const SelectDestinationSection = dynamic(() => import("./SelectDestiSection"));
@@ -11,6 +11,8 @@ const Step1 = dynamic(() => import("./Step1"));
 const Step2 = dynamic(() => import("./Step2"));
 import { useForm } from "react-hook-form";
 import { useZodValidationResolver, validationSchema } from "./schema";
+import { faqSectionData } from "../DynamicDestinations/data";
+// import { bannerText } from "../DynamicDestinations";
 
 export type TailorTripFormData = {
   selectedDestination: string[];
@@ -27,7 +29,6 @@ export type TailorTripFormData = {
 };
 
 const TailorYourTour = ({ language, pageData }) => {
-
   const { layout } = pageData || {};
 
   const [loading] = useState(false);
@@ -50,12 +51,25 @@ const TailorYourTour = ({ language, pageData }) => {
     resolver: resolver,
   });
 
+  console.log(layout);
+
   return (
     <Layout
       locale={language}
       globals={layout}
-      breadcrumbs={[]}
+      promo_banner={layout?.navbar?.info_banner}
+      breadcrumbs={[
+        {
+          label: "Tailor your tour",
+          value: `/${language}/tailor_your_tour`,
+        },
+      ]}
     >
+      <hr className="bg-gray border-b-2 md:hidden" />
+      <div
+        className="md:hidden absolute top-[135px] left-0 border-b-[#3FA9F5] border-b-2"
+        style={{ width: "117px" }}
+      ></div>
       <div className="flex mt-10 flex-col">
         <Steps
           loading={loading}
@@ -84,16 +98,17 @@ const TailorYourTour = ({ language, pageData }) => {
             }}
           />
           <Step1
-            onChange={
-              useCallback((value) => {
+            onChange={useCallback(
+              (value) => {
                 setValue("duration", value, { shouldValidate: true });
-              }, [setValue])
-            }
+              },
+              [setValue]
+            )}
           />
           <Step2 control={control} setValue={setValue} />
         </Steps>
 
-        <FAQSection data={data} locale={""} />
+        <FAQSection data={faqSectionData} locale={language} />
       </div>
     </Layout>
   );

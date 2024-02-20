@@ -81,13 +81,15 @@ const Filter = ({
   selectedRating: number[];
   ratings: { count: number; stars: number }[];
 }) => {
+  const reverseRatings = [...ratings].reverse();
+
   return (
     <div className="rounded-xl shadow shadow-[#f1f1f1] md:w-[300px] my-2 ">
       <div className=" py-[16px] tracking-wide font-medium rounded-t-2xl px-[18px] bg-[#ecf4ff] ">
         Filter by Rating
       </div>
       <div className="flex flex-col px-6 py-5 gap-y-5 md:gap-y-8">
-        {ratings.reverse().map((rating, idx) => (
+        {reverseRatings?.map((rating, idx) => (
           <div key={idx} className=" flex gap-x-2 justify-center items-center">
             <input
               onChange={(e) =>
@@ -191,15 +193,21 @@ const ReviewSection = (props) => {
       count: 0,
     });
   });
+
   reviews?.forEach((r) => {
     if (r.rating && r.rating > 0 && r.rating <= 5)
       ratings[r.rating - 1 || 0].count++;
   });
+
   if (selectedRating.length !== 0) {
     reviews = reviews?.filter(
       (x) => x.rating && selectedRating.includes(x.rating)
     );
   }
+
+  // sort reviews based on rating higher rating
+  reviews = reviews?.sort((a, b) => b.rating - a.rating);
+
   const pageSize = 3;
   return (
     <Container className=" pb-[50px] pt-[120px] md:py-[90px]  mx-auto max-w-[1312px] px-4 text-black">
