@@ -4,7 +4,7 @@ import Image from "next/image";
 import Container from "@/components/molecules/container";
 import SwiperComponent from "@/components/molecules/Swiper";
 
-const Star = () => (
+export const Star = () => (
   <svg
     width="20"
     height="20"
@@ -21,11 +21,17 @@ const Star = () => (
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { urlFor } from "../../../../sanity/lib/client";
+import useWindowSize from "@/hooks/useWindows";
 
 const TravlerReviews = (props) => {
   const {
     data: { title, subtitle, image, testimonials },
+    locale,
   } = props;
+
+  const windows = useWindowSize();
+  const isMobile = windows.width < 768;
 
   return (
     <div className="w-full bg-[#F2FAFF] text-black py-[30px]  md:h-full relative">
@@ -33,21 +39,25 @@ const TravlerReviews = (props) => {
         <div className="lg:max-w-xs font-satoshi shrink-0 w-full text-center md:text-start">
           <h2 className="text-xl md:text-[40px] leading-[30px] md:leading-tight -tracking-[1.2px] font-bold">
             <span className="text-[#3FA9F5] md:text-black">
-              {title.substring(0, 16)}
+              {title[locale]?.substring(0, 16)}
             </span>
-            <span className="text-[#3FA9F5]">{title.substring(16)}</span>
+            <span className="text-[#3FA9F5]">
+              {title[locale]?.substring(16)}
+            </span>
           </h2>
           <p className="text-sm font-medium lg:font-normal md:text-lg md:leading-[28px] mt-2.5 md:mt-3 text-gray ">
-            {subtitle}
+            {subtitle[locale]}
           </p>
-          <Image
-            src={image}
+          <img
+            src={urlFor(
+              isMobile ? image?.mobile?.asset?._ref : image?.asset?._ref
+            )}
             width={260}
             height={73}
             alt=""
             style={{ borderRadius: "10px" }}
             className={
-              "my-[30px] md:mt-[38px] h-[160px] md:h-full md:w-[260px] w-full "
+              "my-[30px] md:mt-[38px] max-w-[260px] min-h-[73px] max-sm:mx-auto"
             }
           />
         </div>
@@ -69,19 +79,22 @@ const TravlerReviews = (props) => {
                   </div>
 
                   <h3 className="mb-1 font-bold text-base font-satoshi">
-                    {item.title}
+                    {item.title[locale]}
                   </h3>
 
                   <p className="text-[12px] md:text-sm font-normal font-satoshi text-darkblue md:font-medium  leading-[20px] md:leading-[22px] max-w-[273px]">
-                    {item.text}
+                    {item.text[locale]}
                   </p>
                   <div className="flex gap-x-3 mt-4 items-center">
                     <div>
-                      <Image
+                      <img
                         alt={""}
-                        width={38}
-                        height={38}
-                        src={item?.avatar}
+                        className="min-h-[38px] max-w-[38px]"
+                        src={urlFor(
+                          isMobile
+                            ? item?.avatar?.mobile?.asset?._ref
+                            : item?.avatar?.asset?._ref
+                        )}
                       />
                     </div>
                     <div className="gap-1 font-satoshi md:gap-0">
@@ -90,7 +103,7 @@ const TravlerReviews = (props) => {
                       </div>
 
                       <time className="text-[10px] md:text-xs leading-3 md:leading-[20px] text-gray">
-                        {item.time}
+                        {item.time[locale]}
                       </time>
                     </div>
                   </div>

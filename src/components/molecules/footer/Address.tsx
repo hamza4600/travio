@@ -23,30 +23,39 @@ const Address = ({
       </Text>
       <div className="flex items-start gap-2">
         <Image width={20} height={20} alt="" src="/map_icon.svg"></Image>
-        <Text
-          variant={"gray"}
-          className="font-normal md:leading-5 md:text-[14px] text-[12px]"
+        <a
+          href={`https://www.google.com/maps?q=${encodeURIComponent(address)}`}
+          rel="noopener noreferrer"
+          target="_blank"
+          className="font-normal font-satoshi text-gray md:leading-5 md:text-[14px] text-[12px]"
         >
           {address}
-        </Text>
+        </a>
       </div>
       <div className="flex items-start gap-2">
         <Image width={20} height={20} alt="" src="/call_icon.svg"></Image>
-        <Text
-          variant={"gray"}
-          className="font-normal md:leading-5 md:text-[14px] text-[12px]"
+        <a
+          href={`tel:${encodeURIComponent(
+            number
+              .replace(/[^\d]/g, "")
+              .replace(/(\d{3})(\d{4})(\d{5})/, "+$1 $2 $3")
+          )}`}
+          className="font-normal font-satoshi text-gray md:leading-5 md:text-[14px] text-[12px]"
         >
           {number}
-        </Text>
+        </a>
       </div>
       <div className="flex items-start gap-2">
         <Image width={20} height={20} alt="" src="/email_icon.svg"></Image>
-        <Text
-          variant={"gray"}
-          className="font-normal md:leading-5 md:text-[14px] text-[12px]"
+        <a
+          href={`mailto:${encodeURIComponent(
+            email.replace(/[^\x20-\x7E]/g, "")
+          )}`}
+          target="_blank"
+          className="font-normal font-satoshi text-gray md:leading-5 md:text-[14px] text-[12px]"
         >
           {email}
-        </Text>
+        </a>
       </div>
     </div>
   );

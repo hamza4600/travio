@@ -4,8 +4,16 @@ import Image from "next/image";
 import Container from "@/components/molecules/container";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
+import { urlFor } from "../../../../sanity/lib/client";
+import useWindowSize from "@/hooks/useWindows";
+import Link from "next/link";
 
-const HeroSection = () => {
+const HeroSection = ({ data, locale, banner }) => {
+  const windows = useWindowSize();
+  const isMobile = windows.width < 768;
+
+  // console.log("banner: ", banner);
+
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
   return (
@@ -23,26 +31,33 @@ const HeroSection = () => {
         >
           <div className="bg-[#140D31] flex justify-center leading-6 rounded-t-[24px] max-xl:rounded-none max-sm:text-[11px]">
             <Text variant={"tertiary"} className="font-medium text-center py-2">
-              More summer for less. Save up to 20% off selected trips*.
-              <span className="font-bold text-center underline py-2 ml-1 text-white">
-                Book now
-              </span>
+              {banner?.text?.[locale]}
+              <Link
+                href={"#"}
+                className="font-bold text-center underline py-2 ml-1 text-white"
+              >
+                {banner?.cta?.label?.[locale]}
+              </Link>
             </Text>
           </div>
         </div>
 
-        <Image
+        <img
           className={
-            "absolute rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+            "absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
           style={{ boxShadow: linearGradient }}
           height={538}
           width={1440}
-          priority={true}
-          sizes={`
-              100vw
-            `}
-          src={"/homeHero.png"}
+          // priority={true}
+          // sizes={`
+          //     100vw
+          //   `}
+          src={
+            isMobile
+              ? urlFor(data.image?.mobile?.asset?._ref)
+              : urlFor(data.image?.asset?._ref)
+          }
           alt={"hero"}
         />
 
@@ -54,13 +69,13 @@ const HeroSection = () => {
                   variant={"tertiary"}
                   className="text-[28px]  max-w-[552px] md:text-[56px] font-[900] -tracking-[1.68px] leading-[38px] md:leading-[76px] text-center md:text-start "
                 >
-                  Guided tours tailored by local experts
+                  {data.title[locale]}
                 </Text>
                 <Text
                   variant={"tertiary"}
                   className="text-sm md:text-[20px] leading-[20px] md:leading-[32px] text-center md:text-start "
                 >
-                  Carefree trips & local experiences made affordable.
+                  {data.subtitle[locale]}
                 </Text>
               </header>
 

@@ -1,18 +1,34 @@
 export const data = [
   {
-    question: "Can I change or cancel my Tour?",
-    answer:
-      "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
+    tagline: {
+      en: "FAQ",
+    },
   },
   {
-    question: "Can I change or cancel my Tour?",
-    answer:
-      "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
+    title: {
+      en: "Frequtly asked questions",
+    },
   },
+
   {
-    question: "Can I change or cancel my Tour?",
-    answer:
-      "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
+    faqs: [
+      {
+        question: "Can I change or cancel my Tour?",
+        answer:
+          "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
+      },
+      {
+        question: "Can I change or cancel my Tour?",
+        answer:
+          "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
+      },
+
+      {
+        question: "Can I change or cancel my Tour?",
+        answer:
+          "All orders are final once they have been processed through the checkout. Unfortunately, no further changes can be made to your order once processed including and not limited to; removing and/or adding items to your order, combining orders or cancelling your order.",
+      },
+    ],
   },
 ];
 

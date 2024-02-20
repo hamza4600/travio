@@ -1,29 +1,29 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
-import { SanityLocale, SanityPromoBanner } from '../../../../sanity/lib/types'
-import Container from '../container'
-import { localizedString } from '../../../../sanity/lib/client'
+import Container from "../container";
 
-function PromoBanner({ banner, locale }: { banner?: SanityPromoBanner; locale: SanityLocale }) {
-  if (!banner) return null
+function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
+  if (!banner) return null;
   return (
-    <div className="w-full h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue">
+    <div className="w-full font-satoshi h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue">
       <Container className="pl-[18px] pr-[19px]">
         <div
-          className={'font-medium text-xs md:text-sm leading-[20px] md:leading-[24px] text-center '}
+          className={
+            "font-medium text-[11px] md:text-sm leading-5 md:leading-[24px] text-center "
+          }
         >
-          {localizedString(banner.text, locale)}{' '}
+          {banner.text}
           <Link
-            href={banner.link?.url || '/'}
-            className="underline cursor-pointer font-bold underline-offset-[3px] "
+            href={banner.link?.url || ""}
+            className="underline cursor-pointer font-bold"
           >
-            {localizedString(banner.link?.text, locale)}
+            {banner.link?.text}
           </Link>
         </div>
       </Container>
     </div>
-  )
+  );
 }
 
-export default PromoBanner
+export default PromoBanner;

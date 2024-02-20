@@ -13,16 +13,24 @@ import "react-photo-view/dist/react-photo-view.css";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { urlFor } from "../../../../sanity/lib/client";
+// import useWindowSize from "@/hooks/useWindows";
 export type GallerySectionProps = {
   // data: SanityGallerySection
   data: any;
   banner?: any;
+  locale: string;
 };
 
 const TourGallery = (props: GallerySectionProps) => {
   const {
     data: { title, subtitle, images },
-  } = props;
+    locale,
+  } = props || {};
+
+  // const windows = useWindowSize();
+  // const isMobile = windows.width < 768;
+  console.log("subtitle: ", subtitle);
   const imgs: any[][] = [];
   if (images) {
     let single = true;
@@ -37,7 +45,7 @@ const TourGallery = (props: GallerySectionProps) => {
     }
   }
 
-  console.log(imgs);
+  console.log("images: ", imgs);
 
   return (
     <div className="pt-5 md:pt-10 bg-[#F2FAFF] min-h-[482px] md:min-h-[522px] text-black">
@@ -46,15 +54,15 @@ const TourGallery = (props: GallerySectionProps) => {
           id="triphighlights"
           className="text-[24px] font-satoshi text-darkblue px-5 md:text-[40px] leading-[32px] md:leading-[50px] -tracking-[1.2px] font-bold text-center"
         >
-          {title}
+          {title[locale]}
         </h2>
 
         <p className="text-sm font-satoshi px-5 md:text-lg mt-[10px] md:mt-1.5 text-gray text-center md:leading-[28px] leading-[24px]">
-          {subtitle?.substring(0, 5)}
+          {subtitle[locale]?.substring(0, 5)[locale]}
           <span className="text-[#3FA9F5] font-satoshi font-medium opacity-100">
-            {subtitle?.substring(5, 32)}
+            {subtitle[locale]?.substring(5, 32)}
           </span>
-          {subtitle?.substring(32)}
+          {subtitle[locale]?.substring(32)}
         </p>
         <div className={"mt-[10px] md:mt-2 mb-[30px]"}>
           <Image
@@ -82,7 +90,7 @@ const TourGallery = (props: GallerySectionProps) => {
                 >
                   <PhotoView key={i} src={image[0]}>
                     <Image
-                      src={image[0]}
+                      src={urlFor(image[0])}
                       width={350}
                       height={320}
                       alt={"image"}
@@ -104,7 +112,7 @@ const TourGallery = (props: GallerySectionProps) => {
                   >
                     <PhotoView key={i} src={image[0]}>
                       <Image
-                        src={image[0]}
+                        src={urlFor(image[0])}
                         width={160}
                         height={160}
                         alt={"image"}
@@ -120,7 +128,16 @@ const TourGallery = (props: GallerySectionProps) => {
                     >
                       <PhotoView key={i} src={image[1]}>
                         <Image
-                          src={image[1]}
+                          src={urlFor(image[1])}
+                          width={160}
+                          height={160}
+                          alt={"image"}
+                          className={"object-cover w-full h-full"}
+                        />
+                      </PhotoView>
+                      <PhotoView key={i} src={image[1]}>
+                        <Image
+                          src={urlFor(image[1])}
                           width={160}
                           height={160}
                           alt={"image"}
@@ -137,7 +154,7 @@ const TourGallery = (props: GallerySectionProps) => {
                 "w-full  h-[190px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
               }
             >
-              <div
+              {/* <div
                 className={
                   "w-[94px] md:w-[200px] h-full overflow-hidden rounded-xl "
                 }
@@ -151,7 +168,7 @@ const TourGallery = (props: GallerySectionProps) => {
                     className={"object-cover w-full h-full"}
                   />
                 </PhotoView>
-              </div>
+              </div> */}
             </div>
             {imgs.slice(3, 6)?.map((image, i) =>
               i % 2 == 1 ? (
@@ -163,7 +180,7 @@ const TourGallery = (props: GallerySectionProps) => {
                 >
                   <PhotoView key={i} src={image[0]}>
                     <Image
-                      src={image[0]}
+                      src={urlFor(image[0])}
                       width={320}
                       height={320}
                       alt={"image"}
@@ -185,7 +202,7 @@ const TourGallery = (props: GallerySectionProps) => {
                   >
                     <PhotoView key={i} src={image[0]}>
                       <Image
-                        src={image[0]}
+                        src={urlFor(image[0])}
                         width={160}
                         height={160}
                         alt={"image"}
@@ -201,7 +218,7 @@ const TourGallery = (props: GallerySectionProps) => {
                     >
                       <PhotoView key={i} src={image[1]}>
                         <Image
-                          src={image[1]}
+                          src={urlFor(image[1])}
                           width={160}
                           height={160}
                           alt={"image"}

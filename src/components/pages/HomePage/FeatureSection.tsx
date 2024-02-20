@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import Container from "@/components/molecules/container";
+import { urlFor } from "../../../../sanity/lib/client";
 
 const mobBgArrowSVG = {
   rightArrow: (
@@ -36,26 +37,26 @@ const mobBgArrowSVG = {
   ),
 };
 
-export default function FeatureSection({ data }) {
-  if (data?.type != "small") {
+export default function FeatureSection({ data, locale }) {
+  if (data?.type == "small") {
     return (
       <Container
         className={
           "text-center h-fit  mx-auto max-w-[1280px] px-4 md:px-0  md:!spx-[80px] pt-[50px] md:pt-[84px] text-[#140D31] relative w-full "
         }
       >
-        {data.title && (
-          <>
-            <div className=" text-darkblue w-fit -tracking-[1.2px] mx-auto text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px]  text-center ">
-              <h2 className="font-satoshi">{data.title}</h2>
-              <hr className="md:w-[117px] w-[85px] m-auto mt-1 lg:mt-[9px] border-[#FFBB0B] md:border-b-[3px] border-b-[2px] text-yellow rounded-full" />
-            </div>
-          </>
-        )}
+        {/* {data.title && ( */}
+        <>
+          <div className=" text-darkblue w-fit -tracking-[1.2px] mx-auto text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px]  text-center ">
+            <h2 className="font-satoshi">{data.title[locale]}</h2>
+            <hr className="md:w-[117px] w-[85px] m-auto mt-1 lg:mt-[9px] border-[#FFBB0B] md:border-b-[3px] border-b-[2px] text-yellow rounded-full" />
+          </div>
+        </>
+        {/* )} */}
 
         <div className="flex mx-auto flex-col md:flex-row  md:justify-between  mt-[54px] md:mt-[74px]   gap-[60px] md:gap-[150pxs] w-full max-w-[400px]  md:max-w-none">
           {data?.features?.map((feature, index) => (
-            <Feature key={index} data={feature} />
+            <Feature key={index} data={feature} locale={locale} />
           ))}
           <div className="absolute left-0 top-48 max-md:hidden w-full  flex items-center -z-[0]">
             <svg width="100%" height="135" viewBox="0 0 856 135" fill="none">
@@ -86,15 +87,15 @@ export default function FeatureSection({ data }) {
   return (
     <div className={"bg-[#F2FAFF] font-satoshi text-center py-5 md:py-3 "}>
       <Container>
-        {data.title && (
-          <div className="flex md:items-start  items-center justify-center md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
-            <h2>{data.title}</h2>
-            <hr className="w-[85px] md:w-1/2 mt-[6px] bg-yellow text-yellow h-0.5  mb-4" />
-          </div>
-        )}
+        {/* {data.title && ( */}
+        <div className="flex md:items-start  items-center justify-center md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
+          <h2>{data.title[locale]}</h2>
+          <hr className="w-[85px] md:w-1/2 mt-[6px] bg-yellow text-yellow h-0.5  mb-4" />
+        </div>
+        {/* )} */}
         <div className="flex justify-between w-full flex-wrap gap-[15px] ">
           {data?.features?.map((feature, index) => (
-            <SmallFeature key={index} data={feature} />
+            <SmallFeature key={index} data={feature} locale={locale} />
           ))}
         </div>
       </Container>
@@ -102,40 +103,45 @@ export default function FeatureSection({ data }) {
   );
 }
 
-export type FeatureProps = { data: any };
+export type FeatureProps = { data: any; locale: string };
 
-const Feature = ({ data }: FeatureProps) => {
+const Feature = ({ data, locale }: FeatureProps) => {
   return (
     <div className="relative text-center  flex flex-row-reversse justify-between md:flex-col items-center z-[2] h-[90px] md:h-fit [&:nth-child(odd)]:flex-row-reverse md:[&:nth-child(odd)]:flex-col">
-      <Image src={data.icon} width={68} height={68} alt="" />
+      <Image
+        src={urlFor(data.icon?.asset?._ref)}
+        width={68}
+        height={68}
+        alt=""
+      />
 
       <div
         className={`md:mt-9 font-satoshi md:mb-2.5 text-start md:text-center max-w-[231px] md:max-w-[348px]`}
       >
         <h3 className="font-bold lg:-tracking-[0.6px] text-base md:text-xl leading-normal md:leading-loose">
-          {data.title}
+          {data.title[locale]}
         </h3>
 
         <p className="mt-1.5 lg:mt-2.5 lg:px-3.5 opacity-60 text-xs md:text-base  text-gray leading-tight md:leading-normal">
-          {data.description}
+          {data.description[locale]}
         </p>
       </div>
     </div>
   );
 };
 
-const SmallFeature = ({ data }: FeatureProps) => {
+const SmallFeature = ({ data, locale }: FeatureProps) => {
   return (
     <div className="text-center flex items-center  minP-w-[160px] min-h-[64px] md:min-h-[48px] flex-col md:flex-row ">
       <Image
-        src={data.icon}
+        src={urlFor(data.icon?.asset?._ref)}
         width={48}
         height={48}
         alt=""
         className={"h-12 w-12"}
       />
       <h3 className="text-center font-satoshi font-medium md:text-start text-xs md:text-base  leading-[20px] md:leading-[24px] md:ml-3">
-        {data.title}
+        {data.title[locale]}
       </h3>
     </div>
   );

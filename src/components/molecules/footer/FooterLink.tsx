@@ -2,16 +2,18 @@ import React from "react";
 import Link from "next/link";
 
 // import { localizedString } from '@/contexts/LocaleProvider'
-// import { SanityLink } from "../../../../sanity/lib/types";
+import { SanityLink } from "../../../../sanity/lib/types";
 import { Text } from "@/components/ui/text";
 
 const Footer__links = ({
   heading,
   items,
+  locale,
 }: {
   heading: string;
-  // items: SanityLink[];
-  items: any;
+  items: SanityLink[];
+  // items: any;
+  locale: string;
 }) => {
   return (
     <div className="flex gap-2 flex-col text-darkblue font-satoshi">
@@ -28,7 +30,7 @@ const Footer__links = ({
             key={index}
             className="text-[12px] md:text-[16px] md:font-medium leading-[24px] md:leading-normal text-dimSecondary"
           >
-            {item.name}
+            {item?.text?.[locale]}
             {/* {localizedString(item.text)} */}
           </Link>
         );

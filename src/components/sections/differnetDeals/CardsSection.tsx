@@ -5,9 +5,8 @@ import Container from "@/components/molecules/container";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import SectionHeader from "@/components/molecules/secHeader";
 
-const data = [
+export const data1 = [
   {
     id: 1,
     pic: "/cardpic.png",
@@ -100,35 +99,27 @@ const data = [
   },
 ];
 
-const CardsSection = () => {
+const CardsSection = ({ data, locale }) => {
   return (
-      <Container className="text-black w-full smd:mr-0">
-          <SectionHeader
-            title={"Cheap Trips"}
-            subtitle={"Hot Travel Deals"}
-          />
-          <div className="h-fit relative md:mt-12 mt-6">
-            <Swiper
-              className={"gap-6 pb-3"}
-              length={data.length}
-              scrollCount={4}
-            >
-              {data.map((data) => (
-                <TourCard
-                  key={data.id}
-                  pic={data.pic}
-                  tourType={data.title}
-                  days={data.day}
-                  cities={data.cities}
-                  countries={data.countries}
-                  old_price={data.old_price}
-                  price={data.price}
-                />
-              ))}
-            </Swiper>
-            <div className=" absolute hidden md:block w-[150px] top-0 p-3 h-full z-[100] bg-gradient-to-r from-transparent  via-[rgba(255,255,255,0.5)] to-white right-0" />
-          </div>
-      </Container>
+    <Container className="text-black w-full smd:mr-0">
+      <div className="h-fit relative md:mt-12 mt-6">
+        <Swiper className={"gap-6 pb-3"} length={data.length} scrollCount={4}>
+          {data1.map((data) => (
+            <TourCard
+              key={data.id}
+              pic={data.pic}
+              tourType={data.title}
+              days={data.day}
+              cities={data.cities}
+              countries={data.countries}
+              old_price={data.old_price}
+              price={data.price}
+            />
+          ))}
+        </Swiper>
+        <div className=" absolute hidden md:block w-[150px] top-0 p-3 h-full z-[100] bg-gradient-to-r from-transparent  via-[rgba(255,255,255,0.5)] to-white right-0" />
+      </div>
+    </Container>
   );
 };
 
