@@ -173,7 +173,7 @@ export const blogSectionData = {
         },
       },
       title: {
-        en: "Exploring the Beauty of Nature",
+        en: "The most interesting historical monuments in Saudi Arabia",
       },
       author: {
         name: {

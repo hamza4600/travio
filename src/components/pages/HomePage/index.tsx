@@ -30,6 +30,7 @@ import {
   toursPopular,
   attractions,
 } from "./data";
+import { blogSectionData } from "../DynamicDestinations/data";
 
 const HomePage = ({ pageData, language }) => {
   console.log(pageData, "pageData");
@@ -50,7 +51,7 @@ const HomePage = ({ pageData, language }) => {
     [4]: FEATURE_SECTION_2,
     [5]: DESTINATIONS_SECTION,
     [6]: TESTIMONIAL_SECTION,
-    [7]: FEATURED_BLOGS_SECTION,
+    // [7]: FEATURED_BLOGS_SECTION,
     [8]: FAQ_SECTION,
     // [9]: INDEX_SECTION,
   } = SECTIONS || {};
@@ -89,7 +90,7 @@ const HomePage = ({ pageData, language }) => {
       </div>
 
       <div className="px-20 max-lg:px-5 md:mt-[84px] mt-[50px]">
-        <BlogSection data={FEATURED_BLOGS_SECTION} locale={language} />
+        <BlogSection data={blogSectionData} locale={language} />
       </div>
 
       <div className="mt-20">

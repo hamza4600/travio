@@ -202,18 +202,8 @@ const ReviewSection = (props) => {
   }
   const pageSize = 3;
   return (
-    <Container className=" py-[50px] md:py-[90px]  mx-auto max-w-[1312px] px-4 text-black">
+    <Container className=" pb-[50px] pt-[120px] md:py-[90px]  mx-auto max-w-[1312px] px-4 text-black">
       <SectionHeader title={tagline} subtitle={title} centerLine />
-      {/* <div id="review" className="font-satoshi flex flex-col items-center">
-        <p className="text-blue text-xs md:text-base  font-medium uppercase leading-tight md:leading-normal">
-          {tagline}
-        </p>
-
-        <h2 className="text-[24px] md:text-[40px] leading-[32px] md:leading-tight  -tracking-[1.2px] mt-3 w-fit  font-bold">
-          {title}
-          <hr className="w-1/2 mx-auto text-yellow  bg-yellow  rounded-full mt-2.5 border-b-2" />
-        </h2>
-      </div> */}
 
       <div className="flex font-satoshi gap-y-[30px] md:gap-x-5 px-0 lg:px-5 mt-8 flex-col md:flex-row">
         <div className="w-full md:w-[430px] ">

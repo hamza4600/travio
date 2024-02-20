@@ -8,7 +8,7 @@ import SwiperComponent from "@/components/molecules/Swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { urlFor } from "../../../../sanity/lib/client";
+// import { urlFor } from "../../../../sanity/lib/client";
 import useWindowSize from "@/hooks/useWindows";
 
 const BlogCard = ({ blog, locale }) => {
@@ -16,7 +16,7 @@ const BlogCard = ({ blog, locale }) => {
   const isMobile = windows.width < 768;
   return (
     blog && (
-      <Link className={"flex-shrink-0 "} href={blog?.slug?.current}>
+      <Link className={"flex-shrink-0"} href={blog?.slug?.current}>
         <div className=" w-full">
           <div className={"rounded-3xl max-sm:rounded-[8px] overflow-hidden"}>
             {blog?.cover_image && (
@@ -25,11 +25,13 @@ const BlogCard = ({ blog, locale }) => {
                 // width={410}
                 // height={460}
                 className="w-full min-h-[460px] max-w-[410px] max-sm:min-h-[280px] max-sm:max-w-[250px]"
-                src={urlFor(
+                src={
+                  // urlFor(
                   isMobile
                     ? blog?.cover_image?.mobile?.asset?._ref
                     : blog?.cover_image?.asset?._ref
-                )}
+                  // )
+                }
                 alt="cover_image"
               />
             )}
