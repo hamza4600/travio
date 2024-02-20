@@ -1,5 +1,5 @@
 export const heroData = {
-  img: "/Egypt.png",
+  img: "/demo/dest.png",
   title: "Egypt",
   description:
     "Egypt, a captivating land of ancient wonders, beckons travelers with its rich history and timeless allure. From the towering pyramids of Giza to the magnificent temples of Luxor and the vibrant streets of Cairo, Egypt offers a tapestry of experiences that transport you to a bygone era. Egypt, a captivating land of ancient wonders, beckons travelers with its rich history and timeless allure. From the towering pyramids of Giza to the magnificent temples of Luxor and the vibrant streets of Cairo, Egypt offers a tapestry of experiences that transport you to a bygone era.",
@@ -9,6 +9,22 @@ export const reviewData = {
   tagline: "reviews",
   title: "Egypt Tours Reviews",
   reviews: [
+    {
+      title: "I highly recommend Memphis Tours ...",
+      name: "Andrzej Przybylski",
+      rating: 2,
+      text: "WI have always wanted to go to Egypt and taking this trip with Intrepid made it come true. Ahmed our guide was so knowledgeable and helpful and we cannot recommend him highly enough. Donna and Wayne",
+      country: "/en_icon.svg",
+      time: "November 24, 2022",
+    },
+    {
+      title: "I highly recommend Memphis Tours ...",
+      name: "Andrzej Przybylski",
+      rating: 2,
+      text: "WI have always wanted to go to Egypt and taking this trip with Intrepid made it come true. Ahmed our guide was so knowledgeable and helpful and we cannot recommend him highly enough. Donna and Wayne",
+      country: "/en_icon.svg",
+      time: "November 24, 2022",
+    },
     {
       title: "I highly recommend Memphis Tours ...",
       name: "Andrzej Przybylski",

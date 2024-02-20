@@ -8,7 +8,7 @@ const HeroSection = ({ data, locale }) => {
     <>
       <div style={{ boxShadow: linearGradient }} className="w-full relative">
         <img
-          className="lg:w-full min-h-[480px] max-w-[1440px] max-md:object-cover"
+          className="lg:w-full min-h-[480px] max-w-[1440px] max-md:h-[200px]"
           src={data.img}
           loading="lazy"
           alt="Hero_section"

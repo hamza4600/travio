@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { WhatsappIcon } from "@/components/icons";
 import useWindowSize from "@/hooks/useWindows";
 
@@ -15,7 +15,7 @@ const GetEarlyNews = ({ title, description }) => {
   return (
     <Container className="px-20 flex justify-center items-center max-lg:px-0">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full max-w-[1280px] bg-[#3FA9F5] md:w-full md:rounded-3xl overflow-hidden relative">
-        <Image
+        {/* <Image
           width={640}
           height={222}
           src={"/request-bg.png"}
@@ -24,7 +24,7 @@ const GetEarlyNews = ({ title, description }) => {
               100vw
             `}
           className={"absolute z-50 w-full h-full top-0 left-0 object-cover"}
-        />
+        /> */}
         <div className="flex relative z-10 flex-col justify-center md:justify-start items-center md:items-start ">
           <header>
             <Text

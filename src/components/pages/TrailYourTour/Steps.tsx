@@ -30,7 +30,7 @@ export default function Steps({
       <div
         className={`${
           step == 1 ? " bg-white" : "bg-primary"
-        }  sm:rounded-[20px] py-10 flex flex-col gap-4 `}
+        }  sm:rounded-[20px] pt-10 flex flex-col gap-4 `}
       >
         {children && (
           <>
