@@ -18,14 +18,14 @@ const HeroSection = ({ data, locale }) => {
         </h1>
       </div>
       <div className="md:px-20 px-5 md:mt-12 mt-[18px] items-center flex flex-col">
-        <div className="lg:hidden flex flex-col gap-1 items-center">
+        <div className="lg:hidden flex flex-col gap-1 items-center mb-[10px]">
           <Text
             variant={"darkblue"}
             className="font-bold text-[20px] leading-[30px]"
           >
             {data.title}
           </Text>
-          <hr className="border-b-[2px] border-[#FFBB0B] max-w-10" />
+          <hr className="border-b border-[#FFBB0B] w-10" />
         </div>
         <Text
           variant={"darkblue"}

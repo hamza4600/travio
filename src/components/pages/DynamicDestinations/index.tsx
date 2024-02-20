@@ -5,6 +5,7 @@ import React from "react";
 
 const HeroSection = dynamic(() => import("./HeroSection"));
 import {
+  blogSectionData,
   countryFactsData,
   // blogSectionData,
   dataTop,
@@ -21,11 +22,15 @@ const ReviewSection = dynamic(
 
 import SectionHeader from "@/components/molecules/secHeader";
 import { data1 } from "@/components/sections/differnetDeals/CardsSection";
-// import BlogSection from "@/components/sections/blogs/BlogSection";
+
 import FAQSection from "@/components/sections/faq";
-// import BlogSection from "@/components/sections/blogs/BlogSection";
+const BlogSection = dynamic(
+  () => import("@/components/sections/blogs/BlogSection")
+);
+
 const TopThingsToDo = dynamic(() => import("./TopThings"));
 const CountryFacts = dynamic(() => import("./CountryFacts"));
+import ContactSection from "./ContactSection";
 
 const banner = {
   text: "More summer for less. Save up to 20% off selected trips*.",
@@ -62,9 +67,6 @@ const DynamicDestionations = ({ language }) => {
       <div>
         <ReviewSection data={reviewData} locale={language} />
       </div>
-      {/* <div className="md:px-20 px-5 md:mt-[70px] mt-[50px]">
-        <BlogSection data={blogSectionData} locale={language} />
-    </div> */}
       {/* <div className="md:px-20 px-5 md:mt-[90px] mt-[60px]"> */}
       <CountryFacts data={countryFactsData} locale={language} />
       {/* </div> */}
@@ -73,6 +75,12 @@ const DynamicDestionations = ({ language }) => {
       </div>
       {/* <div className="md:px-20 px-5 md:mt-[90px] mt-[60px]"> */}
       <FAQSection data={faqSectionData} locale={language} />
+      <div className="md:px-20 px-5">
+        <BlogSection data={blogSectionData} locale={language} />
+      </div>
+      <div className="px-0 mb-5 md:px-20 md:mb-[68px] md:mt-20 mt-[120px]">
+        <ContactSection />
+      </div>
       {/* </div> */}
     </Layout>
   );
