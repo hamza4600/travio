@@ -11,7 +11,7 @@ const satoshiVariable = localFont({
     },
     {
       path: "../../fonts/satoshi/Satoshi-Black.woff2",
-      style: "extrabold",
+      style: "black",
       weight: "900",
     },
     {
@@ -21,12 +21,12 @@ const satoshiVariable = localFont({
     },
     {
       path: "../../fonts/satoshi/Satoshi-Light.woff2",
-      style: "normal",
+      style: "light",
       weight: "300",
     },
     {
       path: "../../fonts/satoshi/Satoshi-Medium.woff2",
-      style: "normal",
+      style: "medium",
       weight: "500",
     },
   ],
@@ -38,27 +38,27 @@ const montserratFont = localFont({
     {
       path: "../../fonts/montserrat/Montserrat-Black.woff2",
       weight: "900",
-      style: "normal",
+      style: "black",
     },
     {
       path: "../../fonts/montserrat/Montserrat-Bold.woff2",
       weight: "700",
-      style: "normal",
+      style: "bold",
     },
     {
       path: "../../fonts/montserrat/Montserrat-ExtraBold.woff2",
       weight: "800",
-      style: "normal",
+      style: "extrabold",
     },
     {
       path: "../../fonts/montserrat/Montserrat-Light.woff2",
       weight: "300",
-      style: "normal",
+      style: "light",
     },
     {
       path: "../../fonts/montserrat/Montserrat-Medium.woff2",
       weight: "500",
-      style: "normal",
+      style: "medium",
     },
     {
       path: "../../fonts/montserrat/Montserrat-Regular.woff2",
@@ -68,17 +68,17 @@ const montserratFont = localFont({
     {
       path: "../../fonts/montserrat/Montserrat-SemiBold.woff2",
       weight: "600",
-      style: "normal",
+      style: "semibold",
     },
     {
       path: "../../fonts/montserrat/Montserrat-Thin.woff2",
       weight: "100",
-      style: "normal",
+      style: "thin",
     },
     {
       path: "../../fonts/montserrat/Montserrat-ExtraLight.woff2",
       weight: "200",
-      style: "normal",
+      style: "extralight",
     },
   ],
   variable: "--font-montserrat",
@@ -104,15 +104,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body
         className={`${satoshiVariable.variable} ${montserratFont.variable} ${novo.variable} ${plain.variable} font-sans`}
       >
-        <AppThemeProvider>
-        {children}
-        </AppThemeProvider>
+        <AppThemeProvider>{children}</AppThemeProvider>
       </body>
     </html>
   );

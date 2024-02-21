@@ -89,7 +89,7 @@ const TourGallery = (props: GallerySectionProps) => {
                     "min-w-[233px] md:min-w-[350px] w-full md:max-w-[350px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl"
                   }
                 >
-                  <PhotoView key={i} src={image[0]}>
+                  <PhotoView key={i} src={urlFor(image[0])}>
                     <Image
                       src={urlFor(image[0])}
                       width={350}
@@ -112,7 +112,7 @@ const TourGallery = (props: GallerySectionProps) => {
                       "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                     }
                   >
-                    <PhotoView key={i} src={image[0]}>
+                    <PhotoView key={i} src={urlFor(image[0])}>
                       <Image
                         src={urlFor(image[0])}
                         width={160}
@@ -129,7 +129,7 @@ const TourGallery = (props: GallerySectionProps) => {
                         "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                       }
                     >
-                      <PhotoView key={i} src={image[1]}>
+                      <PhotoView key={i} src={urlFor(image[1])}>
                         <Image
                           src={urlFor(image[1])}
                           width={160}
@@ -139,7 +139,7 @@ const TourGallery = (props: GallerySectionProps) => {
                           quality={100}
                         />
                       </PhotoView>
-                      <PhotoView key={i} src={image[1]}>
+                      <PhotoView key={i} src={urlFor(image[1])}>
                         <Image
                           src={urlFor(image[1])}
                           width={160}
@@ -154,7 +154,7 @@ const TourGallery = (props: GallerySectionProps) => {
                 </div>
               )
             )}
-            {/* <div
+            <div
               className={
                 "w-full  h-[190px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
               }
@@ -164,9 +164,9 @@ const TourGallery = (props: GallerySectionProps) => {
                   "w-[94px] md:w-[200px] h-full overflow-hidden rounded-xl "
                 }
               >
-                <PhotoView src={imgs[5][0]}>
+                <PhotoView src={urlFor(imgs[5][0])}>
                   <Image
-                    src={imgs[5][0]}
+                    src={urlFor(imgs[5][0])}
                     width={160}
                     height={160}
                     alt={"image"}
@@ -175,7 +175,7 @@ const TourGallery = (props: GallerySectionProps) => {
                   />
                 </PhotoView>
               </div>
-            </div> */}
+            </div>
             {imgs.slice(3, 6)?.map((image, i) =>
               i % 2 == 1 ? (
                 <div
@@ -184,7 +184,7 @@ const TourGallery = (props: GallerySectionProps) => {
                     "min-w-[233px] w-full h-[190px]  md:h-[320px]   md:min-w-[310px] md:max-w-[400px]  overflow-hidden rounded-xl"
                   }
                 >
-                  <PhotoView key={i} src={image[0]}>
+                  <PhotoView key={i} src={urlFor(image[0])}>
                     <Image
                       src={urlFor(image[0])}
                       width={320}
@@ -207,7 +207,7 @@ const TourGallery = (props: GallerySectionProps) => {
                       "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                     }
                   >
-                    <PhotoView key={i} src={image[0]}>
+                    <PhotoView key={i} src={urlFor(image[0])}>
                       <Image
                         src={urlFor(image[0])}
                         width={160}
@@ -224,7 +224,7 @@ const TourGallery = (props: GallerySectionProps) => {
                         "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                       }
                     >
-                      <PhotoView key={i} src={image[1]}>
+                      <PhotoView key={i} src={urlFor(image[1])}>
                         <Image
                           src={urlFor(image[1])}
                           width={160}

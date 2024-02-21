@@ -16,7 +16,7 @@ const BlogCard = ({ blog, locale }) => {
   const isMobile = windows.width < 768;
   return (
     blog && (
-      <Link className={"flex-shrink-0"} href={blog?.slug?.current}>
+      <Link className={"flex-shrink-0"} href={locale + blog?.slug?.current}>
         <div className=" w-full">
           <div className={"rounded-3xl max-sm:rounded-[8px] overflow-hidden"}>
             {blog?.cover_image && (

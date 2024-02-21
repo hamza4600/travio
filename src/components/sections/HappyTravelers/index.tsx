@@ -61,10 +61,10 @@ const TravlerReviews = (props) => {
             }
           />
         </div>
-        <div className="overflow-x-none md:overflow-hidden pr-5 lg:block h-full  pb-11 md:pb-0 ">
+        <div className="overflow-x-none md:overflow-hidden pr-5 lg:block h-full md:pt-8  pb-11 md:pb-0 ">
           <SwiperComponent
             scrollCount={2}
-            className={"gap-[40px] md:gap-[48px] md:!mr-10  "}
+            className={"gap-[40px] md:gap-[48px] md:!mr-10"}
             length={testimonials?.length}
           >
             {testimonials?.map((item, index: any) => {
