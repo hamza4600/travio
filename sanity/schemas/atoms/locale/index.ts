@@ -5,7 +5,7 @@ Instructions to add a new language:
 */
 
 export type SupportedLanguage = {
-  id: 'en' | 'es'
+  id: 'en' | 'es' | 'por'
   title: string
 }
 

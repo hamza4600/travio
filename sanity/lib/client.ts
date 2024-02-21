@@ -39,6 +39,8 @@ export function localizedString(
   return text?.[locale ?? 'en'] || ''
 }
 
+export type PropsWithLocale<T> = T & { locale: SanityLocale }
+
 export function localizedNumber(text?: SanityLocaleNumber, locale?: SanityLocale) {
   if (!text) return 0
   return text?.[locale ?? 'en'] || 0
