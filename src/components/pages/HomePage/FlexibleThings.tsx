@@ -20,7 +20,7 @@ export default function FlexibleThings({ data, locale }) {
           <Text
             variant={"darkblue"}
             as={"h2"}
-            className="text-2xl font-bold leading-[30px] md:leading-[34px] max-lg:mt-5 max-lg:text-[20px]"
+            className="text-2xl font-bold leading-[30px] md:leading-[34px] max-lg:text-[20px]"
           >
             {data.title[locale]}
           </Text>

@@ -5,7 +5,7 @@ import { Text } from "../../ui/text";
 import { Button } from "../../ui/button";
 
 const type =
-  "text-[12px] md:text-sm items-center font-medium leading-[16px] md:leading-[22px] flex gap-1";
+  "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-5 text-[12px] leading-4";
 
 const TourCard = ({
   pic,
@@ -51,7 +51,7 @@ const TourCard = ({
               ></img>
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {days}
-              </p>
+              </Text>
             </div>
             <div className={type}>
               <img
@@ -63,7 +63,7 @@ const TourCard = ({
               ></img>
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {cities}
-              </p>
+              </Text>
             </div>
             <div className={type}>
               <Image
@@ -74,9 +74,7 @@ const TourCard = ({
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
                 quality={100}
               ></Image>
-              <p className="text-darkblue font-medium font-satoshi md:text-[14px] md:leading-5 text-[12px] leading-4">
-                {countries}
-              </p>
+              <Text className="">{countries}</Text>
             </div>
           </div>
           <div className="mt-6 flex justify-between items-start">
