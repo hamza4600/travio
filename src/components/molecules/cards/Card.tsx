@@ -22,7 +22,7 @@ const TourCard = ({
       <div className="bg-white relative h-min shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
         <Text
           variant={"tertiary"}
-          className="bg-red-600 absolute m-3 right-0 px-3 py-1 leading-[20px] text-white font-bold text-[10px] md:text-xs rounded-full"
+          className="bg-[#D10002] absolute m-3 right-0 px-3 py-1 text-white font-bold text-[10px] md:text-[12px] md:leading-5 rounded-full"
         >
           Hot Deal
         </Text>
@@ -51,7 +51,7 @@ const TourCard = ({
               ></img>
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {days}
-              </Text>
+              </p>
             </div>
             <div className={type}>
               <img
@@ -63,7 +63,7 @@ const TourCard = ({
               ></img>
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {cities}
-              </Text>
+              </p>
             </div>
             <div className={type}>
               <Image
@@ -74,9 +74,9 @@ const TourCard = ({
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
                 quality={100}
               ></Image>
-              <Text fontWeight={"500"} variant={"darkblue"}>
+              <p className="text-darkblue font-medium font-satoshi md:text-[14px] md:leading-5 text-[12px] leading-4">
                 {countries}
-              </Text>
+              </p>
             </div>
           </div>
           <div className="mt-6 flex justify-between items-start">
@@ -98,7 +98,7 @@ const TourCard = ({
           </div>
           <Button
             className={
-              "mt-3 !mb-0 !py-2.5 !px-7 md:leading-[22px] leading-6 font-bold max-sm:h-10 h-[42px]"
+              "mt-3 !mb-0 !py-2.5 !px-7 text-[14px] md:leading-[22px] leading-6 font-bold max-sm:h-10 h-[42px]"
             }
             variant={"sky"}
             style={{ width: "100%" }}

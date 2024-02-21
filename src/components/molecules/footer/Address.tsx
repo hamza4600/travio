@@ -17,7 +17,7 @@ const Address = ({
     <div className="flex flex-col flex-none text-sm gap-3 md:max-w-[218px]">
       <Text
         // variant={"darkblue"}
-        className="text-[16px] font-medium leading-6 md:text-base text-dimSecondary"
+        className="md:text-[16px] font-medium md:leading-6 text-[12px] leading-5 md:text-base text-dimSecondary"
       >
         {heading}
       </Text>

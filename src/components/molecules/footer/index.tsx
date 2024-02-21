@@ -8,6 +8,7 @@ import Footer__links from "./FooterLink";
 import Address from "./Address";
 import Container from "../container";
 import { urlFor } from "../../../../sanity/lib/client";
+import useWindowSize from "@/hooks/useWindows";
 
 // const CARDS = [
 //   "/visa_card.png",
@@ -21,6 +22,9 @@ import { urlFor } from "../../../../sanity/lib/client";
 const Footer = ({ footer }) => {
   const params = useParams();
 
+  const windows = useWindowSize();
+  const isMobile = windows.width < 768;
+
   console.log("footer: ", footer);
 
   const language = useMemo(() => {
@@ -29,7 +33,10 @@ const Footer = ({ footer }) => {
       : params!.language;
   }, [params]);
 
-  console.log("language", language);
+  console.log("footer: ", footer);
+  const logo = urlFor(footer?.logo?.asset?._ref);
+  const mobileLogo = urlFor(footer?.logo?.mobile?.asset?._ref);
+
   return (
     <div className="w-full bg-primary px-20 max-lg:px-5 max-w-[1440px] mx-auto box-border">
       <Container>
@@ -39,10 +46,10 @@ const Footer = ({ footer }) => {
             <div className="flex flex-col-reverse lg:flex-col justify-start items-start">
               <div className="mt-9 lg:mt-0">
                 <div className="flex flex-col gap-1 md:gap-2">
-                  <div className="relative w-36 flex items-start justify-start md:w-[220px] h-[38px] md:h-[52px]">
+                  <div className="relative w-[198px] flex items-start justify-start md:w-[260px] h-[45px] md:h-[65px]">
                     <Image
                       // src={(footer?.logo && urlFor(footer?.logo)) || ""}
-                      src={urlFor(footer?.logo) || ""}
+                      src={isMobile ? mobileLogo : logo}
                       className=""
                       layout="fill"
                       alt="Company logo"
@@ -124,7 +131,7 @@ const Footer = ({ footer }) => {
               {footer?.locations?.title?.[language]}
             </Text>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 md:gap-12 gap-5">
               {footer?.locations?.locations?.map((item, index) => {
                 return (
                   <Address

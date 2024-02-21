@@ -12,21 +12,22 @@ export default function FlexibleThings({ data, locale }) {
   return (
     <div
       className={
-        "bg-[#F2FAFF] md:px-20 text-center py-5 md:py-3 mt-5 max-lg:mt-0 max-w-[1280px] xl:rounded-[24px] rounded-none"
+        "bg-[#F2FAFF] md:px-20 text-center py-5 md:py-3 mt-5 max-lg:mt-0 xl:rounded-[24px] rounded-none"
       }
     >
       <Container>
         <div className="flex md:items-start items-center justify-center md:justify-start flex-col -tracking-[0.72px]  w-fit mx-auto">
           <Text
-            variant={"darkblue"} as={'h2'}
+            variant={"darkblue"}
+            as={"h2"}
             className="text-2xl font-bold leading-[30px] md:leading-[34px] max-lg:mt-5 max-lg:text-[20px]"
           >
             {data.title[locale]}
           </Text>
-            <hr
-          aria-hidden="true"
-          className="w-[85px] md:w-[103px] border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[2px] border-b-[2px] mb-4 mt-1"
-        />
+          <hr
+            aria-hidden="true"
+            className="w-[85px] md:w-[103px] border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[2px] border-b-[2px] mb-4 mt-1"
+          />
         </div>
 
         {/* <div className="flex justify-between w-full max-lg:flex-wrap gap-[15px] max-lg:mt-5 max-lg:flex-row-reverse"> */}

@@ -18,7 +18,7 @@ const HeroSection = ({ data, locale, banner }) => {
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
 
   return (
-    <section className="px-20 max-xl:px-0">
+    <section>
       <div
         className={
           "relative z-10 h-[540px] md:h-full flex items-end lg:items-center justify-center"
@@ -60,13 +60,15 @@ const HeroSection = ({ data, locale, banner }) => {
             <div className="w-full">
               <header className="flex mt-10 flex-col gap-2.5 px-5">
                 <Text
-                  variant={"tertiary"} as={'h1'}
+                  variant={"tertiary"}
+                  as={"h1"}
                   className="text-[28px]  max-w-[552px] md:text-[56px] font-[900] -tracking-[1.68px] leading-[38px] md:leading-[76px] text-center md:text-start "
                 >
                   {data.title[locale]}
                 </Text>
                 <Text
-                  variant={"tertiary"} as={'h2'}
+                  variant={"tertiary"}
+                  as={"h2"}
                   className="text-sm md:text-[20px] leading-[20px] md:leading-[32px] text-center md:text-start "
                 >
                   {data.subtitle[locale]}
