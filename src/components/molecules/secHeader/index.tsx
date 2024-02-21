@@ -14,15 +14,15 @@ const SectionHeader: FC<SectionHeaderProps> = ({
 }) => {
   return (
     <div
-      className={`flex flex-col 
+      className={`flex flex-col gap-0 md:gap-2 
       ${
         centerLine
-          ? "md:gap-2 gap-2 items-center text-center"
-          : "md:gap-2 gap-2"
+          ? "items-center text-center"
+          : ""
       }
       `}
     >
-      <div className="flex flex-col md:gap-2 gap-2">
+      <div className="flex flex-col gap-2 md:gap-0">
         <Text
           as={"h6"}
           className="font-medium uppercase text-base max-sm:text-[12px] md:leading-6 leading-5"
@@ -33,12 +33,12 @@ const SectionHeader: FC<SectionHeaderProps> = ({
           as={"h2"}
           variant="darkblue"
           className="font-bold leading-[50px] text-[40px] max-sm:text-2xl"
+          style={{ lineHeight: "normal" }}
         >
           {subtitle}
         </Text>
       </div>
       <hr
-        aria-hidden="true"
         className="w-[85px] md:w-[117px] border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[2px]"
       />
     </div>

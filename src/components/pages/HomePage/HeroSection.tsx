@@ -103,7 +103,7 @@ const HeroSection = ({ data, locale, banner }) => {
             </div>
             <footer className="mt-[28px] px-10 md:mt-[71px] flex items-center relative bottom-0">
               <div className="flex">
-                <Image src={"/trustpilot.png"} width={136} height={73} alt="" />
+                <Image src={"/trustpilot.png"} width={136} height={73} alt="" quality={100}/>
 
                 <svg
                   className="mx-[18px]"
@@ -121,7 +121,7 @@ const HeroSection = ({ data, locale, banner }) => {
                   />
                 </svg>
 
-                <Image src={"/trip.png"} width={136} height={73} alt="" />
+                <Image src={"/trip.png"} width={136} height={73} alt="" quality={100} />
               </div>
             </footer>
           </Container>

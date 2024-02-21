@@ -16,7 +16,7 @@ const satoshiVariable = localFont({
     },
     {
       path: "../../fonts/satoshi/Satoshi-Bold.woff2",
-      style: "normal",
+      style: "bold",
       weight: "700",
     },
     {
@@ -104,7 +104,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // console.log(satoshiVariable.variable);
+
   return (
     <html lang="en">
       <body

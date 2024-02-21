@@ -34,6 +34,7 @@ const TourCard = ({
           className="rounded-t-2xl h-[180px] md:h-[220px]"
           src={pic}
           alt=""
+          quality={100}
         />
         <div className="p-4">
           <Text className="text-base md:text-xl text-darkblue font-bold">
@@ -41,25 +42,25 @@ const TourCard = ({
           </Text>
           <div className="flex mt-3 justify-between">
             <div className={type}>
-              <Image
+              <img
                 height={100}
                 width={100}
                 alt=""
                 src="/calendar.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
-              ></Image>
+              ></img>
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {days}
               </Text>
             </div>
             <div className={type}>
-              <Image
+              <img
                 height={100}
                 width={100}
                 alt=""
                 src="/map_plain.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
-              ></Image>
+              ></img>
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {cities}
               </Text>
@@ -71,6 +72,7 @@ const TourCard = ({
                 alt=""
                 src="/globe.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
+                quality={100}
               ></Image>
               <Text fontWeight={"500"} variant={"darkblue"}>
                 {countries}

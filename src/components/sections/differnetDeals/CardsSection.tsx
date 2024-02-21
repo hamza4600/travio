@@ -1,4 +1,3 @@
-import React from "react";
 import Swiper from "@/components/molecules/Swiper";
 import TourCard from "@/components/molecules/cards/Card";
 import Container from "@/components/molecules/container";
@@ -18,7 +17,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 1851,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -28,7 +27,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 2581,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -38,7 +37,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 8851,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -48,7 +47,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 991,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -58,7 +57,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 161,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -68,7 +67,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 152,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -78,7 +77,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 85,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -88,7 +87,7 @@ export const data1 = [
     price: 4000,
   },
   {
-    id: 1,
+    id: 9,
     pic: "/cardpic.png",
     title: "Safari Falls: Cape's Exotic Adventure",
     day: "11 days",
@@ -103,7 +102,7 @@ const CardsSection = ({ data, locale }) => {
   return (
     <Container className="text-black w-full smd:mr-0">
       <div className="h-fit relative md:mt-12 mt-6">
-        <Swiper className={"gap-6 pb-3"} length={data.length} scrollCount={4}>
+        <Swiper className={"gap-6 pb-3"} length={data1.length} scrollCount={4}>
           {data1.map((data) => (
             <TourCard
               key={data.id}

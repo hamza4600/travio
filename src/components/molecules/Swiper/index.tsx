@@ -72,7 +72,7 @@ export default function SwiperComponent({
         {/* </SwiperSlide> */}
       </div>
       {showNext && (
-        <div
+        <button
           className={
             "rounded-full bg-[#3FA9F5]  h-10 z-[600] flex items-center justify-center w-10 absolute right-4 -bottom-20 md:top-1/2 -translate-y-1/2 cursor-pointer"
           }
@@ -90,10 +90,10 @@ export default function SwiperComponent({
               fill="white"
             />
           </svg>
-        </div>
+        </button>
       )}
       {showPrev && (
-        <div
+        <button
           className={
             "rounded-full z-[1000] bg-[#3FA9F5] h-10 flex items-center justify-center w-10 absolute right-20 -bottom-20  md:right-0 md:left-4 md:top-1/2 -translate-y-1/2 cursor-pointer "
           }
@@ -112,7 +112,7 @@ export default function SwiperComponent({
               fill="white"
             />
           </svg>
-        </div>
+        </button>
       )}
     </div>
   );

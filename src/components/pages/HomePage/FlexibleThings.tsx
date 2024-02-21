@@ -9,7 +9,6 @@ export default function FlexibleThings({ data, locale }) {
   const windows = useWindowSize();
   const isMobile = windows.width < 768;
 
-  // console.log(data);
   return (
     <div
       className={
@@ -19,12 +18,15 @@ export default function FlexibleThings({ data, locale }) {
       <Container>
         <div className="flex md:items-start items-center justify-center md:justify-start flex-col -tracking-[0.72px]  w-fit mx-auto">
           <Text
-            variant={"darkblue"}
+            variant={"darkblue"} as={'h2'}
             className="text-2xl font-bold leading-[30px] md:leading-[34px] max-lg:mt-5 max-lg:text-[20px]"
           >
             {data.title[locale]}
           </Text>
-          <hr className="w-[85px] md:w-1/2 mt-[6px] bg-[#FFBB0B] h-0.5  mb-4" />
+            <hr
+          aria-hidden="true"
+          className="w-[85px] md:w-[103px] border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[2px] border-b-[2px] mb-4 mt-1"
+        />
         </div>
 
         {/* <div className="flex justify-between w-full max-lg:flex-wrap gap-[15px] max-lg:mt-5 max-lg:flex-row-reverse"> */}
