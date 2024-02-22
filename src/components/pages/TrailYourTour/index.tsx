@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import Layout from "@/components/layout";
 import FAQSection from "@/components/sections/faq";
-// import { data } from "../HomePage/data";
 import { useCallback, useState } from "react";
 import Steps from "./Steps";
 const SelectDestinationSection = dynamic(() => import("./SelectDestiSection"));
@@ -35,6 +34,22 @@ const TailorYourTour = ({ language, pageData }) => {
   const resolver = useZodValidationResolver(validationSchema);
   const [selectedDestination, setSelectedDestination] = useState<string[]>([]);
 
+  const handleSelectDestination = (value: string) => {
+    const currentSelectedDestinations = getValues("selectedDestination");
+    let updatedSelectedDestinations = [...currentSelectedDestinations];
+
+    if (currentSelectedDestinations.includes(value)) {
+      updatedSelectedDestinations = currentSelectedDestinations.filter(item => item !== value);
+    } else {
+      updatedSelectedDestinations.push(value);
+    }
+
+    setValue("selectedDestination", updatedSelectedDestinations, {
+      shouldValidate: true,
+    });
+    setSelectedDestination(updatedSelectedDestinations);
+  }
+
   const {
     control,
     handleSubmit,
@@ -50,8 +65,6 @@ const TailorYourTour = ({ language, pageData }) => {
     },
     resolver: resolver,
   });
-
-  console.log(layout);
 
   return (
     <Layout
@@ -78,24 +91,10 @@ const TailorYourTour = ({ language, pageData }) => {
             console.log(data);
           })}
         >
+
           <SelectDestinationSection
             selectedDestination={selectedDestination}
-            setSelectedDestination={(value: string) => {
-              const currentSelectedDestinations = getValues(
-                "selectedDestination"
-              );
-              if (!currentSelectedDestinations.includes(value)) {
-                const updatedSelectedDestinations = [
-                  ...currentSelectedDestinations,
-                  value,
-                ];
-                setValue("selectedDestination", updatedSelectedDestinations, {
-                  shouldValidate: true,
-                });
-                setSelectedDestination(updatedSelectedDestinations);
-              }
-              console.log(value, "getValues", getValues("selectedDestination"));
-            }}
+            setSelectedDestination={handleSelectDestination}
           />
           <Step1
             onChange={useCallback(

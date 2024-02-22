@@ -1,6 +1,6 @@
 import SectionHeader from "@/components/molecules/secHeader";
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 
 export default function Steps({
   disableNext,
@@ -14,6 +14,8 @@ export default function Steps({
   onSubmit: () => void;
 }) {
   const [step, setStep] = useState(1);
+  const [isPending, startTransition] = useTransition()
+
   return (
     <div className="flex my-8 flex-col gap-5 lg:gap-10 items-center sm:w-[90%] md:mx-auto px-3">
       <SectionHeader
@@ -30,21 +32,24 @@ export default function Steps({
       <div
         className={`${
           step == 1 ? " bg-white" : "bg-primary"
-        }  sm:rounded-[20px] pt-10 flex flex-col gap-4 `}
+        }  sm:rounded-[20px] pt-10 flex flex-col gap-4 pb-11`}
+        style={{ minHeight: '450px' }}
       >
         {children && (
           <>
             {children[step - 1]}
-            <div className="w-full flex justify-center mt-10 gap-3 items-center px-24 flex-wrap">
+            <div className="w-full flex justify-center md:mt-6 gap-3 items-center md:px-24 mt-4 flex-wrap">
               {step > 1 ? (
                 <Button
                   variant="outline"
                   onClick={() => {
-                    setStep(step - 1);
+                    startTransition(() => {
+                      setStep(step - 1);
+                    })
                   }}
                   className="px-[30px] py-3 h-12 w-[246px] max-md:max-w-[160px] max-[375px]:max-w-[120px] max-md:h-10"
                 >
-                  {"Back"}
+                  {isPending ? "Loading..." : "Back"}
                 </Button>
               ) : (
                 <></>
@@ -54,11 +59,13 @@ export default function Steps({
                   variant={"sky"}
                   className="h-12 w-[246px] max-md:max-w-[160px] max-[375px]:max-w-[120px] max-md:h-10"
                   onClick={() => {
-                    setStep(step + 1);
+                    startTransition(() => {
+                      setStep(step + 1);
+                    })
                   }}
                   disabled={disableNext}
                 >
-                  {"Next Step"}
+                  {isPending ? "Loading..." : "Next Step"}
                 </Button>
               ) : (
                 <Button
