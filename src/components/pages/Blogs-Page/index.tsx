@@ -15,16 +15,16 @@ const MainBlogPage = ({language, pageData}) => {
             globals={layout}
         >
             MainBlog Page
-            <Slicer
-                locale={language}
-                // sections={
-                //     data?.sections?.map((sec) =>
-                //       sec?._type === 'all_blogs_section' ? { ...sec, blogs: allBlogs } : sec
-                //     ) as any
-                // }
-                sections={pageData?.sections}
-                components={BlogPageSectionsMap}
-            />
+                <Slicer
+                    locale={language}
+                    // sections={
+                    //     data?.sections?.map((sec) =>
+                    //       sec?._type === 'all_blogs_section' ? { ...sec, blogs: allBlogs } : sec
+                    //     ) as any
+                    // }
+                    sections={pageData?.sections}
+                    components={BlogPageSectionsMap}
+                />
         </Layout>
     )
 }

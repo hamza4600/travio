@@ -5,12 +5,12 @@ import {
     SanityBlogPageSectionNames,
 } from '../../../sanity/lib/types'
 
-const BlogHeroSection = dynamic(() => import('./BlogHeroSection'))
-const NewsletterSection = dynamic(() => import('./NewsletterSection'))
-const InterestSection = dynamic(() => import('./InterestSection'))
-const FeatureTopBlogSection = dynamic(() => import('./FeatureTopBlogSection'))
-const BlogSection = dynamic(() => import('./BlogSection'))
-const AllBlogsSection = dynamic(() => import('./AllBlogsSection'))
+const BlogHeroSection = dynamic(() => import('./BlogHeroSection'), {ssr: false })
+const NewsletterSection = dynamic(() => import('./NewsletterSection'), { ssr: false })
+const InterestSection = dynamic(() => import('./InterestSection'), { ssr: false })
+const FeatureTopBlogSection = dynamic(() => import('./FeatureTopBlogSection'), { ssr: false })
+const BlogSection = dynamic(() => import('./BlogSection'), { loading: () => <p>Loading...</p>, ssr: false })
+const AllBlogsSection = dynamic(() => import('./AllBlogsSection'), { loading: () => <p>Loading...</p>, ssr: false })
 
 export const BlogPageSectionsMap: {
     [name in SanityBlogPageSectionNames]?: FunctionComponent<any> | ComponentClass<any, any>

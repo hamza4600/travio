@@ -47,7 +47,7 @@ export default function Step1({
   }, [duration, month, date, onChange]);
 
   return (
-    <div className={`flex flex-col   gap-10 lg:px-9`}>
+    <div className={`flex flex-col gap-10 lg:px-9`}>
       <div className="flex max-lg:flex-col justify-center items-start gap-4 px-12 lg:gap-12">
         <div
           className="text-lg font-medium text-darkblue flex gap-[6px] items-center flex-nowrap whitespace-nowrap font-satoshi"
@@ -80,7 +80,7 @@ export default function Step1({
         </div>
       )}
       {mode == "approxDates" && (
-        <div className="flex justify-center flex-col md:flex-row gap-4 ">
+        <div className="flex justify-center flex-col md:flex-row gap-4 md:px-0 px-4 md:gap-12">
           <div className="flex flex-col gap-3 text-base text-gray ">
             <p>(1) Select Month</p>
             <div className="p-4 grid grid-cols-3 gap-x-1 bg-white rounded shadow-md">
@@ -112,7 +112,7 @@ export default function Step1({
           </div>
           <div className="flex flex-col gap-2 text-base text-gray ">
             <p>(2) Trip duration (approx)</p>
-            <div className="p-5 grid grid-cols-2 bg-white gap-4 rounded shadow-md min-h-full">
+            <div className="p-5 grid grid-cols-2 bg-white gap-4 rounded shadow-md min-w-[300px] min-h-[300px]">
               {Durations.map((item: any) => (
                 <div
                   key={item?.name}
