@@ -34,7 +34,6 @@ import {
 import { blogSectionData } from "../DynamicDestinations/data";
 
 const HomePage = ({ pageData, language }) => {
-
   const { layout, pageData: SECTIONS_DATA } = pageData || {};
 
   const {
@@ -65,11 +64,11 @@ const HomePage = ({ pageData, language }) => {
       />
       <Popup />
 
-      <div className="px-20 max-xl:px-0">
+      <div>
         <FlexibleThings data={FEATURE_SECTION_1} locale={language} />
       </div>
 
-      <div className="px-20 max-lg:px-5 mt-[68px]">
+      <div className="px-20 max-lg:px-5 mt-[50px]">
         <SectionHeader title={"Cheap Trips"} subtitle={"Hot Travel Deals"} />
         <CardsSection data={DEALS_SECTION} locale={language} />
       </div>

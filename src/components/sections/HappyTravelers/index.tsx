@@ -34,8 +34,8 @@ const TravlerReviews = (props) => {
   const isMobile = windows.width < 768;
 
   return (
-    <div className="w-full bg-[#F2FAFF] text-black py-[30px]  md:h-full relative">
-      <Container className={"lg:flex px-5 md:pr-0 items-center gap-x-10 "}>
+    <div className="w-full bg-[#F2FAFF] text-black py-[30px]  md:h-full relative md:px-20 px-5">
+      <Container className={"lg:flex md:pr-0 items-center gap-x-10 "}>
         <div className="lg:max-w-xs font-satoshi shrink-0 w-full text-center md:text-start">
           <h2 className="text-xl md:text-[40px] leading-[30px] md:leading-tight -tracking-[1.2px] font-bold">
             <span className="text-[#3FA9F5] md:text-black">

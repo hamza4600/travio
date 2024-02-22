@@ -14,6 +14,8 @@ import "react-photo-view/dist/react-photo-view.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import { urlFor } from "../../../../sanity/lib/client";
+import "react-photo-view/dist/react-photo-view.css";
+
 // import useWindowSize from "@/hooks/useWindows";
 export type GallerySectionProps = {
   // data: SanityGallerySection
@@ -26,7 +28,7 @@ const TourGallery = (props: GallerySectionProps) => {
   const {
     data: { title, subtitle, images },
     locale,
-  } = props || {};
+  } = props;
 
   // const windows = useWindowSize();
   // const isMobile = windows.width < 768;
@@ -44,8 +46,6 @@ const TourGallery = (props: GallerySectionProps) => {
       single = !single;
     }
   }
-
-  console.log("images: ", imgs);
 
   return (
     <div className="pt-5 md:pt-10 bg-[#F2FAFF] min-h-[482px] md:min-h-[522px] text-black">
@@ -71,6 +71,7 @@ const TourGallery = (props: GallerySectionProps) => {
             src={"/small-logo.svg"}
             alt={"small logo"}
             className={"mx-auto"}
+            quality={100}
           />
         </div>
 
@@ -95,6 +96,7 @@ const TourGallery = (props: GallerySectionProps) => {
                       height={320}
                       alt={"image"}
                       className={"w-full h-full flex-shrink-0 object-cover"}
+                      quality={100}
                     />
                   </PhotoView>
                 </div>
@@ -117,6 +119,7 @@ const TourGallery = (props: GallerySectionProps) => {
                         height={160}
                         alt={"image"}
                         className={"object-cover w-full h-full"}
+                        quality={100}
                       />
                     </PhotoView>
                   </div>
@@ -133,6 +136,7 @@ const TourGallery = (props: GallerySectionProps) => {
                           height={160}
                           alt={"image"}
                           className={"object-cover w-full h-full"}
+                          quality={100}
                         />
                       </PhotoView>
                       <PhotoView key={i} src={image[1]}>
@@ -142,6 +146,7 @@ const TourGallery = (props: GallerySectionProps) => {
                           height={160}
                           alt={"image"}
                           className={"object-cover w-full h-full"}
+                          quality={100}
                         />
                       </PhotoView>
                     </div>
@@ -149,12 +154,12 @@ const TourGallery = (props: GallerySectionProps) => {
                 </div>
               )
             )}
-            <div
+            {/* <div
               className={
                 "w-full  h-[190px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
               }
             >
-              {/* <div
+              <div
                 className={
                   "w-[94px] md:w-[200px] h-full overflow-hidden rounded-xl "
                 }
@@ -166,10 +171,11 @@ const TourGallery = (props: GallerySectionProps) => {
                     height={160}
                     alt={"image"}
                     className={"object-cover w-full h-full"}
+                    quality={100}
                   />
                 </PhotoView>
-              </div> */}
-            </div>
+              </div>
+            </div> */}
             {imgs.slice(3, 6)?.map((image, i) =>
               i % 2 == 1 ? (
                 <div
@@ -183,6 +189,7 @@ const TourGallery = (props: GallerySectionProps) => {
                       src={urlFor(image[0])}
                       width={320}
                       height={320}
+                      quality={100}
                       alt={"image"}
                       className={"w-full h-full flex-shrink-0 object-cover "}
                     />
@@ -205,6 +212,7 @@ const TourGallery = (props: GallerySectionProps) => {
                         src={urlFor(image[0])}
                         width={160}
                         height={160}
+                        quality={100}
                         alt={"image"}
                         className={"object-cover w-full h-full"}
                       />
@@ -221,6 +229,7 @@ const TourGallery = (props: GallerySectionProps) => {
                           src={urlFor(image[1])}
                           width={160}
                           height={160}
+                          quality={100}
                           alt={"image"}
                           className={"object-cover w-full h-full"}
                         />
