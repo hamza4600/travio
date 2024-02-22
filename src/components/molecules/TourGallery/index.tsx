@@ -22,12 +22,14 @@ export type GallerySectionProps = {
   data: any;
   banner?: any;
   locale: string;
+  forTourPage?: boolean;
 };
 
 const TourGallery = (props: GallerySectionProps) => {
   const {
     data: { title, subtitle, images },
     locale,
+    forTourPage,
   } = props;
 
   // const windows = useWindowSize();
@@ -48,31 +50,54 @@ const TourGallery = (props: GallerySectionProps) => {
   }
 
   return (
-    <div className="pt-5 md:pt-10 bg-[#F2FAFF] min-h-[482px] md:min-h-[522px] text-black">
+    <div
+      className={`${
+        forTourPage ? "bg-white" : "bg-[#F2FAFF]"
+      } pt-5 md:pt-10 min-h-[482px] md:min-h-[522px] text-black`}
+    >
       <Container>
         <h2
           id="triphighlights"
-          className="text-[24px] font-satoshi text-darkblue px-5 md:text-[40px] leading-[32px] md:leading-[50px] -tracking-[1.2px] font-bold text-center"
+          className={`${
+            forTourPage
+              ? "md:text-left text-center text-[24px] md:leading-[32px] md:pl-[107px] px-5 leading-[34px]"
+              : "text-center text-[24px] px-5 md:text-[40px] leading-[32px] md:leading-[50px]"
+          } font-satoshi text-darkblue -tracking-[1.2px] font-bold`}
         >
           {title[locale]}
         </h2>
+        {forTourPage && (
+          <hr className="border-b-[#FFBB0B] max-md:hidden mt-[10px] ml-[107px] w-[122px] border-b-[3px]" />
+        )}
 
-        <p className="text-sm font-satoshi px-5 md:text-lg mt-[10px] md:mt-1.5 text-gray text-center md:leading-[28px] leading-[24px]">
+        <p
+          className={`${
+            forTourPage
+              ? "md:pl-[107px] md:mt-3 px-5 max-md:text-center"
+              : "text-center px-5"
+          } text-sm font-satoshi  md:text-lg mt-[10px] md:mt-1.5 text-gray leading-[24px]`}
+        >
           {subtitle[locale]?.substring(0, 5)[locale]}
           <span className="text-[#3FA9F5] font-satoshi font-medium opacity-100">
             {subtitle[locale]?.substring(5, 32)}
           </span>
           {subtitle[locale]?.substring(32)}
         </p>
-        <div className={"mt-[10px] md:mt-2 mb-[30px]"}>
-          <Image
-            width={80}
-            height={40}
-            src={"/small-logo.svg"}
-            alt={"small logo"}
-            className={"mx-auto"}
-            quality={100}
-          />
+        <div
+          className={`${
+            forTourPage ? "mt-12" : "mt-[10px] md:mt-2 mb-[30px]"
+          } `}
+        >
+          {forTourPage ? null : (
+            <Image
+              width={80}
+              height={40}
+              src={"/small-logo.svg"}
+              alt={"small logo"}
+              className={"mx-auto"}
+              quality={100}
+            />
+          )}
         </div>
 
         <PhotoProvider maskOpacity={0.6}>
