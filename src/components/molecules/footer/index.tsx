@@ -82,7 +82,7 @@ const Footer = ({ footer }) => {
               <div className="flex flex-wrap gap-5 md:gap-6 lg:mt-10 mt-0 w-full justify-center lg:justify-start">
                 {footer?.socials?.map((item, index) => {
                   return (
-                    <Link href={item?.link} key={index}>
+                    <Link href={language + item?.link} key={index}>
                       <Image
                         width={20}
                         height={20}

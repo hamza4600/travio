@@ -1,54 +1,54 @@
-import React, { useEffect } from 'react'
-import { Control, RegisterOptions, useController } from 'react-hook-form'
+import React, { useEffect } from "react";
+import { Control, RegisterOptions, useController } from "react-hook-form";
 
-import { Check, Minus, Plus } from '@phosphor-icons/react'
+import { Check, Minus, Plus } from "@phosphor-icons/react";
 
 interface Props {
-  name: string
+  name: string;
   type:
-    | 'buttonNumber'
-    | 'select'
-    | 'text'
-    | 'number'
-    | 'password'
-    | 'checkbox'
-    | 'boxSelection'
-    | 'date'
-    | 'textarea'
-    | 'datetime-local'
-  control: Control<any>
-  variant?: 'primary' | 'secondary'
-  placeholder?: string
-  label?: any
-  options?: { label: string; value: any }[] | { name: string; icon: any }[]
-  className?: string
-  checkboxValue?: any
-  rules?: RegisterOptions
-  disabled?: boolean
-  editable?: boolean
-  defaultValue?: any
+    | "buttonNumber"
+    | "select"
+    | "text"
+    | "number"
+    | "password"
+    | "checkbox"
+    | "boxSelection"
+    | "date"
+    | "textarea"
+    | "datetime-local";
+  control: Control<any>;
+  variant?: "primary" | "secondary";
+  placeholder?: string;
+  label?: any;
+  options?: { label: string; value: any }[] | { name: string; icon: any }[];
+  className?: string;
+  checkboxValue?: any;
+  rules?: RegisterOptions;
+  disabled?: boolean;
+  editable?: boolean;
+  defaultValue?: any;
 }
 
 const VARIANT = {
   buttonNumber: {
     button: {
-      primary: 'bg-yellow-500',
-      secondary: 'bg-blue-500',
+      primary: "bg-yellow-500",
+      secondary: "bg-blue-500",
     },
     display: {
-      primary: 'bg-white',
-      secondary: 'bg-white',
+      primary: "bg-white",
+      secondary: "bg-white",
     },
   },
-}
+};
 export const ERROR_MESSAGES = {
-  required: 'Required',
-}
+  required: "Required",
+};
 export default function Input({
   name,
   control,
   type,
-  variant = 'primary',
+  variant = "primary",
   placeholder,
   label,
   options,
@@ -62,19 +62,24 @@ export default function Input({
   const {
     field,
     fieldState: { error },
-  } = useController({ control, name, rules, defaultValue })
-  
+  } = useController({ control, name, rules, defaultValue });
+
   const errorMsg = error?.type
-    ? ERROR_MESSAGES[error.type as keyof typeof ERROR_MESSAGES] || error.message || 'Error'
-    : undefined
+    ? ERROR_MESSAGES[error.type as keyof typeof ERROR_MESSAGES] ||
+      error.message ||
+      "Error"
+    : undefined;
 
-    useEffect(() => {
-    if (defaultValue) field.onChange(defaultValue)
-  }, [defaultValue])
+  useEffect(() => {
+    if (defaultValue) field.onChange(defaultValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defaultValue]);
 
-  if (type == 'buttonNumber')
+  if (type == "buttonNumber")
     return (
-      <div className={`flex font-medium text-base text-black flex-col gap-2 ${className}`}>
+      <div
+        className={`flex font-medium text-base text-black flex-col gap-2 ${className}`}
+      >
         {label && <p>{label}</p>}
         <div className="border border-darkblue/10 flex gap-2 bg-white p-3 justify-between rounded">
           <div className="font-normal text-sm">{placeholder}</div>
@@ -84,11 +89,11 @@ export default function Input({
               onClick={() => {
                 field.onChange(
                   Math.max(
-                    parseInt(field.value || '0') - 1,
-                    typeof rules?.min === 'number' ? rules.min : 0
+                    parseInt(field.value || "0") - 1,
+                    typeof rules?.min === "number" ? rules.min : 0
                   ),
-                  'members'
-                )
+                  "members"
+                );
               }}
             >
               {<Minus color="white" />}
@@ -103,21 +108,23 @@ export default function Input({
               onClick={() => {
                 field.onChange(
                   Math.min(
-                    parseInt(field.value || '0') + 1,
-                    typeof rules?.max === 'number' ? rules.max : 99999
+                    parseInt(field.value || "0") + 1,
+                    typeof rules?.max === "number" ? rules.max : 99999
                   ),
-                  'members'
-                )
+                  "members"
+                );
               }}
             >
               {<Plus color="white" />}
             </div>
           </div>
         </div>
-        {errorMsg && <span className="font-thin text-xs text-red-500">{errorMsg}</span>}
+        {errorMsg && (
+          <span className="font-thin text-xs text-red-500">{errorMsg}</span>
+        )}
       </div>
-    )
-  if (type == 'select')
+    );
+  if (type == "select")
     return (
       <div className="flex  font-medium text-base text-black flex-col gap-2">
         {label && <label htmlFor={name}>{label}</label>}
@@ -126,19 +133,22 @@ export default function Input({
           id={name}
           className={`border bg-white border-darkblue/10 text-gray rounded p-1 min-h-[38px] ${className}`}
           {...field}
-        //   placeholder="Select"
-            
+          //   placeholder="Select"
         >
           <option>{placeholder}</option>
 
           {(options as { label: string; value: any }[])?.map((option) => (
-            <option key={option.value} value={option.value}>{option.label}</option>
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
           ))}
         </select>
-        {errorMsg && <span className="font-thin text-xs text-red-500">{errorMsg}</span>}
+        {errorMsg && (
+          <span className="font-thin text-xs text-red-500">{errorMsg}</span>
+        )}
       </div>
-    )
-  if (['text', 'number', 'password', 'date', 'datetime-local'].includes(type))
+    );
+  if (["text", "number", "password", "date", "datetime-local"].includes(type))
     return (
       <div className="flex  font-medium text-base text-black flex-col gap-2">
         {label && <label htmlFor={name}>{label}</label>}
@@ -154,48 +164,56 @@ export default function Input({
           // }}
           {...field}
         />
-        {errorMsg && <span className="font-thin text-xs text-red-500">{errorMsg}</span>}
+        {errorMsg && (
+          <span className="font-thin text-xs text-red-500">{errorMsg}</span>
+        )}
       </div>
-    )
-  if (type == 'checkbox')
+    );
+  if (type == "checkbox")
     return (
       <div
         className={`h-6 w-6 flex justify-center items-center rounded-lg border ${
           field.value === checkboxValue
             ? !editable
-              ? 'bg-gray cursor-not-allowed '
-              : 'bg-blue-500 border-blue'
+              ? "bg-gray cursor-not-allowed "
+              : "bg-blue-500 border-blue"
             : errorMsg
-            ? 'bg-white border-red'
+            ? "bg-white border-red"
             : disabled
-            ? 'bg-gray/10 cursor-not-allowed '
-            : 'bg-white  border-gray'
+            ? "bg-gray/10 cursor-not-allowed "
+            : "bg-white  border-gray"
         }`}
         onClick={() => {
-          if (!editable) return
-          if (field.value === checkboxValue) field.onChange(undefined)
-          else if (!disabled) field.onChange(checkboxValue)
+          if (!editable) return;
+          if (field.value === checkboxValue) field.onChange(undefined);
+          else if (!disabled) field.onChange(checkboxValue);
         }}
       >
-        {(!disabled || field.value) && <Check color="white" width={16} height={16} weight="bold" />}
+        {(!disabled || field.value) && (
+          <Check color="white" width={16} height={16} weight="bold" />
+        )}
       </div>
-    )
-  if (type == 'boxSelection')
+    );
+  if (type == "boxSelection")
     return (
       <div className="flex w-full font-medium text-base text-black flex-col gap-2">
         {label && <label htmlFor={name}>{label}</label>}
         <div className="flex justify-center gap-3 flex-wrap">
           {options?.map((option: any) => (
             <div
-                key={option.name}
+              key={option.name}
               className={`flex border w-fit border-darkblue/10 rounded ${
-                field.value.includes(option.name) ? 'text-white bg-blue-500' : 'text-gray bg-white'
+                field.value.includes(option.name)
+                  ? "text-white bg-blue-500"
+                  : "text-gray bg-white"
               } px-3 py-[10px] text-sm gap-2 items-center whitespace-nowrap flex-nowrap`}
               onClick={() => {
                 if (field.value.includes(option.name)) {
-                  field.onChange(field.value.filter((item: any) => item != option.name))
+                  field.onChange(
+                    field.value.filter((item: any) => item != option.name)
+                  );
                 } else {
-                  field.onChange([...field.value, option.name])
+                  field.onChange([...field.value, option.name]);
                 }
               }}
             >
@@ -203,10 +221,12 @@ export default function Input({
             </div>
           ))}
         </div>
-        {errorMsg && <span className="font-thin text-xs text-red-500">{errorMsg}</span>}
+        {errorMsg && (
+          <span className="font-thin text-xs text-red-500">{errorMsg}</span>
+        )}
       </div>
-    )
-  if (type == 'textarea')
+    );
+  if (type == "textarea")
     return (
       <div className="flex  font-medium text-base text-black flex-col gap-2">
         {label && <label htmlFor={name}>{label}</label>}
@@ -219,8 +239,10 @@ export default function Input({
           {...field}
         />
 
-        {errorMsg && <span className="font-thin text-xs text-red-500">{errorMsg}</span>}
+        {errorMsg && (
+          <span className="font-thin text-xs text-red-500">{errorMsg}</span>
+        )}
       </div>
-    )
-  return <></>
+    );
+  return <></>;
 }

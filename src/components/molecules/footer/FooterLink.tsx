@@ -26,7 +26,7 @@ const Footer__links = ({
       {items.map((item, index) => {
         return (
           <Link
-            href={item.url || ""}
+            href={locale + item.url || ""}
             key={index}
             className="text-[12px] md:text-[16px] md:font-medium leading-[24px] md:leading-normal text-dimSecondary"
           >

@@ -21,6 +21,8 @@ const BlogSection = dynamic(() => import("../../sections/blogs/BlogSection"));
 const OtherTours = dynamic(() => import("./OtherTours"));
 const Popup = dynamic(() => import("@/components/molecules/Popup"));
 
+import "react-photo-view/dist/react-photo-view.css";
+
 import {
   // featureData,
   // data,

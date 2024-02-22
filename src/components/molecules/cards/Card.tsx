@@ -5,7 +5,7 @@ import { Text } from "../../ui/text";
 import { Button } from "../../ui/button";
 
 const type =
-  "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-5 text-[12px] leading-4";
+  "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center";
 
 const TourCard = ({
   pic,
@@ -48,7 +48,7 @@ const TourCard = ({
                 alt=""
                 src="/calendar.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
-              ></img>
+              />
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {days}
               </Text>
@@ -60,7 +60,7 @@ const TourCard = ({
                 alt=""
                 src="/map_plain.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
-              ></img>
+              />
               <Text variant={"darkblue"} fontWeight={"500"}>
                 {cities}
               </Text>
@@ -73,8 +73,10 @@ const TourCard = ({
                 src="/globe.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
                 quality={100}
-              ></Image>
-              <Text className="">{countries}</Text>
+              />
+              <Text fontWeight={"500"} variant={"darkblue"}>
+                {countries}
+              </Text>
             </div>
           </div>
           <div className="mt-6 flex justify-between items-start">

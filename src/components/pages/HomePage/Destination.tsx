@@ -37,7 +37,7 @@ const DestinationsSection = ({ data, locale }) => {
           {validDestinations.map((destination: any, idx: number) => (
             <Link
               key={idx}
-              href={"/#" + destination.destination?.slug?.current}
+              href={locale + destination.destination?.slug?.current}
             >
               <DestinationCard
                 key={destination._key + idx}

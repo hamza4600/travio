@@ -5,7 +5,7 @@ const HeroSection = () => {
     <div className="flex gap-[26px]">
       <div className="md:relative">
         <img
-          className="md:rounded-[16px] rounded-none max-md:min-h-[212px]"
+          className="md:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px]"
           loading="lazy"
           src="/demo/hero_tour.png"
           alt="Hero_pic"
@@ -18,11 +18,18 @@ const HeroSection = () => {
         </p>
       </div>
 
-      <img
-        className="h-[226px] max-w-[336px] max-lg:hidden"
-        src="/demo/ancient.png"
-        alt="hero_supprt_img"
-      />
+      <div className="flex flex-col gap-7 max-lg:hidden">
+        <img
+          className="h-[226px] max-w-[336px] max-lg:hidden"
+          src="/demo/ancient.png"
+          alt="hero_supprt_img"
+        />
+        <img
+          className="h-[226px] max-w-[336px] max-lg:hidden"
+          src="/demo/ancient.png"
+          alt="hero_supprt_img"
+        />
+      </div>
     </div>
   );
 };
