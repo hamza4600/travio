@@ -1,0 +1,105 @@
+import React from "react";
+import Image from "next/image";
+
+// import { SanityWhatsIncludedSection } from "@/sanity/types";
+
+import Container from "@/components/molecules/container";
+import { useState } from "react";
+
+export default function WhatsIncludedSection({ data }: { data: any }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  return (
+    <Container className="flex flex-col py-7 mx-auto max-w-[1312px] px-4  relative">
+      <div id="inclusions">
+        <h2 className="text-darkblue font-satoshi  font-bold text-[20px] lg:text-2xl text-c">
+          {data?.title?.en}
+        </h2>
+        <hr className="md:w-[117px] w-[89px] mt-[5px] border-b-[#FFBB0B] rounded-full md:border-b-[3px] border-b" />
+      </div>
+      <div className="divide-y-2 hidden lg:block divide-darkblue/10 my-3 lg:w-3/4  w-full">
+        {data?.inclusion_list?.map((item: any, index: number) => {
+          return (
+            <div
+              key={index}
+              className="grid grid-cols-2 md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_3fr] xl:grid-cols-[1fr_4fr] py-8 pb-7 gap-7"
+            >
+              <div className="flex items-center gap-2  self-start">
+                <div className="w-7 h-7 relative">
+                  <Image
+                    src={item.icon}
+                    alt={item.icon?.alt?.en ?? ""}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p className="lg:text-xl text-[20px] font-medium text-[#3FA9F5] font-satoshi">
+                  {item.title?.en}
+                </p>
+              </div>
+              <div className="flex flex-col">
+                {item?.description?.map((note: any, index: number) => {
+                  return (
+                    <p
+                      className="text-base font-satoshi text-darkblue font-medium"
+                      key={index}
+                    >
+                      {note.en}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className=" lg:hidden text-base">
+        {/* The Icons color need to be white for the background to be blue */}
+        <div className=" flex flex-row  justify-evenly mt-10 bg-[whitesmoke] px-4 pt-4 rounded-t-2xl items-center gap-5">
+          {data?.inclusion_list?.map((item, index) => (
+            <div
+              onClick={() => setCurrentIndex(index)}
+              key={index}
+              style={{
+                borderBottom:
+                  index === currentIndex
+                    ? "3px solid #FFBB0B "
+                    : "2px solid transparent",
+              }}
+              className="flex h-full pb-2 w-full justify-center  items-center transition-all border-b-orange-400 border-b-2 gap-2  self-start"
+            >
+              <div className="w-7 h-7  relative">
+                <Image
+                  src={item.icon}
+                  alt={item.icon?.alt?.en ?? ""}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        {data?.inclusion_list && (
+          <div className=" flex bg-white shadow-xl shadow-[#f5f5f5]  flex-col justify-start items-start gap-3 p-5">
+            {
+              <p className="lg:text-xl text-base font-medium text-black">
+                {data?.inclusion_list[currentIndex]?.title?.en}
+                <hr className=" w-12 my-2 text-yellow bg-yellow  rounded-full border-[1.5px]" />
+              </p>
+            }
+            <div className="flex text-[14px] flex-col">
+              {data?.inclusion_list[currentIndex]?.description?.map(
+                (note: any, index: number) => {
+                  return (
+                    <p className="text-base font-medium" key={index}>
+                      {note.en}
+                    </p>
+                  );
+                }
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </Container>
+  );
+}

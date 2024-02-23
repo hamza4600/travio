@@ -4,14 +4,18 @@ import Layout from "@/components/layout";
 import dynamic from "next/dynamic";
 const HeroSection = dynamic(() => import("./HeroSection"));
 
-const FlexibleThings = dynamic(() => import("./FlexibleThings"));
+const FlexibleThings = dynamic(
+  () => import("../../sections/FlexibleThings/FlexibleThings")
+);
 const CardsSection = dynamic(
   () => import("../../sections/differnetDeals/CardsSection")
 );
 const GetEarlyNews = dynamic(() => import("@/components/sections/form/Form"));
 const FAQSection = dynamic(() => import("@/components/sections/faq"));
 const TourGallery = dynamic(() => import("@/components/molecules/TourGallery"));
-const FeatureSection = dynamic(() => import("./FeatureSection"));
+const FeatureSection = dynamic(
+  () => import("@/components/sections/FlexibleThings/FlexibleThings")
+);
 import SectionHeader from "@/components/molecules/secHeader";
 const TravlerReviews = dynamic(
   () => import("@/components/sections/HappyTravelers")

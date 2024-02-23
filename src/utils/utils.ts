@@ -56,3 +56,10 @@ export default function DateFormat(date: Date, short: boolean = false) {
 export function clean(value?: string | null): string {
   return value ? vercelStegaSplit(value).cleaned : ``;
 }
+
+export function getFirstDayOfMonth(month: number) {
+  const firstDay = new Date();
+  firstDay.setMonth(month);
+  firstDay.setDate(1);
+  return firstDay;
+}
