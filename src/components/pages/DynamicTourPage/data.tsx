@@ -83,28 +83,6 @@ export const accommodationData = {
   accommodation_types: [
     {
       title: {
-        en: "Standard Room",
-      },
-      subtitle: {
-        en: "Comfortable and affordable.",
-      },
-      resorts: [
-        {
-          title: {
-            en: "Resort A",
-          },
-          image: "/demo/accmd.png",
-        },
-        {
-          title: {
-            en: "Resort B",
-          },
-          image: "/demo/accmd.png",
-        },
-      ],
-    },
-    {
-      title: {
         en: "Luxury Suite",
       },
       subtitle: {
@@ -205,12 +183,41 @@ export const excludedData = {
       title: {
         en: "Accommodation",
       },
+
       description: [
         {
           en: "Comfortable and well-equipped rooms.",
         },
         {
           en: "Free Wi-Fi and other amenities.",
+        },
+      ],
+    },
+    {
+      icon: "/demo/guide.png",
+      title: {
+        en: "Meals",
+      },
+      description: [
+        {
+          en: "Delicious breakfast, lunch, and dinner included.",
+        },
+        {
+          en: "Special dietary requests accommodated.",
+        },
+      ],
+    },
+    {
+      icon: "/demo/guide.png",
+      title: {
+        en: "Meals",
+      },
+      description: [
+        {
+          en: "Delicious breakfast, lunch, and dinner included.",
+        },
+        {
+          en: "Special dietary requests accommodated.",
         },
       ],
     },
@@ -407,4 +414,30 @@ export const contentData = {
       },
     ],
   },
+};
+
+export const excData = {
+  title: { en: "What's Excluded from the Tour" },
+  data: [
+    {
+      icon: "/demo/load.png",
+      text: { en: "International Airfare" },
+    },
+    {
+      icon: "/demo/load.png",
+      text: { en: "International Airfare" },
+    },
+    {
+      icon: "/demo/load.png",
+      text: { en: "International Airfare" },
+    },
+    {
+      icon: "/demo/load.png",
+      text: { en: "International Airfare" },
+    },
+    {
+      icon: "/demo/load.png",
+      text: { en: "International Airfare" },
+    },
+  ],
 };

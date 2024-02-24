@@ -335,12 +335,14 @@ const Expandable = ({
           isOpen
             ? "bg-[#3FA9F5] text-white"
             : "bg-darkblue/[0.02] text-dimSecondary"
-        }  items-center px-7 py-4 ${isOpen ? "rounded-t-2xl" : "rounded-2xl"}`}
+        }  items-center px-7 py-4 ${
+          isOpen ? "rounded-t-2xl  " : "rounded-2xl"
+        }`}
         onClick={() => {
           toggleOpen();
         }}
       >
-        <p className="w-5 text-darkblue font-bold lg:text-[20px] lg:leading-8 flex-1 font-satoshi">
+        <p className="w-5 font-bold lg:text-[20px] lg:leading-8 flex-1 font-satoshi">
           {data.title?.en}
         </p>
         <CaretDown
@@ -364,7 +366,7 @@ const Expandable = ({
               className="object-cover w-full h-full"
             />
           </div>
-          <p className="flex-1 text-darkblue md:text-base font-satoshi">
+          <p className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi">
             {data.description?.en}
           </p>
         </div>
@@ -406,7 +408,7 @@ const ExpandableList = ({
           <img alt="" src={icon} className="object-center" />
         </div>
         <div className="flex flex-col">
-          <p className="flex-1 text-xl font-medium text-darkblue tracking-tight font-satoshi">
+          <p className="flex-1 md:text-xl text-base font-medium text-darkblue tracking-tight font-satoshi">
             {title}
           </p>
           <hr className="w-20 my-2 text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
@@ -424,7 +426,7 @@ const ExpandableList = ({
           );
         })}
         {content && (
-          <p className="text-base font-normal text-darkblue font-satoshi">
+          <p className="md:text-base text-[14px] leading-6 font-normal text-darkblue font-satoshi">
             {content}
           </p>
         )}

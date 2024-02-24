@@ -41,7 +41,7 @@ export default function FlexibleThingsForTour({ data, locale }) {
               />
               <Text
                 variant={"darkblue"}
-                className="font-medium max-sm:w-[140px] max-md:w-[200px] text-base max-sm:text-[12px] leading-5"
+                className="font-medium w-[140px] md:w-[200px] md:text-base text-[12px] leading-5"
               >
                 {feature.title[locale]}
               </Text>

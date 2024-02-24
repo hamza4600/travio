@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import SectionHeader from "@/components/molecules/secHeader";
 
 export default function MemorableExperiencesSection({
   data,
@@ -36,19 +37,14 @@ export default function MemorableExperiencesSection({
   // console.log(data)
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex gap-3 flex-col justify-center w-fit mx-auto items-center">
-        <h1 className="text-[#3FA9F5] font-satoshi text-base font-medium">
-          {data?.tagline?.[locale]}
-        </h1>
-        <div>
-          <h2 className="text-darkblue font-satoshi font-bold md:text-[40px] md:leading-[50px]">
-            {data?.title?.[locale]}
-          </h2>
-          <hr className="lg:w-1/3 w-1/3 my-2 m-auto border-b-[#FFBB0B] rounded-full md:border-b-[3px] border-b-2" />
-        </div>
-      </div>
+      <SectionHeader
+        title={data?.tagline?.[locale]}
+        subtitle={data?.title?.[locale]}
+        centerLine
+      />
+
       <div className="w-full bg-primary">
-        <Container className="flex mx-auto max-w-[1312px] px-4 flex-col py-7 relative">
+        <Container className="flex max-w-[1312px] md:px-20 px-5 flex-col py-7 relative">
           <Swiper
             modules={[Navigation, Scrollbar, A11y, Controller]}
             className="external-buttons mySwiper w-full"
@@ -87,12 +83,12 @@ export default function MemorableExperiencesSection({
           </Swiper>
         </Container>
       </div>
-      <Container className="gap-12 mx-auto max-w-[1312px] px-4  relative flex justify-center">
+      <Container className="gap-12 max-w-[1312px] px-4  relative flex md:justify-center justify-end">
         <button
           className={
-            "rounded-full z-[1000] bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10  md:right-0 md:left-4 md:top-1/2 -translate-y-1/2 cursor-pointer "
+            "rounded-full z-[1000] bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 -translate-y-1/2 cursor-pointer "
           }
-          ref={nextRef}
+          ref={prevRef}
         >
           <svg
             width="18"
@@ -108,12 +104,12 @@ export default function MemorableExperiencesSection({
             />
           </svg>
         </button>
-
+        {/* <div className="swiper-pagination"></div> */}
         <button
           className={
             "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 md:top-1/2 -translate-y-1/2 cursor-pointer"
           }
-          ref={prevRef}
+          ref={nextRef}
         >
           <svg
             width="18"
@@ -137,7 +133,7 @@ const Card = ({ data }: { data: any }) => {
   if (!data) return null;
   return (
     <Link href={"/#" + data.slug?.current}>
-      <div className="w-full min-w-[300px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
+      <div className="max-w-[300px] max-md:max-w-[250px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
         <div className="h-[220px] relative">
           <Image alt="" src={data?.image} fill className="object-cover" />
         </div>

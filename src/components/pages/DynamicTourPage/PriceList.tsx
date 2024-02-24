@@ -222,15 +222,17 @@ function PriceList({
               collapsed ? " grid-cols-6" : "grid-cols-12"
             }`}
           >
-            <h1 className="text-left ml-5 lg:col-span-2 font-satoshi col-span-1">
+            <h1 className="text-left ml-5 lg:col-span-2 text-darkblue font-satoshi col-span-1">
               From
             </h1>
             <p></p>
-            <h1 className="lg:col-span-3 font-satoshi col-span-1">To</h1>
+            <h1 className="lg:col-span-3 font-satoshi text-darkblue col-span-1">
+              To
+            </h1>
 
             <>
               {/* <p className="lg:col-span-3"></p> */}
-              <h1 className="lg:col-span-6 font-satoshi col-span-1 md:ml-0 ml-[65px] text-center">
+              <h1 className="lg:col-span-6 font-satoshi text-darkblue col-span-1 md:ml-0 ml-[65px] text-center">
                 Price
               </h1>
             </>
@@ -254,8 +256,10 @@ function PriceList({
                   }}
                 >
                   <h1
-                    className={`md:col-span-2 font-satoshi  text-base ${
-                      collapsed ? " text-xs md:text-sm ml-2" : "ml-5"
+                    className={`md:col-span-2 font-satoshi whitespace-nowrap  md:text-base md:leading-6 text-[10px] leading-[12px] ${
+                      collapsed
+                        ? "text-[12px] max-md:leading-3 md:text-sm ml-2"
+                        : "ml-5"
                     }`}
                   >
                     {DateFormat(price.from, true)}
@@ -284,8 +288,8 @@ function PriceList({
                     />
                   </svg>
                   <h1
-                    className={`md:col-span-2 font-satoshi text-xs md:text-base ${
-                      collapsed && "text-sm"
+                    className={`md:col-span-2 whitespace-nowrap font-satoshi text-[10px] max-md:leading-3 md:text-base ${
+                      collapsed && "text-[12px] max-md:leading-3"
                     }`}
                   >
                     {DateFormat(price.to, true)}
@@ -293,7 +297,7 @@ function PriceList({
 
                   <>
                     <p
-                      className={`md:col-span-3 font-satoshi text-center text-xs md:text-base ${
+                      className={`md:col-span-3 font-satoshi text-center text-[12px] max-md:leading-3 md:text-base ${
                         MAPPINGS[price.availability || "Available"]
                           .availablecolor
                       } ${selected === index ? "text-white" : ""}`}
@@ -302,13 +306,15 @@ function PriceList({
                     </p>
                     <div></div>
                     <div
-                      className={`md:col-span-2 font-satoshi  text-xs md:text-base text-center md:flex items-center gap-2 ${
+                      className={`md:col-span-2 font-satoshi  text-[12px] max-md:leading-3 md:text-base text-center md:flex items-center gap-2 ${
                         MAPPINGS[price.availability || "Available"].color
                       } ${selected === index ? "opacity-0" : ""}`}
                     >
                       <p>$ {price.currentPrice}</p>
                       {price.actualPrice && (
-                        <p className="line-through font-satoshi text-gray text-[8px]  md:text-xs">
+                        <p
+                          className={`line-through font-satoshi text-gray text-[8px]  md:text-xs`}
+                        >
                           $ {price.actualPrice}
                         </p>
                       )}
@@ -316,7 +322,7 @@ function PriceList({
                     <CaretDown
                       height={20}
                       width={20}
-                      className={`ml-auto mr-5 hidden md:block
+                      className={`ml-auto mr-5 block
                      my-auto transition-all ${
                        selected === index && "-rotate-180"
                      }`}
@@ -331,15 +337,15 @@ function PriceList({
                           className={`${
                             MAPPINGS[price.availability || "Available"].color
                           } font-bold whitespace-nowrap text-destructive ${
-                            collapsed ? "text-xl" : "text-4xl"
+                            collapsed ? "text-base" : "text-4xl"
                           }`}
                         >
                           $ {price.currentPrice}
                         </h1>
                         {price.actualPrice && (
                           <h1
-                            className={`text-gray line-through text-2xl font-semibold whitespace-nowrap ${
-                              collapsed ? "text-sm" : "text-2xl"
+                            className={`text-gray line-through md:text-[14px] text-[12px] leading-5 font-medium whitespace-nowrap ${
+                              collapsed ? "text-[12px] leading-5" : "text-2xl"
                             }`}
                           >
                             $ {price.actualPrice}
@@ -354,24 +360,24 @@ function PriceList({
                           >
                             <Button
                               variant={"destructive"}
-                              className="!bg-red font-satoshi flex items-center justify-center gap-1 md:px-3 px-[16px] !py-[5px] md:!py-3 !my-auto !text-sm"
+                              className="!bg-red font-satoshi flex items-center h-[28px] justify-center gap-1 md:px-3 px-[16px] !py-[5px] md:!py-3 !my-auto text-[12px] leading-[18px]"
                             >
                               Book Tour
                             </Button>
                           </Link>
                         )}
                       </div>
-                      <p className="text-gray font-satoshi mt-3 text-xs md:text-sm">
+                      <p className="text-gray font-satoshi mt-3 font-normal text-[10px] max-md:leading-5 md:text-sm">
                         Per person in a {price.roomType || "Double Seater"}
                       </p>
-                      <p className="md:text-sm font-satoshi text-[10px]">
+                      <p className="md:text-sm font-satoshi text-[12px] leading-5">
                         Looking for a Different Room Type?
                         <span className="text-[#3FA9F5]">
                           {" "}
                           Find the pricing in the next steps.
                         </span>
                       </p>
-                      <p className="md:text-sm font-satoshi text-xs">
+                      <p className="md:text-sm font-satoshi font-medium text-darkblue text-[12px] leading-5">
                         <span className="text-[#3FA9F5]">
                           Customize your trip
                         </span>{" "}
@@ -387,7 +393,7 @@ function PriceList({
                       >
                         <Button
                           variant={"destructive"}
-                          className="!bg-red flex md:h-12 h-10 items-center font-medium justify-center gap-2 px-5 !py-3 !my-auto !text-xl"
+                          className="!bg-red flex text-base md:h-12 h-10 items-center font-bold justify-center gap-2 px-5 !py-3 !my-auto"
                         >
                           Book Tour{" "}
                           <Image
@@ -409,18 +415,18 @@ function PriceList({
               onClick={() => {
                 setShow(show + 4);
               }}
-              className="text-center font-satoshi flex gap-x-2 items-center justify-center text-base lg:text-lg font-semibold my-3 text-blue cursor-pointer"
+              className="text-center font-satoshi flex gap-x-2 items-center justify-center text-base lg:text-lg font-semibold my-3 text-[#3FA9F5] cursor-pointer"
             >
-              view All <CaretDown />
+              View More <CaretDown />
             </div>
           ) : (
             <div
               onClick={() => {
                 setShow(show - 4);
               }}
-              className="text-center font-satoshi  text-base lg:text-lg font-semibold flex gap-x-2 items-center justify-center my-3 text-blue cursor-pointer"
+              className="text-center font-satoshi  text-base lg:text-lg font-semibold flex gap-x-2 items-center justify-center my-3 text-[#3FA9F5] cursor-pointer"
             >
-              view less
+              View less
               <div className="rotate-180">
                 <CaretDown />
               </div>

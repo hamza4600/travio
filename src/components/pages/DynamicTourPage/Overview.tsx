@@ -11,8 +11,8 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
   const price: any = data?.price;
   return (
     <div className="relative font-satoshi lg:h-[80px] bg-primary lg:bg-transparent pb-5 h-fit ">
-      <div className="lg:absolute grid p-5 grid-cols-2 gap-3 lg:flex max-w-[1280px]  inset-x-0 lg:divide-x-2 divide-darkblue/10 top-[-34px] w-full lg:w-6xl mx-auto bg-primary rounded-2xl py-7">
-        <div className="flex gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 w-full lg:w-fit">
+      <div className="lg:absolute grid p-5 grid-cols-2 gap-3 lg:flex items-center max-w-[1280px]  inset-x-0 lg:divide-x-2 top-[-34px]  mx-auto bg-primary rounded-2xl pb-7 pt-12">
+        <div className="flex gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 lg:w-fit">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">
             <Image
               alt=""
@@ -117,11 +117,13 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
         {/* desktop CTA */}
         <div className="lg:flex hidden font-satoshi flex-col w-full justify-between items-center  px-7">
           <Link href={`#price-list`}>
-            <Button variant={"sky"}>Book Now</Button>
+            <Button variant={"sky"} className="h-12 text-base font-bold">
+              Book Now
+            </Button>
           </Link>
           <Text
             variant={"destructive"}
-            className="text-xs  font-medium text-red"
+            className="text-[12px] leading-5  font-medium "
           >
             {data?.cta_helper_text?.en}
           </Text>
@@ -131,11 +133,16 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
       {/* Mobile CTA */}
       <div className="flex lg:hidden font-satoshi flex-col w-full justify-between items-center  px-7">
         <Link href={`#price-list`}>
-          <Button variant={"sky"}>Book Now</Button>
+          <Button
+            variant={"sky"}
+            className="w-[185px] h-10 text-[14px] leading-6"
+          >
+            Book Now
+          </Button>
         </Link>
         <Text
           variant={"destructive"}
-          className="text-xs font-medium -mt-3 text-red"
+          className="text-[12px] leading-3 font-medium mt-3"
         >
           {data?.cta_helper_text?.en}
         </Text>

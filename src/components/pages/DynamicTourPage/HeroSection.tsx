@@ -5,7 +5,7 @@ const HeroSection = () => {
     <div className="flex gap-[26px]">
       <div className="md:relative">
         <img
-          className="md:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px]"
+          className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px]"
           loading="lazy"
           src="/demo/hero_tour.png"
           alt="Hero_pic"
@@ -13,9 +13,11 @@ const HeroSection = () => {
         <h1 className="max-lg:hidden left-8 font-black absolute bottom-10 text-white font-satoshi text-[56px] leading-[66px]">
           Explore Ancient Wonders
         </h1>
-        <p className="lg:hidden text-center mt-4 font-bold z-50 text-darkblue font-satoshi text-[20px] leading-[30px]">
-          Explore Ancient Wonders
-        </p>
+        <div className="bg-primary">
+          <p className="lg:hidden text-center pt-[10px] font-bold text-darkblue font-satoshi text-[20px] leading-[30px]">
+            Explore Ancient Wonders
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-col gap-7 max-lg:hidden">

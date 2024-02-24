@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import OverViewCard from "./Overview";
 import {
   accommodationData,
+  excData,
   excludedData,
   flexibleThingsData,
   iternaryData,
@@ -36,6 +37,7 @@ import TravelInformation from "./TraveInformation";
 import MemorableExperiencesSection from "./MemoriableExperince";
 import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import SummarySection from "./SummarySection";
+import ExcludedInTour from "./ExcludedInTour";
 
 // import TourGallery from "@/components/molecules/TourGallery";
 
@@ -62,23 +64,23 @@ const DynamicTourPage = ({ language }) => {
       promo_banner={bannerText}
     >
       <React.Suspense>
-        <div className="md:px-20 px-0">
+        <div className="lg:px-20 px-0">
           <HeroSection />
         </div>
 
-        <div className="mt-16">
+        <div className="lg:mt-16">
           <OverViewCard data={overviewData} />
         </div>
 
-        <div className="mt-12">
+        <div className="md:mt-12 mt-10">
           <AppTabs tabs={tabsData} />
         </div>
 
-        <div className="md:px-20 px-5 mt-[100px]">
+        <div className="lg:px-20 mt-[100px]">
           <SummarySection />
         </div>
 
-        <div className="mt-[90px]">
+        <div className="lg:mt-[90px] mt-[60px]">
           <MemorableExperiencesSection
             data={memorableExperiencesData}
             locale={language}
@@ -97,7 +99,7 @@ const DynamicTourPage = ({ language }) => {
           <AccommdationTypesSection data={accommodationData} />
         </div>
 
-        <div className="md:px-20 px-5 md:mt-[50px]">
+        <div className="md:px-20 px-5">
           <Text variant={"darkblue"} className="text-2xl font-bold">
             Dates & Availability
           </Text>
@@ -110,11 +112,15 @@ const DynamicTourPage = ({ language }) => {
           </div>
         </div>
 
-        <div className="mt-[58px]">
+        <div className="mt-[78px]">
           <PriceList data={tourData} slug="1234" locale="en" />
         </div>
 
-        <div id="travel-info">
+        <div className="lg:px-20 px-5 lg:mt-[78px] mt-[50px]">
+          <ExcludedInTour data={excData} locale={language} />
+        </div>
+
+        <div className="mt-[50px] md:mt-[88px]">
           <TravelInformation data={travelInformationData} locale={language} />
         </div>
 
@@ -133,7 +139,7 @@ const DynamicTourPage = ({ language }) => {
           <CardsSection data={data1} locale={"en"} />
         </div>
 
-        <div>
+        <div className="max-md:mt-[50px]">
           <FAQSection data={faqSectionData} locale="en" />
         </div>
       </React.Suspense>

@@ -14,7 +14,7 @@ const TravelInformation = ({ data, locale }: { data: any; locale: string }) => {
     <Container className={"mx-auto max-w-[1312px] px-4"}>
       <div
         id="essentials"
-        className="flex flex-col my-8 gap-5 text-center items-center justify-center px-5 rounded-2xl border-[#FFBB0B] border-[1px] shadow-md shadow-[#f5f5f5] lg:px-20 py-10 pb-7"
+        className="flex flex-col gap-5 text-center items-center justify-center px-5 rounded-2xl border-[#FFBB0B] border-[1px] shadow-md shadow-[#f5f5f5] lg:px-20 py-10 pb-7"
       >
         <Image
           src={data.icon}

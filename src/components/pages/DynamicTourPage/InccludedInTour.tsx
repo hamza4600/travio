@@ -54,7 +54,7 @@ export default function WhatsIncludedSection({ data }: { data: any }) {
       </div>
       <div className=" lg:hidden text-base">
         {/* The Icons color need to be white for the background to be blue */}
-        <div className=" flex flex-row  justify-evenly mt-10 bg-[whitesmoke] px-4 pt-4 rounded-t-2xl items-center gap-5">
+        <div className=" flex flex-row  justify-evenly mt-10 bg-[#3FA9F5] px-4 pt-4 rounded-t-2xl items-center gap-5">
           {data?.inclusion_list?.map((item, index) => (
             <div
               onClick={() => setCurrentIndex(index)}
@@ -67,12 +67,13 @@ export default function WhatsIncludedSection({ data }: { data: any }) {
               }}
               className="flex h-full pb-2 w-full justify-center  items-center transition-all border-b-orange-400 border-b-2 gap-2  self-start"
             >
-              <div className="w-7 h-7  relative">
+              <div className="w-7 h-7 relative">
                 <Image
                   src={item.icon}
                   alt={item.icon?.alt?.en ?? ""}
                   fill
                   className="object-cover"
+                  style={{ filter: "brightness(0) invert(1)" }}
                 />
               </div>
             </div>
@@ -81,16 +82,19 @@ export default function WhatsIncludedSection({ data }: { data: any }) {
         {data?.inclusion_list && (
           <div className=" flex bg-white shadow-xl shadow-[#f5f5f5]  flex-col justify-start items-start gap-3 p-5">
             {
-              <p className="lg:text-xl text-base font-medium text-black">
+              <p className="lg:text-xl text-base font-satoshi font-medium text-black">
                 {data?.inclusion_list[currentIndex]?.title?.en}
-                <hr className=" w-12 my-2 text-yellow bg-yellow  rounded-full border-[1.5px]" />
+                <hr className=" w-12 my-2 border-b-[#FFBB0B] border-b-[1.5px]  rounded-full" />
               </p>
             }
-            <div className="flex text-[14px] flex-col">
+            <div className="flex text-[14px] flex-col gap-[6px]">
               {data?.inclusion_list[currentIndex]?.description?.map(
                 (note: any, index: number) => {
                   return (
-                    <p className="text-base font-medium" key={index}>
+                    <p
+                      className="text-base font-medium font-satoshi"
+                      key={index}
+                    >
                       {note.en}
                     </p>
                   );
