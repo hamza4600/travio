@@ -44,7 +44,7 @@ export default function MemorableExperiencesSection({
       />
 
       <div className="w-full bg-primary">
-        <Container className="flex max-w-[1312px] md:px-20 px-5 flex-col py-7 relative">
+        <Container className="flex md:px-20 px-5 flex-col py-7 relative">
           <Swiper
             modules={[Navigation, Scrollbar, A11y, Controller]}
             className="external-buttons mySwiper w-full"
@@ -75,7 +75,7 @@ export default function MemorableExperiencesSection({
             observeParents
             onSwiper={setSwiper}
           >
-            {data?.experience_cards?.map((card, index) => (
+            {data?.experience_cards?.map((card: any, index: number) => (
               <SwiperSlide key={index}>
                 <Card data={card} />
               </SwiperSlide>
@@ -83,10 +83,10 @@ export default function MemorableExperiencesSection({
           </Swiper>
         </Container>
       </div>
-      <Container className="gap-12 max-w-[1312px] px-4  relative flex md:justify-center justify-end">
+      <Container className="gap-20 px-4  relative flex md:justify-center justify-end">
         <button
           className={
-            "rounded-full z-[1000] bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 -translate-y-1/2 cursor-pointer "
+            "rounded-full  bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 -translate-y-1/2 cursor-pointer "
           }
           ref={prevRef}
         >
@@ -105,9 +105,10 @@ export default function MemorableExperiencesSection({
           </svg>
         </button>
         {/* <div className="swiper-pagination"></div> */}
+
         <button
           className={
-            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 md:top-1/2 -translate-y-1/2 cursor-pointer"
+            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 flex items-center justify-center md:w-10 md:top-1/2 -translate-y-1/2 cursor-pointer"
           }
           ref={nextRef}
         >

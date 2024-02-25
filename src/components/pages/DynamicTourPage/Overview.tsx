@@ -11,8 +11,8 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
   const price: any = data?.price;
   return (
     <div className="relative font-satoshi lg:h-[80px] bg-primary lg:bg-transparent pb-5 h-fit ">
-      <div className="lg:absolute grid p-5 grid-cols-2 gap-3 lg:flex items-center max-w-[1280px]  inset-x-0 lg:divide-x-2 top-[-34px]  mx-auto bg-primary rounded-2xl pb-7 pt-12">
-        <div className="flex gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 lg:w-fit">
+      <div className="lg:absolute grid p-5 max-xl:grid-cols-2 gap-3 lg:flex items-center max-w-[1280px]  inset-x-0 lg:divide-x-2 top-[-34px]  mx-auto bg-primary rounded-2xl pb-7 pt-12">
+        <div className="flex gap-2 items-center bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] lg:w-fit">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">
             <Image
               alt=""
@@ -22,16 +22,16 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <p className="lg:text-base text-sm font-medium text-gray whitespace-nowrap">
+            <p className="lg:text-base text-[12px] max-lg:leading-5 font-medium text-gray whitespace-nowrap">
               Duration
             </p>
-            <p className="lg:text-xl text-lg font-bold text-darkblue">
+            <p className="lg:text-xl max-lg:leading-5 font-bold text-darkblue">
               {data?.duration?.en}
             </p>
           </div>
         </div>
 
-        <div className="flex gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 w-full lg:w-fit">
+        <div className="flex gap-2 bg-white lg:bg-transparent justify-start items-center lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] w-full lg:w-fit">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">
             <Image
               alt=""
@@ -41,21 +41,21 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <p className="lg:text-base text-sm font-medium text-gray whitespace-nowrap">
+            <p className="lg:text-base text-[12px] max-lg:leading-5 font-medium text-gray whitespace-nowrap">
               {data?.countries} Countries
             </p>
-            <p className="lg:text-xl text-lg font-bold text-darkblue">
+            <p className="lg:text-xl max-lg:leading-5 font-bold text-darkblue">
               {data?.cities} Cities
             </p>
           </div>
         </div>
 
-        <div className="flex gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 w-full lg:w-fit">
+        <div className="flex items-center gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 w-full lg:w-fit">
           {/* <div className="relative h-12 w-12">
               <Image alt="" src={'/calendar.svg'} fill className="object-contain" />
             </div> */}
           <div className="flex flex-col gap-1">
-            <p className="lg:text-base text-sm font-medium text-gray whitespace-nowrap">
+            <p className="lg:text-base text-[12px] max-lg:leading-5 font-medium text-gray whitespace-nowrap">
               Trip Rating
             </p>
             <div className="flex items-center gap-1 flex-nowrap">
@@ -69,7 +69,7 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
                 size={16}
                 color2={"#ffd700"}
               />
-              <p className="lg:text-xl text-lg font-bold text-darkblue">
+              <p className="lg:text-xl max-lg:leading-5 font-bold text-darkblue">
                 {data?.rating}
               </p>
             </div>
@@ -86,16 +86,16 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <p className="lg:text-base text-sm font-medium text-gray whitespace-nowrap">
+            <p className="lg:text-base text-[12px] max-lg:leading-5 font-medium text-gray whitespace-nowrap">
               About This Tour
             </p>
-            <p className="lg:text-xl text-lg font-bold text-darkblue">
+            <p className="lg:text-xl max-lg:leading-5 font-bold text-darkblue">
               {data?.about?.en}
             </p>
           </div>
         </div>
 
-        <div className="flex gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 w-full lg:w-fit">
+        <div className="flex items-center gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] w-full lg:w-fit">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">
             <Image
               alt=""
@@ -105,10 +105,10 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <p className="lg:text-base text-sm font-medium text-gray whitespace-nowrap">
+            <p className="lg:text-base text-[12px] max-lg:leading-5 font-medium text-gray whitespace-nowrap">
               Price From
             </p>
-            <p className="text-xl font-bold text-darkblue whitespace-nowrap">
+            <p className="lg:text-xl text-[14px] max-lg:leading-5 font-bold text-darkblue whitespace-nowrap">
               {price?.en}
             </p>
           </div>
@@ -135,7 +135,7 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
         <Link href={`#price-list`}>
           <Button
             variant={"sky"}
-            className="w-[185px] h-10 text-[14px] leading-6"
+            className="w-[185px] font-bold h-10 text-[14px] leading-6"
           >
             Book Now
           </Button>

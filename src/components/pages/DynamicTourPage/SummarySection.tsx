@@ -69,7 +69,7 @@ const SummarySection = () => {
           <img
             src="/demo/tourimage.png"
             alt="asd"
-            className="max-w-[400px] min-h-[310px] max-lg:min-w-full"
+            className="max-w-[400px] px-5 min-h-[310px] max-lg:min-w-full"
           />
           <Text
             variant={"darkblue"}

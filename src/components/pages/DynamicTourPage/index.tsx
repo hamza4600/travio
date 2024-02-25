@@ -4,7 +4,7 @@ import React from "react";
 import Layout from "@/components/layout";
 import { bannerText } from "../DynamicDestinations";
 import dynamic from "next/dynamic";
-import OverViewCard from "./Overview";
+
 import {
   accommodationData,
   excData,
@@ -18,26 +18,38 @@ import {
   tourData,
   travelInformationData,
 } from "./data";
+import { faqSectionData, reviewData } from "../DynamicDestinations/data";
 import CardsSection, {
   data1,
 } from "@/components/sections/differnetDeals/CardsSection";
 import SectionHeader from "@/components/molecules/secHeader";
-import ReviewSection from "@/components/sections/reviews/Reviews";
-import { faqSectionData, reviewData } from "../DynamicDestinations/data";
-import ItinerarySection from "./ItinarySection";
-import AccommdationTypesSection from "./Accomdations";
-import PriceList from "./PriceList";
-
-import WhatsIncludedSection from "./InccludedInTour";
-import FAQSection from "@/components/sections/faq";
-import FlexibleThingsForTour from "@/components/sections/FlexibleThings/ForTourSection";
 import { Text } from "@/components/ui/text";
-import TravelInformation from "./TraveInformation";
-
-import MemorableExperiencesSection from "./MemoriableExperince";
 import AppTabs from "@/components/molecules/AppTabs/AppTabse";
-import SummarySection from "./SummarySection";
-import ExcludedInTour from "./ExcludedInTour";
+
+// Dynamic imports
+const ReviewSection = dynamic(
+  () => import("@/components/sections/reviews/Reviews")
+);
+
+const OverViewCard = dynamic(() => import("./Overview"));
+const ItinerarySection = dynamic(() => import("./ItinarySection"));
+const AccommdationTypesSection = dynamic(() => import("./Accomdations"));
+const PriceList = dynamic(() => import("./PriceList"));
+
+const WhatsIncludedSection = dynamic(() => import("./InccludedInTour"));
+const FAQSection = dynamic(() => import("@/components/sections/faq"));
+const FlexibleThingsForTour = dynamic(
+  () => import("@/components/sections/FlexibleThings/ForTourSection")
+);
+
+const TravelInformation = dynamic(() => import("./TraveInformation"));
+
+const MemorableExperiencesSection = dynamic(
+  () => import("./MemoriableExperince")
+);
+
+const SummarySection = dynamic(() => import("./SummarySection"));
+const ExcludedInTour = dynamic(() => import("./ExcludedInTour"));
 
 // import TourGallery from "@/components/molecules/TourGallery";
 
@@ -63,7 +75,13 @@ const DynamicTourPage = ({ language }) => {
       ]}
       promo_banner={bannerText}
     >
-      <React.Suspense>
+      <React.Suspense
+        fallback={
+          <div className="flex justify-center items-center h-screen">
+            <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-20 w-20"></div>
+          </div>
+        }
+      >
         <div className="lg:px-20 px-0">
           <HeroSection />
         </div>

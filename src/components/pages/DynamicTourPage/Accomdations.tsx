@@ -85,7 +85,7 @@ export default function AccommdationTypesSection({ data }: { data: any }) {
       <Container className="gap-12 px-4  relative flex justify-end">
         <button
           className={
-            "rounded-full z-[1000] bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10  -translate-y-1/2 cursor-pointer "
+            "rounded-full bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10  -translate-y-1/2 cursor-pointer "
           }
           ref={prevRef}
         >
@@ -106,7 +106,7 @@ export default function AccommdationTypesSection({ data }: { data: any }) {
 
         <button
           className={
-            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 md:top-1/2 -translate-y-1/2 cursor-pointer"
+            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 flex items-center justify-center md:w-10 md:top-1/2 -translate-y-1/2 cursor-pointer"
           }
           ref={nextRef}
         >

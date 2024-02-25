@@ -16,6 +16,7 @@ import { CaretDown } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/molecules/container";
 import { Any } from "next-sanity";
+import { Input } from "@/components/ui/input";
 
 interface SinglePrice {
   from: Date;
@@ -180,7 +181,7 @@ function PriceList({
             </h1>
             <div className="flex items-center gap-2">
               <Image src="/lock_icon.svg" height={24} width={24} alt="lock" />
-              <p className="text-md font-semibold text-[14px] lg:text-base text-[#3FA9F5">
+              <p className="text-md font-semibold text-[14px] lg:text-base text-[#3FA9F5]">
                 Secure Payments
               </p>
             </div>
@@ -205,9 +206,10 @@ function PriceList({
               </div>
 
             </div> */}
-            <input
+            <Input
               type="date"
               name="startMonth"
+              placeholder="Select a date"
               id=""
               onChange={(e) => {
                 setStartMonth(new Date(e.target.value).getMonth());
@@ -248,7 +250,7 @@ function PriceList({
                 key={index}
               >
                 <div
-                  className={`md:grid flex justify-between items-center  gap-2 py-3 md:px-2 px-5 cursor-pointer font-semibold text-xl ${
+                  className={`md:grid flex justify-between items-center  gap-2 py-[7px] md:px-2 px-5 cursor-pointer font-semibold text-xl ${
                     collapsed ? " grid-cols-6" : "grid-cols-12"
                   }`}
                   onClick={() => {
@@ -275,7 +277,7 @@ function PriceList({
                     className="my-auto hidden md:block mx-auto"
                   />
                   <svg
-                    className="block md:hidden "
+                    className="block md:hidden"
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"

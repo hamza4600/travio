@@ -84,7 +84,7 @@ export default function WhatsIncludedSection({ data }: { data: any }) {
             {
               <p className="lg:text-xl text-base font-satoshi font-medium text-black">
                 {data?.inclusion_list[currentIndex]?.title?.en}
-                <hr className=" w-12 my-2 border-b-[#FFBB0B] border-b-[1.5px]  rounded-full" />
+                <hr className="w-12 my-2 border-b-[#FFBB0B] border-b-2  rounded-full" />
               </p>
             }
             <div className="flex text-[14px] flex-col gap-[6px]">

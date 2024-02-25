@@ -11,7 +11,7 @@ const Breadcrumbs = ({ paths }: { paths: Breadcrumb[] }) => {
   if (!paths?.length) return null;
   const lastIndex = paths.length - 1;
   return (
-    <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex items-center gap-x-1.5  text-xs  md:text-base  font-normal leading-tight md:leading-normal">
+    <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex items-center gap-x-1.5  text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
       {/* <div class="text-slate-900 text-base font-normal font-['Satoshi Variable'] leading-normal">Home</div> */}
       {/* <div class="text-slate-900 text-xs font-normal font-['Satoshi Variable'] leading-tight">Home</div> */}
       <Link href={"/"} className="">
@@ -34,7 +34,9 @@ const Breadcrumbs = ({ paths }: { paths: Breadcrumb[] }) => {
 
           <Link
             className={
-              i === lastIndex ? "text-[#3FA9F5] font-bold" : "text-darkblue"
+              i === lastIndex
+                ? "text-[#3FA9F5] font-bold max-md:text-[12px] max-md:leading-5"
+                : "text-darkblue"
             }
             href={path.value}
           >
