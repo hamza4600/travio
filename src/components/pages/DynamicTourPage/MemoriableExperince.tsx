@@ -49,19 +49,18 @@ export default function MemorableExperiencesSection({
             modules={[Navigation, Scrollbar, A11y, Controller]}
             className="external-buttons mySwiper w-full"
             breakpoints={{
-              0: {
-                slidesPerView: 1,
+              319: {
+                width: 320,
+                slidesPerView: 1.2,
                 spaceBetween: 20,
               },
-              690: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              1040: {
+              768: {
+                width: 1024,
                 slidesPerView: 3,
                 spaceBetween: 20,
               },
-              1390: {
+              1025: {
+                width: 1280,
                 slidesPerView: 4,
                 spaceBetween: 24,
               },
@@ -83,7 +82,7 @@ export default function MemorableExperiencesSection({
           </Swiper>
         </Container>
       </div>
-      <Container className="gap-20 px-4  relative flex md:justify-center justify-end">
+      <Container className="lg:gap-20 gap-[15px] px-4  relative flex md:justify-center justify-end">
         <button
           className={
             "rounded-full  bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 -translate-y-1/2 cursor-pointer "
@@ -136,13 +135,19 @@ const Card = ({ data }: { data: any }) => {
     <Link href={"/#" + data.slug?.current}>
       <div className="max-w-[300px] max-md:max-w-[250px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
         <div className="h-[220px] relative">
-          <Image alt="" src={data?.image} fill className="object-cover" />
+          <Image
+            alt=""
+            src={data?.image}
+            quality={100}
+            fill
+            className="object-cover"
+          />
         </div>
-        <div className="p-4 flex flex-col gap-1">
-          <p className="font-bold text-xl font-satoshi text-darkblue">
+        <div className="p-4 max-lg:{pt-3 pb-[15px] px-[15px]} flex flex-col gap-1">
+          <p className="font-bold md:text-xl max-lg:{text-base} font-satoshi text-darkblue">
             {data.title?.en}
           </p>
-          <p className="font-medium text-sm font-satoshi text-gray">
+          <p className="lg:font-medium lg:text-[14px] lg:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
             {data.description?.en}
           </p>
         </div>

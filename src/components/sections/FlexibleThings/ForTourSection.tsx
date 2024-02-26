@@ -12,7 +12,7 @@ export default function FlexibleThingsForTour({ data, locale }) {
   return (
     <div
       className={
-        "bg-[#F2FAFF] max-w-[970px] md:px-20 text-center py-5 md:py-3 mt-5 max-lg:mt-0 xl:rounded-[24px] rounded-none"
+        "bg-[#F2FAFF] max-w-[970px] md:px-5 text-center py-5 md:py-3 mt-5 max-lg:mt-0 xl:rounded-[24px] rounded-none"
       }
     >
       <Container>
@@ -27,11 +27,11 @@ export default function FlexibleThingsForTour({ data, locale }) {
         </div>
 
         {/* <div className="flex justify-between w-full max-lg:flex-wrap gap-[15px] max-lg:mt-5 max-lg:flex-row-reverse"> */}
-        <div className="grid grid-cols-4 mt-[15px] max-lg:grid-cols-2 justify-between  max-lg:gap-3">
-          {data.features?.map((feature, index) => (
+        <div className="grid grid-cols-4 mt-[15px] max-lg:grid-cols-2 gap-[67px]  max-lg:gap-3">
+          {data.features?.map((feature: any, index: number) => (
             <div
               key={index}
-              className="flex flex-col gap-3 items-center font-medium text-base max-sm:text-[14px] leading-5 max-sm:px-5 max-md:flex-col max-[320px]:w-[150px]"
+              className="flex flex-col gap-2 items-center max-w-[175px] font-medium text-base max-sm:text-[14px] leading-5 max-sm:px-5 max-md:flex-col max-[320px]:w-[150px]"
             >
               <Image
                 src={feature.icon?.asset?._ref}

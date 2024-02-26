@@ -10,6 +10,7 @@ import Container from "@/components/molecules/container";
 
 import { Star } from "../HappyTravelers";
 import SectionHeader from "@/components/molecules/secHeader";
+// import useWindowSize from "@/hooks/useWindows";
 // export type ReviewSectionProps = {
 //   data: SanityReviewsSection;
 // };
@@ -81,6 +82,9 @@ const Filter = ({
   selectedRating: number[];
   ratings: { count: number; stars: number }[];
 }) => {
+  // const windows = useWindowSize();
+  // const isMobile = windows.width < 768;
+
   const reverseRatings = [...ratings].reverse();
 
   return (
@@ -107,8 +111,8 @@ const Filter = ({
             <div className={"grow"}>
               <Line
                 percent={(rating.count / ratings.length) * 100}
-                strokeWidth={6}
-                trailWidth={6}
+                strokeWidth={3.5}
+                trailWidth={3.5}
                 trailColor="#ecf4ff"
                 strokeColor="#f5b536"
               />
@@ -213,7 +217,7 @@ const ReviewSection = (props) => {
     <Container className="pb-[50px] md:pt-[120px] pt-[50px] md:py-[90px]  mx-auto max-w-[1312px] px-4 text-black">
       <SectionHeader title={tagline} subtitle={title} centerLine />
 
-      <div className="flex font-satoshi gap-y-[30px] md:gap-x-5 px-0 lg:px-5 mt-8 flex-col md:flex-row">
+      <div className="flex font-satoshi gap-y-[30px] md:gap-x-5 px-0 lg:px-5 mt-[30px] flex-col md:flex-row">
         <div className="w-full md:w-[430px] ">
           <Filter
             addSelectedRating={(rating) =>

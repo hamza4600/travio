@@ -17,14 +17,14 @@ export default function ItinerarySection({
 }) {
   console.log("ItinerarySection-> ", data);
   return (
-    <Container className="mx-auto max-w-[1312px] px-4 flex flex-col py-20 gap-10">
+    <Container className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] gap-10">
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}
         centerLine
       />
 
-      <div className="flex gap-7">
+      <div className="flex lggap-7 gap-[30px] max-lg:flex-col-reverse">
         {/* Travel Schedule */}
         <TravelSchedule data={data?.itinerary_day_cards} />
         {/* Enquire Tab */}
@@ -95,7 +95,7 @@ const EnquireTab = () => {
     setFormData({ ...formData, [key]: value });
   };
   return (
-    <div className="w-[282px] font-satoshi max-lg:hidden h-fit rounded-2xl border text-white overflow-hidden bg-primary mt-12">
+    <div className="w-[282px] max-lg:hidden max-lg:min-w-full font-satoshi h-fit rounded-2xl border text-white overflow-hidden bg-primary lg:mt-12">
       <div className="py-2 px-5 bg-[#1A4767]">
         <div className="flex justify-between">
           <div className="">
@@ -116,7 +116,7 @@ const EnquireTab = () => {
           <p className="font-bold text-[10px]">+1 0000 000 000</p>
         </div>
       </div>
-      <div className="p-4 flex flex-col gap-5">
+      <div className="p-[18px] flex flex-col gap-[18px]">
         <div className="flex  font-medium text-base text-black flex-col gap-2">
           <label htmlFor="name">Name*</label>
           <input

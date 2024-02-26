@@ -48,19 +48,18 @@ export default function AccommdationTypesSection({ data }: { data: any }) {
         modules={[Navigation, Scrollbar, A11y, Controller]}
         className="external-buttons w-full"
         breakpoints={{
-          0: {
+          319: {
+            width: 320,
             slidesPerView: 1,
-            spaceBetween: 100,
-          },
-          690: {
-            slidesPerView: 2,
             spaceBetween: 20,
           },
-          1040: {
+          768: {
+            width: 1024,
             slidesPerView: 3,
             spaceBetween: 20,
           },
-          1390: {
+          1025: {
+            width: 1280,
             slidesPerView: 4,
             spaceBetween: 24,
           },
@@ -82,7 +81,7 @@ export default function AccommdationTypesSection({ data }: { data: any }) {
           ))}
         </div>
       </Swiper>
-      <Container className="gap-12 px-4  relative flex justify-end">
+      <Container className="lg:gap-12 gap-[15px] px-4  relative flex justify-end">
         <button
           className={
             "rounded-full bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10  -translate-y-1/2 cursor-pointer "
