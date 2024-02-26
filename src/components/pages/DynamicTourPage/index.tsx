@@ -1,8 +1,6 @@
 "use client";
 
-import React from "react";
 import Layout from "@/components/layout";
-import { bannerText } from "../DynamicDestinations";
 import dynamic from "next/dynamic";
 
 import {
@@ -55,9 +53,13 @@ const ExcludedInTour = dynamic(() => import("./ExcludedInTour"));
 
 const HeroSection = dynamic(() => import("./HeroSection"));
 
-const DynamicTourPage = ({ language }) => {
+const DynamicTourPage = ({ language, pageData }) => {
+  
+  const { layout } = pageData || {};
+  
   return (
     <Layout
+      globals={layout}
       locale={language}
       breadcrumbs={[
         {
@@ -73,15 +75,8 @@ const DynamicTourPage = ({ language }) => {
           value: "/#",
         },
       ]}
-      promo_banner={bannerText}
+      promo_banner={layout?.navbar?.info_banner}
     >
-      <React.Suspense
-        fallback={
-          <div className="flex justify-center items-center h-screen">
-            <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-20 w-20"></div>
-          </div>
-        }
-      >
         <div className="lg:px-20 px-0">
           <HeroSection />
         </div>
@@ -160,7 +155,6 @@ const DynamicTourPage = ({ language }) => {
         <div className="max-md:mt-[50px]">
           <FAQSection data={faqSectionData} locale="en" />
         </div>
-      </React.Suspense>
     </Layout>
   );
 };
