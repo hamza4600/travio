@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-
 // import { localizedString, PropsWithLocale } from "@/contexts/LocaleProvider";
 // import { urlFor } from "@/sanity/client";
 // import { SanityTravelInfoSection } from "@/sanity/types";
