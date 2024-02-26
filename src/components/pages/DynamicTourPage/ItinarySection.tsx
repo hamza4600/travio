@@ -122,19 +122,19 @@ const EnquireTab = () => {
           <input
             id="name"
             type="text"
-            className="border border-darkblue/10 text-black rounded p-1"
+            className="border border-darkblue/10 text-black rounded p-1 focus:outline-secondary"
             value={formData["name"]}
             onChange={(e) => {
               setValue(e.target.value, "name");
             }}
           />
         </div>
-        <div className="flex  font-medium text-base text-black flex-col gap-2">
+        <div className="flex  font-medium text-base text-black flex-col gap-2 ">
           <label htmlFor="email">Email*</label>
           <input
             id="email"
             type="text"
-            className="border border-darkblue/10 text-black rounded p-1"
+            className="border border-darkblue/10 text-black rounded p-1 focus:outline-secondary"
             value={formData["email"]}
             onChange={(e) => {
               setValue(e.target.value, "email");
@@ -145,7 +145,7 @@ const EnquireTab = () => {
           <label htmlFor="nationality">Nationality*</label>
           <select
             id="nationality"
-            className="border bg-white border-darkblue/10 text-black rounded p-1 py-2"
+            className="border bg-white border-darkblue/10 text-black rounded p-1 py-2 focus:outline-secondary"
             value={formData["nationality"]}
             // placeholder="Select"
             onChange={(e) => {
@@ -170,7 +170,7 @@ const EnquireTab = () => {
           <label htmlFor="mobileNumber">Mobile</label>
           <div className="border bg-white text-base border-darkblue/10 text-black rounded p-1 grid grid-cols-[1fr_7fr] gap-1 divide-x-2 divide-darkblue/10 py-2">
             <input
-              className="min-w-0 w-full flex items-center justify-center h-full overflow-hidden focus:outline-none"
+              className="min-w-0 w-full flex focus:outline-secondary items-center justify-center h-full overflow-hidden focus:outline-none"
               id="mobileCode"
               value={mobileNumber["mobileCode"]}
               onChange={(e) => {
@@ -186,7 +186,7 @@ const EnquireTab = () => {
               }}
             />
             <input
-              className="h-full min-w-0 w-full overflow-hidden focus:outline-none px-2"
+              className="h-full min-w-0 w-full focus:outline-secondary overflow-hidden focus:outline-none px-2"
               id="mobileNumber"
               value={mobileNumber["mobileNumber"]}
               placeholder="Mobile Number"
@@ -209,7 +209,7 @@ const EnquireTab = () => {
             <input
               id="from"
               type="date"
-              className="border border-darkblue/10 text-black rounded p-1"
+              className="border border-darkblue/10 focus:outline-secondary text-black rounded p-1"
               value={formData["from"]}
               onChange={(e) => {
                 setValue(e.target.value, "from");
@@ -221,7 +221,7 @@ const EnquireTab = () => {
             <input
               id="to"
               type="date"
-              className="border border-darkblue/10 text-black rounded p-1"
+              className="border border-darkblue/10 text-black rounded p-1 focus:outline-secondary"
               value={formData["to"]}
               onChange={(e) => {
                 setValue(e.target.value, "to");
@@ -254,13 +254,7 @@ const EnquireTab = () => {
               <div className="w-[22px] h-[22px] bg-darkblue/10 text-black flex items-center justify-center select-none">
                 {formData.members}
               </div>
-              {
-                <Plus
-                  className="bg-[#FFBB0B]  w-[22px] h-[22px]"
-                  color="white"
-                  width={"8px"}
-                />
-              }
+
               <div
                 className="w-[22px] h-[22px] bg-yellow flex items-center justify-center"
                 onClick={() => {
@@ -270,7 +264,13 @@ const EnquireTab = () => {
                   );
                 }}
               >
-                {<Plus color="white" />}
+                {
+                  <Plus
+                    className="bg-[#FFBB0B]  w-[22px] h-[22px]"
+                    color="white"
+                    width={"8px"}
+                  />
+                }
               </div>
             </div>
           </div>
@@ -280,7 +280,7 @@ const EnquireTab = () => {
           <textarea
             id="details"
             rows={3}
-            className="border border-darkblue/10 text-black rounded p-1"
+            className="border border-darkblue/10 text-black focus:outline-secondary rounded p-1"
             value={formData["details"]}
             onChange={(e) => {
               setValue(e.target.value, "details");
@@ -335,12 +335,14 @@ const Expandable = ({
           isOpen
             ? "bg-[#3FA9F5] text-white"
             : "bg-darkblue/[0.02] text-dimSecondary"
-        }  items-center px-7 py-4 ${isOpen ? "rounded-t-2xl" : "rounded-2xl"}`}
+        }  items-center px-7 py-4 ${
+          isOpen ? "rounded-t-2xl  " : "rounded-2xl"
+        }`}
         onClick={() => {
           toggleOpen();
         }}
       >
-        <p className="w-5 text-darkblue font-bold lg:text-[20px] lg:leading-8 flex-1 font-satoshi">
+        <p className="w-5 font-bold lg:text-[20px] lg:leading-8 flex-1 font-satoshi">
           {data.title?.en}
         </p>
         <CaretDown
@@ -364,7 +366,7 @@ const Expandable = ({
               className="object-cover w-full h-full"
             />
           </div>
-          <p className="flex-1 text-darkblue md:text-base font-satoshi">
+          <p className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi">
             {data.description?.en}
           </p>
         </div>
@@ -406,7 +408,7 @@ const ExpandableList = ({
           <img alt="" src={icon} className="object-center" />
         </div>
         <div className="flex flex-col">
-          <p className="flex-1 text-xl font-medium text-darkblue tracking-tight font-satoshi">
+          <p className="flex-1 md:text-xl text-base font-medium text-darkblue tracking-tight font-satoshi">
             {title}
           </p>
           <hr className="w-20 my-2 text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
@@ -424,7 +426,7 @@ const ExpandableList = ({
           );
         })}
         {content && (
-          <p className="text-base font-normal text-darkblue font-satoshi">
+          <p className="md:text-base text-[14px] leading-6 font-normal text-darkblue font-satoshi">
             {content}
           </p>
         )}
