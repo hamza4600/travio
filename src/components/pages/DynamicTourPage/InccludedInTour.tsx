@@ -14,9 +14,7 @@ export default function WhatsIncludedSection({ data }: { data: any }) {
         <h2 className="text-darkblue font-satoshi  font-bold text-[20px] lg:text-2xl text-c">
           {data?.title?.en}
         </h2>
-        <hr
-          className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
-        />
+        <hr className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
       </div>
       <div className="divide-y-2 hidden lg:block divide-darkblue/10 my-3 lg:w-3/4  w-full">
         {data?.inclusion_list?.map((item: any, index: number) => {
@@ -85,9 +83,7 @@ export default function WhatsIncludedSection({ data }: { data: any }) {
             {
               <p className="lg:text-xl text-base font-satoshi font-medium text-black">
                 {data?.inclusion_list[currentIndex]?.title?.en}
-                <hr
-                  className="w-12 md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
-                />
+                <hr className="w-12 md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
               </p>
             }
             <div className="flex text-[14px] flex-col gap-[6px]">

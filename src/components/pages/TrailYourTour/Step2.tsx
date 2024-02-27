@@ -4,14 +4,14 @@ import { Control, UseFormSetValue } from "react-hook-form";
 import { TailorTripFormData } from "./index";
 import countries from "@/utils/countries.json";
 import {
-  Boat,
-  Car,
-  Compass,
-  Cross,
-  FinnTheHuman,
   Leaf,
+  Cross,
   WaveTriangle,
-} from "@phosphor-icons/react";
+  Car,
+  Boat,
+  Compass,
+  FinnTheHuman,
+} from "./style";
 import Input from "./Input";
 
 export default function Step2({
