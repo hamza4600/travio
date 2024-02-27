@@ -11,7 +11,6 @@ const Step2 = dynamic(() => import("./Step2"));
 import { useForm } from "react-hook-form";
 import { useZodValidationResolver, validationSchema } from "./schema";
 import { faqSectionData } from "../DynamicDestinations/data";
-// import { bannerText } from "../DynamicDestinations";
 
 export type TailorTripFormData = {
   selectedDestination: string[];
@@ -78,12 +77,16 @@ const TailorYourTour = ({ language, pageData }) => {
         },
       ]}
     >
-      <hr className="bg-gray border-b-2 md:hidden" />
-      <div
-        className="md:hidden absolute top-[135px] left-0 border-b-[#3FA9F5] border-b-2"
-        style={{ width: "117px" }}
-      ></div>
-      <div className="flex mt-10 flex-col">
+      
+      <div className="">
+        <div
+          className="md:hidden absolute top-[136px] left-0 border-b-[#3FA9F5] border-b-2 z-50"
+          style={{ width: "117px" }}
+        />
+        <hr className="bg-gray border-b-2 md:hidden" />
+      </div>
+
+      <div className ="flex md:mt-10 flex-col mt-2">
         <Steps
           loading={loading}
           disableNext={getValues("duration") == ""}

@@ -17,7 +17,7 @@ export default function Steps({
   const [isPending, startTransition] = useTransition()
 
   return (
-    <div className="flex my-8 flex-col gap-5 lg:gap-10 items-center sm:w-[90%] md:mx-auto px-3">
+    <div className="flex my-8 flex-col gap-5 lg:gap-10 items-center sm:w-[90%] md:mx-auto">
       <SectionHeader
         title={
           step == 1 ? "When will you travel?" : "Tell us about the travelers"
@@ -32,7 +32,7 @@ export default function Steps({
       <div
         className={`${
           step == 1 ? " bg-white" : "bg-primary"
-        }  sm:rounded-[20px] pt-10 flex flex-col gap-4 pb-11`}
+        }  sm:rounded-[20px] md:pt-10 pt-3 flex flex-col gap-4 md:pb-10 pb-6 md:w-auto w-[100%]`}
         style={{ minHeight: '450px' }}
       >
         {children && (
