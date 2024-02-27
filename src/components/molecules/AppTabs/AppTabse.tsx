@@ -30,7 +30,7 @@ function AppTabs({ tabs }: TabsProp) {
   }
 
   return (
-    <div className="max-w-full  h-[40px]  relative">
+    <div className="max-w-full  relative">
       <div
         style={{
           position: isFixed ? "fixed" : "absolute",
@@ -45,7 +45,7 @@ function AppTabs({ tabs }: TabsProp) {
         <div className="w-full overflow-x-scroll">
           <div className="px-5">
             <nav
-              className="flex gap-16 lg:justify-center lg:items-center justify-start items-start"
+              className="flex lg:gap-16 gap-10 lg:justify-center lg:items-center justify-start items-start"
               aria-label="Tabs"
             >
               {tabs.map((tab, index) => (

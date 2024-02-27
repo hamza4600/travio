@@ -161,15 +161,15 @@ function PriceList({
 
   return (
     <Container
-      className=" bg-[rgba(20,13,49,0.02)] mx-auto max-w-[1312px] px-4 lg:bg-transparent"
+      className=" bg-[rgba(20,13,49,0.02)] max-w-[970] lg:bg-transparent"
       id="price-list"
     >
       <div
-        className={` transition-all font-semibold rounded-2xl lg:bg-[rgba(20,13,49,0.02)] bg-transparent bg-opacity-60 w-full  max-w-5xl py-3 lg:px-5 px-0`}
+        className={` transition-all font-semibold rounded-2xl lg:bg-[rgba(20,13,49,0.02)] bg-transparent bg-opacity-60 w-full  max-w-[970px] py-3 lg:px-5 px-0`}
       >
         <div className="flex-col font-satoshi  lg:flex-row  flex justify-between">
           <div className="gap-3 flex flex-col my-2">
-            <h1 className="tracking-wide text-[14px] text-gray lg:text-base font-semibold">
+            <h1 className="tracking-wide text-[14px] text-gray lg:text-base font-medium">
               These dates don&apos;t work for you? Tailor your trip{" "}
               {/* <span ></span>{" "} */}
               <Link
@@ -315,7 +315,7 @@ function PriceList({
                       <p>$ {price.currentPrice}</p>
                       {price.actualPrice && (
                         <p
-                          className={`line-through font-satoshi text-gray text-[8px]  md:text-xs`}
+                          className={`line-through font-satoshi text-gray text-[8px] font-bold md:text-xs`}
                         >
                           $ {price.actualPrice}
                         </p>
@@ -332,7 +332,7 @@ function PriceList({
                   </>
                 </div>
                 {selected === index && (
-                  <div className="bg-white text-darkblue p-8 rounded-b-lg col-span-full flex justify-between">
+                  <div className="bg-white text-darkblue lg:p-8 p-5 rounded-b-lg col-span-full flex justify-between">
                     <div className="flex gap-2 flex-col">
                       <div className="flex font-satoshi gap-3 items-center">
                         <h1
@@ -346,8 +346,8 @@ function PriceList({
                         </h1>
                         {price.actualPrice && (
                           <h1
-                            className={`text-gray line-through md:text-[14px] text-[12px] leading-5 font-medium whitespace-nowrap ${
-                              collapsed ? "text-[12px] leading-5" : "text-2xl"
+                            className={`text-gray line-through md:text-[24px] text-[12px] leading-9 font-bold whitespace-nowrap ${
+                              collapsed ? "text-[24px] leading-9" : "text-2xl"
                             }`}
                           >
                             $ {price.actualPrice}
@@ -372,15 +372,15 @@ function PriceList({
                       <p className="text-gray font-satoshi mt-3 font-normal text-[10px] max-md:leading-5 md:text-sm">
                         Per person in a {price.roomType || "Double Seater"}
                       </p>
-                      <p className="md:text-sm font-satoshi text-[12px] leading-5">
+                      <p className="md:text-sm font-satoshi text-[12px] font-normal text-darkblue leading-5">
                         Looking for a Different Room Type?
-                        <span className="text-[#3FA9F5]">
+                        <span className="text-[#3FA9F5] font-medium">
                           {" "}
                           Find the pricing in the next steps.
                         </span>
                       </p>
-                      <p className="md:text-sm font-satoshi font-medium text-darkblue text-[12px] leading-5">
-                        <span className="text-[#3FA9F5]">
+                      <p className="md:text-sm font-satoshi font-normal text-darkblue text-[12px] leading-5">
+                        <span className="text-[#3FA9F5] font-medium">
                           Customize your trip
                         </span>{" "}
                         with optional tours during booking!

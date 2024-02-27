@@ -10,7 +10,7 @@ const HeroSection = () => {
           src="/demo/hero_tour.png"
           alt="Hero_pic"
         />
-        <h1 className="max-lg:hidden left-8 font-black absolute bottom-10 text-white font-satoshi text-[56px] leading-[66px]">
+        <h1 className="max-lg:hidden left-8 font-black absolute bottom-[13px] text-white font-satoshi text-[56px] leading-[66px]">
           Explore Ancient Wonders
         </h1>
         <div className="bg-primary">

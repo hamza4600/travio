@@ -10,7 +10,7 @@ const SummarySection = () => {
         <SectionHeader title="overview" subtitle="Brief Summary" centerLine />
       </div>
 
-      <div className="bg-[#3FA9F5] lg:hidden">
+      <div className="bg-[#3FA9F5] mt-[50px] lg:hidden">
         <div className="flex justify-between min-h-[70px] px-[32px] py-3">
           <div className="flex flex-col items-center gap-1">
             <Image src={"/demo/msg.svg"} alt="svg" width={20} height={20} />

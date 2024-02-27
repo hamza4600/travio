@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-
 // import { localizedString, PropsWithLocale } from "@/contexts/LocaleProvider";
 // import { urlFor } from "@/sanity/client";
 // import { SanityTravelInfoSection } from "@/sanity/types";
@@ -16,20 +14,19 @@ const TravelInformation = ({ data, locale }: { data: any; locale: string }) => {
         id="essentials"
         className="flex flex-col gap-5 text-center items-center justify-center px-5 rounded-2xl border-[#FFBB0B] border-[1px] shadow-md shadow-[#f5f5f5] lg:px-20 py-10 pb-7"
       >
-        <Image
+        <img
           src={data.icon}
           alt={data.icon?.alt?.en ?? ""}
-          height={78}
-          width={78}
+          className="lg:h-[78px] lg:w-[78px] h-[58px] w-[58px]"
         />
 
         <h2
           style={{ letterSpacing: "-3%" }}
-          className=" text-[24px] leading-[32px] font-satoshi md:text-[40px] md:leading-[50px] mt-3 font-medium"
+          className=" text-[24px] leading-[32px] font-satoshi md:text-[40px] md:leading-[50px] font-medium"
         >
           {data.title?.[locale]}
         </h2>
-        <h5 className="md:text-base text-[14px] leading-6 my-2 font-satoshi px-0 md:px-20 opacity-60">
+        <h5 className="md:text-base text-[14px] leading-6 font-satoshi px-0 md:px-20 opacity-60">
           {data.subtitle?.[locale]}
         </h5>
         <Button

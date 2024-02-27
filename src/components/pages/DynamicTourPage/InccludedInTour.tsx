@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function WhatsIncludedSection({ data }: { data: any }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
-    <Container className="flex flex-col py-7 mx-auto max-w-[1312px] px-4  relative">
+    <Container className="flex flex-col pb-7 mx-auto max-w-[1312px] px-4  relative">
       <div id="inclusions">
         <h2 className="text-darkblue font-satoshi  font-bold text-[20px] lg:text-2xl text-c">
           {data?.title?.en}

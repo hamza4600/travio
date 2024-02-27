@@ -24,7 +24,7 @@ export function Star() {
 
 const AccomodationCard = ({ data }: { data: any }) => {
   return (
-    <div className="rounded-2xl font-satoshi overflow-hidden min-w-[310px] w-full max-w-[307px] place-self-center">
+    <div className="rounded-2xl font-satoshi overflow-hidden min-w-[310px] w-full max-w-[307px] max-md:max-w-[250px] place-self-center">
       <div className="text-center bg-[#1A4767] py-3 rounded-t-2xl items-center flex flex-col ">
         <h4 className="text-xl text-white font-semibold">{data.title?.en}</h4>
         <h5 className="text-white text-sm">{data.subtitle?.en}</h5>
