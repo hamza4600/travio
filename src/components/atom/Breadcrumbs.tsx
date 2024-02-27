@@ -35,7 +35,7 @@ const Breadcrumbs = ({ paths }: { paths: Breadcrumb[] }) => {
           <Link
             className={
               i === lastIndex
-                ? "text-[#3FA9F5] font-bold max-md:text-[12px] max-md:leading-5"
+                ? "text-[#3FA9F5] md:font-bold font-medium max-md:text-[12px] max-md:leading-5"
                 : "text-darkblue"
             }
             href={path.value}

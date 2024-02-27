@@ -88,11 +88,11 @@ const DynamicTourPage = ({ language, pageData }) => {
         <AppTabs tabs={tabsData} />
       </div>
 
-      <div className="lg:px-20 mt-[100px]">
+      <div className="lg:px-20 md:mt-[50px] mt-0">
         <SummarySection />
       </div>
 
-      <div className="lg:mt-[90px] mt-[60px]">
+      <div className="lg:mt-[90px] md:mt-[60px] mt-[50px]">
         <MemorableExperiencesSection
           data={memorableExperiencesData}
           locale={language}
@@ -115,13 +115,15 @@ const DynamicTourPage = ({ language, pageData }) => {
         <Text variant={"darkblue"} className="text-2xl font-bold">
           Dates & Availability
         </Text>
-        <hr className="border-b-[#FFBB0B] mt-[5px] border-b md:border-b-[3px] md:max-w-[117px] w-[89px]" />
+        <hr
+            className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
+          />
         <div className="mt-10">
           <FlexibleThingsForTour data={flexibleThingsData} locale={language} />
         </div>
       </div>
 
-      <div className="lg:mt-[78px] mt-[50px] md:px-20 px-5">
+      <div className="lg:mt-[78px] mt-[50px] md:px-20 px-0">
         <PriceList data={tourData} slug="1234" locale="en" />
       </div>
 

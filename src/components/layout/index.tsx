@@ -7,11 +7,11 @@ import {
   // SanityPromoBanner,
 } from "../../../sanity/lib/types";
 
-// import { urlFor } from "../../../sanity/lib/client";
+import { urlFor } from "../../../sanity/lib/client";
 const PromoBanner = dynamic(() => import("../molecules/Promobanner"));
 const Footer = dynamic(() => import("../molecules/footer"));
 import Header from "../molecules/Header";
-// import Schema from "../atom/Schema";
+import Schema from "../atom/Schema";
 import Breadcrumbs, { Breadcrumb } from "../atom/Breadcrumbs";
 
 // const myFont = localFont({ src: '../../../public/Satoshi-Variable.ttf' })
@@ -35,7 +35,7 @@ const Layout = ({
   return (
     <div className="bg-white">
       <div className="max-w-[1440px] mx-auto box-border">
-        {/* {globals?.navbar?.logo && (
+        {globals?.navbar?.logo && (
           <Schema
             data={{
               "@context": "https://schema.org",
@@ -44,7 +44,7 @@ const Layout = ({
               logo: urlFor(globals?.navbar?.logo),
             }}
           />
-        )} */}
+        )}
         <div
           className="overflow-x-hidden text-black min-h-screen  flex flex-col"
           // style={{ width: process.env.NEXT_PUBLIC_DEVELOPMENT ? 1440 : '' }}

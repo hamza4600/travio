@@ -101,7 +101,7 @@ export const data1 = [
 const CardsSection = ({ data, locale }) => {
   return (
     <Container className="text-black w-full smd:mr-0">
-      <div className="h-fit relative md:mt-12 mt-6">
+      <div className="h-fit relative md:mt-12 mt-[30px]">
         <Swiper className={"gap-6 pb-3"} length={data1.length} scrollCount={4}>
           {data1.map((data) => (
             <TourCard

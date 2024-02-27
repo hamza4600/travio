@@ -15,9 +15,9 @@ export default function ItinerarySection({
   data: any;
   locale: string;
 }) {
-  console.log("ItinerarySection-> ", data);
+  // console.log("ItinerarySection-> ", data);
   return (
-    <Container className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] gap-10">
+    <Container className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7">
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}
@@ -100,7 +100,9 @@ const EnquireTab = () => {
         <div className="flex justify-between">
           <div className="">
             <p className="font-bold text-xl">Enquire</p>
-            <hr className="lg:w-1/2 w-1/3 my-2 text-yellow border-b-[#FFBB0B]  rounded-full border-2" />
+            <hr
+              className="lg:w-1/2 w-1/3 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
+            />
           </div>
           <div className="relative w-7 h-7">
             <Image src={"/contact_mail_icon.svg"} alt="" fill />
@@ -330,19 +332,17 @@ const Expandable = ({
 }) => {
   return (
     <div>
-      <div
-        className={`flex flex-nowrap transition-all justify-between ${
-          isOpen
+      <button
+        className={`flex flex-nowrap items-start justify-between transition-all w-[100%] ${isOpen
             ? "bg-[#3FA9F5] text-white"
             : "bg-darkblue/[0.02] text-dimSecondary"
-        }  items-center px-7 py-4 ${
-          isOpen ? "rounded-t-2xl  " : "rounded-2xl"
-        }`}
+          }   px-7 md:py-4 py-3 ${isOpen ? "rounded-t-2xl  " : "rounded-2xl"
+          }`}
         onClick={() => {
           toggleOpen();
         }}
       >
-        <p className="w-5 font-bold lg:text-[20px] lg:leading-8 flex-1 font-satoshi">
+        <p className="font-bold lg:text-[20px] lg:leading-8  font-satoshi">
           {data.title?.en}
         </p>
         <CaretDown
@@ -350,11 +350,10 @@ const Expandable = ({
           height={"24px"}
           className={`${isOpen && "rotate-180"}`}
         />
-      </div>
+      </button>
       <div
-        className={`flex flex-col gap-6 transition-all  rounded-b-2xl ${
-          !isOpen ? "overflow-hidden h-0" : "p-5"
-        }`}
+        className={`flex flex-col gap-6 transition-all  rounded-b-2xl ${!isOpen ? "overflow-hidden h-0" : "p-5"
+          }`}
       >
         <div className="flex flex-col gap-6">
           <div className="relative w-full h-[200px] overflow-hidden max-md:w-[295px] max-md:h-[160px] md:max-w-[914px] md:min-h-[382px] rounded-2xl ">
@@ -411,7 +410,9 @@ const ExpandableList = ({
           <p className="flex-1 md:text-xl text-base font-medium text-darkblue tracking-tight font-satoshi">
             {title}
           </p>
-          <hr className="w-20 my-2 text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
+          <hr
+            className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
+          />
         </div>
       </div>
       <div className="flex flex-col pl-7 gap-2">

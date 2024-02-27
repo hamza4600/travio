@@ -13,12 +13,11 @@ function AppTabs({ tabs }: TabsProp) {
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
 
-    setIsFixed(scrollPosition > window.innerHeight / 0.5);
+    setIsFixed(scrollPosition > window.innerHeight / 0.9); // is equal to 80% of the window height
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
     // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -30,10 +29,10 @@ function AppTabs({ tabs }: TabsProp) {
   }
 
   return (
-    <div className="max-w-full  relative">
+    <div className="max-w-full relative">
       <div
         style={{
-          position: isFixed ? "fixed" : "absolute",
+          position: isFixed ? "fixed" : "relative",
           top: 0,
           zIndex: 1000,
           marginTop: isFixed ? "0" : "10px",
@@ -45,7 +44,7 @@ function AppTabs({ tabs }: TabsProp) {
         <div className="w-full overflow-x-scroll">
           <div className="px-5">
             <nav
-              className="flex lg:gap-16 gap-10 lg:justify-center lg:items-center justify-start items-start"
+              className="flex lg:gap-16 gap-1 lg:justify-center lg:items-center justify-start items-start"
               aria-label="Tabs"
             >
               {tabs.map((tab, index) => (

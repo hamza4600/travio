@@ -38,13 +38,18 @@ const SummarySection = () => {
       <div className="flex max-lg:px-5 flex-col gap-[30px]">
         <div className="flex max-lg:flex-col max-md:gap-5 items-center justify-between gap-[30px]">
           <div className="">
-            <Text
-              variant={"darkblue"}
-              className="md:leading-[34px] text-[20px] leading-[30px] font-bold md:text-[24px]"
-            >
-              Cairo City Of Egypt
-            </Text>
-            <hr className="border-b-[#FFBB0B] mt-[10px] border-b-[3px] w-[74px]" />
+            <div>
+
+              <Text
+                variant={"darkblue"}
+                className="md:leading-[34px] text-[20px] leading-[30px] font-bold md:text-[24px]"
+              >
+                Cairo City Of Egypt
+              </Text>
+              <hr
+              className="w-[74px]  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
+            />
+            </div>
             <div className="flex flex-col mt-[28px] gap-[18px] font-normal text-[14px] max-md:leading-5 md:text-base">
               <Text variant={"darkblue"}>
                 The main city of Egypt is Cairo. As the capital and largest city
@@ -69,7 +74,7 @@ const SummarySection = () => {
           <img
             src="/demo/tourimage.png"
             alt="asd"
-            className="max-w-[400px] px-5 min-h-[310px] max-lg:min-w-full"
+            className="md:max-w-[400px] md:px-5 md:min-h-[310px] max-lg:min-w-full"
           />
           <Text
             variant={"darkblue"}
@@ -81,7 +86,7 @@ const SummarySection = () => {
           </Text>
         </div>
 
-        <div className="flex flex-col gap-[28px]">
+        <div className="flex flex-col md:gap-[28px] gap-[18px]">
           <div>
             <Text
               variant={"darkblue"}
@@ -89,7 +94,9 @@ const SummarySection = () => {
             >
               Why youll love this trip
             </Text>
-            <hr className="border-b-[#FFBB0B] mt-[10px] border-b-[3px] w-[74px]" />
+            <hr
+              className="w-[74px]  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
+            />
           </div>
 
           <ol>

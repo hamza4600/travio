@@ -36,7 +36,7 @@ export default function MemorableExperiencesSection({
   }, [swiper]);
   // console.log(data)
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col md:gap-12 gap-7">
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}
@@ -51,7 +51,7 @@ export default function MemorableExperiencesSection({
             breakpoints={{
               319: {
                 width: 320,
-                slidesPerView: 1.2,
+                slidesPerView: 1.1,
                 spaceBetween: 20,
               },
               768: {
@@ -133,25 +133,25 @@ const Card = ({ data }: { data: any }) => {
   if (!data) return null;
   return (
     <Link href={"/#" + data.slug?.current}>
-      <div className="max-w-[300px] max-md:max-w-[250px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
-        <div className="h-[220px] relative">
-          <Image
-            alt=""
-            src={data?.image}
-            quality={100}
-            fill
-            className="object-cover"
-          />
+        <div className="max-w-[300px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
+          <div className="h-[220px] relative">
+            <Image
+              alt=""
+              src={data?.image}
+              quality={100}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="p-4 max-lg:{pt-3 pb-[15px] px-[15px]} flex flex-col gap-1">
+            <p className="font-bold md:text-xl max-lg:{text-base} font-satoshi text-darkblue">
+              {data.title?.en}
+            </p>
+            <p className="lg:font-medium lg:text-[14px] lg:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
+              {data.description?.en}
+            </p>
+          </div>
         </div>
-        <div className="p-4 max-lg:{pt-3 pb-[15px] px-[15px]} flex flex-col gap-1">
-          <p className="font-bold md:text-xl max-lg:{text-base} font-satoshi text-darkblue">
-            {data.title?.en}
-          </p>
-          <p className="lg:font-medium lg:text-[14px] lg:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
-            {data.description?.en}
-          </p>
-        </div>
-      </div>
     </Link>
   );
 };

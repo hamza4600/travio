@@ -161,7 +161,7 @@ function PriceList({
 
   return (
     <Container
-      className=" bg-[rgba(20,13,49,0.02)] max-w-[970] lg:bg-transparent"
+      className=" bg-[rgba(20,13,49,0.02)] max-w-[970] lg:bg-transparent px-4"
       id="price-list"
     >
       <div
@@ -180,13 +180,13 @@ function PriceList({
               </Link>
             </h1>
             <div className="flex items-center gap-2">
-              <Image src="/lock_icon.svg" height={24} width={24} alt="lock" />
+              <img src="/lock_icon.svg" height={24} width={24} alt="lock" />
               <p className="text-md font-semibold text-[14px] lg:text-base text-[#3FA9F5]">
                 Secure Payments
               </p>
             </div>
           </div>
-          <div className="my-3 flex flex-col justify-end items-end font-semibold">
+          <div className="my-3 flex flex-col justify-end items-end font-semibold ">
             {/* <div
               // onClick={() => datePicker?.current?.}
               className="h-12 w-fit shadow-xl shadow-[#ebebeb] lg:w-[280px] grid grid-cols-[1fr_36px] bg-white divide-x-2 divide-darkblue p-3 border border-gray md:border-darkblue rounded-md"
@@ -206,6 +206,7 @@ function PriceList({
               </div>
 
             </div> */}
+            <div className="md:w-max w-max">
             <Input
               type="date"
               name="startMonth"
@@ -215,14 +216,15 @@ function PriceList({
                 setStartMonth(new Date(e.target.value).getMonth());
                 // console.log(new Date(e.target.value).getMonth())
               }}
-            />
+              />
+              </div>
+
           </div>
         </div>
         <div className="flex flex-col gap-3">
           <div
-            className={`md:grid  flex frow-row justify-start gap-10 md:gap-2 w-full text-[14px]  py-3 px-2 font-semibold lg:text-xl ${
-              collapsed ? " grid-cols-6" : "grid-cols-12"
-            }`}
+            className={`md:grid  flex frow-row justify-start gap-10 md:gap-2 w-full text-[14px]  py-3 px-2 font-semibold lg:text-xl ${collapsed ? " grid-cols-6" : "grid-cols-12"
+              }`}
           >
             <h1 className="text-left ml-5 lg:col-span-2 text-darkblue font-satoshi col-span-1">
               From
@@ -242,32 +244,29 @@ function PriceList({
           {prices.map((price, index) =>
             index < show ? (
               <div
-                className={`rounded-lg text-darkblue   transition-all ${
-                  selected !== index
+                className={`rounded-lg text-darkblue   transition-all ${selected !== index
                     ? "bg-white py-1 "
                     : "bg-[#3FA9F5] shadow-md text-white"
-                }`}
+                  }`}
                 key={index}
               >
                 <div
-                  className={`md:grid flex justify-between items-center  gap-2 py-[7px] md:px-2 px-5 cursor-pointer font-semibold text-xl ${
-                    collapsed ? " grid-cols-6" : "grid-cols-12"
-                  }`}
+                  className={`md:grid flex justify-between items-center  gap-2 py-[7px] md:px-2 px-5 cursor-pointer font-semibold text-xl ${collapsed ? " grid-cols-6" : "grid-cols-12"
+                    }`}
                   onClick={() => {
                     selected === index ? setSelected(-1) : setSelected(index);
                   }}
                 >
                   <h1
-                    className={`md:col-span-2 font-satoshi whitespace-nowrap  md:text-base md:leading-6 text-[10px] leading-[12px] ${
-                      collapsed
+                    className={`md:col-span-2 font-satoshi whitespace-nowrap  md:text-base md:leading-6 text-[10px] leading-[12px] ${collapsed
                         ? "text-[12px] max-md:leading-3 md:text-sm ml-2"
                         : "ml-5"
-                    }`}
+                      }`}
                   >
                     {DateFormat(price.from, true)}
                   </h1>
 
-                  <Image
+                  <img
                     src={
                       selected === index ? "/arrow_icon.svg" : "/arrow_blue.svg"
                     }
@@ -290,27 +289,24 @@ function PriceList({
                     />
                   </svg>
                   <h1
-                    className={`md:col-span-2 whitespace-nowrap font-satoshi text-[10px] max-md:leading-3 md:text-base ${
-                      collapsed && "text-[12px] max-md:leading-3"
-                    }`}
+                    className={`md:col-span-2 whitespace-nowrap font-satoshi text-[10px] max-md:leading-3 md:text-base ${collapsed && "text-[12px] max-md:leading-3"
+                      }`}
                   >
                     {DateFormat(price.to, true)}
                   </h1>
 
                   <>
                     <p
-                      className={`md:col-span-3 font-satoshi text-center text-[12px] max-md:leading-3 md:text-base ${
-                        MAPPINGS[price.availability || "Available"]
+                      className={`md:col-span-3 font-satoshi text-center text-[12px] max-md:leading-3 md:text-base ${MAPPINGS[price.availability || "Available"]
                           .availablecolor
-                      } ${selected === index ? "text-white" : ""}`}
+                        } ${selected === index ? "text-white" : ""}`}
                     >
                       {MAPPINGS[price.availability || "Available"].availability}
                     </p>
                     <div></div>
                     <div
-                      className={`md:col-span-2 font-satoshi  text-[12px] max-md:leading-3 md:text-base text-center md:flex items-center gap-2 ${
-                        MAPPINGS[price.availability || "Available"].color
-                      } ${selected === index ? "opacity-0" : ""}`}
+                      className={`md:col-span-2 font-satoshi  text-[12px] max-md:leading-3 md:text-base text-center md:flex items-center gap-2 ${MAPPINGS[price.availability || "Available"].color
+                        } ${selected === index ? "opacity-0" : ""}`}
                     >
                       <p>$ {price.currentPrice}</p>
                       {price.actualPrice && (
@@ -325,9 +321,8 @@ function PriceList({
                       height={20}
                       width={20}
                       className={`ml-auto mr-5 block
-                     my-auto transition-all ${
-                       selected === index && "-rotate-180"
-                     }`}
+                     my-auto transition-all ${selected === index && "-rotate-180"
+                        }`}
                     />
                   </>
                 </div>
@@ -336,19 +331,16 @@ function PriceList({
                     <div className="flex gap-2 flex-col">
                       <div className="flex font-satoshi gap-3 items-center">
                         <h1
-                          className={`${
-                            MAPPINGS[price.availability || "Available"].color
-                          } font-bold whitespace-nowrap text-destructive ${
-                            collapsed ? "text-base" : "text-4xl"
-                          }`}
+                          className={`${MAPPINGS[price.availability || "Available"].color
+                            } font-bold whitespace-nowrap text-destructive ${collapsed ? "text-base" : "text-4xl"
+                            }`}
                         >
                           $ {price.currentPrice}
                         </h1>
                         {price.actualPrice && (
                           <h1
-                            className={`text-gray line-through md:text-[24px] text-[12px] leading-9 font-bold whitespace-nowrap ${
-                              collapsed ? "text-[24px] leading-9" : "text-2xl"
-                            }`}
+                            className={`text-gray line-through md:text-[24px] leading-9 font-bold whitespace-nowrap ${collapsed ? "md:text-[24px] text-[12px] leading-9" : "text-2xl"
+                              }`}
                           >
                             $ {price.actualPrice}
                           </h1>
