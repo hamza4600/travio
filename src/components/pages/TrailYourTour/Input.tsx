@@ -202,6 +202,11 @@ export default function Input({
           {options?.map((option: any) => (
             <div
               key={option.name}
+              // style={{
+              //   filter: `${
+              //     field.value.includes(option.name) && "brightness(0) invert(1)"
+              //   } `,
+              // }}
               className={`flex border w-fit border-darkblue/10 rounded ${
                 field.value.includes(option.name)
                   ? "text-white bg-blue-500"

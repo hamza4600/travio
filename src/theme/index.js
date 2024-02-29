@@ -31,6 +31,7 @@ const lightThem = {
   font: 'DM Sans, sans-serif',
   fontDmSan: 'var(--dm-sans)',
   fontOutfit: 'var(--outfit)',
+  fontSatoshi: 'var(--font-satoshi)',
   pageText: '#016089',
   MediaDevices: {
     mobile: `@media screen and (max-width: ${breakPoints.mobile})`,
