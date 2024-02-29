@@ -1,5 +1,4 @@
-import { useParams } from "next/navigation";
-import { useMemo } from "react";
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import { Text } from "@/components/ui/text";
@@ -10,30 +9,11 @@ import Container from "../container";
 import { urlFor } from "../../../../sanity/lib/client";
 import useWindowSize from "@/hooks/useWindows";
 
-// const CARDS = [
-//   "/visa_card.png",
-//   "/mastercard.png",
-//   "/amex.png",
-//   "/discover.png",
-//   "/paypal.png",
-//   "/bank-transfer.png",
-// ];
-
-const Footer = ({ footer }) => {
-  const params = useParams();
+const Footer = ({ footer, language }) => {
 
   const windows = useWindowSize();
   const isMobile = windows.width < 768;
 
-  console.log("footer: ", footer);
-
-  const language = useMemo(() => {
-    return Array.isArray(params!.language)
-      ? params!.language[0]
-      : params!.language;
-  }, [params]);
-
-  console.log("footer: ", footer);
   const logo = urlFor(footer?.logo?.asset?._ref);
   const mobileLogo = urlFor(footer?.logo?.mobile?.asset?._ref);
 

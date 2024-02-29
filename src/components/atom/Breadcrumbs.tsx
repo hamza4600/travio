@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import Container from "../molecules/container";
 
@@ -7,14 +6,15 @@ export interface Breadcrumb {
   value: string;
 }
 
-const Breadcrumbs = ({ paths }: { paths: Breadcrumb[] }) => {
+const Breadcrumbs = ({ paths, locale }: { paths: Breadcrumb[], locale : string }) => {
   if (!paths?.length) return null;
   const lastIndex = paths.length - 1;
   return (
     <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex items-center gap-x-1.5  text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
-      {/* <div class="text-slate-900 text-base font-normal font-['Satoshi Variable'] leading-normal">Home</div> */}
-      {/* <div class="text-slate-900 text-xs font-normal font-['Satoshi Variable'] leading-tight">Home</div> */}
-      <Link href={"/"} className="">
+      <Link 
+        href={`/${locale}`}
+        className=""
+      >
         Home
       </Link>
       {paths.map((path, i) => (

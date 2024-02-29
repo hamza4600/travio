@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -71,8 +72,8 @@ const Header = ({
         <div className="bg-white h-[70px] flex items-center justify-between px-20 max-xl:px-5">
           {/* <Container className="main-content-wrapper flex gap-[138px] items-center justify-between"> */}
           <div>
-            <Link href={"/"}>
-              <Image
+            <Link href={`/${locale}`}>
+              <img
                 className={"h-10 w-[172px]"}
                 src="/company_logo.svg"
                 height={40}
@@ -105,14 +106,14 @@ const Header = ({
       </div>
       <div className="w-full lg:hidden z-50 lg:h-[80px] h-[60px] p-base">
         <div className="px-5 flex justify-between items-center w-full relative h-full  py-[16px] md:py-5 z-[50]">
-          <Image
+          <img
             src="/company_logo.svg"
             height={24}
             width={103}
             alt="Company logo"
           />
           <div className="flex gap-3 h-[24px]  items-center">
-            <Image
+            <img
               src="/whatsapp_logo.svg"
               height={24}
               width={24}
@@ -128,9 +129,8 @@ const Header = ({
         {/* Menu For Mobile */}
         <div className="flex flex-col justify-end pr-3  items-end">
           <div
-            className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
-              open ? "translate-y-1 " : "-translate-y-full opacity-0"
-            }`}
+            className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${open ? "translate-y-1 " : "-translate-y-full opacity-0"
+              }`}
           >
             {navbar?.links?.map((item, index) => (
               <div className="w-full" key={index}>
@@ -170,9 +170,8 @@ const Header = ({
                         height="16"
                         width="16"
                         alt=""
-                        className={`ml-1 ${
-                          openDropDown && "-rotate-180"
-                        } transition-all`}
+                        className={`ml-1 ${openDropDown && "-rotate-180"
+                          } transition-all`}
                       ></Image>
                     </span>
                     {openDropDown && (

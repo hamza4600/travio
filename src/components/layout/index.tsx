@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import dynamic from "next/dynamic";
 
 import {
@@ -30,7 +30,6 @@ const Layout = ({
   locale: any;
   head?: any;
 }) => {
-  // console.log("globalss: ", globals);
 
   return (
     <div className="bg-white">
@@ -56,11 +55,11 @@ const Layout = ({
 
           <main className={"grow"}>
             <PromoBanner banner={promo_banner} locale={locale} />
-            <Breadcrumbs paths={breadcrumbs} />
+            <Breadcrumbs paths={breadcrumbs} locale={locale}/>
 
             {children}
           </main>
-          <Footer footer={globals?.footer} />
+          <Footer footer={globals?.footer} language={locale}/>
         </div>
       </div>
     </div>
