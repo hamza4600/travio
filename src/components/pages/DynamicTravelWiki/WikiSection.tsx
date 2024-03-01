@@ -13,27 +13,30 @@ const Root = styled.div`
     }
 `;
 
+export const WikiSectionHeader = ({ wikiData }) => {
+  return (
+    <Root>
+      <SectionHeader
+        title={wikiData.tagline}
+        subtitle={wikiData.title}
+        centerLine
+      />
+      <div className="md:mt-12 mt-[50px]">
+        <FilterCountry tabs={wikiTabs} />
+      </div>
+    </Root>
+  )
+};
 const WikiSection = ({ wikiData, filterWiki }) => {
 
   // for testing later it will change to the exact logic
   return (
     <section className="md:mt-[48px] mt-[277px]">
-      <Root>
-        <SectionHeader
-          title={wikiData.tagline}
-          subtitle={wikiData.title}
-          centerLine
-        />
-        <div className="md:mt-12 mt-[50px]">
-          <FilterCountry tabs={wikiTabs} />
-        </div>
-      </Root>
+      <WikiSectionHeader wikiData={wikiData} />
       <div className="flex gap-[80px] md:px-20 px-5 md:mt-[68px] mt-[50px] max-lg:flex-col max-lg:items-center">
-
         <CustomAccordion
           data={wikiData.accr}
         />
-
         {/* Filter Country Wiki will be here */}
         {/* it will have portable compoent also will have differnt stucture */}
         <div>

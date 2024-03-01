@@ -9,5 +9,3 @@ const query = `{
 export async function getWikiPage() {
     return await CLIENT.fetch(query)
 }
-
-    
