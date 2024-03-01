@@ -3,10 +3,9 @@ import React from "react";
 import Layout from "@/components/layout";
 import { bannerText } from "../DynamicDestinations";
 import HeroSection from "./HeroSection";
-import { filterWikiData, heroData, wikiData, wikiTabs } from "./data";
+import { filterWikiData, heroData, wikiData } from "./data";
 import WikiSection from "./WikiSection";
-import SectionHeader from "@/components/molecules/secHeader";
-import FilterCountry from "./FilterCountry";
+
 import SuggestedTour from "./SuggestedTour";
 import GetEarlyNews from "@/components/sections/form/Form";
 
@@ -24,19 +23,7 @@ const DynamicTravelWiki = ({ language }: { language: string }) => {
     >
       <HeroSection data={heroData} />
 
-      <div className="md:mt-12 mt-[50px]">
-        <SectionHeader
-          title={wikiData.tagline}
-          subtitle={wikiData.title}
-          centerLine
-        />
-      </div>
-
-      <div className="md:mt-[68px] mt-[50px]">
-        <FilterCountry tabs={wikiTabs} />
-      </div>
-
-      <div className="md:px-20 px-5">
+      <div className="">
         <WikiSection wikiData={wikiData} filterWiki={filterWikiData} />
       </div>
 
@@ -44,7 +31,7 @@ const DynamicTravelWiki = ({ language }: { language: string }) => {
         <SuggestedTour />
       </div>
 
-      <div className="mt-20">
+      <div className="mt-20 md:mb-[68px] mb-[52px]">
         <GetEarlyNews
           title={"Join Our Travel Community and Unlock Exclusive Deals!"}
           description={

@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const FilterCountry = ({ tabs }: { tabs: Array<{ country: string }> }) => {
+const FilterCountry = ({
+  tabs,
+}: {
+  tabs: Array<{ name: string; href: string }>;
+}) => {
   const [isFixed, setIsFixed] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -45,7 +49,7 @@ const FilterCountry = ({ tabs }: { tabs: Array<{ country: string }> }) => {
             >
               {tabs.map((tab, index) => (
                 <button
-                  key={tab?.country}
+                  key={tab?.name}
                   onClick={() => setCurrentTab(index)}
                   className={cNames(
                     currentTab === index
@@ -54,7 +58,7 @@ const FilterCountry = ({ tabs }: { tabs: Array<{ country: string }> }) => {
                     "whitespace-nowrap border-b-4 font-satoshi border-gray-100 py-4 px-6 lg:text-base text-xs font-medium"
                   )}
                 >
-                  {tab?.country}
+                  {tab?.name}
                 </button>
               ))}
             </nav>
