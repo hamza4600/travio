@@ -14,6 +14,7 @@ const SectionHeader: FC<SectionHeaderProps> = ({
 }) => {
   return (
     <div
+      id = "section-header"
       className={`flex flex-col gap-0 md:gap-2 
       ${
         centerLine

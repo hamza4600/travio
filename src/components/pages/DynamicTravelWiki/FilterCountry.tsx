@@ -55,7 +55,7 @@ const FilterCountry = ({
                     currentTab === index
                       ? "border-[#FFBB0B] text-darkblue"
                       : "border-transparent text-gray-500 hover:border-gray-200 text-gray hover:text-gray-700",
-                    "whitespace-nowrap border-b-4 font-satoshi border-gray-100 py-4 px-6 lg:text-base text-xs font-medium"
+                    "whitespace-nowrap border-b-4 font-satoshi border-gray-100 py-4 px-2 lg:text-base text-xs font-medium"
                   )}
                 >
                   {tab?.name}

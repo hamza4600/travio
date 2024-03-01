@@ -9,10 +9,14 @@ import WikiSection from "./WikiSection";
 import SuggestedTour from "./SuggestedTour";
 import GetEarlyNews from "@/components/sections/form/Form";
 
-const DynamicTravelWiki = ({ language }: { language: string }) => {
+const DynamicTravelWiki = ({ language, pageData }: { language: string ,pageData : any  }) => {
+  
+  const { layout } = pageData || {};
+  
   return (
     <Layout
       locale={language}
+      globals={layout}
       breadcrumbs={[
         {
           label: "",
