@@ -6,11 +6,11 @@ import styled from "styled-components";
 import CustomAccordion from "./Accordian";
 
 const Root = styled.div`
-    @media (max-width: 768px) {
-        #section-header {
-          padding : 0px 20px;
-        }
+  @media (max-width: 768px) {
+    #section-header {
+      padding: 0px 20px;
     }
+  }
 `;
 
 export const WikiSectionHeader = ({ wikiData }) => {
@@ -25,23 +25,20 @@ export const WikiSectionHeader = ({ wikiData }) => {
         <FilterCountry tabs={wikiTabs} />
       </div>
     </Root>
-  )
+  );
 };
 const WikiSection = ({ wikiData, filterWiki }) => {
-
   // for testing later it will change to the exact logic
   return (
     <section className="md:mt-[48px] mt-[277px]">
       <WikiSectionHeader wikiData={wikiData} />
       <div className="flex gap-[80px] md:px-20 px-5 md:mt-[68px] mt-[50px] max-lg:flex-col max-lg:items-center">
-        <CustomAccordion
-          data={wikiData.accr}
-        />
+        <CustomAccordion data={wikiData.accr} />
         {/* Filter Country Wiki will be here */}
         {/* it will have portable compoent also will have differnt stucture */}
         <div>
           <Text
-            className="font-bold text-[24px] leading-[34px] -tracking-[1.3px]"
+            className="font-bold md:text-[24px] md:leading-[34px] text-[20px] leading-[30px] -tracking-[1.3px]"
             variant={"darkblue"}
           >
             {filterWiki.location.title}
@@ -52,7 +49,10 @@ const WikiSection = ({ wikiData, filterWiki }) => {
               <Text className="text-base font-bold" variant={"darkblue"}>
                 {filterWiki.location.location.title}
               </Text>
-              <Text variant={"darkblue"} className="md:text-[16px] text-[12px] md:leading-[28px] leading-[20px]">
+              <Text
+                variant={"darkblue"}
+                className="md:text-[16px] text-[12px] md:leading-[28px] leading-[20px]"
+              >
                 {filterWiki.location.location.desc}
               </Text>
             </div>
@@ -61,7 +61,10 @@ const WikiSection = ({ wikiData, filterWiki }) => {
               <Text className="text-base font-bold" variant={"darkblue"}>
                 {filterWiki.location.reachUs.title}
               </Text>
-              <Text variant={"darkblue"} className="md:text-[16px] text-[12px] md:leading-[28px] leading-[20px]">
+              <Text
+                variant={"darkblue"}
+                className="md:text-[16px] text-[12px] md:leading-[28px] leading-[20px]"
+              >
                 {filterWiki.location.reachUs.desc}
               </Text>
             </div>
