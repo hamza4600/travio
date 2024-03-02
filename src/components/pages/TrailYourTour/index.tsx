@@ -26,9 +26,9 @@ export type TailorTripFormData = {
   moreInfo: string;
 };
 
-const TailorYourTour = ({ language, pageData }) => {
-  const { layout } = pageData || {};
-
+const TailorYourTour = ({ language, data }) => {
+  const { layout , pageData} = data || {};
+  console.log("pageData====", pageData);
   const [loading] = useState(false);
   const resolver = useZodValidationResolver(validationSchema);
   const [selectedDestination, setSelectedDestination] = useState<string[]>([]);

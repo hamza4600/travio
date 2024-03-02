@@ -18,7 +18,7 @@ const AboutUsPage = ({ language, pageData }) => {
     <Layout
       breadcrumbs={[
         {
-          value: `/${language}/about`,
+          value: `/${language}/about-us`,
           label: "About Us",
         },
       ]}
