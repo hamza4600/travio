@@ -1,18 +1,58 @@
+"use client";
 import Layout from "@/components/layout";
+import AboutUs from "./AboutUs";
+import { aboutCompany, aboutData, aboutReviewData, location } from "./data";
+import { bannerText } from "../DynamicDestinations";
+import AboutComapny from "./AboutCompany";
+import OfficeLocations from "./OfficeLocation";
+import ReviewSection from "@/components/sections/reviews/Reviews";
 
-const AboutUsPage = ({language, pageData}) => {
-    
-    const { layout } = pageData || {};
+// import TravlerReviews from "@/components/sections/HappyTravelers";
 
-    return (
-        <Layout
-            breadcrumbs={[]}
-            locale={`${language}`}
-            globals={layout}
-        >
-            About Us Page
-        </Layout>
-    )
-}
+const AboutUsPage = ({ language, pageData }) => {
+  const { layout } = pageData || {};
+
+  console.log("pageData: ", pageData);
+
+  return (
+    <Layout
+      breadcrumbs={[
+        {
+          value: `/${language}/about`,
+          label: "About Us",
+        },
+      ]}
+      locale={`${language}`}
+      promo_banner={bannerText}
+      globals={layout}
+    >
+      <div className="md:px-20 px-5">
+        <AboutUs data={aboutData} locale={language} />
+      </div>
+
+      <div className="md:px-20 px-5">
+        <AboutComapny
+          data={aboutCompany}
+          offerData={aboutCompany.offerData}
+          locale={language}
+        />
+      </div>
+
+      {/* <div>
+        <TravlerReviews />
+      </div> */}
+
+      {/* <div className="md:px-20 px-5"> */}
+      <OfficeLocations
+        title={location.title}
+        data={location.data}
+        locale={language}
+      />
+      {/* </div> */}
+
+      <ReviewSection data={aboutReviewData} locale={language} />
+    </Layout>
+  );
+};
 
 export default AboutUsPage;

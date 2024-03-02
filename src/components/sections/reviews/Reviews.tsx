@@ -214,7 +214,7 @@ const ReviewSection = (props) => {
 
   const pageSize = 3;
   return (
-    <Container className="pb-[50px] md:pt-[120px] pt-[50px] md:py-[90px]  mx-auto max-w-[1312px] px-4 text-black">
+    <Container className="pb-[50px] md:pt-[80px] pt-[50px] md:py-[80px]  mx-auto max-w-[1312px] px-4 text-black">
       <SectionHeader title={tagline} subtitle={title} centerLine />
 
       <div className="flex font-satoshi gap-y-[30px] md:gap-x-5 px-0 lg:px-5 mt-[30px] flex-col md:flex-row">
