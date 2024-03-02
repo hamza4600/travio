@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Layout from "@/components/layout";
 import { bannerText } from "../DynamicDestinations";
 import HeroSection from "./HeroSection";
@@ -9,10 +8,10 @@ import WikiSection from "./WikiSection";
 import SuggestedTour from "./SuggestedTour";
 import GetEarlyNews from "@/components/sections/form/Form";
 
-const DynamicTravelWiki = ({ language, pageData }: { language: string ,pageData : any  }) => {
-  
+const DynamicTravelWiki = ({ language, pageData }: { language: string, pageData: any }) => {
+
   const { layout } = pageData || {};
-  
+
   return (
     <Layout
       locale={language}
@@ -27,9 +26,7 @@ const DynamicTravelWiki = ({ language, pageData }: { language: string ,pageData 
     >
       <HeroSection data={heroData} />
 
-      <div className="">
-        <WikiSection wikiData={wikiData} filterWiki={filterWikiData} />
-      </div>
+      <WikiSection wikiData={wikiData} filterWiki={filterWikiData} />
 
       <div className="md:px-20 px-5 md:mt-[68px] mt-[50px]">
         <SuggestedTour />
