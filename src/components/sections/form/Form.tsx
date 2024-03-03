@@ -8,7 +8,7 @@ import Container from "../../molecules/container";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 
-const GetEarlyNews = ({ title, description }) => {
+const GetEarlyNews = () => {
   const windowSize = useWindowSize();
   const isMobile = windowSize.width < 768;
 
@@ -32,7 +32,7 @@ const GetEarlyNews = ({ title, description }) => {
               fontWeight={"700"}
               className="text-center max-sm:w-[335px] -tracking-[1.2px] max-w-3xl md:text-start text-[24px] md:text-[40px] leading-[32px] md:leading-[50px]"
             >
-              {title}
+              Join Our Travel Community and Unlock Exclusive Deals!
             </Text>
 
             <Text
@@ -40,7 +40,8 @@ const GetEarlyNews = ({ title, description }) => {
               fontWeight={"500"}
               className="w-[335px] md:w-full  text-center max-w-[610px] -tracking-[0.6px] mt-2.5 mb-[30px] md:text-start text-[14px] md:text-[20px]  md:font-normal leading-[20px] md:leading-[32px]"
             >
-              {description}
+              Be the first to know about our latest travel deals, special
+              promotions, and insider tips
             </Text>
           </header>
           <div className="relative shadow-sm flex items-center  ">

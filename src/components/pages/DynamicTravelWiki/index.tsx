@@ -8,8 +8,13 @@ import WikiSection from "./WikiSection";
 import SuggestedTour from "./SuggestedTour";
 import GetEarlyNews from "@/components/sections/form/Form";
 
-const DynamicTravelWiki = ({ language, pageData }: { language: string, pageData: any }) => {
-
+const DynamicTravelWiki = ({
+  language,
+  pageData,
+}: {
+  language: string;
+  pageData: any;
+}) => {
   const { layout } = pageData || {};
 
   return (
@@ -33,12 +38,7 @@ const DynamicTravelWiki = ({ language, pageData }: { language: string, pageData:
       </div>
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">
-        <GetEarlyNews
-          title={"Join Our Travel Community and Unlock Exclusive Deals!"}
-          description={
-            "Be the first to know about our latest travel deals, special promotions, and insider tips"
-          }
-        />
+        <GetEarlyNews />
       </div>
     </Layout>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import useWindowSize from "@/hooks/useWindows";
+import { urlFor } from "../../../../sanity/lib/client";
 
 const Wrapper = styled.div`
   display: flex;
@@ -85,7 +86,7 @@ const InformationWrapper = styled.div`
   flex-direction: column;
   gap: 12px;
 
-  @media (max-width: 578px) {
+  @media (max-width: 425px) {
     gap: 7px;
   }
 `;
@@ -192,6 +193,8 @@ const OfficeLocations = ({ title, data, locale }) => {
   const windowSize = useWindowSize();
   const isLaptop = windowSize.width < 1025;
 
+  const isMobile = windowSize.width < 768;
+
   return (
     <Wrapper>
       <Title>{title}</Title>
@@ -200,11 +203,15 @@ const OfficeLocations = ({ title, data, locale }) => {
           <>
             <TextImgWrapper key={data._key}>
               <img
-                src={data?.image.asset._ref}
+                src={urlFor(
+                  isMobile
+                    ? data?.image?.mobile?.asset?._ref
+                    : data?.image.asset._ref
+                )}
                 alt={`Locations Pic-${data._key}`}
               />
               <InformationWrapper>
-                <LocationTxt>{data.name}</LocationTxt>
+                <LocationTxt>{data.title?.[locale]}</LocationTxt>
 
                 <IconTxtWrapper>
                   <Location />
@@ -215,7 +222,7 @@ const OfficeLocations = ({ title, data, locale }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {data.address}
+                    {data.address?.[locale]}
                   </InformTxt>
                 </IconTxtWrapper>
 
@@ -223,12 +230,12 @@ const OfficeLocations = ({ title, data, locale }) => {
                   <Phone />
                   <InformTxt
                     href={`tel:${encodeURIComponent(
-                      data.phone
+                      data.phone.en
                         .replace(/[^\d]/g, "")
                         .replace(/(\d{3})(\d{4})(\d{5})/, "+$1 $2 $3")
                     )}`}
                   >
-                    {data.phone}
+                    {data.phone[locale]}
                   </InformTxt>
                 </IconTxtWrapper>
 
@@ -236,11 +243,11 @@ const OfficeLocations = ({ title, data, locale }) => {
                   <Mail />
                   <InformTxt
                     href={`mailto:${encodeURIComponent(
-                      data.email.replace(/[^\x20-\x7E]/g, "")
+                      data.email.en.replace(/[^\x20-\x7E]/g, "")
                     )}`}
                     target="_blank"
                   >
-                    {data.email}
+                    {data.email[locale]}
                   </InformTxt>
                 </IconTxtWrapper>
               </InformationWrapper>

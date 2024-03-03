@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+// import { PortableText } from "@portabletext/react";
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -134,12 +135,17 @@ const MeetTeam = {
 const AboutUs = ({ data, locale }) => {
   return (
     <TitleWrapper>
+      {/* <Text1>{data.tagline?.[locale]}</Text1>
+      <Text2>{data.title?.[locale]}</Text2> */}
       <Text1>{data.tagline}</Text1>
       <Text2>{data.title}</Text2>
       <hr className="md:border-b-[3px] border-b-2 border-b-[#FFBB0B] md:max-w-[117px] max-w-[89px]" />
 
       <Container>
-        <WelcomeText>{data.data.firstLine}</WelcomeText>
+        <WelcomeText>
+          {data.data.firstLine}
+          {/* <PortableText value={data.content?.[locale]} /> */}
+        </WelcomeText>
         <TextImageContainer>
           <Container>
             <TextImgWrapper>
@@ -151,7 +157,7 @@ const AboutUs = ({ data, locale }) => {
           </Container>
           <Container>
             <img
-              src={data.data.img}
+              src={"/demo/team.png"}
               className="md:max-w-[619px] md:min-h-[296px] max-w-[335px] min-h-[161px] max-md:border-none"
               alt="Group Image"
             />

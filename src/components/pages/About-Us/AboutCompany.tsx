@@ -1,6 +1,8 @@
 // import { PortableText } from "@portabletext/react";
 import React from "react";
 import styled from "styled-components";
+// import { PortableText } from "@portabletext/react";
+import { urlFor } from "../../../../sanity/lib/client";
 
 const Wrapper = styled.div`
   display: flex;
@@ -85,33 +87,33 @@ const TextImageContainer = styled.div`
   }
 `;
 
-const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-`;
+// const TextWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 18px;
+// `;
 
-const MissionText = styled.div`
-  color: #140d31;
-  font-size: 16px;
-  font-family: var(--font-satoshi);
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 0.32px;
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+// const MissionText = styled.div`
+//   color: #140d31;
+//   font-size: 16px;
+//   font-family: var(--font-satoshi);
+//   font-weight: 400;
+//   line-height: 28px;
+//   letter-spacing: 0.32px;
+//   word-wrap: break-word;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 18px;
 
-  p {
-    margin-bottom: 6px;
-  }
+//   p {
+//     margin-bottom: 6px;
+//   }
 
-  @media (max-width: 578px) {
-    font-size: 14px;
-    line-height: 24px;
-  }
-`;
+//   @media (max-width: 578px) {
+//     font-size: 14px;
+//     line-height: 24px;
+//   }
+// `;
 
 const BenefitsWrapper = styled.div`
   display: flex;
@@ -167,31 +169,32 @@ const Desc = styled.div`
   }
 `;
 
-const AboutComapny = ({ data, offerData, locale }) => {
+const AboutComapny = ({ data, locale }) => {
   return (
     <Wrapper>
       <TextConatiner>
-        <Text1>{data.tagline}</Text1>
-        <Text2>{data.title}</Text2>
+        <Text1>{data.tagline?.[locale]}</Text1>
+        <Text2>{data.title?.[locale]}</Text2>
       </TextConatiner>
       <MissionConatiner>
         <TextImageContainer>
           <img
-            src={data.img}
-            width={data.img.width}
-            height={data.img.height}
-            alt="Buses Image"
+            src={urlFor(data.content?.[locale][0]?.items[0].image?.asset?._ref)}
+            // width={data.img.width}
+            // height={data.img.height}
+            alt={data.content?.[locale][0]?.items[0].alt}
           />
-          <TextWrapper>
+          {/* <TextWrapper>
             <MissionText>{data.data.firstLine}</MissionText>
             <MissionText>{data.data.secondLine}</MissionText>
-          </TextWrapper>
+          </TextWrapper> */}
         </TextImageContainer>
         <BenefitsWrapper>
-          {offerData.map((data: any, index: number) => (
+          {/* <PortableText value={data.content} /> */}
+          {data.content?.[locale][1]?.items.map((data: any, index: number) => (
             <TitleDescWrapper key={index}>
-              <Title>{data.title || ""}</Title>
-              <Desc>{data.content}</Desc>
+              <Title>{data.items[0].text || ""}</Title>
+              <Desc>{data.items[1].text}</Desc>
             </TitleDescWrapper>
           ))}
         </BenefitsWrapper>

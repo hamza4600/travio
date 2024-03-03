@@ -43,7 +43,7 @@ export async function generateMetadata({ params }) {
   };
 }
 // revalidate: 1 hour
-export const revalidate = 3600 
+export const revalidate = 3600;
 
 export default async function Home({ params }) {
   const homePage = await getAllHomePage();
@@ -51,7 +51,7 @@ export default async function Home({ params }) {
 
   return (
     <>
-      <HomePage pageData={homePage} language={language} />
+      <HomePage pageData={homePage} locale={language} />
     </>
   );
 }

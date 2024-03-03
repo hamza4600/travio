@@ -1,8 +1,12 @@
 "use client";
 import Layout from "@/components/layout";
 import AboutUs from "./AboutUs";
-import { aboutCompany, aboutData, aboutReviewData, location } from "./data";
-import { bannerText } from "../DynamicDestinations";
+import {
+  // aboutCompany,
+  aboutData,
+  aboutReviewData,
+} from "./data";
+// import { bannerText } from "../DynamicDestinations";
 import AboutComapny from "./AboutCompany";
 import OfficeLocations from "./OfficeLocation";
 import ReviewSection from "@/components/sections/reviews/Reviews";
@@ -14,6 +18,23 @@ const AboutUsPage = ({ language, pageData }) => {
 
   console.log("pageData: ", pageData);
 
+  const { pageData: SECTIONS_DATA } = pageData || {};
+
+  const { sections: SECTIONS } = SECTIONS_DATA || {};
+
+  console.log("SECTIONS_DATA: ", SECTIONS_DATA);
+
+  const {
+    [0]: ABOUT_US,
+    [1]: ABOUT_COMPANY,
+    // [2]: ,
+    [3]: LOCATIONS,
+  } = SECTIONS || {};
+
+  console.log("ABout us: ", ABOUT_US);
+
+  console.log("ABout company: ", ABOUT_COMPANY);
+
   return (
     <Layout
       breadcrumbs={[
@@ -23,7 +44,7 @@ const AboutUsPage = ({ language, pageData }) => {
         },
       ]}
       locale={`${language}`}
-      promo_banner={bannerText}
+      promo_banner={layout.navbar.info_banner}
       globals={layout}
     >
       <div className="md:px-20 px-5">
@@ -32,8 +53,8 @@ const AboutUsPage = ({ language, pageData }) => {
 
       <div className="md:px-20 px-5">
         <AboutComapny
-          data={aboutCompany}
-          offerData={aboutCompany.offerData}
+          data={ABOUT_COMPANY}
+          // offerData={ABOUT_COMPANY.offerData}
           locale={language}
         />
       </div>
@@ -44,8 +65,8 @@ const AboutUsPage = ({ language, pageData }) => {
 
       {/* <div className="md:px-20 px-5"> */}
       <OfficeLocations
-        title={location.title}
-        data={location.data}
+        title={LOCATIONS?.title[language]}
+        data={LOCATIONS.locations}
         locale={language}
       />
       {/* </div> */}
