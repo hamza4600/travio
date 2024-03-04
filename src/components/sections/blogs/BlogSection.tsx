@@ -8,30 +8,28 @@ import SwiperComponent from "@/components/molecules/Swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
-// import { urlFor } from "../../../../sanity/lib/client";
-import useWindowSize from "@/hooks/useWindows";
+import { urlFor } from "../../../../sanity/lib/client";
+// import useWindowSize from "@/hooks/useWindows";
+import SectionHeader from "@/components/molecules/secHeader";
 
 const BlogCard = ({ blog, locale }) => {
-  const windows = useWindowSize();
-  const isMobile = windows.width < 768;
+  // const windows = useWindowSize();
+  // const isMobile = windows.width < 768;
   return (
     blog && (
-      <Link className={"flex-shrink-0"} href={locale + blog?.slug?.current}>
+      <Link
+        className={"flex-shrink-0 md:mt-12 mt-[30px]"}
+        href={locale + blog?.slug?.current}
+      >
         <div className=" w-full">
           <div className={"rounded-3xl max-sm:rounded-[8px] overflow-hidden"}>
             {blog?.cover_image && (
               <img
-                // loading="lazy"
+                loading="lazy"
                 // width={410}
                 // height={460}
                 className="w-full min-h-[460px] max-w-[410px] max-sm:min-h-[280px] max-sm:max-w-[250px]"
-                src={
-                  // urlFor(
-                  isMobile
-                    ? blog?.cover_image?.mobile?.asset?._ref
-                    : blog?.cover_image?.asset?._ref
-                  // )
-                }
+                src={urlFor(blog?.cover_image)}
                 alt="cover_image"
               />
             )}
@@ -69,8 +67,13 @@ const BlogSection = (props) => {
   console.log("tagline: ", tagline?.en, "locale: ", locale, featured_blogs);
 
   return (
-    <Container className="text-darkblue">
-      <header className="pb-5 font-satoshi">
+    <Container className="text-darkblue px-20 max-lg:px-5 md:mt-[84px] mt-[50px]">
+      <SectionHeader
+        title={tagline?.[locale]}
+        subtitle={title?.[locale]}
+        centerLine
+      />
+      {/* <header className="pb-5 font-satoshi">
         <p className="text-[#3FA9F5] text-[12px] md:text-base font-medium text-center uppercase leading-5">
           {tagline?.[locale]}
         </p>
@@ -78,7 +81,7 @@ const BlogSection = (props) => {
           <h2>{title?.[locale]}</h2>
           <hr className=" mt-[4px] md:mt-[12px] w-2/3 md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
         </div>
-      </header>
+      </header> */}
       <div className="relative">
         <SwiperComponent
           className={"gap-3 md:gap-6 w-full overflow-hidden "}

@@ -122,14 +122,17 @@ const Popup = () => {
                 className="m-auto"
                 alt=""
               />
-              <p className="text-center w-full pt-3 font-medium text-base">
+              <p className="text-center w-full pt-3 font-satoshi font-medium text-base">
                 Don&apos;t miss out on incredible discounted travel
                 opportunities
               </p>
 
               <form action="" className="pxs-6 mt-10 ">
                 <div className="my-3">
-                  <label className="text-base font-medium" htmlFor="name">
+                  <label
+                    className="text-base font-satoshi font-medium"
+                    htmlFor="name"
+                  >
                     Full Name
                   </label>
                   <input
@@ -139,7 +142,7 @@ const Popup = () => {
                 </div>
                 <div className="mt-[18px]">
                   <label
-                    className="text-base font-medium after:content-['*'] after:ml-0.5 after:text-red"
+                    className="text-base font-satoshi font-medium after:content-['*'] after:ml-0.5 after:text-red"
                     htmlFor="email"
                   >
                     Email
@@ -155,7 +158,7 @@ const Popup = () => {
                     className="w-4 h-4 border-[1px]  rounded-[3px]  border-gray border-opacity-40 "
                     type="checkbox"
                   />
-                  <p className="text-[12px] font-normal text-gray">
+                  <p className="text-[12px] font-satoshi font-normal text-gray">
                     {" "}
                     By clicking &apos;Submit,&apos; you agree to our Privacy
                     Policy{" "}
@@ -167,12 +170,12 @@ const Popup = () => {
                     type="checkbox"
                     className="w-4 h-4 rounded-[3px] border-[1px] border-gray border-opacity-40"
                   />
-                  <p className="text-[12px] font-normal text-gray">
+                  <p className="text-[12px] font-satoshi font-normal text-gray">
                     I want to receive travel updates and offers{" "}
                   </p>
                 </div>
 
-                <button className="bg-blue-500 w-full rounded-full text-white mt-5 py-2 font-semibold">
+                <button className="bg-blue-500 w-full font-satoshi rounded-full text-white mt-5 py-2 font-semibold">
                   Submit
                 </button>
               </form>

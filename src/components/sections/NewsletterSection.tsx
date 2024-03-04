@@ -1,15 +1,15 @@
-import { FC } from 'react'
-import Image from 'next/image'
+import { FC } from "react";
+import Image from "next/image";
 
-import { SanityNewsletterSection } from  '../../../sanity/lib/types'
+import { SanityNewsletterSection } from "../../../sanity/lib/types";
 
-import Container from '../molecules/container'
-import { localizedString, urlFor, PropsWithLocale } from '../../../sanity/lib/client'
+import Container from "../molecules/container";
+import { urlFor, PropsWithLocale } from "../../../sanity/lib/client";
 
 type NewsletterSectionProps = {
-  data: SanityNewsletterSection
-  locale: PropsWithLocale<any>
-}
+  data: SanityNewsletterSection;
+  locale: PropsWithLocale<any>;
+};
 
 const NewsletterSection: FC<NewsletterSectionProps> = ({ data, locale }) => {
   return (
@@ -18,31 +18,31 @@ const NewsletterSection: FC<NewsletterSectionProps> = ({ data, locale }) => {
         <Image
           width={640}
           height={222}
-          src={data.image ? urlFor(data.image) : ''}
-          alt={''}
+          src={data.image ? urlFor(data.image) : ""}
+          alt={""}
           sizes={`
               100vw
             `}
-          className={'absolute w-full h-full top-0 left-0 object-cover'}
+          className={"absolute w-full h-full top-0 left-0 object-cover"}
         />
         <div className="flex relative z-10 flex-col justify-center md:justify-start items-center md:items-start ">
           <header>
             <h2 className="text-center -tracking-[1.2px] max-w-3xl md:text-start text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px] w-[335px] md:w-full">
-              {localizedString(data.title, locale)}
+              {data.title?.[locale]}
             </h2>
 
             <p className="w-[335px] md:w-full  text-center max-w-[610px] -tracking-[0.6px] mt-2.5 mb-[30px] md:text-start text-[14px] md:text-[20px] font-[500] md:font-normal leading-[20px] md:leading-[32px]">
-              {localizedString(data.subtitle, locale)}
+              {data.subtitle?.[locale]}
             </p>
           </header>
           <div className="relative shadow-sm flex items-center  ">
             <input
               className=" text-black w-[335px]  md:w-[420px] h-10 md:h-12 rounded-full px-3 md:px-4 placeholder:text-gray text-xs   md:text-base leading-[22px] md:leading-normal "
               type="text"
-              placeholder={'Enter your email'}
+              placeholder={"Enter your email"}
             />
             <button className="absolute right-[5px] top-1/2 -translate-y-1/2 py-[4px] md:py-[7px] px-[18px] bg-yellow font-bold rounded-full">
-              {'Sign Up'}
+              {"Sign Up"}
             </button>
           </div>
 
@@ -99,7 +99,7 @@ const NewsletterSection: FC<NewsletterSectionProps> = ({ data, locale }) => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default NewsletterSection
+export default NewsletterSection;

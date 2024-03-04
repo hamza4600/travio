@@ -1,6 +1,7 @@
 import Swiper from "@/components/molecules/Swiper";
 import TourCard from "@/components/molecules/cards/Card";
 import Container from "@/components/molecules/container";
+import SectionHeader from "@/components/molecules/secHeader";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -100,7 +101,8 @@ export const data1 = [
 
 const CardsSection = ({ data, locale }) => {
   return (
-    <Container className="text-black w-full smd:mr-0">
+    <Container className="text-black w-full smd:mr-0 px-20 max-lg:px-5 mt-[50px]">
+      <SectionHeader subtitle="Top Tours in Egypt" title="Top tours" />
       <div className="h-fit relative md:mt-12 mt-[30px]">
         <Swiper className={"gap-6 pb-3"} length={data1.length} scrollCount={4}>
           {data1.map((data) => (

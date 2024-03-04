@@ -53,7 +53,7 @@ const TourGallery = (props: GallerySectionProps) => {
     <div
       className={`${
         forTourPage ? "bg-white" : "bg-[#F2FAFF]"
-      } pt-5 md:pt-10 min-h-[482px] md:min-h-[522px] text-black`}
+      } pt-5 md:pt-10 min-h-[482px] md:min-h-[522px] mt-[84px] text-black`}
     >
       <Container>
         <h2

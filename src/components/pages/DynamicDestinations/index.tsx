@@ -20,7 +20,6 @@ const ReviewSection = dynamic(
   () => import("@/components/sections/reviews/Reviews")
 );
 
-import SectionHeader from "@/components/molecules/secHeader";
 import { data1 } from "@/components/sections/differnetDeals/CardsSection";
 
 import FAQSection from "@/components/sections/faq";
@@ -57,11 +56,6 @@ const DynamicDestionations = ({ language }) => {
     >
       <HeroSection data={heroData} locale={language} />;
       <div className="md:px-20 px-5 md:mt-12 mt-[50px]">
-        <SectionHeader
-          subtitle="Top Tours in Egypt"
-          title="Top tours"
-          centerLine
-        />
         <CardsSection data={data1} locale={language} />
       </div>
       <div>
