@@ -71,9 +71,9 @@ const DynamicDestionations = ({ language, pageData }) => {
         <TopThingsToDo data={dataTop} />
       </div>
       <FAQSection data={faqSectionData} locale={language} />
-      {/* <div className="md:px-20 px-5">
+      <div className="md:px-20 px-5">
         <BlogSection data={blogSectionData} locale={language} />
-      </div> */}
+      </div>
       <div className="px-0 mb-5 md:px-20 md:mb-[68px] md:mt-20 mt-[120px]">
         <ContactSection />
       </div>
