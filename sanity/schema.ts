@@ -21,6 +21,7 @@ import price from "./schemas/atoms/Price";
 import promo_banner from "./schemas/atoms/PromoBanner";
 import timeline from "./schemas/atoms/Timeline";
 import tour_timeline from "./schemas/atoms/TourTimeline";
+import wattsappbanner from "./schemas/atoms/wattsappbanner";
 import Article from "./schemas/documents/Article";
 import blog_page from "./schemas/documents/BlogPage";
 import destination_page from "./schemas/documents/DestinationPage";
@@ -75,6 +76,7 @@ export const schemaTypes= [
         price,
         tour_timeline,
         timeline,
+        wattsappbanner,
         // content
         content_text,
         content_image,

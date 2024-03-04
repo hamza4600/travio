@@ -10,6 +10,7 @@ export default defineType({
   groups: [
     { name: 'navbar', title: 'Navbar' },
     { name: 'footer', title: 'Footer' },
+    { name: 'banner', title: 'Banner' }
   ],
   fields: [
     defineField({
@@ -318,6 +319,30 @@ export default defineType({
           type: 'locale_text',
         }),
       ],
+    }),
+    defineField({
+      name: 'banner',
+      title: 'Bannner',
+      type: 'object',
+      group: 'banner',
+      options: {
+        collapsible: true,
+      },
+      fields: [
+      defineField({
+        name: 'watts_banner',
+        title: 'Contact Banner',
+        description: 'Contact Banner for the App',
+        type: 'watts_banner',
+      }),
+      defineField({
+      name: 'promo_banner',
+      title: 'Promo Banner',
+      description: 'Promo banner for the App',
+      type: 'promo_banner',
+      }),
+
+      ]
     }),
   ],
   preview: {

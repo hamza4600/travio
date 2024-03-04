@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
 
-import { Megaphone } from '@phosphor-icons/react'
+import { PhoneCall } from '@phosphor-icons/react'
 
 export default defineType({
-  name: 'promo_banner',
-  title: 'Promo Banner',
-  icon: Megaphone as any,
+  name: 'watts_banner',
+  title: 'Contact Banner',
+  icon: PhoneCall as any,
   // description: 'Promo banner ',
   type: 'object',
   options: {
@@ -20,15 +20,16 @@ export default defineType({
       type: 'locale_string',
     }),
     defineField({
-      name: 'link',
-      title: 'Link',
-      description: 'Link for the promo banner',
-      type: 'link',
+      name: 'contact_number',
+      title: 'Contact Number',
+      description: 'Contact number for the banner',
+      type: 'string',
     }),
+ 
     defineField({
       name: 'show',
       title: 'Show',
-      description: 'Show or hide the promo banner',
+      description: 'Show or hide the Contact banner',
       type: 'boolean',
     }),
   ],
