@@ -1,7 +1,12 @@
 import { Text } from "@/components/ui/text";
+import useWindowSize from "@/hooks/useWindows";
 import React from "react";
+import { urlFor } from "../../../../sanity/lib/client";
 
 const HeroSection = ({ data, locale }) => {
+  const window = useWindowSize();
+  const isMobile = window.width < 768;
+
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
   return (
@@ -9,12 +14,14 @@ const HeroSection = ({ data, locale }) => {
       <div style={{ boxShadow: linearGradient }} className="w-full relative">
         <img
           className="lg:w-full min-h-[480px] max-w-[1440px] max-md:h-[200px]"
-          src={data.img}
+          src={urlFor(
+            isMobile ? data.image.mobile.asset._ref : data.image.asset._ref
+          )}
           loading="lazy"
-          alt="Hero_section"
+          alt={data?.alt?.[locale]}
         />
         <h1 className="font-satoshi shadow-lg lg:w-full text-white max-lg:hidden font-black absolute z-50 bottom-12 text-center text-[56px] leading-[72px]">
-          {data.title}
+          {data.header?.[locale]}
         </h1>
       </div>
       <div className="md:px-20 px-5 md:mt-12 mt-[18px] items-center flex flex-col">
@@ -23,7 +30,7 @@ const HeroSection = ({ data, locale }) => {
             variant={"darkblue"}
             className="font-bold text-[20px] leading-[30px]"
           >
-            {data.title}
+            {data.header?.[locale]}
           </Text>
           <hr className="border-b border-[#FFBB0B] w-10" />
         </div>
@@ -32,7 +39,7 @@ const HeroSection = ({ data, locale }) => {
           fontWeight={"default"}
           className="md:text-base leading-6 text-[14px]"
         >
-          {data.description}
+          {data.content?.[locale]}
         </Text>
       </div>
     </>

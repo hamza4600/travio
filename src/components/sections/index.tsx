@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 
 import {
   SanityBlogPageSectionNames,
+  SanityDestinationSectionNames,
   SanitySectionNames,
 } from "../../../sanity/lib/types";
 
@@ -34,6 +35,10 @@ const HeroSection = dynamic(
   () => import("@/components/pages/HomePage/HeroSection")
 );
 
+const HeroSectionTours = dynamic(
+  () => import("@/components/pages/DynamicDestinations/HeroSection")
+);
+
 // const FlexibleThings = dynamic(
 //   () => import("@/components/sections/FlexibleThings/FlexibleThings")
 // );
@@ -57,6 +62,13 @@ const DestinationsSection = dynamic(
 );
 const IndexSection = dynamic(() => import("../pages/HomePage/OtherTours"));
 // import GetEarlyNews from "./form/Form";
+const TopThingsToDo = dynamic(
+  () => import("@/components/pages/DynamicDestinations/TopThings")
+);
+
+const CountryFacts = dynamic(
+  () => import("@/components/pages/DynamicDestinations/CountryFacts")
+);
 
 export const BlogPageSectionsMap: {
   [name in SanityBlogPageSectionNames]?:
@@ -91,4 +103,19 @@ export const SectionMap: {
   index_section: IndexSection,
 
   //   image_header_section: ImageHeaderSection,
+};
+
+export const DestinationSectionsMap: {
+  [name in SanityDestinationSectionNames]?:
+    | FunctionComponent<any>
+    | ComponentClass<any, any>;
+} = {
+  image_header_section: HeroSectionTours,
+  // reviews_section: ReviewSection,
+  faq_section: FAQSection,
+  all_blogs_section: BlogSection,
+  featured_tours_section: DealsSection,
+  at_glance_section: CountryFacts,
+  // tour_selection_section: BestToursSection,
+  top_things_section: TopThingsToDo,
 };
