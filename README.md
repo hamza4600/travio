@@ -10,4 +10,4 @@
 
 ## Today 
 ### Sanity adding section in global level banners two remove from previus pages , removed ecatrs sec from ttrail tour , 
-## UI set in home page and in trail tour , destination page
+## UI chnages in home page and in trail tour , destination page

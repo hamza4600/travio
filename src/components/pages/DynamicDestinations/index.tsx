@@ -1,7 +1,6 @@
 "use client";
 import Layout from "@/components/layout";
 import dynamic from "next/dynamic";
-import React from "react";
 
 const HeroSection = dynamic(() => import("./HeroSection"));
 import {
@@ -38,10 +37,16 @@ export const bannerText = {
   },
 };
 
-const DynamicDestionations = ({ language }) => {
+const DynamicDestionations = ({ language, pageData }) => {
+  
+  const { layout, data } = pageData;
+  console.log(data , "555555");
+
   return (
     <Layout
-      locale={language}
+    locale={`${language}`}
+    promo_banner={layout.navbar.info_banner}
+    globals={layout}
       breadcrumbs={[
         {
           label: "Destinations",
@@ -52,7 +57,7 @@ const DynamicDestionations = ({ language }) => {
           value: "/egypt",
         },
       ]}
-      promo_banner={bannerText}
+      // promo_banner={bannerText}
     >
       <HeroSection data={heroData} locale={language} />;
       <div className="md:px-20 px-5 md:mt-12 mt-[50px]">
@@ -61,21 +66,17 @@ const DynamicDestionations = ({ language }) => {
       <div>
         <ReviewSection data={reviewData} locale={language} />
       </div>
-      {/* <div className="md:px-20 px-5 md:mt-[90px] mt-[60px]"> */}
       <CountryFacts data={countryFactsData} locale={language} />
-      {/* </div> */}
       <div className="md:px-20 px-5 md:mt-[74px] mt-[50px]">
         <TopThingsToDo data={dataTop} />
       </div>
-      {/* <div className="md:px-20 px-5 md:mt-[90px] mt-[60px]"> */}
       <FAQSection data={faqSectionData} locale={language} />
-      <div className="md:px-20 px-5">
+      {/* <div className="md:px-20 px-5">
         <BlogSection data={blogSectionData} locale={language} />
-      </div>
+      </div> */}
       <div className="px-0 mb-5 md:px-20 md:mb-[68px] md:mt-20 mt-[120px]">
         <ContactSection />
       </div>
-      {/* </div> */}
     </Layout>
   );
 };

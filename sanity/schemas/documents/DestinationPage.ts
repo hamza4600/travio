@@ -28,12 +28,12 @@ export default defineType({
       description: 'Meta Data for SEO',
       type: 'meta_data',
     }),
-    defineField({
-      name: 'promo_banner',
-      title: 'Promo Banner',
-      description: 'Promo banner for the hero section',
-      type: 'promo_banner',
-    }),
+    // defineField({
+    //   name: 'promo_banner',
+    //   title: 'Promo Banner',
+    //   description: 'Promo banner for the hero section',
+    //   type: 'promo_banner',
+    // }),
     // defineField({
     //   name: 'hero_section',
     //   title: 'Hero Section',
