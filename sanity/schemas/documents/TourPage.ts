@@ -30,12 +30,6 @@ export default defineType({
       type: 'slug',
     }),
     defineField({
-      name: 'promo_banner',
-      title: 'Promo Banner',
-      description: 'Promo banner for the hero section',
-      type: 'promo_banner',
-    }),
-    defineField({
       name: 'hero_section',
       title: 'Hero Section',
       description: 'Hero section for the page',
@@ -55,6 +49,16 @@ export default defineType({
           title: 'Image',
           type: 'photo',
         }),
+        // multiple images
+        defineField({
+          name: 'images',
+          description: 'Images for the hero section',
+          title: 'Images',
+          type: 'array',
+          of: [{ type: 'image' }],
+          options: { layout: 'grid' },
+        }),
+
       ],
     }),
     defineField({

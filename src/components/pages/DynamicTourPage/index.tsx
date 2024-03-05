@@ -54,8 +54,9 @@ const ExcludedInTour = dynamic(() => import("./ExcludedInTour"));
 const HeroSection = dynamic(() => import("./HeroSection"));
 
 const DynamicTourPage = ({ language, pageData }) => {
-  const { layout } = pageData || {};
+  const { layout, data } = pageData || {};
 
+  console.log(data, "555555");
   return (
     <Layout
       globals={layout}

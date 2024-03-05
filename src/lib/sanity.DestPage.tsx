@@ -2,7 +2,6 @@
 import { pageLayout } from './sanity.HomePage';
 import { CLIENT } from './sanity.const';
 
-
 export async function getDestinationPage(slug: string) {
     const destinationPageQuery = `*[_type == "destination_page" && slug.current == "/${slug}"][0]{
       ...,

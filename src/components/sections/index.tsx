@@ -5,6 +5,7 @@ import {
   SanityBlogPageSectionNames,
   SanityDestinationSectionNames,
   SanitySectionNames,
+  SanityTourSectionNames,
 } from "../../../sanity/lib/types";
 
 const BlogHeroSection = dynamic(() => import("./BlogHeroSection"), {
@@ -119,3 +120,20 @@ export const DestinationSectionsMap: {
   // tour_selection_section: BestToursSection,
   top_things_section: TopThingsToDo,
 };
+
+export const TourSectionsMap: {
+  [name in SanityTourSectionNames]?: FunctionComponent<any> | ComponentClass<any, any>
+} = {
+  // itinerary_section: ItinerarySection,
+  // content_section: ContentSection,
+  // memorable_experiences_section: MemorableExperiencesSection,
+  // gallery_section: TourGallerySection,
+  // whats_included_section: WhatsIncludedSection,
+  // pricing_section: PriceList,
+  // accommodation_types_section: AccommdationTypesSection,
+  // feature_section: TourFeature,
+  // featured_tours_section: FeatureTourSection,
+  // travel_info_section: TravelInformation,
+  reviews_section: ReviewSection,
+  faq_section: FAQSection,
+}
