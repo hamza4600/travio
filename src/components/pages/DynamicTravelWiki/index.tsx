@@ -6,7 +6,8 @@ import { filterWikiData, heroData, wikiData } from "./data";
 import WikiSection from "./WikiSection";
 
 import SuggestedTour from "./SuggestedTour";
-import GetEarlyNews from "@/components/sections/form/Form";
+// import GetEarlyNews from "@/components/sections/form/Form";
+import NewsletterSection from "@/components/sections/NewsletterSection";
 
 const DynamicTravelWiki = ({
   language,
@@ -38,7 +39,8 @@ const DynamicTravelWiki = ({
       </div>
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">
-        <GetEarlyNews />
+        {/* <GetEarlyNews /> */}
+        <NewsletterSection />
       </div>
     </Layout>
   );

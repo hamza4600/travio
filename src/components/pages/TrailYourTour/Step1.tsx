@@ -54,6 +54,7 @@ const CalenderWrapper = styled.div`
 
   .react-calendar__tile {
     color: #140d31;
+    font-weight: 500;
   }
 
   .react-calendar__tile--active {
@@ -70,6 +71,13 @@ const CalenderWrapper = styled.div`
     /* background-color: ; */
   }
   .react-calendar__month-view__days__day {
+  }
+
+  & .react-calendar__tile--rangeStart:not(.react-calendar__tile--rangeEnd),
+  & .react-calendar__tile--rangeEnd:not(.react-calendar__tile--rangeStart) {
+    background-color: #ffdd85;
+    color: black;
+    border-radius: 9999px;
   }
 `;
 
@@ -151,12 +159,12 @@ export default function Step1({
           </div>
         )}
         {mode == "approxDates" && (
-          <div className="flex justify-center flex-col md:flex-row gap-4 md:px-1 px-4 md:gap-12">
-            <div className="flex flex-col gap-3 text-base text-gray ">
-              <p className="font-normal font-satoshi text-base">
+          <div className="flex justify-center items-center flex-col md:flex-row gap-4 md:px-1 px-4 md:gap-12">
+            <div className="flex flex-col gap-3 w-full ml-auto text-base text-gray ">
+              <p className="font-normal font-satoshi max-md:hidden text-base">
                 (1) Select Month
               </p>
-              <div className="p-4 grid grid-cols-3 gap-x-1 bg-white rounded shadow-md">
+              <div className="p-4 max-w-[300px] max-lg:min-w-[300px] max-md:max-w-full min-h-[300px] grid grid-cols-3 gap-x-1 bg-white rounded shadow-md">
                 {Months.map((item: any, index) => (
                   <>
                     {index != 0 && index % 3 == 0 && (
@@ -183,9 +191,11 @@ export default function Step1({
                 ))}
               </div>
             </div>
-            <div className="flex flex-col gap-2 text-base text-gray ">
-              <p>(2) Trip duration (approx)</p>
-              <div className="p-5 grid grid-cols-2 bg-white gap-4 rounded shadow-md min-w-[300px] min-h-[300px]">
+            <div className="flex flex-col w-full gap-2 text-base text-gray ">
+              <p className="font-satoshi max-md:hidden">
+                (2) Trip duration (approx)
+              </p>
+              <div className="p-5 grid grid-cols-2 w-full bg-white gap-4 rounded shadow-md  min-h-[300px]">
                 {Durations.map((item: any) => (
                   <div
                     key={item?.name}

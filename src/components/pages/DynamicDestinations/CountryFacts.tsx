@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
+import { urlFor } from "../../../../sanity/lib/client";
 // export type AtAGlanceSectionProps = {
 //   data: SanityAtGlanceSection;
 // };
@@ -20,9 +21,13 @@ const CountryFacts = (props) => {
   console.log(locale, "data: ", props);
 
   return (
-    <div className="text-darkblue">
+    <div className="text-darkblue md:pt-[90px] pt-[50px]">
       <Container className="bg-[#F2FAFF] mx-auto max-w-[1312px] px-4 py-12">
-        <SectionHeader title={tagline?.en} subtitle={title?.en} centerLine />
+        <SectionHeader
+          title={tagline?.[locale]}
+          subtitle={title?.[locale]}
+          centerLine
+        />
 
         <div className="pys-2 grid grid-flow-row grid-cols-2 md:grid-cols-4   md:px-10 gap-x-[15px] md:gap-x-[58px] mt-10 md:mt-16 gap-y-[30px] md:gap-y-12">
           {facts?.map((item: any, index: any) => {
@@ -31,14 +36,19 @@ const CountryFacts = (props) => {
                 key={index}
                 className="flex md:gap-x-3  gap-y-[10px] md:gap-y-0  flex-col md:flex-row w-full  items-center "
               >
-                <Image alt={""} src={item.icon} width={48} height={48} />
+                <Image
+                  alt={item.icon.alt}
+                  src={urlFor(item.icon.asset?._ref)}
+                  width={48}
+                  height={48}
+                />
                 <div className=" text-center md:text-start  space-y-[2px]">
                   <h3 className="text-base font-satoshi md:text-lg font-medium  leading-normal md:leading-7">
-                    {item?.title?.en}
+                    {item?.title?.[locale]}
                   </h3>
 
                   <h3 className="text-xs md:text-sm text-gray font-satoshi  font-normal md:font-medium leading-tight md:leading-normal">
-                    {item.subtitle?.en}{" "}
+                    {item.subtitle?.[locale]}{" "}
                   </h3>
                 </div>
               </div>
@@ -49,7 +59,7 @@ const CountryFacts = (props) => {
         <div>
           <div className="w-fit mx-auto">
             <h4 className="text-xl md:text-[24px] font-satoshi font-bold text-center leading-[30px]">
-              {useful_links_section?.title?.en}
+              {useful_links_section?.title?.[locale]}
             </h4>
             <hr className=" md:w-2/3 w-1/2 my-2 text-yellow m-auto  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
           </div>
@@ -61,14 +71,14 @@ const CountryFacts = (props) => {
                     <a href={item.url}>
                       <div className="flex font-satoshi items-center gap-x-2 ">
                         <Image
-                          alt={""}
-                          src={item.icon}
+                          alt={item.icon.alt?.[locale]}
+                          src={urlFor(item.icon.asset._ref)}
                           width={28}
                           height={28}
                         />
 
                         <span className="text-base md:text-lg md:font-medium text-[18px] leading-normal md:leading-7 ">
-                          {item.title}
+                          {item.title?.[locale]}
                         </span>
                       </div>
                     </a>

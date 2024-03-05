@@ -1,38 +1,46 @@
-import { FC } from "react";
+// import { FC } from "react";
 import Image from "next/image";
 
-import { SanityNewsletterSection } from "../../../sanity/lib/types";
+// import { SanityNewsletterSection } from "../../../sanity/lib/types";
 
 import Container from "../molecules/container";
-import { urlFor, PropsWithLocale } from "../../../sanity/lib/client";
+// import { PropsWithLocale } from "../../../sanity/lib/client";
+import useWindowSize from "@/hooks/useWindows";
 
-type NewsletterSectionProps = {
-  data: SanityNewsletterSection;
-  locale: PropsWithLocale<any>;
-};
+// type NewsletterSectionProps = {
+//   data: SanityNewsletterSection;
+//   locale: PropsWithLocale<any>;
+// };
 
-const NewsletterSection: FC<NewsletterSectionProps> = ({ data, locale }) => {
+const NewsletterSection = () => {
+  const window = useWindowSize();
+  const isMobile = window.width < 768;
+
   return (
-    <Container className="px-0 flex justify-center items-center bg-white text-white">
+    <Container className="md:px-20 px-0 flex justify-center items-center bg-white text-white">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full w-screen md:w-full bg-blue md:rounded-3xl overflow-hidden relative">
         <Image
           width={640}
           height={222}
-          src={data.image ? urlFor(data.image) : ""}
+          src={
+            isMobile ? "/demo/form-bg-mobile.png" : "/demo/formbg-desktop.png"
+          }
+          // src={data.image ? urlFor(data.image) : ""}
           alt={""}
           sizes={`
               100vw
             `}
           className={"absolute w-full h-full top-0 left-0 object-cover"}
         />
-        <div className="flex relative z-10 flex-col justify-center md:justify-start items-center md:items-start ">
+        <div className="flex relative font-satoshi z-10 flex-col justify-center md:justify-start items-center md:items-start ">
           <header>
             <h2 className="text-center -tracking-[1.2px] max-w-3xl md:text-start text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px] w-[335px] md:w-full">
-              {data.title?.[locale]}
+              Join Our Travel Community and Unlock Exclusive Deals!
             </h2>
 
             <p className="w-[335px] md:w-full  text-center max-w-[610px] -tracking-[0.6px] mt-2.5 mb-[30px] md:text-start text-[14px] md:text-[20px] font-[500] md:font-normal leading-[20px] md:leading-[32px]">
-              {data.subtitle?.[locale]}
+              Be the first to know about our latest travel deals, special
+              promotions, and insider tips
             </p>
           </header>
           <div className="relative shadow-sm flex items-center  ">

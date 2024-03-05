@@ -11,6 +11,13 @@ import {
   Boat,
   Compass,
   FinnTheHuman,
+  CrossSelected,
+  CarSelected,
+  WaveTriangleSelected,
+  BoatSelected,
+  CompassSelected,
+  FinnTheHumanSelected,
+  LeafSelected,
 } from "./style";
 import Input from "./Input";
 
@@ -22,13 +29,29 @@ export default function Step2({
   control: Control<any>;
 }) {
   const CategoriesOptions = [
-    { name: "Historic Sites", icon: <Leaf /> },
-    { name: "Religious Sites", icon: <Cross /> },
-    { name: "Beach", icon: <WaveTriangle /> },
-    { name: "Desert Safaris", icon: <Car /> },
-    { name: "Cruises", icon: <Boat /> },
-    { name: "Outdoor Activities", icon: <Compass /> },
-    { name: "Wellness Activities", icon: <FinnTheHuman /> },
+    { name: "Historic Sites", icon: <Leaf />, iconSelected: <LeafSelected /> },
+    {
+      name: "Religious Sites",
+      icon: <Cross />,
+      iconSelected: <CrossSelected />,
+    },
+    {
+      name: "Beach",
+      icon: <WaveTriangle />,
+      iconSelected: <WaveTriangleSelected />,
+    },
+    { name: "Desert Safaris", icon: <Car />, iconSelected: <CarSelected /> },
+    { name: "Cruises", icon: <Boat />, iconSelected: <BoatSelected /> },
+    {
+      name: "Outdoor Activities",
+      icon: <Compass />,
+      iconSelected: <CompassSelected />,
+    },
+    {
+      name: "Wellness Activities",
+      icon: <FinnTheHuman />,
+      iconSelected: <FinnTheHumanSelected />,
+    },
   ];
   const [mobileNumber] = React.useState({
     mobileCode: "+1",

@@ -209,7 +209,7 @@ export default function Input({
               // }}
               className={`flex border w-fit border-darkblue/10 rounded ${
                 field.value.includes(option.name)
-                  ? "text-white bg-blue-500"
+                  ? "text-white bg-blue-500 fill-white"
                   : "text-gray bg-white"
               } px-3 py-[10px] text-sm gap-2 items-center whitespace-nowrap flex-nowrap`}
               onClick={() => {
@@ -222,7 +222,10 @@ export default function Input({
                 }
               }}
             >
-              {option.icon} {option.name}
+              {field.value.includes(option.name)
+                ? option.iconSelected
+                : option.icon}{" "}
+              {option.name}
             </div>
           ))}
         </div>
