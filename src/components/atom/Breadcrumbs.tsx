@@ -6,15 +6,18 @@ export interface Breadcrumb {
   value: string;
 }
 
-const Breadcrumbs = ({ paths, locale }: { paths: Breadcrumb[], locale : string }) => {
+const Breadcrumbs = ({
+  paths,
+  locale,
+}: {
+  paths: Breadcrumb[];
+  locale: string;
+}) => {
   if (!paths?.length) return null;
   const lastIndex = paths.length - 1;
   return (
     <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex items-center gap-x-1.5  text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
-      <Link 
-        href={`/${locale}`}
-        className=""
-      >
+      <Link href={`/${locale}`} className="">
         Home
       </Link>
       {paths.map((path, i) => (
@@ -38,7 +41,7 @@ const Breadcrumbs = ({ paths, locale }: { paths: Breadcrumb[], locale : string }
                 ? "text-[#3FA9F5] md:font-bold font-medium max-md:text-[12px] max-md:leading-5"
                 : "text-darkblue"
             }
-            href={path.value}
+            href={`${path.value}`}
           >
             {path.label}
           </Link>

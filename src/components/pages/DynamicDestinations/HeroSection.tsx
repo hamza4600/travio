@@ -1,22 +1,22 @@
 import { Text } from "@/components/ui/text";
-import useWindowSize from "@/hooks/useWindows";
 import React from "react";
 import { urlFor } from "../../../../sanity/lib/client";
 
 const HeroSection = ({ data, locale }) => {
-  const window = useWindowSize();
-  const isMobile = window.width < 768;
-
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
   return (
     <>
       <div style={{ boxShadow: linearGradient }} className="w-full relative">
         <img
-          className="lg:w-full min-h-[480px] max-w-[1440px] max-md:h-[200px]"
-          src={urlFor(
-            isMobile ? data.image.mobile.asset._ref : data.image.asset._ref
-          )}
+          className="lg:w-full min-h-[480px] max-md:hidden max-w-[1440px] max-md:h-[480px]"
+          src={urlFor(data.image.asset._ref)}
+          loading="lazy"
+          alt={data?.alt?.[locale]}
+        />
+        <img
+          className="lg:w-full min-h-[480px] md:hidden max-w-[375px] max-md:h-[200px]"
+          src={urlFor(data.image.mobile.asset._ref)}
           loading="lazy"
           alt={data?.alt?.[locale]}
         />

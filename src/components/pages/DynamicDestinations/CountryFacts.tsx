@@ -37,6 +37,7 @@ const CountryFacts = (props) => {
                 className="flex md:gap-x-3  gap-y-[10px] md:gap-y-0  flex-col md:flex-row w-full  items-center "
               >
                 <Image
+                  className="max-md:w-[38px] max-md:h-[38px]"
                   alt={item.icon.alt}
                   src={urlFor(item.icon.asset?._ref)}
                   width={48}
@@ -71,6 +72,8 @@ const CountryFacts = (props) => {
                     <a href={item.url}>
                       <div className="flex font-satoshi items-center gap-x-2 ">
                         <Image
+                          quality={100}
+                          className="max-md:h-6 max-md:w-6"
                           alt={item.icon.alt?.[locale]}
                           src={urlFor(item.icon.asset._ref)}
                           width={28}
