@@ -17,7 +17,7 @@ const NewsletterSection = () => {
   const isMobile = window.width < 768;
 
   return (
-    <Container className="md:px-20 px-0 flex justify-center items-center bg-white text-white">
+    <Container className="md:px-20 px-0 md:pb-[60px] pb-[50px] flex justify-center items-center bg-white text-white">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full w-screen md:w-full bg-blue md:rounded-3xl overflow-hidden relative">
         <Image
           width={640}

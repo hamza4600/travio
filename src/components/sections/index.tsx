@@ -52,8 +52,11 @@ const GallerySection = dynamic(
   () => import("@/components/molecules/TourGallery")
 );
 const FeatureSection = dynamic(
-  () => import("@/components/sections/FlexibleThings/FlexibleThings")
+  () => import("@/components/pages/HomePage/FeatureSection")
 );
+
+// const FlexibleThings = dynamic(() => import("./FlexibleThings/FlexibleThings"));
+
 const ReviewSection = dynamic(
   () => import("@/components/sections/HappyTravelers")
 );
@@ -91,7 +94,7 @@ export const SectionMap: {
 } = {
   hero_section: HeroSection,
   feature_section: FeatureSection,
-  newsletter_section: NewsletterSection,
+  // newsletter_section: NewsletterSection,
   destinations_section: DestinationsSection,
   faq_section: FAQSection,
   deals_section: DealsSection,
@@ -100,10 +103,9 @@ export const SectionMap: {
   gallery_section: GallerySection,
   // content_section: ContentSection,
   reviews_section: ReviewSection,
-  //   office_locations_section: OfficeLocationSection,
+  // office_locations_section: OfficeLocationSection,
   index_section: IndexSection,
-
-  //   image_header_section: ImageHeaderSection,
+  // image_header_section: ImageHeaderSection,
 };
 
 export const DestinationSectionsMap: {
@@ -122,7 +124,9 @@ export const DestinationSectionsMap: {
 };
 
 export const TourSectionsMap: {
-  [name in SanityTourSectionNames]?: FunctionComponent<any> | ComponentClass<any, any>
+  [name in SanityTourSectionNames]?:
+    | FunctionComponent<any>
+    | ComponentClass<any, any>;
 } = {
   // itinerary_section: ItinerarySection,
   // content_section: ContentSection,
@@ -136,4 +140,4 @@ export const TourSectionsMap: {
   // travel_info_section: TravelInformation,
   reviews_section: ReviewSection,
   faq_section: FAQSection,
-}
+};
