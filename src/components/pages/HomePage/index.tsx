@@ -8,6 +8,7 @@ const Popup = dynamic(() => import("@/components/molecules/Popup"));
 
 import "react-photo-view/dist/react-photo-view.css";
 import { SectionMap } from "@/components/sections";
+import NewsletterSection from "@/components/sections/NewsletterSection";
 
 const HomePage = ({ pageData, locale }) => {
   const {
@@ -28,6 +29,7 @@ const HomePage = ({ pageData, locale }) => {
         components={SectionMap}
         sections={pageData?.pageData?.sections}
       />
+      <NewsletterSection />
     </Layout>
   );
 };

@@ -44,12 +44,23 @@ const HeroSection = ({ data, locale, banner }) => {
 
         <Image
           className={
-            "absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+            "max-sm:hidden absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
           // style={{ boxShadow: linearGradient }}
           height={538}
           width={1440}
           src={urlFor(data.image?.asset?._ref)}
+          alt={"hero"}
+          quality={100}
+        />
+        <Image
+          className={
+            "absolute sm:hidden min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+          }
+          // style={{ boxShadow: linearGradient }}
+          height={538}
+          width={1440}
+          src={urlFor(data.image?.mobile.asset?._ref)}
           alt={"hero"}
           quality={100}
         />
@@ -104,7 +115,13 @@ const HeroSection = ({ data, locale, banner }) => {
             </div>
             <footer className="mt-[28px] px-10 md:mt-[71px] flex items-center relative bottom-0">
               <div className="flex">
-                <Image src={"/trustpilot.png"} width={136} height={73} alt="" quality={100}/>
+                <Image
+                  src={"/trustpilot.png"}
+                  width={136}
+                  height={73}
+                  alt=""
+                  quality={100}
+                />
 
                 <svg
                   className="mx-[18px]"
@@ -122,7 +139,13 @@ const HeroSection = ({ data, locale, banner }) => {
                   />
                 </svg>
 
-                <Image src={"/trip.png"} width={136} height={73} alt="" quality={100} />
+                <Image
+                  src={"/trip.png"}
+                  width={136}
+                  height={73}
+                  alt=""
+                  quality={100}
+                />
               </div>
             </footer>
           </Container>

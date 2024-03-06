@@ -15,7 +15,7 @@ export const sections = [
   "hero_section",
   "image_header_section",
   "index_section",
-  "newsletter_section",
+  // "newsletter_section",
   "reviews_section",
   "office_locations_section",
   "testimonial_section",

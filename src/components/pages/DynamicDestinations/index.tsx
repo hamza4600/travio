@@ -3,7 +3,8 @@ import Layout from "@/components/layout";
 
 import Slicer from "../../../../sanity/slicer";
 import { DestinationSectionsMap } from "@/components/sections";
-import ContactSection from "./ContactSection";
+import dynamic from "next/dynamic";
+const ContactSection = dynamic(() => import("./ContactSection"));
 
 export const bannerText = {
   text: "More summer for less. Save up to 20% off selected trips*.",
@@ -16,6 +17,8 @@ const DynamicDestionations = ({ language, pageData }) => {
   const { layout, data } = pageData;
   console.log(data, "555555");
 
+  console.log("lang: ", language);
+
   return (
     <Layout
       locale={`${language}`}
@@ -24,11 +27,11 @@ const DynamicDestionations = ({ language, pageData }) => {
       breadcrumbs={[
         {
           label: "Destinations",
-          value: "/",
+          value: `${language}`,
         },
         {
-          label: "Egypt",
-          value: "/egypt",
+          label: `${data.name?.[language]}`,
+          value: `${data.slug?.current || "/"}`,
         },
       ]}
     >
