@@ -85,12 +85,16 @@ export default function FeatureSection({ data, locale }) {
     );
   }
   return (
-    <div className={"bg-[#F2FAFF] font-satoshi text-center py-5 md:py-3 "}>
-      <Container>
+    <div
+      className={
+        "bg-[#F2FAFF] font-satoshi md:px-[29px] px-5 text-center py-5 md:py-2 md:mt-7 mt-0 md:rounded-[16px] rounded-none"
+      }
+    >
+      <Container className="">
         {/* {data.title && ( */}
-        <div className="flex md:items-start  items-center justify-center md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
+        <div className="flex md:items-start  items-center justify-evenly md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
           <h2>{data.title[locale]}</h2>
-          <hr className="w-[85px] md:w-1/2 mt-[6px] bg-yellow text-yellow h-0.5  mb-4" />
+          <hr className="w-[91px] md:w-[107px] mt-[6px] border md:border-2 border-[#FFBB0B] text-yellow  mb-4" />
         </div>
         {/* )} */}
         <div className="flex justify-between w-full flex-wrap gap-[15px] ">
@@ -132,7 +136,7 @@ const Feature = ({ data, locale }: FeatureProps) => {
 
 const SmallFeature = ({ data, locale }: FeatureProps) => {
   return (
-    <div className="text-center flex items-center  minP-w-[160px] min-h-[64px] md:min-h-[48px] flex-col md:flex-row ">
+    <div className="text-center flex items-center  max-md:w-[160px] max-[375px]:w-[130px] min-h-[64px] md:min-h-[48px] flex-col md:flex-row ">
       <Image
         src={urlFor(data.icon?.asset?._ref)}
         width={48}
@@ -140,7 +144,7 @@ const SmallFeature = ({ data, locale }: FeatureProps) => {
         alt=""
         className={"h-12 w-12"}
       />
-      <h3 className="text-center font-satoshi font-medium md:text-start text-xs md:text-base  leading-[20px] md:leading-[24px] md:ml-3">
+      <h3 className="text-center max-md:max-w-[140px] font-satoshi font-medium md:text-start text-[12px] leading-5 md:text-base md:leading-[24px] md:ml-3">
         {data.title[locale]}
       </h3>
     </div>
