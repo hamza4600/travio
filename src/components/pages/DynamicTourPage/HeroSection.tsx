@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className="flex gap-[26px]">
+    <div className="flex gap-[26px] md:px-20 px-0">
       <div className="md:relative">
         <img
           className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px]"

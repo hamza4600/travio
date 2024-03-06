@@ -1,4 +1,5 @@
 import React from "react";
+import { urlFor } from "../../../../sanity/lib/client";
 // import Image from "next/image";
 // import ReactStars from "react-stars";
 
@@ -22,7 +23,7 @@ export function Star() {
   );
 }
 
-const AccomodationCard = ({ data }: { data: any }) => {
+const AccomodationCard = ({ data, locale }: { data: any; locale: string }) => {
   return (
     <div className="rounded-2xl font-satoshi overflow-hidden min-w-[310px] w-full max-w-[307px] max-md:max-w-[250px] place-self-center">
       <div className="text-center bg-[#1A4767] py-3 rounded-t-2xl items-center flex flex-col ">
@@ -44,14 +45,17 @@ const AccomodationCard = ({ data }: { data: any }) => {
               key={index}
             >
               <img
-                className="min-h-[123px] max-w-[271px] object-cover"
-                src={item.image}
-                alt=""
-                // fill
-                // quality={100}
+                className="min-h-[123px] max-w-[271px] object-cover max-sm:hidden"
+                src={urlFor(item.image.asset._ref)}
+                alt={item.image.alt?.[locale]}
+              />
+              <img
+                className="min-h-[123px] max-w-[271px] object-cover sm:hidden"
+                src={urlFor(item.image.mobile.asset._ref)}
+                alt={item.image.alt?.[locale]}
               />
             </div>
-            <h6 className="text-base font-medium">{item.title?.en}</h6>
+            <h6 className="text-base font-medium">{item.title?.[locale]}</h6>
           </div>
         ))}
       </div>

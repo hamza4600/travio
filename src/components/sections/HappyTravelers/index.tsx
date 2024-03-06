@@ -46,7 +46,7 @@ const TravlerReviews = (props) => {
             </span>
           </h2>
           <p className="text-sm font-medium lg:font-normal md:text-lg md:leading-[28px] mt-2.5 md:mt-3 text-gray ">
-            {subtitle[locale]}
+            {subtitle?.[locale]}
           </p>
           <img
             src={urlFor(

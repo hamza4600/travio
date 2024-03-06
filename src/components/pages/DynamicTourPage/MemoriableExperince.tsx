@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SectionHeader from "@/components/molecules/secHeader";
+import { urlFor } from "../../../../sanity/lib/client";
 
 export default function MemorableExperiencesSection({
   data,
@@ -36,7 +37,7 @@ export default function MemorableExperiencesSection({
   }, [swiper]);
   // console.log(data)
   return (
-    <div className="flex flex-col md:gap-12 gap-7">
+    <div className="flex flex-col md:gap-12 gap-7 md:pt-[60px] pt-[50px]">
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}
@@ -133,25 +134,25 @@ const Card = ({ data }: { data: any }) => {
   if (!data) return null;
   return (
     <Link href={"/#" + data.slug?.current}>
-        <div className="max-w-[300px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
-          <div className="h-[220px] relative">
-            <Image
-              alt=""
-              src={data?.image}
-              quality={100}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="p-4 max-lg:{pt-3 pb-[15px] px-[15px]} flex flex-col gap-1">
-            <p className="font-bold md:text-xl max-lg:{text-base} font-satoshi text-darkblue">
-              {data.title?.en}
-            </p>
-            <p className="lg:font-medium lg:text-[14px] lg:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
-              {data.description?.en}
-            </p>
-          </div>
+      <div className="max-w-[300px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
+        <div className="h-[220px] relative">
+          <Image
+            alt=""
+            src={urlFor(data?.image?.asset?._ref)}
+            quality={100}
+            fill
+            className="object-cover"
+          />
         </div>
+        <div className="p-4 max-lg:{pt-3 pb-[15px] px-[15px]} flex flex-col gap-1">
+          <p className="font-bold md:text-xl max-lg:{text-base} font-satoshi text-darkblue">
+            {data.title?.en}
+          </p>
+          <p className="lg:font-medium lg:text-[14px] lg:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
+            {data.description?.en}
+          </p>
+        </div>
+      </div>
     </Link>
   );
 };
