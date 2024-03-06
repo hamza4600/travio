@@ -6,6 +6,7 @@ import React from "react";
 import Container from "@/components/molecules/container";
 
 import { Button } from "@/components/ui/button";
+import { urlFor } from "../../../../sanity/lib/client";
 
 const TravelInformation = ({ data, locale }: { data: any; locale: string }) => {
   return (
@@ -15,7 +16,7 @@ const TravelInformation = ({ data, locale }: { data: any; locale: string }) => {
         className="flex flex-col gap-5 text-center items-center justify-center px-5 rounded-2xl border-[#FFBB0B] border-[1px] shadow-md shadow-[#f5f5f5] lg:px-20 py-10 pb-7"
       >
         <img
-          src={data.icon}
+          src={urlFor(data.icon)}
           alt={data.icon?.alt?.en ?? ""}
           className="lg:h-[78px] lg:w-[78px] h-[58px] w-[58px]"
         />

@@ -7,6 +7,7 @@ import { CaretDown, Dot, Minus, Plus } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
+import { urlFor } from "../../../../sanity/lib/client";
 
 export default function ItinerarySection({
   data,
@@ -15,7 +16,7 @@ export default function ItinerarySection({
   data: any;
   locale: string;
 }) {
-  // console.log("ItinerarySection-> ", data);
+  console.log("locale: ", locale);
   return (
     <Container className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7">
       <SectionHeader
@@ -26,7 +27,7 @@ export default function ItinerarySection({
 
       <div className="flex lggap-7 gap-[30px] max-lg:flex-col-reverse">
         {/* Travel Schedule */}
-        <TravelSchedule data={data?.itinerary_day_cards} />
+        <TravelSchedule data={data?.itinerary_day_cards} locale={locale} />
         {/* Enquire Tab */}
 
         <EnquireTab />
@@ -35,7 +36,7 @@ export default function ItinerarySection({
   );
 }
 
-const TravelSchedule = ({ data }: { data?: any }) => {
+const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
   const [openStatus, setOpenStatus] = useState<boolean[]>(
     Object.assign({}, Array(data?.length ?? 0).fill(false))
   );
@@ -62,6 +63,7 @@ const TravelSchedule = ({ data }: { data?: any }) => {
       <div className="flex  flex-col gap-5">
         {data?.map((day: any, index: number) => (
           <Expandable
+            locale={locale}
             isOpen={openStatus[index]}
             toggleOpen={() => {
               setOpenStatus({ ...openStatus, [index]: !openStatus[index] });
@@ -100,9 +102,7 @@ const EnquireTab = () => {
         <div className="flex justify-between">
           <div className="">
             <p className="font-bold text-xl">Enquire</p>
-            <hr
-              className="lg:w-1/2 w-1/3 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
-            />
+            <hr className="lg:w-1/2 w-1/3 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
           </div>
           <div className="relative w-7 h-7">
             <Image src={"/contact_mail_icon.svg"} alt="" fill />
@@ -325,25 +325,27 @@ const Expandable = ({
   data,
   isOpen,
   toggleOpen,
+  locale,
 }: {
   isOpen: boolean;
   toggleOpen: any;
   data: any;
+  locale: string;
 }) => {
   return (
     <div>
       <button
-        className={`flex flex-nowrap items-start justify-between transition-all w-[100%] ${isOpen
+        className={`flex flex-nowrap items-start justify-between transition-all w-[100%] ${
+          isOpen
             ? "bg-[#3FA9F5] text-white"
             : "bg-darkblue/[0.02] text-dimSecondary"
-          }   px-7 md:py-4 py-3 ${isOpen ? "rounded-t-2xl  " : "rounded-2xl"
-          }`}
+        }   px-7 md:py-4 py-3 ${isOpen ? "rounded-t-2xl  " : "rounded-2xl"}`}
         onClick={() => {
           toggleOpen();
         }}
       >
         <p className="font-bold lg:text-[20px] lg:leading-8  font-satoshi">
-          {data.title?.en}
+          {data.title[locale]}
         </p>
         <CaretDown
           width={"24px"}
@@ -352,14 +354,15 @@ const Expandable = ({
         />
       </button>
       <div
-        className={`flex flex-col gap-6 transition-all  rounded-b-2xl ${!isOpen ? "overflow-hidden h-0" : "p-5"
-          }`}
+        className={`flex flex-col gap-6 transition-all  rounded-b-2xl ${
+          !isOpen ? "overflow-hidden h-0" : "p-5"
+        }`}
       >
         <div className="flex flex-col gap-6">
           <div className="relative w-full h-[200px] overflow-hidden max-md:w-[295px] max-md:h-[160px] md:max-w-[914px] md:min-h-[382px] rounded-2xl ">
             <Image
               alt=""
-              src={data?.image}
+              src={urlFor(data?.image)}
               fill
               quality={100}
               className="object-cover w-full h-full"
@@ -410,9 +413,7 @@ const ExpandableList = ({
           <p className="flex-1 md:text-xl text-base font-medium text-darkblue tracking-tight font-satoshi">
             {title}
           </p>
-          <hr
-            className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
-          />
+          <hr className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
         </div>
       </div>
       <div className="flex flex-col pl-7 gap-2">

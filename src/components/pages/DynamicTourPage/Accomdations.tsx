@@ -11,7 +11,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-export default function AccommdationTypesSection({ data }: { data: any }) {
+export default function AccommdationTypesSection({
+  data,
+  locale,
+}: {
+  data: any;
+  locale: string;
+}) {
   const [swiper, setSwiper] = React.useState<any>();
   const prevRef = React.useRef<any>();
   const nextRef = React.useRef<any>();
@@ -30,18 +36,16 @@ export default function AccommdationTypesSection({ data }: { data: any }) {
       <div className=" w-full">
         <div className=" pl-5 md:pl-0">
           <h2 className="text-darkblue font-satoshi font-bold text-xl lg:text-2xl text-c">
-            {data?.title?.en}
+            {data?.title?.[locale]}
           </h2>
-          <hr
-            className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
-          />
+          <hr className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
         </div>
         <div className=" pl-5 mt-2 md:pl-0 md:font-normal font-medium">
           <span className="text-gray font-satoshi text-base mt-3 lg:text-lg">
-            {data.subtitle?.en?.substring(0, 18)}
+            {data.subtitle?.[locale]?.substring(0, 18)}
           </span>
           <span className="text-[#3FA9F5] font-satoshi text-base mt-3 lg:text-lg">
-            {data.subtitle?.en?.substring(18)}
+            {data.subtitle?.[locale]?.substring(18)}
           </span>
         </div>
       </div>
@@ -78,7 +82,7 @@ export default function AccommdationTypesSection({ data }: { data: any }) {
         <div className="flex overflow-x-scroll mt-2 max-w-5xl w-full gap-6">
           {data?.accommodation_types?.map((item, index) => (
             <SwiperSlide key={index}>
-              <AccomodationCard data={item} />
+              <AccomodationCard data={item} locale={locale} />
             </SwiperSlide>
           ))}
         </div>

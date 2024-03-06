@@ -4,50 +4,19 @@ import Layout from "@/components/layout";
 import dynamic from "next/dynamic";
 
 import {
-  accommodationData,
-  excData,
-  excludedData,
-  flexibleThingsData,
-  iternaryData,
-  memorableExperiencesData,
   // dummyPics
   overviewData,
-  tabsData,
-  tourData,
-  travelInformationData,
 } from "./data";
-import { faqSectionData, reviewData } from "../DynamicDestinations/data";
-import CardsSection, {
-  data1,
-} from "@/components/sections/differnetDeals/CardsSection";
-import SectionHeader from "@/components/molecules/secHeader";
-import { Text } from "@/components/ui/text";
-import AppTabs from "@/components/molecules/AppTabs/AppTabse";
+
+import React from "react";
+import { TourSectionsMap } from "@/components/sections";
 
 // Dynamic imports
-const ReviewSection = dynamic(
-  () => import("@/components/sections/reviews/Reviews")
-);
+// const ReviewSection = dynamic(
+//   () => import("@/components/sections/reviews/Reviews")
+// );
 
 const OverViewCard = dynamic(() => import("./Overview"));
-const ItinerarySection = dynamic(() => import("./ItinarySection"));
-const AccommdationTypesSection = dynamic(() => import("./Accomdations"));
-const PriceList = dynamic(() => import("./PriceList"));
-
-const WhatsIncludedSection = dynamic(() => import("./InccludedInTour"));
-const FAQSection = dynamic(() => import("@/components/sections/faq"));
-const FlexibleThingsForTour = dynamic(
-  () => import("@/components/sections/FlexibleThings/ForTourSection")
-);
-
-const TravelInformation = dynamic(() => import("./TraveInformation"));
-
-const MemorableExperiencesSection = dynamic(
-  () => import("./MemoriableExperince")
-);
-
-const SummarySection = dynamic(() => import("./SummarySection"));
-const ExcludedInTour = dynamic(() => import("./ExcludedInTour"));
 
 // import TourGallery from "@/components/molecules/TourGallery";
 
@@ -77,7 +46,30 @@ const DynamicTourPage = ({ language, pageData }) => {
       ]}
       promo_banner={layout?.navbar?.info_banner}
     >
-      <div className="lg:px-20 px-0">
+      <HeroSection />
+
+      <div className="lg:mt-16">
+        <OverViewCard data={overviewData} />
+      </div>
+
+      {/* <div className="md:mt-12 mt-6">
+        <AppTabs tabs={tabsData} />
+      </div> */}
+
+      {data?.sections?.map((section) => {
+        const Component = TourSectionsMap[section?._type];
+        return (
+          <React.Fragment key={section._key}>
+            {Component &&
+              React.createElement(Component, {
+                data: section,
+                slug: data.slug,
+                locale: language,
+              })}
+          </React.Fragment>
+        );
+      })}
+      {/* <div className="lg:px-20 px-0">
         <HeroSection />
       </div>
 
@@ -116,9 +108,7 @@ const DynamicTourPage = ({ language, pageData }) => {
         <Text variant={"darkblue"} className="text-2xl font-bold">
           Dates & Availability
         </Text>
-        <hr
-            className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
-          />
+        <hr className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
         <div className="mt-10">
           <FlexibleThingsForTour data={flexibleThingsData} locale={language} />
         </div>
@@ -139,23 +129,25 @@ const DynamicTourPage = ({ language, pageData }) => {
       <div id="reviews">
         <ReviewSection data={reviewData} locale="en" />
       </div>
-      {/* <div>
-        <TourGallery data={dummyPics} locale="en"  />
-      </div> */}
       <div className="md:px-20 px-5">
         <SectionHeader
           title="OTHER TOURS"
           subtitle="Other tours you make like"
           centerLine
-        />
+          />
         <CardsSection data={data1} locale={"en"} />
       </div>
 
       <div className="max-md:mt-[50px]">
         <FAQSection data={faqSectionData} locale="en" />
-      </div>
+      </div> */}
     </Layout>
   );
 };
+{
+  /* <div>
+            <TourGallery data={dummyPics} locale="en"  />
+          </div> */
+}
 
 export default DynamicTourPage;

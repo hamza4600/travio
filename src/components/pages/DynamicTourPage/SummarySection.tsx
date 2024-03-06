@@ -1,120 +1,153 @@
-import SectionHeader from "@/components/molecules/secHeader";
-import { Text } from "@/components/ui/text";
 import React from "react";
 import Image from "next/image";
+import PortableText from "react-portable-text";
 
-const SummarySection = () => {
-  return (
-    <div className="flex flex-col gap-12">
-      <div className="max-lg:hidden">
-        <SectionHeader title="overview" subtitle="Brief Summary" centerLine />
-      </div>
+import { PropsWithLocale } from "../../../../sanity/lib/client";
+import { decodeAssetId, urlFor } from "../../../../sanity/lib/client";
+import { SanityContentSection } from "../../../../sanity/lib/types";
 
-      <div className="bg-[#3FA9F5] mt-[50px] lg:hidden">
-        <div className="flex justify-between min-h-[70px] px-[32px] py-3">
-          <div className="flex flex-col items-center gap-1">
-            <Image src={"/demo/msg.svg"} alt="svg" width={20} height={20} />
-            <Text variant={"tertiary"} className="text-[14px] leading-6">
-              Inquire Now
-            </Text>
-          </div>
+import Container from "@/components/molecules/container";
+export type ContentSectionProps = {
+  data: SanityContentSection;
+  locale: string;
+};
 
-          <div className="flex flex-col items-center gap-1">
-            <Image src={"/demo/dst.svg"} alt="svg" width={20} height={20} />
-            <Text variant={"tertiary"} className="text-[14px] leading-6">
-              Tailor Your Tour
-            </Text>
-          </div>
-
-          <div className="flex flex-col items-center gap-1">
-            <Image src={"/demo/wtsp.svg"} alt="svg" width={20} height={20} />
-            <Text variant={"tertiary"} className="text-[14px] leading-6">
-              Contact Us
-            </Text>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex max-lg:px-5 flex-col gap-[30px]">
-        <div className="flex max-lg:flex-col max-md:gap-5 items-center justify-between gap-[30px]">
-          <div className="">
-            <div>
-
-              <Text
-                variant={"darkblue"}
-                className="md:leading-[34px] text-[20px] leading-[30px] font-bold md:text-[24px]"
-              >
-                Cairo City Of Egypt
-              </Text>
-              <hr
-              className="w-[74px]  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
-            />
-            </div>
-            <div className="flex flex-col mt-[28px] gap-[18px] font-normal text-[14px] max-md:leading-5 md:text-base">
-              <Text variant={"darkblue"}>
-                The main city of Egypt is Cairo. As the capital and largest city
-                of the country, Cairo is a bustling metropolis that serves as
-                the cultural, political, and economic hub of Egypt. It is
-                located along the banks of the Nile River and is home to iconic
-                landmarks such as the Great Pyramids of Giza and the Sphinx.
-                Cairo boasts a vibrant atmosphere with its bustling markets,
-                fascinating museums, and architectural wonders like the Citadel
-                of Saladin and the Egyptian Museum. It is a city where ancient
-                history seamlessly blends with modern urban life, offering a
-                unique and captivating experience for visitors.
-              </Text>
-
-              <Text variant={"darkblue"} className="max-lg:hidden ">
-                {" "}
-                The main city of Egypt is Cairo. As the capital and largest city
-                of the country, Cairo is a bustling metropolis that serves
-              </Text>
-            </div>
-          </div>
-          <img
-            src="/demo/tourimage.png"
-            alt="asd"
-            className="md:max-w-[400px] md:px-5 md:min-h-[310px] max-lg:min-w-full"
+const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
+  const {
+    data: { title, tagline, content },
+    locale,
+  } = props;
+  const PortableTextSerializer = {
+    h3: (props: any) => {
+      return (
+        <div className="">
+          <p
+            className="font-bold text-2xl font-satoshi text-darkblue"
+            {...props}
           />
-          <Text
-            variant={"darkblue"}
-            className="lg:hidden font-normal text-[14px] max-md:leading-5 md:text-base"
-          >
-            {" "}
-            The main city of Egypt is Cairo. As the capital and largest city of
-            the country, Cairo is a bustling metropolis that serves
-          </Text>
+          <hr className="md:w-[74px] border-b my-2 md:border-b-[3px] border-[#FFBB0B]  rounded-full" />
         </div>
+      );
+    },
 
-        <div className="flex flex-col md:gap-[28px] gap-[18px]">
-          <div>
-            <Text
-              variant={"darkblue"}
-              className="md:leading-[34px] font-bold md:text-[24px]"
-            >
-              Why youll love this trip
-            </Text>
-            <hr
-              className="w-[74px]  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]"
+    layout_group: (props: any) => {
+      return (
+        <div className="flex w-full font-satoshi text-darkblue max-md:flex-col  gap-4 md:gap-12">
+          {props.items.map((item: any, index: number) => (
+            <PortableText
+              key={index}
+              className={
+                item._type === "content_image"
+                  ? `w-full ${
+                      index
+                        ? `order-first md:order-last`
+                        : `order-last md:order-first`
+                    }`
+                  : ""
+              }
+              content={item}
+              serializers={PortableTextSerializer}
             />
-          </div>
-
-          <ol>
-            <li>
-              <Text
-                variant={"darkblue"}
-                className="font-normal text-[14px] max-md:leading-5 md:text-base"
-              >
-                Brush shoulders with the locals and meet some of the many store
-                owners as you stroll through the famous bazaars of Aswan, Luxor
-                and Khan al-Khalili in Egypts capital, Cairo.
-              </Text>
-            </li>
-          </ol>
+          ))}
         </div>
+      );
+    },
+
+    layout_stack: (props: any) => {
+      return (
+        <div
+          style={{
+            gridTemplateColumns:
+              props.items?.[0]?._type === "layout_group" && props.grid
+                ? `repeat(${props.items?.[0].items?.length}, minmax(0, auto))`
+                : "",
+          }}
+          className={
+            props.grid
+              ? "md:grid gap-[10px] md:gap-[18px] flex flex-col"
+              : "flex flex-col gap-[18px]"
+          }
+        >
+          {props.items
+            .map((item: any) =>
+              props.grid && item?._type === "layout_group" ? (
+                item.items?.map((item: any, i: number) => (
+                  <PortableText
+                    // className="flex-1"
+                    key={i}
+                    content={item}
+                    serializers={PortableTextSerializer}
+                  />
+                ))
+              ) : (
+                <PortableText
+                  key={Math.random()}
+                  // className="flex-1"
+                  content={item}
+                  serializers={PortableTextSerializer}
+                />
+              )
+            )
+            .flat()}
+        </div>
+      );
+    },
+    content_text: (props: any) => {
+      return <p style={{ color: props.styles?.color }}>{props.text}</p>;
+    },
+    content_image: (props: any) => {
+      const { dimensions } = decodeAssetId(props.image.asset._ref);
+
+      return (
+        <figure className="shrink-0 w-full  lg:w-[400px]  box-border">
+          {/* <p>
+            JSALKDJ:LSAKD:LSAKD:LKSA:LDKSA:LDK:LSAKD:LSAKD:LSAKD:LKSD:LKSA:LDK
+          </p> */}
+          <Image
+            alt=""
+            src={urlFor(props.image)}
+            width={dimensions?.width}
+            height={dimensions?.height}
+            className=" object-fill w-full h-auto"
+          />
+          {/* <div className="">
+            <LocalizedString text={props.image.alt} />
+          </div> */}
+          <figcaption className="text-center mt-2 font-satoshi text-darkblue text-opacity-75 text-xs md:text-sm font-normal md:font-medium leading-tight md:leading-snug">
+            {props.alt}
+          </figcaption>
+        </figure>
+      );
+    },
+  };
+
+  return (
+    <Container
+      id="overview"
+      className="mt-[60px] mx-auto max-w-[1312px] px-4 mb-20 font-satoshi text-darkblue"
+    >
+      <div className="mb-[30px] md:mb-12 flex flex-col items-center font-satoshi">
+        <p className="text-primary text-xs md:text-base  font-medium uppercase leading-tight md:leading-normal">
+          {tagline?.[locale]}
+        </p>
+
+        <h2 className="text-[24px] md:text-[40px] leading-[32px] md:leading-tight text-darkblue -tracking-[1.2px] mt-2 md:mt-3  w-fit  font-bold">
+          {title?.[locale]}
+          <hr className="w-1/2 mx-auto border-b-[3px] border-[#FFBB0B] rounded-full mt-2.5" />
+        </h2>
       </div>
-    </div>
+
+      <div className="text-sm md:text-base mt-[48px] text-darkblue  leading-[24px] font-normal">
+        {content[locale] && (
+          <PortableText
+            content={content[locale]}
+            className="flex flex-col gap-[10px] font-[500] md:gap-6 leading-normal md:leading-7 md:tracking-wide"
+            serializers={PortableTextSerializer}
+          />
+        )}
+      </div>
+    </Container>
   );
 };
 
-export default SummarySection;
+export default ContentSection;

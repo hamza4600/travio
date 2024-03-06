@@ -10,6 +10,7 @@ import Container from "@/components/molecules/container";
 
 import { Star } from "../HappyTravelers";
 import SectionHeader from "@/components/molecules/secHeader";
+import { urlFor } from "../../../../sanity/lib/client";
 // import useWindowSize from "@/hooks/useWindows";
 // export type ReviewSectionProps = {
 //   data: SanityReviewsSection;
@@ -160,8 +161,15 @@ const RatingCard = ({
           <Image
             width={38}
             height={38}
-            src={country}
-            className="rounded-full h-[38px] w-[38px]"
+            src={urlFor(country.asset._ref)}
+            className="rounded-full h-[38px] w-[38px] max-sm:hidden"
+            alt="country"
+          />
+          <Image
+            width={38}
+            height={38}
+            src={urlFor(country.mobile.asset._ref)}
+            className="rounded-full h-[38px] w-[38px] sm:hidden"
             alt="country"
           />
         </div>
@@ -215,7 +223,11 @@ const ReviewSection = (props) => {
   const pageSize = 3;
   return (
     <Container className="pb-[50px] md:pt-[80px] pt-[50px] md:py-[80px]  mx-auto max-w-[1312px] px-4 text-black">
-      <SectionHeader title={tagline} subtitle={title} centerLine />
+      <SectionHeader
+        title={tagline?.[locale]}
+        subtitle={title?.[locale]}
+        centerLine
+      />
 
       <div className="flex font-satoshi gap-y-[30px] md:gap-x-5 px-0 lg:px-5 mt-[30px] flex-col md:flex-row">
         <div className="w-full md:w-[430px] ">
@@ -237,15 +249,15 @@ const ReviewSection = (props) => {
               .map((item, index: any) => (
                 <RatingCard
                   key={index}
-                  title={item.title}
-                  name={item?.name}
+                  title={item.title?.[locale]}
+                  name={item?.name.en}
                   star={item.rating}
-                  review={item.text}
+                  review={item.text?.[locale]}
                   country={
-                    item.country
+                    item.avatar
                     // "https://img.freepik.com/free-vector/illustration-uk-flag_53876-18166.jpg?q=10&h=200"
                   }
-                  date={item.time}
+                  date={item.time?.[locale]}
                 />
               ))}
           </div>
