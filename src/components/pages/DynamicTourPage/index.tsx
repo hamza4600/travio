@@ -3,11 +3,6 @@
 import Layout from "@/components/layout";
 import dynamic from "next/dynamic";
 
-import {
-  // dummyPics
-  overviewData,
-} from "./data";
-
 import React from "react";
 import { TourSectionsMap } from "@/components/sections";
 
@@ -25,7 +20,7 @@ const HeroSection = dynamic(() => import("./HeroSection"));
 const DynamicTourPage = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
 
-  console.log(data, "555555");
+  console.log(data, "tour");
   return (
     <Layout
       globals={layout}
@@ -44,12 +39,12 @@ const DynamicTourPage = ({ language, pageData }) => {
           value: "/#",
         },
       ]}
-      promo_banner={layout?.navbar?.info_banner}
+      promo_banner={layout?.banner}
     >
-      <HeroSection />
+      <HeroSection data={data.hero_section} locale={language} />
 
       <div className="lg:mt-16">
-        <OverViewCard data={overviewData} />
+        <OverViewCard data={data?.overview_card} locale={language} />
       </div>
 
       {/* <div className="md:mt-12 mt-6">

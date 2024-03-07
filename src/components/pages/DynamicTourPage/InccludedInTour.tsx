@@ -10,6 +10,7 @@ export default function WhatsIncludedSection({
 }: {
   data: SanityWhatsIncludedSection;
 }) {
+  console.log("included section data: ", data);
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <Container className="flex flex-col py-7 mx-auto max-w-[1312px] px-4  relative">

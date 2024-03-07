@@ -81,7 +81,7 @@ const HeroSection = ({ data, locale, banner }) => {
                   as={"h2"}
                   className="text-sm md:text-[20px] leading-[20px] md:leading-[32px] text-center md:text-start "
                 >
-                  {data.subtitle[locale]}
+                  {data?.subtitle?.[locale]}
                 </Text>
               </header>
 
@@ -90,19 +90,19 @@ const HeroSection = ({ data, locale, banner }) => {
                   variant={"sky"}
                   className="font-bold text-base max-md:text-xs max-md:font-medium h-10 md:h-12 md:w-[163px] w-[160px]"
                 >
-                  Inquire Now
+                  {data?.cta_buttons[0]?.label?.[locale]}
                 </Button>
                 <Button
                   variant={"secondary"}
                   className="font-bold text-base max-md:text-xs max-md:font-medium h-12 max-md:hidden md:w-[260px] w-[160px]"
                 >
-                  Customize you own trip
+                  {data?.cta_buttons[1]?.label?.[locale]}
                 </Button>
                 <Button
                   variant={"secondary"}
                   className="font-bold text-base max-md:text-xs max-md:font-medium h-10 md:h-12 md:hidden"
                 >
-                  Customize you trip
+                  {data?.cta_buttons[1]?.label?.[locale]}
                 </Button>
               </div>
               <Text
@@ -110,13 +110,13 @@ const HeroSection = ({ data, locale, banner }) => {
                   "text-[12px] leading-5 font-bold md:text-left md:ml-[152px]  text-center  mt-1.5 text-white/60 max-md:text-white max-md:text-[8px] max-md:leading-[12px]"
                 }
               >
-                In less than 1 minute
+                {data?.cta_helper_text?.[locale]}
               </Text>
             </div>
             <footer className="mt-[28px] px-10 md:mt-[71px] flex items-center relative bottom-0">
               <div className="flex">
                 <Image
-                  src={"/trustpilot.png"}
+                  src={urlFor(data?.cta_buttons[0]?.icon?.asset._ref)}
                   width={136}
                   height={73}
                   alt=""
@@ -140,7 +140,7 @@ const HeroSection = ({ data, locale, banner }) => {
                 </svg>
 
                 <Image
-                  src={"/trip.png"}
+                  src={urlFor(data?.cta_buttons[1]?.icon?.asset._ref)}
                   width={136}
                   height={73}
                   alt=""

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Text } from "../../ui/text";
 import { Button } from "../../ui/button";
+import { urlFor } from "../../../../sanity/lib/client";
 
 const type =
   "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center";
@@ -10,29 +11,49 @@ const type =
 const TourCard = ({
   pic,
   tourType,
+  label,
   days,
   cities,
   countries,
+  mobilePic,
   old_price,
   price,
+  link,
+  locale,
 }) => {
-  const savings = price - old_price;
+  // const savings = price - old_price;
+
+  console.log("mb pic: ", mobilePic, "desk pic: ", pic);
   return (
-    <Link className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"} href={"#"}>
+    <Link
+      className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"}
+      href={locale + "/tours" + link}
+    >
       <div className="bg-white relative h-min shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
-        <Text
-          variant={"tertiary"}
-          className="bg-[#D10002] absolute m-3 right-0 px-3 py-1 text-white font-bold text-[10px] md:text-[12px] md:leading-5 rounded-full"
-        >
-          Hot Deal
-        </Text>
+        {label && (
+          <Text
+            variant={"tertiary"}
+            className="bg-[#D10002] absolute m-3 right-0 px-3 py-1 text-white font-bold text-[10px] md:text-[12px] md:leading-5 rounded-full"
+          >
+            {label}
+          </Text>
+        )}
 
         <Image
           width={302}
           height={100}
           // alt={image.alt}
-          className="rounded-t-2xl h-[180px] md:h-[220px]"
-          src={pic}
+          className="rounded-t-2xl h-[220px] max-sm:hidden"
+          src={urlFor(pic)}
+          alt=""
+          quality={100}
+        />
+        <Image
+          width={302}
+          height={100}
+          // alt={image.alt}
+          className="rounded-t-2xl h-[180px] sm:hidden"
+          src={urlFor(mobilePic)}
           alt=""
           quality={100}
         />
@@ -62,7 +83,7 @@ const TourCard = ({
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
               />
               <Text variant={"darkblue"} fontWeight={"500"}>
-                {cities}
+                {cities} Cites
               </Text>
             </div>
             <div className={type}>
@@ -75,7 +96,7 @@ const TourCard = ({
                 quality={100}
               />
               <Text fontWeight={"500"} variant={"darkblue"}>
-                {countries}
+                {countries} Countries
               </Text>
             </div>
           </div>
@@ -92,7 +113,7 @@ const TourCard = ({
                 variant={"destructive"}
                 className="text-[10px] md:-mt-2 md:text-xs font-bold leading-[20px] md:leading-[28px]"
               >
-                You Save ${savings}
+                You Save ${old_price - price}
               </Text>
             </div>
           </div>

@@ -24,9 +24,11 @@ const Root = styled.div`
 const Header = ({
   navbar,
   locale,
+  banner,
 }: {
   navbar: SanityGlobals["navbar"];
   locale: string;
+  banner: any;
 }) => {
   const [open, setOpen] = useState(false);
   const [openDropDown, setOpenDropDown] = useState(false);
@@ -43,6 +45,8 @@ const Header = ({
 
   const dropdownList = ["Egypt", "Dubai", "Isreal"];
 
+  // console.log("banner data: ", banner);
+
   return (
     <Root>
       <div
@@ -51,23 +55,28 @@ const Header = ({
         <div className={"bg-primary h-[30px]"}>
           <Container className="py-1 px-20">
             <div className="main-content-wrapper">
-              <a target={"_blank"} href={"whatsapp://+919456679268"}>
-                <div className="flex justify-end gap-1">
-                  <Image
-                    src="/whatsapp_logo.svg"
-                    height={18}
-                    width={18}
-                    alt="Whatsapp logo"
-                  />
-                  <p
-                    className={
-                      "text-[14px] font-satoshi font-medium leading-[22px]"
-                    }
-                  >
-                    +1 0000 000 000
-                  </p>
-                </div>
-              </a>
+              {banner?.watts_banner?.show && (
+                <a
+                  target={"_blank"}
+                  href={`whatsapp://${banner?.watts_banner?.contact_number}`}
+                >
+                  <div className="flex justify-end gap-1">
+                    <Image
+                      src="/whatsapp_logo.svg"
+                      height={18}
+                      width={18}
+                      alt="Whatsapp logo"
+                    />
+                    <p
+                      className={
+                        "text-[14px] font-satoshi font-medium leading-[22px]"
+                      }
+                    >
+                      {banner?.watts_banner?.contact_number}
+                    </p>
+                  </div>
+                </a>
+              )}
             </div>
           </Container>
         </div>
@@ -115,12 +124,16 @@ const Header = ({
             alt="Company logo"
           />
           <div className="flex gap-3 h-[24px]  items-center">
-            <img
-              src="/whatsapp_logo.svg"
-              height={24}
-              width={24}
-              alt="Whatsapp logo"
-            />
+            {banner?.watts_banner?.show && (
+              <a href={`whatsapp://${banner?.watts_banner?.contact_number}`}>
+                <img
+                  src="/whatsapp_logo.svg"
+                  height={24}
+                  width={24}
+                  alt="Whatsapp logo"
+                />
+              </a>
+            )}
             {/* Language selector */}
             <LanguageDropdown />
             <button onClick={() => setOpen(!open)}>
