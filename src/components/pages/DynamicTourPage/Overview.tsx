@@ -6,9 +6,19 @@ import { Text } from "@/components/ui/text";
 
 // import { useRouter } from "next/navigation";
 
-const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
+const OverViewCard = ({
+  data,
+  slug,
+  locale,
+}: {
+  data: any;
+  slug?: string;
+  locale: string;
+}) => {
   //   const router = useRouter();
   const price: any = data?.price;
+
+  console.log("price: ", price);
   return (
     <div className="relative font-satoshi lg:h-[80px] bg-primary lg:bg-transparent pb-5 h-fit ">
       <div className="lg:absolute grid p-[26px] max-xl:grid-cols-2 gap-3 lg:flex items-center max-w-[1280px]  inset-x-0 lg:divide-x-2 top-[-34px] mx-auto bg-primary rounded-2xl">
@@ -25,8 +35,8 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
             <p className="lg:text-base text-[12px] max-lg:leading-5 font-medium text-gray whitespace-nowrap">
               Duration
             </p>
-            <p className="lg:text-xl max-lg:leading-5 font-bold text-darkblue">
-              {data?.duration?.en}
+            <p className="lg:text-xl max-lg:leading-5 whitespace-nowrap font-bold text-darkblue">
+              {data?.duration?.[locale]}
             </p>
           </div>
         </div>
@@ -109,7 +119,7 @@ const OverViewCard = ({ data, slug }: { data: any; slug?: string }) => {
               Price From
             </p>
             <p className="lg:text-xl text-[14px] max-lg:leading-5 font-bold text-darkblue whitespace-nowrap">
-              {price?.en}
+              $ {price?.initial_price?.[locale]}
             </p>
           </div>
         </div>

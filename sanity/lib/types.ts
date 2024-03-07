@@ -1133,6 +1133,7 @@ interface Location {
 export type SanityGlobals = {
   _type: "globals";
   _id: string;
+  banner: any;
   navbar?: {
     logo?: SanityImage;
     info_banner?: {

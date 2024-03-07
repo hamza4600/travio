@@ -7,6 +7,9 @@ import {
   SanitySectionNames,
   SanityTourSectionNames,
 } from "../../../sanity/lib/types";
+const ContactSection = dynamic(
+  () => import("../pages/DynamicDestinations/ContactSection")
+);
 
 const ReviewRatingSections = dynamic(
   () => import("@/components/sections/reviews/Reviews")
@@ -61,7 +64,7 @@ const FeatureSection = dynamic(
 
 // const FlexibleThings = dynamic(() => import("./FlexibleThings/FlexibleThings"));
 
-const ReviewSection = dynamic(
+const Testimonials = dynamic(
   () => import("@/components/sections/HappyTravelers")
 );
 
@@ -96,9 +99,9 @@ const MemorableExperiencesSection = dynamic(
   () => import("@/components/pages/DynamicTourPage/MemoriableExperince")
 );
 
-// const FlexibleThingsForTour = dynamic(
-//   () => import("@/components/sections/FlexibleThings/ForTourSection")
-// );
+const FlexibleThingsForTour = dynamic(
+  () => import("@/components/sections/FlexibleThings/ForTourSection")
+);
 
 // const PriceList = dynamic(() => import("@/components/pages/DynamicTourPage"));
 
@@ -138,11 +141,11 @@ export const SectionMap: {
   destinations_section: DestinationsSection,
   faq_section: FAQSection,
   deals_section: DealsSection,
-  testimonial_section: ReviewSection,
+  testimonial_section: Testimonials,
   featured_blogs_section: BlogSection,
   gallery_section: GallerySection,
   // content_section: ContentSection,
-  reviews_section: ReviewSection,
+  reviews_section: ReviewRatingSections,
   // office_locations_section: OfficeLocationSection,
   index_section: IndexSection,
   // image_header_section: ImageHeaderSection,
@@ -154,14 +157,15 @@ export const DestinationSectionsMap: {
     | ComponentClass<any, any>;
 } = {
   image_header_section: HeroSectionTours,
-  // reviews_section: ReviewSection,
+  reviews_section: ReviewRatingSections,
   faq_section: FAQSection,
   // all_blogs_section: BlogSection,
   featured_blogs_section: BlogSection,
-  featured_tours_section: DealsSection,
+  // featured_tours_section: DealsSection,
   at_glance_section: CountryFacts,
   // tour_selection_section: BestToursSection,
   top_things_section: TopThingsToDo,
+  contact_agent_section: ContactSection,
 };
 
 export const TourSectionsMap: {
@@ -176,8 +180,8 @@ export const TourSectionsMap: {
   whats_included_section: WhatsIncludedSection,
   // pricing_section: PriceList,
   accommodation_types_section: AccommdationTypesSection,
-  // feature_section: TourFeature,
-  featured_tours_section: DealsSection,
+  feature_section: FlexibleThingsForTour,
+  // featured_tours_section: DealsSection,
   travel_info_section: TravelInformation,
   reviews_section: ReviewRatingSections,
   faq_section: FAQSection,

@@ -30,7 +30,6 @@ const Layout = ({
   locale: any;
   head?: any;
 }) => {
-
   return (
     <div className="bg-white">
       <div className="max-w-[1440px] mx-auto box-border">
@@ -51,15 +50,19 @@ const Layout = ({
             width: process.env.NEXT_PUBLIC_DEVELOPMENT ? "" : "",
           }}
         >
-          <Header navbar={globals?.navbar} locale={locale} />
+          <Header
+            navbar={globals?.navbar}
+            banner={globals?.banner}
+            locale={locale}
+          />
 
           <main className={"grow"}>
             <PromoBanner banner={promo_banner} locale={locale} />
-            <Breadcrumbs paths={breadcrumbs} locale={locale}/>
+            <Breadcrumbs paths={breadcrumbs} locale={locale} />
 
             {children}
           </main>
-          <Footer footer={globals?.footer} language={locale}/>
+          <Footer footer={globals?.footer} language={locale} />
         </div>
       </div>
     </div>

@@ -16,12 +16,17 @@ const HomePage = ({ pageData, locale }) => {
     // pageData: SECTIONS_DATA
   } = pageData || {};
 
-  console.log("layout:", layout);
+  // console.log("layout:", layout);
 
   console.log("pageData: ", pageData);
 
   return (
-    <Layout breadcrumbs={[]} locale={locale} globals={layout}>
+    <Layout
+      breadcrumbs={[]}
+      locale={locale}
+      // promo_banner={layout?.banner}
+      globals={layout}
+    >
       <Popup />
 
       <Slicer

@@ -100,21 +100,31 @@ export const data1 = [
 ];
 
 const CardsSection = ({ data, locale }) => {
+  console.log("data: ", data);
   return (
     <Container className="text-black w-full smd:mr-0 px-20 max-lg:px-5 mt-[50px]">
-      <SectionHeader subtitle="Top Tours in Egypt" title="Top tours" />
+      <SectionHeader
+        subtitle={data?.title?.[locale]}
+        title={data?.tagline?.[locale]}
+      />
       <div className="h-fit relative md:mt-12 mt-[30px]">
         <Swiper className={"gap-6 pb-3"} length={data1.length} scrollCount={4}>
-          {data1.map((data) => (
+          {data.deals.map((data: any, i: number) => (
             <TourCard
-              key={data.id}
-              pic={data.pic}
-              tourType={data.title}
-              days={data.day}
-              cities={data.cities}
-              countries={data.countries}
-              old_price={data.old_price}
-              price={data.price}
+              key={i}
+              locale={locale}
+              link={data?.tour?.slug.current}
+              label={data?.label?.[locale]}
+              pic={data.tour.hero_section.image?.asset._ref}
+              mobilePic={data.tour.hero_section.image.mobile?.asset._ref}
+              tourType={data.tour.hero_section.title?.[locale]}
+              days={data.tour.overview_card?.duration?.[locale]}
+              cities={data.tour.overview_card.cities}
+              countries={data.tour.overview_card.countries}
+              old_price={
+                data.tour.price_overrides[0].price.discounted_price[locale]
+              }
+              price={data.tour.price_overrides[0].price.initial_price[locale]}
             />
           ))}
         </Swiper>

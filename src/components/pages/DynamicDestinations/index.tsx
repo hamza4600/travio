@@ -3,8 +3,6 @@ import Layout from "@/components/layout";
 
 import Slicer from "../../../../sanity/slicer";
 import { DestinationSectionsMap } from "@/components/sections";
-import dynamic from "next/dynamic";
-const ContactSection = dynamic(() => import("./ContactSection"));
 
 export const bannerText = {
   text: "More summer for less. Save up to 20% off selected trips*.",
@@ -22,7 +20,7 @@ const DynamicDestionations = ({ language, pageData }) => {
   return (
     <Layout
       locale={`${language}`}
-      promo_banner={layout.navbar.info_banner}
+      promo_banner={layout?.banner}
       globals={layout}
       breadcrumbs={[
         {
@@ -40,7 +38,6 @@ const DynamicDestionations = ({ language, pageData }) => {
         sections={data.sections}
         components={DestinationSectionsMap}
       />
-      <ContactSection data={data.sections[5]} locale={language} />
     </Layout>
   );
 };
