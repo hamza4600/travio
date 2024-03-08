@@ -67,7 +67,7 @@ const BlogSection = (props) => {
   console.log("tagline: ", tagline?.en, "locale: ", locale, featured_blogs);
 
   return (
-    <Container className="text-darkblue px-20 max-lg:px-5 md:mt-[84px] mt-[50px]">
+    <Container className="text-darkblue px-20 max-lg:px-5 md:mt-[84px] mt-[50px] md:mb-[68px] mb-[70px]">
       <SectionHeader
         title={tagline?.[locale]}
         subtitle={title?.[locale]}

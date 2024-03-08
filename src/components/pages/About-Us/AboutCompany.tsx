@@ -87,33 +87,33 @@ const TextImageContainer = styled.div`
   }
 `;
 
-// const TextWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 18px;
-// `;
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+`;
 
-// const MissionText = styled.div`
-//   color: #140d31;
-//   font-size: 16px;
-//   font-family: var(--font-satoshi);
-//   font-weight: 400;
-//   line-height: 28px;
-//   letter-spacing: 0.32px;
-//   word-wrap: break-word;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 18px;
+const MissionText = styled.div`
+  color: #140d31;
+  font-size: 16px;
+  font-family: var(--font-satoshi);
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0.32px;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 
-//   p {
-//     margin-bottom: 6px;
-//   }
+  p {
+    margin-bottom: 6px;
+  }
 
-//   @media (max-width: 578px) {
-//     font-size: 14px;
-//     line-height: 24px;
-//   }
-// `;
+  @media (max-width: 578px) {
+    font-size: 14px;
+    line-height: 24px;
+  }
+`;
 
 const BenefitsWrapper = styled.div`
   display: flex;
@@ -170,6 +170,7 @@ const Desc = styled.div`
 `;
 
 const AboutComapny = ({ data, locale }) => {
+  // console.log()
   return (
     <Wrapper>
       <TextConatiner>
@@ -184,10 +185,14 @@ const AboutComapny = ({ data, locale }) => {
             // height={data.img.height}
             alt={data.content?.[locale][0]?.items[0].alt}
           />
-          {/* <TextWrapper>
-            <MissionText>{data.data.firstLine}</MissionText>
-            <MissionText>{data.data.secondLine}</MissionText>
-          </TextWrapper> */}
+          <TextWrapper>
+            <MissionText>
+              {data.content?.[locale][0]?.items?.[1]?.items[0]?.text}
+            </MissionText>
+            <MissionText>
+              {data.content?.[locale][0]?.items?.[1]?.items[1]?.text}
+            </MissionText>
+          </TextWrapper>
         </TextImageContainer>
         <BenefitsWrapper>
           {/* <PortableText value={data.content} /> */}

@@ -43,18 +43,14 @@ export async function generateMetadata({ params }) {
 }
 
 // revalidate: 1 hour
-export const revalidate = 3600 
+export const revalidate = 3600;
 export default async function Index({ params }) {
-
   const { language } = params;
   const aboutPage = await getAboutPage();
 
   return (
     <>
-      <AboutUsPage
-        language={language}
-        pageData={aboutPage}
-      />
+      <AboutUsPage language={language} pageData={aboutPage} />
     </>
   );
 }
