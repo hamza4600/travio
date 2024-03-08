@@ -9,6 +9,19 @@ import SuggestedTour from "./SuggestedTour";
 // import GetEarlyNews from "@/components/sections/form/Form";
 import NewsletterSection from "@/components/sections/NewsletterSection";
 
+const dummyNewsData = {
+  subtitle: {
+    en: "Be the first to know about our latest travel deals, special promotions, and insider tips",
+    es: "Be the first to know about our latest travel deals, special promotions, and insider tips",
+    por: "Be the first to know about our latest travel deals, special promotions, and insider tips",
+  },
+  title: {
+    en: "Join Our Travel Community and Unlock Exclusive Deals!",
+    es: "Join Our Travel Community and Unlock Exclusive Deals!",
+    por: "Join Our Travel Community and Unlock Exclusive Deals!",
+  },
+};
+
 const DynamicTravelWiki = ({
   language,
   pageData,
@@ -17,6 +30,8 @@ const DynamicTravelWiki = ({
   pageData: any;
 }) => {
   const { layout } = pageData || {};
+
+  console.log("dataTravelwiki: ", pageData);
 
   return (
     <Layout
@@ -40,7 +55,7 @@ const DynamicTravelWiki = ({
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">
         {/* <GetEarlyNews /> */}
-        <NewsletterSection />
+        <NewsletterSection data={dummyNewsData} locale={language} />
       </div>
     </Layout>
   );
