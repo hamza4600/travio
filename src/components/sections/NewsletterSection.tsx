@@ -1,20 +1,14 @@
-// import { FC } from "react";
 import Image from "next/image";
-
-// import { SanityNewsletterSection } from "../../../sanity/lib/types";
-
 import Container from "../molecules/container";
-// import { PropsWithLocale } from "../../../sanity/lib/client";
 import useWindowSize from "@/hooks/useWindows";
+import { Button } from "../ui/button";
 
-// type NewsletterSectionProps = {
-//   data: SanityNewsletterSection;
-//   locale: PropsWithLocale<any>;
-// };
-
-const NewsletterSection = () => {
+const NewsletterSection = ({ data, locale }) => {
   const window = useWindowSize();
   const isMobile = window.width < 768;
+
+  console.log("data====NEWS", data);
+  const { subtitle, title } = data || {};
 
   return (
     <Container className="md:px-20 px-0 md:pb-[60px] pb-[50px] flex justify-center items-center bg-white text-white">
@@ -25,7 +19,6 @@ const NewsletterSection = () => {
           src={
             isMobile ? "/demo/form-bg-mobile.png" : "/demo/formbg-desktop.png"
           }
-          // src={data.image ? urlFor(data.image) : ""}
           alt={""}
           sizes={`
               100vw
@@ -35,12 +28,11 @@ const NewsletterSection = () => {
         <div className="flex relative font-satoshi z-10 flex-col justify-center md:justify-start items-center md:items-start ">
           <header>
             <h2 className="text-center -tracking-[1.2px] max-w-3xl md:text-start text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px] w-[335px] md:w-full">
-              Join Our Travel Community and Unlock Exclusive Deals!
+              {title?.[locale]}
             </h2>
 
             <p className="w-[335px] md:w-full  text-center max-w-[610px] -tracking-[0.6px] mt-2.5 mb-[30px] md:text-start text-[14px] md:text-[20px] font-[500] md:font-normal leading-[20px] md:leading-[32px]">
-              Be the first to know about our latest travel deals, special
-              promotions, and insider tips
+              {subtitle?.[locale]}
             </p>
           </header>
           <div className="relative shadow-sm flex items-center  ">
@@ -49,9 +41,11 @@ const NewsletterSection = () => {
               type="text"
               placeholder={"Enter your email"}
             />
-            <button className="absolute right-[5px] top-1/2 -translate-y-1/2 py-[4px] md:py-[7px] px-[18px] bg-yellow font-bold rounded-full">
+            <Button variant={'golden'}
+              className="absolute right-[5px] top-1/2 -translate-y-1/2 py-[4px] md:py-[7px] px-[18px] font-bold rounded-full"
+            >
               {"Sign Up"}
-            </button>
+            </Button>
           </div>
 
           <footer className="flex md:flex-col w-[335px] items-center md:items-start gap-1.5 mt-2 md:mt-[30px]">
