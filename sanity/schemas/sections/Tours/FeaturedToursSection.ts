@@ -21,7 +21,7 @@ export default defineType({
       type: 'array',
       of: [
         defineArrayMember({
-          name: 'tour_card',
+          name: 'deals',
           title: 'Tour Card',
           type: 'object',
           fields: [

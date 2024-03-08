@@ -10,7 +10,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import { SectionMap } from "@/components/sections";
 import NewsletterSection from "@/components/sections/NewsletterSection";
 
-const HomePage = ({ pageData, locale }) => {
+const HomePage = ({ pageData, locale, newLetterSection }) => {
   const {
     layout,
     // pageData: SECTIONS_DATA
@@ -30,7 +30,10 @@ const HomePage = ({ pageData, locale }) => {
         components={SectionMap}
         sections={pageData?.pageData?.sections}
       />
-      <NewsletterSection />
+      <NewsletterSection 
+        data={newLetterSection} 
+        locale={locale}
+      />
     </Layout>
   );
 };
