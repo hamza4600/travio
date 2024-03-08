@@ -15,7 +15,7 @@ const HeroSection = ({ data, locale }) => {
           alt={data?.alt?.[locale]}
         />
         <img
-          className="lg:w-full min-h-[480px] md:hidden max-md:h-[200px]"
+          className="w-full md:hidden min-h-[200px]"
           src={urlFor(data.image.mobile.asset._ref)}
           loading="lazy"
           alt={data?.alt?.[locale]}

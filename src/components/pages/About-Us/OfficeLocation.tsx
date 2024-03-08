@@ -9,10 +9,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 48px;
   margin-top: 80px;
+  margin-bottom: 80px;
 
   @media (max-width: 578px) {
     gap: 40px;
     margin-top: 50px;
+    margin-bottom: 50px;
   }
 `;
 

@@ -58,7 +58,7 @@ const TourCard = ({
           quality={100}
         />
         <div className="p-4">
-          <Text className="text-base md:text-xl text-darkblue font-bold">
+          <Text className="text-base md:text-xl text-darkblue font-bold min-h-[56px]">
             {tourType}
           </Text>
           <div className="flex mt-3 justify-between">

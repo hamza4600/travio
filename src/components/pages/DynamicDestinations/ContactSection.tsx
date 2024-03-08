@@ -6,7 +6,7 @@ import { urlFor } from "../../../../sanity/lib/client";
 
 const ContactSection = ({ data, locale }: { data: any; locale: string }) => {
   return (
-    <Container className="md:px-20 px-0 md:pt-20 pt-[50px] md:pb-[68px] pb-[49px]">
+    <Container className="md:px-20 px-0 max-md:pt-[50px] md:pb-[68px] pb-[49px] max-sm:mb-20">
       <div className="max-w-[1280px] min-h-[502px] bg-[#edf7fe] md:rounded-[24px] rounded-none">
         <div className="flex max-md:flex-col relative">
           <div className="flex flex-col z-50 max-md:items-center md:gap-[68px] gap-6 md:py-[68px] md:pl-12 py-10 px-5">
@@ -24,7 +24,7 @@ const ContactSection = ({ data, locale }: { data: any; locale: string }) => {
             </Button>
           </div>
 
-          <div className="absolute">
+          <div className="absolute max-sm:w-full">
             <img
               src={urlFor(data.hero_image.asset._ref)}
               className="max-md:hidden"
@@ -32,8 +32,9 @@ const ContactSection = ({ data, locale }: { data: any; locale: string }) => {
             />
             <img
               src={urlFor(data.hero_image.mobile.asset._ref)}
-              className="md:hidden"
+              className="md:hidden w-full"
               alt=""
+              // style={{ width: "100%" }}
             />
           </div>
         </div>

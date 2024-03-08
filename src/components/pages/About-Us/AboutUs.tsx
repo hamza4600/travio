@@ -137,22 +137,26 @@ const AboutUs = ({ data, locale }) => {
     <TitleWrapper>
       {/* <Text1>{data.tagline?.[locale]}</Text1>
       <Text2>{data.title?.[locale]}</Text2> */}
-      <Text1>{data.tagline}</Text1>
-      <Text2>{data.title}</Text2>
+      <Text1>{data.tagline?.[locale]}</Text1>
+      <Text2>{data.title?.[locale]}</Text2>
       <div className="md:border-b-[3px] border-b-2 border-b-[#FFBB0B] md:max-w-[117px] max-w-[89px]" />
 
       <Container>
         <WelcomeText>
-          {data.data.firstLine}
+          {data?.content?.[locale][0]?.children[0]?.text}
           {/* <PortableText value={data.content?.[locale]} /> */}
         </WelcomeText>
         <TextImageContainer>
           <Container>
             <TextImgWrapper>
-              <ExpertiesText>{data.data.secondLine}</ExpertiesText>
+              <ExpertiesText>
+                {data?.content?.[locale][1]?.items[1]?.items[0]?.text}
+              </ExpertiesText>
             </TextImgWrapper>
             <TextImgWrapper>
-              <ExpertiesText>{data.data.thirdLine}</ExpertiesText>
+              <ExpertiesText>
+                {data?.content?.[locale][1]?.items[1]?.items[1]?.text}
+              </ExpertiesText>
             </TextImgWrapper>
           </Container>
           <Container>
