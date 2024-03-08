@@ -25,7 +25,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
             className="font-bold text-2xl font-satoshi text-darkblue"
             {...props}
           />
-          <hr className="md:w-[74px] border-b my-2 md:border-b-[3px] border-[#FFBB0B]  rounded-full" />
+          <div className="md:w-[74px] border-b my-2 md:border-b-[3px] border-[#FFBB0B]  rounded-full" />
         </div>
       );
     },
@@ -133,7 +133,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
 
         <h2 className="text-[24px] md:text-[40px] leading-[32px] md:leading-tight text-darkblue -tracking-[1.2px] mt-2 md:mt-3  w-fit  font-bold">
           {title?.[locale]}
-          <hr className="w-1/2 mx-auto border-b-[3px] border-[#FFBB0B] rounded-full mt-2.5" />
+          <div className="w-1/2 mx-auto border-b-[3px] border-[#FFBB0B] rounded-full mt-2.5" />
         </h2>
       </div>
 

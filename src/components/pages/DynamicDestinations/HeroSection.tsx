@@ -32,7 +32,7 @@ const HeroSection = ({ data, locale }) => {
           >
             {data.header?.[locale]}
           </Text>
-          <hr className="border-b border-[#FFBB0B] w-10" />
+          <div className="border-b border-[#FFBB0B] w-10" />
         </div>
         <Text
           variant={"darkblue"}

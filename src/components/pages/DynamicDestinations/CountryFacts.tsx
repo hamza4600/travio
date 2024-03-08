@@ -56,13 +56,13 @@ const CountryFacts = (props) => {
             );
           })}
         </div>
-        <hr className="my-10 md:my-14 m-auto text-[#CFEAFD] bg-[#CFEAFD] w-10/12 " />
+        <div className="my-10 md:my-14 m-auto text-[#CFEAFD] bg-[#CFEAFD] w-10/12 " />
         <div>
           <div className="w-fit mx-auto">
             <h4 className="text-xl md:text-[24px] font-satoshi font-bold text-center leading-[30px]">
               {useful_links_section?.title?.[locale]}
             </h4>
-            <hr className=" md:w-2/3 w-1/2 my-2 text-yellow m-auto  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
+            <div className=" md:w-2/3 w-1/2 my-2 text-yellow m-auto  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
           </div>
           <div className="py-2 grid grid-flow-row grid-cols-1 md:grid-cols-4 mt-10 md:mt-16 md:pl-[53px]  gap-y-[30px] md:gap-y-[42px]">
             {useful_links_section?.useful_links?.map(

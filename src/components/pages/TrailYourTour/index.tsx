@@ -29,6 +29,7 @@ export type TailorTripFormData = {
 const TailorYourTour = ({ language, data }) => {
   const { layout , pageData} = data || {};
   console.log("pageData====", pageData);
+  
   const [loading] = useState(false);
   const resolver = useZodValidationResolver(validationSchema);
   const [selectedDestination, setSelectedDestination] = useState<string[]>([]);
@@ -69,7 +70,7 @@ const TailorYourTour = ({ language, data }) => {
     <Layout
       locale={language}
       globals={layout}
-      promo_banner={layout?.navbar?.info_banner}
+      promo_banner={layout?.banner}
       breadcrumbs={[
         {
           label: "Tailor your tour",
@@ -83,7 +84,7 @@ const TailorYourTour = ({ language, data }) => {
           className="md:hidden absolute top-[136px] left-0 border-b-[#3FA9F5] border-b-2 z-50"
           style={{ width: "117px" }}
         />
-        <hr className="bg-gray border-b-2 md:hidden" />
+        <div className="bg-gray border-b-2 md:hidden" />
       </div>
 
       <div className ="flex md:mt-10 flex-col mt-2">

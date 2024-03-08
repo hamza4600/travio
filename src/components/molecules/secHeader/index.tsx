@@ -39,7 +39,7 @@ const SectionHeader: FC<SectionHeaderProps> = ({
           {subtitle}
         </Text>
       </div>
-      <hr
+      <div
         className="w-[85px] md:w-[117px] border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[2px]"
       />
     </div>

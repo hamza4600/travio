@@ -21,7 +21,7 @@ const HeroSection = ({ data }) => {
           <Text className="max-sm:mt-4 sm:absolute bottom-16 inset-x-0 text-xl sm:text-6xl text-black sm:text-white font-extrabold text-center">
             {data.title}
           </Text>
-          <hr className="w-10 mx-auto sm:hidden border-b-2 border-[#FFBB0B] h-[1.5px] mt-1 rounded-full md:rounded-[3px] " />
+          <div className="w-10 mx-auto sm:hidden border-b-2 border-[#FFBB0B] h-[1.5px] mt-1 rounded-full md:rounded-[3px] " />
           <Text
             variant={"darkblue"}
             className="sm:hidden px-6 text-sm font-normal pt-6 leading-6"

@@ -29,7 +29,7 @@ const DestinationsSection = ({ data, locale }) => {
 
           <div className="text-2xl md:text-[40px] font-satoshi w-fit leading-tight my-3 font-bold -tracking-[1.2px] md:leading-[50px]">
             <h2>{data.title[locale]}</h2>
-            <hr className="w-[85px] md:w-1/3 mt-1 lg:mt-[9px] rounded-full border-b-[#FFBB0B] md:border-b-[3px] border-b-[2px]" />
+            <div className="w-[85px] md:w-1/3 mt-1 lg:mt-[9px] rounded-full border-b-[#FFBB0B] md:border-b-[3px] border-b-[2px]" />
           </div>
         </header>
 

@@ -150,7 +150,7 @@ const RatingCard = ({
       </div>
 
       <h3 className="text-base font-satoshi font-bold leading-normal ">
-        {title.substring(0, 33)}...
+        {title?.substring(0, 33)}...
       </h3>
 
       <h5 className="text-xs font-satoshi md:text-sm font-medium text-gray opacity-80 leading-[24px] md:leading-snug">
@@ -161,14 +161,14 @@ const RatingCard = ({
           <Image
             width={38}
             height={38}
-            src={urlFor(country.asset._ref)}
+            src={urlFor(country?.asset?._ref)}
             className="rounded-full h-[38px] w-[38px] max-sm:hidden"
             alt="country"
           />
           <Image
             width={38}
             height={38}
-            src={urlFor(country.mobile.asset._ref)}
+            src={urlFor(country?.mobile?.asset._ref)}
             className="rounded-full h-[38px] w-[38px] sm:hidden"
             alt="country"
           />
@@ -193,7 +193,7 @@ const ReviewSection = (props) => {
     locale,
   } = props;
 
-  console.log(locale, title, tagline);
+  // console.log(locale, title, tagline);
 
   const [pageNumber, setPageNumber] = useState(0);
   const [selectedRating, setSelectedRating] = useState<number[]>([]);

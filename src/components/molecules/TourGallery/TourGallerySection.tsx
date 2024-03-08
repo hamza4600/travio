@@ -47,7 +47,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
           <h3 className="text-[24px] font-satoshi  text-center lg:text-start leading-tight -tracking-[1.2px] font-bold ">
             {title?.[locale]}
           </h3>
-          <hr className="text-yellow hidden lg:block bg-yellow my-2 h-1 rounded-full border-1 w-1/6" />
+          <div className="text-yellow hidden lg:block bg-yellow my-2 h-1 rounded-full border-1 w-1/6" />
           <div className="text-lg font-satoshi text-center lg:text-start  mt-1.5 text-gray  leading-[28px]">
             {subtitle?.[locale]?.substring(0, 5)[locale]}
             <span className="text-primary opacity-100">

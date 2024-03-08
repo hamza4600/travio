@@ -49,7 +49,7 @@ export default function FeatureSection({ data, locale }) {
         <>
           <div className=" text-darkblue w-fit -tracking-[1.2px] mx-auto text-[24px] md:text-[40px] font-bold leading-[32px] md:leading-[50px]  text-center ">
             <h2 className="font-satoshi">{data.title[locale]}</h2>
-            <hr className="md:w-[117px] w-[85px] m-auto mt-1 lg:mt-[9px] border-[#FFBB0B] md:border-b-[3px] border-b-[2px] text-yellow rounded-full" />
+            <div className="md:w-[117px] w-[85px] m-auto mt-1 lg:mt-[9px] border-[#FFBB0B] md:border-b-[3px] border-b-[2px] text-yellow rounded-full" />
           </div>
         </>
         {/* )} */}
@@ -94,7 +94,7 @@ export default function FeatureSection({ data, locale }) {
         {/* {data.title && ( */}
         <div className="flex md:items-start  items-center justify-evenly md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
           <h2>{data.title[locale]}</h2>
-          <hr className="w-[91px] md:w-[107px] mt-[6px] border md:border-2 border-[#FFBB0B] text-yellow  mb-4" />
+          <div className="w-[91px] md:w-[107px] mt-[6px] border md:border-2 border-[#FFBB0B] text-yellow  mb-4" />
         </div>
         {/* )} */}
         <div className="flex justify-between w-full flex-wrap gap-[15px] ">

@@ -27,7 +27,7 @@ function AllBlogsSection({ data }: { data: SanityAllBlogsSection }) {
         <h4 className="lg:text-4xl text-2xl font-[700] mt-2  text-center">
           {localizedString(data.title)}
         </h4>
-        <hr className="w-32 my-2 text-yellow m-auto bg-yellow  rounded-full border-2" />
+        <div className="w-32 my-2 text-yellow m-auto bg-yellow  rounded-full border-2" />
       </div>
       <div className="flex flex-wrap mt-10 w-full">
         {data.blogs?.map((blog, index) => {

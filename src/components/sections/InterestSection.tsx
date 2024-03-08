@@ -16,7 +16,7 @@ const InterestSection = (props: PropsWithLocale<InterestSectionProps>) => {
     <div className="my-16 flex flex-col justify-center items-center">
       <h2 className="text-blue text-sm lg:text-base font-medium text-center">{tagline?.en}</h2>
       <h4 className="lg:text-4xl text-2xl  mt-3 font-[700] text-center">{title?.en}</h4>
-      <hr className="lg:w-1/12 w-1/5 my-3 text-yellow m-auto  bg-yellow  rounded-full border-2" />
+      <div className="lg:w-1/12 w-1/5 my-3 text-yellow m-auto  bg-yellow  rounded-full border-2" />
 
       <div className="shadow-lg shadow-[#f5f5f5] rounded-sm max-w-6xl w-full px-2 lg:px-10 lg:pt-14 pb-10    my-10">
         {interests
@@ -92,7 +92,7 @@ const InterestSection = (props: PropsWithLocale<InterestSectionProps>) => {
                         </Link>
                       ) : null}
                     </div>
-                    <hr
+                    <div
                       className={
                         index != (interests.length / 3) * 3 - 3
                           ? 'my-5 border-opacity-25 border-gray'

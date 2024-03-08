@@ -18,7 +18,7 @@ export default function WhatsIncludedSection({
         <h2 className="text-black  font-bold text-[20px] lg:text-2xl text-c">
           {data?.title?.en}
         </h2>
-        <hr className=" w-28 my-2 text-yellow bg-yellow  rounded-full border-2" />
+        <div className=" w-28 my-2 text-yellow bg-yellow  rounded-full border-2" />
       </div>
       <div className="divide-y-2 hidden lg:block divide-darkblue/10 my-3 lg:w-3/4  w-full">
         {data?.inclusion_list?.map((item, index) => {
@@ -84,7 +84,7 @@ export default function WhatsIncludedSection({
             {
               <p className="lg:text-xl text-base font-medium text-black">
                 {data?.inclusion_list[currentIndex]?.title?.en}
-                <hr className=" w-12 my-2 text-yellow bg-yellow  rounded-full border-[1.5px]" />
+                <div className=" w-12 my-2 text-yellow bg-yellow  rounded-full border-[1.5px]" />
               </p>
             }
             <div className="flex text-[14px] flex-col">

@@ -11,7 +11,7 @@ const ExcludedInTour = ({ data, locale }: { data: any; locale: string }) => {
         >
           {data.title?.[locale]}
         </Text>
-        <hr className="md:max-w-[162px] w-[143px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
+        <div className="md:max-w-[162px] w-[143px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
       </div>
 
       <div className="grid pl-[28px] pr-[27px] py-[18px] gap-[28px] rounded-2xl md:grid-cols-3 grid-cols-2 items-center bg-[rgba(20,13,49,0.02)]">

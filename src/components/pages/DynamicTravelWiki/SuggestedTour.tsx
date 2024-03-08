@@ -12,7 +12,7 @@ const SuggestedTour = () => {
       >
         Suggested Tours
       </Text>
-      <hr className="mt-[10px] w-[88px] max-md:hidden border-b-[3px] border-b-[#FFBB0B]" />
+      <div className="mt-[10px] w-[88px] max-md:hidden border-b-[3px] border-b-[#FFBB0B]" />
       <div className="md:hidden">
         <SectionHeader title="TOUR" subtitle="You Might Also Like" centerLine />
       </div>

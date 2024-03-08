@@ -43,7 +43,7 @@ const WikiSection = ({ wikiData, filterWiki }) => {
           >
             {filterWiki.location.title}
           </Text>
-          <hr className="w-[138px] border-b-[#FFBB0B] border-b-[3px]" />
+          <div className="w-[138px] border-b-[#FFBB0B] border-b-[3px]" />
           <div className="mt-[28px] flex flex-col gap-5">
             <div>
               <Text className="text-base font-bold" variant={"darkblue"}>

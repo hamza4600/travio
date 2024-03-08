@@ -24,7 +24,7 @@ export default function FlexibleThings({ data, locale }) {
           >
             {data.title[locale]}
           </Text>
-          <hr
+          <div
             aria-hidden="true"
             className="w-[85px] md:w-[103px] border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[2px] border-b-[2px] mb-4 mt-1"
           />

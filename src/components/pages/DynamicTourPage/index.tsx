@@ -103,7 +103,7 @@ const DynamicTourPage = ({ language, pageData }) => {
         <Text variant={"darkblue"} className="text-2xl font-bold">
           Dates & Availability
         </Text>
-        <hr className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
+        <div className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
         <div className="mt-10">
           <FlexibleThingsForTour data={flexibleThingsData} locale={language} />
         </div>

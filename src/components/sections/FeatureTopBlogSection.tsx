@@ -25,7 +25,7 @@ const FeatureTopBlogSection = (props: PropsWithLocale<SanityFeaturedBlogs>) => {
 
           <h2 className="text-[24px] flex flex-col relative justify-start items-start md:text-[40px] leading-[32px] md:leading-tight  -tracking-[1.2px] mt-2 md:mt-3  w-fit  font-bold">
             Travel Inspiration by Destination
-            <hr className="w-1/3 mx-auto lg:relative absolute left-0 -bottom-2 text-yellow  bg-yellow  rounded-full mt-2.5 border-b-2" />
+            <div className="w-1/3 mx-auto lg:relative absolute left-0 -bottom-2 text-yellow  bg-yellow  rounded-full mt-2.5 border-b-2" />
           </h2>
         </div>
 

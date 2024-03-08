@@ -67,7 +67,7 @@ const TourGallery = (props: GallerySectionProps) => {
           {title[locale]}
         </h2>
         {forTourPage && (
-          <hr className="border-b-[#FFBB0B] max-md:hidden mt-[10px] ml-[107px] w-[122px] border-b-[3px]" />
+          <div className="border-b-[#FFBB0B] max-md:hidden mt-[10px] ml-[107px] w-[122px] border-b-[3px]" />
         )}
 
         <p

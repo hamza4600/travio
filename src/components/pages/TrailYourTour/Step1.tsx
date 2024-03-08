@@ -169,9 +169,9 @@ export default function Step1({
                   <>
                     {index != 0 && index % 3 == 0 && (
                       <>
-                        <hr className="w-[48px] my-[18px] mx-auto text-darkblue/10" />
-                        <hr className="w-[48px] my-[18px] mx-auto text-darkblue/10" />
-                        <hr className="w-[48px] my-[18px] mx-auto text-darkblue/10" />
+                        <div className="w-[48px] my-[18px] mx-auto text-darkblue/10" />
+                        <div className="w-[48px] my-[18px] mx-auto text-darkblue/10" />
+                        <div className="w-[48px] my-[18px] mx-auto text-darkblue/10" />
                       </>
                     )}
                     <div

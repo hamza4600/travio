@@ -102,7 +102,7 @@ const EnquireTab = () => {
         <div className="flex justify-between">
           <div className="">
             <p className="font-bold text-xl">Enquire</p>
-            <hr className="lg:w-1/2 w-1/3 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
+            <div className="lg:w-1/2 w-1/3 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
           </div>
           <div className="relative w-7 h-7">
             <Image src={"/contact_mail_icon.svg"} alt="" fill />
@@ -413,7 +413,7 @@ const ExpandableList = ({
           <p className="flex-1 md:text-xl text-base font-medium text-darkblue tracking-tight font-satoshi">
             {title}
           </p>
-          <hr className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
+          <div className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
         </div>
       </div>
       <div className="flex flex-col pl-7 gap-2">

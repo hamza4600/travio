@@ -103,7 +103,7 @@ const Footer = ({ footer, language }) => {
                 );
               })}
             </div>
-            <hr className="hidden md:block border-gray opacity-20" />
+            <div className="hidden md:block border-gray opacity-20" />
             <Text
               variant={"darkblue"}
               className="psb-2 font-bold text-base md:text-lg leading-[24px] pt-7"
@@ -144,7 +144,7 @@ const Footer = ({ footer, language }) => {
           })}
         </div>
       </Container>
-      <hr className="border-blue/20" />
+      <div className="border-blue/20" />
       <Text
         variant={"gray"}
         className="text-[12px] md:text-base leading-5 md:leading-[24px] text-center py-3"
