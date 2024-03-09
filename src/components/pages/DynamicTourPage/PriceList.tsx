@@ -142,6 +142,8 @@ function PriceList({
   slug: string;
   locale: string;
 }) {
+  console.log("priceList: ", data);
+
   const [selected, setSelected] = React.useState(-1);
   const [collapsed, setCollapsed] = React.useState(false);
   const [show, setShow] = React.useState(4);
@@ -153,8 +155,6 @@ function PriceList({
       setCollapsed(window.innerWidth < 768);
     });
   }, []);
-
-  console.log("priceList: ", data);
 
   React.useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps

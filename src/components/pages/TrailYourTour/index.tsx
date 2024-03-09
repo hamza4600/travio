@@ -27,7 +27,7 @@ export type TailorTripFormData = {
 
 const TailorYourTour = ({ language, data }) => {
   const { layout, pageData } = data || {};
-  console.log("pageData====", pageData);
+  // console.log("pageData====", pageData);
 
   const {
     faq_section: FAQSECTION,
@@ -36,8 +36,6 @@ const TailorYourTour = ({ language, data }) => {
     step_3: Step_3,
     place_cards: TOURS,
   } = pageData[0] || {};
-
-  console.log("faqSection: ", FAQSECTION);
 
   const [loading] = useState(false);
   const resolver = useZodValidationResolver(validationSchema);

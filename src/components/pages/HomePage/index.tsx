@@ -11,29 +11,22 @@ import { SectionMap } from "@/components/sections";
 import NewsletterSection from "@/components/sections/NewsletterSection";
 
 const HomePage = ({ pageData, locale, newLetterSection }) => {
-  const {
-    layout,
-    // pageData: SECTIONS_DATA
-  } = pageData || {};
+  const { layout } = pageData || {};
 
   return (
     <Layout
       breadcrumbs={[]}
       locale={locale}
-      promo_banner={layout?.banner}
       globals={layout}
+      promo_banner={layout?.banner}
     >
       <Popup />
-
       <Slicer
         locale={locale}
         components={SectionMap}
         sections={pageData?.pageData?.sections}
       />
-      <NewsletterSection 
-        data={newLetterSection} 
-        locale={locale}
-      />
+      <NewsletterSection data={newLetterSection} locale={locale} />
     </Layout>
   );
 };
