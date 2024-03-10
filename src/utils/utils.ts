@@ -63,3 +63,16 @@ export function getFirstDayOfMonth(month: number) {
   firstDay.setDate(1);
   return firstDay;
 }
+
+// export function getSanitySlugFromSlugs(
+//   slugs: string | string[] | undefined
+// ): string {
+//   if (slugs === undefined) {
+//     return "/";
+//   }
+//   const sanitizedSlugs = Array.isArray(slugs) ? slugs : [slugs];
+//   return "/" + sanitizedSlugs.map(sanitizeSlug).join("/");
+// }
+// function sanitizeSlug(value: string, index: number, array: string[]): unknown {
+//   throw new Error("Function not implemented.");
+// }
