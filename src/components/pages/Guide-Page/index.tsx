@@ -32,7 +32,7 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
                     value: "/#",
                 },
             ]}
-            promo_banner={layout?.navbar?.info_banner}
+            promo_banner={layout?.banner}
         >
             <HeroSection data={heroData} />
             <div className="md:px-20 px-5 md:mt-[68px] mt-[50px]">

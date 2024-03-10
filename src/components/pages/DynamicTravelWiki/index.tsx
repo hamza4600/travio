@@ -1,12 +1,11 @@
 "use client";
 import Layout from "@/components/layout";
-import { bannerText } from "../DynamicDestinations";
 import HeroSection from "./HeroSection";
 import { filterWikiData, heroData, wikiData } from "./data";
 import WikiSection from "./WikiSection";
 
 import SuggestedTour from "./SuggestedTour";
-// import GetEarlyNews from "@/components/sections/form/Form";
+import GetEarlyNews from "@/components/sections/form/Form";
 import NewsletterSection from "@/components/sections/NewsletterSection";
 
 const dummyNewsData = {
@@ -29,6 +28,7 @@ const DynamicTravelWiki = ({
   language: string;
   pageData: any;
 }) => {
+
   const { layout } = pageData || {};
 
   console.log("dataTravelwiki: ", pageData);
@@ -37,13 +37,8 @@ const DynamicTravelWiki = ({
     <Layout
       locale={language}
       globals={layout}
-      breadcrumbs={[
-        {
-          label: "",
-          value: "/",
-        },
-      ]}
-      promo_banner={bannerText}
+      promo_banner={layout?.banner}
+      breadcrumbs={[]}
     >
       <HeroSection data={heroData} />
 
@@ -54,7 +49,7 @@ const DynamicTravelWiki = ({
       </div>
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">
-        {/* <GetEarlyNews /> */}
+        <GetEarlyNews />
         <NewsletterSection data={dummyNewsData} locale={language} />
       </div>
     </Layout>

@@ -2,6 +2,8 @@ import { getGuidePage } from "@/lib/sanity.GuidePage";
 import dynamic from "next/dynamic";
 const GuidePage = dynamic(() => import("@/components/pages/Guide-Page"));
 
+export const revalidate = 3600;
+
 const Index = async ({ params }: any) => {
   const { handle, language } = params;
 
