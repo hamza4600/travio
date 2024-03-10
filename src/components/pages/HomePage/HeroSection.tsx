@@ -4,15 +4,10 @@ import Container from "@/components/molecules/container";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { urlFor } from "../../../../sanity/lib/client";
-// import useWindowSize from "@/hooks/useWindows";
-import Link from "next/link";
+
+import React from "react";
 
 const HeroSection = ({ data, locale, banner }) => {
-  // const windows = useWindowSize();
-  // const isMobile = windows.width < 768;
-  // console.log(isMobile, "isMobile");
-  // const imgURL = isMobile ? data.image?.mobile?.asset?._ref : data.image?.asset?._ref;
-
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
 
@@ -20,7 +15,7 @@ const HeroSection = ({ data, locale, banner }) => {
     <section>
       <div
         className={
-          "relative z-10 h-[540px] md:h-full flex items-end lg:items-center justify-center"
+          "relative z-10 h-[540px] md:h-full bottom-7 flex items-end lg:items-center justify-center"
         }
       >
         <div
@@ -28,19 +23,7 @@ const HeroSection = ({ data, locale, banner }) => {
             "w-full h-[540px] rounded-[24px] max-lg:rounded-none lg:h-full absolute top-0 left-0 -z-10"
           }
           style={{ background: linearGradient }}
-        >
-          <div className="bg-[#140D31] flex justify-center leading-6 rounded-t-[24px] max-xl:rounded-none max-sm:text-[11px]">
-            <Text variant={"tertiary"} className="font-medium text-center py-2">
-              {banner?.text?.[locale]}
-              <Link
-                href={"#"}
-                className="font-bold text-center underline py-2 ml-1 text-white"
-              >
-                {banner?.cta?.label?.[locale]}
-              </Link>
-            </Text>
-          </div>
-        </div>
+        ></div>
 
         <Image
           className={

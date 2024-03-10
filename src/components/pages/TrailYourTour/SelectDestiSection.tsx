@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { tailorArray } from "./data";
+// import { tailorArray } from "./data";
 import styled from "styled-components";
+import { urlFor } from "../../../../sanity/lib/client";
 
 const Root = styled.div`
   .img-wraper {
@@ -56,41 +57,58 @@ const Root = styled.div`
 const SelectDestinationSection = ({
   setSelectedDestination,
   selectedDestination,
+  tours,
+  locale,
 }) => {
   return (
     <Root>
       <div className="img-wraper">
-        {tailorArray.map((item, index) => {
+        {tours.map((item: any, index: number) => {
+          const w = index % 3 < 2 ? 250 : 500;
+          const h = index % 3 < 2 ? 150 : 224;
+
+          // console.log("width: ", width);
+
           return (
             <div
               key={index}
-              onClick={() => setSelectedDestination(item.title)}
+              onClick={() => setSelectedDestination(item.title?.[locale])}
               id="qwa"
               className={`relative w-full h-[224px] rounded-xl overflow-hidden cursor-pointer 
                                         ${
-                                          item.size === "lg"
+                                          w === 500
                                             ? "lg:col-span-2"
                                             : "col-span-1"
                                         }`}
             >
               <Image
-                src={item.imgUrl}
-                width={item.size === "lg" ? 500 : 250}
-                height={item.size === "lg" ? 300 : 150}
-                className="object-cover object-center w-full h-full"
-                alt={item.title}
+                src={urlFor(item?.image?.asset?._ref)}
+                width={w}
+                height={h}
+                className="object-cover object-center w-full h-full max-sm:hidden"
+                alt={item?.title?.alt?.[locale]}
+                quality={100}
               />
+              <Image
+                src={urlFor(item?.image?.mobile?.asset?._ref)}
+                width={w}
+                height={h}
+                className="object-cover object-center w-full h-full sm:hidden"
+                alt={item?.title?.alt?.[locale]}
+                quality={100}
+              />
+
               <h1
                 className={`name-85 
                                         ${
                                           selectedDestination.includes(
-                                            item.title
+                                            item?.title?.[locale]
                                           )
                                             ? "bg-[#3FA9F5]"
                                             : "bg-[rgba(255, 255, 255, 0.40)]"
                                         }`}
               >
-                {item.title}
+                {item?.title?.[locale]}
               </h1>
             </div>
           );

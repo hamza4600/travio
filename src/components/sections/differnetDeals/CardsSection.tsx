@@ -110,7 +110,11 @@ const CardsSection = ({ data, locale }, props) => {
         title={data?.tagline?.[locale]}
       />
       <div className="h-fit relative md:mt-12 mt-[30px]">
-        <Swiper className={"gap-6 pb-3"} length={data1.length} scrollCount={4}>
+        <Swiper
+          className={"gap-6 pb-3"}
+          length={data.deals.length}
+          scrollCount={4}
+        >
           {data.deals.map((data: any, i: number) => (
             <TourCard
               key={i}

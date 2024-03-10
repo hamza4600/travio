@@ -21,7 +21,7 @@ const CountryFacts = (props) => {
   console.log(locale, "data: ", props);
 
   return (
-    <div className="text-darkblue md:pt-[90px] pt-[50px]">
+    <div className="text-darkblue">
       <Container className="bg-[#F2FAFF] mx-auto max-w-[1312px] px-4 py-12">
         <SectionHeader
           title={tagline?.[locale]}

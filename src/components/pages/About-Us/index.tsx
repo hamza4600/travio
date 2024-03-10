@@ -22,8 +22,7 @@ const AboutUsPage = ({ language, pageData }) => {
     [3]: LOCATIONS,
   } = SECTIONS || {};
 
-  console.log("Layout: ", layout);
-  console.log("About US: ", ABOUT_US);
+  // console.log("PageDataAbout: ", pageData);
 
   return (
     <Layout

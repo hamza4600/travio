@@ -4,28 +4,42 @@ import React, { useState, useTransition } from "react";
 
 export default function Steps({
   disableNext,
+  Step1,
+  Step2,
+  Step3,
   children,
   onSubmit,
   loading,
+  locale,
 }: {
   loading: boolean;
   disableNext?: boolean;
   children?: any[];
+  Step1: any;
+  Step2: any;
+  Step3: any;
+  locale: string;
   onSubmit: () => void;
 }) {
   const [step, setStep] = useState(1);
-  const [isPending, startTransition] = useTransition()
+  const [isPending, startTransition] = useTransition();
 
   return (
     <div className="flex my-8 flex-col gap-5 lg:gap-10 items-center sm:w-[90%] md:mx-auto">
       <SectionHeader
         title={
-          step == 1 ? "When will you travel?" : "Tell us about the travelers"
+          step == 1
+            ? Step1.tagline?.[locale]
+            : step === 2
+            ? Step2.tagline?.[locale]
+            : Step3.tagline?.[locale]
         }
         subtitle={
           step == 1
-            ? "Choose the ultimate place to visit"
-            : "Choose the ultimate place to visit"
+            ? Step1.title?.[locale]
+            : step == 2
+            ? Step2.title?.[locale]
+            : Step3.title?.[locale]
         }
         centerLine
       />
@@ -33,7 +47,7 @@ export default function Steps({
         className={`${
           step == 1 ? " bg-white" : "bg-primary"
         }  sm:rounded-[20px] md:pt-10 pt-3 flex flex-col gap-4 md:pb-10 pb-6 md:w-auto w-[100%]`}
-        style={{ minHeight: '450px' }}
+        style={{ minHeight: "450px" }}
       >
         {children && (
           <>
@@ -45,7 +59,7 @@ export default function Steps({
                   onClick={() => {
                     startTransition(() => {
                       setStep(step - 1);
-                    })
+                    });
                   }}
                   className="px-[30px] py-3 h-12 w-[246px] max-md:max-w-[160px] max-[375px]:max-w-[120px] max-md:h-10"
                 >
@@ -61,7 +75,7 @@ export default function Steps({
                   onClick={() => {
                     startTransition(() => {
                       setStep(step + 1);
-                    })
+                    });
                   }}
                   disabled={disableNext}
                 >

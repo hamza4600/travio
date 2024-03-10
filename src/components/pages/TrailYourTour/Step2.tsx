@@ -69,7 +69,7 @@ export default function Step2({
   }, [mobileNumber, setValue]);
 
   return (
-    <div className="grid lg:grid-cols-2 grid-cols-1 gap-[18px] md:px-3 px-5 lg:px-12">
+    <div className="grid lg:grid-cols-2 font-satoshi grid-cols-1 gap-[18px] md:px-3 px-5 lg:px-12">
       <Input name="name" label="Name*" type="text" control={control} />
       <Input name="email" label="Email*" type="text" control={control} />
       <Input

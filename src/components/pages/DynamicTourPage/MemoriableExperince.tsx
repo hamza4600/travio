@@ -134,8 +134,8 @@ const Card = ({ data }: { data: any }) => {
   if (!data) return null;
   return (
     <Link href={"/#" + data.slug?.current}>
-      <div className="max-w-[300px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
-        <div className="h-[220px] relative">
+      <div className="max-w-[302px] md:min-h-[404px] min-h-[339px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
+        <div className="md:min-h-[220px] min-h-[180px] relative max-w-[302px]">
           <Image
             alt=""
             src={urlFor(data?.image?.asset?._ref)}
@@ -145,10 +145,10 @@ const Card = ({ data }: { data: any }) => {
           />
         </div>
         <div className="p-4 max-lg:{pt-3 pb-[15px] px-[15px]} flex flex-col gap-1">
-          <p className="font-bold md:text-xl max-lg:{text-base} font-satoshi text-darkblue">
+          <p className="font-bold md:text-xl max-md:{text-base} font-satoshi text-darkblue">
             {data.title?.en}
           </p>
-          <p className="lg:font-medium lg:text-[14px] lg:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
+          <p className="md:font-medium md:text-[14px] md:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
             {data.description?.en}
           </p>
         </div>

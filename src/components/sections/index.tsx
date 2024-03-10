@@ -5,8 +5,11 @@ import {
   SanityBlogPageSectionNames,
   SanityDestinationSectionNames,
   SanitySectionNames,
+  // SanityTourPageSectionNames,
   SanityTourSectionNames,
 } from "../../../sanity/lib/types";
+
+const FeatureTourSection = dynamic(() => import("./featureTour/FeatureTour"));
 const ContactSection = dynamic(
   () => import("../pages/DynamicDestinations/ContactSection")
 );
@@ -117,6 +120,8 @@ const TourGallerySection = dynamic(
   () => import("../molecules/TourGallery/TourGallerySection")
 );
 
+FeatureTourSection;
+
 export const BlogPageSectionsMap: {
   [name in SanityBlogPageSectionNames]?:
     | FunctionComponent<any>
@@ -161,7 +166,7 @@ export const DestinationSectionsMap: {
   faq_section: FAQSection,
   // all_blogs_section: BlogSection,
   featured_blogs_section: BlogSection,
-  // featured_tours_section: DealsSection,
+  featured_tours_section: FeatureTourSection,
   at_glance_section: CountryFacts,
   // tour_selection_section: BestToursSection,
   top_things_section: TopThingsToDo,
@@ -181,7 +186,7 @@ export const TourSectionsMap: {
   // pricing_section: PriceList,
   accommodation_types_section: AccommdationTypesSection,
   feature_section: FlexibleThingsForTour,
-  // featured_tours_section: DealsSection,
+  featured_tours_section: FeatureTourSection,
   travel_info_section: TravelInformation,
   reviews_section: ReviewRatingSections,
   faq_section: FAQSection,

@@ -10,7 +10,6 @@ const Step1 = dynamic(() => import("./Step1"));
 const Step2 = dynamic(() => import("./Step2"));
 import { useForm } from "react-hook-form";
 import { useZodValidationResolver, validationSchema } from "./schema";
-import { faqSectionData } from "../DynamicDestinations/data";
 
 export type TailorTripFormData = {
   selectedDestination: string[];
@@ -27,9 +26,17 @@ export type TailorTripFormData = {
 };
 
 const TailorYourTour = ({ language, data }) => {
-  const { layout , pageData} = data || {};
-  console.log("pageData====", pageData);
-  
+  const { layout, pageData } = data || {};
+  // console.log("pageData====", pageData);
+
+  const {
+    faq_section: FAQSECTION,
+    step_1: STEP_1,
+    step_2: STEP_2,
+    step_3: Step_3,
+    place_cards: TOURS,
+  } = pageData[0] || {};
+
   const [loading] = useState(false);
   const resolver = useZodValidationResolver(validationSchema);
   const [selectedDestination, setSelectedDestination] = useState<string[]>([]);
@@ -39,7 +46,9 @@ const TailorYourTour = ({ language, data }) => {
     let updatedSelectedDestinations = [...currentSelectedDestinations];
 
     if (currentSelectedDestinations.includes(value)) {
-      updatedSelectedDestinations = currentSelectedDestinations.filter(item => item !== value);
+      updatedSelectedDestinations = currentSelectedDestinations.filter(
+        (item) => item !== value
+      );
     } else {
       updatedSelectedDestinations.push(value);
     }
@@ -48,7 +57,7 @@ const TailorYourTour = ({ language, data }) => {
       shouldValidate: true,
     });
     setSelectedDestination(updatedSelectedDestinations);
-  }
+  };
 
   const {
     control,
@@ -78,7 +87,6 @@ const TailorYourTour = ({ language, data }) => {
         },
       ]}
     >
-      
       <div className="">
         <div
           className="md:hidden absolute top-[136px] left-0 border-b-[#3FA9F5] border-b-2 z-50"
@@ -87,18 +95,23 @@ const TailorYourTour = ({ language, data }) => {
         <div className="bg-gray border-b-2 md:hidden" />
       </div>
 
-      <div className ="flex md:mt-10 flex-col mt-2">
+      <div className="flex md:mt-10 flex-col mt-2">
         <Steps
+          Step1={STEP_1}
+          Step2={STEP_2}
+          Step3={Step_3}
+          locale={language}
           loading={loading}
           disableNext={getValues("duration") == ""}
           onSubmit={handleSubmit((data) => {
             console.log(data);
           })}
         >
-
           <SelectDestinationSection
             selectedDestination={selectedDestination}
             setSelectedDestination={handleSelectDestination}
+            tours={TOURS}
+            locale={language}
           />
           <Step1
             onChange={useCallback(
@@ -111,7 +124,7 @@ const TailorYourTour = ({ language, data }) => {
           <Step2 control={control} setValue={setValue} />
         </Steps>
 
-        <FAQSection data={faqSectionData} locale={language} />
+        <FAQSection data={FAQSECTION} locale={language} />
       </div>
     </Layout>
   );
