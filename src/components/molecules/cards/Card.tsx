@@ -21,9 +21,6 @@ const TourCard = ({
   link,
   locale,
 }) => {
-  // const savings = price - old_price;
-
-  console.log("mb pic: ", mobilePic, "desk pic: ", pic);
   return (
     <Link
       className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"}

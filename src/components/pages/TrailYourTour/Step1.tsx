@@ -45,6 +45,13 @@ const CalenderWrapper = styled.div`
     font-family: var(--font-satoshi);
   }
 
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background-color: #ffdd85;
+    color: black;
+    border-radius: 9999px;
+  }
+
   .react-calendar__tile--now {
     background-color: white;
     abbr {
@@ -60,6 +67,7 @@ const CalenderWrapper = styled.div`
   .react-calendar__tile--active {
     background-color: white;
     color: #ffbb0b;
+
     .react-calendar {
       border: none;
       max-width: 302px;
@@ -67,15 +75,10 @@ const CalenderWrapper = styled.div`
     }
   }
 
-  .react-calendar__tile--range {
-    /* background-color: ; */
-  }
-  .react-calendar__month-view__days__day {
-  }
-
   & .react-calendar__tile--rangeStart:not(.react-calendar__tile--rangeEnd),
   & .react-calendar__tile--rangeEnd:not(.react-calendar__tile--rangeStart) {
     background-color: #ffdd85;
+
     color: black;
     border-radius: 9999px;
   }
