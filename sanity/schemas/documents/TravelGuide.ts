@@ -34,11 +34,6 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'locale_string',
-    }),
-    defineField({
       name: 'tagline',
       title: 'Tagline',
       type: 'locale_string',

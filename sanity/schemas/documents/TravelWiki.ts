@@ -30,11 +30,6 @@ export default defineType({
           title: 'Image',
           type: 'photo',
         }),
-        defineField({
-          name: 'text',
-          title: 'Text',
-          type: 'locale_string',
-        }),
       ],
     }),
     defineField({
