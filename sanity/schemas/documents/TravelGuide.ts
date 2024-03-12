@@ -14,6 +14,13 @@ export default defineType({
       description: "The slug for this travel guide (relative to '/guide')",
       type: 'slug',
     }),
+    // page meta data
+    defineField({
+      name: 'meta_data',
+      title: 'Meta Data',
+      description: 'Meta Data for SEO',
+      type: 'meta_data',
+    }),
     defineField({
       name: 'image_hero',
       title: 'Hero Image Banner',
@@ -23,11 +30,6 @@ export default defineType({
           name: 'image',
           title: 'Image',
           type: 'photo',
-        }),
-        defineField({
-          name: 'text',
-          title: 'Text',
-          type: 'locale_string',
         }),
       ],
     }),
@@ -44,11 +46,6 @@ export default defineType({
     defineField({
       name: 'tab_title',
       title: 'Tab Title',
-      type: 'locale_string',
-    }),
-    defineField({
-      name: 'location',
-      title: 'Location',
       type: 'locale_string',
     }),
     defineField({

@@ -15,6 +15,12 @@ export default defineType({
       type: 'slug',
     }),
     defineField({
+      name: 'meta_data',
+      title: 'Meta Data',
+      description: 'Meta Data for SEO',
+      type: 'meta_data',
+    }),
+    defineField({
       name: 'image_hero',
       title: 'Hero Image Banner',
       type: 'object',

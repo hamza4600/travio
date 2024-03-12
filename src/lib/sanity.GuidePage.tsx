@@ -1,10 +1,14 @@
 import { pageLayout } from './sanity.HomePage';
 import { CLIENT } from './sanity.const';
 
-const query = `{
-  "layout":  ${pageLayout},
-}`
+export async function getGuidePage(slug: string) {
+  
+  const guidePageQuery = `*[_type == "travel_guide" && slug.current == "/${slug}"][0]`;
 
-export async function getGuidePage() {
-  return await CLIENT.fetch(query)
+  const query = `{
+    "layout":  ${pageLayout},
+    "data": ${guidePageQuery}
+  }`;
+
+  return await CLIENT.fetch(query);
 }

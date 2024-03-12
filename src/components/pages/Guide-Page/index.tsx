@@ -11,8 +11,8 @@ interface GuidePageProps {
 }
 
 const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
-
-    const { layout } = pageData || {};
+    const { layout, data } = pageData || {};
+    console.log(data , "pageData555");
 
     return (
         <Layout

@@ -7,7 +7,7 @@ const Index  = async ({ params }: any) => {
   const { hanlde, language } = params;
   console.log(hanlde);
 
-  const pageData = await getWikiPage();
+  const pageData = await getWikiPage(hanlde);
 
   return (
     <DynamicTravelWiki 

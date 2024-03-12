@@ -2,10 +2,18 @@
 import { pageLayout } from './sanity.HomePage';
 import { CLIENT } from './sanity.const';
     
-const query = `{
-    "layout":  ${pageLayout},
-}`
+export async function getWikiPage(slug: string) {
 
-export async function getWikiPage() {
+    const wikiPageQuery =  `*[_type == "travel_wiki"  && slug.current == "/${slug}"][0]{
+        ...,
+        suggested_tours[]->
+      }`
+
+
+    const query = `{
+        "layout":  ${pageLayout},
+        "data": ${wikiPageQuery}
+    }`
+
     return await CLIENT.fetch(query)
 }

@@ -9,7 +9,7 @@ const Index = async ({ params }: any) => {
 
   console.log(handle, language);
 
-  const guidePage = await getGuidePage();
+  const guidePage = await getGuidePage(handle);
 
   return (
     <GuidePage
