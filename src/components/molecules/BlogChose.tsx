@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 
 interface BlogChooseProps {
