@@ -7,6 +7,8 @@ import { BlogPageSectionsMap } from "@/components/sections";
 const MainBlogPage = ({ language, pageData }) => {
   const { layout } = pageData || {};
 
+  console.log("blogPageData: ", pageData);
+
   return (
     <Layout
       breadcrumbs={[{ label: "Blog", value: "BLog" }]}

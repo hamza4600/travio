@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
 
 const FilterCountry = ({
@@ -6,19 +8,21 @@ const FilterCountry = ({
   tabs: Array<{ name: string; href: string }>;
 }) => {
   const [isFixed, setIsFixed] = useState(false);
-  const [currentTab, setCurrentTab] = useState(0);
+
+  const params = useParams();
+
+  console.log("params: ", params);
 
   const tabsRef = useRef<HTMLDivElement | null>(null);
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-
-    setIsFixed(scrollPosition > window.innerHeight / 0.9); // is equal to 80% of the window height
+    setIsFixed(scrollPosition > window.innerHeight / 0.9);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    // Cleanup the event listener on component unmount
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -48,18 +52,20 @@ const FilterCountry = ({
               aria-label="Tabs"
             >
               {tabs.map((tab, index) => (
-                <button
+                <Link
                   key={tab?.name}
-                  onClick={() => setCurrentTab(index)}
+                  scroll={false}
+                  href={`/wiki/${tab.href}`}
+                  // onClick={() => setCurrentTab(index)}
                   className={cNames(
-                    currentTab === index
+                    `/${params?.handle[0]}` === tab?.href
                       ? "border-[#FFBB0B] text-darkblue"
                       : "border-transparent text-gray-500 hover:border-gray-200 text-gray hover:text-gray-700",
                     "whitespace-nowrap border-b-4 font-satoshi border-gray-100 py-4 px-2 lg:text-base text-xs font-medium"
                   )}
                 >
                   {tab?.name}
-                </button>
+                </Link>
               ))}
             </nav>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { urlFor } from "../../../../sanity/lib/client";
 
 const HeroSection = ({ data, locale }) => {
+  console.log("dataTHero: ", data);
   return (
     <div className="flex gap-[26px] md:px-20 px-0">
       <div className="md:relative">
