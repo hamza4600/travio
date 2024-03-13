@@ -4,8 +4,8 @@ import HeroSection from "./HeroSection";
 import { filterWikiData, heroData, wikiData } from "./data";
 import WikiSection from "./WikiSection";
 
-import SuggestedTour from "./SuggestedTour";
-import GetEarlyNews from "@/components/sections/form/Form";
+// import SuggestedTour from "./SuggestedTour";
+
 import NewsletterSection from "@/components/sections/NewsletterSection";
 
 const dummyNewsData = {
@@ -28,7 +28,6 @@ const DynamicTravelWiki = ({
   language: string;
   pageData: any;
 }) => {
-
   const { layout } = pageData || {};
 
   console.log("dataTravelwiki: ", pageData);
@@ -44,12 +43,11 @@ const DynamicTravelWiki = ({
 
       <WikiSection wikiData={wikiData} filterWiki={filterWikiData} />
 
-      <div className="md:px-20 px-5 md:mt-[68px] mt-[50px]">
+      {/* <div className="md:px-20 px-5 md:mt-[68px] mt-[50px]">
         <SuggestedTour />
-      </div>
+      </div> */}
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">
-        <GetEarlyNews />
         <NewsletterSection data={dummyNewsData} locale={language} />
       </div>
     </Layout>

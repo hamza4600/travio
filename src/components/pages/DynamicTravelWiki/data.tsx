@@ -15,9 +15,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -26,9 +28,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -37,9 +41,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -47,15 +53,18 @@ export const wikiData = {
     },
     {
       title: "Egypt Travel Guide",
+
       accrData: [
         {
           name: "Cairo Airport Facilities",
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -64,9 +73,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -75,9 +86,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -85,15 +98,18 @@ export const wikiData = {
     },
     {
       title: "Egypt Travel Guide",
+
       accrData: [
         {
           name: "Cairo Airport Facilities",
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -102,9 +118,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -113,9 +131,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain",
+              type: "Ahalan",
             },
           ],
         },
@@ -129,20 +149,25 @@ export const wikiData = {
           data: [
             {
               toShow: "Naill's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrainn",
+              type: "Ahalan",
             },
           ],
         },
         {
           name: "Ahlan Service",
+
           data: [
             {
               toShow: "Naill's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahriain",
+              type: "Ahalan",
             },
           ],
         },
@@ -151,9 +176,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Naail's",
+              type: "Ahalan",
             },
             {
               toShow: "Bahraain",
+              type: "Ahalan",
             },
           ],
         },
@@ -167,9 +194,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's and Cario",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain Yes",
+              type: "Ahalan",
             },
           ],
         },
@@ -178,9 +207,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail's Bay",
+              type: "Ahalan",
             },
             {
               toShow: "Bahrain Io",
+              type: "Ahalan",
             },
           ],
         },
@@ -189,9 +220,11 @@ export const wikiData = {
           data: [
             {
               toShow: "Nail'ss",
+              type: "Ahalan",
             },
             {
               toShow: "Bahraain",
+              type: "Ahalan",
             },
           ],
         },
@@ -217,26 +250,26 @@ export const filterWikiData = {
 export const wikiTabs = [
   {
     name: "Egypt",
-    href: "#",
+    href: "/egypt",
   },
   {
     name: "Jordan",
-    href: "#",
+    href: "/jordan",
   },
   {
     name: "Dubai",
-    href: "#",
+    href: "/dubai",
   },
   {
     name: "Saudi Arabia",
-    href: "#",
+    href: "/saudi-arabia",
   },
   {
     name: "Oman",
-    href: "#",
+    href: "/oman",
   },
   {
     name: "Turkey",
-    href: "#",
+    href: "/turkey",
   },
 ];

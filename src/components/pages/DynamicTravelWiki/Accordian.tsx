@@ -1,16 +1,61 @@
-import { useState } from "react";
+// import Link from "next/link";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const CustomAccordion = ({ data }) => {
-  const [open, setOpen] = useState(-1);
-  const [isShadow, setShadow] = useState<number>(-1);
-  const [selected, setSelected] = useState<number>(999);
+  const [open, setOpen] = useState(() => {
+    const storedState = localStorage.getItem("accordionOpen");
+    return storedState ? JSON.parse(storedState) : -1;
+  });
 
-  // for testing later it will change to the exact logic
-  const [filteredItems, setFilteredItems] = useState(-1);
+  const params = useParams();
+
+  const [isShadow, setShadow] = useState(() => {
+    const storedState = localStorage.getItem("accordionShadow");
+    return storedState ? JSON.parse(storedState) : -1;
+  });
+
+  const [selected, setSelected] = useState(() => {
+    const storedState = localStorage.getItem("accordionSelected");
+    return storedState ? JSON.parse(storedState) : 999;
+  });
+
+  const [filteredItems, setFilteredItems] = useState(() => {
+    const storedState = localStorage.getItem("accordionFilteredItems");
+    return storedState ? JSON.parse(storedState) : -1;
+  });
+
+  const pathname = usePathname();
+
+  console.log("pathname: ", pathname);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    localStorage.setItem("accordionOpen", JSON.stringify(open));
+    localStorage.setItem("accordionShadow", JSON.stringify(isShadow));
+    localStorage.setItem("accordionSelected", JSON.stringify(selected));
+    localStorage.setItem(
+      "accordionFilteredItems",
+      JSON.stringify(filteredItems)
+    );
+  }, [open, isShadow, selected, filteredItems]);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.clear();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col md:gap-[18px] gap-[15px]">
-      {data.map((data: any, index: number) => (
+      {data.map((data, index) => (
         <div
           className={`md:w-[390px] w-[335px] ${
             isShadow === index && "rounded-b-2xl shadow-md"
@@ -45,7 +90,7 @@ const CustomAccordion = ({ data }) => {
             </button>
 
             {data.accrData.map(
-              (accData: any, idx: number) =>
+              (accData, idx) =>
                 selected === index && (
                   <div
                     key={idx}
@@ -71,6 +116,7 @@ const CustomAccordion = ({ data }) => {
                         } transition-all`}
                       />
 
+                      {/* <Link href={`/wiki/${accData.href}`} scroll={false}> */}
                       <p
                         className={`md:text-[14px] md:leading-[22px] text-[12px] leading-5 ${
                           open === idx
@@ -80,9 +126,10 @@ const CustomAccordion = ({ data }) => {
                       >
                         {accData.name}
                       </p>
+                      {/* </Link> */}
                     </div>
 
-                    {accData.data.map((acData: any, i: number) => (
+                    {accData.data.map((acData, i) => (
                       <div
                         onClick={() =>
                           setFilteredItems((prev) => (prev === i ? -1 : i))
@@ -107,13 +154,25 @@ const CustomAccordion = ({ data }) => {
                             alt="Minus Icon"
                           />
                         )}
-                        <p
-                          className={`md:text-[14px] md:leading-[22px] text-[12px] leading-5 ${
-                            filteredItems === i ? "text-primary" : "text-gray"
-                          }`}
+                        <button
+                          onClick={() => {
+                            router.push(
+                              `${params?.handle[0]}/${acData.type}/${acData.toShow}`,
+                              {
+                                scroll: false,
+                              }
+                            );
+                          }}
+                          // href={``}
                         >
-                          {acData.toShow}
-                        </p>
+                          <p
+                            className={`md:text-[14px] md:leading-[22px] text-[12px] leading-5 ${
+                              filteredItems === i ? "text-primary" : "text-gray"
+                            }`}
+                          >
+                            {acData.toShow}
+                          </p>
+                        </button>
                       </div>
                     ))}
                   </div>
