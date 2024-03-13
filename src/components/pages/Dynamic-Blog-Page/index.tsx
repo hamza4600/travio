@@ -25,8 +25,10 @@ import BlogDetailCard from "@/components/sections/BlogDetailCard";
 import { Pagination } from "@/components/sections/reviews/Reviews";
 
 // import HeroSection from "../DynamicDestinations/HeroSection";
-import dummyArticles, { destinations, tags } from "./data";
+import dummyArticles, { destinations, hrData, tags } from "./data";
 import BlogChoose from "@/components/molecules/BlogChose";
+import HeroSection from "@/components/sections/hero/HeroSection";
+import GallerySect from "./GallerySect";
 
 // type BlogPageProps = {
 //   slug: string;
@@ -69,8 +71,9 @@ export default function BlogPage({ locale }: { locale: string }) {
       ]}
       locale={locale}
     >
-      {/* <HeroSection data={imageHeaderData} locale={locale} /> */}
-      <Container className={"my-5"}>
+      <HeroSection data={hrData} />
+      <GallerySect />
+      <Container className={"my-[67px]"}>
         {/* {JSON.stringify(content)} */}
 
         {dummyArticles && (
@@ -78,7 +81,7 @@ export default function BlogPage({ locale }: { locale: string }) {
             <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
               Latest Articles
             </h4>
-            <div className="text-yellow md:border-b-[3px] border-b-[#FFBB0B] w-1/12 rounded-full border-b-2 my-2" />
+            <div className="text-yellow md:border-b-[3px] border-b-[#FFBB0B] md:w-[117px] w-[85px] rounded-full border-b-2 my-2" />
 
             <BlogChoose
               items={[...destinations, ...tags].map((item) => {
@@ -90,7 +93,7 @@ export default function BlogPage({ locale }: { locale: string }) {
               })}
             />
 
-            <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2">
+            <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
               {dummyArticles?.map((article, index) => {
                 return (
                   <BlogDetailCard

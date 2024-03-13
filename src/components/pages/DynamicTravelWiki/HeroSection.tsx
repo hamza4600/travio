@@ -26,11 +26,11 @@ const HeroSection = ({ data }) => {
             variant={"darkblue"}
             className="sm:hidden px-6 text-sm font-normal pt-6 leading-6"
           >
-            Egypt, a captivating land of ancient wonders, beckons travelers
-            with its rich history and timeless allure. From the towering
-            pyramids of Giza to the magnificent temples of Luxor and the
-            vibrant streets of Cairo, Egypt offers a tapestry of experiences
-            that transport you to a bygone era.
+            Egypt, a captivating land of ancient wonders, beckons travelers with
+            its rich history and timeless allure. From the towering pyramids of
+            Giza to the magnificent temples of Luxor and the vibrant streets of
+            Cairo, Egypt offers a tapestry of experiences that transport you to
+            a bygone era.
           </Text>
         </div>
       </div>

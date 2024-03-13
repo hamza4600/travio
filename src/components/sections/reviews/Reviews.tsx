@@ -1,20 +1,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
-// import Pagination from 'rc-pagination'
 import { Line } from "rc-progress";
-
-// import { localizedString, PropsWithLocale } from "@/contexts/LocaleProvider";
-// import { SanityReviewsSection } from "@/sanity/types";
 
 import Container from "@/components/molecules/container";
 
 import { Star } from "../HappyTravelers";
 import SectionHeader from "@/components/molecules/secHeader";
 import { urlFor } from "../../../../sanity/lib/client";
-// import useWindowSize from "@/hooks/useWindows";
-// export type ReviewSectionProps = {
-//   data: SanityReviewsSection;
-// };
+
 export function Pagination({
   onChange,
   total,
@@ -26,6 +19,7 @@ export function Pagination({
   pageSize: number;
   currentPage: number;
 }) {
+  console.log("pageSize: ", pageSize);
   return (
     <div className={"flex items-center justify-between w-full my-12"}>
       <button
@@ -59,7 +53,7 @@ export function Pagination({
             : null
         }
         className={
-          "bg-black text-white rounded-full px-6 py-2 " +
+          "bg-black text-white rounded-full h-[42px] px-6 py-2 " +
           (currentPage < Math.ceil(total / pageSize) - 1
             ? ""
             : "opacity-0 cursor-default")
@@ -83,9 +77,6 @@ const Filter = ({
   selectedRating: number[];
   ratings: { count: number; stars: number }[];
 }) => {
-  // const windows = useWindowSize();
-  // const isMobile = windows.width < 768;
-
   const reverseRatings = [...ratings].reverse();
 
   return (
@@ -193,8 +184,6 @@ const ReviewSection = (props) => {
     locale,
   } = props;
 
-  // console.log(locale, title, tagline);
-
   const [pageNumber, setPageNumber] = useState(0);
   const [selectedRating, setSelectedRating] = useState<number[]>([]);
 
@@ -253,10 +242,7 @@ const ReviewSection = (props) => {
                   name={item?.name.en}
                   star={item.rating}
                   review={item.text?.[locale]}
-                  country={
-                    item.avatar
-                    // "https://img.freepik.com/free-vector/illustration-uk-flag_53876-18166.jpg?q=10&h=200"
-                  }
+                  country={item.avatar}
                   date={item.time?.[locale]}
                 />
               ))}
@@ -268,32 +254,6 @@ const ReviewSection = (props) => {
             total={reviews?.length || 0}
           />
         </div>
-
-        {/* <div className="gap-y-3  lg:hidden grid-flow-row grid-cols-1 border">
-          {reviews?.map((item: any, index: any) => {
-            if (pageNumber * 3 >= index + 1 && pageNumber * 3 - 2 <= index + 1) {
-              return (
-                <RatingCard
-                  key={index}
-                  title={item.title?.en}
-                  name={item?.name?.en}
-                  star={5}
-                  review={item.text?.en}
-                  country={
-                    'https://img.freepik.com/free-vector/illustration-uk-flag_53876-18166.jpg?q=10&h=200'
-                  }
-                  date={item.time?.en}
-                />
-              )
-            }
-          })}
-          <Pagination
-            currentPage={pageNumber}
-            pageSize={pageSize}
-            onChange={setPageNumber}
-            total={reviews?.length || 0}
-          />
-        </div> */}
       </div>
     </Container>
   );
