@@ -23,8 +23,6 @@ import BlogDetailCard from "@/components/sections/BlogDetailCard";
 // import { BlogPageSectionsMap } from "@/components/sections";
 
 import { Pagination } from "@/components/sections/reviews/Reviews";
-
-// import HeroSection from "../DynamicDestinations/HeroSection";
 import dummyArticles, { destinations, hrData, tags } from "./data";
 import BlogChoose from "@/components/molecules/BlogChose";
 import HeroSection from "@/components/sections/hero/HeroSection";

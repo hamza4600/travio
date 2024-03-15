@@ -22,7 +22,7 @@ function BlogChoose(props: BlogChooseProps) {
   return (
     <div className="flex gap-4 my-12 flex-wrap">
       {items
-        .filter((item) => item.link === isMatch)
+        ?.filter((item) => item.link === isMatch)
         .map((item, index) => {
           return (
             <Link href={item.link} key={index}>
@@ -35,7 +35,7 @@ function BlogChoose(props: BlogChooseProps) {
           );
         })}
       {items
-        .filter((item) => item.link !== isMatch)
+        ?.filter((item) => item.link !== isMatch)
         .map((item, index) => {
           return (
             <Link href={item.link} key={index}>
@@ -63,7 +63,8 @@ function BlogButton(props: BlogButtonProps) {
           : " bg-transparent border-2 border-opacity-10"
       }`}
     >
-      {images.map((image, index) => {
+      a
+      {images?.map((image, index) => {
         return (
           <Image src={image} height={18} width={18} alt={title} key={index} />
         );
