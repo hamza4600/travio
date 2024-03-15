@@ -1,13 +1,19 @@
 import CurrentBlogPage from "@/components/pages/BlogPage";
-import React from "react";
+import { getDynamicBlogPage } from "@/lib/sanity.Blog";
 
-const Index = ({ params }: { params: any }) => {
+export const revalidate = 3600;
+
+const Index = async ({ params }: { params: any }) => {
   const { handle, language } = params;
   console.log(handle);
+  
+  const pageData = await getDynamicBlogPage(handle);
+
   return (
-    <div>
-      <CurrentBlogPage locale={language} />
-    </div>
+    <CurrentBlogPage 
+      locale={language} 
+      pageData={pageData}
+    />
   );
 };
 

@@ -14,6 +14,7 @@ const MainBlogPage = ({ language, pageData }) => {
       breadcrumbs={[{ label: "Blog", value: "BLog" }]}
       locale={language}
       globals={layout}
+      promo_banner={layout?.banner}
     >
       MainBlog Page
       <Slicer

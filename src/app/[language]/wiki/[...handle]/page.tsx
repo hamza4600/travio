@@ -4,13 +4,12 @@ import { getWikiPage } from "@/lib/sanity.WikiPage";
 export const revalidate = 3600;
 
 const Index = async ({ params }: any) => {
-  const { hanlde, language } = params;
+  const { handle, language } = params;
+  console.log("params: ", handle);
+  
+  const firstSlug = handle[0];
 
-  console.log("params: ", params);
-
-  console.log("hanlde: ", hanlde);
-
-  const pageData = await getWikiPage(hanlde);
+  const pageData = await getWikiPage(firstSlug);
 
   return <DynamicTravelWiki language={language} pageData={pageData} />;
 };

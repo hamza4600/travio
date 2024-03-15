@@ -15,9 +15,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import RelatedArticles from "./RelatedArticles";
 
-export default function CurrentBlogPage({ locale }) {
+export default function CurrentBlogPage({ locale, pageData }) {
+  
+  const { layout } = pageData || {};
+  
   return (
-    <Layout breadcrumbs={[]} locale={locale} promo_banner={""}>
+    <Layout 
+      breadcrumbs={[]} 
+      locale={locale} 
+      globals={layout}
+      promo_banner={layout?.banner}    
+    >
       <Container className="font-satoshi">
         <div className="flex bg-white w-full md:pr-20">
           <div className="">

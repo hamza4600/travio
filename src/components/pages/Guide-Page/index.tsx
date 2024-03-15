@@ -13,24 +13,18 @@ interface GuidePageProps {
 
 const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
+  
   console.log(data, "pageData555");
-
+  const slug = data?.slug?.current;
+  
   return (
     <Layout
       globals={layout}
       locale={language}
       breadcrumbs={[
         {
-          label: "Destinations",
-          value: "/",
-        },
-        {
           label: "Egypt",
-          value: "/egypt",
-        },
-        {
-          label: "Explore Ancient Wonders",
-          value: "/#",
+          value: `/${language}/guide${slug}`,
         },
       ]}
       promo_banner={layout?.banner}

@@ -30,7 +30,7 @@ const DynamicTravelWiki = ({
 }) => {
   const { layout } = pageData || {};
 
-  console.log("dataTravelwiki: ", pageData);
+  console.log("dataTravelwiki555: ", pageData);
 
   return (
     <Layout
