@@ -16,29 +16,45 @@ import "swiper/css/navigation";
 import RelatedArticles from "./RelatedArticles";
 
 export default function CurrentBlogPage({ locale, pageData }) {
-  
   const { layout } = pageData || {};
-  
+
+  // const [showBlogSidebar, setShowBlogSidebar] = useState(false);
+
+  // function OpenSidebar() {
+  //   setShowBlogSidebar(!showBlogSidebar);
+  // }
+
   return (
-    <Layout 
-      breadcrumbs={[]} 
-      locale={locale} 
+    <Layout
+      breadcrumbs={[]}
+      locale={locale}
       globals={layout}
-      promo_banner={layout?.banner}    
+      promo_banner={layout?.banner}
     >
       <Container className="font-satoshi">
-        <div className="flex bg-white w-full md:pr-20">
+        <div className="flex bg-white w-full xl:pr-20">
           <div className="">
-            <ArticleHeroSection data={articleDummyData} />
+            <ArticleHeroSection
+              data={articleDummyData}
+              // openSidebar={OpenSidebar}
+            />
             <InThisPost data={postDummy} />
 
             <BlogContentSection data={articleDummy} />
           </div>
-          <div className="max-xl:hidden">
+
+          {/* {showBlogSidebar && (
+            <div
+              className={`${!showBlogSidebar && "max-xl:hidden z-20"}  pr-20`}
+            >
+              <BlogSidebar />
+            </div>
+          )} */}
+          <div className={"max-xl:hidden z-20  pr-20"}>
             <BlogSidebar />
           </div>
         </div>
-        <div className="px-5">
+        <div>
           <BlogReview data={blogRev} />
         </div>
 

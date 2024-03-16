@@ -176,7 +176,7 @@ export default function Input({
           field.value === checkboxValue
             ? !editable
               ? "bg-gray cursor-not-allowed "
-              : "bg-blue-500 border-blue"
+              : "bg-[#3FA9F5] border-blue"
             : errorMsg
             ? "bg-white border-red"
             : disabled
@@ -209,7 +209,7 @@ export default function Input({
               // }}
               className={`flex border w-fit border-darkblue/10 rounded ${
                 field.value.includes(option.name)
-                  ? "text-white bg-blue-500 fill-white"
+                  ? "text-white bg-[#3FA9F5] fill-white"
                   : "text-gray bg-white"
               } px-3 py-[10px] text-sm gap-2 items-center whitespace-nowrap flex-nowrap`}
               onClick={() => {

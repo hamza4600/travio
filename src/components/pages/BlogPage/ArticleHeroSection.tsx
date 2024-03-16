@@ -2,9 +2,15 @@ import React from "react";
 
 // import { urlFor } from '../../../../sanity/lib/client'
 
-const ArticleHeroSection = ({ data }: any) => {
+const ArticleHeroSection = ({
+  data,
+}: // openSidebar,
+{
+  data: any;
+  // openSidebar: () => void;
+}) => {
   return (
-    <div className="mt-[30px]">
+    <div className="mt-[30px] h-[800px]">
       <div className="flex justify-between">
         <div className="md:px-20 px-5">
           <h1 className="md:text-[40px] md:leading-[50px] text-[20xp] leading-[30px] text-darkblue font-bold">
@@ -17,12 +23,15 @@ const ArticleHeroSection = ({ data }: any) => {
             </span>{" "}
           </h2>
         </div>
-        <div className="bg-[#3FA9F5] flex items-center max-w-5 h-[60px] rounded-l-[4px] hover:cursor-pointer md:hidden">
+        <button
+          // onClick={openSidebar}
+          className="bg-[#3FA9F5] flex items-center max-w-5 h-[60px] rounded-l-[4px] hover:cursor-pointer xl:hidden"
+        >
           <DropDown />
-        </div>
+        </button>
       </div>
 
-      <div className="flex gap-[18px] items-center pl-[18px]">
+      <div className="flex gap-[18px] items-center px-5">
         <div className="w-full max-lg:hidden max-w-[44px]">
           <div className="bg-primary py-2.5 flex flex-col gap-[10px] items-center">
             <img src={"/demo/share.png"} alt="share" />
