@@ -19,7 +19,7 @@ const BlogCard = ({ blog, locale }) => {
     blog && (
       <Link
         className={"flex-shrink-0 md:mt-12 mt-[30px]"}
-        href={locale + blog?.slug?.current}
+        href={locale + "/blog" + blog?.slug?.current}
       >
         <div className=" w-full">
           <div className={"rounded-3xl max-sm:rounded-[8px] overflow-hidden"}>

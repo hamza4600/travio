@@ -4,7 +4,7 @@ import { urlForImage } from "../../../../../sanity/lib/image";
 const GuidePage = dynamic(() => import("@/components/pages/Guide-Page"));
 
 export async function generateMetadata({ params }) {
-  const { language , handle} = params;
+  const { language, handle } = params;
 
   const seo = await getGuidePageSeo(handle);
   const meta = seo?.meta_data || {};
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
           width: 1200,
           height: 630,
           alt: metaTitle,
-        }
+        },
       ],
       type: "website",
       locale: language,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export const revalidate = 3600;
+export const revalidate = 360;
 // meta data
 
 const Index = async ({ params }: any) => {
@@ -45,12 +45,7 @@ const Index = async ({ params }: any) => {
 
   const guidePage = await getGuidePage(handle);
 
-  return (
-    <GuidePage
-      language={language}
-      pageData={guidePage}
-    />
-  );
+  return <GuidePage language={language} pageData={guidePage} />;
 };
 
 export default Index;

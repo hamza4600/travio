@@ -43,7 +43,7 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
       promo_banner={layout?.banner}
     >
       <HeroSection data={hrData} />
-      <div className="md:mt-[68px] mt-[50px]">
+      <div className="md:mt-[68px] mt-[40px]">
         <SectionHeader
           title={data?.tagline?.[language]}
           subtitle={data?.title?.[language]}
