@@ -2,9 +2,11 @@
 import Layout from "@/components/layout";
 import { FC } from "react";
 // import { wikiData } from "../DynamicTravelWiki/data";
-import HeroSection from "@/components/sections/hero/HeroSection";
+// import HeroSection from "@/components/sections/hero/HeroSection";
 // import { WikiSectionHeader } from "../DynamicTravelWiki/WikiSection";
-import { hrData } from "../Dynamic-Blog-Page/data";
+// import { hrData } from "../Dynamic-Blog-Page/data";
+
+import HeroSection from "../DynamicDestinations/HeroSection";
 
 import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import SectionHeader from "@/components/molecules/secHeader";
@@ -42,8 +44,8 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
       ]}
       promo_banner={layout?.banner}
     >
-      <HeroSection data={hrData} />
-      <div className="md:mt-[68px] mt-[40px]">
+      <HeroSection data={data.image_hero.header_section} locale={language} />
+      <div className="max-md:mt-[40px]">
         <SectionHeader
           title={data?.tagline?.[language]}
           subtitle={data?.title?.[language]}
