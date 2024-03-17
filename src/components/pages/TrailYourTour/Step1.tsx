@@ -20,6 +20,17 @@ const CalenderWrapper = styled.div`
     }
   }
 
+  button {
+    &:hover {
+      background: #ffbb0b;
+      border-radius: 9999px;
+    }
+
+    &:active {
+      background-color: #ffbb0b;
+    }
+  }
+
   abbr {
     /* font-family: ${({ theme }) => theme.fontSatoshi}; */
     font-family: var(--font-satoshi);
@@ -45,7 +56,6 @@ const CalenderWrapper = styled.div`
     font-family: var(--font-satoshi);
   }
 
-  .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
     background-color: #ffdd85;
     color: black;
@@ -73,6 +83,11 @@ const CalenderWrapper = styled.div`
       max-width: 302px;
       padding: 18px;
     }
+  }
+
+  .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: white;
+    color: #ffbb0b;
   }
 
   & .react-calendar__tile--rangeStart:not(.react-calendar__tile--rangeEnd),
