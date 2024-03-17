@@ -7,7 +7,6 @@ const NewsletterSection = ({ data, locale }) => {
   const window = useWindowSize();
   const isMobile = window.width < 768;
 
-  console.log("data====NEWS", data);
   const { subtitle, title } = data || {};
 
   return (

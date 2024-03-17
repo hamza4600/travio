@@ -5,32 +5,21 @@ import { filterWikiData, heroData, wikiData } from "./data";
 import WikiSection from "./WikiSection";
 
 // import SuggestedTour from "./SuggestedTour";
-
 import NewsletterSection from "@/components/sections/NewsletterSection";
-
-const dummyNewsData = {
-  subtitle: {
-    en: "Be the first to know about our latest travel deals, special promotions, and insider tips",
-    es: "Be the first to know about our latest travel deals, special promotions, and insider tips",
-    por: "Be the first to know about our latest travel deals, special promotions, and insider tips",
-  },
-  title: {
-    en: "Join Our Travel Community and Unlock Exclusive Deals!",
-    es: "Join Our Travel Community and Unlock Exclusive Deals!",
-    por: "Join Our Travel Community and Unlock Exclusive Deals!",
-  },
-};
 
 const DynamicTravelWiki = ({
   language,
   pageData,
+  newLetterSection,
 }: {
   language: string;
   pageData: any;
+  newLetterSection : any
 }) => {
-  const { layout } = pageData || {};
+  const { layout, data  } = pageData || {};
+  const { sections, suggested_tours  } = data || {};
 
-  console.log("dataTravelwiki555: ", pageData);
+  console.log("dataTravelwiki555: ",  data);
 
   return (
     <Layout
@@ -48,7 +37,7 @@ const DynamicTravelWiki = ({
       </div> */}
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">
-        <NewsletterSection data={dummyNewsData} locale={language} />
+        <NewsletterSection data={newLetterSection} locale={language} />
       </div>
     </Layout>
   );
