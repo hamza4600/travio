@@ -26,9 +26,10 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'image',
-          title: 'Image',
-          type: 'photo',
+          name: 'header_section',
+          title: 'Header Section',
+          description: 'Header section for the Wiki Page',
+          type: 'image_header_section',
         }),
       ],
     }),
@@ -110,6 +111,16 @@ export const TravelWikiSection = defineType({
       description: 'The title to display in the tree',
       type: 'locale_string',
     }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    }),
+    
     defineField({
       name: 'title',
       title: 'Title',
