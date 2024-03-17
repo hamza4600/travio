@@ -1,19 +1,40 @@
 import React, { useState } from "react";
 import PortableText from "react-portable-text";
+// remove space with - 
+const removeSpace = (str: string) => {
+  // return str.replace(/\s/g, "-");
+  const newStr = str.replace(/\s/g, "-");
+  return newStr.toLowerCase();
+}
 
 const InfoSection = ({ data, locale }: any) => {
+
   const [head, sethead] = useState(0);
+
+  const handleClickScroll = (name: string) => {
+    const element = document.getElementById(name);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 150, // adjust the scroll position with an offset
+        behavior: 'smooth'
+      });
+      // also push the history
+      window.history.pushState({}, '', `#${name}`);
+    }
+  };
+
   return (
     <div className="md:py-20 py-10 font-satoshi">
       <div className="lg:flex lg:flex-row  lg:gap-x-20 px-5 lg:px-20 justify-between">
         <div className="lg:w-1/5 hidden lg:flex w-full  flex-1 flex-col gap-y-2">
           {data?.map((item: any, index: any) => {
             return (
-              <a
+              <button
                 key={index}
-                href={"#" + item.title?.[locale]}
+                id={"#" + removeSpace(item.title?.[locale])}
                 onClick={() => {
                   sethead(index);
+                  handleClickScroll(removeSpace(item.title?.[locale]));
                 }}
               >
                 <div
@@ -25,7 +46,7 @@ const InfoSection = ({ data, locale }: any) => {
                 >
                   {item.title?.[locale]}
                 </div>
-              </a>
+              </button>
             );
           })}
         </div>
@@ -35,21 +56,19 @@ const InfoSection = ({ data, locale }: any) => {
           return (
             <a
               key={index}
-              href={"#" + item.title?.[locale]}
+              href={"#" + removeSpace(item.title?.[locale])}
               onClick={() => {
                 sethead(index);
               }}
-              className={` flex flex-row lg:hidden  font-[500] justify-start items-center ${
-                head == index ? "text-primary" : " text-darkblue"
-              } `}
+              className={` flex flex-row lg:hidden  font-[500] justify-start items-center ${head == index ? "text-primary" : " text-darkblue"
+                } `}
             >
               <p>{index + 1}</p>
               <div
-                className={`${
-                  head == index
+                className={`text-[14px] font-normal ${head == index
                     ? "underline cursor-pointer  text-blue font-[500]   border-none rounded-lg px-3 py-2"
                     : " cursor-pointer text-darkblue font-[500]  border-opacity-40 rounded-lg px-3 py-2"
-                }
+                  }
                     'text-sm'
                     `}
               >
@@ -61,7 +80,10 @@ const InfoSection = ({ data, locale }: any) => {
         <div className="lg:w-2/3 md:mt-20 mt-10 lg:mt-0 w-full">
           {data?.map((item: any, index: any) => {
             return (
-              <div key={index} id={item.title?.[locale]} className="mb-10">
+              <div
+                key={index}
+                id={removeSpace(item.title?.[locale])}
+                className="mb-10">
                 <h2 className="md:text-2xl text-[20px] leading-[30px] font-semibold">
                   {item.title?.[locale]}
                 </h2>

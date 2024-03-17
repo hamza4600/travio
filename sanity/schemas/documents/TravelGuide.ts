@@ -27,9 +27,10 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'image',
-          title: 'Image',
-          type: 'photo',
+          name: 'header_section',
+          title: 'Header Section',
+          description: 'Header section for the Guide Page',
+          type: 'image_header_section',
         }),
       ],
     }),

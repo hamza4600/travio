@@ -20,7 +20,7 @@ const BlogHeroSection = (props: ImageHeaderSectionProps) => {
           alt={"img"}
         />
         <img
-          className="w-full md:hidden min-h-[200px]"
+          className="w-full md:hidden min-h-[200px] object-cover"
           src={image}
           loading="lazy"
           alt={"img"}

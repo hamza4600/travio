@@ -28,34 +28,6 @@ export default defineType({
       description: 'Meta Data for SEO',
       type: 'meta_data',
     }),
-    // defineField({
-    //   name: 'promo_banner',
-    //   title: 'Promo Banner',
-    //   description: 'Promo banner for the hero section',
-    //   type: 'promo_banner',
-    // }),
-    // defineField({
-    //   name: 'hero_section',
-    //   title: 'Hero Section',
-    //   description: 'Hero section for the page',
-    //   type: 'object',
-    //   options: {
-    //     collapsible: true,
-    //     collapsed: true,
-    //   },
-    //   fields: [
-    //     defineField({
-    //       name: 'title',
-    //       title: 'Title',
-    //       type: 'locale_string',
-    //     }),
-    //     defineField({
-    //       name: 'image',
-    //       title: 'Image',
-    //       type: 'image',
-    //     }),
-    //   ],
-    // }),
     defineField({
       name: 'discounts_section',
       title: 'Discounts Section',
