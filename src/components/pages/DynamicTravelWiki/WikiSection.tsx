@@ -30,7 +30,7 @@ export const WikiSectionHeader = ({ wikiData }) => {
 const WikiSection = ({ wikiData, filterWiki }) => {
   // for testing later it will change to the exact logic
   return (
-    <section className="md:mt-[48px] mt-[277px]">
+    <section className="md:mt-[48px] mt-[50px]">
       <WikiSectionHeader wikiData={wikiData} />
       <div className="flex gap-[80px] md:px-20 px-5 md:mt-[68px] mt-[50px] max-lg:flex-col max-lg:items-center">
         <CustomAccordion data={wikiData.accr} />
