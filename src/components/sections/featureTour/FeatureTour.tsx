@@ -24,6 +24,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
       <SectionHeader
         subtitle={FeaturedTour?.data.tagline?.en}
         title={FeaturedTour?.data.title?.en}
+        centerLine
       />
       <div className="h-fit relative md:mt-12 mt-[30px]">
         <Swiper
@@ -35,7 +36,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
             <FeatureCard
               key={i}
               locale={locale}
-              link={FeaturedTour?.tour?.slug?.current}
+              link={item?.content?.slug?.current}
               // label={data?.label?.[locale]}
               pic={item?.content?.hero_section?.image.asset._ref}
               mobilePic={item?.content?.hero_section?.image.mobile.asset._ref}

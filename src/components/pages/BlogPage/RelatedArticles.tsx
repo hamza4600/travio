@@ -11,7 +11,7 @@ const RelatedArticles = () => {
       <Swiper
         className={"gap-6 pb-3 md:mt-[48px] mt-[30px]"}
         length={dummyArticles.length}
-        scrollCount={4}
+        scrollCount={3}
       >
         {dummyArticles?.map((article, index) => {
           return (

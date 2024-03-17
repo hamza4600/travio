@@ -38,8 +38,13 @@ import GallerySect from "./GallerySect";
 //   tags: { name: SanityLocaleString; slug: string; icon: SanityPhoto }[];
 // };
 
-export default function BlogPage({ locale, pageData }: { locale: string, pageData : any }) {
-
+export default function BlogPage({
+  locale,
+  pageData,
+}: {
+  locale: string;
+  pageData: any;
+}) {
   const { layout } = pageData || {};
   //   const imageHeaderData =
   //     content?._type === "tag"
@@ -75,7 +80,7 @@ export default function BlogPage({ locale, pageData }: { locale: string, pageDat
     >
       <HeroSection data={hrData} />
       <GallerySect />
-      <Container className={"my-[67px]"}>
+      <Container className={""}>
         {/* {JSON.stringify(content)} */}
 
         {dummyArticles && (

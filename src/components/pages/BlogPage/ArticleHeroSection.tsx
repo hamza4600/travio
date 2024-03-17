@@ -10,7 +10,7 @@ const ArticleHeroSection = ({
   // openSidebar: () => void;
 }) => {
   return (
-    <div className="mt-[30px] h-[800px]">
+    <div className="mt-[30px]">
       <div className="flex justify-between">
         <div className="md:px-20 px-5">
           <h1 className="md:text-[40px] md:leading-[50px] text-[20xp] leading-[30px] text-darkblue font-bold">

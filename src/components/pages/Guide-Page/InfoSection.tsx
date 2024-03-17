@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import PortableText from "react-portable-text";
 
 const removeSpace = (str: string) => {
@@ -8,8 +8,6 @@ const removeSpace = (str: string) => {
 
 const InfoSection = ({ data, locale }: any) => {
   const [head, setHead] = useState(0);
-  const [selectedComponentHeight, setSelectedComponentHeight] = useState(0);
-  const componentRefs = useRef<any[]>([]);
 
   const handleClickScroll = (name: string) => {
     const element = document.getElementById(name);
@@ -22,54 +20,38 @@ const InfoSection = ({ data, locale }: any) => {
       window.history.pushState({}, "", `#${name}`);
     }
   };
-
-  useEffect(() => {
-    if (head >= 0 && head < componentRefs.current.length) {
-      const element = componentRefs.current[head];
-      const height = element.getBoundingClientRect().height;
-      setSelectedComponentHeight(height);
-    }
-  }, [head, data]);
-
   return (
     <div className="md:py-20 py-10 font-satoshi">
-      <div className="lg:flex lg:flex-row lg:gap-x-20 px-5 lg:px-20 justify-between">
-        <div className="flex gap-6 w-full max-w-[354px] relative">
-          <div
-            className={`w-0.5 lg:block hidden bg-gray}`}
-            style={{
-              height: data ? `${data.length * 50}px` : "100%",
-            }}
-          />
-          <div
-            className="bg-[#3FA9F5] w-0.5 absolute"
-            style={{
-              height: selectedComponentHeight
-                ? `${selectedComponentHeight}px`
-                : "100%",
-            }}
-          />
-          <div className="lg:w-1/5 hidden lg:flex flex-1 flex-col gap-y-2">
+      <div className="lg:flex lg:flex-row lg:gap-x-20 px-5 lg:px-20 gap-20">
+        <div className="flex gap-6 relative w-full max-w-[353px]">
+          <div className="w-[343px] lg:block hidden">
             {data?.map((item: any, index: any) => (
-              <button
-                key={index}
-                ref={(el: any) => (componentRefs.current[index] = el)}
-                id={"#" + removeSpace(item.title?.[locale])}
-                onClick={() => {
-                  setHead(index);
-                  handleClickScroll(removeSpace(item.title?.[locale]));
-                }}
-              >
+              <div key={index} className="flex gap-4 w-full">
                 <div
-                  className={
-                    head === index
-                      ? "bg-[#3FA9F5] cursor-pointer text-white font-medium border-none rounded-lg px-3 py-2"
-                      : "border-[1px] cursor-pointer text-darkblue text-base border-gray border-opacity-40 rounded-lg px-3 py-2"
-                  }
+                  className={`w-0.5 lg:block hidden ${
+                    head === index ? " bg-[#3FA9F5] " : " bg-[#e8e7ea] "
+                  }}`}
+                />
+
+                <button
+                  className="mb-2 w-full"
+                  id={"#" + removeSpace(item.title?.[locale])}
+                  onClick={() => {
+                    setHead(index);
+                    handleClickScroll(removeSpace(item.title?.[locale]));
+                  }}
                 >
-                  {item.title?.[locale]}
-                </div>
-              </button>
+                  <div
+                    className={
+                      head === index
+                        ? "bg-[#3FA9F5] cursor-pointer text-white font-medium border-none rounded-lg px-3 py-2"
+                        : "border-[1px] cursor-pointer text-darkblue w-full text-base border-gray border-opacity-40 rounded-lg px-3 py-2"
+                    }
+                  >
+                    {item.title?.[locale]}
+                  </div>
+                </button>
+              </div>
             ))}
           </div>
         </div>
