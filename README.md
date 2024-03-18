@@ -12,3 +12,5 @@
 ### Sanity adding section in global level banners two remove from previus pages , removed ecatrs sec from ttrail tour , 
 ## UI chnages in home page and in trail tour , destination page
 ## update deals in destination page and als in tours page ,
+
+## Adding data calls for the Blogs Page

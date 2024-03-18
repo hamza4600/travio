@@ -4,7 +4,18 @@ export default defineType({
   name: 'featured_tours_section',
   title: 'Featured Tours Section',
   type: 'object',
+  options: {
+    collapsible: true,
+    collapsed: true,
+  },
   fields: [
+    // center header boolean
+    defineField({
+      name: 'center_header',
+      title: 'Center Header',
+      description: 'Center the header text',
+      type: 'boolean',
+    }),
     defineField({
       name: 'tagline',
       title: 'Tagline',
