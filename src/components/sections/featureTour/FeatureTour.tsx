@@ -32,7 +32,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
           length={FeaturedTour?.data?.tour_cards.length}
           scrollCount={4}
         >
-          {FeaturedTour?.data.tour_cards?.map((item: any, i: number) => (
+          {FeaturedTour?.data?.tour_cards?.map((item: any, i: number) => (
             <FeatureCard
               key={i}
               locale={locale}

@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
           width: 1200,
           height: 630,
           alt: metaTitle,
-        }
+        },
       ],
       type: "website",
       locale: language,
@@ -46,11 +46,13 @@ const Index = async ({ params }: any) => {
   const pageData = await getWikiPage(firstSlug);
   const newLetterSection = await getnewLetterSection();
 
-  return <DynamicTravelWiki
-    language={language}
-    pageData={pageData}
-    newLetterSection={newLetterSection}
-  />;
+  return (
+    <DynamicTravelWiki
+      language={language}
+      pageData={pageData}
+      newLetterSection={newLetterSection}
+    />
+  );
 };
 
 export default Index;

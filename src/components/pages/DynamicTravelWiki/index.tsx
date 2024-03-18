@@ -4,8 +4,8 @@ import { filterWikiData, wikiData } from "./data";
 import WikiSection from "./WikiSection";
 import HeroSection from "../DynamicDestinations/HeroSection";
 
-// import SuggestedTour from "./SuggestedTour";
 import NewsletterSection from "@/components/sections/NewsletterSection";
+import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 
 const DynamicTravelWiki = ({
   language,
@@ -34,6 +34,7 @@ const DynamicTravelWiki = ({
       {/* <div className="md:px-20 px-5 md:mt-[68px] mt-[50px]">
         <SuggestedTour />
       </div> */}
+      <FeatureTourSection data={suggested_tour} locale={language} />
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">
         <NewsletterSection data={newLetterSection} locale={language} />

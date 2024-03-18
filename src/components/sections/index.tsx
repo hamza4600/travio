@@ -37,10 +37,13 @@ const BlogSection = dynamic(
     ssr: false,
   }
 );
-const AllBlogsSection = dynamic(() => import("./AllBlogsSection"), {
-  loading: () => <p>Loading...</p>,
-  ssr: false,
-});
+const AllBlogsSection = dynamic(
+  () => import("@/components/pages/AllBlogs-Page/FeatureBlogs"),
+  {
+    loading: () => <p>Loading...</p>,
+    ssr: false,
+  }
+);
 
 const HeroSection = dynamic(
   () => import("@/components/pages/HomePage/HeroSection")
