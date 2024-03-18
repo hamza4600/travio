@@ -17,9 +17,9 @@ const DynamicTravelWiki = ({
   newLetterSection: any;
 }) => {
   const { layout, data } = pageData || {};
-  // const { sections, suggested_tours } = data || {};
+  const { sections, suggested_tour } = data || {};
 
-  console.log("dataTravelwiki555: ", data);
+  console.log("dataTravelwiki555: ", sections);
 
   return (
     <Layout

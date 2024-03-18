@@ -68,22 +68,9 @@ export default defineType({
     defineField({
       name: 'suggested_tour',
       title: 'Suggested Tours',
+      description: 'Suggested Tours for the Wiki Page',
       type: 'featured_tours_section',
     }),
-    // defineField({
-    //   name: 'suggested_tours',
-    //   title: 'Suggested Tours',
-    //   type: 'featured_tours_section',
-    //   of: [
-    //     defineArrayMember({
-    //       name: 'suggested_tour',
-    //       title: 'Suggested Tour',
-    //       type: 'reference',
-    //       to: [{ type: 'tour_page' }],
-    //     }),
-    //   ],
-    // }),
-    //
   ],
   preview: {
     select: {
@@ -117,6 +104,71 @@ export const TravelWikiSection = defineType({
       description: 'The title to display in the tree',
       type: 'locale_string',
     }),
+    // array of sections to allow for nested sections
+      // array of sections to allow for nested sections
+    defineField({
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          name: 'section',
+          title: 'Section',
+          type: 'travel_wiki_sidebar',
+        }),
+      ],
+    }),
+    // defineField({
+    //   name: 'slug',
+    //   title: 'Slug',
+    //   type: 'slug',
+    //   options: {
+    //     source: 'title',
+    //     maxLength: 96,
+    //   },
+    // }),
+    
+    // defineField({
+    //   name: 'title',
+    //   title: 'Title',
+    //   type: 'locale_string',
+    // }),
+    // defineField({
+    //   name: 'content',
+    //   title: 'Content',
+    //   type: 'locale_rich_text',
+    // }),
+    // defineField({
+    //   name: 'nested_sections',
+    //   title: 'Nested Sections',
+    //   type: 'array',
+    //   of: [
+    //     defineArrayMember({
+    //       name: 'nested_section',
+    //       title: 'Nested Section',
+    //       type: 'travel_wiki_section',
+    //     }),
+    //   ],
+    // }),
+  ],
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare: ({ title }) => ({
+      title: joinStrings('|', 'Section', title ?? 'Untitled'),
+    }),
+  },
+})
+
+// 
+export const newObj = defineType({
+  name: 'travel_wiki_sidebar',
+  title: 'Travel Wiki Sidebar',
+  description: 'Sidebar for the Travel Wiki',
+  icon: Info as any,
+  type: 'object',
+  fields : [
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -137,25 +189,5 @@ export const TravelWikiSection = defineType({
       title: 'Content',
       type: 'locale_rich_text',
     }),
-    defineField({
-      name: 'nested_sections',
-      title: 'Nested Sections',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          name: 'nested_section',
-          title: 'Nested Section',
-          type: 'travel_wiki_section',
-        }),
-      ],
-    }),
-  ],
-  preview: {
-    select: {
-      title: 'title',
-    },
-    prepare: ({ title }) => ({
-      title: joinStrings('|', 'Section', title ?? 'Untitled'),
-    }),
-  },
-})
+  ]
+});
