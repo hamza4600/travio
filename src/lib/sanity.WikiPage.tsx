@@ -1,6 +1,5 @@
-
-import { pageLayout } from './sanity.HomePage';
-import { CLIENT } from './sanity.const';
+import { pageLayout } from "./sanity.HomePage";
+import { CLIENT } from "./sanity.const";
 
 export async function getWikiPage(slug: string) {
   const wikiPageQuery = `*[_type == "travel_wiki"  && slug.current == "/${slug}"][0]{
@@ -9,7 +8,7 @@ export async function getWikiPage(slug: string) {
     ...,
     tour_cards[] {
       badge_content,
-      "contentDetails": content->{
+      "content": content->{
         slug,
         hero_section,
         overview_card,
@@ -18,15 +17,14 @@ export async function getWikiPage(slug: string) {
       }
     }
   }
-  }`
-
+  }`;
 
   const query = `{
         "layout":  ${pageLayout},
         "data": ${wikiPageQuery}
-    }`
+    }`;
 
-  return await CLIENT.fetch(query)
+  return await CLIENT.fetch(query);
 }
 
 // for Page SEO
