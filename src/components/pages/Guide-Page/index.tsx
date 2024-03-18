@@ -44,7 +44,11 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
       ]}
       promo_banner={layout?.banner}
     >
-      <HeroSection data={data.image_hero.header_section} locale={language} />
+      <HeroSection
+        data={data.image_hero.header_section}
+        locale={language}
+        // hideContent
+      />
       <div className="max-md:mt-[40px]">
         <SectionHeader
           title={data?.tagline?.[language]}

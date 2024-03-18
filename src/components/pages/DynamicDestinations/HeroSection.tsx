@@ -9,9 +9,9 @@ const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
   const windows = useWindowSize();
   const isMobile = windows.width < 1024;
 
-  const sliceIt = pathname?.slice(4, 17);
+  const pattren = "/destinations/";
 
-  const isDestination = sliceIt === "destinations/";
+  const hideContent = pathname?.match(pattren);
 
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
@@ -21,7 +21,7 @@ const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
       <div style={{ boxShadow: linearGradient }} className="w-full relative">
         <img
           className={`lg:w-full max-md:hidden object-cover max-w-[1440px] ${
-            isDestination ? " min-h-[420px] " : " h-[420px] "
+            hideContent ? " min-h-[420px] " : " h-[420px] "
           }`}
           src={urlFor(data.image.asset._ref)}
           loading="lazy"
@@ -52,7 +52,7 @@ const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
           variant={"darkblue"}
           fontWeight={"default"}
           className={`md:text-base leading-6 text-[14px] ${
-            !isMobile && !isDestination && "hidden"
+            !isMobile && !hideContent && "hidden"
           }`}
         >
           {data.content?.[locale]}
