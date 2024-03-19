@@ -23,12 +23,12 @@ export default defineType({
       description: 'Slug for the page',
       type: 'slug',
     }),
-    defineField({
-      name: 'promo_banner',
-      title: 'Promo Banner',
-      description: 'Promo banner for the hero section',
-      type: 'promo_banner',
-    }),
+    // defineField({
+    //   name: 'promo_banner',
+    //   title: 'Promo Banner',
+    //   description: 'Promo banner for the hero section',
+    //   type: 'promo_banner',
+    // }),
     defineField({
       name: 'is_article',
       title: 'Is article',
