@@ -1,28 +1,27 @@
-import Image from "next/image";
-
-import { SanityImageHeaderSection } from "../../../sanity/lib/types";
 import Container from "../molecules/container";
-import { urlFor } from "../../../sanity/lib/client";
+// import { urlFor } from "../../../sanity/lib/client";
 
-export type ImageHeaderSectionProps = {
-  data: SanityImageHeaderSection;
-};
-const BlogHeroSection = (props: ImageHeaderSectionProps) => {
+const BlogHeroSection = (props: any) => {
   const {
     data: { header, image, content },
   } = props;
   return (
-    <div className=" lg:h-[480px]  relative h-[200px]">
+    <div className="relative md:mb-12 mb-[50px]">
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <Image
-          src={image ? urlFor(image) : ""}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          width={700}
-          height={73}
-          alt=""
+        <img
+          className="lg:w-full min-h-[420px] max-md:hidden max-w-[1440px]"
+          src={image}
+          loading="lazy"
+          alt={"img"}
         />
-        <h2 className="lg:text-[56px] text-[28px] absolute  bottom-5 text-white   font-extrabold text-center ">
-          {header?.en}
+        <img
+          className="w-full md:hidden min-h-[200px] object-cover"
+          src={image}
+          loading="lazy"
+          alt={"img"}
+        />
+        <h2 className="lg:text-[56px] font-satoshi text-[28px] absolute  md:bottom-10 bottom-2 text-white   font-extrabold text-center ">
+          {header}
         </h2>
       </div>
       <Container className="px-10 mx-auto max-w-[1312px] text-[16px] -translate-y-9  font-[400] opacity-80 leading-6 ">

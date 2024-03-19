@@ -4,7 +4,7 @@ export type ImageHeaderSectionProps = {
   data: any;
 };
 
-const BlogHeroSection = (props: ImageHeaderSectionProps) => {
+const HeroSection = (props: ImageHeaderSectionProps) => {
   const {
     data: { header, image },
   } = props;
@@ -44,4 +44,4 @@ const BlogHeroSection = (props: ImageHeaderSectionProps) => {
   );
 };
 
-export default BlogHeroSection;
+export default HeroSection;

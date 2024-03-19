@@ -14,6 +14,7 @@ import { articleDummy, articleDummyData, blogRev, postDummy } from "./data";
 import "swiper/css";
 import "swiper/css/navigation";
 import RelatedArticles from "./RelatedArticles";
+import { Facebook, Messenger, Twitter, WhatpsApp } from "./style";
 
 export default function CurrentBlogPage({ locale, pageData }) {
   const { layout } = pageData || {};
@@ -40,7 +41,17 @@ export default function CurrentBlogPage({ locale, pageData }) {
             />
             <InThisPost data={postDummy} />
 
-            <BlogContentSection data={articleDummy} />
+            <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
+              <p className="text-primary">Share</p>
+              <div className="lg:hidden flex items-center justify-center gap-1">
+                <Facebook />
+                <Twitter />
+                <Messenger />
+                <WhatpsApp />
+              </div>
+
+              <BlogContentSection data={articleDummy} />
+            </div>
           </div>
 
           {/* {showBlogSidebar && (
