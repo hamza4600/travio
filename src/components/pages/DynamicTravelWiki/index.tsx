@@ -31,9 +31,6 @@ const DynamicTravelWiki = ({
       <HeroSection data={data?.image_hero?.header_section} locale={language} />
       <WikiSection wikiData={wikiData} filterWiki={filterWikiData} />
 
-      {/* <div className="md:px-20 px-5 md:mt-[68px] mt-[50px]">
-        <SuggestedTour />
-      </div> */}
       <FeatureTourSection data={suggested_tour} locale={language} />
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">

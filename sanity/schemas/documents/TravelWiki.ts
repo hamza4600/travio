@@ -101,7 +101,7 @@ export const TravelWikiSection = defineType({
     defineField({
       name: 'tree_title',
       title: 'Tree Title',
-      description: 'The title to display in the tree',
+      description: 'The title to display in the tree (first level only)',
       type: 'locale_string',
     }),
     // array of sections to allow for nested sections
@@ -161,7 +161,6 @@ export const TravelWikiSection = defineType({
   },
 })
 
-// 
 export const newObj = defineType({
   name: 'travel_wiki_sidebar',
   title: 'Travel Wiki Sidebar',
@@ -183,7 +182,50 @@ export const newObj = defineType({
       name: 'title',
       title: 'Title',
       type: 'locale_string',
+      description: 'Title for the section (Second level only)',
     }),
+
+    // we will have to add a nested section here also 
+    defineField({
+      name: 'second_nested_section',
+      title: 'Nested Sections',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          name: 'nested_section',
+          title: 'Nested Section',
+          type: 'sub_nested_section',
+        }),
+      ],
+    }),
+  ]
+});
+
+
+export const newNestedObj = defineType({
+  name: 'sub_nested_section',
+  title: 'Sub Section',
+  description: 'Sub Section for the Travel Wiki (Third Level)',
+  icon: Info as any,
+  type: 'object',
+  fields : [
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    }),
+    
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'locale_string',
+      description: 'Title for the section (Thired level )',
+    }),
+
     defineField({
       name: 'content',
       title: 'Content',

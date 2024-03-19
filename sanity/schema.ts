@@ -35,6 +35,7 @@ import ThingsToDo from "./schemas/documents/ThingsToDo";
 import tour_page from "./schemas/documents/TourPage";
 import travel_guide from "./schemas/documents/TravelGuide";
 import travel_wiki, {
+    newNestedObj,
     newObj,
     TravelWikiSection as travel_wiki_section,
 } from "./schemas/documents/TravelWiki";
@@ -104,6 +105,7 @@ export const schemaTypes= [
         hero_card_section,
         travel_wiki_section,
         newObj,
+        newNestedObj,
         // Blog Sections
         ...BlogSectionExports,
         ...TourSectionExports,

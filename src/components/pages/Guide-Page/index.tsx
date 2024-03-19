@@ -16,7 +16,7 @@ interface GuidePageProps {
   language: string;
   pageData: any;
 }
-
+// will be repace with actual data
 const tabs = [
   { name: "Egypt", href: "#" },
   { name: "Jordan", href: "#" },
@@ -29,7 +29,6 @@ const tabs = [
 const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
 
-  console.log(data, "pageData555");
   const slug = data?.slug?.current;
 
   return (
