@@ -11,9 +11,11 @@ const FeatureTopBlogSection = (props: any) => {
   } = props;
   console.log("data: ", props);
   return (
-    <Container className={"mx-auto max-w-[1312px] font-satoshi px-4"}>
-      <div className="  md:py-10 py-5">
-        <div className="mb-[30px] my-10 md:mb-12 flex flex-col lg:items-center items-start">
+    <Container
+      className={"mx-auto max-w-[1312px] font-satoshi px-4 md:mt-16 mt-[90px]"}
+    >
+      <div>
+        <div className="mb-[30px] md:mb-12 flex flex-col lg:items-center items-start">
           <p className="text-primary text-xs md:text-base  font-medium uppercase leading-tight md:leading-normal">
             EXPLORE COUNTRIES
           </p>

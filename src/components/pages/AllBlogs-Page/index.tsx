@@ -1,15 +1,23 @@
 "use client";
 
 import Layout from "@/components/layout";
-import BlogHeroSection from "@/components/sections/hero/HeroSection";
+import BlogHeroSection from "@/components/sections/BlogHeroSection";
 import { hrData } from "../Dynamic-Blog-Page/data";
 import FeatureBlogs from "./FeatureBlogs";
 import FeatureTopBlogSection from "@/components/sections/FeatureTopBlogSection";
 import { featureBlogSection, intesetData } from "./data";
 import InterestSection from "@/components/sections/InterestSection";
+import NewsletterSection from "@/components/sections/NewsletterSection";
 
 // import Slicer from "../../../../sanity/slicer";
 // import { BlogPageSectionsMap } from "@/components/sections";
+
+const news = {
+  title: { en: "Subscribe now for Multiple Tours & Latest blogs!" },
+  subtitle: {
+    en: "Be the first to know about our latest travel deals, special promotions, and insider tips",
+  },
+};
 
 const MainBlogPage = ({ language, pageData }) => {
   const { layout } = pageData || {};
@@ -28,6 +36,7 @@ const MainBlogPage = ({ language, pageData }) => {
       <FeatureBlogs />
       <FeatureTopBlogSection data={featureBlogSection} locale={language} />
       <InterestSection data={intesetData} locale={language} />
+      <NewsletterSection data={news} locale={language} />
 
       {/* <Slicer
         locale={language}
