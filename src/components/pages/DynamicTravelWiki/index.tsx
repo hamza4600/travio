@@ -10,6 +10,7 @@ import Sidebar from "./Sidebar";
 import Content from "./Content";
 // import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import FilterCountry from "./FilterCountry";
+import SectionHeader from "@/components/molecules/secHeader";
 
 const DynamicTravelWiki = ({
   language,
@@ -23,7 +24,7 @@ const DynamicTravelWiki = ({
   const { layout, data } = pageData || {};
   const { sections, suggested_tour } = data || {};
 
-  console.log("dataTravelwiki555: ", sections);
+  console.log("dataTravelwiki555: ", data);
 
   return (
     <Layout
@@ -34,11 +35,21 @@ const DynamicTravelWiki = ({
     >
       <HeroSection data={data?.image_hero?.header_section} locale={language} />
 
+      <div className="max-lg:mt-[50px]">
+        <SectionHeader
+          title={data?.tagline?.[language]}
+          subtitle={data?.title?.[language]}
+          centerLine
+        />
+      </div>
+
       {/* <WikiSection wikiData={wikiData} filterWiki={filterWikiData} /> */}
-      <FilterCountry tabs={wikiTabs} />
-      <div className="flex lg:flex-row flex-col justify-between gap-10 md:px-20 px-5 md:mt-[68px] mt-[50px]">
-        <Sidebar sections={sections} />
-        <Content sections={sections} />
+      <div className="md:mt-12 mt-[50px]">
+        <FilterCountry tabs={wikiTabs} />
+      </div>
+      <div className="flex xl:flex-row flex-col justify-between gap-10 md:px-20 px-5 md:mt-[68px] mt-[50px]">
+        <Sidebar sections={sections} locale={language} />
+        <Content sections={sections} locale={language} />
       </div>
       <FeatureTourSection data={suggested_tour} locale={language} />
 
