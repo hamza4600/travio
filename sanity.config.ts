@@ -17,6 +17,7 @@ import {schemaTypes} from './sanity/schema'
 // const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
 
 const CustomDocumentTypes = new Set(['page', 'article', 'blog_page', 'tag'])
+// main blogs Page
 
 const Singletons = new Set(['tailor_your_tour', 'globals', 'newsletter_section'])
 

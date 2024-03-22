@@ -34,6 +34,7 @@ export default defineType({
       description: 'The slug for the blog',
       type: 'slug',
     }),
+    // adding tags to the blog so we can filter them
     defineField({
       name: 'tags',
       title: 'Tags',
@@ -159,6 +160,56 @@ export default defineType({
               }
             },
           },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'sidebar',
+      title: 'Sidebar',
+      description: 'Sidebar for the page',
+      type: 'blog_sidebar',
+    }),
+    // related toures 
+    defineField({
+      name: 'suggested_tour',
+      title: 'Suggested Tours',
+      description: 'Suggested Tours for the Page',
+      type: 'featured_tours_section',
+    }),
+    // related articles 
+    defineField({
+      
+      name: 'related_articles',
+      title: 'Related Articles',
+      description: 'Related Articles for the Page',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+      fields: [
+        defineField({
+          name: 'tagline',
+          title: 'Tagline',
+          type: 'locale_string',
+        }),
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'locale_string',
+        }),
+        defineField({
+          name: 'articles',
+          title: 'Articles',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              name: 'article',
+              title: 'Article',
+              type: 'reference',
+              to: [{ type: 'article' }],
+            }),
+          ],
         }),
       ],
     }),

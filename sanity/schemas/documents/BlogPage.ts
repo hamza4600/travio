@@ -23,12 +23,12 @@ export default defineType({
       description: 'Slug for the page',
       type: 'slug',
     }),
-    // defineField({
-    //   name: 'promo_banner',
-    //   title: 'Promo Banner',
-    //   description: 'Promo banner for the hero section',
-    //   type: 'promo_banner',
-    // }),
+    defineField({
+      name: 'is_country_blogs',
+      title: 'Is Country Blogs',
+      description: 'Whether the page is a country blogs page',
+      type: 'boolean',
+    }),
     defineField({
       name: 'is_article',
       title: 'Is article',
@@ -54,12 +54,6 @@ export default defineType({
       description: 'Sections for the page',
       type: 'array',
       of: BlogSections.map((blog_section) => ({ type: blog_section })),
-    }),
-    defineField({
-      name: 'sidebar',
-      title: 'Sidebar',
-      description: 'Sidebar for the page',
-      type: 'blog_sidebar',
     }),
   ],
   preview: {
