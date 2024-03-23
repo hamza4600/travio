@@ -109,7 +109,9 @@ const FlexibleThingsForTour = dynamic(
   () => import("@/components/sections/FlexibleThings/ForTourSection")
 );
 
-// const PriceList = dynamic(() => import("@/components/pages/DynamicTourPage"));
+const PriceList = dynamic(
+  () => import("@/components/pages/DynamicTourPage/PriceList")
+);
 
 const WhatsIncludedSection = dynamic(
   () => import("@/components/pages/DynamicTourPage/InccludedInTour")
@@ -186,7 +188,7 @@ export const TourSectionsMap: {
   memorable_experiences_section: MemorableExperiencesSection,
   gallery_section: TourGallerySection,
   whats_included_section: WhatsIncludedSection,
-  // pricing_section: PriceList,
+  pricing_section: PriceList,
   accommodation_types_section: AccommdationTypesSection,
   feature_section: FlexibleThingsForTour,
   featured_tours_section: FeatureTourSection,

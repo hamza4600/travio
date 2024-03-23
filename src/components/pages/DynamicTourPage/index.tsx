@@ -12,9 +12,6 @@ import { TourSectionsMap } from "@/components/sections";
 // );
 
 const OverViewCard = dynamic(() => import("./Overview"));
-// import PriceList from "./PriceList";
-
-// import TourGallery from "@/components/molecules/TourGallery";
 
 const HeroSection = dynamic(() => import("./HeroSection"));
 

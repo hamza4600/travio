@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Container from "@/components/molecules/container";
 import Layout from "@/components/layout/index";
 import ArticleHeroSection from "./ArticleHeroSection";
@@ -15,15 +15,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import RelatedArticles from "./RelatedArticles";
 import { Facebook, Messenger, Twitter, WhatpsApp } from "./style";
+import useWindowSize from "@/hooks/useWindows";
 
 export default function CurrentBlogPage({ locale, pageData }) {
   const { layout } = pageData || {};
 
-  // const [showBlogSidebar, setShowBlogSidebar] = useState(false);
+  const [showBlogSidebar, setShowBlogSidebar] = useState(false);
+  const windows = useWindowSize();
+  const isLaptop = windows.width < 1284;
 
-  // function OpenSidebar() {
-  //   setShowBlogSidebar(!showBlogSidebar);
-  // }
+  function OpenSidebar() {
+    setShowBlogSidebar(!showBlogSidebar);
+  }
 
   return (
     <Layout
@@ -33,16 +36,17 @@ export default function CurrentBlogPage({ locale, pageData }) {
       promo_banner={layout?.banner}
     >
       <Container className="font-satoshi">
-        <div className="flex bg-white w-full xl:pr-20">
-          <div className="">
+        <div className="flex gap-8 bg-white w-full xl:pr-20">
+          <div className="w-full max-w-[1000px]">
             <ArticleHeroSection
               data={articleDummyData}
-              // openSidebar={OpenSidebar}
+              openSidebar={OpenSidebar}
             />
+
             <InThisPost data={postDummy} />
 
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
-              <p className="text-primary">Share</p>
+              <p className="lg:hidden text-primary">Share</p>
               <div className="lg:hidden flex items-center justify-center gap-1">
                 <Facebook />
                 <Twitter />
@@ -54,16 +58,17 @@ export default function CurrentBlogPage({ locale, pageData }) {
             </div>
           </div>
 
-          {/* {showBlogSidebar && (
+          {showBlogSidebar && isLaptop ? (
             <div
-              className={`${!showBlogSidebar && "max-xl:hidden z-20"}  pr-20`}
+              className={`${"absolute z-30 ml-auto right-5 max-xl:top-[140px] max-lg:top-[100px] max-md:top-[80px]"}`}
             >
               <BlogSidebar />
             </div>
-          )} */}
-          <div className={"max-xl:hidden z-20  pr-20"}>
-            <BlogSidebar />
-          </div>
+          ) : (
+            <div className={"max-xl:hidden z-20"}>
+              <BlogSidebar />
+            </div>
+          )}
         </div>
         <div>
           <BlogReview data={blogRev} />

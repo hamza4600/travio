@@ -4,15 +4,15 @@ import React from "react";
 
 const ArticleHeroSection = ({
   data,
-}: // openSidebar,
-{
+  openSidebar,
+}: {
   data: any;
-  // openSidebar: () => void;
+  openSidebar: () => void;
 }) => {
   return (
     <div className="mt-[30px]">
       <div className="flex justify-between">
-        <div className="md:px-20 px-5">
+        <div className="lg:px-20 px-5">
           <h1 className="md:text-[40px] md:leading-[50px] text-[20xp] leading-[30px] text-darkblue font-bold">
             {data.title?.en}
           </h1>
@@ -24,14 +24,14 @@ const ArticleHeroSection = ({
           </h2>
         </div>
         <button
-          // onClick={openSidebar}
-          className="bg-[#3FA9F5] flex items-center max-w-5 h-[60px] rounded-l-[4px] hover:cursor-pointer xl:hidden"
+          onClick={openSidebar}
+          className="bg-[#3FA9F5] z-50 flex items-center max-w-5 h-[60px] rounded-l-[4px] hover:cursor-pointer xl:hidden"
         >
           <DropDown />
         </button>
       </div>
 
-      <div className="flex gap-[18px] items-center px-5">
+      <div className="flex gap-[18px] items-center pl-5">
         <div className="w-full max-lg:hidden max-w-[44px]">
           <div className="bg-primary py-2.5 flex flex-col gap-[10px] items-center">
             <img src={"/demo/share.png"} alt="share" />
@@ -59,7 +59,7 @@ const ArticleHeroSection = ({
         />
       </div>
 
-      <p className="mt-7 md:px-20 px-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
+      <p className="mt-7 lg:pl-20 pl-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
         {" "}
         {data.introduction?.en}{" "}
       </p>

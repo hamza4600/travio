@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { localizedString } from "../../../../sanity/lib/client";
+// import { localizedString } from "../../../../sanity/lib/client";
 
 function LatestArticle(props: {
   image: string;
@@ -29,33 +29,39 @@ function LatestArticle(props: {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <p className="font-semibold text-lg">{title}</p>
+        <p className="font-semibold md:text-base text-[12px] leading-[18px]">
+          {title}
+        </p>
         {tourDetails && (
           <>
             <div className="grid grid-cols-2">
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <Image
                   src="/calendar.svg"
                   height={18}
                   width={18}
                   alt="calendar"
                 />
-                <p>{tourDetails.days} days</p>
+                <p className="md:text-[14px] font-medium md:leading-[22px] text-[10px] leading-[18px]">
+                  {tourDetails.days} days
+                </p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <Image src="/globe.svg" height={18} width={18} alt="calendar" />
-                <p>{tourDetails.countries} countries</p>
+                <p className="md:text-[14px] font-medium md:leading-[22px] text-[10px] leading-[18px]">
+                  {tourDetails.countries} countries
+                </p>
               </div>
             </div>
             <div className="flex justify-between">
-              <p className="line-through text-gray">
-                {(localizedString(tourDetails.price.currency_symbol) || "") +
-                  (tourDetails.price.initial_price || "")}
+              <p className="line-through font-bold text-gray md:text-[12px] text-[10px] leading-5">
+                {/* {(localizedString(tourDetails.price.currency_symbol) || "") + */}
+                $ {tourDetails.price.initial_price || ""}
               </p>
-              <p className="text-red font-semibold">
+              <p className="font-bold text-destructive md:text-[12px] text-[10px] leading-5">
                 From{" "}
-                {(localizedString(tourDetails.price.currency_symbol) || "") +
-                  (tourDetails.price.discounted_price || "")}
+                {/* {(localizedString(tourDetails.price.currency_symbol) || "") + */}
+                ${tourDetails.price.discounted_price || ""}
               </p>
             </div>
           </>

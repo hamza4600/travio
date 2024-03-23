@@ -316,12 +316,12 @@ function PriceList({
                         MAPPINGS[price.availability || "Available"].color
                       } ${selected === index ? "opacity-0" : ""}`}
                     >
-                      <p>$ {price.currentPrice}</p>
+                      {/* <p>$ {price.currentPrice}</p> */}
                       {price.actualPrice && (
                         <p
                           className={`line-through font-satoshi text-gray text-[8px] font-bold md:text-xs`}
                         >
-                          $ {price.actualPrice}
+                          {/* $ {price.actualPrice} */}
                         </p>
                       )}
                     </div>
@@ -346,7 +346,7 @@ function PriceList({
                             collapsed ? "text-base" : "text-4xl"
                           }`}
                         >
-                          $ {price.currentPrice}
+                          {/* $ {price.currentPrice} */}
                         </h1>
                         {price.actualPrice && (
                           <h1
@@ -356,14 +356,15 @@ function PriceList({
                                 : "text-2xl"
                             }`}
                           >
-                            $ {price.actualPrice}
+                            {/* $ {price.actualPrice} */}
                           </h1>
                         )}
                         {collapsed && (
                           <Link
-                            href={`/tours/${slug}/payment?from=${new Date(
-                              price.from
-                            ).getTime()}&to=${new Date(price.to).getTime()}`}
+                            href={"#"}
+                            // href={`/tours/${slug}/payment?from=${new Date(
+                            //   price.from
+                            // ).getTime()}&to=${new Date(price.to).getTime()}`}
                             className={`flex items-center ml-auto`}
                           >
                             <Button
@@ -394,9 +395,10 @@ function PriceList({
                     </div>
                     {!collapsed && (
                       <Link
-                        href={`/tours/${slug}/payment?from=${new Date(
-                          price.from
-                        ).getTime()}&to=${new Date(price.to).getTime()}`}
+                        href={"#"}
+                        // href={`/tours/${slug}/payment?from=${new Date(
+                        //   price.from
+                        // ).getTime()}&to=${new Date(price.to).getTime()}`}
                         className={`flex items-center`}
                       >
                         <Button
