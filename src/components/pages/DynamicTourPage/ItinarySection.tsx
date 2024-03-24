@@ -17,19 +17,24 @@ export default function ItinerarySection({
   locale: string;
 }) {
   return (
-    <Container className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7">
+    <Container
+      className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7"
+      // style={{ overflowY: "auto", maxHeight: "calc(100vh - 100px)" }}
+    >
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}
         centerLine
       />
 
-      <div className="flex lggap-7 gap-[30px] max-lg:flex-col-reverse">
+      <div className="flex lg:gap-7 gap-[30px] max-lg:flex-col-reverse">
         {/* Travel Schedule */}
         <TravelSchedule data={data?.itinerary_day_cards} locale={locale} />
         {/* Enquire Tab */}
 
+        {/* <div className="sticky min-w-full"> */}
         <EnquireTab />
+        {/* </div> */}
       </div>
     </Container>
   );
@@ -96,8 +101,9 @@ const EnquireTab = () => {
   const setValue = (value: string, key: string) => {
     setFormData({ ...formData, [key]: value });
   };
+
   return (
-    <div className="w-[282px] max-lg:hidden max-lg:min-w-full font-satoshi rounded-2xl border text-white overflow-hidden bg-primary lg:mt-12">
+    <div className="w-[282px] max-lg:hidden max-lg:min-w-full h-fit font-satoshi rounded-2xl border text-white overflow-hidden bg-primary lg:mt-12">
       <div className="py-2 px-5 bg-[#1A4767]">
         <div className="flex justify-between">
           <div className="">
