@@ -1,25 +1,12 @@
 "use client";
 
 import Layout from "@/components/layout";
-import BlogHeroSection from "@/components/sections/BlogHeroSection";
-import { hrData } from "../Dynamic-Blog-Page/data";
-import FeatureBlogs from "./FeatureBlogs";
-import FeatureTopBlogSection from "@/components/sections/FeatureTopBlogSection";
-import { featureBlogSection, intesetData } from "./data";
-import InterestSection from "@/components/sections/InterestSection";
-import NewsletterSection from "@/components/sections/NewsletterSection";
 
-// import Slicer from "../../../../sanity/slicer";
-// import { BlogPageSectionsMap } from "@/components/sections";
+import Slicer from "../../../../sanity/slicer";
+import { BlogPageSectionsMap } from "@/components/sections";
+// import NewsletterSection from "@/components/sections/NewsletterSection";
 
-const news = {
-  title: { en: "Subscribe now for Multiple Tours & Latest blogs!" },
-  subtitle: {
-    en: "Be the first to know about our latest travel deals, special promotions, and insider tips",
-  },
-};
-
-const MainBlogPage = ({ language, pageData }) => {
+const MainBlogPage = ({ language, pageData, newsLetterSection }) => {
   const { layout, data } = pageData || {};
 
   console.log("blogPageData: ", data);
@@ -32,22 +19,16 @@ const MainBlogPage = ({ language, pageData }) => {
       promo_banner={layout?.banner}
     >
       {/* MainBlog Page */}
-      <BlogHeroSection data={hrData} />
-      <FeatureBlogs />
-      <FeatureTopBlogSection data={featureBlogSection} locale={language} />
-      <InterestSection data={intesetData} locale={language} />
-      <NewsletterSection data={news} locale={language} />
-
-      {/* <Slicer
+      <Slicer
         locale={language}
-        sections={
-            data?.sections?.map((sec) =>
-              sec?._type === 'all_blogs_section' ? { ...sec, blogs: allBlogs } : sec
-            ) as any
-        }
-        sections={pageData?.sections}
         components={BlogPageSectionsMap}
-      /> */}
+        sections={
+          data?.sections?.map((sec) =>
+            sec?._type === "all_blogs_section" ? { ...sec, blogs: sec } : sec
+          ) as any
+        }
+      />
+      {/* <NewsletterSection data={newsLetterSection} locale={language} /> */}
     </Layout>
   );
 };
