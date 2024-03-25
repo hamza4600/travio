@@ -41,7 +41,6 @@ export const revalidate = 3600;
 
 const Index = async ({ params }: any) => {
   const { handle, language } = params;
-  console.log("handle: ", handle);  
   const firstSlug = handle[0];
 
   const pageData = await getWikiPage(firstSlug);

@@ -18,8 +18,8 @@ import { Facebook, Messenger, Twitter, WhatpsApp } from "./style";
 import useWindowSize from "@/hooks/useWindows";
 
 export default function CurrentBlogPage({ locale, pageData }) {
-  const { layout } = pageData || {};
-
+  const { layout, data } = pageData || {};
+  console.log("dataBlogPage: ", data);
   const [showBlogSidebar, setShowBlogSidebar] = useState(false);
   const windows = useWindowSize();
   const isLaptop = windows.width < 1284;
