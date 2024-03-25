@@ -4,14 +4,11 @@ import { CLIENT } from './sanity.const';
     
 export async function getDynamicBlogPage(slug: string) {
 
-    // const wikiPageQuery =  `*[_type == "travel_wiki"  && slug.current == "/${slug}"][0]{
-    //     ...,
-    //     suggested_tours[]->
-    //   }`
-
+  const blogPageQuery =  `*[_type == "article"  && slug.current == "/${slug}"][0]`
 
     const query = `{
         "layout":  ${pageLayout},
+        "data":  ${blogPageQuery}
     }`
 
     return await CLIENT.fetch(query)

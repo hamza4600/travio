@@ -20,9 +20,9 @@ const news = {
 };
 
 const MainBlogPage = ({ language, pageData }) => {
-  const { layout } = pageData || {};
+  const { layout, data } = pageData || {};
 
-  console.log("blogPageData: ", pageData);
+  console.log("blogPageData: ", data);
 
   return (
     <Layout

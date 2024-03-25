@@ -17,8 +17,8 @@ import RelatedArticles from "./RelatedArticles";
 import { Facebook, Messenger, Twitter, WhatpsApp } from "./style";
 
 export default function CurrentBlogPage({ locale, pageData }) {
-  const { layout } = pageData || {};
-
+  const { layout, data } = pageData || {};
+  console.log("dataBlogPage: ", data);
   // const [showBlogSidebar, setShowBlogSidebar] = useState(false);
 
   // function OpenSidebar() {
