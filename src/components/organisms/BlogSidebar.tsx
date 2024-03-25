@@ -48,8 +48,7 @@ function BlogSidebar() {
   ];
   const relatedTours: any = [
     {
-      title:
-        "Luxor and Karnak Temples Exploration Luxor and Karnak Temples Exploration",
+      title: "Luxor and Karnak Temples Exploration",
       link: "/",
       image:
         "https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&q=60",
@@ -96,8 +95,8 @@ function BlogSidebar() {
   ];
   const tags = ["India", "Jaipur", "Rajasthan", "Monuments"];
   return (
-    <Container>
-      <div className="bg-primary w-[346px] mt-36 px-3 py-10 rounded-md">
+    <Container className="text-darkblue">
+      <div className="bg-primary md:w-full md:max-w-[346px] mt-36 px-3 py-10 rounded-md">
         {/* Search */}
         <h4 className="font-semibold text-xl">Search articles</h4>
         <div className="border-[#FFBB0B] rounded-full my-1 w-[66px] md:border-b-[3px] border-b-2" />
@@ -120,7 +119,9 @@ function BlogSidebar() {
             return <LatestArticle {...article} key={index} />;
           })}
         </div>
+
         <hr className="my-5 opacity-40 text-gray" />
+
         {/* Related Tours */}
         <h4 className="font-semibold text-xl">Related Tours</h4>
         <div className="border-[#FFBB0B] rounded-full my-1 w-[66px] md:border-b-[3px] border-b-2" />
@@ -129,14 +130,18 @@ function BlogSidebar() {
             return <LatestArticle {...article} key={index} />;
           })}
         </div>
+
         <hr className="my-5 opacity-40 text-gray" />
+
         {/* Own tour */}
         <h4 className="font-semibold text-xl">Want to create your own tour</h4>
         <div className="border md:border-b-[3px] w-[66px] border-b-2 rounded-full my-1 border-[#FFBB0B]" />
         <Button variant={"sky"} className="my-5 py-3 w-full">
           Tailor your tour
         </Button>
+
         <hr className="my-5 opacity-40 text-gray" />
+
         {/* Tagd */}
         <h4 className="font-semibold text-xl">Tags</h4>
         <div className="border md:border-b-[3px] w-[66px] border-b-2 rounded-full my-1 border-[#FFBB0B]" />

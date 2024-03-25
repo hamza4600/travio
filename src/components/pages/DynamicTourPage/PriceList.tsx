@@ -163,11 +163,11 @@ function PriceList({
 
   return (
     <Container
-      className=" bg-[rgba(20,13,49,0.02)] max-w-[970] lg:bg-transparent px-4"
+      className=" bg-[rgba(20,13,49,0.02)] max-w-[970] lg:bg-transparent md:px-20 px-5"
       id="price-list"
     >
       <div
-        className={` transition-all font-semibold rounded-2xl lg:bg-[rgba(20,13,49,0.02)] bg-transparent bg-opacity-60 w-full  max-w-[970px] py-3 lg:px-5 px-0`}
+        className={` transition-all font-semibold rounded-2xl lg:bg-[rgba(20,13,49,0.02)] bg-transparent bg-opacity-60 w-full  max-w-[1024px] py-3 lg:px-5 px-0`}
       >
         <div className="flex-col font-satoshi  lg:flex-row  flex justify-between">
           <div className="gap-3 flex flex-col my-2">
@@ -176,7 +176,7 @@ function PriceList({
               {/* <span ></span>{" "} */}
               <Link
                 className="text-[#3FA9F5]"
-                href={locale + "/tailor_your_tour"}
+                href={"/" + locale + "/tailor_your_tour"}
               >
                 here
               </Link>
@@ -316,12 +316,12 @@ function PriceList({
                         MAPPINGS[price.availability || "Available"].color
                       } ${selected === index ? "opacity-0" : ""}`}
                     >
-                      <p>$ {price.currentPrice}</p>
+                      <p>$ {price.currentPrice?.[locale]}</p>
                       {price.actualPrice && (
                         <p
                           className={`line-through font-satoshi text-gray text-[8px] font-bold md:text-xs`}
                         >
-                          $ {price.actualPrice}
+                          $ {price.actualPrice?.[locale]}
                         </p>
                       )}
                     </div>
@@ -346,7 +346,7 @@ function PriceList({
                             collapsed ? "text-base" : "text-4xl"
                           }`}
                         >
-                          $ {price.currentPrice}
+                          $ {price.currentPrice?.[locale]}
                         </h1>
                         {price.actualPrice && (
                           <h1
@@ -356,14 +356,15 @@ function PriceList({
                                 : "text-2xl"
                             }`}
                           >
-                            $ {price.actualPrice}
+                            $ {price.actualPrice?.[locale]}
                           </h1>
                         )}
                         {collapsed && (
                           <Link
-                            href={`/tours/${slug}/payment?from=${new Date(
-                              price.from
-                            ).getTime()}&to=${new Date(price.to).getTime()}`}
+                            href={"#"}
+                            // href={`/tours/${slug}/payment?from=${new Date(
+                            //   price.from
+                            // ).getTime()}&to=${new Date(price.to).getTime()}`}
                             className={`flex items-center ml-auto`}
                           >
                             <Button
@@ -394,9 +395,10 @@ function PriceList({
                     </div>
                     {!collapsed && (
                       <Link
-                        href={`/tours/${slug}/payment?from=${new Date(
-                          price.from
-                        ).getTime()}&to=${new Date(price.to).getTime()}`}
+                        href={"#"}
+                        // href={`/tours/${slug}/payment?from=${new Date(
+                        //   price.from
+                        // ).getTime()}&to=${new Date(price.to).getTime()}`}
                         className={`flex items-center`}
                       >
                         <Button

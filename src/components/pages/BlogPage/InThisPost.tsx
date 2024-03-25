@@ -3,7 +3,7 @@ import React from "react";
 
 const InThisPost = ({ data }: any) => {
   return (
-    <div className="md:px-20 px-5 ">
+    <div className="lg:px-20 px-5 ">
       <h3 className="mt-5 font-[500] text-gray">
         Here are some of the most remarkable spots to explore in Old Cairo:
       </h3>
@@ -13,7 +13,7 @@ const InThisPost = ({ data }: any) => {
         </h2>
         <div className="w-[85px] md:w-[65px] my-2 mx-auto md:border-b-[3px] border-b-2 border-[#FFBB0B] h-1 rounded-full md:rounded-[3px] mb-5" />
 
-        <div className="mt-6 grid md:px-40 grid-flow-row  lg:grid-cols-2 gap-y-3  m-auto">
+        <div className="mt-[18px] grid md:px-40 grid-flow-row  lg:grid-cols-2 gap-y-3  m-auto">
           {data.map((item: any, index: any) => {
             return (
               <div className="flex " key={index}>

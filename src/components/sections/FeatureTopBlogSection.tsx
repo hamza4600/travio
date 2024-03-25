@@ -4,6 +4,7 @@ import Link from "next/link";
 // import { urlFor } from "../../../sanity/lib/client";
 
 import Container from "../molecules/container";
+import { urlFor } from "../../../sanity/lib/client";
 
 const FeatureTopBlogSection = (props: any) => {
   const {
@@ -38,14 +39,14 @@ const FeatureTopBlogSection = (props: any) => {
             >
               <div
                 className={
-                  "absolute bottom-2.5 font-bold lg:text-base text-xs text-white left-3 bg-blue rounded-2xl px-4 py-1.5"
+                  "absolute bottom-2.5 font-bold lg:text-base text-[10px] leading-3 text-white left-3 bg-[#3FA9F5] rounded-2xl px-4 py-1.5"
                 }
               >
                 {card?.name?.[props.locale]}
               </div>
               {card.meta_data?.meta_image && (
                 <Image
-                  src={card.meta_data?.meta_image}
+                  src={urlFor(card.meta_data?.meta_image)}
                   className={"w-full h-full object-cover"}
                   height={224}
                   width={300}

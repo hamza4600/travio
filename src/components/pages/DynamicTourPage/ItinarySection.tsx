@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Country } from "country-state-city";
 
@@ -16,21 +16,25 @@ export default function ItinerarySection({
   data: any;
   locale: string;
 }) {
-  console.log("locale: ", locale);
   return (
-    <Container className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7">
+    <Container
+      className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7"
+      // style={{ overflowY: "auto", maxHeight: "calc(100vh - 100px)" }}
+    >
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}
         centerLine
       />
 
-      <div className="flex lggap-7 gap-[30px] max-lg:flex-col-reverse">
+      <div className="flex lg:gap-7 gap-[30px] max-lg:flex-col-reverse">
         {/* Travel Schedule */}
         <TravelSchedule data={data?.itinerary_day_cards} locale={locale} />
         {/* Enquire Tab */}
 
+        {/* <div className="sticky min-w-full"> */}
         <EnquireTab />
+        {/* </div> */}
       </div>
     </Container>
   );
@@ -93,11 +97,13 @@ const EnquireTab = () => {
     mobileCode: "+1",
     mobileNumber: "",
   });
+
   const setValue = (value: string, key: string) => {
     setFormData({ ...formData, [key]: value });
   };
+
   return (
-    <div className="w-[282px] max-lg:hidden max-lg:min-w-full font-satoshi h-fit rounded-2xl border text-white overflow-hidden bg-primary lg:mt-12">
+    <div className="w-[282px] max-lg:hidden max-lg:min-w-full h-fit font-satoshi rounded-2xl border text-white overflow-hidden bg-primary lg:mt-12">
       <div className="py-2 px-5 bg-[#1A4767]">
         <div className="flex justify-between">
           <div className="">
@@ -321,6 +327,19 @@ const EnquireTab = () => {
   );
 };
 
+const optionalAct = [
+  {
+    img: "/demo/activities.png",
+    title: "Cairo - Coptic Museum (entrance fee) - EGP150",
+    desc: "Coptic Museum",
+  },
+  {
+    img: "/demo/activities.png",
+    title: "Cairo - Coptic Museum (entrance fee) - EGP150",
+    desc: "Coptic Museum",
+  },
+];
+
 const Expandable = ({
   data,
   isOpen,
@@ -332,6 +351,7 @@ const Expandable = ({
   data: any;
   locale: string;
 }) => {
+  console.log("Iterniray Data: ", data);
   return (
     <div>
       <button
@@ -369,45 +389,103 @@ const Expandable = ({
             />
           </div>
           <p className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi">
-            {data.description?.en}
+            {data.description?.[locale]}
           </p>
         </div>
         <div className="flex flex-col gap-6">
           {data.itinerary_details_lists?.map((list, index) => (
             <ExpandableList
               key={index}
-              title={list.title?.en ?? ""}
+              title={list.title?.[locale] ?? ""}
+              locale={locale}
               icon={list.icon}
               itinerary_details_list_items={list?.itinerary_details_list_items}
             />
           ))}
-          <ExpandableList
+          <div className="flex gap-2">
+            <img src="/demo/add (1) 1.png" className="w-7 h-7" alt="" />
+            <div>
+              <p className="flex-1 md:text-xl text-base font-medium text-darkblue tracking-tight font-satoshi">
+                Optional Activities
+              </p>
+              <div className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
+            </div>
+          </div>
+          <div className="flex gap-6 max-md:flex-col max-md:gap-3">
+            {optionalAct.map((data, i: number) => (
+              <OptionalActivites
+                key={i}
+                title={data.title}
+                img={data.img}
+                desc={data.desc}
+              />
+            ))}
+          </div>
+          {/* <ExpandableList
             key={data.itinerary_details_lists?.length}
             title="Special Information"
+            locale={locale}
             icon={data.special_information?.icon}
             content={data.special_information?.description}
-          />
+          /> */}
+
+          <div></div>
         </div>
       </div>
     </div>
   );
 };
+
+const OptionalActivites = ({ title, img, desc }) => {
+  return (
+    <div
+      style={{ boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)" }}
+      className="max-w-[302px] font-satoshi text-darkblue 
+     rounded-[16px]"
+    >
+      <img src={img} alt="optioanl" />
+
+      <div className="flex flex-col gap-3 pt-4 px-4 pb-7">
+        <p className=" md:text-xl text-darkblue font-bold">{title}</p>
+
+        <div className="flex gap-2.5 items-center max-md:hidden">
+          <div className="flex gap-[5px] ">
+            <div className="w-3.5 h-3.5 bg-[#3FA9F5] rounded-full" />
+          </div>
+          <p className="text-gray">Light</p>
+        </div>
+
+        <div className="mt-3.5 flex gap-2 md:hidden ">
+          <img src="/demo/capital.png" className="w-5 h-5" alt="" />
+          <p className="text-gray">{desc}</p>
+        </div>
+
+        <p className="text-primary mt-7 font-bold md:hidden underline underline-offset-2 text-[14px] leading-5">
+          Read More
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const ExpandableList = ({
   title,
   icon,
   itinerary_details_list_items,
   content,
+  locale,
 }: {
   title: string;
-  icon: string;
+  icon: any;
   itinerary_details_list_items?: (any | undefined)[] | undefined;
   content?: any;
+  locale: string;
 }) => {
   return (
     <div className="font-satoshi">
       <div className="flex gap-2">
         <div className="relative w-7 h-7">
-          <img alt="" src={icon} className="object-center" />
+          <img alt="" src={urlFor(icon)} className="object-center" />
         </div>
         <div className="flex flex-col">
           <p className="flex-1 md:text-xl text-base font-medium text-darkblue tracking-tight font-satoshi">
@@ -423,7 +501,7 @@ const ExpandableList = ({
               key={index}
               className="flex flex-nowrap items-center text-base font-normal"
             >
-              {<Dot size={"30"} />} {item?.en}
+              {<Dot size={"30"} />} {item?.[locale]}
             </div>
           );
         })}

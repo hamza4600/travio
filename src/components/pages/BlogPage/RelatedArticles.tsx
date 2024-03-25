@@ -6,7 +6,7 @@ import SectionHeader from "@/components/molecules/secHeader";
 
 const RelatedArticles = () => {
   return (
-    <div className="h-fit relative md:mt-[70px] mt-[50px] md:px-20 px-5 md:pb-[78px] pb-[90px]">
+    <div className="h-fit relative md:mt-[70px] mt-[50px] lg:px-20 px-5 md:pb-[78px] pb-[90px]">
       <SectionHeader title="Articles" subtitle="Related Articles" centerLine />
       <Swiper
         className={"gap-6 pb-3 md:mt-[48px] mt-[30px]"}
