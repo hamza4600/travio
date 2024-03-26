@@ -32,7 +32,7 @@ export default function AccommdationTypesSection({
   }, [swiper]);
 
   return (
-    <Container className="flex flex-col py-7  mx-auto max-w-[1312px] px-4 relative gap-10">
+    <Container className="flex flex-col mx-auto max-w-[1312px] px-4 relative gap-10">
       <div className=" w-full">
         <div className=" pl-5 md:pl-0">
           <h2 className="text-darkblue font-satoshi font-bold text-xl lg:text-2xl text-c">

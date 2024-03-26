@@ -106,7 +106,7 @@ const HotelChoosing = ({
   //   const { locale } = useContext(LocaleContext);
   return (
     <div className="bg-darkblue/[0.02] border border-darkblue/10 rounded-2xl overflow-hidden">
-      <div className="py-2 bg-blue">
+      <div className="py-2 bg-[#3FA9F5]">
         <p className="text-center text-white font-bold text-xl">
           Hotel choosing
         </p>
@@ -138,7 +138,7 @@ const HotelChoosing = ({
                 rules={{ required: true }}
               />
               {room.price?.discounted_price && (
-                <p className="text-blue font-medium">
+                <p className="text-primary font-medium">
                   {room.price?.currency_symbol?.[locale]}
                   {room.price?.discounted_price?.[locale]}
                 </p>
@@ -171,17 +171,15 @@ const RomeType = ({
 
   return (
     <div className="bg-darkblue/[0.02] border border-darkblue/10 rounded-2xl overflow-hidden">
-      <div className="py-2 bg-blue">
-        <p className="text-center text-white font-bold text-xl">
-          Hotel choosing
-        </p>
+      <div className="py-2 bg-[#3FA9F5]">
+        <p className="text-center text-white font-bold text-xl">Room Type</p>
       </div>
       <div className="py-7 px-10 flex flex-col divide-y divide-yellow">
         {room_sharing_options?.map((option, index) => (
           <div key={index} className="flex justify-between gap-2 py-[18px]">
             <div className="flex gap-5">
               <div className="w-[120px] h-[84px] flex gap-2 border rounded border-blue items-center justify-center relative">
-                <Image key={index} alt="" src={option.image} fill />
+                <Image key={index} alt="" src={urlFor(option.image)} fill />
               </div>
               <div className="flex flex-col gap-1">
                 <p className="font-bold text-darkblue text-xl">
@@ -201,7 +199,7 @@ const RomeType = ({
                 rules={{ required: true }}
               />
               {option.price?.discounted_price && (
-                <p className="text-blue font-medium">
+                <p className="text-primary font-medium">
                   {option.price.currency_symbol?.[locale]}
                   {option.price.discounted_price?.[locale]}
                 </p>
@@ -276,17 +274,26 @@ export const OptionalVisits = ({
 
   return (
     <div className="bg-darkblue/[0.02] border border-darkblue/10 rounded-2xl overflow-hidden">
-      <div className="py-2 bg-blue">
-        <p className="text-center text-white font-bold text-xl">
-          Hotel choosing
-        </p>
+      <div className="py-2 bg-[#3FA9F5]">
+        <div className="flex items-center justify-center gap-2">
+          <Image
+            src={"/demo/add (1) 1.png"}
+            alt="plus"
+            className="max-md:w-5 max-md:h-5"
+            width={28}
+            height={28}
+          />
+          <p className="text-center text-white font-bold text-xl">
+            Optional Visit
+          </p>
+        </div>
       </div>
       {data?.map((place, index) => {
         const count = field.value?.[place._key]?.filter(Boolean).length || 0;
         return (
           <div key={place._key}>
             <div className="flex justify-between items-center px-10 pt-10">
-              <p className="text-xl font-bold text-blue">
+              <p className="text-xl font-bold text-primary">
                 {place.city_name?.[locale]}
               </p>
               <p className="text-base font-bold text-red">
@@ -302,18 +309,20 @@ export const OptionalVisits = ({
                     className="flex justify-between gap-2 py-[18px]"
                   >
                     <div className="flex gap-5">
-                      <div className="w-[120px] h-[84px] flex gap-2 border rounded border-blue items-center justify-center">
-                        {plan.image && (
-                          <Image
-                            key={index}
-                            alt={localizedString(plan.title)}
-                            src={urlFor(plan.image)}
-                            height={100}
-                            width={100}
-                            className="w-full h-full object-cover"
-                          />
-                        )}
-                      </div>
+                      {/* <div className="w-[120px] h-[84px] flex gap-2 border rounded border-blue items-center justify-center"> */}
+
+                      {plan.image && (
+                        <Image
+                          key={index}
+                          alt={localizedString(plan.title)}
+                          src={urlFor(plan.image)}
+                          height={120}
+                          width={102}
+                          className="rounded-[8px] max-md:w-[69px] max-md:h-12"
+                        />
+                      )}
+
+                      {/* </div> */}
                       <div className="flex flex-col gap-1">
                         <p className="font-bold text-darkblue text-xl">
                           {localizedString(plan.title)}
@@ -334,7 +343,7 @@ export const OptionalVisits = ({
                         control={localControl}
                       />
                       {plan.price?.discounted_price && (
-                        <p className="text-blue font-medium whitespace-nowrap">
+                        <p className="text-primary font-medium whitespace-nowrap">
                           {localizedString(plan.price.currency_symbol)}{" "}
                           {localizedNumber(plan.price?.discounted_price)}
                         </p>
@@ -350,7 +359,7 @@ export const OptionalVisits = ({
                         o === place._key ? undefined : place._key
                       )
                     }
-                    className="text-blue flex items-center gap-3 mx-auto font-bold"
+                    className="text-primary flex items-center gap-3 mx-auto font-bold"
                   >
                     View {viewMore === place._key ? "Less" : "More"}{" "}
                     {viewMore === place._key ? <CaretUp /> : <CaretDown />}

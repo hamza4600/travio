@@ -8,13 +8,13 @@ const HeroSection = ({ data, locale }) => {
       <div className="md:relative">
         <img
           className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] max-sm:hidden"
-          loading="lazy"
+          // loading="lazy"
           src={urlFor(data?.image?.asset?._ref)}
           alt={data?.image?.alt?.[locale]}
         />
         <img
           className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] sm:hidden"
-          loading="lazy"
+          // loading="lazy"
           src={urlFor(data?.image?.mobile?.asset?._ref)}
           alt={data?.image?.alt?.[locale]}
         />
@@ -29,16 +29,19 @@ const HeroSection = ({ data, locale }) => {
       </div>
 
       <div className="flex flex-col gap-7 max-lg:hidden">
-        <img
-          className="h-[226px] max-w-[336px] max-lg:hidden"
-          src="/demo/ancient.png"
-          alt="hero_supprt_img"
-        />
-        <img
-          className="h-[226px] max-w-[336px] max-lg:hidden"
-          src="/demo/ancient.png"
-          alt="hero_supprt_img"
-        />
+        {data.images.map((img: any, i: number) => {
+          console.log("imgaes:", img);
+          return (
+            data.images && (
+              <img
+                key={i}
+                className="h-[226px] max-w-[336px] max-lg:hidden rounded-2xl"
+                src={urlFor(img.asset._ref)}
+                alt="hero_supprt_img"
+              />
+            )
+          );
+        })}
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     data: { title, tagline, content },
     locale,
   } = props;
+  console.log("props: ", props);
   const PortableTextSerializer = {
     h3: (props: any) => {
       return (
@@ -25,8 +26,20 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
             className="font-bold text-2xl font-satoshi text-darkblue"
             {...props}
           />
-          <div className="md:w-[74px] border-b my-2 md:border-b-[3px] border-[#FFBB0B]  rounded-full" />
+          <div className="md:w-[74px] border-b md:my-2 my-1 md:border-b-[3px] border-[#FFBB0B] max-w-[25%]  rounded-full" />
         </div>
+      );
+    },
+
+    ul: (props: any) => {
+      return (
+        <ul className="list-disc pl-5">
+          {props.children.map((child: any, index: number) => (
+            <li key={index} className="mb-2 leading-6">
+              {child}
+            </li>
+          ))}
+        </ul>
       );
     },
 
@@ -133,7 +146,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
 
         <h2 className="text-[24px] md:text-[40px] leading-[32px] md:leading-tight text-darkblue -tracking-[1.2px] mt-2 md:mt-3  w-fit  font-bold">
           {title?.[locale]}
-          <div className="w-1/2 mx-auto border-b-[3px] border-[#FFBB0B] rounded-full mt-2.5" />
+          <div className="w-1/2 mx-auto border-b-[3px] border-[#FFBB0B] rounded-full md:mt-2.5" />
         </h2>
       </div>
 

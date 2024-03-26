@@ -104,7 +104,7 @@ const TourGallery = (props: GallerySectionProps) => {
           <SwiperComponent
             className="gap-2 md:gap-2 lg:gap-2.5 !pb-0 "
             scrollCount={4}
-            length={7}
+            length={images?.length}
           >
             {imgs.slice(0, 3)?.map((image, i) =>
               i % 2 == 0 ? (
@@ -120,7 +120,7 @@ const TourGallery = (props: GallerySectionProps) => {
                       width={350}
                       height={320}
                       alt={"image"}
-                      className={"w-full h-full flex-shrink-0 object-cover"}
+                      className={"w-full h-full flex-shrink-0"}
                       quality={100}
                     />
                   </PhotoView>
