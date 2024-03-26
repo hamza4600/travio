@@ -4,6 +4,7 @@ import { Control, useForm } from "react-hook-form";
 
 import {
   localizedNumber,
+  urlFor,
   // localizedString,
 } from "../../../../sanity/lib/client";
 
@@ -30,6 +31,7 @@ export default function Tabs({
   childrenNumber,
   addons,
   onSubmit,
+  locale,
   setTotalPrice,
   control,
   trigger,
@@ -49,6 +51,7 @@ export default function Tabs({
   control: Control<any>;
   trigger: () => any;
   loading: boolean;
+  locale: string;
   promo: SanityPromoCode[];
 }) {
   const [promoCode, setPromoCode] = useState<SanityPromoCode>();
@@ -85,7 +88,7 @@ export default function Tabs({
   const [page, setPage] = useState(1);
   useEffect(() => {}, [page]);
   return (
-    <Container className="flex flex-col gap-16 py-16 md:px-[198px] px-5">
+    <Container className="flex flex-col gap-16 py-16 lg:px-[198px] px-5">
       <div className="flex items-center font-satoshi gap-1 px-6 max-w-[800px] mx-auto w-full h-[68px] ">
         <div
           className="relative cursor-pointer"
@@ -166,7 +169,7 @@ export default function Tabs({
           </div>
         )}
         <div className="flex flex-col gap-7 sticky top-0">
-          <SelectedTour tour={tour} />
+          <SelectedTour tour={tour} locale={locale} />
           <TripDuration startDate={startDate} endDate={endDate} />
           <Costing
             clearPromoCode={() => setPromoCode(undefined)}
@@ -192,11 +195,18 @@ export default function Tabs({
   );
 }
 
-const SelectedTour = ({ tour }: { tour: SanityTourPage }) => {
+const SelectedTour = ({
+  tour,
+  locale,
+}: {
+  tour: SanityTourPage;
+  locale: string;
+}) => {
   //   const { locale } = useContext(LocaleContext);
   // const locale = "en";
+  console.log("tour: ", tour);
   return (
-    <div className="pb-10 px-10 pt-4 bg-primary border border-darkblue/10 rounded-2xl flex flex-col gap-4">
+    <div className="max-lg:hidden pb-10 px-10 pt-4 bg-primary border border-darkblue/10 rounded-2xl flex flex-col gap-4">
       <div>
         <h1 className="text-2xl font-bold text-center text-darkblue">
           Selected Tour
@@ -207,33 +217,36 @@ const SelectedTour = ({ tour }: { tour: SanityTourPage }) => {
         <div className="h-[220px] w-full relative">
           <Image
             alt=""
-            src={"/demo/ancient.png"}
-            // src={
-            //   (tour.hero_section?.image && urlFor(tour.hero_section?.image)) ||
-            //   ""
-            // }
+            src={
+              (tour.hero_section?.image && urlFor(tour.hero_section?.image)) ||
+              ""
+            }
             layout="fill"
             objectFit="cover"
           />
         </div>
         <div className="bg-white flex flex-col gap-3 p-4">
           <p className="text-darkblue font-bold text-xl">
-            Valley of the King : Near Luxor
-            {/* {localizedString(tour.overview_card?.about, locale)} */}
+            {tour.hero_section?.title?.[locale]}
           </p>
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-[6px]">
-              {/* <p>{tour.overview_card?.duration?.en} Days</p> */}
               <Image alt="" src={"/calendar.svg"} height={18} width={18} />
-              <p>11 Days</p>
+              <p className="text-[14px] leading-[22px] font-medium">
+                {tour.overview_card?.duration?.[locale]}
+              </p>
             </div>
             <div className="flex items-center gap-[6px]">
               <Image alt="" src={"/globe.svg"} height={18} width={18} />
-              <p>{tour.overview_card?.countries} Countries</p>
+              <p className="text-[14px] leading-[22px] font-medium">
+                {tour.overview_card?.countries} Countries
+              </p>
             </div>
             <div className="flex items-center gap-[6px]">
               <Image alt="" src={"/map_plain.svg"} height={18} width={18} />
-              <p>{tour.overview_card?.cities} Cities</p>
+              <p className="text-[14px] leading-[22px] font-medium">
+                {tour.overview_card?.cities} Cities
+              </p>
             </div>
           </div>
         </div>
@@ -251,7 +264,7 @@ const TripDuration = ({
 }) => {
   return (
     <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden">
-      <div className="grid grid-cols-2 bg-blue p-2">
+      <div className="grid grid-cols-2 bg-[#3FA9F5] p-2">
         <p className="text-sm font-bold text-white place-self-center">
           Trip Start
         </p>
@@ -259,11 +272,12 @@ const TripDuration = ({
           Trip End
         </p>
       </div>
-      <div className="grid grid-cols-2 p-3">
+      <div className="grid grid-cols-3 p-3">
         <div className="flex flex-col gap-1 items-center justify-center">
           <p className="text-darkblue">{startDate.toDateString()}</p>
           <p className="text-gray">London, UK</p>
         </div>
+        <div className="w-12 ml-auto border-b rotate-90 border-[#FFBB0B]" />
         <div className="flex flex-col gap-1 items-center justify-center">
           <p className="text-darkblue">{endDate.toDateString()}</p>
           <p className="text-gray">London, UK</p>
@@ -341,7 +355,7 @@ const Costing = ({
           {promoCodeDiscount > 0 && (
             <div className="flex justify-between gap-2">
               <p className="text-base font-medium text-gray">Promo Code</p>
-              <p className="text-base font-medium text-green">
+              <p className="text-base font-medium text-[#4CAF50]">
                 - $ {promoCodeDiscount}
               </p>
             </div>

@@ -29,22 +29,19 @@ const HeroSection = ({ data, locale }) => {
       </div>
 
       <div className="flex flex-col gap-7 max-lg:hidden">
-        {/* {data.images.map((img: any, i: number) => {
+        {data.images.map((img: any, i: number) => {
           console.log("imgaes:", img);
           return (
-            <img
-              key={i}
-              className="h-[226px] max-w-[336px] max-lg:hidden"
-              src={img.asset._ref}
-              alt="hero_supprt_img"
-            />
+            data.images && (
+              <img
+                key={i}
+                className="h-[226px] max-w-[336px] max-lg:hidden rounded-2xl"
+                src={urlFor(img.asset._ref)}
+                alt="hero_supprt_img"
+              />
+            )
           );
-        })} */}
-        {/* <img
-          className="h-[226px] max-w-[336px] max-lg:hidden"
-          src="/demo/ancient.png"
-          alt="hero_supprt_img"
-        /> */}
+        })}
       </div>
     </div>
   );
