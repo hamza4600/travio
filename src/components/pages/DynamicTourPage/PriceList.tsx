@@ -139,10 +139,10 @@ function PriceList({
   locale,
 }: {
   data: any;
-  slug: string;
+  slug: any;
   locale: string;
 }) {
-  console.log("priceList: ", data);
+  console.log("priceList5655: ", slug, locale);
 
   const [selected, setSelected] = React.useState(-1);
   const [collapsed, setCollapsed] = React.useState(false);
@@ -361,10 +361,9 @@ function PriceList({
                         )}
                         {collapsed && (
                           <Link
-                            href={"#"}
-                            // href={`/tours/${slug}/payment?from=${new Date(
-                            //   price.from
-                            // ).getTime()}&to=${new Date(price.to).getTime()}`}
+                             href={`/${locale}/tours/${slug?.current}/payment?from=${new Date(
+                               price.from
+                             ).getTime()}&to=${new Date(price.to).getTime()}`}
                             className={`flex items-center ml-auto`}
                           >
                             <Button
@@ -395,10 +394,9 @@ function PriceList({
                     </div>
                     {!collapsed && (
                       <Link
-                        href={"#"}
-                        // href={`/tours/${slug}/payment?from=${new Date(
-                        //   price.from
-                        // ).getTime()}&to=${new Date(price.to).getTime()}`}
+                        href={`/${locale}/tours/${slug?.current}/payment?from=${new Date(
+                          price.from
+                        ).getTime()}&to=${new Date(price.to).getTime()}`}
                         className={`flex items-center`}
                       >
                         <Button
