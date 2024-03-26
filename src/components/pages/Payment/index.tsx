@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 // import { GetServerSideProps } from "next";
-import { useRouter } from "next/navigation";
+import { useSearchParams , useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 // import * as yup from "yup";
 
@@ -55,7 +55,7 @@ import Page3 from "./Page3";
 // };
 
 export type PaymentSchema = IPaymentTourExtras & IContactInfo;
-export default function Page({ slug, data, locale, globals, from, to, promo }) {
+export default function Page({ slug, data, locale, globals, promo }) {
   const pricingData: SanityPricingSection = data?.sections?.find(
     (section) => section._type === "pricing_section"
   ) as SanityPricingSection;
@@ -80,6 +80,15 @@ export default function Page({ slug, data, locale, globals, from, to, promo }) {
   const [optionalVisits, setOptionalVisits] = useState(0);
   const [roomTypes, setRoomTypes] = useState(0);
   const [hotelChoice, setHotelChoice] = useState(0);
+  console.log(data, "data8585");
+  // get url 
+  const searchParams = useSearchParams ();
+  const from = searchParams?.get('from')
+  const to = searchParams?.get('to')
+  
+  const startDate = new Date(from as string);
+  const endDate = new Date(to as string);
+
   useEffect(() => {
     const unsub = watch((value: any, _info: any) => {
       const info = _info as { name: keyof typeof value };
@@ -133,8 +142,6 @@ export default function Page({ slug, data, locale, globals, from, to, promo }) {
   }, []);
   const router = useRouter();
 
-  const startDate = new Date(from);
-  const endDate = new Date(to);
   const [loading, setLoading] = useState(false);
   const onSubmit: SubmitHandler<PaymentSchema> = async (_data) => {
     setLoading(true);
