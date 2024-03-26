@@ -16,7 +16,7 @@ const Breadcrumbs = ({
   if (!paths?.length) return null;
   const lastIndex = paths.length - 1;
   return (
-    <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex items-center gap-x-1.5  text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
+    <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex md:items-center gap-1 text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
       <Link href={`/${locale}`} className="">
         Home
       </Link>
@@ -27,6 +27,7 @@ const Breadcrumbs = ({
             height="18"
             viewBox="0 0 18 18"
             fill="none"
+            className="max-md:h-4 max-md:w-4"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path

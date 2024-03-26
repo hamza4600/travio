@@ -163,7 +163,7 @@ function PriceList({
 
   return (
     <Container
-      className=" bg-[rgba(20,13,49,0.02)] max-w-[970] lg:bg-transparent md:px-20 px-5"
+      className=" bg-[rgba(20,13,49,0.02)] max-w-[1312px] lg:bg-transparent xl:px-20 px-5"
       id="price-list"
     >
       <div
@@ -189,25 +189,6 @@ function PriceList({
             </div>
           </div>
           <div className="my-3 flex flex-col justify-end items-end font-semibold ">
-            {/* <div
-              // onClick={() => datePicker?.current?.}
-              className="h-12 w-fit shadow-xl shadow-[#ebebeb] lg:w-[280px] grid grid-cols-[1fr_36px] bg-white divide-x-2 divide-darkblue p-3 border border-gray md:border-darkblue rounded-md"
-            >
-              <div className="flex gap-3  relative items-center">
-                <Image src="/calendar.svg" alt="" height={24} width={24} />
-                <input
-                  type="date"
-                  className="w-5 cursor-pointer opacity-0 scale-[1.5]  z-[100] absolute"
-                />
-                <p className="md:text-darkblue text-gray font-[600] text-[14px]  md:text-base">
-                  June 2023
-                </p>
-              </div>
-              <div className="flex justify-end ml-2 items-start">
-                <CaretDown height={24} width={24} />
-              </div>
-
-            </div> */}
             <div className="md:w-max w-max">
               <Input
                 type="date"
@@ -328,7 +309,7 @@ function PriceList({
                     <CaretDown
                       height={20}
                       width={20}
-                      className={`ml-auto mr-5 block
+                      className={`ml-auto block
                      my-auto transition-all ${
                        selected === index && "-rotate-180"
                      }`}

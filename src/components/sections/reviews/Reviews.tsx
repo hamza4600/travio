@@ -19,7 +19,6 @@ export function Pagination({
   pageSize: number;
   currentPage: number;
 }) {
-  console.log("pageSize: ", pageSize);
   return (
     <div className={"flex items-center justify-between w-full my-12"}>
       <button
@@ -38,11 +37,11 @@ export function Pagination({
             key={i}
             onClick={() => onChange(i)}
             className={
-              "w-12 h-12 flex items-center justify-center cursor-pointer " +
+              "md:w-12 md:h-12 h-10 w-10 flex items-center justify-center cursor-pointer " +
               (i === currentPage ? "bg-primary" : "")
             }
           >
-            {i + 1}
+            <div>{i + 1}</div>
           </div>
         ))}
       </div>
