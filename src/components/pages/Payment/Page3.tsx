@@ -2,7 +2,21 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { useForm } from "react-hook-form";
+import {
+  // ErrorOption,
+  // Field,
+  // FieldArray,
+  // FieldArrayPath,
+  // FieldError,
+  // FieldErrors,
+  // FieldValues,
+  // FormState,
+  // RegisterOptions,
+  // SubmitErrorHandler,
+  // SubmitHandler,
+  // UseFormRegisterReturn,
+  useForm,
+} from "react-hook-form";
 
 import Input from "../TrailYourTour/Input";
 import OptionSelectButton from "@/components/atom/OptionSelectButton";
@@ -16,7 +30,9 @@ export function PaymentMethod({
 }) {
   return (
     <div className="flex flex-col gap-5">
-      <p className="text-2xl text-darkblue font-bold">Payment methods</p>
+      <p className="md:text-[24px] md:leading-[34px] text-[20px] leading-[30px] text-darkblue font-bold">
+        Payment methods
+      </p>
       <div
         className="flex items-center text-base text-darkblue font-medium gap-2 cursor-pointer"
         onClick={() => setPaymentMethod("stripe")}
@@ -98,7 +114,9 @@ export default function Page3({
       </div>
 
       <div className="flex flex-col gap-5">
-        <p className="text-2xl text-darkblue font-bold">Payment options</p>
+        <p className="md:text-[24px] md:leading-[34px] text-[20px] leading-[30px] text-darkblue font-bold">
+          Payment options
+        </p>
         <div
           className="flex items-center text-base text-darkblue font-medium gap-2 cursor-pointer"
           onClick={toggleBookOnly}
@@ -156,193 +174,253 @@ export default function Page3({
         paymentMethod={paymentMethod}
         setPaymentMethod={setPaymentMethod}
       />
-      {/*<div className="flex flex-col gap-5">*/}
-      {/*  <p className="text-2xl text-darkblue font-bold">Payment options</p>*/}
-      {/*  <div className="flex flex-col gap-4">*/}
-      {/*    <div>*/}
-      {/*      <div*/}
-      {/*        className={`flex items-center gap-2 rounded px-3 py-[14px] text-lg font-medium border border-darkblue/10 ${*/}
-      {/*          formData.paymentOption == 'creditCard' ? 'text-blue' : 'text-darkblue'*/}
-      {/*        }`}*/}
-      {/*        onClick={() => {*/}
-      {/*          setValue('creditCard', 'paymentOption')*/}
-      {/*        }}*/}
-      {/*      >*/}
-      {/*        <OptionSelectButton value={formData.paymentOption == 'creditCard'} /> Credit & Debit*/}
-      {/*        Cards*/}
-      {/*      </div>*/}
-      {/*      {formData.paymentOption == 'creditCard' && (*/}
-      {/*        <div className="px-4 md:px-10 py-7">*/}
-      {/*          <div className="flex flex-col gap-[18px] max-w-[390px]">*/}
-      {/*            <div className="flex flex-col gap-2">*/}
-      {/*              <p className="text-base font-medium text-darkblue">Card Holder Number</p>*/}
-      {/*              <Input*/}
-      {/*                setValue={makeSetValue('cardHolderName')}*/}
-      {/*                value={formData.cardHolderName}*/}
-      {/*                type="text"*/}
-      {/*                placeholder=""*/}
-      {/*                name="cardHolderName"*/}
-      {/*              />*/}
-      {/*            </div>*/}
-      {/*            <div className="flex flex-col gap-2">*/}
-      {/*              <p className="text-base font-medium text-darkblue">Card Number</p>*/}
-      {/*              <Input*/}
-      {/*                setValue={makeSetValue('cardNumber')}*/}
-      {/*                value={formData.cardNumber}*/}
-      {/*                type="text"*/}
-      {/*                placeholder="1234 5678 3245 9101"*/}
-      {/*                name="cardNumber"*/}
-      {/*              />*/}
-      {/*            </div>*/}
-      {/*            <div className="grid grid-cols-2 gap-3">*/}
-      {/*              <div className="flex flex-col gap-2">*/}
-      {/*                <p className="text-base font-medium text-darkblue">Expiry Date</p>*/}
+      {/* <div className="flex flex-col gap-5">
+        <p className="text-2xl text-darkblue font-bold">Payment options</p>
+        <div className="flex flex-col gap-4">
+          <div>
+            <div
+              className={`flex items-center gap-2 rounded px-3 py-[14px] text-lg font-medium border border-darkblue/10 ${
+                formData.paymentOption == "creditCard"
+                  ? "text-blue"
+                  : "text-darkblue"
+              }`}
+              onClick={() => {
+                setValue("creditCard", "paymentOption");
+              }}
+            >
+              <OptionSelectButton
+                value={formData.paymentOption == "creditCard"}
+              />{" "}
+              Credit & Debit Cards
+            </div>
+            {formData.paymentOption == "creditCard" && (
+              <div className="px-4 md:px-10 py-7">
+                <div className="flex flex-col gap-[18px] max-w-[390px]">
+                  <div className="flex flex-col gap-2">
+                    <p className="text-base font-medium text-darkblue">
+                      Card Holder Number
+                    </p>
+                    <Input
+                      // setValue={makeSetValue("cardHolderName")}
+                      // value={formData.cardHolderName}
+                      type="text"
+                      placeholder=""
+                      name="cardHolderName"
+                      // @ts-ignore
+                      control={""}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-base font-medium text-darkblue">
+                      Card Number
+                    </p>
+                    <Input
+                      // setValue={makeSetValue("cardNumber")}
+                      // value={formData.cardNumber}
+                      type="text"
+                      placeholder="1234 5678 3245 9101"
+                      name="cardNumber"
+                      // @ts-ignore
+                      control={""}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-base font-medium text-darkblue">
+                        Expiry Date
+                      </p>
 
-      {/*                <Input*/}
-      {/*                  setValue={makeSetValue('expiryDate')}*/}
-      {/*                  value={formData.expiryDate}*/}
-      {/*                  placeholder="MM / YY"*/}
-      {/*                  type="text"*/}
-      {/*                  name="expiryDate"*/}
-      {/*                />*/}
-      {/*              </div>*/}
-      {/*              <div className="flex flex-col gap-2">*/}
-      {/*                <p className="text-base font-medium text-darkblue">Security Code</p>*/}
-      {/*                <Input*/}
-      {/*                  setValue={makeSetValue('securityCode')}*/}
-      {/*                  value={formData.securityCode}*/}
-      {/*                  placeholder="123"*/}
-      {/*                  type="text"*/}
-      {/*                  name="securityCode"*/}
-      {/*                />*/}
-      {/*              </div>*/}
-      {/*            </div>*/}
-      {/*          </div>*/}
-      {/*        </div>*/}
-      {/*      )}*/}
-      {/*    </div>*/}
-      {/*    <div>*/}
-      {/*      <div*/}
-      {/*        className={`flex items-center gap-2 rounded px-3 py-[14px] text-lg font-medium border border-darkblue/10 ${*/}
-      {/*          formData.paymentOption == 'paypal' ? 'text-blue' : 'text-darkblue'*/}
-      {/*        }`}*/}
-      {/*        onClick={() => {*/}
-      {/*          setValue('paypal', 'paymentOption')*/}
-      {/*        }}*/}
-      {/*      >*/}
-      {/*        <OptionSelectButton value={formData.paymentOption == 'paypal'} /> PayPal*/}
-      {/*      </div>*/}
-      {/*      {formData.paymentOption == 'paypal' && (*/}
-      {/*        <div className="px-4 md:px-10 py-7">*/}
-      {/*          <div className="flex flex-col gap-[18px] max-w-[390px]">*/}
-      {/*            <div className="flex flex-col gap-2">*/}
-      {/*              <p className="text-base font-medium text-darkblue">Card Holder Number</p>*/}
-      {/*              <Input*/}
-      {/*                setValue={makeSetValue('cardHolderName')}*/}
-      {/*                value={formData.cardHolderName}*/}
-      {/*                type="text"*/}
-      {/*                placeholder=""*/}
-      {/*                name="cardHolderName"*/}
-      {/*              />*/}
-      {/*            </div>*/}
-      {/*            <div className="flex flex-col gap-2">*/}
-      {/*              <p className="text-base font-medium text-darkblue">Card Number</p>*/}
-      {/*              <Input*/}
-      {/*                setValue={makeSetValue('cardNumber')}*/}
-      {/*                value={formData.cardNumber}*/}
-      {/*                type="text"*/}
-      {/*                placeholder="1234 5678 3245 9101"*/}
-      {/*                name="cardNumber"*/}
-      {/*              />*/}
-      {/*            </div>*/}
-      {/*            <div className="grid grid-cols-2 gap-3">*/}
-      {/*              <div className="flex flex-col gap-2">*/}
-      {/*                <p className="text-base font-medium text-darkblue">Expiry Date</p>*/}
-      {/*                <Input*/}
-      {/*                  setValue={makeSetValue('expiryDate')}*/}
-      {/*                  value={formData.expiryDate}*/}
-      {/*                  placeholder="MM / YY"*/}
-      {/*                  type="text"*/}
-      {/*                  name="expiryDate"*/}
-      {/*                />*/}
-      {/*              </div>*/}
-      {/*              <div className="flex flex-col gap-2">*/}
-      {/*                <p className="text-base font-medium text-darkblue">Security Code</p>*/}
-      {/*                <Input*/}
-      {/*                  setValue={makeSetValue('securityCode')}*/}
-      {/*                  value={formData.securityCode}*/}
-      {/*                  placeholder="123"*/}
-      {/*                  type="text"*/}
-      {/*                  name="securityCode"*/}
-      {/*                />*/}
-      {/*              </div>*/}
-      {/*            </div>*/}
-      {/*          </div>*/}
-      {/*        </div>*/}
-      {/*      )}*/}
-      {/*    </div>*/}
-      {/*    <div>*/}
-      {/*      <div*/}
-      {/*        className={`flex items-center gap-2 rounded px-3 py-[14px] text-lg font-medium border border-darkblue/10 ${*/}
-      {/*          formData.paymentOption == 'bankTransfer' ? 'text-blue' : 'text-darkblue'*/}
-      {/*        }`}*/}
-      {/*        onClick={() => {*/}
-      {/*          setValue('bankTransfer', 'paymentOption')*/}
-      {/*        }}*/}
-      {/*      >*/}
-      {/*        <OptionSelectButton value={formData.paymentOption == 'bankTransfer'} /> Bank Transfer*/}
-      {/*      </div>*/}
-      {/*      {formData.paymentOption == 'bankTransfer' && (*/}
-      {/*        <div className="px-4 md:px-10 py-7">*/}
-      {/*          <div className="flex flex-col gap-[18px] max-w-[390px]">*/}
-      {/*            <div className="flex flex-col gap-2">*/}
-      {/*              <p className="text-base font-medium text-darkblue">Card Holder Number</p>*/}
-      {/*              <Input*/}
-      {/*                setValue={makeSetValue('cardHolderName')}*/}
-      {/*                value={formData.cardHolderName}*/}
-      {/*                type="text"*/}
-      {/*                placeholder=""*/}
-      {/*                name="cardHolderName"*/}
-      {/*              />*/}
-      {/*            </div>*/}
-      {/*            <div className="flex flex-col gap-2">*/}
-      {/*              <p className="text-base font-medium text-darkblue">Card Number</p>*/}
-      {/*              <Input*/}
-      {/*                setValue={makeSetValue('cardNumber')}*/}
-      {/*                value={formData.cardNumber}*/}
-      {/*                type="text"*/}
-      {/*                placeholder="1234 5678 3245 9101"*/}
-      {/*                name="cardNumber"*/}
-      {/*              />*/}
-      {/*            </div>*/}
-      {/*            <div className="grid grid-cols-2 gap-3">*/}
-      {/*              <div className="flex flex-col gap-2">*/}
-      {/*                <p className="text-base font-medium text-darkblue">Expiry Date</p>*/}
-      {/*                <Input*/}
-      {/*                  setValue={makeSetValue('expiryDate')}*/}
-      {/*                  value={formData.expiryDate}*/}
-      {/*                  placeholder="MM / YY"*/}
-      {/*                  type="text"*/}
-      {/*                  name="expiryDate"*/}
-      {/*                />*/}
-      {/*              </div>*/}
-      {/*              <div className="flex flex-col gap-2">*/}
-      {/*                <p className="text-base font-medium text-darkblue">Security Code</p>*/}
-      {/*                <Input*/}
-      {/*                  setValue={makeSetValue('securityCode')}*/}
-      {/*                  value={formData.securityCode}*/}
-      {/*                  placeholder="123"*/}
-      {/*                  type="text"*/}
-      {/*                  name="securityCode"*/}
-      {/*                />*/}
-      {/*              </div>*/}
-      {/*            </div>*/}
-      {/*          </div>*/}
-      {/*        </div>*/}
-      {/*      )}*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+                      <Input
+                        // setValue={makeSetValue("expiryDate")}
+                        // value={formData.expiryDate}
+                        placeholder="MM / YY"
+                        type="text"
+                        name="expiryDate"
+                        // @ts-ignore
+                        control={""}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-base font-medium text-darkblue">
+                        Security Code
+                      </p>
+                      <Input
+                        // setValue={makeSetValue("securityCode")}
+                        // value={formData.securityCode}
+                        placeholder="123"
+                        type="text"
+                        name="securityCode"
+                        // @ts-ignore
+                        control={""}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div>
+            <div
+              className={`flex items-center gap-2 rounded px-3 py-[14px] text-lg font-medium border border-darkblue/10 ${
+                formData.paymentOption == "paypal"
+                  ? "text-blue"
+                  : "text-darkblue"
+              }`}
+              onClick={() => {
+                setValue("paypal", "paymentOption");
+              }}
+            >
+              <OptionSelectButton value={formData.paymentOption == "paypal"} />{" "}
+              PayPal
+            </div>
+            {formData.paymentOption == "paypal" && (
+              <div className="px-4 md:px-10 py-7">
+                <div className="flex flex-col gap-[18px] max-w-[390px]">
+                  <div className="flex flex-col gap-2">
+                    <p className="text-base font-medium text-darkblue">
+                      Card Holder Number
+                    </p>
+                    <Input
+                      // setValue={makeSetValue("cardHolderName")}
+                      // value={formData.cardHolderName}
+                      type="text"
+                      placeholder=""
+                      name="cardHolderName"
+                      // @ts-ignore
+                      control={""}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-base font-medium text-darkblue">
+                      Card Number
+                    </p>
+                    <Input
+                      // setValue={makeSetValue("cardNumber")}
+                      // value={formData.cardNumber}
+                      type="text"
+                      placeholder="1234 5678 3245 9101"
+                      name="cardNumber"
+                      // @ts-ignore
+                      control={""}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-base font-medium text-darkblue">
+                        Expiry Date
+                      </p>
+                      <Input
+                        // setValue={makeSetValue("expiryDate")}
+                        // value={formData.expiryDate}
+                        placeholder="MM / YY"
+                        type="text"
+                        name="expiryDate"
+                        // @ts-ignore
+                        control={""}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-base font-medium text-darkblue">
+                        Security Code
+                      </p>
+                      <Input
+                        // setValue={makeSetValue("securityCode")}
+                        // value={formData.securityCode}
+                        placeholder="123"
+                        type="text"
+                        name="securityCode"
+                        // @ts-ignore
+                        control={""}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div>
+            <div
+              className={`flex items-center gap-2 rounded px-3 py-[14px] text-lg font-medium border border-darkblue/10 ${
+                formData.paymentOption == "bankTransfer"
+                  ? "text-blue"
+                  : "text-darkblue"
+              }`}
+              onClick={() => {
+                setValue("bankTransfer", "paymentOption");
+              }}
+            >
+              <OptionSelectButton
+                value={formData.paymentOption == "bankTransfer"}
+              />{" "}
+              Bank Transfer
+            </div>
+            {formData.paymentOption == "bankTransfer" && (
+              <div className="px-4 md:px-10 py-7">
+                <div className="flex flex-col gap-[18px] max-w-[390px]">
+                  <div className="flex flex-col gap-2">
+                    <p className="text-base font-medium text-darkblue">
+                      Card Holder Number
+                    </p>
+                    <Input
+                      // setValue={makeSetValue("cardHolderName")}
+                      // value={formData.cardHolderName}
+                      type="text"
+                      placeholder=""
+                      name="cardHolderName"
+                      // @ts-ignore
+                      control={""}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-base font-medium text-darkblue">
+                      Card Number
+                    </p>
+                    <Input
+                      // setValue={makeSetValue("cardNumber")}
+                      // value={formData.cardNumber}
+                      type="text"
+                      placeholder="1234 5678 3245 9101"
+                      name="cardNumber"
+                      // @ts-ignore
+                      control={""}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-base font-medium text-darkblue">
+                        Expiry Date
+                      </p>
+                      <Input
+                        // setValue={makeSetValue("expiryDate")}
+                        // value={formData.expiryDate}
+                        placeholder="MM / YY"
+                        type="text"
+                        name="expiryDate"
+                        // @ts-ignore
+                        control={""}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-base font-medium text-darkblue">
+                        Security Code
+                      </p>
+                      <Input
+                        // setValue={makeSetValue("securityCode")}
+                        // value={formData.securityCode}
+                        placeholder="123"
+                        type="text"
+                        name="securityCode"
+                        // @ts-ignore
+                        control={""}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div> */}
 
       <div className="flex flex-col gap-5 text-base font-medium text-darkblue">
         <div className="flex gap-2 items-center">

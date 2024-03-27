@@ -88,7 +88,7 @@ export default function Tabs({
   const [page, setPage] = useState(1);
   useEffect(() => {}, [page]);
   return (
-    <Container className="flex flex-col gap-16 py-16 lg:px-[198px] px-5">
+    <Container className="flex flex-col gap-16 py-16 xl:px-[198px] px-5">
       <div className="flex items-center font-satoshi gap-1 px-6 max-w-[800px] mx-auto w-full h-[68px] ">
         <div
           className="relative cursor-pointer"
@@ -96,8 +96,14 @@ export default function Tabs({
             if (await trigger()) setPage(1);
           }}
         >
-          <Image alt="" src={"/circleTick.svg"} height={36} width={36} />
-          <p className="absolute top-[110%] -translate-x-1/4 text-blue text-base font-medium whitespace-nowrap">
+          {page == 1 || page > 1 ? (
+            <div className="bg-[#3FA9F5] w-7 h-7 font-medium text-center text-[12px] leading-4 text-white rounded-full pl-[9.44px] pr-[10.44px] py-[4.44px]">
+              1
+            </div>
+          ) : (
+            <Image alt="" src={"/circleTick.svg"} height={36} width={36} />
+          )}
+          <p className="absolute top-[110%] -translate-x-1/4 text-primary text-base font-medium whitespace-nowrap">
             Trip Extra
           </p>
         </div>
@@ -108,8 +114,14 @@ export default function Tabs({
             if (await trigger()) setPage(2);
           }}
         >
-          <Image alt="" src={"/circleTick.svg"} height={36} width={36} />
-          <p className="absolute top-[110%] -translate-x-1/4 text-blue text-base font-medium whitespace-nowrap">
+          {page == 2 || page > 2 ? (
+            <div className="bg-[#3FA9F5] w-7 h-7 font-medium text-center text-[12px] leading-4 text-white rounded-full pl-[9.44px] pr-[10.44px] py-[4.44px]">
+              2
+            </div>
+          ) : (
+            <Image alt="" src={"/circleTick.svg"} height={36} width={36} />
+          )}
+          <p className="absolute top-[110%] -translate-x-1/4 text-primary text-base font-medium whitespace-nowrap">
             Your Details
           </p>
         </div>
@@ -120,8 +132,14 @@ export default function Tabs({
             if (await trigger()) setPage(3);
           }}
         >
-          <Image alt="" src={"/circleTick.svg"} height={36} width={36} />
-          <p className="absolute top-[110%] -translate-x-1/4 text-blue text-base font-medium whitespace-nowrap">
+          {page == 3 ? (
+            <div className="bg-[#3FA9F5] w-7 h-7 font-medium text-center text-[12px] leading-4 text-white rounded-full pl-[9.44px] pr-[10.44px] py-[4.44px]">
+              3
+            </div>
+          ) : (
+            <Image alt="" src={"/circleTick.svg"} height={36} width={36} />
+          )}
+          <p className="absolute top-[110%] -translate-x-1/4 text-primary text-base font-medium whitespace-nowrap">
             Payment
           </p>
         </div>
@@ -208,10 +226,10 @@ const SelectedTour = ({
   return (
     <div className="max-lg:hidden pb-10 px-10 pt-4 bg-primary border border-darkblue/10 rounded-2xl flex flex-col gap-4">
       <div>
-        <h1 className="text-2xl font-bold text-center text-darkblue">
+        <h1 className="md:text-[20px] md:leading-8 text-base font-bold text-center text-darkblue">
           Selected Tour
         </h1>
-        <div className="w-1/4 m-auto my-2 rounded-full border-b-2 md:border-b-[3px] border-[#FFBB0B] text-yellow " />
+        <div className="w-1/4 m-auto mt-2 rounded-full border-b-2 md:border-b-[3px] border-[#FFBB0B] text-yellow " />
       </div>
       <div className="rounded-2xl overflow-hidden">
         <div className="h-[220px] w-full relative">
@@ -262,8 +280,9 @@ const TripDuration = ({
   startDate: Date;
   endDate: Date;
 }) => {
+  console.log("dates: ", startDate.toLocaleDateString(), endDate);
   return (
-    <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden">
+    <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden max-lg:hidden">
       <div className="grid grid-cols-2 bg-[#3FA9F5] p-2">
         <p className="text-sm font-bold text-white place-self-center">
           Trip Start
@@ -319,7 +338,9 @@ const Costing = ({
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-5">
           <div className="flex justify-between gap-2">
-            <p className="text-base font-bold text-darkblue">Passengers</p>
+            <p className="md:text-base text-[14px] leading-6 font-bold text-darkblue">
+              Passengers
+            </p>
             <p className="text-base font-bold text-darkblue">
               {adults > 0 && `${adults} Adults`}
               {childrenNumber > 0 && (
@@ -331,8 +352,10 @@ const Costing = ({
             </p>
           </div>
           <div className="flex justify-between gap-2">
-            <p className="text-base font-medium text-gray">Tour Package</p>
-            <p className="text-base font-medium text-gray">
+            <p className="md:text-base text-[14px] leading-5 font-medium text-gray">
+              Tour Package
+            </p>
+            <p className="md:text-base text-[14px] leading-5 font-medium text-gray">
               {`${parseInt(people.toString())} x $ ${actualPrice}`}
             </p>
           </div>
@@ -347,7 +370,7 @@ const Costing = ({
           {actualPrice != currentPrice && parseInt(adults.toString()) != 0 && (
             <div className="flex justify-between gap-2">
               <p className="text-base font-medium text-gray">Discount</p>
-              <p className="text-base font-medium text-green">
+              <p className="md:text-base text-[14px] leading-5 font-medium text-[#4CAF50]">
                 - $ {parseInt(people.toString()) * (actualPrice - currentPrice)}
               </p>
             </div>
@@ -390,7 +413,7 @@ const Costing = ({
           </div>
           <div className="flex justify-between gap-2 items-center">
             <p className="text-base font-bold text-darkblue">Payment Today</p>
-            <p className="text-2xl font-bold text-blue">$ {totalPrice}</p>
+            <p className="text-2xl font-bold text-primary">$ {totalPrice}</p>
           </div>
         </div>
 
@@ -402,7 +425,7 @@ const Costing = ({
             <div className="w-full text-center py-2 bg-white font-medium text-darkblue text-sm border border-gray rounded">
               {promoCode}
             </div>
-            <p className="font-medium text-blue text-base ">
+            <p className="font-medium text-primary text-base ">
               Promocode applied
             </p>
           </div>
@@ -425,7 +448,7 @@ const Costing = ({
               control={control}
               name="promoCode"
             />
-            <button className="absolute right-2 inset-y-0 text-blue font-medium">
+            <button className="absolute right-2 inset-y-0 text-primary font-medium">
               Apply
             </button>
           </form>
