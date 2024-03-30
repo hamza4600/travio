@@ -12,7 +12,7 @@ const HeroSection = ({ data, locale, banner }) => {
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
 
   return (
-    <section>
+    <Container>
       <div
         className={
           "relative z-10 h-[540px] md:h-full bottom-7 flex items-end lg:items-center justify-center"
@@ -134,7 +134,7 @@ const HeroSection = ({ data, locale, banner }) => {
           </Container>
         </div>
       </div>
-    </section>
+    </Container>
   );
 };
 

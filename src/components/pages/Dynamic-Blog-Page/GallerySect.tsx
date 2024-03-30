@@ -3,7 +3,7 @@ import React from "react";
 const GallerySect = () => {
   console.log("I Am here");
   return (
-    <div className="mt-[67px] md:px-20 px-5 flex max-xl:flex-col max-xl:items-center gap-2.5 xl:gap-[30px]">
+    <div className="mt-[67px] flex max-xl:flex-col max-xl:items-center gap-2.5 xl:gap-[30px]">
       <div className="">
         <img
           className="md:max-w-[647px] max-w-[335px] rounded-[16px]"

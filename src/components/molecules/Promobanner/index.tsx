@@ -13,8 +13,8 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
   const isHome = pathname === url;
   // if (!banner.promo_banner) return null;
   return (
-    <div
-      className={`w-full font-satoshi h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue ${
+    <Container
+      className={`font-satoshi h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue ${
         isHome && "rounded-t-[24px] max-xl:rounded-none relative z-20"
       }`}
     >
@@ -33,7 +33,7 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
           </Link>
         </div>
       </Container>
-    </div>
+    </Container>
   );
 }
 

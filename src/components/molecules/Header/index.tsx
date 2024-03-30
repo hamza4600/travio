@@ -49,14 +49,10 @@ const Header = ({
 
   return (
     <Root>
-      <div
-        className={`w-full hidden bg-white lg:block h-[100px] relative  
-        ${openDropDown ? "z-0" : "z-50"}`}
-      >
-        <div className="mx-auto box-border max-w-[1440px]">
-
+      <div className={`w-full hidden bg-white lg:block h-[100px] `}>
+        {/* <div className="mx-auto box-border"> */}
         <div className={"bg-primary h-[30px]"}>
-          <Container className="py-1 px-20">
+          <Container className="py-1">
             <div className="main-content-wrapper">
               {banner?.watts_banner?.show && (
                 <a
@@ -233,8 +229,7 @@ const Header = ({
           })}
         </div> */}
         {/* P */}
-      
-        </div>
+        {/* </div> */}
       </div>
     </Root>
   );

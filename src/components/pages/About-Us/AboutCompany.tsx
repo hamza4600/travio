@@ -4,6 +4,7 @@ import styled from "styled-components";
 // import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../../../sanity/lib/client";
 import SectionHeader from "@/components/molecules/secHeader";
+import Container from "@/components/molecules/container";
 
 const Wrapper = styled.div`
   display: flex;
@@ -144,42 +145,48 @@ const Desc = styled.div`
 const AboutComapny = ({ data, locale }) => {
   // console.log()
   return (
-    <Wrapper>
-      <TextConatiner>
-        <SectionHeader
-          title={data.tagline?.[locale]}
-          subtitle={data.title?.[locale]}
-          centerLine
-        />
-      </TextConatiner>
-      <MissionConatiner>
-        <TextImageContainer>
-          <img
-            src={urlFor(data.content?.[locale][0]?.items[0].image?.asset?._ref)}
-            // width={data.img.width}
-            // height={data.img.height}
-            alt={data.content?.[locale][0]?.items[0].alt}
+    <Container>
+      <Wrapper>
+        <TextConatiner>
+          <SectionHeader
+            title={data.tagline?.[locale]}
+            subtitle={data.title?.[locale]}
+            centerLine
           />
-          <TextWrapper>
-            <MissionText>
-              {data.content?.[locale][0]?.items?.[1]?.items[0]?.text}
-            </MissionText>
-            <MissionText>
-              {data.content?.[locale][0]?.items?.[1]?.items[1]?.text}
-            </MissionText>
-          </TextWrapper>
-        </TextImageContainer>
-        <BenefitsWrapper>
-          {/* <PortableText value={data.content} /> */}
-          {data.content?.[locale][1]?.items.map((data: any, index: number) => (
-            <TitleDescWrapper key={index}>
-              <Title>{data.items[0].text || ""}</Title>
-              <Desc>{data.items[1].text}</Desc>
-            </TitleDescWrapper>
-          ))}
-        </BenefitsWrapper>
-      </MissionConatiner>
-    </Wrapper>
+        </TextConatiner>
+        <MissionConatiner>
+          <TextImageContainer>
+            <img
+              src={urlFor(
+                data.content?.[locale][0]?.items[0].image?.asset?._ref
+              )}
+              // width={data.img.width}
+              // height={data.img.height}
+              alt={data.content?.[locale][0]?.items[0].alt}
+            />
+            <TextWrapper>
+              <MissionText>
+                {data.content?.[locale][0]?.items?.[1]?.items[0]?.text}
+              </MissionText>
+              <MissionText>
+                {data.content?.[locale][0]?.items?.[1]?.items[1]?.text}
+              </MissionText>
+            </TextWrapper>
+          </TextImageContainer>
+          <BenefitsWrapper>
+            {/* <PortableText value={data.content} /> */}
+            {data.content?.[locale][1]?.items.map(
+              (data: any, index: number) => (
+                <TitleDescWrapper key={index}>
+                  <Title>{data.items[0].text || ""}</Title>
+                  <Desc>{data.items[1].text}</Desc>
+                </TitleDescWrapper>
+              )
+            )}
+          </BenefitsWrapper>
+        </MissionConatiner>
+      </Wrapper>
+    </Container>
   );
 };
 

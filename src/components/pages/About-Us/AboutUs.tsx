@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import { PortableText } from "@portabletext/react";
+import ContainerCmp from "@/components/molecules/container";
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -134,42 +135,44 @@ const MeetTeam = {
 
 const AboutUs = ({ data, locale }) => {
   return (
-    <TitleWrapper>
-      {/* <Text1>{data.tagline?.[locale]}</Text1>
+    <ContainerCmp>
+      <TitleWrapper>
+        {/* <Text1>{data.tagline?.[locale]}</Text1>
       <Text2>{data.title?.[locale]}</Text2> */}
-      <Text1>{data.tagline?.[locale]}</Text1>
-      <Text2>{data.title?.[locale]}</Text2>
-      <div className="md:border-b-[3px] border-b-2 border-b-[#FFBB0B] md:w-[117px] w-[89px]" />
+        <Text1>{data.tagline?.[locale]}</Text1>
+        <Text2>{data.title?.[locale]}</Text2>
+        <div className="md:border-b-[3px] border-b-2 border-b-[#FFBB0B] md:w-[117px] w-[89px]" />
 
-      <Container>
-        <WelcomeText>
-          {data?.content?.[locale][0]?.children[0]?.text}
-          {/* <PortableText value={data.content?.[locale]} /> */}
-        </WelcomeText>
-        <TextImageContainer>
-          <Container>
-            <TextImgWrapper>
-              <ExpertiesText>
-                {data?.content?.[locale][1]?.items[1]?.items[0]?.text}
-              </ExpertiesText>
-            </TextImgWrapper>
-            <TextImgWrapper>
-              <ExpertiesText>
-                {data?.content?.[locale][1]?.items[1]?.items[1]?.text}
-              </ExpertiesText>
-            </TextImgWrapper>
-          </Container>
-          <Container>
-            <img
-              src={"/demo/team.png"}
-              className="md:max-w-[619px] md:min-h-[296px] max-w-[335px] min-h-[161px] max-md:border-none"
-              alt="Group Image"
-            />
-            <ImgAlt>“{MeetTeam[locale]}”</ImgAlt>
-          </Container>
-        </TextImageContainer>
-      </Container>
-    </TitleWrapper>
+        <Container>
+          <WelcomeText>
+            {data?.content?.[locale][0]?.children[0]?.text}
+            {/* <PortableText value={data.content?.[locale]} /> */}
+          </WelcomeText>
+          <TextImageContainer>
+            <Container>
+              <TextImgWrapper>
+                <ExpertiesText>
+                  {data?.content?.[locale][1]?.items[1]?.items[0]?.text}
+                </ExpertiesText>
+              </TextImgWrapper>
+              <TextImgWrapper>
+                <ExpertiesText>
+                  {data?.content?.[locale][1]?.items[1]?.items[1]?.text}
+                </ExpertiesText>
+              </TextImgWrapper>
+            </Container>
+            <Container>
+              <img
+                src={"/demo/team.png"}
+                className="md:max-w-[619px] md:min-h-[296px] max-w-[335px] min-h-[161px] max-md:border-none"
+                alt="Group Image"
+              />
+              <ImgAlt>“{MeetTeam[locale]}”</ImgAlt>
+            </Container>
+          </TextImageContainer>
+        </Container>
+      </TitleWrapper>
+    </ContainerCmp>
   );
 };
 
