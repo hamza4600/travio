@@ -1,6 +1,7 @@
 // import { type SchemaTypeDefinition } from "sanity";
 
 import blockContent from "./schemas/atoms/blockContent";
+import Breadcrumb from "./schemas/atoms/Breadcrumb";
 import layout_group from "./schemas/atoms/content/Group";
 import content_image from "./schemas/atoms/content/Image";
 import content_link_card from "./schemas/atoms/content/LinkCard";
@@ -79,6 +80,7 @@ export const schemaTypes= [
         tour_timeline,
         timeline,
         wattsappbanner,
+        Breadcrumb,
         // content
         content_text,
         content_image,
