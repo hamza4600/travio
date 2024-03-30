@@ -7,6 +7,26 @@ import { decodeAssetId, urlFor } from "../../../../sanity/lib/client";
 import { SanityContentSection } from "../../../../sanity/lib/types";
 
 import Container from "@/components/molecules/container";
+import styled from "styled-components";
+
+const RootStyle = styled.div`
+  p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+`;
+
 export type ContentSectionProps = {
   data: SanityContentSection;
   locale: string;
@@ -17,12 +37,12 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     data: { title, tagline, content },
     locale,
   } = props;
-  console.log("props: ", props);
+
   const PortableTextSerializer = {
     h3: (props: any) => {
       return (
         <div className="">
-          <p
+          <h3
             className="font-bold text-2xl font-satoshi text-darkblue"
             {...props}
           />
@@ -53,8 +73,8 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
                 item._type === "content_image"
                   ? `w-full ${
                       index
-                        ? `order-first md:order-last`
-                        : `order-last md:order-first`
+                        ? "order-first md:order-last"
+                        : "order-last md:order-first"
                     }`
                   : ""
               }
@@ -78,7 +98,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
           className={
             props.grid
               ? "md:grid gap-[10px] md:gap-[18px] flex flex-col"
-              : "flex flex-col gap-[18px]"
+              : "flex flex-row gap-[30px] max-md:flex-col max-md:gap-6"
           }
         >
           {props.items
@@ -112,20 +132,14 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
       const { dimensions } = decodeAssetId(props.image.asset._ref);
 
       return (
-        <figure className="shrink-0 w-full  lg:w-[400px]  box-border">
-          {/* <p>
-            JSALKDJ:LSAKD:LSAKD:LKSA:LDKSA:LDK:LSAKD:LSAKD:LSAKD:LKSD:LKSA:LDK
-          </p> */}
+        <figure className="shrink-0 w-full  lg:w-[400px]  box-border max-md:mb-6">
           <Image
-            alt=""
+            alt={props.alt}
             src={urlFor(props.image)}
             width={dimensions?.width}
             height={dimensions?.height}
             className=" object-fill w-full h-auto"
           />
-          {/* <div className="">
-            <LocalizedString text={props.image.alt} />
-          </div> */}
           <figcaption className="text-center mt-2 font-satoshi text-darkblue text-opacity-75 text-xs md:text-sm font-normal md:font-medium leading-tight md:leading-snug">
             {props.alt}
           </figcaption>
@@ -152,7 +166,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
           </h2>
         </div>
 
-        <div className="text-sm md:text-base mt-[48px] text-darkblue  leading-[24px] font-normal">
+        <RootStyle className="text-sm md:text-base mt-[48px] text-darkblue  leading-[24px] font-normal">
           {content[locale] && (
             <PortableText
               content={content[locale]}
@@ -160,7 +174,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
               serializers={PortableTextSerializer}
             />
           )}
-        </div>
+        </RootStyle>
       </Container>
     </>
   );

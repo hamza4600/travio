@@ -15,7 +15,7 @@ export default defineType({
     defineField({
       name: 'url',
       title: 'URL',
-      description: 'URL for the link',
+      description: 'URL for the link (eg : /about )',
       type: 'url',
       validation: (Rule) =>
         Rule.uri({
