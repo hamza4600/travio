@@ -50,8 +50,11 @@ const Header = ({
   return (
     <Root>
       <div
-        className={`w-full hidden bg-white lg:block h-[100px] relative max-w-[1440px] mx-auto box-border z-50`}
+        className={`w-full hidden bg-white lg:block h-[100px] relative  
+        ${openDropDown ? "z-0" : "z-50"}`}
       >
+        <div className="mx-auto box-border max-w-[1440px]">
+
         <div className={"bg-primary h-[30px]"}>
           <Container className="py-1 px-20">
             <div className="main-content-wrapper">
@@ -230,6 +233,8 @@ const Header = ({
           })}
         </div> */}
         {/* P */}
+      
+        </div>
       </div>
     </Root>
   );

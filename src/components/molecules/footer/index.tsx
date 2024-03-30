@@ -18,8 +18,8 @@ const Footer = ({ footer, language }) => {
   const mobileLogo = urlFor(footer?.logo?.mobile?.asset?._ref);
 
   return (
-    <div className="w-full bg-primary px-20 max-lg:px-5 max-w-[1440px] mx-auto box-border">
-      <Container>
+    <div className="w-full bg-primary">
+      <Container className="max-w-[1440px] px-20 max-lg:px-5 mx-auto">
         <div className="flex max-lg:flex-wrap justify-between gap-5 lg:gap-[166px] py-5 lg:py-20">
           {/* Left side */}
           <div className="flex flex-col gap-2 mb-0 md:max-w-[364px] w-full">
