@@ -19,6 +19,7 @@ const HomePage = ({ pageData, locale, newLetterSection }) => {
       locale={locale}
       globals={layout}
       promo_banner={layout?.banner}
+      maxWidth={false}
     >
       <Popup />
       <Slicer

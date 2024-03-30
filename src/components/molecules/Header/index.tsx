@@ -79,7 +79,7 @@ const Header = ({
             </div>
           </Container>
         </div>
-        <div className="bg-white h-[70px] flex items-center justify-between px-20 max-xl:px-5">
+        <div className="bg-white h-[70px] flex items-center justify-between px-20 max-xl:px-5 w-[1440px] mx-auto">
           {/* <Container className="main-content-wrapper flex gap-[138px] items-center justify-between"> */}
           <div>
             <Link href={`/${locale}`}>

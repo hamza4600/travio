@@ -163,7 +163,7 @@ function PriceList({
 
   return (
     <Container
-      className=" bg-[rgba(20,13,49,0.02)] max-w-[1312px] lg:bg-transparent xl:px-20 px-5"
+      className=" bg-[rgba(20,13,49,0.02)] max-w-[1312px] lg:bg-transparent max-md:px-5"
       id="price-list"
     >
       <div
@@ -243,7 +243,7 @@ function PriceList({
                   }}
                 >
                   <h1
-                    className={`md:col-span-2 font-satoshi whitespace-nowrap  md:text-base md:leading-6 text-[10px] leading-[12px] ${
+                    className={`md:col-span-2 font-satoshi whitespace-nowrap  md:text-base md:leading-6 text-[10px] leading-[12px] max-md:w-[72px] ${
                       collapsed
                         ? "text-[12px] max-md:leading-3 md:text-sm ml-2"
                         : "ml-5"
@@ -275,7 +275,7 @@ function PriceList({
                     />
                   </svg>
                   <h1
-                    className={`md:col-span-2 whitespace-nowrap font-satoshi text-[10px] max-md:leading-3 md:text-base ${
+                    className={`md:col-span-2 whitespace-nowrap font-satoshi text-[10px] max-md:leading-3 md:text-base w-[75px] ${
                       collapsed && "text-[12px] max-md:leading-3"
                     }`}
                   >
@@ -291,7 +291,7 @@ function PriceList({
                     >
                       {MAPPINGS[price.availability || "Available"].availability}
                     </p>
-                    <div></div>
+                    
                     <div
                       className={`md:col-span-2 font-satoshi  text-[12px] max-md:leading-3 md:text-base text-center md:flex items-center gap-2 ${
                         MAPPINGS[price.availability || "Available"].color

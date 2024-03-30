@@ -18,8 +18,7 @@ export default function ItinerarySection({
 }) {
   return (
     <Container
-      className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7 max-md:mt-14"
-      // style={{ overflowY: "auto", maxHeight: "calc(100vh - 100px)" }}
+      className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7 max-md:mt-6"
     >
       <SectionHeader
         title={data?.tagline?.[locale]}
@@ -375,8 +374,11 @@ const Expandable = ({
       </button>
       <div
         className={`flex flex-col gap-6 transition-all  rounded-b-2xl ${
-          !isOpen ? "overflow-hidden h-0" : "p-5"
+          !isOpen ? "overflow-hidden h-0" : "p-5 shadow shadow-[#f1f1f1] border-[0.2px] border-[#eeeeee]"
         }`}
+        style={{
+          boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)"
+        }}
       >
         <div className="flex flex-col gap-6">
           <div className="relative w-full h-[200px] overflow-hidden max-md:w-full max-md:h-[160px] md:max-w-[914px] md:min-h-[382px] rounded-2xl ">
@@ -428,8 +430,6 @@ const Expandable = ({
             icon={data.special_information?.icon}
             content={data.special_information?.description}
           /> */}
-
-          <div></div>
         </div>
       </div>
     </div>

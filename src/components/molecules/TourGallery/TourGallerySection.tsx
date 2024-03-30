@@ -57,7 +57,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
           </div>
         </div>
         <div className={"mt-2 mb-[40px]"}>
-          <Image
+          <img
             width={100}
             height={40}
             src={"/small-logo.svg"}
@@ -71,7 +71,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
               <div
                 key={i}
                 className={
-                  "min-w-[233px] md:min-w-[320px] w-full md:max-w-[320px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl"
+                  "min-w-[233px] md:min-w-[320px] w-full md:max-w-[320px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl pb-4 md:pb-0"
                 }
               >
                 <PhotoProvider>
@@ -90,7 +90,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
               <div
                 key={i}
                 className={
-                  "h-[190px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5"
+                  "h-[190px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5 pb-4 md:pb-0"
                 }
               >
                 <div
@@ -134,11 +134,11 @@ const TourGallerySection = (props: GallerySectionProps) => {
           )}
         </Swiper>
         <div>
-          <Image
+          <img
             width={80}
             height={40}
-            src={"/plane.svg"}
-            className="w-auto -left-10 absolute "
+            src={"/Plane.png"}
+            className="w-auto -left-10 absolute max-md:w-[200px] max-md:left-16"
             alt="plane"
           />
         </div>

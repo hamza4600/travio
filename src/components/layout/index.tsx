@@ -22,6 +22,7 @@ const Layout = ({
   promo_banner,
   locale,
   head,
+  maxWidth = true,
 }: {
   children: ReactNode;
   globals?: SanityGlobals;
@@ -29,6 +30,7 @@ const Layout = ({
   promo_banner?: any;
   locale: any;
   head?: any;
+  maxWidth?: boolean;
 }) => {
   return (
     <div className="bg-white">
@@ -45,7 +47,6 @@ const Layout = ({
         )}
         <div
           className="overflow-x-hidden text-black min-h-screen  flex flex-col"
-          // style={{ width: process.env.NEXT_PUBLIC_DEVELOPMENT ? 1440 : '' }}
           style={{
             width: process.env.NEXT_PUBLIC_DEVELOPMENT ? "" : "",
           }}
@@ -56,7 +57,8 @@ const Layout = ({
             locale={locale}
           />
 
-          <main className="grow">
+          <main 
+            className={`grow w-full ${maxWidth ? "max-w-[1440px] mx-auto " : "" }`}>
             <PromoBanner banner={promo_banner} locale={locale} />
             <Breadcrumbs paths={breadcrumbs} locale={locale} />
 

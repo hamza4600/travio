@@ -79,7 +79,12 @@ const Filter = ({
   const reverseRatings = [...ratings].reverse();
 
   return (
-    <div className="rounded-xl shadow shadow-[#f1f1f1] md:w-[300px] my-2 ">
+    <div 
+      className="rounded-xl shadow shadow-[#f1f1f1] md:w-[300px] my-2"
+      style={{
+        boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)"
+      }}
+    >
       <div className=" py-[16px] tracking-wide font-medium rounded-t-2xl px-[18px] bg-[#ecf4ff] ">
         Filter by Rating
       </div>
@@ -130,8 +135,11 @@ const RatingCard = ({
   return (
     <div
       className={
-        "w-full rounded-2xl font-satoshi  px-[20px] py-[24px] space-y-[16px]  shadow shadow-[#f1f1f1] border-[0.2px] border-[#eeeeee]"
+        "w-full rounded-2xl font-satoshi  px-[20px] py-[24px] space-y-[16px] shadow shadow-[#f1f1f1] border-[0.2px] border-[#eeeeee]"
       }
+      style={{
+        boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)"
+      }}
     >
       <div className="flex  text-xl">
         {Array.from(Array(star).keys()).map((x, i) => (
@@ -210,7 +218,7 @@ const ReviewSection = (props) => {
 
   const pageSize = 3;
   return (
-    <Container className="pb-[50px] md:pt-[80px] pt-[50px] md:py-[80px]  mx-auto max-w-[1312px] px-4 text-black">
+    <Container className="pb-[50px] md:pt-[80px] pt-[50px] md:py-[80px]  mx-auto max-w-[1312px] px-5 text-black">
       <SectionHeader
         title={tagline?.[locale]}
         subtitle={title?.[locale]}
