@@ -67,21 +67,21 @@ const BlogSection = (props) => {
   console.log("tagline: ", tagline?.en, "locale: ", locale, featured_blogs);
 
   return (
-    <Container className="text-darkblue px-20 max-lg:px-5 md:mt-[84px] mt-[50px] md:mb-[68px] mb-[70px]">
-      <SectionHeader
+    <Container className="text-darkblue md:mt-[84px] mt-[50px] md:mb-[68px] mb-[70px]">
+      {/* <SectionHeader
         title={tagline?.[locale]}
         subtitle={title?.[locale]}
         centerLine
-      />
-      {/* <header className="pb-5 font-satoshi">
+      /> */}
+      <header className="pb-5 font-satoshi">
         <p className="text-[#3FA9F5] text-[12px] md:text-base font-medium text-center uppercase leading-5">
           {tagline?.[locale]}
         </p>
         <div className="mt-2 md:mt-3 -tracking-[1.2px] mb-[30px] md:mb-12 w-fit mx-auto md:text-[40px] font-bold text-2xl md:leading-[50px] text-center">
           <h2>{title?.[locale]}</h2>
-          <div className=" mt-[4px] md:mt-[12px] w-2/3 md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
+          <div className="w-[40px] mt-[4px] md:mt-[12px] w-2/3 md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
         </div>
-      </header> */}
+      </header>
       <div className="relative">
         <SwiperComponent
           className={"gap-3 md:gap-6 w-full overflow-hidden "}

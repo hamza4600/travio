@@ -14,11 +14,11 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
   // if (!banner.promo_banner) return null;
   return (
     <Container
-      className={`font-satoshi h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue ${
+      className={`max-md:h-[28px] font-satoshi h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue ${
         isHome && "rounded-t-[24px] max-xl:rounded-none relative z-20"
       }`}
     >
-      <Container className="pl-[18px] pr-[19px]">
+      <div>
         <div
           className={
             "font-medium text-[11px] md:text-sm leading-5 md:leading-[24px] text-center "
@@ -32,7 +32,7 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
             {banner.promo_banner.link?.text?.[locale]}
           </Link>
         </div>
-      </Container>
+      </div>
     </Container>
   );
 }

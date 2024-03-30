@@ -20,7 +20,7 @@ const DestinationsSection = ({ data, locale }) => {
   }
 
   return (
-    <Container className="px-20 max-md:px-5 md:mt-20 mt-[60px]">
+    <Container className="md:mt-20 mt-[60px]">
       <div>
         <header>
           <p className="text-[#3FA9F5] font-satoshi text-[12px] md:text-base font-medium uppercase leading-5 md:leading-normal ">

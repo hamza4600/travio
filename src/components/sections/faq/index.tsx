@@ -15,7 +15,7 @@ const FAQSection = ({ data, locale }: { data: any; locale: string }) => {
           subtitle={data?.tagline?.[locale]}
           centerLine
         />
-        <div className="w-full px-20 max-sm:px-5 mt-[40px] md:mt-12 space-y-5 md:space-y-6">
+        <div className="w-full mt-[40px] md:mt-12 space-y-5 md:space-y-6">
           {data.faqs?.map((faq, index) => (
             <div className="flex flex-col gap-5" key={index}>
               <div

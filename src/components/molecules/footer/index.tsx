@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Text } from "@/components/ui/text";
@@ -10,7 +10,6 @@ import { urlFor } from "../../../../sanity/lib/client";
 import useWindowSize from "@/hooks/useWindows";
 
 const Footer = ({ footer, language }) => {
-
   const windows = useWindowSize();
   const isMobile = windows.width < 768;
 
@@ -19,7 +18,7 @@ const Footer = ({ footer, language }) => {
 
   return (
     <div className="w-full bg-primary">
-      <Container className="max-w-[1440px] px-20 max-lg:px-5 mx-auto">
+      <Container>
         <div className="flex max-lg:flex-wrap justify-between gap-5 lg:gap-[166px] py-5 lg:py-20">
           {/* Left side */}
           <div className="flex flex-col gap-2 mb-0 md:max-w-[364px] w-full">

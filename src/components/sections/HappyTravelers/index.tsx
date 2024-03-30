@@ -36,7 +36,7 @@ const TravlerReviews = (props) => {
 
   return (
     <div className="w-full bg-[#F2FAFF] md:mt-[84px] mt-[50px] text-black py-[30px]  md:h-full relative md:px-20 px-5">
-      <Container className={"lg:flex md:pr-0 items-center gap-x-10 "}>
+      <Container className={"lg:flex max-md:px-0 items-center gap-x-10 "}>
         <div className="lg:max-w-xs font-satoshi shrink-0 w-full text-center md:text-start">
           <h2 className="text-xl md:text-[40px] leading-[30px] md:leading-tight -tracking-[1.2px] font-bold">
             <span className="text-[#3FA9F5] md:text-black">
@@ -56,7 +56,7 @@ const TravlerReviews = (props) => {
             alt=""
             style={{ borderRadius: "10px" }}
             className={
-              "my-[30px] md:mt-[38px] max-w-[260px] min-h-[73px] max-sm:mx-auto"
+              "my-[30px] md:mt-[38px] w-full max-md:h-[220px] object-cover"
             }
           />
         </div>
@@ -68,43 +68,46 @@ const TravlerReviews = (props) => {
           >
             {testimonials?.map((item, index: any) => {
               return (
-                <div key={index} className={"w-[284px] shrink-0 "}>
-                  <div className="flex gap-x-0.5 mb-1.5">
-                    <Star />
-                    <Star />
-                    <Star />
-                    <Star />
-                    <Star />
-                  </div>
-
-                  <h3 className="mb-1 font-bold text-base font-satoshi">
-                    {item.title[locale]}
-                  </h3>
-
-                  <p className="text-[12px] md:text-sm font-normal font-satoshi text-darkblue md:font-medium  leading-[20px] md:leading-[22px] max-w-[273px]">
-                    {truncateChar(item.text[locale], 250)}
-                  </p>
-                  <div className="flex gap-x-3 mt-4 items-center">
-                    <div>
-                      <img
-                        alt={""}
-                        className="min-h-[38px] max-w-[38px] max-md:hidden"
-                        src={urlFor(item?.avatar?.asset?._ref)}
-                      />
-                      <img
-                        alt={""}
-                        className="min-h-[38px] max-w-[38px] md:hidden"
-                        src={urlFor(item?.avatar?.mobile?.asset?._ref)}
-                      />
+                <div key={index}>
+                  <div className={"w-[284px] shrink-0 "}>
+                    <div className="flex gap-x-0.5 mb-1.5">
+                      <Star />
+                      <Star />
+                      <Star />
+                      <Star />
+                      <Star />
                     </div>
-                    <div className="gap-1 font-satoshi md:gap-0">
-                      <div className="font-bold text-darkblue text-[12px] md:text-sm leading-[20px] md:leading-[22px]">
-                        {item?.name}
-                      </div>
 
-                      <time className="text-[10px] md:text-xs leading-3 md:leading-[20px] text-gray">
-                        {item.time[locale]}
-                      </time>
+                    <h3 className="mb-1 font-bold text-base font-satoshi">
+                      {item.title[locale]}
+                    </h3>
+
+                    <p className="text-[12px] md:text-sm font-normal font-satoshi text-darkblue md:font-medium  leading-[20px] md:leading-[22px] max-w-[273px]">
+                      {truncateChar(item.text[locale], 250)}
+                    </p>
+                    <div className="flex gap-x-3 mt-4 items-center">
+                      <div>
+                        <img
+                          alt={""}
+                          className="min-h-[38px] max-w-[38px] max-md:hidden"
+                          src={urlFor(item?.avatar?.asset?._ref)}
+                        />
+                        <img
+                          alt={""}
+                          className="min-h-[38px] max-w-[38px] md:hidden"
+                          src={urlFor(item?.avatar?.mobile?.asset?._ref)}
+                        />
+                      </div>
+                      <div className="gap-1 font-satoshi md:gap-0">
+                        <div className="font-bold text-darkblue text-[12px] md:text-sm leading-[20px] md:leading-[22px]">
+                          {item?.name}
+                        </div>
+
+                        <time className="text-[10px] md:text-xs leading-3 md:leading-[20px] text-gray">
+                          {item.time[locale]}
+                        </time>
+                      </div>
+                      {/* <div className="w-[160px] h-[1px] rotate-90 opacity-10 bg-[#3FA9F5]" /> */}
                     </div>
                   </div>
                 </div>

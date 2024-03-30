@@ -35,6 +35,10 @@ const Header = ({
 
   const pathname = usePathname();
 
+  function setDropDown() {
+    setOpenDropDown(!openDropDown);
+  }
+
   useEffect(() => {
     if (open) {
       document.body.classList.add("overflow-hidden");
@@ -49,7 +53,11 @@ const Header = ({
 
   return (
     <Root>
-      <div className={`w-full hidden bg-white lg:block h-[100px] `}>
+      <div
+        className={`w-full hidden bg-white lg:block h-[100px] ${
+          openDropDown && "relative z-50"
+        } `}
+      >
         {/* <div className="mx-auto box-border"> */}
         <div className={"bg-primary h-[30px]"}>
           <Container className="py-1">
@@ -174,7 +182,7 @@ const Header = ({
                 {item?._type === "tour_dropdown" && (
                   <div>
                     <span
-                      onClick={() => setOpenDropDown(!openDropDown)}
+                      onClick={() => setDropDown()}
                       className="flex hover:bg-primary rounded-[8px] text-blue  p-[12px] text-[16px] px-[18px] items-center justify-between cursor-pointer"
                     >
                       <p className={"font-medium font-satoshi text-darkblue"}>

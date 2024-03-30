@@ -112,7 +112,7 @@ const FlexibleThingsForTour = dynamic(
 const PriceList = dynamic(
   () => import("@/components/pages/DynamicTourPage/PriceList")
 );
-  
+
 const WhatsIncludedSection = dynamic(
   () => import("@/components/pages/DynamicTourPage/InccludedInTour")
 );

@@ -10,7 +10,7 @@ const NewsletterSection = ({ data, locale }) => {
   const { subtitle, title } = data || {};
 
   return (
-    <Container className="md:px-20 px-0 md:pb-[60px] pb-[50px] flex justify-center items-center bg-white text-white">
+    <Container className="md:pb-[60px] pb-[50px] px-0 flex justify-center items-center bg-white text-white">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full w-screen md:w-full bg-blue md:rounded-3xl overflow-hidden relative">
         <Image
           width={640}
@@ -40,7 +40,8 @@ const NewsletterSection = ({ data, locale }) => {
               type="text"
               placeholder={"Enter your email"}
             />
-            <Button variant={'golden'}
+            <Button
+              variant={"golden"}
               className="absolute right-[5px] top-1/2 -translate-y-1/2 py-[4px] md:py-[7px] px-[18px] font-bold rounded-full"
             >
               {"Sign Up"}

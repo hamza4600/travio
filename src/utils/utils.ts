@@ -1,4 +1,6 @@
 import { vercelStegaSplit } from "@vercel/stega";
+import { SanityMetaData, SanitySlug } from "../../sanity/lib/types";
+import { client } from "../../sanity/lib/client";
 
 export function displayNumber(
   count: number | undefined,
@@ -67,6 +69,34 @@ export function getFirstDayOfMonth(month: number) {
 // truncate char
 export function truncateChar(str: string, n: number): string {
   return str.length > n ? str.substring(0, n) + ".." : str;
+}
+
+export type PageData = {
+  _id: string;
+  _type: string;
+  slug: SanitySlug;
+  meta_data: SanityMetaData;
+};
+
+export async function getAllPages(): Promise<PageData[]> {
+  const pageTypes = [
+    "blog_page",
+    "destination_page",
+    "page",
+    "tailor_your_tour",
+    "tour_page",
+    "travel_guide",
+    "travel_wiki",
+  ];
+  const pages = await client.fetch(`
+    *[_type in ${JSON.stringify(pageTypes)}]{
+        _id,
+        _type,
+        slug,
+        meta_data
+      }
+  `);
+  return pages;
 }
 
 // export function getSanitySlugFromSlugs(
