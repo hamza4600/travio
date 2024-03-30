@@ -5,7 +5,7 @@ import Container from "@/components/molecules/container";
 
 const OtherTours = (props) => {
   const {
-    data: { title, tours },
+    data: { tours },
     locale,
   } = props;
 
@@ -30,9 +30,8 @@ const OtherTours = (props) => {
           );
         })}
       </div>
-      {title === "Popular Tours" && (
-        <div className="text-[#F2FAFF] w-full rounded-full border-[2px] max-w-[1280px] max-md:hidden" />
-      )}
+      {/* 
+      <div className="text-[#F2FAFF] w-full rounded-full border-[2px] max-w-[1280px] max-md:hidden" /> */}
     </Container>
   );
 };

@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import Layout from "@/components/layout";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import Slicer from "../../../../sanity/slicer";
 
-const Popup = dynamic(() => import("@/components/molecules/Popup"));
+// const Popup = dynamic(() => import("@/components/molecules/Popup"));
 
 import "react-photo-view/dist/react-photo-view.css";
 import { SectionMap } from "@/components/sections";
@@ -21,7 +21,7 @@ const HomePage = ({ pageData, locale, newLetterSection }) => {
       promo_banner={layout?.banner}
       maxWidth={false}
     >
-      <Popup />
+      {/* <Popup /> */}
       <Slicer
         locale={locale}
         components={SectionMap}

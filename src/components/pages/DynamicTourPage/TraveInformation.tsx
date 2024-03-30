@@ -12,7 +12,7 @@ const TravelInformation = ({ data, locale }: { data: any; locale: string }) => {
   return (
     <Container className={"mx-auto max-w-[1312px] px-5"}>
       <div
-        id="essentials"
+        id="travel-info"
         className="flex flex-col md:gap-7 gap-[30px] text-center items-center justify-center px-5 rounded-2xl border-[#FFBB0B] border-[1px] shadow-md shadow-[#f5f5f5] lg:px-20 py-10 pb-7"
       >
         <img

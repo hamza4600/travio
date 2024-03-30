@@ -85,25 +85,23 @@ export default function FeatureSection({ data, locale }) {
     );
   }
   return (
-    <div
+    <Container
       className={
         "bg-[#F2FAFF] font-satoshi md:px-[29px] px-5 text-center py-5 md:py-2 md:mt-7 mt-0 md:rounded-[16px] rounded-none"
       }
     >
-      <Container className="">
-        {/* {data.title && ( */}
-        <div className="flex md:items-start  items-center justify-evenly md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
-          <h2>{data.title[locale]}</h2>
-          <div className="w-[91px] md:w-[107px] mt-[6px] border md:border-2 border-[#FFBB0B] text-yellow  mb-4" />
-        </div>
-        {/* )} */}
-        <div className="flex justify-between w-full flex-wrap gap-[15px] ">
-          {data?.features?.map((feature, index) => (
-            <SmallFeature key={index} data={feature} locale={locale} />
-          ))}
-        </div>
-      </Container>
-    </div>
+      {/* {data.title && ( */}
+      <div className="flex md:items-start  items-center justify-evenly md:justify-start flex-col text-2xl -tracking-[0.72px] font-bold w-fit mx-auto leading-[30px] md:leading-[34px]  ">
+        <h2>{data.title[locale]}</h2>
+        <div className="w-[91px] md:w-[107px] mt-[6px] border md:border-2 border-[#FFBB0B] text-yellow  mb-4" />
+      </div>
+      {/* )} */}
+      <div className="flex justify-between w-full flex-wrap gap-[15px] ">
+        {data?.features?.map((feature, index) => (
+          <SmallFeature key={index} data={feature} locale={locale} />
+        ))}
+      </div>
+    </Container>
   );
 }
 

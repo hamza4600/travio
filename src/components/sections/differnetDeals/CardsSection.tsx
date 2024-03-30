@@ -101,10 +101,10 @@ export const data1 = [
 
 const CardsSection = ({ data, locale }, props) => {
   // console.log("data: ", data);
-  console.log("props8585", props);
+  // console.log("props8585", props);
 
   return (
-    <Container className="text-black w-full smd:mr-0 px-20 max-lg:px-5 mt-[50px]">
+    <Container className="text-black w-full smd:mr-0 mt-[50px]">
       <SectionHeader
         subtitle={data?.title?.[locale]}
         title={data?.tagline?.[locale]}

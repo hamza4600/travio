@@ -7,7 +7,9 @@ import React from "react";
 import { TourSectionsMap } from "@/components/sections";
 import styled from "styled-components";
 import Container from "@/components/molecules/container";
-import AppTabs from "@/components/molecules/AppTabs/AppTabse";
+const AppTabs = dynamic(
+  () => import("@/components/molecules/AppTabs/AppTabse")
+);
 import { tabsData } from "./data";
 
 const OverViewCard = dynamic(() => import("./Overview"));
@@ -17,7 +19,7 @@ const Root = styled.div`
   padding-bottom: 3rem;
 
   @media (max-width: 768px) {
-      padding-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 `;
 

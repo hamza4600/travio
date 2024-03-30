@@ -26,7 +26,7 @@ const TourCard = ({
       className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"}
       href={locale + "/tours" + link}
     >
-      <div className="bg-white relative min-h-[464px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
+      <div className="bg-white relative shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
         {label && (
           <Text
             variant={"tertiary"}
