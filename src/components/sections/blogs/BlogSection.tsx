@@ -9,12 +9,8 @@ import SwiperComponent from "@/components/molecules/Swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { urlFor } from "../../../../sanity/lib/client";
-// import useWindowSize from "@/hooks/useWindows";
-import SectionHeader from "@/components/molecules/secHeader";
 
 const BlogCard = ({ blog, locale }) => {
-  // const windows = useWindowSize();
-  // const isMobile = windows.width < 768;
   return (
     blog && (
       <Link
@@ -26,8 +22,6 @@ const BlogCard = ({ blog, locale }) => {
             {blog?.cover_image && (
               <img
                 loading="lazy"
-                // width={410}
-                // height={460}
                 className="w-full min-h-[460px] max-w-[410px] max-sm:min-h-[280px] max-sm:max-w-[250px]"
                 src={urlFor(blog?.cover_image)}
                 alt="cover_image"
@@ -79,7 +73,7 @@ const BlogSection = (props) => {
         </p>
         <div className="mt-2 md:mt-3 -tracking-[1.2px] mb-[30px] md:mb-12 w-fit mx-auto md:text-[40px] font-bold text-2xl md:leading-[50px] text-center">
           <h2>{title?.[locale]}</h2>
-          <div className="w-[40px] mt-[4px] md:mt-[12px] w-2/3 md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
+          <div className="w-[40px] mt-[4px] md:mt-[12px] md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
         </div>
       </header>
       <div className="relative">
