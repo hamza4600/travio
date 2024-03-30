@@ -10,10 +10,9 @@ import Container from "@/components/molecules/container";
 import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import { tabsData } from "./data";
 
-// Dynamic imports
-// const ReviewSection = dynamic(
-//   () => import("@/components/sections/reviews/Reviews")
-// );
+const OverViewCard = dynamic(() => import("./Overview"));
+const HeroSection = dynamic(() => import("./HeroSection"));
+
 const Root = styled.div`
   padding-bottom: 3rem;
 
@@ -21,29 +20,29 @@ const Root = styled.div`
       padding-bottom: 2.5rem;
   }
 `;
-const OverViewCard = dynamic(() => import("./Overview"));
 
-const HeroSection = dynamic(() => import("./HeroSection"));
+// move it it global space 
+function transformArray(inputArray , lang) {
+  if (!inputArray || inputArray.length === 0) return [];
+  return inputArray.map(item => {
+      return {
+          label: item.title[lang] || item.title.en,
+          value: item.url,
+      };
+  });
+}
 
 const DynamicTourPage = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
 
-  console.log(data, "tour");
+  const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb , language);
+  
   return (
     <Layout
       globals={layout}
       locale={language}
       maxWidth={false}
-      breadcrumbs={[
-        {
-          label: "Destinations",
-          value: "#",
-        },
-        {
-          label: "Egypt",
-          value: "/egypt",
-        },
-      ]}
+      breadcrumbs={breadcrumbs}
       promo_banner={layout?.banner}
     >
       <Container className=" px-0">

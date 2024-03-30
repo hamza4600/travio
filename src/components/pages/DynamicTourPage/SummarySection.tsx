@@ -19,7 +19,7 @@ const RootStyle = styled.div`
   }
 
   @media (max-width: 768px) {
-    p {
+    p , li , ul {
       font-size: 14px;
       font-style: normal;
       font-weight: 400;

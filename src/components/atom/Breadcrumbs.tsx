@@ -13,8 +13,10 @@ const Breadcrumbs = ({
   paths: Breadcrumb[];
   locale: string;
 }) => {
+
   if (!paths?.length) return null;
   const lastIndex = paths.length - 1;
+  
   return (
     <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex md:items-center gap-1 text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
       <Link href={`/${locale}`} className="">
@@ -42,7 +44,7 @@ const Breadcrumbs = ({
                 ? "text-[#3FA9F5] md:font-bold font-medium max-md:text-[12px] max-md:leading-5"
                 : "text-darkblue"
             }
-            href={`${path.value}`}
+            href={`/${locale}${path.value}`}
           >
             {path.label}
           </Link>
