@@ -19,8 +19,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
   const { locale } = FeaturedTour;
 
   return (
-    // <div>
-    <Container className="text-black w-full md:mr-0 px-20 max-lg:px-5 mt-[50px] md:mb-[90px] mb:[50px]">
+    <Container className="text-black w-full md:mr-0 mt-[50px] md:mb-[90px] mb:[50px] mx-auto max-md:px-5">
       <SectionHeader
         subtitle={FeaturedTour?.data.tagline?.en}
         title={FeaturedTour?.data.title?.en}

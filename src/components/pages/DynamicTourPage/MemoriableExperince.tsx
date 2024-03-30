@@ -37,15 +37,15 @@ export default function MemorableExperiencesSection({
   }, [swiper]);
   // console.log(data)
   return (
-    <div className="flex flex-col md:gap-12 gap-7">
+    <div className="flex flex-col md:gap-12 gap-0">
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}
         centerLine
       />
 
-      <div className="w-full bg-primary">
-        <Container className="flex md:px-20 px-5 flex-col py-7 relative">
+      <div className="w-full bg-primary mt-6 md:mt-0">
+        <Container className="flex md:px-0 px-5 flex-col py-7 relative md:pb-5 pb-16 ">
           <Swiper
             modules={[Navigation, Scrollbar, A11y, Controller]}
             className="external-buttons mySwiper w-full"
@@ -83,7 +83,7 @@ export default function MemorableExperiencesSection({
           </Swiper>
         </Container>
       </div>
-      <Container className="lg:gap-20 gap-[15px] px-4  relative flex md:justify-center justify-end">
+      <Container className="lg:gap-20 gap-[15px] px-4  relative flex md:justify-center justify-end top-[-10px] md:top-0">
         <button
           className={
             "rounded-full  bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 -translate-y-1/2 cursor-pointer "

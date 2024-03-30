@@ -18,7 +18,6 @@ const OverViewCard = ({
   //   const router = useRouter();
   const price: any = data?.price;
 
-  console.log("price: ", price);
   return (
     <div className="relative font-satoshi lg:h-[80px] bg-primary lg:bg-transparent pb-5 h-fit ">
       <div className="lg:absolute grid p-[26px] max-xl:grid-cols-2 gap-3 lg:flex items-center max-w-[1280px]  inset-x-0 lg:divide-x-2 top-[-34px] mx-auto bg-primary rounded-2xl">
