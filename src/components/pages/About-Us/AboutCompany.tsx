@@ -3,6 +3,8 @@ import React from "react";
 import styled from "styled-components";
 // import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../../../sanity/lib/client";
+import SectionHeader from "@/components/molecules/secHeader";
+import Container from "@/components/molecules/container";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,35 +22,6 @@ const Wrapper = styled.div`
 
 const TextConatiner = styled.div`
   text-align: center;
-`;
-
-const Text1 = styled.p`
-  font-family: var(--font-satoshi);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-transform: uppercase;
-  color: #3fa9f5;
-
-  @media (max-width: 578px) {
-    font-size: 12px;
-    line-height: 20px;
-  }
-`;
-
-const Text2 = styled.p`
-  font-family: var(--font-satoshi);
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 50px;
-  letter-spacing: 0px;
-  color: #140d31;
-
-  @media (max-width: 578px) {
-    font-size: 24px;
-    line-height: 32px;
-  }
 `;
 
 const MissionConatiner = styled.div`
@@ -172,39 +145,48 @@ const Desc = styled.div`
 const AboutComapny = ({ data, locale }) => {
   // console.log()
   return (
-    <Wrapper>
-      <TextConatiner>
-        <Text1>{data.tagline?.[locale]}</Text1>
-        <Text2>{data.title?.[locale]}</Text2>
-      </TextConatiner>
-      <MissionConatiner>
-        <TextImageContainer>
-          <img
-            src={urlFor(data.content?.[locale][0]?.items[0].image?.asset?._ref)}
-            // width={data.img.width}
-            // height={data.img.height}
-            alt={data.content?.[locale][0]?.items[0].alt}
+    <Container>
+      <Wrapper>
+        <TextConatiner>
+          <SectionHeader
+            title={data.tagline?.[locale]}
+            subtitle={data.title?.[locale]}
+            centerLine
           />
-          <TextWrapper>
-            <MissionText>
-              {data.content?.[locale][0]?.items?.[1]?.items[0]?.text}
-            </MissionText>
-            <MissionText>
-              {data.content?.[locale][0]?.items?.[1]?.items[1]?.text}
-            </MissionText>
-          </TextWrapper>
-        </TextImageContainer>
-        <BenefitsWrapper>
-          {/* <PortableText value={data.content} /> */}
-          {data.content?.[locale][1]?.items.map((data: any, index: number) => (
-            <TitleDescWrapper key={index}>
-              <Title>{data.items[0].text || ""}</Title>
-              <Desc>{data.items[1].text}</Desc>
-            </TitleDescWrapper>
-          ))}
-        </BenefitsWrapper>
-      </MissionConatiner>
-    </Wrapper>
+        </TextConatiner>
+        <MissionConatiner>
+          <TextImageContainer>
+            <img
+              src={urlFor(
+                data.content?.[locale][0]?.items[0].image?.asset?._ref
+              )}
+              // width={data.img.width}
+              // height={data.img.height}
+              alt={data.content?.[locale][0]?.items[0].alt}
+            />
+            <TextWrapper>
+              <MissionText>
+                {data.content?.[locale][0]?.items?.[1]?.items[0]?.text}
+              </MissionText>
+              <MissionText>
+                {data.content?.[locale][0]?.items?.[1]?.items[1]?.text}
+              </MissionText>
+            </TextWrapper>
+          </TextImageContainer>
+          <BenefitsWrapper>
+            {/* <PortableText value={data.content} /> */}
+            {data.content?.[locale][1]?.items.map(
+              (data: any, index: number) => (
+                <TitleDescWrapper key={index}>
+                  <Title>{data.items[0].text || ""}</Title>
+                  <Desc>{data.items[1].text}</Desc>
+                </TitleDescWrapper>
+              )
+            )}
+          </BenefitsWrapper>
+        </MissionConatiner>
+      </Wrapper>
+    </Container>
   );
 };
 

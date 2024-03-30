@@ -49,14 +49,10 @@ const Header = ({
 
   return (
     <Root>
-      <div
-        className={`w-full hidden bg-white lg:block h-[100px] relative  
-        ${openDropDown ? "z-0" : "z-50"}`}
-      >
-        <div className="mx-auto box-border max-w-[1440px]">
-
+      <div className={`w-full hidden bg-white lg:block h-[100px] `}>
+        {/* <div className="mx-auto box-border"> */}
         <div className={"bg-primary h-[30px]"}>
-          <Container className="py-1 px-20">
+          <Container className="py-1">
             <div className="main-content-wrapper">
               {banner?.watts_banner?.show && (
                 <a
@@ -158,16 +154,16 @@ const Header = ({
                     onClick={() => {
                       setOpen(false);
                     }}
-                    className=" p-[12px] font-[500] font-satoshi text-[16px] px-[18px] "
+                    className=" p-[12px] font-satoshi text-[16px] px-[18px] "
                   >
                     <Link
                       href={`/${locale}${item.url}`}
                       title={item?.text?.[locale]}
                       className={
-                        "font-medium font-satoshi" +
+                        "font-satoshi " +
                         (pathname == `/${locale}${item.url}`
-                          ? "text-blue-500"
-                          : "text-darkblue")
+                          ? " text-blue-500 font-bold "
+                          : " text-darkblue font-medium ")
                       }
                     >
                       {/* {console.log("pathname", pathname , `/${locale}${item.url}`)} */}
@@ -233,8 +229,7 @@ const Header = ({
           })}
         </div> */}
         {/* P */}
-      
-        </div>
+        {/* </div> */}
       </div>
     </Root>
   );

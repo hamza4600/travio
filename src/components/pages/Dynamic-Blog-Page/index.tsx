@@ -78,53 +78,55 @@ export default function BlogPage({
       globals={layout}
       promo_banner={layout?.banner}
     >
-      <HeroSection data={hrData} />
-      <GallerySect />
-      <Container className={""}>
-        {/* {JSON.stringify(content)} */}
+      <Container>
+        <HeroSection data={hrData} />
+        <GallerySect />
+        <Container className={""}>
+          {/* {JSON.stringify(content)} */}
 
-        {dummyArticles && (
-          <div className="lg:px-20 px-5">
-            <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
-              Latest Articles
-            </h4>
-            <div className="text-yellow md:border-b-[3px] border-b-[#FFBB0B] md:w-[117px] w-[85px] rounded-full border-b-2 my-2" />
+          {dummyArticles && (
+            <div className="">
+              <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
+                Latest Articles
+              </h4>
+              <div className="text-yellow md:border-b-[3px] border-b-[#FFBB0B] md:w-[117px] w-[85px] rounded-full border-b-2 my-2" />
 
-            <BlogChoose
-              items={[...destinations, ...tags].map((item) => {
-                return {
-                  title: item?.name,
-                  link: `/blogs${item.slug}`,
-                  images: [item.icon],
-                };
-              })}
-            />
+              <BlogChoose
+                items={[...destinations, ...tags].map((item) => {
+                  return {
+                    title: item?.name,
+                    link: `/blogs${item.slug}`,
+                    images: [item.icon],
+                  };
+                })}
+              />
 
-            <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
-              {dummyArticles?.map((article, index) => {
-                return (
-                  <BlogDetailCard
-                    country={(article.destination as any)?.name}
-                    excerpt={article.introduction}
-                    image={article.cover_image ? article.cover_image : ""}
-                    link={`/blogs${article.slug?.current}`}
-                    title={article.title}
-                    date={article.time}
-                    author={article.author?.name}
-                    key={index}
-                  />
-                );
-              })}
+              <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
+                {dummyArticles?.map((article, index) => {
+                  return (
+                    <BlogDetailCard
+                      country={(article.destination as any)?.name}
+                      excerpt={article.introduction}
+                      image={article.cover_image ? article.cover_image : ""}
+                      link={`/blogs${article.slug?.current}`}
+                      title={article.title}
+                      date={article.time}
+                      author={article.author?.name}
+                      key={index}
+                    />
+                  );
+                })}
+              </div>
+
+              <Pagination
+                total={dummyArticles?.length || 0}
+                pageSize={9}
+                currentPage={value}
+                onChange={setValue}
+              />
             </div>
-
-            <Pagination
-              total={dummyArticles?.length || 0}
-              pageSize={9}
-              currentPage={value}
-              onChange={setValue}
-            />
-          </div>
-        )}
+          )}
+        </Container>
       </Container>
     </Layout>
   );

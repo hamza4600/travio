@@ -64,6 +64,11 @@ export function getFirstDayOfMonth(month: number) {
   return firstDay;
 }
 
+// truncate char
+export function truncateChar(str: string, n: number): string {
+  return str.length > n ? str.substring(0, n) + ".." : str;
+}
+
 // export function getSanitySlugFromSlugs(
 //   slugs: string | string[] | undefined
 // ): string {

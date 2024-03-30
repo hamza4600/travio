@@ -32,7 +32,7 @@ const Layout = ({
 }) => {
   return (
     <div className="bg-white">
-      <div className="mx-auto box-border">
+      <div>
         {globals?.navbar?.logo && (
           <Schema
             data={{
@@ -56,7 +56,7 @@ const Layout = ({
             locale={locale}
           />
 
-          <main className={"grow max-w-[1440px] mx-auto"}>
+          <main className="grow">
             <PromoBanner banner={promo_banner} locale={locale} />
             <Breadcrumbs paths={breadcrumbs} locale={locale} />
 

@@ -11,16 +11,27 @@ const Wrapper = styled.div`
   margin-top: 80px;
   margin-bottom: 80px;
 
+  .title {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 60px 0px 60px;
+  }
+
   @media (max-width: 578px) {
     gap: 40px;
     margin-top: 50px;
     margin-bottom: 50px;
+
+    .title {
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
 
-const Title = styled.div`
+const Title = styled.p`
   font-family: var(--font-satoshi);
-  padding: 0px 60px 0px 60px;
+
   font-size: 30px;
   font-weight: 600;
   line-height: 40px;
@@ -32,11 +43,6 @@ const Title = styled.div`
     /* padding: 0px 40px 0px 40px; */
     font-size: 24px;
     line-height: 32px;
-  }
-
-  @media (max-width: 768px) {
-    /* padding: 0px 20px 0px 20px; */
-    text-align: center;
   }
 `;
 
@@ -199,7 +205,11 @@ const OfficeLocations = ({ title, data, locale }) => {
 
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <div className="title">
+        <Title>{title}</Title>
+        <div className="md:border-b-[3px] border-b-2 border-b-[#FFBB0B] md:w-[117px] w-[89px]" />
+      </div>
+
       <LocationsWrapper>
         {data.map((data: any, index: number, array) => (
           <>

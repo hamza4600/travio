@@ -23,6 +23,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { urlFor } from "../../../../sanity/lib/client";
 import useWindowSize from "@/hooks/useWindows";
+import { truncateChar } from "@/utils/utils";
 
 const TravlerReviews = (props) => {
   const {
@@ -52,8 +53,6 @@ const TravlerReviews = (props) => {
             src={urlFor(
               isMobile ? image?.mobile?.asset?._ref : image?.asset?._ref
             )}
-            width={260}
-            height={73}
             alt=""
             style={{ borderRadius: "10px" }}
             className={
@@ -83,18 +82,19 @@ const TravlerReviews = (props) => {
                   </h3>
 
                   <p className="text-[12px] md:text-sm font-normal font-satoshi text-darkblue md:font-medium  leading-[20px] md:leading-[22px] max-w-[273px]">
-                    {item.text[locale]}
+                    {truncateChar(item.text[locale], 250)}
                   </p>
                   <div className="flex gap-x-3 mt-4 items-center">
                     <div>
                       <img
                         alt={""}
-                        className="min-h-[38px] max-w-[38px]"
-                        src={urlFor(
-                          isMobile
-                            ? item?.avatar?.mobile?.asset?._ref
-                            : item?.avatar?.asset?._ref
-                        )}
+                        className="min-h-[38px] max-w-[38px] max-md:hidden"
+                        src={urlFor(item?.avatar?.asset?._ref)}
+                      />
+                      <img
+                        alt={""}
+                        className="min-h-[38px] max-w-[38px] md:hidden"
+                        src={urlFor(item?.avatar?.mobile?.asset?._ref)}
                       />
                     </div>
                     <div className="gap-1 font-satoshi md:gap-0">
@@ -113,11 +113,12 @@ const TravlerReviews = (props) => {
           </SwiperComponent>
         </div>
         <Image
-          src="/plane.svg"
+          src="/demo/airp.png"
           height={200}
           width={200}
-          className="absolute -left-0 md:-left-5 h-[200px] w-[300px] md:h-[300px] md:w-[400px] -bottom-[75px] md:-bottom-[250px]"
-          alt=""
+          // className="absolur"
+          className="absolute -left-0 md:-left-5 -bottom-[75px] md:-bottom-[235px] max-md:w-[120px] max-md:rotate-12"
+          alt="aeroplane"
         />
       </Container>
     </div>
