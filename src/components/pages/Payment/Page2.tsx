@@ -50,10 +50,10 @@ export default function Page2({
   return (
     <div className="md:p-10 md:rounded-2xl overflow-hidden md:border md:border-darkblue/10 flex flex-col gap-10">
       <div className="flex flex-col gap-6">
-        <p className="text-2xl text-darkblue font-bold">
+        <p className="md:text-[24px] md:leading-[34px] text-[20px] leading-8 text-darkblue font-bold">
           1. Primary Passenger Details
         </p>
-        <p className="text-base text-gray font-medium">
+        <p className="md:text-base text-gray md:font-medium text-[14px] leading-6">
           Have you reviewed the details in the booking summary? If something
           isn&lsquo;t correct, you can adjust your details in the previous
           steps.
@@ -61,7 +61,9 @@ export default function Page2({
       </div>
       <div className="flex flex-col gap-[18px] max-w-[390px]">
         <div className="flex flex-col gap-2">
-          <p className="text-base font-medium text-darkblue">Full Name</p>
+          <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+            Full Name
+          </p>
           <div className="grid grid-cols-[80px_1fr] gap-3">
             <Input
               name="titlePrefix"
@@ -100,7 +102,9 @@ export default function Page2({
           />
         </div>
         <div className="flex flex-col gap-2">
-          <p className="text-base font-medium text-darkblue">Date of Birth</p>
+          <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+            Date of Birth
+          </p>
           <Input
             name="dob"
             control={control}
@@ -109,7 +113,9 @@ export default function Page2({
             rules={{ required: true }}
           />
           <div className="flex flex-col gap-2">
-            <p className="text-base font-medium text-darkblue">Nationality</p>
+            <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+              Nationality
+            </p>
             <Input
               name="nationality"
               control={control}
@@ -120,7 +126,9 @@ export default function Page2({
             />
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-base font-medium text-darkblue">Email</p>
+            <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+              Email
+            </p>
             <Input
               rules={{ required: true }}
               name="email"
@@ -129,7 +137,9 @@ export default function Page2({
             />
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-base font-medium text-darkblue">Mobile</p>
+            <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+              Mobile
+            </p>
             <div className="grid grid-cols-[120px_1fr] gap-3">
               <Input
                 name="mobileCode"
@@ -150,7 +160,9 @@ export default function Page2({
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-base font-medium text-darkblue">Address</p>
+            <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+              Address
+            </p>
             <Input
               rules={{ required: true }}
               name="address"
@@ -160,11 +172,15 @@ export default function Page2({
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-2">
-              <p className="text-base font-medium text-darkblue">Town</p>
+              <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+                Town
+              </p>
               <Input name="town" control={control} type="text" />
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-base font-medium text-darkblue">State</p>
+              <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+                State
+              </p>
               <Input
                 rules={{ required: true }}
                 name="state"
@@ -174,7 +190,9 @@ export default function Page2({
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-base font-medium text-darkblue">Country</p>
+            <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+              Country
+            </p>
             <Input
               rules={{ required: true }}
               name="country"
@@ -192,13 +210,13 @@ export default function Page2({
       {Array.from(Array(adultsNumber - 1).keys()).map((i) => (
         <div key={i}>
           <div className="mb-2 flex w-full justify-between items-end">
-            <p className="text-2xl text-darkblue font-bold">
+            <p className="md:text-[24px] md:leading-[34px] text-[20px] leading-8 text-darkblue font-bold">
               {i + 2}. Adult Passenger Details
             </p>
             {removePassenger && (
               <button
                 onClick={removePassenger}
-                className="font-bold text-base text-blue self-start mt-auto"
+                className="font-bold text-base text-primary self-start mt-auto"
               >
                 Remove
               </button>
@@ -206,7 +224,9 @@ export default function Page2({
           </div>
           <div className="flex flex-col gap-[18px] max-w-[390px]">
             <div className="flex flex-col gap-2">
-              <p className="text-base font-medium text-darkblue">Full Name</p>
+              <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+                Full Name
+              </p>
               <div className="grid grid-cols-[80px_1fr] gap-3">
                 <Input
                   name={`adultPassenger.${i}.titlePrefix`}
@@ -245,7 +265,7 @@ export default function Page2({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-base font-medium text-darkblue">
+              <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
                 Date of Birth
               </p>
               <Input
@@ -257,7 +277,9 @@ export default function Page2({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-base font-medium text-darkblue">Email</p>
+              <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
+                Email
+              </p>
               <Input
                 rules={{ required: true }}
                 name={`adultPassenger.${i}.email`}
@@ -271,7 +293,7 @@ export default function Page2({
       {addPassenger && (
         <button
           onClick={addPassenger}
-          className="font-bold text-base text-primary self-start"
+          className="md:text-base text-[12px] leading-5 font-bold text-base text-primary self-start"
         >
           Add Passenger
         </button>

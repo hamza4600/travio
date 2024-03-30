@@ -37,7 +37,7 @@ export default function MemorableExperiencesSection({
   }, [swiper]);
   // console.log(data)
   return (
-    <div className="flex flex-col md:gap-12 gap-7 md:pt-[60px] pt-[50px]">
+    <div className="flex flex-col md:gap-12 gap-7">
       <SectionHeader
         title={data?.tagline?.[locale]}
         subtitle={data?.title?.[locale]}

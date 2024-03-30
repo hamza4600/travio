@@ -11,10 +11,7 @@ import {
 } from "react-hook-form";
 import ReactStars from "react-stars";
 
-import {
-  localizedString,
-  localizedNumber,
-} from "../../../../sanity/lib/client";
+import { localizedString } from "../../../../sanity/lib/client";
 // import { PaymentSchema } from '@/pages/tours/[slug]/payment'
 import { urlFor } from "../../../../sanity/lib/client";
 import { SanityTourPage } from "../../../../sanity/lib/types";
@@ -47,11 +44,11 @@ export default function Page1({
 }) {
   return (
     <div className="flex flex-col gap-7">
-      <div className="p-10 bg-primary border border-darkblue/10 rounded-2xl">
-        <p className="text-2xl font-bold text-darkblue">
+      <div className="md:p-[38px] p-[34px] bg-primary border border-darkblue/10 rounded-2xl">
+        <p className="md:text-[24px] md:leading-8 text-[19px] leading-[30px] font-bold text-darkblue">
           How many people are traveling?
         </p>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-2.5 md:mt-6 mt-5">
           <Input
             control={control}
             name="adultMembers"
@@ -106,16 +103,16 @@ const HotelChoosing = ({
   //   const { locale } = useContext(LocaleContext);
   return (
     <div className="bg-darkblue/[0.02] border border-darkblue/10 rounded-2xl overflow-hidden">
-      <div className="py-2 bg-blue">
-        <p className="text-center text-white font-bold text-xl">
+      <div className="py-2 bg-[#3FA9F5]">
+        <p className="text-center text-white font-bold md:text-[20px] md:leading-8 text-base">
           Hotel choosing
         </p>
       </div>
-      <div className="py-7 px-10 flex flex-col divide-y divide-yellow">
+      <div className="md:py-7 md:px-[38px] py-5 px-6 flex flex-col divide-y divide-[#FFBB0B]">
         {room_options?.map((room, index) => (
           <div key={index} className="flex justify-between gap-2 py-[18px]">
             <div className="flex flex-col gap-1">
-              <p className="font-bold text-darkblue text-xl">
+              <p className="font-bold text-darkblue md:text-[20px] md:leading-8 text-base">
                 {room.title?.[locale]}
               </p>
               {/* @ts-ignore */}
@@ -125,22 +122,22 @@ const HotelChoosing = ({
                 edit={false}
                 size={16}
               />
-              <p className="text-sm font-medium text-gray">
+              <p className="md:text-sm text-[12px] leading-[18px] font-medium text-gray">
                 {room.description?.[locale]}
               </p>
             </div>
             <div className="w-[76px] flex flex-col justify-around items-center">
               <Input
-                checkboxValue={localizedString(room.title)}
+                checkboxValue={room.title?.[locale]}
                 name="hotelChoice"
                 type="checkbox"
                 control={control}
                 rules={{ required: true }}
               />
               {room.price?.discounted_price && (
-                <p className="text-blue font-medium">
+                <p className="text-primary font-medium text-nowrap max-md:text-[12px] max-md:leading-[18px]">
                   {room.price?.currency_symbol?.[locale]}
-                  {room.price?.discounted_price?.[locale]}
+                  {room.price?.discounted_price?.[locale]} Extra
                 </p>
               )}
             </div>
@@ -171,23 +168,23 @@ const RomeType = ({
 
   return (
     <div className="bg-darkblue/[0.02] border border-darkblue/10 rounded-2xl overflow-hidden">
-      <div className="py-2 bg-blue">
-        <p className="text-center text-white font-bold text-xl">
-          Hotel choosing
+      <div className="py-2 bg-[#3FA9F5]">
+        <p className="text-center text-white font-bold md:text-[20px] md:leading-8 text-base">
+          Room Type
         </p>
       </div>
-      <div className="py-7 px-10 flex flex-col divide-y divide-yellow">
+      <div className="md:py-7 md:px-[38px] py-5 px-6 flex flex-col divide-y divide-[#FFBB0B]">
         {room_sharing_options?.map((option, index) => (
           <div key={index} className="flex justify-between gap-2 py-[18px]">
             <div className="flex gap-5">
               <div className="w-[120px] h-[84px] flex gap-2 border rounded border-blue items-center justify-center relative">
-                <Image key={index} alt="" src={option.image} fill />
+                <Image key={index} alt="" src={urlFor(option.image)} fill />
               </div>
               <div className="flex flex-col gap-1">
-                <p className="font-bold text-darkblue text-xl">
+                <p className="font-bold text-darkblue md:text-[20px] md:leading-8 text-base">
                   {option.title?.[locale]}
                 </p>
-                <p className="text-sm font-medium text-gray">
+                <p className="md:text-sm text-[12px] leading-5 font-medium text-gray">
                   {option.description?.[locale]}
                 </p>
               </div>
@@ -201,16 +198,18 @@ const RomeType = ({
                 rules={{ required: true }}
               />
               {option.price?.discounted_price && (
-                <p className="text-blue font-medium">
+                <p className="text-primary font-medium">
                   {option.price.currency_symbol?.[locale]}
-                  {option.price.discounted_price?.[locale]}
+                  {option.price.discounted_price?.[locale]} Extra
                 </p>
               )}
             </div>
           </div>
         ))}
         <div className="flex flex-col gap-[18px] justify-between py-[18px]">
-          <p>Sharing room with someone who is not part of this booking?</p>
+          <p className="md:text-base md:font-bold font-medium text-[14px] leading-6">
+            Sharing room with someone who is not part of this booking?
+          </p>
           <Input
             name="Sharing With"
             type="text"
@@ -218,7 +217,7 @@ const RomeType = ({
             control={control}
           />
           {errorMsg1 && (
-            <span className="font-thin text-xs text-red">{errorMsg1}</span>
+            <span className="font-thin text-xs text-red-200">{errorMsg1}</span>
           )}
         </div>
       </div>
@@ -276,24 +275,33 @@ export const OptionalVisits = ({
 
   return (
     <div className="bg-darkblue/[0.02] border border-darkblue/10 rounded-2xl overflow-hidden">
-      <div className="py-2 bg-blue">
-        <p className="text-center text-white font-bold text-xl">
-          Hotel choosing
-        </p>
+      <div className="py-2 bg-[#3FA9F5]">
+        <div className="flex items-center justify-center gap-2">
+          <Image
+            src={"/demo/add (1) 1.png"}
+            alt="plus"
+            className="max-md:w-5 max-md:h-5"
+            width={28}
+            height={28}
+          />
+          <p className="text-center text-white font-bold md:text-[20px] md:leading-8 text-base">
+            Optional Visit
+          </p>
+        </div>
       </div>
       {data?.map((place, index) => {
         const count = field.value?.[place._key]?.filter(Boolean).length || 0;
         return (
           <div key={place._key}>
-            <div className="flex justify-between items-center px-10 pt-10">
-              <p className="text-xl font-bold text-blue">
+            <div className="flex justify-between items-center md:px-[38px] md:pt-[38px] px-6">
+              <p className="md:text-[20px] md:leading-[30px] text-base font-bold text-primary">
                 {place.city_name?.[locale]}
               </p>
-              <p className="text-base font-bold text-red">
-                ({count}/{place.count})
+              <p className="md:text-base text-[12px] leading-5 font-bold text-primary">
+                Choose up to ({count}/{place.count})
               </p>
             </div>
-            <div className="px-10 flex flex-col divide-y divide-yellow">
+            <div className="md:px-[38px] px-6 flex flex-col divide-y divide-[#FFBB0B]">
               {place.visits
                 ?.slice(0, viewMore === place._key ? 9999 : 2)
                 .map((plan, index) => (
@@ -302,24 +310,26 @@ export const OptionalVisits = ({
                     className="flex justify-between gap-2 py-[18px]"
                   >
                     <div className="flex gap-5">
-                      <div className="w-[120px] h-[84px] flex gap-2 border rounded border-blue items-center justify-center">
-                        {plan.image && (
-                          <Image
-                            key={index}
-                            alt={localizedString(plan.title)}
-                            src={urlFor(plan.image)}
-                            height={100}
-                            width={100}
-                            className="w-full h-full object-cover"
-                          />
-                        )}
-                      </div>
+                      {/* <div className="w-[120px] h-[84px] flex gap-2 border rounded border-blue items-center justify-center"> */}
+
+                      {plan.image && (
+                        <Image
+                          key={index}
+                          alt={localizedString(plan.title)}
+                          src={urlFor(plan.image)}
+                          height={120}
+                          width={102}
+                          className="rounded-[8px] max-md:w-[69px] max-md:h-12"
+                        />
+                      )}
+
+                      {/* </div> */}
                       <div className="flex flex-col gap-1">
-                        <p className="font-bold text-darkblue text-xl">
-                          {localizedString(plan.title)}
+                        <p className="font-bold text-darkblue md:text-[20px] md:leading-[30px] text-[14px]">
+                          {plan.title?.[locale]}
                         </p>
-                        <p className="text-sm font-medium text-gray">
-                          {localizedString(plan.description)}
+                        <p className="md:text-sm text-[12px] block max-md:hidden leading-5 font-medium text-gray">
+                          {plan.description?.[locale]}
                         </p>
                       </div>
                     </div>
@@ -334,9 +344,9 @@ export const OptionalVisits = ({
                         control={localControl}
                       />
                       {plan.price?.discounted_price && (
-                        <p className="text-blue font-medium whitespace-nowrap">
-                          {localizedString(plan.price.currency_symbol)}{" "}
-                          {localizedNumber(plan.price?.discounted_price)}
+                        <p className="text-primary md:text-base text-[12px] leading-[18px] font-medium whitespace-nowrap">
+                          {plan.price.currency_symbol?.[locale]}
+                          {plan.price?.discounted_price?.[locale]} Extra
                         </p>
                       )}
                     </div>
@@ -350,7 +360,7 @@ export const OptionalVisits = ({
                         o === place._key ? undefined : place._key
                       )
                     }
-                    className="text-blue flex items-center gap-3 mx-auto font-bold"
+                    className="text-primary flex items-center gap-3 mx-auto font-bold"
                   >
                     View {viewMore === place._key ? "Less" : "More"}{" "}
                     {viewMore === place._key ? <CaretUp /> : <CaretDown />}
@@ -368,10 +378,10 @@ export const OptionalVisits = ({
 const HelpWithExtras = () => {
   return (
     <div className="flex flex-col gap-6 p-10 rounded-2xl border border-darkblue/10">
-      <h3 className="text-2xl font-bold text-darkblue">
+      <h3 className="md:text-2xl text-base font-bold text-darkblue">
         Would you like help with extras?
       </h3>
-      <div className="text-base font-medium text-gray flex flex-col gap-5">
+      <div className="md:text-base text-[12px] leading-5 font-medium text-gray flex flex-col gap-5">
         <p>
           We can help you book transfers, accommodation, insurance and flights
           (note: flights and insurance are only available in some regions).

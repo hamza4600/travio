@@ -18,7 +18,7 @@ export default function ItinerarySection({
 }) {
   return (
     <Container
-      className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7"
+      className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7 max-md:mt-14"
       // style={{ overflowY: "auto", maxHeight: "calc(100vh - 100px)" }}
     >
       <SectionHeader
@@ -379,7 +379,7 @@ const Expandable = ({
         }`}
       >
         <div className="flex flex-col gap-6">
-          <div className="relative w-full h-[200px] overflow-hidden max-md:w-[295px] max-md:h-[160px] md:max-w-[914px] md:min-h-[382px] rounded-2xl ">
+          <div className="relative w-full h-[200px] overflow-hidden max-md:w-full max-md:h-[160px] md:max-w-[914px] md:min-h-[382px] rounded-2xl ">
             <Image
               alt=""
               src={urlFor(data?.image)}
@@ -411,7 +411,7 @@ const Expandable = ({
               <div className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
             </div>
           </div>
-          <div className="flex gap-6 max-md:flex-col max-md:gap-3">
+          <div className="flex gap-6 max-md:flex-col max-md:items-center max-md:gap-3">
             {optionalAct.map((data, i: number) => (
               <OptionalActivites
                 key={i}
@@ -445,7 +445,7 @@ const OptionalActivites = ({ title, img, desc }) => {
     >
       <img src={img} alt="optioanl" />
 
-      <div className="flex flex-col gap-3 pt-4 px-4 pb-7">
+      <div className="flex flex-col md:gap-3 pt-4 px-4 pb-7">
         <p className=" md:text-xl text-darkblue font-bold">{title}</p>
 
         <div className="flex gap-2.5 items-center max-md:hidden">

@@ -65,12 +65,14 @@ const TourGallerySection = (props: GallerySectionProps) => {
             className={"mx-auto"}
           />
         </div>
-        <Swiper className="gap-x-2.5 !pl-5 !pb-0">
+        <Swiper className="gap-x-2.5">
           {imgs?.map((image, i) =>
             i % 2 == 0 ? (
               <div
                 key={i}
-                className={"min-w-[320px] h-[320px] overflow-hidden rounded-xl"}
+                className={
+                  "min-w-[233px] md:min-w-[320px] w-full md:max-w-[320px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl"
+                }
               >
                 <PhotoProvider>
                   <PhotoView key={i} src={urlFor(image[0])}>
@@ -79,7 +81,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
                       width={320}
                       height={320}
                       alt={"image"}
-                      className={"w-full h-full flex-shrink-0 object-cover"}
+                      className={"w-full h-full flex-shrink-0"}
                     />
                   </PhotoView>
                 </PhotoProvider>
@@ -87,10 +89,14 @@ const TourGallerySection = (props: GallerySectionProps) => {
             ) : (
               <div
                 key={i}
-                className={"min-w-[160px] h-[320px] flex flex-col gap-2.5"}
+                className={
+                  "h-[190px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5"
+                }
               >
                 <div
-                  className={"h-[160px] w-[160px] overflow-hidden rounded-xl"}
+                  className={
+                    "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                  }
                 >
                   <PhotoProvider>
                     <PhotoView key={i} src={urlFor(image[0])}>
@@ -99,14 +105,16 @@ const TourGallerySection = (props: GallerySectionProps) => {
                         width={160}
                         height={160}
                         alt={"image"}
-                        className={"object-cover"}
+                        className={"object-cover h-full"}
                       />
                     </PhotoView>
                   </PhotoProvider>
                 </div>
                 {image[1] && (
                   <div
-                    className={"h-[160px] w-[160px] overflow-hidden rounded-xl"}
+                    className={
+                      "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                    }
                   >
                     <PhotoProvider>
                       <PhotoView key={i} src={urlFor(image[1])}>
@@ -130,7 +138,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
             width={80}
             height={40}
             src={"/plane.svg"}
-            className="w-auto -mt-[40px]  -left-10 h-60 rotate-45  absolute "
+            className="w-auto -left-10 absolute "
             alt="plane"
           />
         </div>

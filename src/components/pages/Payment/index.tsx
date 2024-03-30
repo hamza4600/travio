@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 // import { GetServerSideProps } from "next";
-import { useSearchParams , useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 // import * as yup from "yup";
 
@@ -81,11 +81,11 @@ export default function Page({ slug, data, locale, globals, promo }) {
   const [roomTypes, setRoomTypes] = useState(0);
   const [hotelChoice, setHotelChoice] = useState(0);
   console.log(data, "data8585");
-  // get url 
-  const searchParams = useSearchParams ();
-  const from = searchParams?.get('from')
-  const to = searchParams?.get('to')
-  
+  // get url
+  const searchParams = useSearchParams();
+  const from = searchParams?.get("from");
+  const to = searchParams?.get("to");
+
   const startDate = new Date(from as string);
   const endDate = new Date(to as string);
 
@@ -230,7 +230,12 @@ export default function Page({ slug, data, locale, globals, promo }) {
   >("stripe");
 
   return (
-    <Layout locale={locale} breadcrumbs={[]} globals={globals}>
+    <Layout
+      locale={locale}
+      breadcrumbs={[]}
+      promo_banner={""}
+      globals={globals}
+    >
       <Tabs
         promo={promo}
         control={control}
@@ -245,6 +250,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
         setTotalPrice={setTotalPrice}
         loading={loading}
         addons={roomTypes + hotelChoice + optionalVisits}
+        locale={locale}
       >
         <Page1
           locale={locale}
