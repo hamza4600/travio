@@ -155,16 +155,16 @@ const Header = ({
                     onClick={() => {
                       setOpen(false);
                     }}
-                    className=" p-[12px] font-[500] font-satoshi text-[16px] px-[18px] "
+                    className=" p-[12px] font-satoshi text-[16px] px-[18px] "
                   >
                     <Link
                       href={`/${locale}${item.url}`}
                       title={item?.text?.[locale]}
                       className={
-                        "font-medium font-satoshi" +
+                        "font-satoshi " +
                         (pathname == `/${locale}${item.url}`
-                          ? "text-blue-500"
-                          : "text-darkblue")
+                          ? " text-blue-500 font-bold "
+                          : " text-darkblue font-medium ")
                       }
                     >
                       {/* {console.log("pathname", pathname , `/${locale}${item.url}`)} */}

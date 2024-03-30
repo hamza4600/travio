@@ -139,7 +139,7 @@ const AboutUs = ({ data, locale }) => {
       <Text2>{data.title?.[locale]}</Text2> */}
       <Text1>{data.tagline?.[locale]}</Text1>
       <Text2>{data.title?.[locale]}</Text2>
-      <div className="md:border-b-[3px] border-b-2 border-b-[#FFBB0B] md:max-w-[117px] max-w-[89px]" />
+      <div className="md:border-b-[3px] border-b-2 border-b-[#FFBB0B] md:w-[117px] w-[89px]" />
 
       <Container>
         <WelcomeText>

@@ -18,11 +18,17 @@ const TourFeature = ({ data, locale }) => {
   return (
     <Container className="my-20 font-satoshi mx-auto max-w-[1312px] px-4 mb-[69px] text-darkblue">
       {data.title?.en && (
-        <div className="md:mb-12 mb-[30px] px-5 md:px-0">
+        <div className="md:mb-12 mb-[30px]">
           <p className="text-[20px] md:text-[24px] font-[700] leading-[30px] md:leading-[34px]">
             {data.title?.[locale]}
           </p>
-          <div className="w-[143px] md:w-[120px] border-b  md:my-2 md:border-b-[3px] border-b-[#FFBB0B] rounded-full md:rounded-[3px] mb-5" />
+          <div
+            className={`${
+              data?.type == "small"
+                ? " w-[89px] md:w-[120px] "
+                : " w-[143px] md:w-[120px] "
+            } border-b  md:my-2 md:border-b-[3px] border-b-[#FFBB0B] rounded-full md:rounded-[3px] mb-5`}
+          />
         </div>
       )}
       <div

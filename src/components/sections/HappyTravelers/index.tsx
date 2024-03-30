@@ -52,8 +52,6 @@ const TravlerReviews = (props) => {
             src={urlFor(
               isMobile ? image?.mobile?.asset?._ref : image?.asset?._ref
             )}
-            width={260}
-            height={73}
             alt=""
             style={{ borderRadius: "10px" }}
             className={
@@ -89,12 +87,13 @@ const TravlerReviews = (props) => {
                     <div>
                       <img
                         alt={""}
-                        className="min-h-[38px] max-w-[38px]"
-                        src={urlFor(
-                          isMobile
-                            ? item?.avatar?.mobile?.asset?._ref
-                            : item?.avatar?.asset?._ref
-                        )}
+                        className="min-h-[38px] max-w-[38px] max-md:hidden"
+                        src={urlFor(item?.avatar?.asset?._ref)}
+                      />
+                      <img
+                        alt={""}
+                        className="min-h-[38px] max-w-[38px] md:hidden"
+                        src={urlFor(item?.avatar?.mobile?.asset?._ref)}
                       />
                     </div>
                     <div className="gap-1 font-satoshi md:gap-0">

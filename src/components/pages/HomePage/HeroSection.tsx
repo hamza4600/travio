@@ -48,7 +48,7 @@ const HeroSection = ({ data, locale, banner }) => {
           quality={100}
         />
 
-        <div className="text-white py-5 z-10 w-full">
+        <div className="text-white py-5 z-10 w-full px-5">
           <Container className="-mt-20 md:mt-0 flex items-center md:items-start justify-center md:justify-between flex-col">
             <div className="w-full">
               <header className="flex mt-10 flex-col gap-2.5 px-5">

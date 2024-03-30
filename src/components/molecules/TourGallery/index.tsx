@@ -89,13 +89,12 @@ const TourGallery = (props: GallerySectionProps) => {
           } `}
         >
           {forTourPage ? null : (
-            <Image
+            <img
               width={80}
               height={40}
               src={"/small-logo.svg"}
               alt={"small logo"}
-              className={"mx-auto"}
-              quality={100}
+              className={"mx-auto w-[80px] h-10"}
             />
           )}
         </div>

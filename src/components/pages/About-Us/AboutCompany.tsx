@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 // import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../../../sanity/lib/client";
+import SectionHeader from "@/components/molecules/secHeader";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,35 +21,6 @@ const Wrapper = styled.div`
 
 const TextConatiner = styled.div`
   text-align: center;
-`;
-
-const Text1 = styled.p`
-  font-family: var(--font-satoshi);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-transform: uppercase;
-  color: #3fa9f5;
-
-  @media (max-width: 578px) {
-    font-size: 12px;
-    line-height: 20px;
-  }
-`;
-
-const Text2 = styled.p`
-  font-family: var(--font-satoshi);
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 50px;
-  letter-spacing: 0px;
-  color: #140d31;
-
-  @media (max-width: 578px) {
-    font-size: 24px;
-    line-height: 32px;
-  }
 `;
 
 const MissionConatiner = styled.div`
@@ -174,8 +146,11 @@ const AboutComapny = ({ data, locale }) => {
   return (
     <Wrapper>
       <TextConatiner>
-        <Text1>{data.tagline?.[locale]}</Text1>
-        <Text2>{data.title?.[locale]}</Text2>
+        <SectionHeader
+          title={data.tagline?.[locale]}
+          subtitle={data.title?.[locale]}
+          centerLine
+        />
       </TextConatiner>
       <MissionConatiner>
         <TextImageContainer>
