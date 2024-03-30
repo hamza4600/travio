@@ -17,7 +17,7 @@ const HeroSection = ({ data, locale }) => {
   // console.log("heroHome: ", data);
 
   return (
-    <Container className="max-md:px-0">
+    <Container className="px-0">
       <div
         className={
           "relative z-10 h-[510px] md:h-full bottom-7 flex items-end lg:items-center justify-center"

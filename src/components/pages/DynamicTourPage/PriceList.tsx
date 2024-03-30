@@ -291,7 +291,7 @@ function PriceList({
                     >
                       {MAPPINGS[price.availability || "Available"].availability}
                     </p>
-                    
+
                     <div
                       className={`md:col-span-2 font-satoshi  text-[12px] max-md:leading-3 md:text-base text-center md:flex items-center gap-2 ${
                         MAPPINGS[price.availability || "Available"].color
@@ -342,9 +342,11 @@ function PriceList({
                         )}
                         {collapsed && (
                           <Link
-                             href={`/${locale}/tours/${slug?.current}/payment?from=${new Date(
-                               price.from
-                             ).getTime()}&to=${new Date(price.to).getTime()}`}
+                            href={`/${locale}/tours/${
+                              slug?.current
+                            }/payment?from=${new Date(
+                              price.from
+                            ).getTime()}&to=${new Date(price.to).getTime()}`}
                             className={`flex items-center ml-auto`}
                           >
                             <Button
@@ -375,7 +377,9 @@ function PriceList({
                     </div>
                     {!collapsed && (
                       <Link
-                        href={`/${locale}/tours/${slug?.current}/payment?from=${new Date(
+                        href={`/${locale}/tours/${
+                          slug?.current
+                        }/payment?from=${new Date(
                           price.from
                         ).getTime()}&to=${new Date(price.to).getTime()}`}
                         className={`flex items-center`}

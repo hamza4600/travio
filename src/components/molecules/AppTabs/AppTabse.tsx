@@ -13,7 +13,7 @@ function AppTabs({ tabs }: TabsProp) {
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
 
-    setIsFixed(scrollPosition > window.innerHeight / 0.9); // is equal to 80% of the window height
+    setIsFixed(scrollPosition > window.innerHeight / 0.7); // is equal to 80% of the window height
   };
 
   useEffect(() => {

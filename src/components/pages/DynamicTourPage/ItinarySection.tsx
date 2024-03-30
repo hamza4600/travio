@@ -18,6 +18,7 @@ export default function ItinerarySection({
 }) {
   return (
     <Container
+      id="itinerary"
       className="mx-auto max-w-[1312px] px-4 flex flex-col lg:py-20 py-[50px] md:gap-10 gap-7 max-md:mt-6"
     >
       <SectionHeader
@@ -374,10 +375,12 @@ const Expandable = ({
       </button>
       <div
         className={`flex flex-col gap-6 transition-all  rounded-b-2xl ${
-          !isOpen ? "overflow-hidden h-0" : "p-5 shadow shadow-[#f1f1f1] border-[0.2px] border-[#eeeeee]"
+          !isOpen
+            ? "overflow-hidden h-0"
+            : "p-5 shadow shadow-[#f1f1f1] border-[0.2px] border-[#eeeeee]"
         }`}
         style={{
-          boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)"
+          boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)",
         }}
       >
         <div className="flex flex-col gap-6">
