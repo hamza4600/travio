@@ -49,14 +49,11 @@ const Header = ({
 
   const dropdownList = ["Egypt", "Dubai", "Isreal"];
 
-  // console.log("banner data: ", banner);
-
   return (
     <Root>
       <div
-        className={`w-full hidden bg-white lg:block h-[100px] ${
-          openDropDown && "relative z-50"
-        } `}
+        className={`w-full hidden bg-white lg:block h-[100px] ${openDropDown && "relative z-50"
+          } `}
       >
         {/* <div className="mx-auto box-border"> */}
         <div className={"bg-primary h-[30px]"}>
@@ -101,9 +98,11 @@ const Header = ({
             </Link>
           </div>
           <div className="flex gap-[38px] justify-evenly text-darkblue">
-            {navbar?.links?.map((link, idx) => {
-              return <HeaderLink item={link} key={idx} locale={locale} />;
-            })}
+            <HeaderLink
+              data={navbar?.links}
+              locale={locale} 
+             />
+
           </div>
           <div>
             <div className="flex gap-3">
@@ -151,9 +150,8 @@ const Header = ({
         {/* Menu For Mobile */}
         <div className="flex flex-col justify-end pr-3  items-end">
           <div
-            className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
-              open ? "translate-y-1 " : "-translate-y-full opacity-0"
-            }`}
+            className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${open ? "translate-y-1 " : "-translate-y-full opacity-0"
+              }`}
           >
             {navbar?.links?.map((item, index) => (
               <div className="w-full" key={index}>
@@ -193,9 +191,8 @@ const Header = ({
                         height="16"
                         width="16"
                         alt=""
-                        className={`ml-1 ${
-                          openDropDown && "-rotate-180"
-                        } transition-all`}
+                        className={`ml-1 ${openDropDown && "-rotate-180"
+                          } transition-all`}
                       ></Image>
                     </span>
                     {openDropDown && (
