@@ -12,7 +12,8 @@ function HeaderLink({ item, locale, open, setOpen }) {
 
   const pathname = usePathname();
   console.log("pathnameNav: ", pathname);
-  const active = pathname === `/${locale}${item.url}`;
+  const active =
+    item.url === "/" ? pathname === "/" : pathname === `/${locale}${item.url}`;
 
   React.useEffect(() => {
     if (open) {
@@ -28,9 +29,7 @@ function HeaderLink({ item, locale, open, setOpen }) {
         href={`/${locale}${item.url}`}
         title={item.text && item.text[locale]}
         className={`leading-[24px] flex-none font-satoshi ${
-          active || item.url === "/"
-            ? "text-[#3FA9F5] font-bold"
-            : "font-medium text-darkblue"
+          active ? "text-[#3FA9F5] font-bold" : "font-medium text-darkblue"
         }`}
       >
         {item.text && item.text[locale]}
