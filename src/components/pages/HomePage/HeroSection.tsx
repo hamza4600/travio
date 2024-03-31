@@ -11,8 +11,8 @@ import React from "react";
 const HeroSection = ({ data, locale }) => {
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
-  // const windows = useWindowSize();
-  // const isMobile = windows.width < 768;
+  const mobileGradient =
+    "linear-gradient(64deg, black 2%, rgba(0, 0, 0, 0.80) 14%, rgba(0, 0, 0, 0.70) 24%, rgba(0, 0, 0, 0.60) 59%, rgba(0, 0, 0, 0) 100%);";
 
   // console.log("heroHome: ", data);
 
@@ -25,10 +25,16 @@ const HeroSection = ({ data, locale }) => {
       >
         <div
           className={
-            "w-full h-[540px] rounded-[24px] max-lg:rounded-none lg:h-full absolute top-0 left-0 -z-10"
+            "w-full h-[540px] max-md:hidden rounded-[24px] max-lg:rounded-none lg:h-full absolute top-0 left-0 -z-10"
           }
           style={{ background: linearGradient }}
-        ></div>
+        />
+        <div
+          className={
+            "w-full h-[540px] rounded-[24px] md:hidden max-lg:rounded-none lg:h-full absolute top-0 left-0 -z-10"
+          }
+          style={{ background: mobileGradient }}
+        />
 
         <img
           className={
@@ -49,14 +55,14 @@ const HeroSection = ({ data, locale }) => {
           alt={"hero"}
         />
 
-        <div className="text-white py-5 z-10 w-full px-5">
+        <div className="text-white py-5 z-10 w-full md:px-10">
           <div className="-mt-20 md:mt-0 flex items-center md:items-start justify-center md:justify-between flex-col">
             <div className="w-full">
-              <header className="flex mt-10 flex-col gap-2.5 px-5">
+              <header className="flex mt-10 flex-col gap-2.5 md:px-5">
                 <Text
                   variant={"tertiary"}
                   as={"h1"}
-                  className="text-[28px]  max-w-[552px] md:text-[56px] font-[900] -tracking-[1.68px] leading-[38px] md:leading-[76px] text-center md:text-start "
+                  className="text-[28px] md:max-w-[552px] md:text-[56px] font-[900] -tracking-[1.68px] leading-[38px] md:leading-[76px] text-center md:text-start "
                 >
                   {data.title[locale]}
                 </Text>
@@ -69,16 +75,16 @@ const HeroSection = ({ data, locale }) => {
                 </Text>
               </header>
 
-              <div className="flex px-10 gap-1 md:gap-4 mt-5 md:mt-12 items-center justify-center md:justify-start">
+              <div className="flex px-4 gap-1 md:gap-4 mt-5 md:mt-12 items-center justify-center md:justify-start">
                 <Button
                   variant={"sky"}
-                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12 md:w-[163px] min-w-[160px]"
+                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12 max-md:px-10 max-[375px]:px-4"
                 >
                   {data?.cta_buttons[0]?.label?.[locale]}
                 </Button>
                 <Button
                   variant={"secondary"}
-                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12 md:w-[260px] min-w-[160x]"
+                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12"
                 >
                   {data?.cta_buttons[1]?.label?.[locale]}
                 </Button>
@@ -97,7 +103,7 @@ const HeroSection = ({ data, locale }) => {
                 {data?.cta_helper_text?.[locale]}
               </Text>
             </div>
-            <footer className="mt-[28px] md:mt-[71px] flex items-center relative bottom-0 px-5">
+            <footer className="mt-[28px] md:mt-[71px] flex items-center relative bottom-0 md:px-5">
               <div className="flex">
                 <Image
                   className="max-md:hidden"

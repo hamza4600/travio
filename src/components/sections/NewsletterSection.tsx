@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Container from "../molecules/container";
 import useWindowSize from "@/hooks/useWindows";
 import { Button } from "../ui/button";
@@ -12,7 +11,7 @@ const NewsletterSection = ({ data, locale }) => {
   return (
     <Container className="md:pb-[60px] pb-[50px] px-0 flex justify-center items-center bg-white text-white">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full w-screen md:w-full bg-blue md:rounded-3xl overflow-hidden relative">
-        <Image
+        <img
           width={640}
           height={222}
           src={
@@ -42,7 +41,7 @@ const NewsletterSection = ({ data, locale }) => {
             />
             <Button
               variant={"golden"}
-              className="absolute right-[5px] top-1/2 -translate-y-1/2 py-[4px] md:py-[7px] px-[18px] font-bold rounded-full"
+              className="absolute right-[5px] top-1/2 -translate-y-1/2 py-2 md:py-[7px] px-[18px] max-md:h-[34px] font-bold rounded-full"
             >
               {"Sign Up"}
             </Button>

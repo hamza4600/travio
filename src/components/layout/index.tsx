@@ -57,9 +57,12 @@ const Layout = ({
             locale={locale}
           />
 
-          <main 
-            className={`grow w-full ${maxWidth ? "max-w-[1440px] mx-auto " : "" }`}>
-            <PromoBanner banner={promo_banner} locale={locale} />
+          <PromoBanner banner={promo_banner} locale={locale} />
+          <main
+            className={`grow w-full ${
+              maxWidth ? "max-w-[1440px] mx-auto " : ""
+            }`}
+          >
             <Breadcrumbs paths={breadcrumbs} locale={locale} />
 
             {children}

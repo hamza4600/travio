@@ -20,7 +20,7 @@ const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
     <>
       <div style={{ boxShadow: linearGradient }} className="w-full relative">
         <img
-          className={`lg:w-full max-md:hidden object-cover max-w-[1440px] ${
+          className={`lg:w-full max-md:hidden object-cover max-w-[1440px] md:rounded-[24px] rounded-none ${
             hideContent ? " min-h-[420px] " : " h-[420px] "
           }`}
           src={urlFor(data.image.asset._ref)}

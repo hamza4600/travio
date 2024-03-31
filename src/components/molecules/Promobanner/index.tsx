@@ -1,6 +1,4 @@
 import Link from "next/link";
-
-import Container from "../container";
 import { usePathname } from "next/navigation";
 
 function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
@@ -13,9 +11,10 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
   const isHome = pathname === url;
   // if (!banner.promo_banner) return null;
   return (
-    <Container
-      className={`max-md:h-[28px] font-satoshi h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue ${
-        isHome && "rounded-t-[24px] max-xl:rounded-none relative z-20"
+    <div
+      className={`max-md:min-h-[32px] font-satoshi min-h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue ${
+        isHome &&
+        "rounded-t-[24px] max-xl:rounded-none relative z-20 max-w-[1280px] w-full mx-auto"
       }`}
     >
       <div>
@@ -33,7 +32,7 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
           </Link>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 

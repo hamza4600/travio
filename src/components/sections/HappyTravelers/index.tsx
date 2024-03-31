@@ -60,7 +60,7 @@ const TravlerReviews = (props) => {
             }
           />
         </div>
-        <div className="overflow-x-none md:overflow-hidden pr-5 lg:block h-full md:pt-8  pb-11 md:pb-0 ">
+        <div className="overflow-x-none md:overflow-hidden lg:block h-full md:pt-8  pb-11 md:pb-0 ">
           <SwiperComponent
             scrollCount={2}
             className={"gap-[40px] md:gap-[48px] md:!mr-10"}
@@ -69,7 +69,7 @@ const TravlerReviews = (props) => {
             {testimonials?.map((item, index: any) => {
               return (
                 <div key={index}>
-                  <div className={"w-[284px] shrink-0 "}>
+                  <div className={"w-[284px] shrink-0"}>
                     <div className="flex gap-x-0.5 mb-1.5">
                       <Star />
                       <Star />
@@ -83,7 +83,7 @@ const TravlerReviews = (props) => {
                     </h3>
 
                     <p className="text-[12px] md:text-sm font-normal font-satoshi text-darkblue md:font-medium  leading-[20px] md:leading-[22px] max-w-[273px]">
-                      {truncateChar(item.text[locale], 250)}
+                      {truncateChar(item.text[locale], 220)}
                     </p>
                     <div className="flex gap-x-3 mt-4 items-center">
                       <div>

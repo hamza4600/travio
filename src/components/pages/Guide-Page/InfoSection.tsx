@@ -22,7 +22,7 @@ const InfoSection = ({ data, locale }: any) => {
   };
   return (
     <div className="md:py-20 py-10 font-satoshi">
-      <div className="lg:flex lg:flex-row lg:gap-x-20 px-5 lg:px-20 gap-20">
+      <div className="lg:flex lg:flex-row lg:gap-x-[2rem] px-5 lg:px-[2rem] gap-20">
         <div className="flex gap-6 relative w-full max-w-[353px]">
           <div className="w-[343px] lg:block hidden">
             {data?.map((item: any, index: any) => (
