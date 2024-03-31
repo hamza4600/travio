@@ -32,7 +32,8 @@ const Header = ({
 }) => {
   const [isOppen, setIsOpen] = useState(false);
   const [openDropDown, setOpenDropDown] = useState(false);
-  const [open, setOpen] = useState(false);
+
+  const [open] = useState(false);
 
   const pathname = usePathname();
 
@@ -50,15 +51,12 @@ const Header = ({
 
   const dropdownList = ["Egypt", "Dubai", "Isreal"];
 
-  // console.log("banner data: ", banner);
-
   return (
     <Root>
       <div
-        className={`w-full hidden lg:block h-[100px] ${
-          open ? " z-50 relative " : " z-0 "
-        }
-        `}
+        className={`w-full hidden bg-white lg:block h-[100px] ${
+          openDropDown && "relative z-50"
+        } `}
       >
         {/* <div className="mx-auto box-border"> */}
         <div className={"bg-primary h-[30px]"}>
@@ -103,17 +101,7 @@ const Header = ({
             </Link>
           </div>
           <div className="flex gap-[38px] justify-evenly text-darkblue">
-            {navbar?.links?.map((link, idx) => {
-              return (
-                <HeaderLink
-                  item={link}
-                  key={idx}
-                  locale={locale}
-                  open={open}
-                  setOpen={setOpen}
-                />
-              );
-            })}
+            <HeaderLink data={navbar?.links} locale={locale} />
           </div>
           <div>
             <div className="flex gap-3">
@@ -162,7 +150,7 @@ const Header = ({
         <div className="flex flex-col justify-end pr-3  items-end">
           <div
             className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
-              isOppen ? "translate-y-1 " : "-translate-y-full opacity-0"
+              open ? "translate-y-1 " : "-translate-y-full opacity-0"
             }`}
           >
             {navbar?.links?.map((item, index) => (
