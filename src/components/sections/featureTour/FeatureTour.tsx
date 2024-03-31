@@ -19,7 +19,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
   const { locale } = FeaturedTour;
 
   return (
-    <Container className="text-black w-full md:mr-0 mt-[50px] md:mb-[90px] mb:[50px] mx-auto max-md:px-5">
+    <Container className="text-black w-full mt-[50px] md:mb-[90px] mb:[50px]">
       <SectionHeader
         subtitle={FeaturedTour?.data.tagline?.en}
         title={FeaturedTour?.data.title?.en}
@@ -52,7 +52,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
             />
           ))}
         </Swiper>
-        <div className=" absolute hidden md:block w-[150px] top-0 p-3 h-full z-[100] bg-gradient-to-r from-transparent  via-[rgba(255,255,255,0.5)] to-white right-0" />
+        <div className=" absolute hidden md:block w-[50px] top-0 p-3 h-full z-[100] bg-gradient-to-r from-transparent  via-[rgba(255,255,255,0.5)] to-white right-0" />
       </div>
     </Container>
   );

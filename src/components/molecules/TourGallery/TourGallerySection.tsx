@@ -56,93 +56,94 @@ const TourGallerySection = (props: GallerySectionProps) => {
             {subtitle?.[locale]?.substring(32)}
           </div>
         </div>
-        <div className={"mt-2 mb-[40px]"}>
+        <div className={"mt-2 mb-[40px] md:hidden block"}>
           <img
-            width={100}
+            width={80}
             height={40}
             src={"/small-logo.svg"}
             alt={"small logo"}
             className={"mx-auto"}
           />
         </div>
-      </Container>
-      <Swiper className="gap-x-2.5">
-        {imgs?.map((image, i) =>
-          i % 2 == 0 ? (
-            <div
-              key={i}
-              className={
-                "min-w-[233px] md:min-w-[320px] w-full md:max-w-[320px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl pb-4 md:pb-0"
-              }
-            >
-              <PhotoProvider>
-                <PhotoView key={i} src={urlFor(image[0])}>
-                  <Image
-                    src={urlFor(image[0])}
-                    width={320}
-                    height={320}
-                    alt={"image"}
-                    className={"w-full h-full flex-shrink-0"}
-                  />
-                </PhotoView>
-              </PhotoProvider>
-            </div>
-          ) : (
-            <div
-              key={i}
-              className={
-                "h-[190px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5 pb-4 md:pb-0"
-              }
-            >
+
+        <Swiper className="gap-x-2.5 md:mt-12">
+          {imgs?.map((image, i) =>
+            i % 2 == 0 ? (
               <div
+                key={i}
                 className={
-                  "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                  "min-w-[233px] md:min-w-[320px] w-full md:max-w-[320px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl pb-4 md:pb-0"
                 }
               >
                 <PhotoProvider>
                   <PhotoView key={i} src={urlFor(image[0])}>
                     <Image
                       src={urlFor(image[0])}
-                      width={160}
-                      height={160}
+                      width={320}
+                      height={320}
                       alt={"image"}
-                      className={"object-cover h-full"}
+                      className={"w-full h-full flex-shrink-0"}
                     />
                   </PhotoView>
                 </PhotoProvider>
               </div>
-              {image[1] && (
+            ) : (
+              <div
+                key={i}
+                className={
+                  "h-[190px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5 pb-4 md:pb-0"
+                }
+              >
                 <div
                   className={
                     "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                   }
                 >
                   <PhotoProvider>
-                    <PhotoView key={i} src={urlFor(image[1])}>
+                    <PhotoView key={i} src={urlFor(image[0])}>
                       <Image
-                        src={urlFor(image[1])}
+                        src={urlFor(image[0])}
                         width={160}
                         height={160}
                         alt={"image"}
-                        className={"object-cover"}
+                        className={"object-cover h-full"}
                       />
                     </PhotoView>
                   </PhotoProvider>
                 </div>
-              )}
-            </div>
-          )
-        )}
-      </Swiper>
-      <div>
-        <img
-          width={80}
-          height={40}
-          src={"/Plane.png"}
-          className="w-auto -left-10 absolute max-md:w-[200px] max-md:left-16"
-          alt="plane"
-        />
-      </div>
+                {image[1] && (
+                  <div
+                    className={
+                      "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                    }
+                  >
+                    <PhotoProvider>
+                      <PhotoView key={i} src={urlFor(image[1])}>
+                        <Image
+                          src={urlFor(image[1])}
+                          width={160}
+                          height={160}
+                          alt={"image"}
+                          className={"object-cover"}
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  </div>
+                )}
+              </div>
+            )
+          )}
+        </Swiper>
+        <div>
+          <img
+            width={80}
+            height={40}
+            src={"/Plane.png"}
+            className="w-auto -left-10 absolute max-md:w-[200px] max-md:left-16"
+            alt="plane"
+          />
+        </div>
+      </Container>
     </div>
   );
 };

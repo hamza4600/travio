@@ -20,7 +20,7 @@ const HeroSection = ({ data, locale }) => {
     <Container className="px-0">
       <div
         className={
-          "relative z-10 h-[510px] md:h-full bottom-7 flex items-end lg:items-center justify-center"
+          "relative z-10 h-[540px] md:h-full md:bottom-7 flex items-end lg:items-center justify-center"
         }
       >
         <div
@@ -31,7 +31,7 @@ const HeroSection = ({ data, locale }) => {
         />
         <div
           className={
-            "w-full h-[540px] rounded-[24px] md:hidden max-lg:rounded-none lg:h-full absolute top-0 left-0 -z-10"
+            "w-full h-[540px] rounded-[24px] md:hidden block max-lg:rounded-none lg:h-full absolute top-0 left-10 -z-10"
           }
           style={{ background: mobileGradient }}
         />
