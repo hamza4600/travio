@@ -30,8 +30,9 @@ const Header = ({
   locale: string;
   banner: any;
 }) => {
-  const [open, setOpen] = useState(false);
+  const [isOppen, setIsOpen] = useState(false);
   const [openDropDown, setOpenDropDown] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const pathname = usePathname();
 
@@ -40,12 +41,12 @@ const Header = ({
   }
 
   useEffect(() => {
-    if (open) {
+    if (isOppen) {
       document.body.classList.add("overflow-hidden");
     } else {
       document.body.classList.remove("overflow-hidden");
     }
-  }, [open]);
+  }, [isOppen]);
 
   const dropdownList = ["Egypt", "Dubai", "Isreal"];
 
@@ -54,9 +55,10 @@ const Header = ({
   return (
     <Root>
       <div
-        className={`w-full hidden bg-white lg:block h-[100px] ${
-          openDropDown && "relative z-50"
-        } `}
+        className={`w-full hidden lg:block h-[100px] ${
+          open ? " z-50 relative " : " z-0 "
+        }
+        `}
       >
         {/* <div className="mx-auto box-border"> */}
         <div className={"bg-primary h-[30px]"}>
@@ -102,7 +104,15 @@ const Header = ({
           </div>
           <div className="flex gap-[38px] justify-evenly text-darkblue">
             {navbar?.links?.map((link, idx) => {
-              return <HeaderLink item={link} key={idx} locale={locale} />;
+              return (
+                <HeaderLink
+                  item={link}
+                  key={idx}
+                  locale={locale}
+                  open={open}
+                  setOpen={setOpen}
+                />
+              );
             })}
           </div>
           <div>
@@ -143,7 +153,7 @@ const Header = ({
             )}
             {/* Language selector */}
             <LanguageDropdown />
-            <button onClick={() => setOpen(!open)}>
+            <button onClick={() => setIsOpen(!isOppen)}>
               <OpenSvg />
             </button>
           </div>
@@ -152,7 +162,7 @@ const Header = ({
         <div className="flex flex-col justify-end pr-3  items-end">
           <div
             className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
-              open ? "translate-y-1 " : "-translate-y-full opacity-0"
+              isOppen ? "translate-y-1 " : "-translate-y-full opacity-0"
             }`}
           >
             {navbar?.links?.map((item, index) => (
@@ -160,7 +170,7 @@ const Header = ({
                 {item?._type === "link" && (
                   <div
                     onClick={() => {
-                      setOpen(false);
+                      setIsOpen(false);
                     }}
                     className=" p-[12px] font-satoshi text-[16px] px-[18px] "
                   >
@@ -182,7 +192,9 @@ const Header = ({
                 {item?._type === "tour_dropdown" && (
                   <div>
                     <span
-                      onClick={() => setDropDown()}
+                      onClick={() => {
+                        setDropDown();
+                      }}
                       className="flex hover:bg-primary rounded-[8px] text-blue  p-[12px] text-[16px] px-[18px] items-center justify-between cursor-pointer"
                     >
                       <p className={"font-medium font-satoshi text-darkblue"}>

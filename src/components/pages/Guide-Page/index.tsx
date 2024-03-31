@@ -1,21 +1,19 @@
 "use client";
 import Layout from "@/components/layout";
 import { FC } from "react";
-// import { wikiData } from "../DynamicTravelWiki/data";
-// import HeroSection from "@/components/sections/hero/HeroSection";
-// import { WikiSectionHeader } from "../DynamicTravelWiki/WikiSection";
-// import { hrData } from "../Dynamic-Blog-Page/data";
 
 import HeroSection from "../DynamicDestinations/HeroSection";
 
 import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import SectionHeader from "@/components/molecules/secHeader";
 import InfoSection from "./InfoSection";
+import Container from "@/components/molecules/container";
 
 interface GuidePageProps {
   language: string;
   pageData: any;
 }
+
 // will be repace with actual data
 const tabs = [
   { name: "Egypt", href: "#" },
@@ -43,11 +41,13 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
       ]}
       promo_banner={layout?.banner}
     >
-      <HeroSection
-        data={data.image_hero.header_section}
-        locale={language}
-        // hideContent
-      />
+      <Container className="px-0">
+        <HeroSection
+          data={data.image_hero.header_section}
+          locale={language}
+          // hideContent
+        />
+      </Container>
       <div className="max-md:mt-[40px]">
         <SectionHeader
           title={data?.tagline?.[language]}

@@ -7,11 +7,11 @@ import Card from "./Card";
 import Selector from "./Selector";
 import { localizedString, urlFor } from "../../../../sanity/lib/client";
 
-function HeaderLink({ item, locale }) {
-  const [open, setOpen] = React.useState(false);
+function HeaderLink({ item, locale, open, setOpen }) {
   const [dest, setDest] = React.useState(0);
 
   const pathname = usePathname();
+  console.log("pathnameNav: ", pathname);
   const active = pathname === `/${locale}${item.url}`;
 
   React.useEffect(() => {
@@ -27,7 +27,7 @@ function HeaderLink({ item, locale }) {
       <Link
         href={`/${locale}${item.url}`}
         title={item.text && item.text[locale]}
-        className={`leading-[24px] flex-none font-medium font-satoshi ${
+        className={`leading-[24px] flex-none font-satoshi ${
           active || item.url === "/"
             ? "text-[#3FA9F5] font-bold"
             : "font-medium text-darkblue"
@@ -52,7 +52,7 @@ function HeaderLink({ item, locale }) {
                 width="16"
                 alt=""
                 className={`ml-1 ${open && "-rotate-180"} transition-all`}
-              ></Image>
+              />
             </span>
 
             <div

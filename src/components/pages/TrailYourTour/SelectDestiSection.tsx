@@ -19,9 +19,9 @@ const Root = styled.div`
     padding: 6px 16px;
     width: fit-content;
     border-radius: 30px;
-    backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(10px); */
     color: white;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   @media (max-width: 1024px) {
@@ -99,13 +99,13 @@ const SelectDestinationSection = ({
               />
 
               <h1
-                className={`name-85 
+                className={`name-85 font-satoshi
                                         ${
                                           selectedDestination.includes(
                                             item?.title?.[locale]
                                           )
                                             ? "bg-[#3FA9F5]"
-                                            : "bg-[rgba(255, 255, 255, 0.40)]"
+                                            : "bg-white/40 backdrop-blur"
                                         }`}
               >
                 {item?.title?.[locale]}

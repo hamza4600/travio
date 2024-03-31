@@ -42,7 +42,7 @@ export default function FeatureSection({ data, locale }) {
     return (
       <Container
         className={
-          "text-center h-fit  mx-auto max-w-[1280px] px-4 md:px-0  md:!spx-[80px] pt-[50px] md:pt-[84px] text-[#140D31] relative w-full "
+          "text-center h-fit  mx-auto max-w-[1280px] px-5 md:px-0  md:!spx-[80px] pt-[50px] md:pt-[84px] text-[#140D31] relative w-full "
         }
       >
         {/* {data.title && ( */}
@@ -97,9 +97,30 @@ export default function FeatureSection({ data, locale }) {
       </div>
       {/* )} */}
       <div className="flex justify-between w-full flex-wrap gap-[15px] ">
-        {data?.features?.map((feature, index) => (
-          <SmallFeature key={index} data={feature} locale={locale} />
-        ))}
+        {data?.features?.map((feature, index) => {
+          if (index === 1) {
+            // Render the fourth item instead of the second
+            return (
+              <SmallFeature
+                key={index}
+                data={data.features[3]}
+                locale={locale}
+              />
+            );
+          } else if (index === 3) {
+            // Render the second item instead of the fourth
+            return (
+              <SmallFeature
+                key={index}
+                data={data.features[1]}
+                locale={locale}
+              />
+            );
+          } else {
+            // Render other items as usual
+            return <SmallFeature key={index} data={feature} locale={locale} />;
+          }
+        })}
       </div>
     </Container>
   );
@@ -109,7 +130,7 @@ export type FeatureProps = { data: any; locale: string };
 
 const Feature = ({ data, locale }: FeatureProps) => {
   return (
-    <div className="relative text-center  flex flex-row-reversse justify-between md:flex-col items-center z-[2] h-[90px] md:h-fit [&:nth-child(odd)]:flex-row-reverse md:[&:nth-child(odd)]:flex-col">
+    <div className="relative text-center  flex flex-row-reversse md:justify-between gap-[34px] md:flex-col items-center z-[2] h-[90px] md:h-fit [&:nth-child(odd)]:flex-row-reverse md:[&:nth-child(odd)]:flex-col">
       <Image
         src={urlFor(data.icon?.asset?._ref)}
         width={68}
@@ -118,7 +139,7 @@ const Feature = ({ data, locale }: FeatureProps) => {
       />
 
       <div
-        className={`md:mt-9 font-satoshi md:mb-2.5 text-start md:text-center max-w-[231px] md:max-w-[348px]`}
+        className={`md:mt-9 font-satoshi md:mb-2.5 text-start md:text-center md:max-w-[348px]`}
       >
         <h3 className="font-bold lg:-tracking-[0.6px] text-base md:text-xl leading-normal md:leading-loose">
           {data.title[locale]}
@@ -142,7 +163,7 @@ const SmallFeature = ({ data, locale }: FeatureProps) => {
         alt=""
         className={"h-12 w-12"}
       />
-      <h3 className="text-center max-md:max-w-[140px] font-satoshi font-medium md:text-start text-[12px] leading-5 md:text-base md:leading-[24px] md:ml-3">
+      <h3 className="text-center max-md:max-w-[140px] text-darkblue font-satoshi font-medium md:text-start text-[12px] leading-5 md:text-base md:leading-[24px] md:ml-3">
         {data.title[locale]}
       </h3>
     </div>

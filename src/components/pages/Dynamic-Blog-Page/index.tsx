@@ -78,8 +78,8 @@ export default function BlogPage({
       globals={layout}
       promo_banner={layout?.banner}
     >
+      <HeroSection data={hrData} />
       <Container>
-        <HeroSection data={hrData} />
         <GallerySect />
         <Container className={""}>
           {/* {JSON.stringify(content)} */}
