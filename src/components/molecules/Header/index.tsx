@@ -33,7 +33,9 @@ const Header = ({
   const [isOppen, setIsOpen] = useState(false);
   const [openDropDown, setOpenDropDown] = useState(false);
 
-  const [open] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  console.log("Opensss: ", isOppen);
 
   const pathname = usePathname();
 
@@ -51,11 +53,13 @@ const Header = ({
 
   const dropdownList = ["Egypt", "Dubai", "Isreal"];
 
+  console.log("items ", navbar?.links);
+
   return (
     <Root>
       <div
         className={`w-full hidden bg-white lg:block h-[100px] ${
-          openDropDown && "relative z-50"
+          open && " relative z-50 "
         } `}
       >
         {/* <div className="mx-auto box-border"> */}
@@ -101,7 +105,12 @@ const Header = ({
             </Link>
           </div>
           <div className="flex gap-[38px] justify-evenly text-darkblue">
-            <HeaderLink data={navbar?.links} locale={locale} />
+            <HeaderLink
+              data={navbar?.links}
+              locale={locale}
+              open={open}
+              setOpen={setOpen}
+            />
           </div>
           <div>
             <div className="flex gap-3">
@@ -150,8 +159,9 @@ const Header = ({
         <div className="flex flex-col justify-end pr-3  items-end">
           <div
             className={`relative rounded-[16px] overflow-auto text-base transition-all p-5  text-darkblue lg:first-letter:text-xl ease-in-out duration-700  bg-white w-[70%]  flex flex-col gap-2 justify-start items-start z-[15] ${
-              open ? "translate-y-1 " : "-translate-y-full opacity-0"
+              isOppen ? "translate-y-1 " : "-translate-y-full opacity-0"
             }`}
+            style={{ top: "30px" }}
           >
             {navbar?.links?.map((item, index) => (
               <div className="w-full" key={index}>
@@ -160,7 +170,7 @@ const Header = ({
                     onClick={() => {
                       setIsOpen(false);
                     }}
-                    className=" p-[12px] font-satoshi text-[16px] px-[18px] "
+                    className=" p-[12px] border-b border-b-[#F2FAFF] rounded-b-[8px] font-satoshi text-[16px] px-[18px] "
                   >
                     <Link
                       href={`/${locale}${item.url}`}
@@ -175,6 +185,7 @@ const Header = ({
                       {/* {console.log("pathname", pathname , `/${locale}${item.url}`)} */}
                       {item?.text?.[locale]}
                     </Link>
+                    <div className="" />
                   </div>
                 )}
                 {item?._type === "tour_dropdown" && (
@@ -182,10 +193,15 @@ const Header = ({
                     <span
                       onClick={() => {
                         setDropDown();
+                        setOpen(!open);
                       }}
                       className="flex hover:bg-primary rounded-[8px] text-blue  p-[12px] text-[16px] px-[18px] items-center justify-between cursor-pointer"
                     >
-                      <p className={"font-medium font-satoshi text-darkblue"}>
+                      <p
+                        className={`font-medium font-satoshi text-darkblue ${
+                          openDropDown && "text-primary"
+                        }`}
+                      >
                         Destinations
                       </p>
                       <Image
@@ -202,24 +218,24 @@ const Header = ({
                       <div className="">
                         {dropdownList.map((item, index) => (
                           <div className="" key={index}>
-                            <label
-                              className="flex font-satoshi items-center gap-3  text-[#726E83] p-[10px] px-[24px]"
-                              htmlFor={"nav-sub-item" + index}
+                            <div
+                              className="flex font-satoshi items-center gap-3 text-[#726E83] p-[10px] px-[24px]"
+                              // htmlFor={"nav-sub-item" + index}
                             >
-                              <input
+                              {/* <input
                                 type="radio"
                                 name="nav-sub-item"
                                 id={"nav-sub-item" + index}
-                              />
+                              /> */}
                               <Link
-                                className="font-satoshi"
+                                className="font-satoshi font-medium"
                                 key={index}
                                 href={"/"}
                               >
                                 {" "}
                                 {item}
                               </Link>
-                            </label>
+                            </div>
                           </div>
                         ))}
                       </div>
