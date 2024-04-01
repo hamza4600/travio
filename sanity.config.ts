@@ -11,6 +11,7 @@ import { deskTool, type DeskToolOptions } from 'sanity/desk'
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schemaTypes} from './sanity/schema'
+import { Activity } from 'lucide-react'
 
 
 // const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
@@ -19,7 +20,7 @@ import {schemaTypes} from './sanity/schema'
 const CustomDocumentTypes = new Set(['page', 'article', 'blog_page', 'tag'])
 // main blogs Page
 
-const Singletons = new Set(['tailor_your_tour', 'globals', 'newsletter_section'])
+const Singletons = new Set(['tailor_your_tour', 'globals', 'newsletter_section', 'activity'])
 
 const deskToolOptions: DeskToolOptions = {
   name: 'Traviio',
@@ -81,6 +82,12 @@ const deskToolOptions: DeskToolOptions = {
           .icon(Newspaper)
           .id('newsletter_section')
           .child(S.document().schemaType('newsletter_section').documentId('newsletter_section')),
+          // Activity
+        S.listItem()
+          .title('Activity')
+          .icon(Activity)
+          .id('activity')
+          .child(S.documentTypeList('activity').title('Activity List')),
       ]),
 }
 export default defineConfig({

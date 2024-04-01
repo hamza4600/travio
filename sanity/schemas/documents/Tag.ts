@@ -39,7 +39,7 @@ export default defineType({
     },
     prepare: ({ title }) => ({
       title: 'Tag',
-      subtitle: title.en,
+      subtitle:  title.en,
     }),
   },
 })

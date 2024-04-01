@@ -23,6 +23,7 @@ import promo_banner from "./schemas/atoms/PromoBanner";
 import timeline from "./schemas/atoms/Timeline";
 import tour_timeline from "./schemas/atoms/TourTimeline";
 import wattsappbanner from "./schemas/atoms/wattsappbanner";
+import Activity from "./schemas/documents/Activity";
 import Article from "./schemas/documents/Article";
 import blog_page from "./schemas/documents/BlogPage";
 import destination_page from "./schemas/documents/DestinationPage";
@@ -55,6 +56,7 @@ import index_section from "./schemas/sections/IndexSection";
 import newsletter_section from "./schemas/sections/NewsletterSection";
 import office_locations_section from "./schemas/sections/OfficeLocationsSection";
 import reviews_section from "./schemas/sections/ReviewsSection";
+import ShowNewLetterSection from "./schemas/sections/ShowNewLetterSection";
 import {
     testimonial,
     testimonial_section,
@@ -90,6 +92,7 @@ export const schemaTypes= [
         rich_text,
         // sections
         content_section,
+        ShowNewLetterSection,
         deals_section,
         destinations_section,
         faq_section,
@@ -116,6 +119,7 @@ export const schemaTypes= [
         tailor_your_tour,
         // documents
         Article,
+        Activity,
         blog_page,
         tour_page,
         Page,

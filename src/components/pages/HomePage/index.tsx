@@ -8,11 +8,10 @@ import Slicer from "../../../../sanity/slicer";
 
 import "react-photo-view/dist/react-photo-view.css";
 import { SectionMap } from "@/components/sections";
-import NewsletterSection from "@/components/sections/NewsletterSection";
 
-const HomePage = ({ pageData, locale, newLetterSection }) => {
+const HomePage = ({ pageData, locale }) => {
   const { layout } = pageData || {};
-
+  console.log("pageData", pageData?.pageData?.sections);
   return (
     <Layout
       breadcrumbs={[]}
@@ -27,7 +26,6 @@ const HomePage = ({ pageData, locale, newLetterSection }) => {
         components={SectionMap}
         sections={pageData?.pageData?.sections}
       />
-      <NewsletterSection data={newLetterSection} locale={locale} />
     </Layout>
   );
 };

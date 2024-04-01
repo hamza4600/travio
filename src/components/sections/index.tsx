@@ -147,7 +147,7 @@ export const SectionMap: {
 } = {
   hero_section: HeroSection,
   feature_section: FeatureSection,
-  // newsletter_section: NewsletterSection,
+  show_new_letter_section: NewsletterSection,
   destinations_section: DestinationsSection,
   faq_section: FAQSection,
   deals_section: DealsSection,

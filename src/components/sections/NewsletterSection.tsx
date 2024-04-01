@@ -1,12 +1,21 @@
 import Container from "../molecules/container";
 import useWindowSize from "@/hooks/useWindows";
 import { Button } from "../ui/button";
+import useSWR from 'swr'
+import { getnewLetterSection } from "@/lib/sanity.NewLetter";
 
-const NewsletterSection = ({ data, locale }) => {
+const NewsletterSection = ({ locale , data : pageSec }) => {
+  
   const window = useWindowSize();
   const isMobile = window.width < 768;
 
+  const isShown = pageSec?.show || {}
+  
+  const { data } = useSWR('getnewLetterSection', getnewLetterSection)
+
   const { subtitle, title } = data || {};
+
+  if (!isShown) return null;
 
   return (
     <Container className="md:pb-[60px] pb-[50px] px-0 flex justify-center items-center bg-white text-white">
