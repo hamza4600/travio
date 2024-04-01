@@ -57,9 +57,6 @@ const BlogSection = (props) => {
     locale,
   } = props;
 
-  console.log("props data: ", props.data);
-  console.log("tagline: ", tagline?.en, "locale: ", locale, featured_blogs);
-
   return (
     <Container className="text-darkblue md:mt-[84px] mt-[50px] md:mb-[68px] mb-[70px]">
       {/* <SectionHeader
@@ -67,11 +64,11 @@ const BlogSection = (props) => {
         subtitle={title?.[locale]}
         centerLine
       /> */}
-      <header className="pb-5 font-satoshi">
+      <header className="font-satoshi">
         <p className="text-[#3FA9F5] text-[12px] md:text-base font-medium text-center uppercase leading-5">
           {tagline?.[locale]}
         </p>
-        <div className="mt-2 md:mt-3 -tracking-[1.2px] mb-[30px] md:mb-12 w-fit mx-auto md:text-[40px] font-bold text-2xl md:leading-[50px] text-center">
+        <div className="mt-2 md:mt-3 -tracking-[1.2px] w-fit mx-auto md:text-[40px] font-bold text-2xl md:leading-[50px] text-center">
           <h2>{title?.[locale]}</h2>
           <div className="w-[40px] mt-[4px] md:mt-[12px] md:w-[117px] mx-auto text-yellow  border-b-[#FFBB0B]  rounded-full border-b-[3px]" />
         </div>

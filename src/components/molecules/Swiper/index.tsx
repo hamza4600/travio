@@ -62,7 +62,7 @@ export default function SwiperComponent({
     <div className={"relative"}>
       <div
         className={
-          "flex justify-start pl-2 lg:pl-0 overflow-hidden relative overflow-x-auto " +
+          "flex justify-start overflow-hidden relative overflow-x-auto " +
           className
         }
         ref={swiperRef}

@@ -104,14 +104,14 @@ const CardsSection = ({ data, locale }, props) => {
   // console.log("props8585", props);
 
   return (
-    <Container className="text-black w-full smd:mr-0 mt-[50px]">
+    <Container className="text-black w-full mt-[50px]">
       <SectionHeader
         subtitle={data?.title?.[locale]}
         title={data?.tagline?.[locale]}
       />
-      <div className="h-fit relative md:mt-12 mt-[30px]">
+      <div className="h-fit relative z-20 md:mt-12 mt-[30px]">
         <Swiper
-          className={"gap-6 pb-3"}
+          className={"gap-6 pb-2 pl-1.5"}
           length={data.deals.length}
           scrollCount={4}
         >

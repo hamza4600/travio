@@ -21,9 +21,20 @@ const TourCard = ({
   link,
   locale,
 }) => {
+  // Function to format the price with a comma after every third digit
+  const formattedPrice = (price) => {
+    // if (price === typeof string) {
+    const convPrice = parseInt(price);
+
+    // }
+    return convPrice.toLocaleString();
+  };
+
+  // console.log("prices: ", old_price, price, old_price - price);
+
   return (
     <Link
-      className={"flex-shrink-0 max-w-[250px] md:max-w-[302px]"}
+      className={"flex-shrink-0 max-w-[250px] md:max-w-[302px] "}
       href={locale + "/tours" + link}
     >
       <div className="bg-white relative shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
@@ -99,18 +110,18 @@ const TourCard = ({
           </div>
           <div className="mt-6 flex justify-between items-start">
             <Text className="line-through opacity-50 text-gray font-bold text-sm md:text-[18px] leading-[20px] md:leading-[28px]">
-              ${old_price}
+              ${formattedPrice(old_price)}
             </Text>
 
             <div className="text-right">
               <Text className="text-base md:text-lg font-black text-darkblue leading-[20px] md:leading-[28px]">
-                From ${price}
+                From ${formattedPrice(price)}
               </Text>
               <Text
                 variant={"destructive"}
                 className="text-[10px] md:-mt-2 md:text-xs font-bold leading-[20px] md:leading-[28px]"
               >
-                You Save ${old_price - price}
+                You Save ${formattedPrice(old_price - price)}
               </Text>
             </div>
           </div>
