@@ -34,7 +34,7 @@ const RootBg = styled.div<RootProps>`
 
 const ContactSection = ({ data, locale }: { data: any; locale: string }) => {
   return (
-    <Container className="max-md:pt-[50px] md:pb-[68px] pb-[49px] max-sm:mb-20">
+    <Container className="max-md:pt-[50px] md:pb-[68px] pb-[49px] max-sm:mb-20 px-0">
       <RootBg
         className="max-w-[1280px] min-h-[502px] bg-[#edf7fe] md:rounded-[24px] rounded-none"
         desktop={urlFor(data.hero_image?.asset._ref)}

@@ -30,7 +30,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
             <Link
               href={`/${locale}${item.url}`}
               title={item.text && item.text[locale]}
-              className={`leading-[24px] flex-none font-medium font-satoshi 
+              className={`leading-[24px] flex-none font-satoshi 
                 ${
                   (index === 0 && isHome) ||
                   (!isHome && pathname === `/${locale}${item.url}`)
