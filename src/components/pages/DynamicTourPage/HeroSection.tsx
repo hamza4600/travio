@@ -17,13 +17,11 @@ const HeroSection = ({ data, locale }) => {
         />
         <img
           className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] max-sm:hidden"
-          // loading="lazy"
           src={urlFor(data?.image?.asset?._ref)}
           alt={data?.image?.alt?.[locale]}
         />
         <img
           className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] sm:hidden"
-          // loading="lazy"
           src={urlFor(data?.image?.mobile?.asset?._ref)}
           alt={data?.image?.alt?.[locale]}
         />
@@ -32,7 +30,7 @@ const HeroSection = ({ data, locale }) => {
           {data?.title?.[locale]}
         </h1>
         <div className="bg-primary">
-          <p className="lg:hidden text-center pt-[10px] font-bold text-darkblue font-satoshi text-[20px] leading-[30px]">
+          <p className="lg:hidden text-center pt-[20px] font-bold text-darkblue font-satoshi text-[20px] leading-[30px]">
             {data?.title?.[locale]}
           </p>
         </div>

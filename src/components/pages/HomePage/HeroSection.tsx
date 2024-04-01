@@ -6,15 +6,9 @@ import { Text } from "@/components/ui/text";
 import { urlFor } from "../../../../sanity/lib/client";
 
 import React from "react";
-// import useWindowSize from "@/hooks/useWindows";
-
 const HeroSection = ({ data, locale }) => {
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
-  const mobileGradient =
-    "linear-gradient(64deg, black 2%, rgba(0, 0, 0, 0.80) 14%, rgba(0, 0, 0, 0.70) 24%, rgba(0, 0, 0, 0.60) 59%, rgba(0, 0, 0, 0) 100%);";
-
-  // console.log("heroHome: ", data);
 
   return (
     <Container className="px-0">
@@ -29,31 +23,29 @@ const HeroSection = ({ data, locale }) => {
           }
           style={{ background: linearGradient }}
         />
-        <div
-          className={
-            "w-full h-[540px] rounded-[24px] md:hidden block max-lg:rounded-none lg:h-full absolute top-0 left-10 -z-10"
-          }
-          style={{ background: mobileGradient }}
-        />
-
         <img
           className={
             "max-md:hidden absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
-          // style={{ boxShadow: linearGradient }}
-
           src={urlFor(data.image?.asset?._ref)}
           alt={"hero"}
         />
+        <div
+          className={
+            "w-full h-[540px] rounded-[24px] md:hidden block max-lg:rounded-none lg:h-full absolute top-0 -z-10"
+          }
+          style={{
+            background : "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 54.09%, rgba(0, 0, 0, 0.80) 96.01%)"
+          }}
+        />
         <img
+          id ="mobile-75i"
           className={
             "absolute md:hidden min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
-          // style={{ boxShadow: linearGradient }}
-
           src={urlFor(data.image?.mobile.asset?._ref)}
           alt={"hero"}
-        />
+          />
 
         <div className="text-white py-5 z-10 w-full md:px-10">
           <div className="-mt-20 md:mt-0 flex items-center md:items-start justify-center md:justify-between flex-col">
