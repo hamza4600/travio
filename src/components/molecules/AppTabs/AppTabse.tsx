@@ -12,8 +12,7 @@ function AppTabs({ tabs }: TabsProp) {
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-
-    setIsFixed(scrollPosition > window.innerHeight / 0.7); // is equal to 80% of the window height
+    setIsFixed(scrollPosition > window.innerHeight / 1);
   };
 
   useEffect(() => {
@@ -37,8 +36,9 @@ function AppTabs({ tabs }: TabsProp) {
           zIndex: 1000,
           marginTop: isFixed ? "0" : "10px",
           backgroundColor: "white", // Optional: set a background color
+          transition: "top 0.3s, position 0.3s, margin-top 0.3s", // Add transitions
         }}
-        className=" w-full border-b border-[rgba(20,13,49,0.10)]"
+        className="w-full border-b border-[rgba(20,13,49,0.10)]"
         ref={tabsRef}
       >
         <div className="w-full overflow-x-scroll">

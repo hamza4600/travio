@@ -7,18 +7,20 @@ import { useState } from "react";
 
 export default function WhatsIncludedSection({
   data,
+  locale,
 }: {
   data: SanityWhatsIncludedSection;
+  locale: string;
 }) {
   // console.log("included section data: ", data);
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
-    <Container className="flex flex-col py-7 mx-auto max-w-[1312px] px-4  relative">
+    <Container className="flex flex-col py-7 mx-auto max-w-[1312px] px-4 font-satoshi relative">
       <div id="inclusions">
-        <h2 className="text-black  font-bold text-[20px] lg:text-2xl text-c">
-          {data?.title?.en}
+        <h2 className="font-bold text-[20px] lg:text-2xl text-darkblue">
+          {data?.title?.[locale]}
         </h2>
-        <div className=" w-28 my-2 text-yellow bg-yellow  rounded-full border-2" />
+        <div className=" w-28 my-2 text-yellow border-[#FFBB0B]  rounded-full border-2" />
       </div>
       <div className="divide-y-2 hidden lg:block divide-darkblue/10 my-3 lg:w-3/4  w-full">
         {data?.inclusion_list?.map((item, index) => {
@@ -31,20 +33,23 @@ export default function WhatsIncludedSection({
                 <div className="w-7 h-7 relative">
                   <Image
                     src={item.icon ? urlFor(item.icon) : ""}
-                    alt={item.icon?.alt?.en ?? ""}
+                    alt={item.icon?.alt?.[locale] ?? ""}
                     fill
                     className="object-cover"
                   />
                 </div>
-                <p className="lg:text-xl text-[20px] font-medium text-blue">
-                  {item.title?.en}
+                <p className="lg:text-[20px] lg:leading-7 text-base font-medium text-primary">
+                  {item.title?.[locale]}
                 </p>
               </div>
               <div className="flex flex-col">
                 {item?.description?.map((note, index) => {
                   return (
-                    <p className="text-base font-medium" key={index}>
-                      {note.en}
+                    <p
+                      className="md:text-base text-[14px] leading-6 md:font-medium font-normal text-darkblue"
+                      key={index}
+                    >
+                      {note?.[locale]}
                     </p>
                   );
                 })}
@@ -71,7 +76,7 @@ export default function WhatsIncludedSection({
               <div className="w-7 h-7  relative">
                 <Image
                   src={item.icon ? urlFor(item.icon) : ""}
-                  alt={item.icon?.alt?.en ?? ""}
+                  alt={item.icon?.alt?.[locale] ?? ""}
                   fill
                   className="object-cover"
                 />
@@ -83,16 +88,19 @@ export default function WhatsIncludedSection({
           <div className=" flex bg-white shadow-xl shadow-[#f5f5f5]  flex-col justify-start items-start gap-3 p-5">
             {
               <p className="lg:text-xl text-base font-medium text-black">
-                {data?.inclusion_list[currentIndex]?.title?.en}
-                <div className=" w-12 my-2 text-yellow bg-yellow  rounded-full border-[1.5px]" />
+                {data?.inclusion_list[currentIndex]?.title?.[locale]}
+                <div className=" w-12 my-2 text-yellow border-[#FFBB0B]  rounded-full border-[1.5px]" />
               </p>
             }
             <div className="flex text-[14px] flex-col">
               {data?.inclusion_list[currentIndex]?.description?.map(
                 (note, index) => {
                   return (
-                    <p className="text-base font-medium" key={index}>
-                      {note.en}
+                    <p
+                      className="text-[14px] leading-6 font-normal"
+                      key={index}
+                    >
+                      {note?.[locale]}
                     </p>
                   );
                 }
