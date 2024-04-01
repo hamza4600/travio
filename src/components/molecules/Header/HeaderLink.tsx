@@ -7,8 +7,8 @@ import Card from "./Card";
 import Selector from "./Selector";
 import { localizedString, urlFor } from "../../../../sanity/lib/client";
 
-function HeaderLink({ locale, data }) {
-  const [open, setOpen] = React.useState(false);
+function HeaderLink({ locale, data, open, setOpen }) {
+  // const [open, setOpen] = React.useState(false);
   const [dest, setDest] = React.useState(0);
 
   const pathname = usePathname();

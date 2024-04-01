@@ -11,7 +11,6 @@ interface RootProps {
 }
 
 const RootBg = styled.div<RootProps>`
-
   position: relative;
   &::before {
     content: "";
@@ -26,19 +25,16 @@ const RootBg = styled.div<RootProps>`
     z-index: 0;
   }
 
-
   @media (max-width: 768px) {
     &::before {
       background-image: url(${(props) => props.mobile});
     }
   }
-
-
 `;
 
 const ContactSection = ({ data, locale }: { data: any; locale: string }) => {
   return (
-    <Container className="md:px-20 px-0 max-md:pt-[50px] md:pb-[68px] pb-[49px] max-sm:mb-20">
+    <Container className="max-md:pt-[50px] md:pb-[68px] pb-[49px] max-sm:mb-20">
       <RootBg
         className="max-w-[1280px] min-h-[502px] bg-[#edf7fe] md:rounded-[24px] rounded-none"
         desktop={urlFor(data.hero_image?.asset._ref)}
