@@ -30,7 +30,7 @@ const HeroSection = ({ data, locale }) => {
           {data?.title?.[locale]}
         </h1>
         <div className="bg-primary">
-          <p className="lg:hidden text-center pt-[20px] font-bold text-darkblue font-satoshi text-[20px] leading-[30px]">
+          <p className="lg:hidden text-center pt-[25px] pb-[8px] font-bold text-darkblue font-satoshi text-[20px] leading-[30px]">
             {data?.title?.[locale]}
           </p>
         </div>

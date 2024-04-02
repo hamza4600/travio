@@ -21,6 +21,13 @@ export default defineType({
       description: 'Meta Data for SEO',
       type: 'meta_data',
     }),
+     // page breadcrumbs
+     defineField({
+      name: 'breadcrumb',
+      title: 'Breadcrumb',
+      description: 'Breadcrumb for the page',
+      type: 'breadcrumb',
+    }),
     defineField({
       name: 'image_hero',
       title: 'Hero Image Banner',

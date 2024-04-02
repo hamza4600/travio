@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { urlFor } from "../../../../sanity/lib/client";
 import { SanityWhatsIncludedSection } from "../../../../sanity/lib/types";
 import Container from "@/components/molecules/container";
@@ -20,7 +18,7 @@ export default function WhatsIncludedSection({
         <h2 className="font-bold text-[20px] lg:text-2xl text-darkblue">
           {data?.title?.[locale]}
         </h2>
-        <div className=" w-28 my-2 text-yellow border-[#FFBB0B]  rounded-full border-2" />
+        <div className=" w-28 my-2 text-yellow border-[#FFBB0B]  rounded-full border-2 max-md:my-1" />
       </div>
       <div className="divide-y-2 hidden lg:block divide-darkblue/10 my-3 lg:w-3/4  w-full">
         {data?.inclusion_list?.map((item, index) => {
@@ -31,10 +29,9 @@ export default function WhatsIncludedSection({
             >
               <div className="flex items-center gap-2  self-start">
                 <div className="w-7 h-7 relative">
-                  <Image
+                  <img
                     src={item.icon ? urlFor(item.icon) : ""}
                     alt={item.icon?.alt?.[locale] ?? ""}
-                    fill
                     className="object-cover"
                   />
                 </div>
@@ -74,10 +71,9 @@ export default function WhatsIncludedSection({
               className="flex h-full pb-2 w-full justify-center  items-center transition-all border-b-orange-400 border-b-2 gap-2  self-start"
             >
               <div className="w-7 h-7  relative">
-                <Image
+                <img
                   src={item.icon ? urlFor(item.icon) : ""}
                   alt={item.icon?.alt?.[locale] ?? ""}
-                  fill
                   className="object-cover"
                 />
               </div>

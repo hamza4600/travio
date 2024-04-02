@@ -33,6 +33,7 @@ function AppTabs({ tabs }: TabsProp) {
         style={{
           position: isFixed ? "fixed" : "relative",
           top: 0,
+          left: 0,
           zIndex: 1000,
           marginTop: isFixed ? "0" : "10px",
           backgroundColor: "white", // Optional: set a background color

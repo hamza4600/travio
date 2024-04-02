@@ -23,7 +23,7 @@ const OverViewCard = ({
   const price: any = data?.price;
 
   return (
-    <div className="relative font-satoshi lg:h-[80px] bg-primary lg:bg-transparent pb-5 h-fit ">
+    <div className="relative font-satoshi lg:h-[80px] bg-primary lg:bg-transparent pb-6 h-fit ">
       <div className="lg:absolute grid p-[26px] max-xl:grid-cols-2 gap-3 lg:flex items-center max-w-[1280px]  inset-x-0 lg:divide-x-2 top-[-34px] mx-auto bg-primary rounded-2xl max-md:p-[20px]">
         <div className="flex gap-2 items-center bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] lg:w-fit max-md:py-[4px]">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">

@@ -40,12 +40,12 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
         },
       ]}
       promo_banner={layout?.banner}
+      maxWidth={false}
     >
       <Container className="px-0">
         <HeroSection
           data={data.image_hero.header_section}
           locale={language}
-          // hideContent
         />
       </Container>
       <div className="max-md:mt-[40px]">
@@ -57,7 +57,10 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
         <div className="md:mt-[68px] mt-[50px]">
           <AppTabs tabs={tabs} />
         </div>
-        <InfoSection data={data?.sections} locale={language} />
+        
+        <Container className=" px-0">
+          <InfoSection data={data?.sections} locale={language} />
+        </Container>
       </div>
     </Layout>
   );

@@ -6,7 +6,7 @@ export default defineType({
   name: 'itinerary_section',
   title: 'Itinerary Section',
   icon: AirplaneTakeoff as any,
-  description: 'A section with an itinerary',
+  description: 'A section with an itinerary for a tour (Accordian)',
   type: 'object',
   fields: [
     defineField({
@@ -104,6 +104,20 @@ export default defineType({
                 }),
               ],
             }),
+            // select activity cards activity
+            defineField({
+              name: 'activity_cards',
+              title: 'Activity Cards',
+              type: 'array',
+              of: [
+                defineArrayMember({
+                  name: 'activity_card',
+                  title: 'Activity Card',
+                  type: 'reference',
+                  to: [{ type: 'activity' }],
+                }),
+              ],
+            }),
             defineField({
               name: 'special_information',
               title: 'Special Information',
@@ -126,9 +140,18 @@ export default defineType({
                 }),
               ],
             }),
+            
           ],
         }),
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title.en',
+    },
+    prepare: ({ title }) => ({
+      title: title ?? 'Untitled',
+    }),
+  },
 })

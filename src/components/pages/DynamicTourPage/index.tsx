@@ -19,7 +19,7 @@ const Root = styled.div`
   padding-bottom: 3rem;
 
   @media (max-width: 768px) {
-    padding-bottom: 2.5rem;
+    padding-bottom: 3.5rem;
   }
 `;
 
