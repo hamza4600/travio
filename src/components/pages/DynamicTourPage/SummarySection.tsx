@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import PortableText from "react-portable-text";
 
@@ -18,7 +18,9 @@ const RootStyle = styled.div`
   }
 
   @media (max-width: 768px) {
-    p , li , ul {
+    p,
+    li,
+    ul {
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
@@ -288,23 +290,52 @@ const WhatsApp = () => (
 // ];
 
 const ForMobile = () => {
+  const [fixed, setFixed] = useState(false);
+
+  const tabRef = useRef<HTMLDivElement | null>(null);
+  const handleScroll = () => {
+    const scrPos = window.scrollY;
+    setFixed(scrPos > window.innerHeight / 1);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="bg-[#3FA9F5] flex justify-between px-[32.5px] py-3 mt-[50px] md:hidden font-satoshi">
-      <div className="flex flex-col gap-1 items-center">
-        <Email />
-        <p className="text-[14px] leading-6 text-white opacity-50">
-          Inquire Now
-        </p>
-      </div>
-      <div className="flex flex-col gap-1 items-center">
-        <Trail />
-        <p className="text-[14px] leading-6 text-white">Trail Your Tour</p>
-      </div>
-      <div className="flex flex-col gap-1 items-center">
-        <WhatsApp />
-        <p className="text-[14px] leading-6 text-white opacity-50">
-          Contact Us
-        </p>
+    <div className="max-w-full relative">
+      <div
+        className="w-full"
+        ref={tabRef}
+        style={{
+          position: fixed ? "fixed" : "relative",
+          top: 0,
+          left: 0,
+          zIndex: 1000,
+          marginTop: fixed ? "15px" : "0px",
+          transition: "top 0.3s, position 0.3s, margin-top 0.3s",
+        }}
+      >
+        <div className="bg-[#3FA9F5] flex justify-between px-[32.5px] py-3 mt-[50px] md:hidden font-satoshi">
+          <div className="flex flex-col gap-1 items-center">
+            <Email />
+            <p className="text-[14px] leading-6 text-white opacity-50">
+              Inquire Now
+            </p>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <Trail />
+            <p className="text-[14px] leading-6 text-white">Trail Your Tour</p>
+          </div>
+          <div className="flex flex-col gap-1 items-center">
+            <WhatsApp />
+            <p className="text-[14px] leading-6 text-white opacity-50">
+              Contact Us
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

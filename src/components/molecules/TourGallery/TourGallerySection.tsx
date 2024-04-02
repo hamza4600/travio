@@ -47,7 +47,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
           <h3 className="text-[24px] font-satoshi  text-center lg:text-start leading-tight -tracking-[1.2px] font-bold ">
             {title?.[locale]}
           </h3>
-          <div className="hidden lg:block border-b-[#FFBB0B] w-[112px] border-b-[3px] my-2 h-1 rounded-full md:block" />
+          <div className="hidden lg:block border-b-[#FFBB0B] w-[112px] border-b-[3px] my-2 h-1 rounded-full" />
           <div className="text-lg font-satoshi text-center lg:text-start  mt-1.5 text-gray  leading-[28px]">
             {subtitle?.[locale]?.substring(0, 5)[locale]}
             <span className="text-primary opacity-100">
@@ -72,7 +72,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
               <div
                 key={i}
                 className={
-                  "min-w-[233px] md:min-w-[320px] w-full md:max-w-[320px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl pb-4 md:pb-0"
+                  "min-w-[302px] md:min-w-[320px] w-full md:max-w-[320px] h-[247px] md:h-[320px]  overflow-hidden rounded-xl pb-4 md:pb-0"
                 }
               >
                 <PhotoProvider>
@@ -91,12 +91,12 @@ const TourGallerySection = (props: GallerySectionProps) => {
               <div
                 key={i}
                 className={
-                  "h-[190px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5 pb-4 md:pb-0"
+                  "h-[247px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5 pb-4 md:pb-0"
                 }
               >
                 <div
                   className={
-                    "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                    "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                   }
                 >
                   <PhotoProvider>
@@ -114,7 +114,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
                 {image[1] && (
                   <div
                     className={
-                      "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                      "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                     }
                   >
                     <PhotoProvider>
@@ -139,7 +139,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
             width={80}
             height={40}
             src={"/Plane.png"}
-            className="w-auto -left-10 absolute max-md:w-[200px] max-md:left-16"
+            className="w-auto -left-10 absolute max-md:w-[200px] max-md:left-2"
             alt="plane"
           />
         </div>

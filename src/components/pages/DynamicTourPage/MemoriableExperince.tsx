@@ -83,7 +83,7 @@ export default function MemorableExperiencesSection({
           </Swiper>
         </Container>
       </div>
-      <Container className="lg:gap-20 gap-[15px] px-4  relative flex md:justify-center justify-end top-[-10px] md:top-0">
+      <Container className="lg:gap-20 gap-[15px] px-4  relative flex md:justify-center justify-end top-[-24px] md:top-0">
         <button
           className={
             "rounded-full  bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 -translate-y-1/2 cursor-pointer "

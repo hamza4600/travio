@@ -74,7 +74,7 @@ export default function SwiperComponent({
       {showNext && (
         <button
           className={
-            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 absolute right-0 md:-bottom-10 -bottom-14 md:top-1/2 -translate-y-1/2 cursor-pointer"
+            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 absolute right-2.5 md:-bottom-10 -bottom-14 md:top-1/2 -translate-y-1/2 cursor-pointer"
           }
           onClick={onNext}
         >
