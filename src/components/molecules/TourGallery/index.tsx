@@ -53,7 +53,7 @@ const TourGallery = (props: GallerySectionProps) => {
     <div
       className={`${
         forTourPage ? "bg-white" : "bg-[#F2FAFF]"
-      } pt-5 md:pt-10 min-h-[482px] md:min-h-[522px] mt-[84px] text-black`}
+      } pt-5 md:pt-10 min-h-[522px] md:min-h-[522px] mt-[84px] text-black`}
     >
       <Container>
         <h2
@@ -110,7 +110,7 @@ const TourGallery = (props: GallerySectionProps) => {
                 <div
                   key={i}
                   className={
-                    "min-w-[233px] md:min-w-[350px] w-full md:max-w-[350px] h-[190px] md:h-[320px]  overflow-hidden rounded-xl"
+                    "min-w-[303px] md:min-w-[350px] w-full md:max-w-[350px] h-[247px] md:h-[320px]  overflow-hidden rounded-xl"
                   }
                 >
                   <PhotoView key={i} src={urlFor(image[0])}>
@@ -128,12 +128,12 @@ const TourGallery = (props: GallerySectionProps) => {
                 <div
                   key={i}
                   className={
-                    "w-full h-[190px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5"
+                    "w-full h-[247px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5"
                   }
                 >
                   <div
                     className={
-                      "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                      "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                     }
                   >
                     <PhotoView key={i} src={urlFor(image[0])}>
@@ -150,7 +150,7 @@ const TourGallery = (props: GallerySectionProps) => {
                   {image[1] && (
                     <div
                       className={
-                        "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                        "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                       }
                     >
                       <PhotoView key={i} src={urlFor(image[1])}>
@@ -180,12 +180,12 @@ const TourGallery = (props: GallerySectionProps) => {
             )}
             <div
               className={
-                "w-full  h-[190px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
+                "w-full  h-[247px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
               }
             >
               <div
                 className={
-                  "w-[94px] md:w-[200px] h-full overflow-hidden rounded-xl "
+                  "w-[122.2px] md:w-[118.3px] h-full overflow-hidden rounded-xl "
                 }
               >
                 <PhotoView src={urlFor(imgs[5][0])}>
@@ -205,7 +205,7 @@ const TourGallery = (props: GallerySectionProps) => {
                 <div
                   key={i}
                   className={
-                    "min-w-[233px] w-full h-[190px]  md:h-[320px]   md:min-w-[310px] md:max-w-[400px]  overflow-hidden rounded-xl"
+                    "min-w-[303px] w-full h-[247px]  md:h-[320px]   md:min-w-[310px] md:max-w-[400px]  overflow-hidden rounded-xl"
                   }
                 >
                   <PhotoView key={i} src={urlFor(image[0])}>
@@ -223,12 +223,12 @@ const TourGallery = (props: GallerySectionProps) => {
                 <div
                   key={i}
                   className={
-                    "w-full  h-[190px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
+                    "w-full  h-[247px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
                   }
                 >
                   <div
                     className={
-                      "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                      "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                     }
                   >
                     <PhotoView key={i} src={urlFor(image[0])}>
@@ -245,7 +245,7 @@ const TourGallery = (props: GallerySectionProps) => {
                   {image[1] && (
                     <div
                       className={
-                        "w-[94px] h-[91px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                        "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                       }
                     >
                       <PhotoView key={i} src={urlFor(image[1])}>

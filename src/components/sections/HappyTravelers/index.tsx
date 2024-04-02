@@ -68,7 +68,7 @@ const TravlerReviews = (props) => {
           >
             {testimonials?.map((item, index: any) => {
               return (
-                <div key={index}>
+                <div key={index} className="flex gap-6 items-center">
                   <div className={"w-[284px] shrink-0"}>
                     <div className="flex gap-x-0.5 mb-1.5">
                       <Star />
@@ -110,6 +110,7 @@ const TravlerReviews = (props) => {
                       {/* <div className="w-[160px] h-[1px] rotate-90 opacity-10 bg-[#3FA9F5]" /> */}
                     </div>
                   </div>
+                  <div className="h-[170px] w-[1px] border-r border-[#3FA9F5] opacity-10 md:hidden block" />
                 </div>
               );
             })}
