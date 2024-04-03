@@ -311,7 +311,7 @@ const ForMobile = () => {
         ref={tabRef}
         style={{
           position: fixed ? "fixed" : "relative",
-          top: 0,
+          bottom: 0,
           left: 0,
           zIndex: 1000,
           marginTop: fixed ? "15px" : "0px",

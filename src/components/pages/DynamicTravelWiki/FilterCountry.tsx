@@ -17,7 +17,7 @@ const FilterCountry = ({
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-    setIsFixed(scrollPosition > window.innerHeight / 0.9);
+    setIsFixed(scrollPosition > window.innerHeight / 1);
   };
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const FilterCountry = ({
         <div className="w-full overflow-x-scroll">
           <div className="px-5">
             <nav
-              className="flex lg:gap-[120px] gap-7 md:px-[120px] lg:items-center justify-start items-start"
+              className="flex lg:gap-[120px] gap-[50px] md:px-[120px] lg:items-center md:justify-center justify-start items-start"
               aria-label="Tabs"
             >
               {tabs.map((tab, index) => (

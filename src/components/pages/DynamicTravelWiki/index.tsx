@@ -11,6 +11,7 @@ import Content from "./Content";
 // import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import FilterCountry from "./FilterCountry";
 import SectionHeader from "@/components/molecules/secHeader";
+import Container from "@/components/molecules/container";
 
 const DynamicTravelWiki = ({
   language,
@@ -28,12 +29,27 @@ const DynamicTravelWiki = ({
 
   return (
     <Layout
+      maxWidth={false}
       locale={language}
       globals={layout}
       promo_banner={layout?.banner}
-      breadcrumbs={[]}
+      breadcrumbs={[
+        {
+          label: "wiki",
+          value: "/wiki",
+        },
+        {
+          label: "Egypt",
+          value: "/Egypt",
+        },
+      ]}
     >
-      <HeroSection data={data?.image_hero?.header_section} locale={language} />
+      <Container className="px-0">
+        <HeroSection
+          data={data?.image_hero?.header_section}
+          locale={language}
+        />
+      </Container>
 
       <div className="max-lg:mt-[50px]">
         <SectionHeader
@@ -47,10 +63,10 @@ const DynamicTravelWiki = ({
       <div className="md:mt-12 mt-[50px]">
         <FilterCountry tabs={wikiTabs} />
       </div>
-      <div className="flex xl:flex-row flex-col justify-between gap-10 md:px-20 px-5 md:mt-[68px] mt-[50px]">
+      <Container className="flex xl:flex-row flex-col justify-between gap-10 px-0 md:mt-[68px] mt-[50px]">
         <Sidebar sections={sections} locale={language} />
         <Content sections={sections} locale={language} />
-      </div>
+      </Container>
       <FeatureTourSection data={suggested_tour} locale={language} />
 
       <div className="mt-20 md:mb-[68px] mb-[52px]">

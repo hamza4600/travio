@@ -56,7 +56,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
             {subtitle?.[locale]?.substring(32)}
           </div>
         </div>
-        <div className={"mt-2 mb-[40px] md:hidden block"}>
+        {/* <div className={"mt-2 mb-[40px] md:hidden block"}>
           <img
             width={80}
             height={40}
@@ -64,9 +64,9 @@ const TourGallerySection = (props: GallerySectionProps) => {
             alt={"small logo"}
             className={"mx-auto"}
           />
-        </div>
+        </div> */}
 
-        <Swiper className="gap-x-2.5 md:mt-12">
+        <Swiper className="gap-x-2.5 md:mt-12 mt-[30px]">
           {imgs?.map((image, i) =>
             i % 2 == 0 ? (
               <div
