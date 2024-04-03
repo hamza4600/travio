@@ -11,8 +11,15 @@ export const pageLayout = `*[_type == "globals"][0]{
         destinations[] {
           ...,
           destination->,
-          tours[]->,
-          blogs[]->,
+          tours[]-> {
+            slug,
+            overview_card,
+            hero_section,
+          },
+          blogs[]-> {
+            slug,
+            title
+          },
         }
       }
     }

@@ -35,8 +35,6 @@ const Header = ({
 
   const [open, setOpen] = useState(false);
 
-  console.log("Opensss: ", isOppen);
-
   const pathname = usePathname();
 
   function setDropDown() {
@@ -62,7 +60,6 @@ const Header = ({
           open && " relative z-50 "
         } `}
       >
-        {/* <div className="mx-auto box-border"> */}
         <div className={"bg-primary h-[30px]"}>
           <Container className="py-1">
             <div className="main-content-wrapper">
@@ -182,7 +179,6 @@ const Header = ({
                           : " text-darkblue font-medium ")
                       }
                     >
-                      {/* {console.log("pathname", pathname , `/${locale}${item.url}`)} */}
                       {item?.text?.[locale]}
                     </Link>
                     <div className="" />
@@ -220,17 +216,11 @@ const Header = ({
                           <div className="" key={index}>
                             <div
                               className="flex font-satoshi items-center gap-3 text-[#726E83] p-[10px] px-[24px]"
-                              // htmlFor={"nav-sub-item" + index}
                             >
-                              {/* <input
-                                type="radio"
-                                name="nav-sub-item"
-                                id={"nav-sub-item" + index}
-                              /> */}
                               <Link
                                 className="font-satoshi font-medium"
                                 key={index}
-                                href={"/"}
+                                href={`/${locale}`}
                               >
                                 {" "}
                                 {item}

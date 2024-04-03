@@ -83,7 +83,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                         />
                         <div className="flex flex-col gap-3">
                           <p className="font-semibold  mb-2 font-satoshi">
-                            {localizedString(item.tours_title)}
+                            {localizedString(item.tours_title , locale)}
                           </p>
                           {(item.destinations as any[])
                             ?.filter((item, index) => {
@@ -94,7 +94,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                                 <Link
                                   key={index}
                                   className="font-satoshi"
-                                  href={`${locale}/blogs${item.slug.current}`}
+                                  href={`/${locale}/blog${item.slug.current}`}
                                 >
                                   <p>{item.title[locale]}</p>
                                 </Link>

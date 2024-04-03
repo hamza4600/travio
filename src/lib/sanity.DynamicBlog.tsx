@@ -2,7 +2,7 @@
 import { pageLayout } from './sanity.HomePage';
 import { CLIENT } from './sanity.const';
     
-export async function getDynamicBlogPage(slug: string) {
+export async function getArticalBlogPage(slug: string) {
 
   const blogPageQuery =  `*[_type == "article"  && slug.current == "/${slug}"][0]`
 
@@ -12,4 +12,13 @@ export async function getDynamicBlogPage(slug: string) {
     }`
 
     return await CLIENT.fetch(query)
+}
+
+
+export async function getArticalPageSeo(slug:string) {
+  const seoQuery = `*[_type == "article"  && slug.current == "/${slug}"][0]{
+    meta_data
+  }`
+
+  return await CLIENT.fetch(seoQuery)
 }

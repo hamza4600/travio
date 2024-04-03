@@ -46,3 +46,10 @@ export async function getBlogPage() {
     return await CLIENT.fetch(query)
 }
 
+const seoQuery = `*[_type == "blog_page"  && slug.current == "/"][0]{
+  meta_data
+}`
+
+export async function getBlogPageSeo() {
+  return await CLIENT.fetch(seoQuery)
+}

@@ -47,3 +47,12 @@ export async function getMainDynamicBlogPage(slug: string) {
 
     return await CLIENT.fetch(query)
 }
+
+
+export async function getDynamicBlogPageSeo(slug:string) {
+  const seoQuery = `*[_type == "blog_page"  && slug.current == "/${slug}"][0]{
+    meta_data
+  }`
+
+  return await CLIENT.fetch(seoQuery)
+}
