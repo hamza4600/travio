@@ -61,7 +61,7 @@ export default defineType({
             defineField({
               name: 'description',
               title: 'Description',
-              type: 'locale_text',
+              type: 'locale_rich_text',
             }),
             defineField({
               name: 'image',
@@ -96,7 +96,7 @@ export default defineType({
                         defineArrayMember({
                           name: 'title',
                           title: 'Title',
-                          type: 'locale_string',
+                          type: 'locale_rich_text',
                         }),
                       ],
                     }),
