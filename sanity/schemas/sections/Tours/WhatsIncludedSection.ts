@@ -38,7 +38,7 @@ export default defineType({
                 defineArrayMember({
                   name: 'list_item',
                   title: 'List Item',
-                  type: 'locale_string',
+                  type: 'locale_rich_text',
                 }),
               ],
             }),
@@ -47,4 +47,12 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title.en',
+    },
+    prepare: ({ title }) => ({
+      title: title ?? 'Untitled',
+    }), 
+  }
 })
