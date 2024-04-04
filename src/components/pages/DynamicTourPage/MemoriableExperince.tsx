@@ -35,7 +35,6 @@ export default function MemorableExperiencesSection({
       swiper.navigation && swiper.navigation.update();
     }
   }, [swiper]);
-  // console.log(data)
   return (
     <div className="flex flex-col md:gap-12 gap-0">
       <SectionHeader

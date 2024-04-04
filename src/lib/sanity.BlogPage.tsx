@@ -17,7 +17,13 @@ const blogPageQuery = `*[_type == "blog_page" && slug.current == "/"][0]{
       },
       _type == "featured_place_blogs_section" => {
         ...,
-        cards[]->
+        cards[]-> {
+          name,
+          slug,
+          sections[_type == "image_header_section" && defined(header)] {
+            ...
+          }
+        }
       },
       _type == "interests_section" => {
         ...,
@@ -43,7 +49,7 @@ const query = `{
 }`
 
 export async function getBlogPage() {
-    return await CLIENT.fetch(query)
+  return await CLIENT.fetch(query)
 }
 
 const seoQuery = `*[_type == "blog_page"  && slug.current == "/"][0]{

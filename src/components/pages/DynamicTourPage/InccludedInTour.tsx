@@ -10,7 +10,6 @@ export default function WhatsIncludedSection({
   data: SanityWhatsIncludedSection;
   locale: string;
 }) {
-  console.log("included section data: ", data);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const whiteStyle = {

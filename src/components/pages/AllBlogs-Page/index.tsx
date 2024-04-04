@@ -4,15 +4,13 @@ import Layout from "@/components/layout";
 
 import Slicer from "../../../../sanity/slicer";
 import { BlogPageSectionsMap } from "@/components/sections";
-// import NewsletterSection from "@/components/sections/NewsletterSection";
 
-const MainBlogPage = ({ language, pageData, newsLetterSection }) => {
+const MainBlogPage = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
-
-  console.log("blogPageData: ", data);
-
+  console.log("MainBlogPage -> pageData", data);
   return (
     <Layout
+      // 
       breadcrumbs={[{ label: "Blog", value: "BLog" }]}
       locale={language}
       globals={layout}
@@ -28,7 +26,6 @@ const MainBlogPage = ({ language, pageData, newsLetterSection }) => {
           ) as any
         }
       />
-      {/* <NewsletterSection data={newsLetterSection} locale={language} /> */}
     </Layout>
   );
 };

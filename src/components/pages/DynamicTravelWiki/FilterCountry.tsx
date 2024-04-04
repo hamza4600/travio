@@ -11,8 +11,6 @@ const FilterCountry = ({
 
   const params = useParams();
 
-  console.log("params: ", params);
-
   const tabsRef = useRef<HTMLDivElement | null>(null);
 
   const handleScroll = () => {

@@ -155,7 +155,6 @@ const EnquireTab = () => {
             id="nationality"
             className="border bg-white border-darkblue/10 text-black rounded p-1 py-2 focus:outline-secondary"
             value={formData["nationality"]}
-            // placeholder="Select"
             onChange={(e) => {
               setValue(e.target.value, "nationality");
             }}
@@ -190,7 +189,6 @@ const EnquireTab = () => {
                   mobileNumber["mobileCode"] + mobileNumber["mobileNumber"],
                   "phone"
                 );
-                // console.log(mobileNumber)
               }}
             />
             <input
@@ -351,7 +349,6 @@ const Expandable = ({
   data: any;
   locale: string;
 }) => {
-  console.log("Iterniray Data: ", data);
   return (
     <div>
       <button

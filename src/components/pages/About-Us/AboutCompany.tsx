@@ -143,7 +143,6 @@ const Desc = styled.div`
 `;
 
 const AboutComapny = ({ data, locale }) => {
-  // console.log()
   return (
     <Container>
       <Wrapper>
@@ -160,8 +159,6 @@ const AboutComapny = ({ data, locale }) => {
               src={urlFor(
                 data.content?.[locale][0]?.items[0].image?.asset?._ref
               )}
-              // width={data.img.width}
-              // height={data.img.height}
               alt={data.content?.[locale][0]?.items[0].alt}
             />
             <TextWrapper>

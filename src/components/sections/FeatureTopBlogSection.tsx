@@ -10,7 +10,7 @@ const FeatureTopBlogSection = (props: any) => {
   const {
     data: { cards },
   } = props;
-  console.log("data: ", props);
+  console.log("data9999: ", props);
   return (
     <Container
       className={"mx-auto max-w-[1312px] font-satoshi px-4 md:mt-16 mt-[90px]"}
@@ -31,7 +31,7 @@ const FeatureTopBlogSection = (props: any) => {
           {cards?.map((card, i) => (
             <Link
               key={i}
-              href={"/blogs" + card.slug?.current}
+              href={`/${props.locale}/destinations` + card.slug?.current}
               className={
                 "bg-red h-[150px] lg:h-[224px] relative rounded-2xl overflow-hidden lg:" +
                 ((i + 1) % 3 === Math.floor(i / 3) ? "col-span-2" : "")
@@ -44,15 +44,19 @@ const FeatureTopBlogSection = (props: any) => {
               >
                 {card?.name?.[props.locale]}
               </div>
-              {card.meta_data?.meta_image && (
-                <Image
-                  src={urlFor(card.meta_data?.meta_image)}
-                  className={"w-full h-full object-cover"}
-                  height={224}
-                  width={300}
-                  alt={card.meta_data?.meta_title?.[props.locale]}
-                />
-              )}
+              {card?.sections?.map((section, i) => (
+                <div key={i}>
+                  {section?.image && (
+                    <Image
+                      src={urlFor(section?.image?.asset?._ref)}
+                      className={"w-full h-full object-cover"}
+                      height={224}
+                      width={300}
+                      alt={section?.header?.[props.locale]}
+                    />
+                  )}
+                </div>
+              ))}
             </Link>
           ))}
         </div>

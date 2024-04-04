@@ -5,7 +5,6 @@ import Container from "@/components/molecules/container";
 import DestinationCard from "@/components/molecules/cards/DestinationCard";
 
 const DestinationsSection = ({ data, locale }) => {
-  // console.log("destinations data: ", data);
 
   const validDestinations =
     data.destinations?.filter((destination) => destination.destination) || [];

@@ -80,7 +80,6 @@ export default function Page({ slug, data, locale, globals, promo }) {
   const [optionalVisits, setOptionalVisits] = useState(0);
   const [roomTypes, setRoomTypes] = useState(0);
   const [hotelChoice, setHotelChoice] = useState(0);
-  console.log(data, "data8585");
   // get url
   const searchParams = useSearchParams();
   const from = searchParams?.get("from");

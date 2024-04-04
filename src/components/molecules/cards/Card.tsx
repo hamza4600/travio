@@ -30,8 +30,6 @@ const TourCard = ({
     return convPrice.toLocaleString();
   };
 
-  // console.log("prices: ", old_price, price, old_price - price);
-
   return (
     <Link
       className={"flex-shrink-0 max-w-[250px] md:max-w-[302px] "}

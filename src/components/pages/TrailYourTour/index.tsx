@@ -27,7 +27,6 @@ export type TailorTripFormData = {
 
 const TailorYourTour = ({ language, data }) => {
   const { layout, pageData } = data || {};
-  // console.log("pageData====", pageData);
 
   const {
     faq_section: FAQSECTION,
@@ -62,7 +61,6 @@ const TailorYourTour = ({ language, data }) => {
   const {
     control,
     handleSubmit,
-    // formState: { errors },
     setValue,
     getValues,
   } = useForm<TailorTripFormData>({

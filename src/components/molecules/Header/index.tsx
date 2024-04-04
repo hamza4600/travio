@@ -49,9 +49,7 @@ const Header = ({
     }
   }, [isOppen]);
 
-  const dropdownList = ["Egypt", "Dubai", "Isreal"];
-
-  console.log("items ", navbar?.links);
+  const dropdownList = ["Egypt", "Dubai", "Isreal"]; // is ko dynamic karna ha 
 
   return (
     <Root>

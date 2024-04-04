@@ -2,14 +2,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
-  // console.log(banner);
+
   const pathname = usePathname();
 
   if (!banner) return null;
   const url = `/${locale}`;
 
   const isHome = pathname === url;
-  // if (!banner.promo_banner) return null;
+
   return (
     <div
       className={`max-md:min-h-[32px] font-satoshi min-h-[40px] flex flex-col items-center justify-center z-10 text-white bg-darkblue ${

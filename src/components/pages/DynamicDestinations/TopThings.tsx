@@ -11,7 +11,6 @@ import "swiper/css/navigation";
 import { urlFor } from "../../../../sanity/lib/client";
 
 const TopThingsToDo = (props) => {
-  //   console.log("things: ", props);
   const { data, locale } = props;
   console.log("Things To do data: ", data);
   return (

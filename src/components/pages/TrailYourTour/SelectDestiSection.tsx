@@ -67,8 +67,6 @@ const SelectDestinationSection = ({
           const w = index % 3 < 2 ? 250 : 500;
           const h = index % 3 < 2 ? 150 : 224;
 
-          // console.log("width: ", width);
-
           return (
             <div
               key={index}
