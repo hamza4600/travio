@@ -56,7 +56,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
             {subtitle?.[locale]?.substring(32)}
           </div>
         </div>
-        <div className={"mt-2 mb-[40px] md:hidden block"}>
+        {/* <div className={"mt-2 mb-[40px] md:hidden block"}>
           <img
             width={80}
             height={40}
@@ -64,18 +64,18 @@ const TourGallerySection = (props: GallerySectionProps) => {
             alt={"small logo"}
             className={"mx-auto"}
           />
-        </div>
+        </div> */}
 
-        <Swiper className="gap-x-2.5 md:mt-12">
-          {imgs?.map((image, i) =>
-            i % 2 == 0 ? (
-              <div
-                key={i}
-                className={
-                  "min-w-[302px] md:min-w-[320px] w-full md:max-w-[320px] h-[247px] md:h-[320px]  overflow-hidden rounded-xl pb-4 md:pb-0"
-                }
-              >
-                <PhotoProvider>
+        <Swiper className="gap-x-2.5 md:mt-12 mt-[30px]">
+          <PhotoProvider maskOpacity={0.6}>
+            {imgs?.map((image, i) =>
+              i % 2 == 0 ? (
+                <div
+                  key={i}
+                  className={
+                    "min-w-[302px] md:min-w-[320px] w-full md:max-w-[320px] h-[247px] md:h-[320px]  overflow-hidden rounded-xl pb-4 md:pb-0"
+                  }
+                >
                   <PhotoView key={i} src={urlFor(image[0])}>
                     <Image
                       src={urlFor(image[0])}
@@ -85,21 +85,19 @@ const TourGallerySection = (props: GallerySectionProps) => {
                       className={"w-full h-full flex-shrink-0"}
                     />
                   </PhotoView>
-                </PhotoProvider>
-              </div>
-            ) : (
-              <div
-                key={i}
-                className={
-                  "h-[247px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5 pb-4 md:pb-0"
-                }
-              >
+                </div>
+              ) : (
                 <div
+                  key={i}
                   className={
-                    "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                    "h-[247px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5 pb-4 md:pb-0"
                   }
                 >
-                  <PhotoProvider>
+                  <div
+                    className={
+                      "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                    }
+                  >
                     <PhotoView key={i} src={urlFor(image[0])}>
                       <Image
                         src={urlFor(image[0])}
@@ -109,15 +107,13 @@ const TourGallerySection = (props: GallerySectionProps) => {
                         className={"object-cover h-full"}
                       />
                     </PhotoView>
-                  </PhotoProvider>
-                </div>
-                {image[1] && (
-                  <div
-                    className={
-                      "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
-                    }
-                  >
-                    <PhotoProvider>
+                  </div>
+                  {image[1] && (
+                    <div
+                      className={
+                        "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                      }
+                    >
                       <PhotoView key={i} src={urlFor(image[1])}>
                         <Image
                           src={urlFor(image[1])}
@@ -127,12 +123,12 @@ const TourGallerySection = (props: GallerySectionProps) => {
                           className={"object-cover"}
                         />
                       </PhotoView>
-                    </PhotoProvider>
-                  </div>
-                )}
-              </div>
-            )
-          )}
+                    </div>
+                  )}
+                </div>
+              )
+            )}
+          </PhotoProvider>
         </Swiper>
         <div>
           <img

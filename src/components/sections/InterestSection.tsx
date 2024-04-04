@@ -19,7 +19,12 @@ const InterestSection = (props) => {
       </h4>
       <div className="w-[85px] md:w-[117px] border-[#FFBB0B] mt-1 md:mt-3 rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[2px]" />
 
-      <div className="grid grid-flow-row gap-3 md:grid-cols-3 grid-cols-2 shadow-lg shadow-[#f5f5f5] rounded-sm max-w-6xl w-full px-2 lg:px-10 lg:pt-12 pb-12 mt-10">
+      <div
+        style={{
+          boxShadow: "0px 4px 20px 0px #0000000F",
+        }}
+        className="grid grid-flow-row gap-3 md:grid-cols-3 grid-cols-2 rounded-[16px] max-w-6xl w-full px-2 lg:px-10 lg:pt-12 pb-12 mt-10"
+      >
         {interests &&
           interests.map((item: any, index: any) => (
             <div key={index} className="font-satoshi text-darkblue">
@@ -32,14 +37,16 @@ const InterestSection = (props) => {
               >
                 <Link
                   href={"/blogs/" + item.slug?.current}
-                  className="justify-center items-center text-center flex-col"
+                  className="justify-center items-center text-center flex flex-col"
                 >
+                  {/* <div className=""> */}
                   <img
-                    style={{ margin: "auto" }}
+                    // style={{ margin: "auto" }}
                     src={urlFor(item.icon)}
-                    className="md:max-w-[68px] md:min-h-[68px] max-w-10 min-h-10"
+                    className="w-full md:max-w-[104px] md:min-h-[104px] max-w-10 min-h-10 rounded-[8px] bg-[#F2FAFF] padding-[18px]"
                     alt=""
                   />
+                  {/* </div> */}
                   <h3 className="text-center text-base max-md:text-[14px] max-md:leading-5 my-5 font-medium text-primary">
                     {item.name?.[props.locale]}
                   </h3>

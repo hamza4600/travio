@@ -67,7 +67,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                     }
                     onClick={() => setOpen(false)}
                   >
-                    <div className="flex  flex-wrap w-full lg:gap-[100px] gap-5 my-[52px] mx-20 h-fit min-h-[260px]">
+                    <div className="flex justify-center  flex-wrap w-full lg:gap-[100px] gap-5 my-[52px] mx-10 h-fit min-h-[260px]">
                       <div className="flex flex-wrap lg:gap-[85px] gap-5">
                         <Selector
                           title={localizedString(item.destinations_title)}
@@ -83,7 +83,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                         />
                         <div className="flex flex-col gap-3">
                           <p className="font-semibold  mb-2 font-satoshi">
-                            {localizedString(item.tours_title , locale)}
+                            {localizedString(item.tours_title, locale)}
                           </p>
                           {(item.destinations as any[])
                             ?.filter((item, index) => {

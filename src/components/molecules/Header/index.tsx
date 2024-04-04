@@ -212,9 +212,7 @@ const Header = ({
                       <div className="">
                         {dropdownList.map((item, index) => (
                           <div className="" key={index}>
-                            <div
-                              className="flex font-satoshi items-center gap-3 text-[#726E83] p-[10px] px-[24px]"
-                            >
+                            <div className="flex font-satoshi items-center gap-3 text-[#726E83] p-[10px] px-[24px]">
                               <Link
                                 className="font-satoshi font-medium"
                                 key={index}

@@ -110,7 +110,7 @@ const TravlerReviews = (props) => {
                       {/* <div className="w-[160px] h-[1px] rotate-90 opacity-10 bg-[#3FA9F5]" /> */}
                     </div>
                   </div>
-                  <div className="h-[170px] w-[1px] border-r border-[#3FA9F5] opacity-10 md:hidden block" />
+                  <div className="h-[170px] w-[1px] border-r-2 border-[#257ab9] opacity-10 md:hidden block" />
                 </div>
               );
             })}

@@ -23,22 +23,22 @@ const Root = styled.div`
   }
 `;
 
-// move it it global space 
-function transformArray(inputArray , lang) {
+// move it it global space
+function transformArray(inputArray, lang) {
   if (!inputArray || inputArray.length === 0) return [];
-  return inputArray.map(item => {
-      return {
-          label: item.title[lang] || item.title.en,
-          value: item.url,
-      };
+  return inputArray.map((item) => {
+    return {
+      label: item.title[lang] || item.title.en,
+      value: item.url,
+    };
   });
 }
 
 const DynamicTourPage = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
 
-  const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb , language);
-  
+  const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb, language);
+
   return (
     <Layout
       globals={layout}
