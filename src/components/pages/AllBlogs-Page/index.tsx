@@ -22,11 +22,7 @@ const MainBlogPage = ({ language, pageData, newsLetterSection }) => {
       <Slicer
         locale={language}
         components={BlogPageSectionsMap}
-        sections={
-          data?.sections?.map((sec) =>
-            sec?._type === "all_blogs_section" ? { ...sec, blogs: sec } : sec
-          ) as any
-        }
+        sections={data?.sections?.map((sec) => sec) as any}
       />
       {/* <NewsletterSection data={newsLetterSection} locale={language} /> */}
     </Layout>
