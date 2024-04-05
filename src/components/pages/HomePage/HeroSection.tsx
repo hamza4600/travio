@@ -35,17 +35,18 @@ const HeroSection = ({ data, locale }) => {
             "w-full h-[540px] rounded-[24px] md:hidden block max-lg:rounded-none lg:h-full absolute top-0 -z-10"
           }
           style={{
-            background : "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 54.09%, rgba(0, 0, 0, 0.80) 96.01%)"
+            background:
+              "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 54.09%, rgba(0, 0, 0, 0.80) 96.01%)",
           }}
         />
         <img
-          id ="mobile-75i"
+          id="mobile-75i"
           className={
             "absolute md:hidden min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
           src={urlFor(data.image?.mobile.asset?._ref)}
           alt={"hero"}
-          />
+        />
 
         <div className="text-white py-5 z-10 w-full md:px-10">
           <div className="-mt-20 md:mt-0 flex items-center md:items-start justify-center md:justify-between flex-col">
@@ -70,26 +71,26 @@ const HeroSection = ({ data, locale }) => {
               <div className="flex px-4 gap-1 md:gap-4 mt-5 md:mt-12 items-center justify-center md:justify-start">
                 <Button
                   variant={"sky"}
-                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12 max-md:px-10 max-[375px]:px-4"
+                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12 max-md:px-10 max-md:w-full max-md:max-w-[161px] max-[375px]:px-4"
                 >
                   {data?.cta_buttons[0]?.label?.[locale]}
                 </Button>
                 <Button
                   variant={"secondary"}
-                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12"
+                  className="md:font-bold font-medium text-base max-md:text-xs max-md:font-medium h-10 md:h-12 max-md:max-w-[161px] max-md:hidden"
                 >
                   {data?.cta_buttons[1]?.label?.[locale]}
                 </Button>
-                {/* <Button
+                <Button
                   variant={"secondary"}
                   className="font-bold text-base max-md:text-xs max-md:font-medium h-10 md:h-12 md:hidden"
                 >
-                  {data?.cta_buttons[1]?.label?.[locale]}
-                </Button> */}
+                  Customize Your Trip
+                </Button>
               </div>
               <Text
                 className={
-                  "text-[12px] leading-5 font-bold md:text-left md:ml-[152px]  text-center  mt-1.5 text-white/60 max-md:text-white max-md:text-[8px] max-md:leading-[12px]"
+                  "text-[12px] leading-5 font-bold md:text-left md:ml-[100px]  text-center  mt-1.5 text-white/60 max-md:text-white max-md:text-[8px] max-md:leading-[12px]"
                 }
               >
                 {data?.cta_helper_text?.[locale]}

@@ -5,12 +5,12 @@ const BlogHeroSection = (props: any) => {
     data: { header, image },
     locale,
   } = props;
-  console.log("data: ", props);
+  // console.log("data: ", props);
   return (
     <div className="relative md:mb-12 mb-[50px]">
       <div className="w-full h-full flex flex-col justify-center items-center">
         <img
-          className="lg:w-full min-h-[420px] max-md:hidden max-w-[1440px]"
+          className="lg:w-full min-h-[420px] max-md:hidden max-w-[1440px] md:rounded-[16px] rounded-none"
           src={urlFor(image)}
           loading="lazy"
           alt={"img"}

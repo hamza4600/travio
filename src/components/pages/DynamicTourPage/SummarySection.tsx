@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import PortableText from "react-portable-text";
 
@@ -290,31 +290,15 @@ const WhatsApp = () => (
 // ];
 
 const ForMobile = () => {
-  const [fixed, setFixed] = useState(false);
-
-  const tabRef = useRef<HTMLDivElement | null>(null);
-  const handleScroll = () => {
-    const scrPos = window.scrollY;
-    setFixed(scrPos > window.innerHeight / 1);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="max-w-full relative">
       <div
         className="w-full"
-        ref={tabRef}
         style={{
-          position: fixed ? "fixed" : "relative",
+          position: "fixed",
           bottom: 0,
           left: 0,
           zIndex: 1000,
-          marginTop: fixed ? "15px" : "0px",
           transition: "top 0.3s, position 0.3s, margin-top 0.3s",
         }}
       >

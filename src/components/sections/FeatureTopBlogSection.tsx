@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
 // import { urlFor } from "../../../sanity/lib/client";
@@ -33,13 +33,13 @@ const FeatureTopBlogSection = (props: any) => {
               key={i}
               href={`/${props.locale}/destinations` + card.slug?.current}
               className={
-                "bg-red h-[150px] lg:h-[224px] relative rounded-2xl overflow-hidden lg:" +
+                "bg-red relative rounded-2xl overflow-hidden lg:" +
                 ((i + 1) % 3 === Math.floor(i / 3) ? "col-span-2" : "")
               }
             >
               <div
                 className={
-                  "absolute bottom-2.5 font-bold lg:text-base text-[10px] leading-3 text-white left-3 bg-[#3FA9F5] rounded-2xl px-4 py-1.5"
+                  "absolute bottom-2 font-bold lg:text-base text-[10px] leading-3 text-white left-3 bg-[#3FA9F5] rounded-2xl px-4 py-1.5"
                 }
               >
                 {card?.name?.[props.locale]}
@@ -47,13 +47,22 @@ const FeatureTopBlogSection = (props: any) => {
               {card?.sections?.map((section, i) => (
                 <div key={i}>
                   {section?.image && (
-                    <Image
-                      src={urlFor(section?.image?.asset?._ref)}
-                      className={"w-full h-full object-cover"}
-                      height={224}
-                      width={300}
-                      alt={section?.header?.[props.locale]}
-                    />
+                    <>
+                      <img
+                        src={urlFor(section?.image?.asset?._ref)}
+                        className={
+                          "w-full max-md:rounded-[8px] object-cover block h-[224px] max-md:hidden"
+                        }
+                        alt={section?.header?.[props.locale]}
+                      />
+                      <img
+                        src={urlFor(section?.image?.mobile?.asset?._ref)}
+                        className={
+                          "w-full max-md:h-[120px] max-md:rounded-[8px] object-cover block md:hidden"
+                        }
+                        alt={section?.header?.[props.locale]}
+                      />
+                    </>
                   )}
                 </div>
               ))}

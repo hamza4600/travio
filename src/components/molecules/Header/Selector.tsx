@@ -13,7 +13,7 @@ function Selector(props: {
           <div
             key={index}
             className={`${
-              index === selectedItem ? "text-blue font-semibold " : ""
+              index === selectedItem ? "text-primary font-semibold " : ""
             } cursor-pointer hover:underline transition-all font-satoshi text-sm`}
             onClick={() => {
               selectedItemToggle(index);
