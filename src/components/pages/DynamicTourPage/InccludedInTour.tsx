@@ -10,7 +10,8 @@ export default function WhatsIncludedSection({
   data: SanityWhatsIncludedSection;
   locale: string;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [expandedNotes, setExpandedNotes] = useState<any>([]);
 
   const whiteStyle = {
     filter: "grayscale(100%) brightness(1000%) sepia(100%) hue-rotate(50deg)",
@@ -19,6 +20,27 @@ export default function WhatsIncludedSection({
   const yellowStyle = {
     filter:
       "invert(100%) sepia(100%) saturate(750%) hue-rotate(1454deg) brightness(115%) contrast(100%)",
+  };
+
+  // Function to toggle expansion of notes
+  const toggleNoteExpansion = (index: number) => {
+    if (expandedNotes.includes(index)) {
+      setExpandedNotes(expandedNotes.filter((item) => item !== index));
+    } else {
+      setExpandedNotes([...expandedNotes, index]);
+    }
+  };
+
+  // Function to check if note is expanded
+  const isNoteExpanded = (index) => {
+    return expandedNotes.includes(index);
+  };
+
+  // Function to get shortened version of note
+  const getShortenedNote = (note) => {
+    const maxLength = 500;
+    if (note.length <= maxLength) return note;
+    return note.substring(0, maxLength) + "...";
   };
 
   return (
@@ -115,12 +137,26 @@ export default function WhatsIncludedSection({
               {data?.inclusion_list[currentIndex]?.description?.map(
                 (note, index) => {
                   return (
-                    <p
-                      className="text-[14px] leading-6 font-normal text-darkblue"
-                      key={index}
-                    >
-                      {note?.[locale]}
-                    </p>
+                    <div key={index}>
+                      <p
+                        className="text-[14px] leading-6 font-normal text-darkblue"
+                        key={index}
+                      >
+                        {isNoteExpanded(index)
+                          ? note[locale]
+                          : getShortenedNote(note[locale])}
+                      </p>
+                      {note?.[locale].length > 500 && (
+                        <div className="flex justify-center mt-4">
+                          <button
+                            className="text-primary text-center text-base font-medium"
+                            onClick={() => toggleNoteExpansion(index)}
+                          >
+                            {isNoteExpanded(index) ? "View Less" : "View More"}
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   );
                 }
               )}

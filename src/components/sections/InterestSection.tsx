@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { urlFor } from "../../../sanity/lib/client";
+import Container from "../molecules/container";
 
 const InterestSection = (props) => {
   const {
@@ -7,10 +8,10 @@ const InterestSection = (props) => {
     locale,
   } = props as any;
 
-  console.log("interestSection: ", props);
+  // console.log("interestSection: ", props);
 
   return (
-    <div className="md:my-[68px] my-[50px] flex flex-col justify-center items-center font-satoshi">
+    <Container className="md:my-[68px] my-[50px] flex flex-col justify-center items-center font-satoshi max-md:px-5">
       <h2 className="text-primary text-sm lg:text-base font-medium text-center">
         {tagline?.[locale]}
       </h2>
@@ -23,11 +24,14 @@ const InterestSection = (props) => {
         style={{
           boxShadow: "0px 4px 20px 0px #0000000F",
         }}
-        className="grid grid-flow-row gap-3 md:grid-cols-3 grid-cols-2 rounded-[16px] max-w-6xl w-full px-2 lg:px-10 lg:pt-12 pb-12 mt-10"
+        className="grid grid-flow-row gap-3 gap-y-[30px] md:grid-cols-3 grid-cols-2 rounded-[16px] w-full px-2 lg:px-10 lg:pt-12 lg:pb-12 pb-[30px] pt-[30px] md:mt-12 mt-10"
       >
         {interests &&
           interests.map((item: any, index: any) => (
-            <div key={index} className="font-satoshi text-darkblue">
+            <div
+              key={index}
+              className="font-satoshi text-darkblue max-md:h-[94px]"
+            >
               <div
                 className={
                   index % 3 === 2
@@ -36,20 +40,20 @@ const InterestSection = (props) => {
                 }
               >
                 <Link
-                  href={"/blogs/" + item.slug?.current}
+                  href={`/${locale}/blog${item.slug?.current}`}
                   className="justify-center items-center text-center flex flex-col"
                 >
                   {/* <div className=""> */}
                   <img
                     // style={{ margin: "auto" }}
                     src={urlFor(item.icon)}
-                    className="w-full md:max-w-[104px] md:min-h-[104px] max-w-10 min-h-10 rounded-[8px] bg-[#F2FAFF] padding-[18px]"
+                    className="w-full md:max-w-[104px] md:min-h-[104px] max-w-[60px] min-h-[60px] rounded-[8px] bg-[#F2FAFF] padding-[18px]"
                     alt=""
                   />
                   {/* </div> */}
-                  <h3 className="text-center text-base max-md:text-[14px] max-md:leading-5 my-5 font-medium text-primary">
+                  <p className="text-center text-base max-md:text-[14px] max-md:leading-5 md:my-5 my-2.5 font-medium text-primary">
                     {item.name?.[props.locale]}
-                  </h3>
+                  </p>
                 </Link>
               </div>
               {index <= 2 && (
@@ -67,7 +71,7 @@ const InterestSection = (props) => {
             </div>
           ))}
       </div>
-    </div>
+    </Container>
   );
 };
 
