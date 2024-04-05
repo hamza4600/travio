@@ -23,6 +23,13 @@ export default defineType({
       description: 'Slug for the page',
       type: 'slug',
     }),
+    // page breadcrumbs
+    defineField({
+      name: 'breadcrumb',
+      title: 'Breadcrumb',
+      description: 'Breadcrumb for the page',
+      type: 'breadcrumb',
+    }),
     defineField({
       name: 'is_country_blogs',
       title: 'Is Country Blogs',

@@ -34,6 +34,12 @@ export default defineType({
       description: 'The slug for the blog',
       type: 'slug',
     }),
+    defineField({
+      name: 'breadcrumb',
+      title: 'Breadcrumb',
+      description: 'Breadcrumb for the page',
+      type: 'breadcrumb',
+    }),
     // adding tags to the blog so we can filter them
     defineField({
       name: 'tags',

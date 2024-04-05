@@ -12,6 +12,12 @@ export default defineType({
             type: "meta_data",
         }),
         defineField({
+          name: 'breadcrumb',
+          title: 'Breadcrumb',
+          description: 'Breadcrumb for the page',
+          type: 'breadcrumb',
+        }),
+        defineField({
             name: "place_cards",
             title: "Place Cards",
             description: "Cards for the Destinations Section",

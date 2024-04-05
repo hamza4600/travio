@@ -23,6 +23,12 @@ export default defineType({
       type: 'slug',
     }),
     defineField({
+      name: 'breadcrumb',
+      title: 'Breadcrumb',
+      description: 'Breadcrumb for the page',
+      type: 'breadcrumb',
+    }),
+    defineField({
       name: 'meta_data',
       title: 'Meta Data',
       description: 'Meta Data for SEO',
