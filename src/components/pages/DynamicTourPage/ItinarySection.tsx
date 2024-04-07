@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Country } from "country-state-city";
 
-import { CaretDown, Dot, Minus, Plus } from "@phosphor-icons/react";
+import {
+  CaretDown,
+  // Dot,
+  Minus,
+  Plus,
+} from "@phosphor-icons/react";
 
 import { Button } from "@/components/ui/button";
 import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
 import { urlFor } from "../../../../sanity/lib/client";
+import PortableText from "react-portable-text";
 
 export default function ItinerarySection({
   data,
@@ -390,9 +396,14 @@ const Expandable = ({
               className="object-cover w-full h-full"
             />
           </div>
-          <p className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi">
+          {/* <p className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi">
             {data.description?.[locale]}
-          </p>
+          </p> */}
+          <PortableText
+            className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi"
+            content={data.description?.[locale]}
+            serializers={{}}
+          />
         </div>
         <div className="flex flex-col gap-6">
           {data.itinerary_details_lists?.map((list, index) => (
@@ -477,7 +488,7 @@ const ExpandableList = ({
 }: {
   title: string;
   icon: any;
-  itinerary_details_list_items?: (any | undefined)[] | undefined;
+  itinerary_details_list_items?: any;
   content?: any;
   locale: string;
 }) => {
@@ -495,16 +506,20 @@ const ExpandableList = ({
         </div>
       </div>
       <div className="flex flex-col pl-7 gap-2">
-        {itinerary_details_list_items?.map((item, index: number) => {
+        <PortableText
+          content={itinerary_details_list_items?.[0]?.[locale]}
+          serializers={{}}
+        />
+        {/* {itinerary_details_list_items?.map((item, index: number) => {
           return (
             <div
               key={index}
               className="flex flex-nowrap items-center text-base font-normal"
             >
-              {<Dot size={"30"} />} {item?.[locale]}
+              } {item?.[locale]}
             </div>
           );
-        })}
+        })} */}
         {content && (
           <p className="md:text-base text-[14px] leading-6 font-normal text-darkblue font-satoshi">
             {content}

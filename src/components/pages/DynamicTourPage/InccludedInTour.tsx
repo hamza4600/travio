@@ -2,6 +2,7 @@ import { urlFor } from "../../../../sanity/lib/client";
 import { SanityWhatsIncludedSection } from "../../../../sanity/lib/types";
 import Container from "@/components/molecules/container";
 import { useState } from "react";
+import PortableText from "react-portable-text";
 
 export default function WhatsIncludedSection({
   data,
@@ -13,9 +14,26 @@ export default function WhatsIncludedSection({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [expandedNotes, setExpandedNotes] = useState<any>([]);
 
+  console.log("WhtsIncluded: ", data);
+
   const whiteStyle = {
     filter: "grayscale(100%) brightness(1000%) sepia(100%) hue-rotate(50deg)",
   };
+
+  // const Seralizer = {
+  //   list_item: (props: any) => {
+  //     console.log("ListData: ", props);
+  //     return (
+  //       <ul className="list-disc pl-5">
+  //         {props.children.map((child: any, index: number) => (
+  //           <li key={index} className="mb-2 leading-6">
+  //             {child}
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     );
+  //   },
+  // };
 
   const yellowStyle = {
     filter:
@@ -31,6 +49,8 @@ export default function WhatsIncludedSection({
     }
   };
 
+  console.log("expandedNotes: ", expandedNotes);
+
   // Function to check if note is expanded
   const isNoteExpanded = (index) => {
     return expandedNotes.includes(index);
@@ -38,7 +58,7 @@ export default function WhatsIncludedSection({
 
   // Function to get shortened version of note
   const getShortenedNote = (note) => {
-    const maxLength = 500;
+    const maxLength = 20;
     if (note.length <= maxLength) return note;
     return note.substring(0, maxLength) + "...";
   };
@@ -71,7 +91,11 @@ export default function WhatsIncludedSection({
                 </p>
               </div>
               <div className="flex flex-col">
-                {item?.description?.map((note, index) => {
+                <PortableText
+                  content={item.description?.[0]?.[locale]}
+                  serializers={{}}
+                />
+                {/* {item?.description?.map((note, index) => {
                   return (
                     <p
                       className="md:text-base text-[14px] leading-6 md:font-medium font-normal text-darkblue"
@@ -80,7 +104,7 @@ export default function WhatsIncludedSection({
                       {note?.[locale]}
                     </p>
                   );
-                })}
+                })} */}
               </div>
             </div>
           );
@@ -134,31 +158,31 @@ export default function WhatsIncludedSection({
               </div>
             }
             <div className="flex text-[14px] flex-col">
-              {data?.inclusion_list[currentIndex]?.description?.map(
-                (note, index) => {
-                  return (
-                    <div key={index}>
-                      <p
-                        className="text-[14px] leading-6 font-normal text-darkblue"
-                        key={index}
-                      >
-                        {isNoteExpanded(index)
-                          ? note[locale]
-                          : getShortenedNote(note[locale])}
-                      </p>
-                      {note?.[locale].length > 500 && (
-                        <div className="flex justify-center mt-4">
-                          <button
-                            className="text-primary text-center text-base font-medium"
-                            onClick={() => toggleNoteExpansion(index)}
-                          >
-                            {isNoteExpanded(index) ? "View Less" : "View More"}
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  );
+              <PortableText
+                content={
+                  isNoteExpanded(currentIndex)
+                    ? data?.inclusion_list[currentIndex]?.description?.[0]?.[
+                        locale
+                      ]
+                    : getShortenedNote(
+                        data?.inclusion_list[currentIndex]?.description?.[0]?.[
+                          locale
+                        ]
+                      )
                 }
+                serializers={{}}
+              />
+
+              {data?.inclusion_list[currentIndex]?.description?.[0]?.[locale]
+                ?.length > 20 && (
+                <div className="flex justify-center mt-4">
+                  <button
+                    className="text-primary text-center text-base font-medium"
+                    onClick={() => toggleNoteExpansion(currentIndex)}
+                  >
+                    {isNoteExpanded(currentIndex) ? "View Less" : "View More"}
+                  </button>
+                </div>
               )}
             </div>
           </div>
