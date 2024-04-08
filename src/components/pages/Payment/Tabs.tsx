@@ -11,6 +11,7 @@ import {
 // import { urlFor } from "../../../../sanity/lib/client";
 
 import {
+  SanityLocale,
   SanityPricingSection,
   SanityPromoCode,
   SanityTourPage,
@@ -51,7 +52,7 @@ export default function Tabs({
   control: Control<any>;
   trigger: () => any;
   loading: boolean;
-  locale: string;
+  locale: SanityLocale;
   promo: SanityPromoCode[];
 }) {
   const [promoCode, setPromoCode] = useState<SanityPromoCode>();
@@ -66,8 +67,8 @@ export default function Tabs({
 
   let actualPrice =
     priceOverrides.length > 0
-      ? localizedNumber(priceOverrides[0].price?.initial_price)
-      : localizedNumber(price?.initial_price);
+      ? localizedNumber(priceOverrides[0].price?.initial_price, locale)
+      : localizedNumber(price?.initial_price, locale);
   let currentPrice =
     (priceOverrides.length > 0
       ? localizedNumber(priceOverrides[0].price?.discounted_price)
@@ -83,12 +84,16 @@ export default function Tabs({
     );
     totalPrice -= discount;
   }
-  console.log(totalPrice);
+
+  // const actPrice = parseInt(actualPrice);
+
+  console.log("totalPrice: ", totalPrice);
   setTotalPrice(totalPrice);
   const [page, setPage] = useState(1);
   useEffect(() => {}, [page]);
+
   return (
-    <Container className="flex flex-col gap-16 py-16 xl:px-[198px] px-5">
+    <Container className="flex flex-col gap-16 py-16 xl:px-[108px] max-md:px-5">
       <div className="flex items-center font-satoshi gap-1 px-6 max-w-[800px] mx-auto w-full h-[68px] ">
         <div
           className="relative cursor-pointer"
@@ -327,14 +332,18 @@ const Costing = ({
   promoCode?: string;
   addons?: number;
 }) => {
+  // const currentIntoInt = parseInt(currentPrice);
   const { control, handleSubmit, setError } = useForm();
   const people = adults + childrenNumber;
   const originalPrice =
     people * actualPrice + parseInt(people.toString()) * (addons || 0);
   const totalPrice =
     people * (currentPrice + (addons || 0)) - promoCodeDiscount;
+
+  // console.log("pirceeesss: ", currentPrice + addons);
+
   return (
-    <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden p-10">
+    <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden md:p-10 p-6">
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-5">
           <div className="flex justify-between gap-2">
@@ -384,7 +393,7 @@ const Costing = ({
             </div>
           )}
         </div>
-        <hr className="w-full text-yellow" />
+        <hr className="w-full border border-[#FFBB0B]" />
         <div className="flex flex-col gap-5">
           {originalPrice != totalPrice && (
             <div className="flex justify-between gap-2">
@@ -405,15 +414,15 @@ const Costing = ({
             </div>
             {originalPrice != totalPrice && (
               <div>
-                <p className="text-red font-bold text-[10px] text-end">
+                <p className="text-[#D10002] font-medium text-[10px] text-end">
                   You save ${(originalPrice - totalPrice).toFixed(2)}
                 </p>
               </div>
             )}
           </div>
           <div className="flex justify-between gap-2 items-center">
-            <p className="text-base font-bold text-darkblue">Payment Today</p>
-            <p className="text-2xl font-bold text-primary">$ {totalPrice}</p>
+            <p className="text-base font-bold text-darkblue">Total Price</p>
+            <p className="font-bold text-darkblue">$ {totalPrice}</p>
           </div>
         </div>
 
