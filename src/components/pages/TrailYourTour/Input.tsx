@@ -84,8 +84,9 @@ export default function Input({
         <div className="border border-darkblue/10 flex gap-2 bg-white p-3 justify-between rounded">
           <div className="font-normal text-sm">{placeholder}</div>
           <div className="flex">
+            {/* ${VARIANT.buttonNumber.button[variant]} */}
             <div
-              className={`w-[22px] h-[22px] ${VARIANT.buttonNumber.button[variant]} flex items-center justify-center`}
+              className={`w-[22px] h-[22px] bg-[#3FA9F5] flex items-center justify-center`}
               onClick={() => {
                 field.onChange(
                   Math.max(
@@ -104,7 +105,7 @@ export default function Input({
               {field.value}
             </div>
             <div
-              className={`w-[22px] h-[22px] ${VARIANT.buttonNumber.button[variant]} flex items-center justify-center`}
+              className={`w-[22px] h-[22px] bg-[#3FA9F5] flex items-center justify-center`}
               onClick={() => {
                 field.onChange(
                   Math.min(

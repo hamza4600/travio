@@ -77,9 +77,11 @@ export default function Page({ slug, data, locale, globals, promo }) {
     },
   });
 
-  const [optionalVisits, setOptionalVisits] = useState(0);
-  const [roomTypes, setRoomTypes] = useState(0);
-  const [hotelChoice, setHotelChoice] = useState(0);
+  const [optionalVisits, setOptionalVisits] = useState<number>(0);
+  const [roomTypes, setRoomTypes] = useState<number>(0);
+  const [hotelChoice, setHotelChoice] = useState<number>(0);
+
+  console.log("inttt:", optionalVisits, roomTypes, hotelChoice);
   // get url
   const searchParams = useSearchParams();
   const from = searchParams?.get("from");
@@ -104,11 +106,12 @@ export default function Page({ slug, data, locale, globals, promo }) {
                 (visit) => visit._key === visitId
               );
               if (visit) {
-                sum += localizedNumber(visit.price?.discounted_price, locale);
+                sum += visit.price?.discounted_price?.[locale];
               }
             }
           }
         }
+        // console.log("thissssIs: ", sum);
         setOptionalVisits(sum);
       }
       if (info.name === "roomType") {
@@ -116,8 +119,8 @@ export default function Page({ slug, data, locale, globals, promo }) {
           data?.payment?.room_sharing_options?.reduce(
             (acc, extra) =>
               acc +
-              (value["roomType"] === localizedString(extra?.title, locale)
-                ? localizedNumber(extra.price?.discounted_price, locale)
+              (value["roomType"] === extra?.title?.[locale]
+                ? extra.price?.discounted_price?.[locale]
                 : 0),
             0
           ) || 0
@@ -228,11 +231,13 @@ export default function Page({ slug, data, locale, globals, promo }) {
     "stripe" | "paypal" | "bank"
   >("stripe");
 
+  console.log("Lao: ", hotelChoice);
+
   return (
     <Layout
       locale={locale}
       breadcrumbs={[]}
-      promo_banner={""}
+      promo_banner={globals?.banner}
       globals={globals}
     >
       <Tabs

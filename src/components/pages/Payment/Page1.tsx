@@ -44,7 +44,7 @@ export default function Page1({
 }) {
   return (
     <div className="flex flex-col gap-7">
-      <div className="md:p-[38px] p-[34px] bg-primary border border-darkblue/10 rounded-2xl">
+      <div className="md:p-[38px] p-6 bg-primary border border-darkblue/10 rounded-2xl">
         <p className="md:text-[24px] md:leading-8 text-[19px] leading-[30px] font-bold text-darkblue">
           How many people are traveling?
         </p>
@@ -293,7 +293,7 @@ export const OptionalVisits = ({
         const count = field.value?.[place._key]?.filter(Boolean).length || 0;
         return (
           <div key={place._key}>
-            <div className="flex justify-between items-center md:px-[38px] md:pt-[38px] px-6">
+            <div className="flex justify-between items-center md:px-[38px] md:pt-[38px] pt-5 px-6">
               <p className="md:text-[20px] md:leading-[30px] text-base font-bold text-primary">
                 {place.city_name?.[locale]}
               </p>
@@ -309,22 +309,32 @@ export const OptionalVisits = ({
                     key={place._key + plan._key}
                     className="flex justify-between gap-2 py-[18px]"
                   >
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 max-md:gap-2 max-md:items-center">
                       {/* <div className="w-[120px] h-[84px] flex gap-2 border rounded border-blue items-center justify-center"> */}
 
-                      {plan.image && (
-                        <Image
-                          key={index}
-                          alt={localizedString(plan.title)}
-                          src={urlFor(plan.image)}
-                          height={120}
-                          width={102}
-                          className="rounded-[8px] max-md:w-[69px] max-md:h-12"
-                        />
-                      )}
+                      <div className="flex flex-col md:max-w-[102px] md:w-full gap-2">
+                        <div className="flex gap-2">
+                          {plan.image && (
+                            <Image
+                              key={index}
+                              alt={localizedString(plan.title)}
+                              src={urlFor(plan.image)}
+                              height={120}
+                              width={102}
+                              className="rounded-[8px] max-md:w-[69px] w-[120px] h-[102px] max-md:h-12"
+                            />
+                          )}
+                          <p className="font-bold text-darkblue md:text-[20px] md:leading-[30px] text-[14px] md:hidden">
+                            {plan.title?.[locale]}
+                          </p>
+                        </div>
+                        <p className="md:text-sm text-[12px] leading-5 font-medium text-gray md:hidden">
+                          {plan.description?.[locale]}
+                        </p>
+                      </div>
 
                       {/* </div> */}
-                      <div className="flex flex-col gap-1">
+                      <div className="md:flex hidden md:flex-col gap-1">
                         <p className="font-bold text-darkblue md:text-[20px] md:leading-[30px] text-[14px]">
                           {plan.title?.[locale]}
                         </p>
