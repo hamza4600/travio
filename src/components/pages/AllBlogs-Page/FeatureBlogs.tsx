@@ -6,6 +6,7 @@ import dummyArticles from "../Dynamic-Blog-Page/data";
 import { urlFor } from "../../../../sanity/lib/client";
 
 const FeatureBlogs = ({ data, locale }) => {
+  console.log("FeatureBlogs -> data", data);
   return (
     <div className="h-fit relative md:px-20 px-5">
       {/* <SectionHeader title="Articles" subtitle="Featured Articles" centerLine /> */}
@@ -25,7 +26,7 @@ const FeatureBlogs = ({ data, locale }) => {
           <hr className="w-32 my-2 text-yellow m-auto bg-yellow  rounded-full border-2" />
         </div>
         <div className="flex flex-wrap mt-10 w-full">
-          {data.blogs?.map((blog, index) => {
+          {data?.blogs?.map((blog, index) => {
             return (
               <BlogDetailCard
                 country={blog.destination?.name?.[locale]}

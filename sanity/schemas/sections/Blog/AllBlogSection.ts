@@ -20,5 +20,6 @@ export default defineType({
       description: 'The heading for the all blog section',
       type: 'locale_string',
     }),
+    // request all blogs from sanity
   ],
 })

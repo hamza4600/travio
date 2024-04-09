@@ -38,13 +38,13 @@ const BlogSection = dynamic(
   }
 );
 
-// const AllBlogsSection = dynamic(
-//   () => import("@/components/pages/AllBlogs-Page/FeatureBlogs"),
-//   {
-//     loading: () => <p>Loading...</p>,
-//     ssr: false,
-//   }
-// );
+const AllBlogsSection = dynamic(
+  () => import("@/components/pages/AllBlogs-Page/FeatureBlogs"),
+  {
+    loading: () => <p>Loading...</p>,
+    ssr: false,
+  }
+);
 
 const HeroSection = dynamic(
   () => import("@/components/pages/HomePage/HeroSection")
@@ -134,11 +134,11 @@ export const BlogPageSectionsMap: {
     | ComponentClass<any, any>;
 } = {
   image_header_section: BlogHeroSection,
-  newsletter_section: NewsletterSection,
+  show_new_letter_section: NewsletterSection,
   interests_section: InterestSection,
   featured_place_blogs_section: FeatureTopBlogSection,
   featured_blogs_section: BlogSection,
-  // all_blogs_section: AllBlogsSection,
+  all_blogs_section: AllBlogsSection,
 };
 
 export const SectionMap: {

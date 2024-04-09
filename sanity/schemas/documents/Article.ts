@@ -219,6 +219,13 @@ export default defineType({
         }),
       ],
     }),
+
+    defineField({
+      name: 'show_new_letter',
+      title: 'Show Newsletter Section',
+      description: 'Show Newsletter Section',
+      type: 'show_new_letter_section',
+    }),
   ],
   preview: {
     select: {

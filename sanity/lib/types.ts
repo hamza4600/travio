@@ -364,6 +364,15 @@ export type SanityNewsletterSection = {
   image?: SanityImage;
 };
 
+export type ShowSanityNewsletterSection = {
+  _type: "show_new_letter_section";
+  _id: string;
+  _key: string;
+  title?: SanityLocaleString;
+  subtitle?: SanityLocaleString;
+  image?: SanityImage;
+};
+
 export type SanityReviewsSection = {
   _type: "reviews_section";
   _id: string;
@@ -902,6 +911,7 @@ export type SanityBlogPageSection =
   | SanityContentSection
   | SanityNewsletterSection
   | SanityLatestPostsSection
+  | ShowSanityNewsletterSection
   | SanityFeaturedImagesSection;
 
 export type SanityBlogPageSectionNames = SanityBlogPageSection["_type"];

@@ -22,6 +22,7 @@ export const BlogSections = [
   'image_header_section',
   'content_section',
   // 'newsletter_section',
+  "show_new_letter_section",
   'interests_section',
   'featured_place_blogs_section',
   'latest_posts_section',
