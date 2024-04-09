@@ -1,6 +1,7 @@
 import React from "react";
 
 import Link from "next/link";
+import { getChars } from "@/lib/utils";
 // import PortableText from 'react-portable-text'
 
 // import { LocalizedString, localizedString } from '@/contexts/LocaleProvider'
@@ -23,11 +24,11 @@ function BlogDetailCard(props: {
 }) {
   const { country, title, date, image, excerpt, link, author } = props;
   return (
-    <div className="md:max-w-[410px] md:min-h-[530px] max-w-[250px] min-h-[399px] rounded-xl mb-6 text-darkblue font-satoshi shadow-xl shadow-[#f5f5f5]">
+    <div className="md:max-w-[410px] md:min-h-[530px] max-w-[250px] min-h-[399px] rounded-[12px] md:rounded-[16px] mb-6 text-darkblue font-satoshi shadow-xl shadow-[#f5f5f5]">
       <img
         src={image}
         alt="img"
-        className="md:max-w-[410px] md:min-h-[300px] max-w-[250px] min-h-[190px]"
+        className="md:max-w-[410px] md:min-h-[300px] max-w-[250px] min-h-[190px] md:rounded-t-[16px] rounded-t-[12px]"
       />
       <div className="pt-3 md:px-[18px] md:pb-[18px] px-3 pb-3 flex flex-col gap-3">
         <div>
@@ -40,7 +41,7 @@ function BlogDetailCard(props: {
         </div>
         <div className="min-h-[66px]">
           <span className="text-[14px] leading-[22px] text-gray font-medium">
-            {excerpt}
+            {getChars(excerpt, 120)}
           </span>
           <Link href={link} className="underline text-primary ml-1">
             Read More
