@@ -43,9 +43,20 @@ const blogPageQuery = `*[_type == "blog_page" && slug.current == "/"][0]{
     }
 }`;
 
+const allBlogsQuery = `*[_type=="article"]{
+  destination->{
+    name
+  },
+  introduction,
+  time,
+  cover_image,
+  title
+  }`;
+
 const query = `{
     "layout":  ${pageLayout},
-    "data":  ${blogPageQuery}
+    "data":  ${blogPageQuery},
+    'allBlogs' : ${allBlogsQuery}
 }`;
 
 export async function getBlogPage() {

@@ -6,11 +6,10 @@ import Slicer from "../../../../sanity/slicer";
 import { BlogPageSectionsMap } from "@/components/sections";
 
 const MainBlogPage = ({ language, pageData }) => {
-  const { layout, data } = pageData || {};
-  console.log("MainBlogPage -> pageData", data);
+  const { layout, data, allBlogs } = pageData || {};
+  console.log("MainBlogPage -> pageData", allBlogs);
   return (
     <Layout
-      //
       breadcrumbs={[{ label: "Blog", value: "BLog" }]}
       locale={language}
       globals={layout}
@@ -20,7 +19,13 @@ const MainBlogPage = ({ language, pageData }) => {
       <Slicer
         locale={language}
         components={BlogPageSectionsMap}
-        sections={data?.sections?.map((sec) => sec) as any}
+        sections={
+          data?.sections?.map((sec) =>
+            sec?._type === "all_blogs_section"
+              ? { ...sec, blogs: allBlogs }
+              : sec
+          ) as any
+        }
       />
     </Layout>
   );

@@ -134,7 +134,7 @@ export const BlogPageSectionsMap: {
     | ComponentClass<any, any>;
 } = {
   image_header_section: BlogHeroSection,
-  newsletter_section: NewsletterSection,
+  show_new_letter_section: NewsletterSection,
   interests_section: InterestSection,
   featured_place_blogs_section: FeatureTopBlogSection,
   featured_blogs_section: BlogSection,
