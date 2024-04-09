@@ -2,7 +2,7 @@ import React from "react";
 import BlogDetailCard from "@/components/sections/BlogDetailCard";
 // import SectionHeader from "@/components/molecules/secHeader";
 import Swiper from "@/components/molecules/Swiper";
-import dummyArticles from "../Dynamic-Blog-Page/data";
+
 import { urlFor } from "../../../../sanity/lib/client";
 
 const FeatureBlogs = ({ data, locale }) => {
@@ -11,7 +11,7 @@ const FeatureBlogs = ({ data, locale }) => {
       {/* <SectionHeader title="Articles" subtitle="Featured Articles" centerLine /> */}
       <Swiper
         className={"gap-6 md:mt-[48px] mt-[30px]"}
-        length={dummyArticles.length}
+        length={data.blogs.length}
         scrollCount={3}
       >
         {/* <Container className="flex flex-col mx-auto max-w-[1312px] px-4 mt-20 items-center"> */}

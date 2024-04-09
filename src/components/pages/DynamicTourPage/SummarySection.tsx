@@ -68,6 +68,16 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
       );
     },
 
+    // span: (props: any) => {
+    //   console.log("Data: ", props);
+    //   return <p>{props.children}</p>;
+    // },
+
+    // strong: (props: any) => {
+    //   console.log("strongData: ", props);
+    //   return <strong>{props.children}</strong>;
+    // },
+
     // layout_group: (props: any) => {
     //   console.log(props, "data");
 
@@ -76,11 +86,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     //   )
     // },
 
-    // block: (props: any) => {},
-
     layout_group: (props: any) => {
-      console.log("1212321", props);
-
       return (
         <div className="flex w-full font-satoshi text-darkblue max-md:flex-col  gap-4 md:gap-12">
           {props.items[0].items.map((item: any, index: number) => {
@@ -109,11 +115,12 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     },
 
     layout_stack: (props: any) => {
+      console.log("StackData: ", props);
       return (
         <div className="flex max-lg:flex-col max-lg:gap-[20px] gap-[30px]">
           <PortableText
             content={props.items[1]?.text?.[locale]}
-            serializers={{}}
+            serializers={PortableTextSerializer}
           />
           <figure className="shrink-0 w-full  lg:max-w-[400px]  box-border">
             <Image

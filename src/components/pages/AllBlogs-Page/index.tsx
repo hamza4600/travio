@@ -10,7 +10,7 @@ const MainBlogPage = ({ language, pageData }) => {
   console.log("MainBlogPage -> pageData", data);
   return (
     <Layout
-      // 
+      //
       breadcrumbs={[{ label: "Blog", value: "BLog" }]}
       locale={language}
       globals={layout}
