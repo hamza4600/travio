@@ -46,6 +46,8 @@ const Content = ({ sections, locale }) => {
 
   const [editorValue, setEditorValue] = useState(null);
 
+  console.log("sec: ", sections);
+
   const findContent = (sections, slug) => {
     for (let section of sections) {
       for (let subSection of section.sections) {

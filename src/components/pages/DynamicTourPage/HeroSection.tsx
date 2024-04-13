@@ -37,13 +37,13 @@ const HeroSection = ({ data, locale }) => {
       </div>
 
       <div className="flex flex-col gap-7 max-lg:hidden">
-        {data.images.map((img: any, i: number) => {
+        {data?.images?.map((img: any, i: number) => {
           return (
-            data.images && (
+            data?.images && (
               <img
                 key={i}
                 className="h-[226px] max-w-[336px] max-lg:hidden rounded-2xl"
-                src={urlFor(img.asset._ref)}
+                src={img?.asset?._ref ? urlFor(img.asset._ref) : ""}
                 alt="hero_supprt_img"
               />
             )

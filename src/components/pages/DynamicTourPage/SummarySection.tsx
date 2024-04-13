@@ -30,6 +30,30 @@ const RootStyle = styled.div`
   }
 `;
 
+const LayoutGroup = styled.div`
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    p {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    div {
+      gap: 6px;
+
+      p {
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+  }
+`;
+
 export type ContentSectionProps = {
   data: SanityContentSection;
   locale: string;
@@ -41,10 +65,14 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     locale,
   } = props;
 
-  console.log("data12312: ", props);
+  // console.log("data12312: ", props);
+
+  if (!content || content[locale]) return null;
 
   const PortableTextSerializer = {
     h3: (props: any) => {
+      if (!props) return null;
+
       return (
         <div className="">
           <h3
@@ -57,9 +85,11 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     },
 
     ul: (props: any) => {
+      if (!props) return null;
+
       return (
         <ul className="list-disc pl-5">
-          {props.children.map((child: any, index: number) => (
+          {props?.children?.map((child: any, index: number) => (
             <li key={index} className="mb-2 leading-6">
               {child}
             </li>
@@ -67,6 +97,16 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
         </ul>
       );
     },
+
+    // span: (props: any) => {
+    //   console.log("Data: ", props);
+    //   return <p>{props.children}</p>;
+    // },
+
+    // strong: (props: any) => {
+    //   console.log("strongData: ", props);
+    //   return <strong>{props.children}</strong>;
+    // },
 
     // layout_group: (props: any) => {
     //   console.log(props, "data");
@@ -76,15 +116,13 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     //   )
     // },
 
-    // block: (props: any) => {},
-
     layout_group: (props: any) => {
-      console.log("1212321", props);
+      if (!props) return null;
 
       return (
         <div className="flex w-full font-satoshi text-darkblue max-md:flex-col  gap-4 md:gap-12">
-          {props.items[0].items.map((item: any, index: number) => {
-            console.log("items: ", item);
+          {props?.items[0]?.items?.map((item: any, index: number) => {
+            // console.log("items: ", item);
             // const text = item.text[locale];
 
             return (
@@ -109,22 +147,27 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     },
 
     layout_stack: (props: any) => {
+      // console.log("StackData: ", props);
+      if (!props) return null;
+
       return (
         <div className="flex max-lg:flex-col max-lg:gap-[20px] gap-[30px]">
-          <PortableText
-            content={props.items[1]?.text?.[locale]}
-            serializers={{}}
-          />
+          <LayoutGroup>
+            <PortableText
+              content={props?.items[1]?.text?.[locale]}
+              serializers={PortableTextSerializer}
+            />
+          </LayoutGroup>
           <figure className="shrink-0 w-full  lg:max-w-[400px]  box-border">
             <Image
-              alt={props.alt}
-              src={urlFor(props.items[0].image.asset._ref)}
+              alt={props?.alt}
+              src={urlFor(props?.items[0]?.image?.asset?._ref)}
               width={400}
               height={310}
               className="rounded-[18px] object-fill w-full h-auto max-md:max-w-full max-md:min-h-[260px] max-md:rounded-[12px]"
             />
             <figcaption className="text-center mt-2 font-satoshi text-darkblue text-opacity-75 text-xs md:text-sm font-normal md:font-medium leading-tight md:leading-snug">
-              {props.items[0].alt}
+              {props?.items[0]?.alt}
             </figcaption>
           </figure>
         </div>
@@ -176,13 +219,13 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
         </div>
 
         <RootStyle className="text-sm md:text-base mt-[48px] text-darkblue  leading-[24px] font-normal">
-          {/* {content[locale] && ( */}
-          <PortableText
-            content={content[locale]}
-            className="flex flex-col gap-[10px] font-[500] md:gap-6 leading-normal md:leading-7 md:tracking-wide"
-            serializers={PortableTextSerializer}
-          />
-          {/* )} */}
+          {content?.[locale] && (
+            <PortableText
+              content={content?.[locale] ? content?.[locale] : ""}
+              className="flex flex-col gap-[10px] font-[500] md:gap-6 leading-normal md:leading-7 md:tracking-wide"
+              serializers={PortableTextSerializer}
+            />
+          )}
         </RootStyle>
       </Container>
     </>
