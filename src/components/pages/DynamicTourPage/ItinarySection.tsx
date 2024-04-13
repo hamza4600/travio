@@ -401,7 +401,7 @@ const Expandable = ({
           </p> */}
           <PortableText
             className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi"
-            content={data.description?.[locale]}
+            content={data?.description?.[locale]}
             serializers={{}}
           />
         </div>

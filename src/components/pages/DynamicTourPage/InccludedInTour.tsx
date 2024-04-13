@@ -3,6 +3,19 @@ import { SanityWhatsIncludedSection } from "../../../../sanity/lib/types";
 import Container from "@/components/molecules/container";
 import { useState } from "react";
 import PortableText from "react-portable-text";
+import styled from "styled-components";
+
+const RootStyle = styled.div`
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 4px;
+  }
+`;
 
 export default function WhatsIncludedSection({
   data,
@@ -91,10 +104,12 @@ export default function WhatsIncludedSection({
                 </p>
               </div>
               <div className="flex flex-col">
-                <PortableText
-                  content={item.description?.[0]?.[locale]}
-                  serializers={{}}
-                />
+                <RootStyle>
+                  <PortableText
+                    content={item.description?.[0]?.[locale]}
+                    serializers={{}}
+                  />
+                </RootStyle>
                 {/* {item?.description?.map((note, index) => {
                   return (
                     <p
@@ -158,20 +173,21 @@ export default function WhatsIncludedSection({
               </div>
             }
             <div className="flex text-[14px] flex-col">
-              <PortableText
-                content={
-                  isNoteExpanded(currentIndex)
-                    ? data?.inclusion_list[currentIndex]?.description?.[0]?.[
-                        locale
-                      ]
-                    : getShortenedNote(
-                        data?.inclusion_list[currentIndex]?.description?.[0]?.[
+              <RootStyle>
+                <PortableText
+                  content={
+                    isNoteExpanded(currentIndex)
+                      ? data?.inclusion_list[currentIndex]?.description?.[0]?.[
                           locale
                         ]
-                      )
-                }
-                serializers={{}}
-              />
+                      : getShortenedNote(
+                          data?.inclusion_list[currentIndex]
+                            ?.description?.[0]?.[locale]
+                        )
+                  }
+                  serializers={{}}
+                />
+              </RootStyle>
 
               {data?.inclusion_list[currentIndex]?.description?.[0]?.[locale]
                 ?.length > 20 && (

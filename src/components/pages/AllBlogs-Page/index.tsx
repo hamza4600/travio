@@ -21,7 +21,9 @@ const MainBlogPage = ({ language, pageData }) => {
         components={BlogPageSectionsMap}
         sections={
           data?.sections?.map((sec) =>
-            sec?._type === 'all_blogs_section' ? { ...sec, blogs: allBlogs } : sec
+            sec?._type === "all_blogs_section"
+              ? { ...sec, blogs: allBlogs }
+              : sec
           ) as any
         }
       />
