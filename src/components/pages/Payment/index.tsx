@@ -80,15 +80,13 @@ export default function Page({ slug, data, locale, globals, promo }) {
   const [optionalVisits, setOptionalVisits] = useState<number>(0);
   const [roomTypes, setRoomTypes] = useState<number>(0);
   const [hotelChoice, setHotelChoice] = useState<number>(0);
-
-  console.log("inttt:", optionalVisits, roomTypes, hotelChoice);
   // get url
   const searchParams = useSearchParams();
-  const from = searchParams?.get("from");
-  const to = searchParams?.get("to");
+  const from = Number(searchParams?.get("from"));
+  const to = Number(searchParams?.get("to"));
 
-  const startDate = new Date(from as string);
-  const endDate = new Date(to as string);
+  const startDate = new Date(from);
+  const endDate = new Date(to);
 
   useEffect(() => {
     const unsub = watch((value: any, _info: any) => {
@@ -106,12 +104,11 @@ export default function Page({ slug, data, locale, globals, promo }) {
                 (visit) => visit._key === visitId
               );
               if (visit) {
-                sum += visit.price?.discounted_price?.[locale];
+                sum += Number(visit.price?.discounted_price?.[locale]);
               }
             }
           }
         }
-        // console.log("thissssIs: ", sum);
         setOptionalVisits(sum);
       }
       if (info.name === "roomType") {
@@ -120,7 +117,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
             (acc, extra) =>
               acc +
               (value["roomType"] === extra?.title?.[locale]
-                ? extra.price?.discounted_price?.[locale]
+                ? Number(extra.price?.discounted_price?.[locale])
                 : 0),
             0
           ) || 0
@@ -132,7 +129,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
             (acc, extra) =>
               acc +
               (value["hotelChoice"] === localizedString(extra?.title, locale)
-                ? localizedNumber(extra.price?.discounted_price, locale)
+                ? Number(localizedNumber(extra.price?.discounted_price, locale))
                 : 0),
             0
           ) || 0
@@ -159,7 +156,9 @@ export default function Page({ slug, data, locale, globals, promo }) {
               visitID,
               cityName: localizedString(city?.city_name, locale),
               visitName: localizedString(visit?.title, locale),
-              price: localizedNumber(visit?.price?.discounted_price, locale),
+              price: Number(
+                localizedNumber(visit?.price?.discounted_price, locale)
+              ),
             };
           });
       }
@@ -204,13 +203,18 @@ export default function Page({ slug, data, locale, globals, promo }) {
       hotelType: _data.hotelChoice,
       roomType: _data.roomType,
       to: endDate.toDateString(),
-      paid: paymentMethod === "bank" ? 0 : bookOnly ? 20000 : totalPrice * 100,
-      price: totalPrice * 100,
+      paid:
+        paymentMethod === "bank"
+          ? 0
+          : bookOnly
+          ? 20000
+          : Number(totalPrice * 100),
+      price: Number(totalPrice) * 100,
       email: _data.email,
       optionalTours: optionalVisits,
     };
     console.log(booking);
-    fetch("/api/checkout", {
+    fetch("/api/payment", {
       method: "POST",
       body: JSON.stringify(booking),
     })
@@ -218,8 +222,8 @@ export default function Page({ slug, data, locale, globals, promo }) {
         if (paymentMethod === "bank") {
           alert("Payment info sent to the bank!");
         }
-        const url = await res.text();
-        router.replace(url || "/");
+        const url = await res.json();
+        router.replace(url);
       })
       .finally(() => {
         setLoading(false);
@@ -230,8 +234,6 @@ export default function Page({ slug, data, locale, globals, promo }) {
   const [paymentMethod, setPaymentMethod] = useState<
     "stripe" | "paypal" | "bank"
   >("stripe");
-
-  console.log("Lao: ", hotelChoice);
 
   return (
     <Layout

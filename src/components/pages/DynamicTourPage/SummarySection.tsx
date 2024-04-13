@@ -41,8 +41,6 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     locale,
   } = props;
 
-  console.log("data12312: ", props);
-
   const PortableTextSerializer = {
     h3: (props: any) => {
       return (
@@ -79,8 +77,6 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     // block: (props: any) => {},
 
     layout_group: (props: any) => {
-      console.log("1212321", props);
-
       return (
         <div className="flex w-full font-satoshi text-darkblue max-md:flex-col  gap-4 md:gap-12">
           {props.items[0].items.map((item: any, index: number) => {

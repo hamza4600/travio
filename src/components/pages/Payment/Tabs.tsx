@@ -67,20 +67,20 @@ export default function Tabs({
 
   let actualPrice =
     priceOverrides.length > 0
-      ? localizedNumber(priceOverrides[0].price?.initial_price, locale)
-      : localizedNumber(price?.initial_price, locale);
+      ? Number(localizedNumber(priceOverrides[0].price?.initial_price, locale))
+      : Number(localizedNumber(price?.initial_price, locale));
   let currentPrice =
-    (priceOverrides.length > 0
-      ? localizedNumber(priceOverrides[0].price?.discounted_price)
-      : localizedNumber(price?.discounted_price)) || actualPrice;
+    priceOverrides.length > 0
+      ? Number(localizedNumber(priceOverrides[0].price?.discounted_price))
+      : Number(localizedNumber(price?.discounted_price)) || actualPrice;
   let totalPrice =
-    currentPrice * (adultsNumber + childrenNumber) +
-    (addons || 0) * (adultsNumber + childrenNumber);
+    currentPrice * Number(adultsNumber + childrenNumber) +
+    (Number(addons) || 0) * Number(adultsNumber + childrenNumber);
   let discount = 0;
   if (promoCode) {
     discount = Math.min(
       (totalPrice * promoCode.percent) / 100,
-      promoCode.max_discount
+      Number(promoCode.max_discount)
     );
     totalPrice -= discount;
   }

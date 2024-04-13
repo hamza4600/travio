@@ -98,6 +98,17 @@ export default function Page3({
     "/paypal.png",
     "/bank-transfer.png",
   ];
+  const handleSubmit = () => {
+    const response = fetch("/api/payment", {
+      method: "POST",
+      body: JSON.stringify({
+        trip: {
+          name: "Trip Name",
+        },
+      }),
+    });
+    console.log(response);
+  };
 
   console.log(setValue, formData);
 
