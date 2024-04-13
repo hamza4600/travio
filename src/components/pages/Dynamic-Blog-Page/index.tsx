@@ -23,7 +23,7 @@ import BlogDetailCard from "@/components/sections/BlogDetailCard";
 // import { BlogPageSectionsMap } from "@/components/sections";
 
 import { Pagination } from "@/components/sections/reviews/Reviews";
-import dummyArticles, { destinations, hrData, tags } from "./data";
+import dummyArticles, { destinations, tags } from "./data";
 import BlogChoose from "@/components/molecules/BlogChose";
 import HeroSection from "@/components/sections/hero/HeroSection";
 import GallerySect from "./GallerySect";
@@ -45,7 +45,7 @@ export default function BlogPage({
   locale: string;
   pageData: any;
 }) {
-  const { layout } = pageData || {};
+  const { layout, data } = pageData || {};
   //   const imageHeaderData =
   //     content?._type === "tag"
   //       ? {
@@ -61,6 +61,7 @@ export default function BlogPage({
   //           (s) => s?._type === "image_header_section"
   //         ) as SanityImageHeaderSection);
   // console.log(articles)
+  console.log("BlogsData: ", data)
   const [value, setValue] = React.useState(0);
   return (
     <Layout
@@ -78,9 +79,9 @@ export default function BlogPage({
       globals={layout}
       promo_banner={layout?.banner}
     >
-      <HeroSection data={hrData} />
+      <HeroSection data={data.sections[0]} locale={locale} />
       <Container>
-        <GallerySect />
+        <GallerySect data={data?.sections[1]} locale={locale} />
         <Container className={""}>
           {/* {JSON.stringify(content)} */}
 
