@@ -1,12 +1,21 @@
 import React from "react";
+import { urlFor } from "../../../../sanity/lib/client";
 
 // import { urlFor } from '../../../../sanity/lib/client'
 
 const ArticleHeroSection = ({
-  data,
+  title,
+  image,
+  introduction,
+  time,
+  locale,
   openSidebar,
 }: {
-  data: any;
+  title: string;
+  image: any,
+  introduction: string,
+  time: string,
+  locale: string,
   openSidebar: () => void;
 }) => {
   return (
@@ -14,12 +23,12 @@ const ArticleHeroSection = ({
       <div className="flex justify-between">
         <div className="lg:px-20 px-5">
           <h1 className="md:text-[40px] md:leading-[50px] text-[20xp] leading-[30px] text-darkblue font-bold">
-            {data.title?.en}
+            {title?.[locale]}
           </h1>
           <h2 className="my-[18px] md:font-bold font-normal mb-7 md:text-darkblue text-gray md:text-[14px] md:leading-[22px] text-[12px] leading-5">
-            By {data?.author?.name?.en} On{" "}
+            {/* By {data?.author?.name?.en} On{" "} */}
             <span className="text-[#FFBB0B] md:text-[14px] md:leading-[22px] md:font-bold font-medium text-[12px] leading-5">
-              {data?.time?.en}
+              {time?.[locale]}
             </span>{" "}
           </h2>
         </div>
@@ -53,15 +62,20 @@ const ArticleHeroSection = ({
           </div>
         </div>
         <img
-          src={data.cover_image}
-          className="lg:max-w-[896px] lg:min-h-[500px]"
+          src={urlFor(image?.asset?._ref)}
+          className="lg:max-w-[896px] lg:min-h-[500px] md:hidden"
+          alt=""
+        />
+        <img
+          src={urlFor(image?.mobile?.asset?._ref)}
+          className="lg:max-w-[896px] lg:min-h-[500px] max-md:hidden"
           alt=""
         />
       </div>
 
       <p className="mt-7 lg:pl-20 pl-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
         {" "}
-        {data.introduction?.en}{" "}
+        {introduction?.[locale]}{" "}
       </p>
     </div>
   );
