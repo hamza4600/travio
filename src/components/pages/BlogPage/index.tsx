@@ -9,13 +9,14 @@ import InThisPost from "./InThisPost";
 
 import BlogReview from "@/components/organisms/BlogReview";
 import BlogSidebar from "@/components/organisms/BlogSidebar";
-import { articleDummy, articleDummyData, blogRev, postDummy } from "./data";
+import { articleDummy, blogRev, postDummy } from "./data";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import RelatedArticles from "./RelatedArticles";
 import { Facebook, Messenger, Twitter, WhatpsApp } from "./style";
 import useWindowSize from "@/hooks/useWindows";
+import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 
 export default function CurrentBlogPage({ locale, pageData }) {
   const { layout, data } = pageData || {};
@@ -39,7 +40,11 @@ export default function CurrentBlogPage({ locale, pageData }) {
         <div className="flex gap-8 bg-white w-full xl:pr-20">
           <div className="w-full max-w-[1000px]">
             <ArticleHeroSection
-              data={articleDummyData}
+              title={data?.title}
+              image={data?.cover_image}
+              introduction={data?.introduction}
+              time={data?.time}
+              locale={locale}
               openSidebar={OpenSidebar}
             />
 
@@ -73,6 +78,8 @@ export default function CurrentBlogPage({ locale, pageData }) {
         <div>
           <BlogReview data={blogRev} />
         </div>
+
+        <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
         <RelatedArticles />
       </Container>

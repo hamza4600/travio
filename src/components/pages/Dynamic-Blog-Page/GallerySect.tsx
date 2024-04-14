@@ -3,7 +3,7 @@ import { urlFor } from "../../../../sanity/lib/client";
 import Link from "next/link";
 
 const GallerySect = ({ data, locale }: any) => {
-  console.log("galleryData: ", data);
+  // console.log("galleryData: ", data);
   return (
     <div className="mt-[67px] flex max-xl:flex-col max-xl:items-center gap-2.5 xl:gap-[30px]">
       <Link href={`/${locale}/${data?.image_0?.link?.url}`} className="">
