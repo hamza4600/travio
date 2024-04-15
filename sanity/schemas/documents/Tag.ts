@@ -14,6 +14,12 @@ export default defineType({
       title: 'Name',
       type: 'locale_string',
     }),
+    defineField({
+       name: 'isCountry', 
+       title: 'Is Country', 
+       description: 'Is this tag a country?',
+       type: 'boolean' 
+    }),
     // text or slug that is used in the URL representing the tag
     defineField({
       name: 'slug',
