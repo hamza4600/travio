@@ -1,5 +1,11 @@
 import React from "react";
 import { urlFor } from "../../../../sanity/lib/client";
+import {
+  FacebookShare,
+  TwitterShare,
+  LinkedinShare,
+  FacebookMessengerShare,
+} from "react-share-kit";
 
 // import { urlFor } from '../../../../sanity/lib/client'
 
@@ -12,10 +18,10 @@ const ArticleHeroSection = ({
   openSidebar,
 }: {
   title: string;
-  image: any,
-  introduction: string,
-  time: string,
-  locale: string,
+  image: any;
+  introduction: string;
+  time: string;
+  locale: string;
   openSidebar: () => void;
 }) => {
   return (
@@ -40,26 +46,26 @@ const ArticleHeroSection = ({
         </button>
       </div>
 
-      <div className="flex gap-[18px] items-center pl-5">
+      <div className="flex gap-[18px] items-center justify-center pl-5 max-md:px-5">
         <div className="w-full max-lg:hidden max-w-[44px]">
           <div className="bg-primary py-2.5 flex flex-col gap-[10px] items-center">
-            <img src={"/demo/share.png"} alt="share" />
+            {/* <img src={"/demo/share.png"} alt="share" /> */}
             <p className="text-primary font-bold text-[10px] leading-3">
               Share
             </p>
           </div>
-          <div className="p-3 bg-[#2F508D]">
-            <img src={"/demo/uim_facebook-f.png"} alt="share" />
-          </div>
-          <div className="bg-[#2196F3] p-3">
-            <img src={"/demo/msngr.png"} alt="share" />
-          </div>
-          <div className="bg-[#0077B5] p-3">
-            <img src={"/demo/lkdn.png"} alt="share" />
-          </div>
-          <div className="bg-[#33CCFE] p-3">
-            <img src={"/demo/mdi_twitter.png"} alt="share" />
-          </div>
+          <FacebookShare url="https://react-share-kit.vercel.app/v1/default" size={36} borderRadius={8} quote={"quote"} />
+
+          <FacebookMessengerShare
+            url="https://react-share-kit.vercel.app/v1/default"
+            size={36}
+            borderRadius={8}
+            appId={"dmm4kj9djk203k4liuf994p"}
+          />
+
+          <LinkedinShare url="https://react-share-kit.vercel.app/v1/default" size={36} borderRadius={8} />
+
+          <TwitterShare url="#" size={36} borderRadius={8} />
         </div>
         <img
           src={urlFor(image?.asset?._ref)}
@@ -73,7 +79,7 @@ const ArticleHeroSection = ({
         />
       </div>
 
-      <p className="mt-7 lg:pl-20 pl-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
+      <p className="mt-7 lg:pl-20 px-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
         {" "}
         {introduction?.[locale]}{" "}
       </p>
