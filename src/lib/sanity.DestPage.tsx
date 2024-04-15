@@ -46,3 +46,12 @@ export async function getDestinationPageSeo(slug: string) {
 
   return await CLIENT.fetch(query);
 }
+
+// return slug of all the destinations
+export async function getAllDestinationSlugs() {
+  const query = `*[_type == "destination_page"]{
+    "slug": slug.current
+  }`;
+
+  return await CLIENT.fetch(query);
+}

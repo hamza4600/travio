@@ -35,3 +35,12 @@ export async function getWikiPageSeo(slug: string) {
 
   return await CLIENT.fetch(query);
 }
+
+// return slug of all the wikis
+export async function getAllWikiSlugs() {
+  const query = `*[_type == "travel_wiki"]{
+    "slug": slug.current
+  }`;
+
+  return await CLIENT.fetch(query);
+}

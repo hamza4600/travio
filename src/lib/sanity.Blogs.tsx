@@ -56,3 +56,12 @@ export async function getDynamicBlogPageSeo(slug:string) {
 
   return await CLIENT.fetch(seoQuery)
 }
+
+// return slug of all the blogs except / 
+export async function getAllDynamicBlogSlugs() {
+  const query = `*[_type == "blog_page" && slug.current != "/"]{
+    "slug": slug.current
+  }`
+
+  return await CLIENT.fetch(query)
+}

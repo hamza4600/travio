@@ -37,3 +37,12 @@ export async function getArticalPageSeo(slug:string) {
 
   return await CLIENT.fetch(seoQuery)
 }
+
+// return slug of all the blogs
+export async function getAllArticalBlogSlugs() {
+  const query = `*[_type == "article"]{
+    "slug": slug.current
+  }`
+
+  return await CLIENT.fetch(query)
+}
