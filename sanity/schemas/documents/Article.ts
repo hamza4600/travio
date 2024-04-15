@@ -9,13 +9,13 @@ export default defineType({
   description: 'An article',
   type: 'document',
   fields: [
-    defineField({
-      name: 'destination',
-      title: 'Destination',
-      description: 'Destination this article is meant for',
-      type: 'reference',
-      to: [{ type: 'destination_page' }],
-    }),
+    // defineField({
+    //   name: 'destination',
+    //   title: 'Destination',
+    //   description: 'Destination this article is meant for',
+    //   type: 'reference',
+    //   to: [{ type: 'destination_page' }],
+    // }),
     defineField({
       name: 'cover_image',
       title: 'Cover Image',
@@ -91,11 +91,6 @@ export default defineType({
               title: 'Tagline',
               type: 'locale_string',
             }),
-            // defineField({
-            //   name: 'title',
-            //   title: 'Title',
-            //   type: 'locale_rich_text',
-            // }),
             defineField({
               name: 'content',
               title: 'Content',
