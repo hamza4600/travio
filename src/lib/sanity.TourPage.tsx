@@ -56,3 +56,12 @@ export async function getTourPageSeo(slug: string) {
 
     return await CLIENT.fetch(query);
 }
+
+// return slug of all the tours
+export async function getAllTourSlugs() {
+    const query = `*[_type == "tour_page"]{
+    slug
+  }`;
+
+    return await CLIENT.fetch(query);
+}

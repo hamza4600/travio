@@ -91,11 +91,11 @@ export default defineType({
               title: 'Tagline',
               type: 'locale_string',
             }),
-            defineField({
-              name: 'title',
-              title: 'Title',
-              type: 'locale_rich_text',
-            }),
+            // defineField({
+            //   name: 'title',
+            //   title: 'Title',
+            //   type: 'locale_rich_text',
+            // }),
             defineField({
               name: 'content',
               title: 'Content',

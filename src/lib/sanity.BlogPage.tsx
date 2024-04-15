@@ -50,7 +50,11 @@ const allBlogsQuery = `*[_type=="article"]{
   introduction,
   time,
   cover_image,
-  title
+  title,
+  slug,
+  auther->{
+    name
+  }
   }`;
 
 const query = `{
@@ -60,7 +64,7 @@ const query = `{
 }`;
 
 export async function getBlogPage() {
-  return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query); 
 }
 
 const seoQuery = `*[_type == "blog_page"  && slug.current == "/"][0]{

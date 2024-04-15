@@ -1,13 +1,11 @@
 import React from "react";
 import BlogDetailCard from "@/components/sections/BlogDetailCard";
-// import SectionHeader from "@/components/molecules/secHeader";
 import Swiper from "@/components/molecules/Swiper";
 
 import { urlFor } from "../../../../sanity/lib/client";
 import SectionHeader from "@/components/molecules/secHeader";
 
 const FeatureBlogs = ({ data, locale }) => {
-  console.log("FeatureBlogs -> data", data);
   return (
     <>
       <SectionHeader
@@ -29,10 +27,10 @@ const FeatureBlogs = ({ data, locale }) => {
                   country={blog?.destination?.name?.[locale]}
                   excerpt={blog?.introduction?.[locale]}
                   image={blog?.cover_image ? urlFor(blog.cover_image) : ""}
-                  link={`/blogs/${blog.slug?.current}`}
+                  link={`/${locale}/blog${blog.slug?.current}`}
                   title={blog?.title?.[locale]}
                   date={blog?.time?.[locale]}
-                  author={blog?.author?.name?.[locale]}
+                  author={blog?.auther?.name?.[locale]}
                   key={index}
                 />
               );
