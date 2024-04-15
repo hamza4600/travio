@@ -93,10 +93,10 @@ function BlogSidebar() {
       },
     },
   ];
-  const tags = ["India", "Jaipur", "Rajasthan", "Monuments"];
+  // const tags = ["India", "Jaipur", "Rajasthan", "Monuments"];
   return (
-    <Container className="text-darkblue">
-      <div className="bg-primary md:w-full md:max-w-[346px] mt-36 px-3 py-10 rounded-md">
+    <Container className="text-darkblue px-0">
+      <div className="bg-primary md:w-full md:max-w-[346px] mt-36 px-5 py-10 rounded-[16px]">
         {/* Search */}
         <h4 className="font-semibold text-xl">Search articles</h4>
         <div className="border-[#FFBB0B] rounded-full my-1 w-[66px] md:border-b-[3px] border-b-2" />
@@ -143,7 +143,7 @@ function BlogSidebar() {
         <hr className="my-5 opacity-40 text-gray" />
 
         {/* Tagd */}
-        <h4 className="font-semibold text-xl">Tags</h4>
+        {/* <h4 className="font-semibold text-xl">Tags</h4>
         <div className="border md:border-b-[3px] w-[66px] border-b-2 rounded-full my-1 border-[#FFBB0B]" />
         <div className="flex flex-wrap gap-2 py-5">
           {tags.map((tag, index) => {
@@ -169,7 +169,7 @@ function BlogSidebar() {
             ago in Egypt. Our aim is to ensure and provide a full service to our
             customers with professionalism, quality and creativity.
           </p>
-        </div>
+        </div> */}
       </div>
     </Container>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Container from "@/components/molecules/container";
 import Layout from "@/components/layout/index";
 import ArticleHeroSection from "./ArticleHeroSection";
 import BlogContentSection from "./BlogContentSection";
@@ -14,7 +13,12 @@ import { articleDummy, blogRev, postDummy } from "./data";
 import "swiper/css";
 import "swiper/css/navigation";
 import RelatedArticles from "./RelatedArticles";
-import { Facebook, Messenger, Twitter, WhatpsApp } from "./style";
+import {
+  FacebookShare,
+  TwitterShare,
+  LinkedinShare,
+  FacebookMessengerShare,
+} from "react-share-kit";
 import useWindowSize from "@/hooks/useWindows";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 
@@ -35,9 +39,10 @@ export default function CurrentBlogPage({ locale, pageData }) {
       locale={locale}
       globals={layout}
       promo_banner={layout?.banner}
+      // maxWidth
     >
-      <Container className="font-satoshi">
-        <div className="flex gap-8 bg-white w-full xl:pr-20">
+      <div className="font-satoshi">
+        <div className="flex md:gap-8 bg-white w-full xl:pr-20">
           <div className="w-full max-w-[1000px]">
             <ArticleHeroSection
               title={data?.title}
@@ -53,10 +58,18 @@ export default function CurrentBlogPage({ locale, pageData }) {
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
               <p className="lg:hidden text-primary">Share</p>
               <div className="lg:hidden flex items-center justify-center gap-1">
-                <Facebook />
-                <Twitter />
-                <Messenger />
-                <WhatpsApp />
+                <FacebookShare url="#" size={25} borderRadius={50} />
+
+                <FacebookMessengerShare
+                  url="#"
+                  size={25}
+                  borderRadius={50}
+                  appId={"dmm4kj9djk203k4liuf994p"}
+                />
+
+                <LinkedinShare url="#" size={25} borderRadius={71} />
+
+                <TwitterShare url="#" size={25} borderRadius={71} />
               </div>
 
               <BlogContentSection data={articleDummy} />
@@ -65,7 +78,11 @@ export default function CurrentBlogPage({ locale, pageData }) {
 
           {showBlogSidebar && isLaptop ? (
             <div
-              className={`${"absolute z-30 ml-auto right-5 max-xl:top-[140px] max-lg:top-[100px] max-md:top-[80px]"}`}
+              className={`absolute z-30 ml-auto right-0 max-xl:top-[140px] max-lg:top-[100px] max-md:top-[80px] sidebar  ${
+                showBlogSidebar
+                  ? "transition ease-in-out delay-150 translate-x-1"
+                  : "transition-transform translate-x-full"
+              }`}
             >
               <BlogSidebar />
             </div>
@@ -82,7 +99,7 @@ export default function CurrentBlogPage({ locale, pageData }) {
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
         <RelatedArticles />
-      </Container>
+      </div>
     </Layout>
   );
 }
