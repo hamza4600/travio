@@ -21,6 +21,7 @@ import {
 } from "react-share-kit";
 import useWindowSize from "@/hooks/useWindows";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
+import ArticalTestinomial from "./Testimonila";
 
 export default function CurrentBlogPage({ locale, pageData }) {
   const { layout, data } = pageData || {};
@@ -99,6 +100,7 @@ export default function CurrentBlogPage({ locale, pageData }) {
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
         {/* <RelatedArticles /> */}
+          <ArticalTestinomial />
       </div>
     </Layout>
   );

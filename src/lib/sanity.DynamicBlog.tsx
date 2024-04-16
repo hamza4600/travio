@@ -4,9 +4,13 @@ import { CLIENT } from './sanity.const';
     
 export async function getArticalBlogPage(slug: string) {
 
-  const blogPageQuery =  `*[_type == "article"  && slug.current == "/${slug}"][0] {
+  const blogPageQuery =  `*[_type == "article"  && slug.current == "/egypt-blog"][0] {
     ...,
-    suggested_tour {
+  auther->{
+    ...
+  },
+
+  suggested_tour {
       ...,
       tour_cards[] {
         badge_content,
@@ -42,6 +46,18 @@ export async function getArticalPageSeo(slug:string) {
 export async function getAllArticalBlogSlugs() {
   const query = `*[_type == "article"]{
     "slug": slug.current
+  }`
+
+  return await CLIENT.fetch(query)
+}
+
+// testimonials sect
+export async function getTestimonials() {
+  
+  const query = `*[_type == "page"  && slug.current == "/"][0]{
+    sections[_type == "testimonial_section" && defined(title)] {
+          ...
+    },
   }`
 
   return await CLIENT.fetch(query)
