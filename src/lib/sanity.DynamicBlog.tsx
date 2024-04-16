@@ -46,3 +46,15 @@ export async function getAllArticalBlogSlugs() {
 
   return await CLIENT.fetch(query)
 }
+
+// testimonials sect
+export async function getTestimonials() {
+  
+  const query = `*[_type == "page"  && slug.current == "/"][0]{
+    sections[_type == "testimonial_section" && defined(title)] {
+          ...
+    },
+  }`
+
+  return await CLIENT.fetch(query)
+}
