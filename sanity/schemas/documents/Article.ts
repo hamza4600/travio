@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
-import { PenNib, Receipt } from "@phosphor-icons/react";
+import { PenNib } from "@phosphor-icons/react";
 import { displayNumber, joinStrings } from "@/lib/utils";
 
 export default defineType({
