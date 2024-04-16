@@ -62,7 +62,9 @@ export default function BlogPage({
   //         ) as SanityImageHeaderSection);
   // console.log(articles)
   console.log("BlogsData: ", data)
-  const [value, setValue] = React.useState(0);
+  const [pageNumber, setPageNumber] = React.useState(0);
+
+  const pageSize = 3
   return (
     <Layout
       breadcrumbs={[
@@ -80,13 +82,13 @@ export default function BlogPage({
       promo_banner={layout?.banner}
     >
       <HeroSection data={data.sections[0]} locale={locale} />
-      <Container>
+      {/* <Container> */}
         <GallerySect data={data?.sections[1]} locale={locale} />
         <Container className={""}>
           {/* {JSON.stringify(content)} */}
 
           {dummyArticles && (
-            <div className="">
+            <div className="mt-[50px]">
               <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
                 Latest Articles
               </h4>
@@ -103,15 +105,15 @@ export default function BlogPage({
               />
 
               <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
-                {dummyArticles?.map((article, index) => {
+                {data?.sections[2]?.featured_blogs?.slice(pageNumber * pageSize, pageNumber * pageSize + pageSize)?.map((article, index) => {
                   return (
                     <BlogDetailCard
-                      country={(article.destination as any)?.name}
-                      excerpt={article.introduction}
+                      country={(article.destination as any)?.name?.[locale]}
+                      excerpt={article.introduction?.[locale]}
                       image={article.cover_image ? article.cover_image : ""}
-                      link={`/blogs${article.slug?.current}`}
-                      title={article.title}
-                      date={article.time}
+                      link={`/blog${article.slug?.current}`}
+                      title={article.title?.[locale]}
+                      date={article.time?.[locale]}
                       author={article.author?.name}
                       key={index}
                     />
@@ -120,15 +122,15 @@ export default function BlogPage({
               </div>
 
               <Pagination
-                total={dummyArticles?.length || 0}
-                pageSize={9}
-                currentPage={value}
-                onChange={setValue}
+                total={data?.sections[2]?.featured_blogs?.length || 0}
+                pageSize={pageSize}
+                currentPage={pageNumber}
+                onChange={setPageNumber}
               />
             </div>
           )}
         </Container>
-      </Container>
+      {/* </Container> */}
     </Layout>
   );
 }

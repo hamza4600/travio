@@ -5,7 +5,7 @@ import Link from "next/link";
 const GallerySect = ({ data, locale }: any) => {
   // console.log("galleryData: ", data);
   return (
-    <div className="mt-[67px] flex max-xl:flex-col max-xl:items-center gap-2.5 xl:gap-[30px]">
+    <div className="mt-[67px] flex justify-center max-xl:flex-col max-xl:items-center gap-2.5 xl:gap-[30px]">
       <Link href={`/${locale}/${data?.image_0?.link?.url}`} className="">
         <img
           className="md:max-w-[647px] h-[230px] md:h-[430px] max-w-[335px] rounded-[16px]"

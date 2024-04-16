@@ -3,7 +3,7 @@ import React from "react";
 
 const BlogContentSection = ({ data }: any) => {
   return (
-    <div className="my-10 flex flex-col md:gap-[68px] gap-[50px] lg:px-20 px-5">
+    <div className="my-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
       {data.map((item: any, index: any) => {
         return (
           <div key={index} className="text-black gap-[18px] flex flex-col ">

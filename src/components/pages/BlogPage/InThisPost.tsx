@@ -3,7 +3,7 @@ import React from "react";
 
 const InThisPost = ({ data }: any) => {
   return (
-    <div className="lg:px-20 px-5 ">
+    <div className="lg:pl-20 px-5 ">
       <h3 className="mt-5 font-[500] text-gray">
         Here are some of the most remarkable spots to explore in Old Cairo:
       </h3>
