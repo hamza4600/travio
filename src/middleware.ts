@@ -3,7 +3,8 @@ import Negotiator from "negotiator";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { i18n } from "@/language";
-import { supabase } from "./utils/supabase/client";
+import { updateSession } from "./utils/supabase/middleware";
+import { createClient } from "./utils/supabase/server";
 
 const supportedLanguages = i18n.languages.map((l) => l.id);
 
@@ -22,10 +23,13 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 export async function middleware(request: NextRequest) {
+  const supabase = createClient();
+  const { data } = await supabase.auth.getUser();
+
   const pathname = request.nextUrl.pathname;
   const locale = getLocale(request);
 
-  const isLoggedIn = await supabase.auth.getSession();
+  const isLoggedIn = !!data.user;
 
   if (pathname === "/dashboard" && !isLoggedIn) {
     return NextResponse.redirect(new URL("/login", request.nextUrl));
@@ -64,6 +68,7 @@ export async function middleware(request: NextRequest) {
       new URL(`/${locale}/${pathname}`, request.url)
     );
   }
+  return await updateSession(request);
 }
 
 export const config = {

@@ -214,16 +214,30 @@ export default function Page({ slug, data, locale, globals, promo }) {
       optionalTours: optionalVisits,
     };
     console.log(booking);
-    fetch("/api/payment", {
+    // fetch("/api/payment", {
+    //   method: "POST",
+    //   body: JSON.stringify(booking),
+    // })
+    //   .then(async (res) => {
+    //     if (paymentMethod === "bank") {
+    //       alert("Payment info sent to the bank!");
+    //     }
+    //     const url = await res.json();
+    //     router.replace(url);
+    //   })
+    //   .finally(() => {
+    //     setLoading(false);
+    //   });
+    fetch("/api/booking", {
       method: "POST",
       body: JSON.stringify(booking),
     })
       .then(async (res) => {
-        if (paymentMethod === "bank") {
-          alert("Payment info sent to the bank!");
-        }
-        const url = await res.json();
-        router.replace(url);
+        const data = await res.json();
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
       })
       .finally(() => {
         setLoading(false);

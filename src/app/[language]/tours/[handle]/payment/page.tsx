@@ -4,6 +4,8 @@ import {
   getTourPaymentPageSeo,
 } from "@/lib/sanity.PaymentPage";
 import { urlForImage } from "../../../../../../sanity/lib/image";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { handle, language } = params;
@@ -34,6 +36,13 @@ export async function generateMetadata({ params }) {
 export const revalidate = 3600;
 
 const Index = async ({ params }: any) => {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error || !data.user) {
+    redirect("/login");
+  }
+
   const { handle, language } = params;
   const pageData = await getPaymentPage(handle);
 

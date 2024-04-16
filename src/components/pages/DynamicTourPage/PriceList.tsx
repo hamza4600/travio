@@ -85,7 +85,8 @@ function generatePriceList(
   const price = (data as any)?.price;
 
   // Prices to override the default price
-  const priceOverrides = (data as any).price_override ?? [];
+  const priceOverrides = (data as any).price_overrides ?? [];
+  console.log("priceOverrides: ", priceOverrides);
 
   // Generate the next 5 weeks for the tour on the basis of the start day and duration
   const next5WeekPrices: {
@@ -101,16 +102,21 @@ function generatePriceList(
 
     startDate.setDate(startDate.getDate() + (i + 1) * 7);
     startDate.setDate(
-      // @ts-ignore
-      startDate.getDate() + ((getDay(startDay) - startDate.getDay() + 7) % 7)
+      startDate.getDate() + ((getDay(startDay)! - startDate.getDay() + 7) % 7)
     );
-
+    startDate.setHours(0, 0, 0, 0);
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + duration);
+    endDate.setHours(0, 0, 0, 0);
     // check if the price is overridden for this week
-    priceOverrides.filter((override: any) => {
+    const res = priceOverrides.filter((override: any) => {
       const overrideStartDate = new Date(override.timeline?.start_date ?? "");
       const overrideEndDate = new Date(override.timeline?.end_date ?? "");
+      // log in human readable format
+      console.log(
+        `Checking if ${startDate.toDateString()} to ${endDate.toDateString()} is within ${overrideStartDate.toDateString()} to ${overrideEndDate.toDateString()}`
+      );
+
       return (
         startDate.getTime() >= overrideStartDate.getTime() &&
         endDate.getTime() <= overrideEndDate.getTime()
@@ -121,13 +127,11 @@ function generatePriceList(
       from: startDate,
       to: endDate,
       currentPrice:
-        priceOverrides.length > 0
-          ? priceOverrides[0].price?.discounted_price
+        res.length > 0
+          ? res[0].price?.discounted_price
           : price?.discounted_price,
       actualPrice:
-        priceOverrides.length > 0
-          ? priceOverrides[0].price?.initial_price
-          : price?.initial_price,
+        res.length > 0 ? res[0].price?.initial_price : price?.initial_price,
     });
   }
   return next5WeekPrices;
@@ -142,8 +146,7 @@ function PriceList({
   slug: any;
   locale: string;
 }) {
-  console.log("priceList5655: ", slug, locale);
-
+  // console.log("priceList5655: ", slug, locale);
   const [selected, setSelected] = React.useState(-1);
   const [collapsed, setCollapsed] = React.useState(false);
   const [show, setShow] = React.useState(4);

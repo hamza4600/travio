@@ -72,7 +72,7 @@
     "react-stars": "^2.2.5",
     "sanity": "^3.27.1",
     "sonner": "^1.4.0",
-    "stripe": "^15.0.0",
+    "stripe": "^15.1.0",
     "styled-components": "^6.1.8",
     "swiper": "^11.0.6",
     "swr": "^2.2.5",
