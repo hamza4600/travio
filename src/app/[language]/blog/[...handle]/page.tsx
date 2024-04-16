@@ -44,7 +44,7 @@ import { getArticalBlogPage } from "@/lib/sanity.DynamicBlog";
 //     },
 //   };
 // }
-export const revalidate = 36;
+export const revalidate = 3600;
 
 const Index = async ({ params }: { params: any }) => {
   const { handle, language } = params;

@@ -12,7 +12,7 @@ import { articleDummy, blogRev, postDummy } from "./data";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import RelatedArticles from "./RelatedArticles";
+// import RelatedArticles from "./RelatedArticles";
 import {
   FacebookShare,
   TwitterShare,
@@ -99,7 +99,7 @@ export default function CurrentBlogPage({ locale, pageData }) {
 
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
-        <RelatedArticles />
+        {/* <RelatedArticles /> */}
           <ArticalTestinomial />
       </div>
     </Layout>

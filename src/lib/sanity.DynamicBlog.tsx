@@ -4,9 +4,13 @@ import { CLIENT } from './sanity.const';
     
 export async function getArticalBlogPage(slug: string) {
 
-  const blogPageQuery =  `*[_type == "article"  && slug.current == "/${slug}"][0] {
+  const blogPageQuery =  `*[_type == "article"  && slug.current == "/egypt-blog"][0] {
     ...,
-    suggested_tour {
+  auther->{
+    ...
+  },
+
+  suggested_tour {
       ...,
       tour_cards[] {
         badge_content,
