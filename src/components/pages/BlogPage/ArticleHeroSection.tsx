@@ -15,6 +15,7 @@ const ArticleHeroSection = ({
   introduction,
   time,
   locale,
+  author,
   openSidebar,
 }: {
   title: string;
@@ -22,6 +23,7 @@ const ArticleHeroSection = ({
   introduction: string;
   time: string;
   locale: string;
+  author: string;
   openSidebar: () => void;
 }) => {
   const [isFixed, setIsFixed] = useState(false);
@@ -49,7 +51,7 @@ const ArticleHeroSection = ({
             {title?.[locale]}
           </h1>
           <h2 className="my-[18px] md:font-bold font-normal mb-7 md:text-darkblue text-gray md:text-[14px] md:leading-[22px] text-[12px] leading-5">
-            {/* By {data?.author?.name?.en} On{" "} */}
+            By {author} On{" "}
             <span className="text-[#FFBB0B] md:text-[14px] md:leading-[22px] md:font-bold font-medium text-[12px] leading-5">
               {time?.[locale]}
             </span>{" "}
@@ -68,7 +70,7 @@ const ArticleHeroSection = ({
           className="w-full max-lg:hidden max-w-[44px]"
           style={{
             position: isFixed ? "fixed" : "relative",
-            top: 0,
+            top: 100,
             left: isFixed ? 20 : 0,
             zIndex: 1000,
             marginTop: isFixed ? "0" : "10px",

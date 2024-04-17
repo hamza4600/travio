@@ -22,8 +22,14 @@ import {
 import useWindowSize from "@/hooks/useWindows";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 import ArticalTestinomial from "./Testimonila";
+import NewsletterSection from "@/components/sections/NewsletterSection";
+import Container from "@/components/molecules/container";
 
-export default function CurrentBlogPage({ locale, pageData }) {
+export default function CurrentBlogPage({
+  locale,
+  pageData,
+  newsLetterSection,
+}) {
   const { layout, data } = pageData || {};
   console.log("dataBlogPage: ", data);
   const [showBlogSidebar, setShowBlogSidebar] = useState(false);
@@ -40,14 +46,16 @@ export default function CurrentBlogPage({ locale, pageData }) {
       locale={locale}
       globals={layout}
       promo_banner={layout?.banner}
-      // maxWidth
+      maxWidth={false}
     >
       <div className="font-satoshi">
-        <div className="flex md:gap-8 bg-white w-full xl:pr-20">
+        <div className="flex justify-center md:gap-8 bg-white w-full">
           <div className="w-full max-w-[1000px]">
+            
             <ArticleHeroSection
               title={data?.title}
               image={data?.cover_image}
+              author={data?.auther?.name?.[locale]}
               introduction={data?.introduction}
               time={data?.time}
               locale={locale}
@@ -93,14 +101,17 @@ export default function CurrentBlogPage({ locale, pageData }) {
             </div>
           )}
         </div>
+
         <div>
-          <BlogReview data={blogRev} />
+          <BlogReview data={data?.auther} locale={locale} />
         </div>
 
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
         {/* <RelatedArticles /> */}
-          <ArticalTestinomial />
+        <ArticalTestinomial />
+
+        <NewsletterSection data={newsLetterSection} locale={locale} />
       </div>
     </Layout>
   );
