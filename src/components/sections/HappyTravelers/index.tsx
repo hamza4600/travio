@@ -36,7 +36,7 @@ const TravlerReviews = (props) => {
 
   return (
     <div className="w-full bg-[#F2FAFF] md:mt-[84px] mt-[50px] text-black py-[30px]  md:h-full relative md:px-20 px-5">
-      <Container className={"lg:flex max-md:px-0 items-center gap-x-10 "}>
+      <div className={"lg:flex max-md:px-0 items-center gap-x-10 "}>
         <div className="lg:max-w-xs font-satoshi shrink-0 w-full text-center md:text-start">
           <h2 className="text-xl md:text-[40px] leading-[30px] md:leading-tight -tracking-[1.2px] font-bold">
             <span className="text-[#3FA9F5] md:text-black">
@@ -124,7 +124,7 @@ const TravlerReviews = (props) => {
           className="absolute -left-0 md:-left-5 -bottom-[75px] md:-bottom-[235px] max-md:w-[120px] max-md:rotate-12"
           alt="aeroplane"
         />
-      </Container>
+      </div>
     </div>
   );
 };

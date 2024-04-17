@@ -1,6 +1,7 @@
 import CurrentBlogPage from "@/components/pages/BlogPage";
 // import { getArticalBlogPage, getArticalPageSeo } from "@/lib/sanity.DynamicBlog";
 import { getArticalBlogPage } from "@/lib/sanity.DynamicBlog";
+import { getnewLetterSection } from "@/lib/sanity.NewLetter";
 // import { urlForImage } from "../../../../../sanity/lib/image";
 
 // export async function generateMetadata({ params }) {
@@ -52,11 +53,13 @@ const Index = async ({ params }: { params: any }) => {
 
   const firstSlug = handle[0];
   const pageData = await getArticalBlogPage(firstSlug);
+  const newsLetterSection = await getnewLetterSection();
 
   return (
     <CurrentBlogPage 
       locale={language} 
       pageData={pageData}
+      newsLetterSection={newsLetterSection}
     />
   );
 };
