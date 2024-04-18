@@ -8,7 +8,7 @@ import InThisPost from "./InThisPost";
 
 import BlogReview from "@/components/organisms/BlogReview";
 import BlogSidebar from "@/components/organisms/BlogSidebar";
-import { articleDummy, blogRev, postDummy } from "./data";
+import { articleDummy, postDummy } from "./data";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -23,7 +23,7 @@ import useWindowSize from "@/hooks/useWindows";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 import ArticalTestinomial from "./Testimonila";
 import NewsletterSection from "@/components/sections/NewsletterSection";
-import Container from "@/components/molecules/container";
+// import Container from "@/components/molecules/container";
 
 export default function CurrentBlogPage({
   locale,
