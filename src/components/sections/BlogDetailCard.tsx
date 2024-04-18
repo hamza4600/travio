@@ -2,6 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 import { getChars } from "@/lib/utils";
+import { urlFor } from "../../../sanity/lib/client";
 // import PortableText from 'react-portable-text'
 
 // import { LocalizedString, localizedString } from '@/contexts/LocaleProvider'
@@ -16,7 +17,7 @@ function BlogDetailCard(props: {
   country: string;
   title: string;
   date: string;
-  image: string;
+  image: any;
   link: string;
   excerpt: string;
   author: string;
@@ -26,7 +27,7 @@ function BlogDetailCard(props: {
   return (
     <div className="md:max-w-[410px] md:min-h-[530px] max-w-[250px] min-h-[399px] rounded-[12px] md:rounded-[16px] mb-6 text-darkblue font-satoshi shadow-xl shadow-[#f5f5f5]">
       <img
-        src={image}
+        src={urlFor(image)}
         alt="img"
         className="md:max-w-[410px] md:min-h-[300px] max-w-[250px] min-h-[190px] md:rounded-t-[16px] rounded-t-[12px]"
       />

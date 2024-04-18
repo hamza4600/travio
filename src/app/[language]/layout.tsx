@@ -97,6 +97,14 @@ const plain = localFont({
 export const metadata: Metadata = {
   title: "Traviio Tours",
   description: "Traviio Tours",
+  openGraph: {
+    images:
+      'https://travel-tour-ya83.vercel.app/_next/static/media/logo.5f25ce06.png',
+    url: 'https://www.promotravel.tours/en/',
+    type: 'website',
+  },
+  keywords:
+    'travel, tour, app, destination, trip, book, favorite, destination, travel and tour app, travel and tour, travel app, tour app, travel and tour app,',
 };
 
 export default function RootLayout({

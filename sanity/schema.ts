@@ -25,6 +25,7 @@ import tour_timeline from "./schemas/atoms/TourTimeline";
 import wattsappbanner from "./schemas/atoms/wattsappbanner";
 import Activity from "./schemas/documents/Activity";
 import Article from "./schemas/documents/Article";
+import Auther, { authersocial } from "./schemas/documents/Auther";
 import blog_page from "./schemas/documents/BlogPage";
 import destination_page from "./schemas/documents/DestinationPage";
 import Globals, { TourDropdown } from "./schemas/documents/Globals";
@@ -83,6 +84,7 @@ export const schemaTypes= [
         timeline,
         wattsappbanner,
         Breadcrumb,
+        authersocial,
         // content
         content_text,
         content_image,
@@ -124,6 +126,7 @@ export const schemaTypes= [
         tour_page,
         Page,
         Tag,
+        Auther,
         Globals,
         TourDropdown,
         travel_guide,

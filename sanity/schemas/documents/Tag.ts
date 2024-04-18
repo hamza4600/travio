@@ -15,22 +15,25 @@ export default defineType({
       type: 'locale_string',
     }),
     defineField({
+       name: 'isCountry', 
+       title: 'Is Country', 
+       description: 'Is this tag a country?',
+       type: 'boolean' 
+    }),
+    // text or slug that is used in the URL representing the tag
+    defineField({
       name: 'slug',
       title: 'Slug',
+      description : 'The slug is the URL path segment for this tag. It should be unique eg :(outdoor, turkey).',
       type: 'slug',
       options: {
-        source: 'name.en',
+        source: 'name',
       },
     }),
     defineField({
       name: 'icon',
       title: 'Icon',
-      type: 'photo',
-    }),
-    defineField({
-      name: 'hero_image',
-      title: 'Hero Image',
-      type: 'photo',
+      type  : 'image',
     }),
   ],
   preview: {

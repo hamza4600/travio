@@ -21,3 +21,12 @@ export async function getGuidePageSeo(slug: string) {
 
   return await CLIENT.fetch(query);
 }
+
+// return slug of all the guides
+export async function getAllGuideSlugs() {
+  const query = `*[_type == "travel_guide"]{
+  "slug": slug.current
+}`;
+
+  return await CLIENT.fetch(query);
+}

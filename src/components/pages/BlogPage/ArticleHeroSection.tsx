@@ -1,25 +1,59 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { urlFor } from "../../../../sanity/lib/client";
+import {
+  FacebookShare,
+  TwitterShare,
+  LinkedinShare,
+  FacebookMessengerShare,
+} from "react-share-kit";
 
 // import { urlFor } from '../../../../sanity/lib/client'
 
 const ArticleHeroSection = ({
-  data,
+  title,
+  image,
+  introduction,
+  time,
+  locale,
+  author,
   openSidebar,
 }: {
-  data: any;
+  title: string;
+  image: any;
+  introduction: string;
+  time: string;
+  locale: string;
+  author: string;
   openSidebar: () => void;
 }) => {
+  const [isFixed, setIsFixed] = useState(false);
+
+  const tabsRef = useRef<HTMLDivElement | null>(null);
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    setIsFixed(scrollPosition > window.innerHeight / 1);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="mt-[30px]">
       <div className="flex justify-between">
         <div className="lg:px-20 px-5">
           <h1 className="md:text-[40px] md:leading-[50px] text-[20xp] leading-[30px] text-darkblue font-bold">
-            {data.title?.en}
+            {title?.[locale]}
           </h1>
           <h2 className="my-[18px] md:font-bold font-normal mb-7 md:text-darkblue text-gray md:text-[14px] md:leading-[22px] text-[12px] leading-5">
-            By {data?.author?.name?.en} On{" "}
+            By {author} On{" "}
             <span className="text-[#FFBB0B] md:text-[14px] md:leading-[22px] md:font-bold font-medium text-[12px] leading-5">
-              {data?.time?.en}
+              {time?.[locale]}
             </span>{" "}
           </h2>
         </div>
@@ -31,37 +65,60 @@ const ArticleHeroSection = ({
         </button>
       </div>
 
-      <div className="flex gap-[18px] items-center pl-5">
-        <div className="w-full max-lg:hidden max-w-[44px]">
-          <div className="bg-primary py-2.5 flex flex-col gap-[10px] items-center">
-            <img src={"/demo/share.png"} alt="share" />
-            <p className="text-primary font-bold text-[10px] leading-3">
-              Share
-            </p>
-          </div>
-          <div className="p-3 bg-[#2F508D]">
-            <img src={"/demo/uim_facebook-f.png"} alt="share" />
-          </div>
-          <div className="bg-[#2196F3] p-3">
-            <img src={"/demo/msngr.png"} alt="share" />
-          </div>
-          <div className="bg-[#0077B5] p-3">
-            <img src={"/demo/lkdn.png"} alt="share" />
-          </div>
-          <div className="bg-[#33CCFE] p-3">
-            <img src={"/demo/mdi_twitter.png"} alt="share" />
-          </div>
+      <div className="flex gap-[18px] items-center justify-center max-md:px-5">
+        <div
+          className="w-full max-lg:hidden max-w-[44px]"
+          style={{
+            position: isFixed ? "fixed" : "relative",
+            top: 100,
+            left: isFixed ? 20 : 0,
+            zIndex: 1000,
+            marginTop: isFixed ? "0" : "10px",
+            backgroundColor: "white", // Optional: set a background color
+            transition: "top 0.3s, position 0.3s, margin-top 0.3s", // Add transitions
+          }}
+          ref={tabsRef}
+        >
+          {/* <img src={"/demo/share.png"} alt="share" /> */}
+          <p className="text-primary font-bold text-[10px] leading-3 text-center max-w-[36px]">Share</p>
+
+          <FacebookShare
+            url="https://react-share-kit.vercel.app/v1/default"
+            size={36}
+            borderRadius={8}
+            quote={"quote"}
+          />
+
+          <FacebookMessengerShare
+            url="https://react-share-kit.vercel.app/v1/default"
+            size={36}
+            borderRadius={8}
+            appId={"dmm4kj9djk203k4liuf994p"}
+          />
+
+          <LinkedinShare
+            url="https://react-share-kit.vercel.app/v1/default"
+            size={36}
+            borderRadius={8}
+          />
+
+          <TwitterShare url="#" size={36} borderRadius={8} />
         </div>
         <img
-          src={data.cover_image}
-          className="lg:max-w-[896px] lg:min-h-[500px]"
+          src={urlFor(image?.asset?._ref)}
+          className="lg:max-w-[896px] lg:min-h-[500px] md:hidden"
+          alt=""
+        />
+        <img
+          src={urlFor(image?.mobile?.asset?._ref)}
+          className="lg:max-w-[896px] lg:min-h-[500px] max-md:hidden"
           alt=""
         />
       </div>
 
-      <p className="mt-7 lg:pl-20 pl-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
+      <p className="mt-7 lg:pl-20 px-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
         {" "}
-        {data.introduction?.en}{" "}
+        {introduction?.[locale]}{" "}
       </p>
     </div>
   );

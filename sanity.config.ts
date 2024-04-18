@@ -1,7 +1,7 @@
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `\src\app\studio\[[...index]]\page.tsx` route
  */
-import { Article, Browsers, Files, Globe, MapTrifold, Newspaper, PenNib, Tag } from '@phosphor-icons/react'
+import { Article, Browsers, Files, Globe, MapTrifold, Newspaper, PenNib, Tag , Feather} from '@phosphor-icons/react'
 
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
@@ -17,7 +17,7 @@ import { Activity } from 'lucide-react'
 // const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
 // const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
 
-const CustomDocumentTypes = new Set(['page', 'article', 'blog_page', 'tag'])
+const CustomDocumentTypes = new Set(['page', 'article', 'blog_page', 'tag' , 'auther'])
 // main blogs Page
 
 const Singletons = new Set(['tailor_your_tour', 'globals', 'newsletter_section', 'activity'])
@@ -49,6 +49,10 @@ const deskToolOptions: DeskToolOptions = {
                   .icon(Files)
                   .child(S.documentTypeList('blog_page').title('Blog Pages')),
                 S.listItem().title('Tags').icon(Tag).child(S.documentTypeList('tag').title('Tags')),
+                S.listItem()
+                  .title('Authors')
+                  .icon(Feather)
+                  .child(S.documentTypeList('auther').title('Authors')),
               ])
           ),
         ...S.documentTypeListItems().filter((item: any) => {

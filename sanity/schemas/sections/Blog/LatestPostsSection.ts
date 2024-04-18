@@ -15,16 +15,16 @@ export default defineType({
       description: 'The tagline for the latest posts section',
       type: 'locale_string',
     }),
-    defineField({
-      name: 'title',
-      title: 'Title',
-      description: 'The heading for the latest posts section',
-      type: 'locale_string',
-    }),
+    // defineField({
+    //   name: 'title',
+    //   title: 'Title',
+    //   description: 'The heading for the latest posts section',
+    //   type: 'locale_string',
+    // }),
     defineField({
       name: 'filter_tags',
       title: 'Filter tags',
-      description: 'The filter tags for the latest posts section',
+      description: 'The filter tags for the latest posts section showing posts with these tags',
       type: 'array',
       of: [
         defineArrayMember({

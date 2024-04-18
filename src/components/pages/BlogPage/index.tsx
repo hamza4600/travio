@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Container from "@/components/molecules/container";
 import Layout from "@/components/layout/index";
 import ArticleHeroSection from "./ArticleHeroSection";
 import BlogContentSection from "./BlogContentSection";
@@ -9,15 +8,28 @@ import InThisPost from "./InThisPost";
 
 import BlogReview from "@/components/organisms/BlogReview";
 import BlogSidebar from "@/components/organisms/BlogSidebar";
-import { articleDummy, articleDummyData, blogRev, postDummy } from "./data";
+import { articleDummy, postDummy } from "./data";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import RelatedArticles from "./RelatedArticles";
-import { Facebook, Messenger, Twitter, WhatpsApp } from "./style";
+// import RelatedArticles from "./RelatedArticles";
+import {
+  FacebookShare,
+  TwitterShare,
+  LinkedinShare,
+  FacebookMessengerShare,
+} from "react-share-kit";
 import useWindowSize from "@/hooks/useWindows";
+import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
+import ArticalTestinomial from "./Testimonila";
+import NewsletterSection from "@/components/sections/NewsletterSection";
+// import Container from "@/components/molecules/container";
 
-export default function CurrentBlogPage({ locale, pageData }) {
+export default function CurrentBlogPage({
+  locale,
+  pageData,
+  newsLetterSection,
+}) {
   const { layout, data } = pageData || {};
   console.log("dataBlogPage: ", data);
   const [showBlogSidebar, setShowBlogSidebar] = useState(false);
@@ -34,12 +46,19 @@ export default function CurrentBlogPage({ locale, pageData }) {
       locale={locale}
       globals={layout}
       promo_banner={layout?.banner}
+      maxWidth={false}
     >
-      <Container className="font-satoshi">
-        <div className="flex gap-8 bg-white w-full xl:pr-20">
+      <div className="font-satoshi">
+        <div className="flex justify-center md:gap-8 bg-white w-full">
           <div className="w-full max-w-[1000px]">
+            
             <ArticleHeroSection
-              data={articleDummyData}
+              title={data?.title}
+              image={data?.cover_image}
+              author={data?.auther?.name?.[locale]}
+              introduction={data?.introduction}
+              time={data?.time}
+              locale={locale}
               openSidebar={OpenSidebar}
             />
 
@@ -48,10 +67,18 @@ export default function CurrentBlogPage({ locale, pageData }) {
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
               <p className="lg:hidden text-primary">Share</p>
               <div className="lg:hidden flex items-center justify-center gap-1">
-                <Facebook />
-                <Twitter />
-                <Messenger />
-                <WhatpsApp />
+                <FacebookShare url="#" size={25} borderRadius={50} />
+
+                <FacebookMessengerShare
+                  url="#"
+                  size={25}
+                  borderRadius={50}
+                  appId={"dmm4kj9djk203k4liuf994p"}
+                />
+
+                <LinkedinShare url="#" size={25} borderRadius={71} />
+
+                <TwitterShare url="#" size={25} borderRadius={71} />
               </div>
 
               <BlogContentSection data={articleDummy} />
@@ -60,7 +87,11 @@ export default function CurrentBlogPage({ locale, pageData }) {
 
           {showBlogSidebar && isLaptop ? (
             <div
-              className={`${"absolute z-30 ml-auto right-5 max-xl:top-[140px] max-lg:top-[100px] max-md:top-[80px]"}`}
+              className={`absolute z-30 ml-auto right-0 max-xl:top-[140px] max-lg:top-[100px] max-md:top-[80px] sidebar  ${
+                showBlogSidebar
+                  ? "transition ease-in-out delay-150 translate-x-1"
+                  : "transition-transform translate-x-full"
+              }`}
             >
               <BlogSidebar />
             </div>
@@ -70,12 +101,18 @@ export default function CurrentBlogPage({ locale, pageData }) {
             </div>
           )}
         </div>
+
         <div>
-          <BlogReview data={blogRev} />
+          <BlogReview data={data?.auther} locale={locale} />
         </div>
 
-        <RelatedArticles />
-      </Container>
+        <FeatureTourSection data={data?.suggested_tour} locale={locale} />
+
+        {/* <RelatedArticles /> */}
+        <ArticalTestinomial />
+
+        <NewsletterSection data={newsLetterSection} locale={locale} />
+      </div>
     </Layout>
   );
 }
