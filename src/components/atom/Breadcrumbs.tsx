@@ -23,7 +23,11 @@ const Breadcrumbs = ({
         Home
       </Link>
       {paths.map((path, i) => (
-        <>
+        <div
+          key = {i + path.label}
+          aria-label={path.label}
+          className="flex items-center gap-1"
+        >
           <svg
             width="18"
             height="18"
@@ -48,7 +52,7 @@ const Breadcrumbs = ({
           >
             {path.label}
           </Link>
-        </>
+        </div>
       ))}
     </Container>
   );

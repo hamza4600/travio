@@ -8,6 +8,12 @@ export async function getMainDynamicBlogPage(slug: string) {
         ...,
         sections[] {
           ...,
+          _type == "latest_posts_section" => {
+            ...,
+            filter_tags[]-> {
+                ...
+              }
+           },
           _type == "featured_blogs_section" => {
             ...,
             featured_blogs[]->{

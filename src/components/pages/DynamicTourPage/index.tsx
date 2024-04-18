@@ -73,8 +73,6 @@ const DynamicTourPage = ({ language, pageData }) => {
           );
         })}
       </Root>
-
-      {/* <PriceList data={data.sections[6]} locale={language} slug="" /> */}
     </Layout>
   );
 };

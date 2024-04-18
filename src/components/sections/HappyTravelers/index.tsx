@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
+// import Container from "@/components/molecules/container";
 import SwiperComponent from "@/components/molecules/Swiper";
 
 export const Star = () => (
