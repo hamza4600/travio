@@ -15,10 +15,8 @@ function BlogChoose(props: BlogChooseProps) {
   const pathname = useParams();
 
   const isMatch = `/blogs/${pathname?.slug[0]}`;
-
-  console.log("pathname: ", isMatch);
-
   const { items } = props;
+
   return (
     <div className="flex gap-4 my-12 flex-wrap">
       {items
@@ -38,9 +36,14 @@ function BlogChoose(props: BlogChooseProps) {
         ?.filter((item) => item.link !== isMatch)
         .map((item, index) => {
           return (
-            <Link href={item.link} key={index}>
+            <a 
+                key={index}
+                onClick={() => {
+                  window.location.href = `?tag=${item.title.toLowerCase()}`;
+                }} 
+                >
               <BlogButton title={item.title} images={item.images}></BlogButton>
-            </Link>
+            </a>
           );
         })}
     </div>
@@ -63,7 +66,6 @@ function BlogButton(props: BlogButtonProps) {
           : " bg-transparent border-2 border-opacity-10"
       }`}
     >
-      a
       {images?.map((image, index) => {
         return (
           <Image src={image} height={18} width={18} alt={title} key={index} />

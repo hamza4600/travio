@@ -2,7 +2,7 @@
 import React from "react";
 // import Image from "next/image";
 
-// import { urlFor } from "../../../../sanity/lib/client";
+import { urlFor } from "../../../../sanity/lib/client";
 // import Slicer from "../../../../sanity/slicer";
 
 // import {
@@ -23,7 +23,7 @@ import BlogDetailCard from "@/components/sections/BlogDetailCard";
 // import { BlogPageSectionsMap } from "@/components/sections";
 
 import { Pagination } from "@/components/sections/reviews/Reviews";
-import dummyArticles, { destinations, tags } from "./data";
+import dummyArticles from "./data";
 import BlogChoose from "@/components/molecules/BlogChose";
 import HeroSection from "@/components/sections/hero/HeroSection";
 import GallerySect from "./GallerySect";
@@ -61,7 +61,15 @@ export default function BlogPage({
   //           (s) => s?._type === "image_header_section"
   //         ) as SanityImageHeaderSection);
   // console.log(articles)
-  console.log("BlogsData: ", data)
+  const sections = data?.sections || [];
+  
+  const  imageHeaderData = sections.find((s) => s?._type === "image_header_section")
+  const featuredImages = sections.find((s) => s?._type === "featured_images_section")
+  const latestPosts = sections.find((s) => s?._type === "latest_posts_section")
+
+  console.log("BlogsData: ", latestPosts)
+
+
   const [pageNumber, setPageNumber] = React.useState(0);
 
   const pageSize = 3
@@ -81,25 +89,23 @@ export default function BlogPage({
       globals={layout}
       promo_banner={layout?.banner}
     >
-      <HeroSection data={data.sections[0]} locale={locale} />
-      {/* <Container> */}
-        <GallerySect data={data?.sections[1]} locale={locale} />
-        <Container className={""}>
-          {/* {JSON.stringify(content)} */}
-
+      <HeroSection data={imageHeaderData} locale={locale} />
+        <GallerySect data={featuredImages} locale={locale} />
+        <Container>
           {dummyArticles && (
             <div className="mt-[50px]">
               <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
-                Latest Articles
+                {latestPosts?.tagline?.[locale] || "Latest Posts"}
               </h4>
               <div className="text-yellow md:border-b-[3px] border-b-[#FFBB0B] md:w-[117px] w-[85px] rounded-full border-b-2 my-2" />
 
               <BlogChoose
-                items={[...destinations, ...tags].map((item) => {
+                items={[...latestPosts?.filter_tags].map((item) => {
                   return {
-                    title: item?.name,
-                    link: `/blogs${item.slug}`,
-                    images: [item.icon],
+                    title: item?.name?.[locale] || "All",
+                    link: `${item.slug?.current}`,
+                    images: [urlFor(item.icon?.asset?._ref)],
+
                   };
                 })}
               />
@@ -111,7 +117,7 @@ export default function BlogPage({
                       country={(article.destination as any)?.name?.[locale]}
                       excerpt={article.introduction?.[locale]}
                       image={article.cover_image ? article.cover_image : ""}
-                      link={`/blog${article.slug?.current}`}
+                      link={`${locale}/blog${article.slug?.current}`}
                       title={article.title?.[locale]}
                       date={article.time?.[locale]}
                       author={article.author?.name}
@@ -130,7 +136,6 @@ export default function BlogPage({
             </div>
           )}
         </Container>
-      {/* </Container> */}
     </Layout>
   );
 }
