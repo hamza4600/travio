@@ -15,5 +15,5 @@ export const priceForWeek = (startDate: Date, endDate: Date, data: any) => {
       from.getTime() === startD.getTime() && to.getTime() === endD.getTime()
     );
   });
-  return price[0];
+  return price[0] ? price[0] : null;
 };

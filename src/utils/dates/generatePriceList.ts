@@ -108,6 +108,8 @@ export function generatePriceList(
           endDate.getTime() <= overrideEndDate.getTime()
         );
       });
+      console.log("Price:", price);
+
       next5WeekPrices.push({
         from: startDate,
         to: endDate,
@@ -160,6 +162,7 @@ export function generatePriceList(
   next5WeekPricess.sort((a, b) => {
     return a.from.getTime() - b.from.getTime();
   });
+  console.log("PriceList: ", next5WeekPricess);
 
   return next5WeekPricess;
 }

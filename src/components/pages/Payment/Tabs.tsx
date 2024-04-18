@@ -22,7 +22,6 @@ import Container from "@/components/molecules/container";
 
 import Input from "../TrailYourTour/Input";
 import { generatePriceList } from "@/utils/dates/generatePriceList";
-import { data } from "../HomePage/data";
 
 export default function Tabs({
   children,
@@ -63,7 +62,7 @@ export default function Tabs({
   let currentPrice = 0;
 
   const prices = generatePriceList(
-    data,
+    tour,
     5,
     new Date(tour?.timeline?.timeline?.start_day!).getTime()
   );
@@ -80,6 +79,13 @@ export default function Tabs({
     currentPrice = Number(pricesss.currentPrice[locale]);
   }
 
+  if (promoCode) {
+    discount = (currentPrice * promoCode.percent) / 100;
+
+    if (promoCode.max_discount && discount > promoCode.max_discount) {
+      discount = promoCode.max_discount;
+    }
+  }
   const [page, setPage] = useState(1);
   useEffect(() => {}, [page]);
 
@@ -188,7 +194,12 @@ export default function Tabs({
           <Costing
             clearPromoCode={() => setPromoCode(undefined)}
             setPromoCode={(x: string) => {
-              const code = promo.find((p) => p.code === x);
+              const values = Object.values(promo);
+              console.log("values: ", values);
+
+              const code = values.filter((p) => p.code === x)[0];
+              console.log("code: ", code);
+
               if (code) {
                 setPromoCode(code);
                 return true;

@@ -4,6 +4,7 @@ import {
   getTourPaymentPageSeo,
 } from "@/lib/sanity.PaymentPage";
 import { urlForImage } from "../../../../../../sanity/lib/image";
+import { getPromoCodes } from "@/lib/sanity.Promo";
 
 export async function generateMetadata({ params }) {
   const { handle, language } = params;
@@ -36,12 +37,12 @@ export const revalidate = 3600;
 const Index = async ({ params }: any) => {
   const { handle, language } = params;
   const pageData = await getPaymentPage(handle);
-
+  const promocodes = await getPromoCodes();
   return (
     <PaymentPage
       slug={handle}
       globals={pageData.layout}
-      promo={pageData.layout?.banner}
+      promo={promocodes}
       locale={language}
       data={pageData.data}
     />
