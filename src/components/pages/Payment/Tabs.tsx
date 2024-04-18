@@ -21,6 +21,8 @@ import { Button } from "@/components/ui/button";
 import Container from "@/components/molecules/container";
 
 import Input from "../TrailYourTour/Input";
+import { generatePriceList } from "@/utils/dates/generatePriceList";
+import { data } from "../HomePage/data";
 
 export default function Tabs({
   children,
@@ -56,39 +58,28 @@ export default function Tabs({
   promo: SanityPromoCode[];
 }) {
   const [promoCode, setPromoCode] = useState<SanityPromoCode>();
-  let priceOverrides = pricingData?.price_overrides ?? [];
-  const price = (pricingData as any)?.price;
+  let discount = 0;
+  let actualPrice = 0;
+  let currentPrice = 0;
 
-  priceOverrides = priceOverrides.filter((override: any) => {
-    const overrideStartDate = new Date(override.timeline?.start_date ?? "");
-    const overrideEndDate = new Date(override.timeline?.end_date ?? "");
-    return startDate >= overrideStartDate && endDate <= overrideEndDate;
+  const prices = generatePriceList(
+    data,
+    5,
+    new Date(tour?.timeline?.timeline?.start_day!).getTime()
+  );
+
+  const pricesss = prices.find((p) => {
+    return (
+      p.from.getTime() === startDate.getTime() &&
+      p.to.getTime() === endDate.getTime()
+    );
   });
 
-  let actualPrice =
-    priceOverrides.length > 0
-      ? Number(localizedNumber(priceOverrides[0].price?.initial_price, locale))
-      : Number(localizedNumber(price?.initial_price, locale));
-  let currentPrice =
-    priceOverrides.length > 0
-      ? Number(localizedNumber(priceOverrides[0].price?.discounted_price))
-      : Number(localizedNumber(price?.discounted_price)) || actualPrice;
-  let totalPrice =
-    currentPrice * Number(adultsNumber + childrenNumber) +
-    (Number(addons) || 0) * Number(adultsNumber + childrenNumber);
-  let discount = 0;
-  if (promoCode) {
-    discount = Math.min(
-      (totalPrice * promoCode.percent) / 100,
-      Number(promoCode.max_discount)
-    );
-    totalPrice -= discount;
+  if (pricesss) {
+    actualPrice = Number(pricesss.actualPrice[locale]);
+    currentPrice = Number(pricesss.currentPrice[locale]);
   }
 
-  // const actPrice = parseInt(actualPrice);
-
-  console.log("totalPrice: ", totalPrice);
-  setTotalPrice(totalPrice);
   const [page, setPage] = useState(1);
   useEffect(() => {}, [page]);
 

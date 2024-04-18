@@ -29,6 +29,7 @@ import Tabs from "@/components/pages/Payment/Tabs";
 import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1";
 import Page2, { IContactInfo } from "./Page2";
 import Page3 from "./Page3";
+import { Toast } from "@radix-ui/react-toast";
 // import SEO from "@/components/Seo";
 
 // import { AddBookingMutationVariables } from "../../../../../__generated__/graphql";
@@ -234,7 +235,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
     })
       .then(async (res) => {
         const data = await res.json();
-        console.log(data);
+        alert("Booking sent successfully!. Please wait for confirmation.");
       })
       .catch((err) => {
         console.error(err);

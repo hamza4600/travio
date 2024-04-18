@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 import Container from "@/components/molecules/container";
 import { Any } from "next-sanity";
 import { Input } from "@/components/ui/input";
+import { generatePriceList } from "@/utils/dates/generatePriceList";
+import { priceForWeek } from "@/utils/dates/priceForWeek";
 
 interface SinglePrice {
   from: Date;
@@ -51,91 +53,7 @@ const MAPPINGS = {
   },
 };
 
-function getDay(day: any): 1 | 2 | 3 | 4 | 5 | 6 | 7 | undefined {
-  switch (day) {
-    case "mon":
-      return 1;
-    case "tue":
-      return 2;
-    case "wed":
-      return 3;
-    case "thu":
-      return 4;
-    case "fri":
-      return 5;
-    case "sat":
-      return 6;
-    case "sun":
-      return 7;
-    default:
-      return undefined; // handle the case where 'day' is undefined or not one of the expected values
-  }
-}
-
-function generatePriceList(
-  data: any,
-  n: number = 5,
-  startMonth: number = new Date().getMonth()
-) {
-  // The day of the week on which the tour starts
-  const startDay = data.weekly_schedule?.start_day ?? "mon";
-  // The duration of the tour in days
-  const duration = data.weekly_schedule?.duration ?? 3;
-  // The default price of the tour
-  const price = (data as any)?.price;
-
-  // Prices to override the default price
-  const priceOverrides = (data as any).price_overrides ?? [];
-  console.log("priceOverrides: ", priceOverrides);
-
-  // Generate the next 5 weeks for the tour on the basis of the start day and duration
-  const next5WeekPrices: {
-    from: Date;
-    to: Date;
-    currentPrice?: any;
-    actualPrice?: any;
-  }[] = [];
-  for (let i = 0; i < n; i++) {
-    const startDate = getFirstDayOfMonth(
-      !Number.isNaN(startMonth) ? startMonth : new Date().getMonth()
-    );
-
-    startDate.setDate(startDate.getDate() + (i + 1) * 7);
-    startDate.setDate(
-      startDate.getDate() + ((getDay(startDay)! - startDate.getDay() + 7) % 7)
-    );
-    startDate.setHours(0, 0, 0, 0);
-    const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + duration);
-    endDate.setHours(0, 0, 0, 0);
-    // check if the price is overridden for this week
-    const res = priceOverrides.filter((override: any) => {
-      const overrideStartDate = new Date(override.timeline?.start_date ?? "");
-      const overrideEndDate = new Date(override.timeline?.end_date ?? "");
-      // log in human readable format
-      console.log(
-        `Checking if ${startDate.toDateString()} to ${endDate.toDateString()} is within ${overrideStartDate.toDateString()} to ${overrideEndDate.toDateString()}`
-      );
-
-      return (
-        startDate.getTime() >= overrideStartDate.getTime() &&
-        endDate.getTime() <= overrideEndDate.getTime()
-      );
-    });
-
-    next5WeekPrices.push({
-      from: startDate,
-      to: endDate,
-      currentPrice:
-        res.length > 0
-          ? res[0].price?.discounted_price
-          : price?.discounted_price,
-      actualPrice:
-        res.length > 0 ? res[0].price?.initial_price : price?.initial_price,
-    });
-  }
-  return next5WeekPrices;
-}
+// write a function that takes start date and end date and returns the price for that week using the the function generatePriceList
 
 function PriceList({
   data,
@@ -147,6 +65,7 @@ function PriceList({
   locale: string;
 }) {
   // console.log("priceList5655: ", slug, locale);
+
   const [selected, setSelected] = React.useState(-1);
   const [collapsed, setCollapsed] = React.useState(false);
   const [show, setShow] = React.useState(4);
