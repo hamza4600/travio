@@ -57,7 +57,7 @@ function BlogReview(props: BlogReviewProps) {
         </div>
         {/* right side */}
         <div className="grow max-w-[560px] max-md:text-center text-darkblue md:text-base text-[12px] leading-5">
-          {data.bio?.en}
+          {data.bio?.[locale]}
         </div>
       </div>
     </Container>

@@ -1,7 +1,10 @@
-import React  from "react";
-import LatestArticle from "../pages/BlogPage/LatestArticles";
+import React from "react";
+// import LatestArticle from "../pages/BlogPage/LatestArticles";
+import Image from "next/image";
 import { Button } from "../ui/button";
 import Container from "../molecules/container";
+import Link from "next/link";
+import { urlFor } from "../../../sanity/lib/client";
 
 // const Search = () => (
 //   <svg
@@ -25,81 +28,13 @@ import Container from "../molecules/container";
 //   </svg>
 // );
 
-function BlogSidebar() {
-  
-  
-  const latestArticles = [
-    {
-      title: "Luxor and Karnak Temples Exploration",
-      link: "/",
-      image:
-        "https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&q=60",
-    },
-    {
-      title: "Luxor and Karnak Temples Exploration",
-      link: "/",
-      image:
-        "https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&q=60",
-    },
-    {
-      title: "Luxor and Karnak Temples Exploration",
-      link: "/",
-      image:
-        "https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&q=60",
-    },
-  ];
-  const relatedTours: any = [
-    {
-      title: "Luxor and Karnak Temples Exploration",
-      link: "/",
-      image:
-        "https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&q=60",
-      tourDetails: {
-        days: 8,
-        countries: 3,
-        price: {
-          initial_price: 1000,
-          discounted_price: 800,
-          currency_symbol: "$",
-        },
-      },
-    },
-    {
-      title: "Luxor and Karnak Temples Exploration",
-      link: "/",
-      image:
-        "https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&q=60",
-      tourDetails: {
-        days: 8,
-        countries: 3,
-        price: {
-          initial_price: 1000,
-          discounted_price: 800,
-          currency_symbol: "$",
-        },
-      },
-    },
-    {
-      title: "Luxor and Karnak Temples Exploration",
-      link: "/",
-      image:
-        "https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&q=60",
-      tourDetails: {
-        days: 8,
-        countries: 3,
-        price: {
-          initial_price: 1000,
-          discounted_price: 800,
-          currency_symbol: "$",
-        },
-      },
-    },
-  ];
+function BlogSidebar({ data, locale }: any) {
+  console.log("DataSidebar: ", data);
+
   // const tags = ["India", "Jaipur", "Rajasthan", "Monuments"];
   return (
     <Container className="text-darkblue px-0">
-      <div 
-        className="bg-primary md:w-full md:max-w-[346px] mt-36 px-5 py-10 rounded-[16px]">
+      <div className="bg-primary md:w-full md:max-w-[346px] mt-36 px-5 py-10 rounded-[16px]">
         {/* Search */}
         {/* <h4 className="font-semibold text-xl">Search articles</h4>
         <div className="border-[#FFBB0B] rounded-full my-1 w-[66px] md:border-b-[3px] border-b-2" />
@@ -116,11 +51,31 @@ function BlogSidebar() {
         <hr className="my-5 opacity-40 text-gray" /> */}
 
         {/* Latest Articles */}
-        <h4 className="font-semibold text-xl">Latest articles</h4>
+        <h4 className="font-semibold text-xl">{data[0]?.title?.[locale]}</h4>
         <div className="border-[#FFBB0B] rounded-full my-1 w-[66px] md:border-b-[3px] border-b-2" />
         <div className="flex flex-col gap-3 py-5">
-          {latestArticles.map((article, index) => {
-            return <LatestArticle {...article} key={index} />;
+          {data[0]?.articles.map((article: any, index: number) => {
+            // return <LatestArticle data={data?.[0]?.articles} key={index} />;
+            console.log("Article: ", article);
+            return (
+              <Link
+                key={index}
+                href={`/${locale}/blog${article?.slug?.current}`}
+                className="p-3 rounded-xl flex items-center justify-center gap-2 bg-white shadow-md"
+              >
+                <div className="min-w-[75px] min-h-[75px] h-full rounded-xl overflow-hidden relative">
+                  <Image
+                    src={urlFor(article?.cover_image?.asset?._ref)}
+                    fill
+                    alt=""
+                    style={{ objectFit: "cover", aspectRatio: 1 }}
+                  />
+                </div>
+                <p className="font-semibold md:text-base text-[12px] leading-[18px]">
+                  {article?.title?.[locale]}
+                </p>
+              </Link>
+            );
           })}
         </div>
 
@@ -130,8 +85,72 @@ function BlogSidebar() {
         <h4 className="font-semibold text-xl">Related Tours</h4>
         <div className="border-[#FFBB0B] rounded-full my-1 w-[66px] md:border-b-[3px] border-b-2" />
         <div className="flex flex-col gap-3 py-5">
-          {relatedTours.map((article: any, index: number) => {
-            return <LatestArticle {...article} key={index} />;
+          {data[1]?.tours.map((tour: any, index: number) => {
+            // console.log("ToursData: ", tour);
+            return (
+              <>
+                <Link
+                  href={`/${locale}/tours${tour?.slug?.current}`}
+                  key={index}
+                  className="p-3 rounded-xl flex justify-center gap-2 bg-white shadow-md"
+                >
+                  <div className="w-[73px] min-h-[103px] h-full rounded-xl overflow-hidden relative">
+                    <Image
+                      src={urlFor(tour?.hero_section?.image?.asset?._ref)}
+                      quality={100}
+                      fill
+                      alt=""
+                      style={{ objectFit: "cover", aspectRatio: 1 }}
+                    />
+                  </div>
+
+                  <div className="max-w-[203px]">
+                    <p className="font-semibold md:text-base text-[12px] leading-[18px]">
+                      {tour?.hero_section?.title?.[locale]}
+                    </p>
+                    <div className="grid grid-cols-2 mt-2">
+                      <div className="flex gap-2 items-center">
+                        <Image
+                          src="/calendar.svg"
+                          height={18}
+                          width={18}
+                          alt="calendar"
+                        />
+                        <p className="md:text-[14px] font-medium md:leading-[22px] text-[10px] leading-[18px]">
+                          {tour?.overview_card?.duration?.[locale]}
+                        </p>
+                      </div>
+                      <div className="flex gap-2 items-center">
+                        <Image
+                          src="/globe.svg"
+                          height={18}
+                          width={18}
+                          alt="calendar"
+                        />
+                        <p className="md:text-[14px] font-medium md:leading-[22px] text-[10px] leading-[18px]">
+                          {tour?.overview_card?.countries} countries
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <p className="line-through font-bold text-gray md:text-[12px] text-[10px] leading-5">
+                        $
+                        {tour.price_overrides[0].price.discounted_price[locale]}
+                      </p>
+                      <p className="font-bold text-destructive md:text-[12px] text-[10px] leading-5">
+                        From $
+                        {
+                          tour?.price_overrides[0].price.discounted_price?.[
+                            locale
+                          ]
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </>
+            );
           })}
         </div>
 
@@ -140,9 +159,11 @@ function BlogSidebar() {
         {/* Own tour */}
         <h4 className="font-semibold text-xl">Want to create your own tour</h4>
         <div className="border md:border-b-[3px] w-[66px] border-b-2 rounded-full my-1 border-[#FFBB0B]" />
-        <Button variant={"sky"} className="my-5 py-3 w-full">
-          Tailor your tour
-        </Button>
+        <Link href={`/${locale}/tailor_your_tour`}>
+          <Button variant={"sky"} className="my-5 py-3 w-full">
+            Tailor your tour
+          </Button>
+        </Link>
 
         <hr className="my-5 opacity-40 text-gray" />
 

@@ -1,6 +1,7 @@
-import MainBlogPage from "@/components/pages/AllBlogs-Page";
+import dynamic from "next/dynamic";
 import { getBlogPage, getBlogPageSeo } from "@/lib/sanity.BlogPage";
 import { urlForImage } from "../../../../sanity/lib/image";
+const MainBlogPage = dynamic(() => import("@/components/pages/AllBlogs-Page")) ;
 
 export async function generateMetadata({ params }) {
   const { language } = params;

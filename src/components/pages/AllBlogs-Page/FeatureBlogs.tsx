@@ -6,6 +6,7 @@ import { urlFor } from "../../../../sanity/lib/client";
 import SectionHeader from "@/components/molecules/secHeader";
 
 const FeatureBlogs = ({ data, locale }) => {
+  console.log("FeatureBlog: ", data)
   return (
     <>
       <SectionHeader
