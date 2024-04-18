@@ -67,7 +67,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
 
   // console.log("data12312: ", props);
 
-  if (!content || content[locale]) return null;
+  // if (!content || content[locale]) return null;
 
   const PortableTextSerializer = {
     h3: (props: any) => {
