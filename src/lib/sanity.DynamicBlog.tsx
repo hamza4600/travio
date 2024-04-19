@@ -1,13 +1,39 @@
-    
-import { pageLayout } from './sanity.HomePage';
-import { CLIENT } from './sanity.const';
-    
-export async function getArticalBlogPage(slug: string) {
+import { pageLayout } from "./sanity.HomePage";
+import { CLIENT } from "./sanity.const";
 
-  const blogPageQuery =  `*[_type == "article"  && slug.current == "/egypt-blog"][0] {
+export async function getArticalBlogPage(slug: string) {
+  const blogPageQuery = `*[_type == "article"  && slug.current == "/${slug}"][0] {
     ...,
   auther->{
     ...
+  },
+  sidebar []{
+    title,
+    articles[]-> {
+      title,
+      cover_image,
+      slug
+    },
+    tours []-> {
+      slug,
+      hero_section,
+      price_overrides,
+      overview_card
+    }
+},
+related_articles  {
+     title,
+    tagline,
+       "blogs": articles[]-> {
+         title,
+         cover_image,
+         time,
+         slug,
+         introduction,
+        auther-> {
+          name
+        },     
+       }
   },
 
   suggested_tour {
@@ -23,42 +49,40 @@ export async function getArticalBlogPage(slug: string) {
         }
       }
     }
-  }`
+  }`;
 
-    const query = `{
+  const query = `{
         "layout":  ${pageLayout},
         "data":  ${blogPageQuery}
-    }`
+    }`;
 
-    return await CLIENT.fetch(query)
+  return await CLIENT.fetch(query);
 }
 
-
-export async function getArticalPageSeo(slug:string) {
+export async function getArticalPageSeo(slug: string) {
   const seoQuery = `*[_type == "article"  && slug.current == "/${slug}"][0]{
     meta_data
-  }`
+  }`;
 
-  return await CLIENT.fetch(seoQuery)
+  return await CLIENT.fetch(seoQuery);
 }
 
 // return slug of all the blogs
 export async function getAllArticalBlogSlugs() {
   const query = `*[_type == "article"]{
     "slug": slug.current
-  }`
+  }`;
 
-  return await CLIENT.fetch(query)
+  return await CLIENT.fetch(query);
 }
 
 // testimonials sect
 export async function getTestimonials() {
-  
   const query = `*[_type == "page"  && slug.current == "/"][0]{
     sections[_type == "testimonial_section" && defined(title)] {
           ...
     },
-  }`
+  }`;
 
-  return await CLIENT.fetch(query)
+  return await CLIENT.fetch(query);
 }

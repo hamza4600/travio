@@ -67,7 +67,7 @@ const ArticleHeroSection = ({
 
       <div className="flex gap-[18px] items-center justify-center max-md:px-5">
         <div
-          className="w-full max-lg:hidden max-w-[44px]"
+          className="w-full max-lg:hidden max-w-[36px]"
           style={{
             position: isFixed ? "fixed" : "relative",
             top: 100,
@@ -116,7 +116,7 @@ const ArticleHeroSection = ({
         />
       </div>
 
-      <p className="mt-7 lg:pl-20 px-5 font-normal md:font-medium leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] text-[16px]">
+      <p className="mt-7 lg:pl-20 px-5 font-normal md:font-medium md:leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] md:text-[16px] text-[14px] leading-6">
         {" "}
         {introduction?.[locale]}{" "}
       </p>

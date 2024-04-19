@@ -8,7 +8,6 @@ import InThisPost from "./InThisPost";
 
 import BlogReview from "@/components/organisms/BlogReview";
 import BlogSidebar from "@/components/organisms/BlogSidebar";
-import { articleDummy, postDummy } from "./data";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -23,7 +22,7 @@ import useWindowSize from "@/hooks/useWindows";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 import ArticalTestinomial from "./Testimonila";
 import NewsletterSection from "@/components/sections/NewsletterSection";
-// import Container from "@/components/molecules/container";
+import FeatureBlogs from "../AllBlogs-Page/FeatureBlogs";
 
 export default function CurrentBlogPage({
   locale,
@@ -49,8 +48,10 @@ export default function CurrentBlogPage({
       maxWidth={false}
     >
       <div className="font-satoshi">
-        <div className="flex justify-center md:gap-8 bg-white w-full">
+        <div className="flex md:gap-8 bg-white w-full max-w-[1440px] mx-auto">
           <div className="w-full max-w-[1000px]">
+         
+
             
             <ArticleHeroSection
               title={data?.title}
@@ -62,7 +63,7 @@ export default function CurrentBlogPage({
               openSidebar={OpenSidebar}
             />
 
-            <InThisPost data={postDummy} />
+            <InThisPost data={data?.subsections} locale={locale} />
 
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
               <p className="lg:hidden text-primary">Share</p>
@@ -81,7 +82,8 @@ export default function CurrentBlogPage({
                 <TwitterShare url="#" size={25} borderRadius={71} />
               </div>
 
-              <BlogContentSection data={articleDummy} />
+          
+              <BlogContentSection actualData={data?.subsections} locale={locale}  />
             </div>
           </div>
 
@@ -93,11 +95,11 @@ export default function CurrentBlogPage({
                   : "transition-transform translate-x-full"
               }`}
             >
-              <BlogSidebar />
+              <BlogSidebar data={data?.sidebar} locale={locale} />
             </div>
           ) : (
             <div className={"max-xl:hidden z-20"}>
-              <BlogSidebar />
+              <BlogSidebar data={data?.sidebar} locale={locale} />
             </div>
           )}
         </div>
@@ -109,7 +111,8 @@ export default function CurrentBlogPage({
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
         {/* <RelatedArticles /> */}
-        <ArticalTestinomial />
+        <FeatureBlogs data={data?.related_articles} locale={locale} />
+        <ArticalTestinomial locale={locale} />
 
         <NewsletterSection data={newsLetterSection} locale={locale} />
       </div>
