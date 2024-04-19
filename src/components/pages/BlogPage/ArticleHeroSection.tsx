@@ -16,6 +16,7 @@ const ArticleHeroSection = ({
   time,
   locale,
   author,
+  slug,
   openSidebar,
 }: {
   title: string;
@@ -24,6 +25,7 @@ const ArticleHeroSection = ({
   time: string;
   locale: string;
   author: string;
+  slug;
   openSidebar: () => void;
 }) => {
   const [isFixed, setIsFixed] = useState(false);
@@ -80,29 +82,36 @@ const ArticleHeroSection = ({
           ref={tabsRef}
         >
           {/* <img src={"/demo/share.png"} alt="share" /> */}
-          <p className="text-primary font-bold text-[10px] leading-3 text-center max-w-[36px]">Share</p>
+          <p className="text-primary font-bold text-[10px] leading-3 text-center max-w-[36px]">
+            Share
+          </p>
 
           <FacebookShare
-            url="https://react-share-kit.vercel.app/v1/default"
+            url={`https://travio-seven.vercel.app/en/blog${slug}`}
             size={36}
             borderRadius={8}
-            quote={"quote"}
+            quote={title?.[locale]}
+            i18nIsDynamicList
           />
 
           <FacebookMessengerShare
-            url="https://react-share-kit.vercel.app/v1/default"
+            url={`https://travio-seven.vercel.app/en/blog${slug}`}
             size={36}
             borderRadius={8}
             appId={"dmm4kj9djk203k4liuf994p"}
           />
 
           <LinkedinShare
-            url="https://react-share-kit.vercel.app/v1/default"
+            url={`https://travio-seven.vercel.app/en/blog${slug}`}
             size={36}
             borderRadius={8}
           />
 
-          <TwitterShare url="#" size={36} borderRadius={8} />
+          <TwitterShare
+            url={`https://travio-seven.vercel.app/en/blog${slug}`}
+            size={36}
+            borderRadius={8}
+          />
         </div>
         <img
           src={urlFor(image?.asset?._ref)}
