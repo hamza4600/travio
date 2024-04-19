@@ -50,9 +50,6 @@ export default function CurrentBlogPage({
       <div className="font-satoshi">
         <div className="flex md:gap-8 bg-white w-full max-w-[1440px] mx-auto">
           <div className="w-full max-w-[1000px]">
-         
-
-            
             <ArticleHeroSection
               title={data?.title}
               image={data?.cover_image}
@@ -61,6 +58,7 @@ export default function CurrentBlogPage({
               time={data?.time}
               locale={locale}
               openSidebar={OpenSidebar}
+              slug={data?.slug?.current}
             />
 
             <InThisPost data={data?.subsections} locale={locale} />
@@ -68,22 +66,36 @@ export default function CurrentBlogPage({
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
               <p className="lg:hidden text-primary">Share</p>
               <div className="lg:hidden flex items-center justify-center gap-1">
-                <FacebookShare url="#" size={25} borderRadius={50} />
+                <FacebookShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={50}
+                />
 
                 <FacebookMessengerShare
-                  url="#"
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
                   size={25}
                   borderRadius={50}
                   appId={"dmm4kj9djk203k4liuf994p"}
                 />
 
-                <LinkedinShare url="#" size={25} borderRadius={71} />
+                <LinkedinShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={71}
+                />
 
-                <TwitterShare url="#" size={25} borderRadius={71} />
+                <TwitterShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={71}
+                />
               </div>
 
-          
-              <BlogContentSection actualData={data?.subsections} locale={locale}  />
+              <BlogContentSection
+                actualData={data?.subsections}
+                locale={locale}
+              />
             </div>
           </div>
 
@@ -110,8 +122,10 @@ export default function CurrentBlogPage({
 
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
-        {/* <RelatedArticles /> */}
-        <FeatureBlogs data={data?.related_articles} locale={locale} />
+        <div className="w-full max-w-[1440px] mx-auto max-md:mt-[50px]">
+          <FeatureBlogs data={data?.related_articles} locale={locale} />
+        </div>
+
         <ArticalTestinomial locale={locale} />
 
         <NewsletterSection data={newsLetterSection} locale={locale} />
