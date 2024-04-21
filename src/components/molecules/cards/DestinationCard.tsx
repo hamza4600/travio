@@ -3,6 +3,7 @@ import React from "react";
 
 import { displayNumber } from "@/utils/utils";
 import { urlFor } from "../../../../sanity/lib/client";
+import { tourPackagesTn } from "@/lib/utils";
 
 const DestinationCard = ({ data, tourCount, locale }) => {
   const image = data?.image;
@@ -24,7 +25,7 @@ const DestinationCard = ({ data, tourCount, locale }) => {
       </h3>
       {tourCount && (
         <p className="text-gray font-medium mt-0 md:mt-[2px] text-[12px] leading-5">
-          {displayNumber(tourCount, "Tour Package")}
+          {displayNumber(tourCount, tourPackagesTn?.[locale])}
         </p>
       )}
     </div>

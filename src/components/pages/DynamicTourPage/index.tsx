@@ -10,7 +10,7 @@ import Container from "@/components/molecules/container";
 const AppTabs = dynamic(
   () => import("@/components/molecules/AppTabs/AppTabse")
 );
-import { tabsData } from "./data";
+import { topbarTn } from "@/lib/utils";
 
 const OverViewCard = dynamic(() => import("./Overview"));
 const HeroSection = dynamic(() => import("./HeroSection"));
@@ -38,6 +38,15 @@ const DynamicTourPage = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
 
   const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb, language);
+
+  const tabsData = [
+    { name: topbarTn?.[language]?.Overview, href: "#overview" },
+    { name: topbarTn?.[language]?.TripHighlights, href: "#price-list" },
+    { name: topbarTn?.[language]?.Itinerary, href: "#itinerary" },
+    { name: topbarTn?.[language]?.Inclusions, href: "#inclusions" },
+    { name: topbarTn?.[language]?.EssentialsTravelInformation, href: "#travel-info" },
+    { name: topbarTn?.[language]?.Reviews, href: "#reviews" },
+  ];
 
   return (
     <Layout

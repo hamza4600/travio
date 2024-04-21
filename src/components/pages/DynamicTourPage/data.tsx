@@ -374,15 +374,6 @@ export const memorableExperiencesData = {
   ],
 };
 
-export const tabsData = [
-  { name: "Overview", href: "#overview" },
-  { name: "Trip Highlights", href: "#price-list" },
-  { name: "Itinerary", href: "#itinerary" },
-  { name: "Inclusions", href: "#inclusions" },
-  { name: "Essentials Travel Information", href: "#travel-info" },
-  { name: "Reviews", href: "#reviews" },
-];
-
 export const contentData = {
   title: {
     en: "Sample Title",

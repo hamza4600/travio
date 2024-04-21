@@ -50,7 +50,7 @@ const ContactSection = ({ data, locale }: { data: any; locale: string }) => {
             </Text>
             <Button
               variant={"sky"}
-              className="md:h-12 h-10 md:max-w-[312px] max-md:text-[14px] max-md:leading-6 max-md:font-medium max-w-[245px] max-md:px-5 font-bold"
+              className="md:h-12 h-10 w-fit max-md:text-[14px] max-md:leading-6 max-md:font-medium max-md:px-5 font-bold"
             >
               {data.cta?.label?.[locale]}
             </Button>

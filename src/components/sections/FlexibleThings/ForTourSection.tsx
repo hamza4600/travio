@@ -9,6 +9,7 @@ import {
 } from "../../../../sanity/lib/types";
 
 import Container from "@/components/molecules/container";
+import { simpleThingTn } from "@/lib/utils";
 
 export type FeatureSectionProps = {
   data: SanityFeatureSection;
@@ -41,7 +42,7 @@ const TourFeature = ({ data, locale }) => {
         {data?.type == "small" ? (
           <div className="px-7 py-[18px]">
             <div className="lg:text-xl text-base font-bold pb-5 md:pb-[18px]">
-              Keep Things Simple
+              {simpleThingTn?.[locale]}
             </div>
             <div className="grid grid-cols-2 gap-7 lg:grid-cols-4 mx-auto">
               {data?.features?.map((feature, index) => (

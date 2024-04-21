@@ -20,35 +20,78 @@ import {
   LeafSelected,
 } from "./style";
 import Input from "./Input";
+import { formFieldsTn } from "@/lib/utils";
 
 export default function Step2({
   control,
   setValue,
+  locale,
 }: {
   setValue: UseFormSetValue<TailorTripFormData>;
   control: Control<any>;
+  locale: string;
 }) {
   const CategoriesOptions = [
-    { name: "Historic Sites", icon: <Leaf />, iconSelected: <LeafSelected /> },
     {
-      name: "Religious Sites",
+      name: {
+        en: "Historic Sites",
+        es: "Sitios históricos",
+        por: "Locais históricos",
+      },
+      icon: <Leaf />,
+      iconSelected: <LeafSelected />,
+    },
+    {
+      name: {
+        en: "Religious Sites",
+        es: "Lugares religiosos",
+        por: "Locais religiosos",
+      },
       icon: <Cross />,
       iconSelected: <CrossSelected />,
     },
     {
-      name: "Beach",
+      name: {
+        en: "Beach",
+        es: "Playa",
+        por: "Praia",
+      },
       icon: <WaveTriangle />,
       iconSelected: <WaveTriangleSelected />,
     },
-    { name: "Desert Safaris", icon: <Car />, iconSelected: <CarSelected /> },
-    { name: "Cruises", icon: <Boat />, iconSelected: <BoatSelected /> },
     {
-      name: "Outdoor Activities",
+      name: {
+        en: "Desert Safaris",
+        es: "Safaris por el desierto",
+        por: "Safaris no deserto",
+      },
+      icon: <Car />,
+      iconSelected: <CarSelected />,
+    },
+    {
+      name: {
+        en: "Cruises",
+        es: "Cruceros",
+        por: "Cruzeiros",
+      },
+      icon: <Boat />,
+      iconSelected: <BoatSelected />,
+    },
+    {
+      name: {
+        en: "Outdoor Activities",
+        es: "Actividades al aire libre",
+        por: "Atividades ao ar livre",
+      },
       icon: <Compass />,
       iconSelected: <CompassSelected />,
     },
     {
-      name: "Wellness Activities",
+      name: {
+        en: "Wellness Activities",
+        es: "Actividades de bienestar",
+        por: "Atividades de bem-estar",
+      },
       icon: <FinnTheHuman />,
       iconSelected: <FinnTheHumanSelected />,
     },
@@ -70,19 +113,29 @@ export default function Step2({
 
   return (
     <div className="grid lg:grid-cols-2 font-satoshi grid-cols-1 gap-[18px] md:px-3 px-5 lg:px-12">
-      <Input name="name" label="Name*" type="text" control={control} />
-      <Input name="email" label="Email*" type="text" control={control} />
+      <Input
+        name="name"
+        label={`${formFieldsTn?.[locale]?.name}*`}
+        type="text"
+        control={control}
+      />
+      <Input
+        name="email"
+        label={`${formFieldsTn?.[locale]?.email}*`}
+        type="text"
+        control={control}
+      />
       <Input
         control={control}
         name="nationality"
-        label="Nationality*"
+        label={`${formFieldsTn?.[locale]?.nationality}*`}
         options={countries.map((c) => ({ value: c.name, label: c.name }))}
         type="select"
         placeholder="Select your Nationality"
         className="h-[38px]"
       />
       <div className="flex  font-medium text-base text-black flex-col gap-2">
-        <label htmlFor="mobileNumber">Mobile</label>
+        <label htmlFor="mobileNumber">{formFieldsTn?.[locale]?.mobile}</label>
         <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-3">
           <Input
             name="mobileCode"
@@ -103,18 +156,20 @@ export default function Step2({
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="font-medium text-base text-black">Number of People*</p>
+        <p className="font-medium text-base text-black">
+          {formFieldsTn?.[locale]?.people}*
+        </p>
         <div className="grid grid-cols-2 gap-3">
           <Input
             name="numberOfAdults"
-            placeholder="Adults"
+            placeholder={formFieldsTn?.[locale]?.adults}
             type="buttonNumber"
             control={control}
           />
           <Input
             name="numberOfChildrens"
             control={control}
-            placeholder="Children"
+            placeholder={formFieldsTn?.[locale]?.children}
             type="buttonNumber"
           />
         </div>
@@ -123,7 +178,7 @@ export default function Step2({
         control={control}
         label={
           <p className="flex gap-[6px] items-center">
-            Your Budget
+            {formFieldsTn?.[locale]?.budget}
             <span className="font-normal text-xs text-gray">
               (Excluding international flights)
             </span>
@@ -145,14 +200,15 @@ export default function Step2({
           name="categories"
           type="boxSelection"
           options={CategoriesOptions}
-          label={"Select Categories"}
+          label={formFieldsTn?.[locale]?.cate}
+          locale={locale}
         />
       </div>
       <div className="col-span-full">
         <Input
           control={control}
           type="textarea"
-          label="More Information"
+          label={formFieldsTn?.[locale]?.more}
           name="moreInfo"
         />
       </div>

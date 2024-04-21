@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Text } from "../../ui/text";
 import { Button } from "../../ui/button";
 import { urlFor } from "../../../../sanity/lib/client";
+import { cardButtonTn, saveTn } from "@/lib/utils";
 
 const type =
   "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center";
@@ -119,7 +120,7 @@ const TourCard = ({
                 variant={"destructive"}
                 className="text-[10px] md:-mt-2 md:text-xs font-bold leading-[20px] md:leading-[28px]"
               >
-                You Save ${formattedPrice(old_price - price)}
+                {saveTn?.[locale]} ${formattedPrice(old_price - price)}
               </Text>
             </div>
           </div>
@@ -130,7 +131,7 @@ const TourCard = ({
             variant={"sky"}
             style={{ width: "100%" }}
           >
-            View Trip
+            {cardButtonTn?.[locale]}
           </Button>
         </div>
       </div>
