@@ -1,56 +1,237 @@
 import React from "react";
-// import PortableText from "react-portable-text";
+import PortableText from "react-portable-text";
+import styled from "styled-components";
+import { urlFor } from "../../../../sanity/lib/client";
+import { Button } from "@/components/ui/button";
 
-const BlogContentSection = ({ data }: any) => {
-  return (
-    <div className="my-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
-      {data.map((item: any, index: any) => {
-        return (
-          <div key={index} className="text-black gap-[18px] flex flex-col ">
-            {/* {item.title?.en && (
-              <PortableText content={item.title?.en} serializers={{}} />
-            )}
-            {item.content?.en && (
-              <PortableText content={item.content?.en} serializers={{}} />
-            )} */}
+const RootStyle = styled.div`
+  p {
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: normal;
+    color: #140d31;
+  }
 
-            {item.title?.en && (
-              <div className="flex flex-col gap-[10px] md:text-[14px] md:leading-[34px] font-bold text-[20px] leading-[30px]">
-                <p className="text-[24px] leading-[34px] font-bold text-darkblue">
-                  {item.title?.en}
-                </p>
-                <div className="border md:border-b-[3px] border-b border-[#FFBB0B] md:w-[88px} w-[101px]" />
-                <p className="text-darkblue md:text-[16px] md:leading-7 text-[12px] font-normal leading-5">
-                  {item.desc}
-                </p>
-                <div className="">
-                  <div className="md:mt-[60px] mt-[50px]">
-                    <p className="text-[24px] leading-[34px] font-bold text-darkblue">
-                      {item.imageTitle}
-                    </p>
-                    <div className="border md:border-b-[3px] border-b border-[#FFBB0B] mt-2.5 md:w-[88px} w-[101px]" />
-                  </div>
-                  <img
-                    src={item.img}
-                    className="xl:max-w-[896px] xl:min-h-[567px] max-sm:w-full mt-[18px]"
-                    alt=""
-                  />
-                  <p className="text-center text-[14px] leading-[22px] text-[rgba(20, 13, 49, 0.75)] mt-2 font-medium">
-                    {item.imgAlt}
-                  </p>
-                </div>
-              </div>
-            )}
-            {item.content?.en && (
-              <p className="text-darkblue md:text-[16px] md:leading-7 text-[12px] leading-5">
-                {item.content?.en}
-              </p>
+  @media (max-width: 768px) {
+    p {
+      font-size: 12px;
+      line-height: 20px;
+      font-weight: normal;
+    }
+  }
+`;
+
+export const removeSpace = (str: string) => {
+  const newStr = str.replace(/\s/g, "-");
+  return newStr.toLowerCase();
+};
+
+const BlogContentSection = ({ actualData, locale }: any) => {
+  const PortableTextSerializer = {
+    h3: (props) => {
+      if (!props) return null;
+
+      return (
+        <div className="">
+          <h3 className="font-bold text-2xl font-satoshi text-darkblue">
+            {props.children}
+          </h3>
+          <div className="md:w-[74px] border-b md:my-2 my-1 md:border-b-[3px] border-[#FFBB0B] max-w-[25%]  rounded-full" />
+        </div>
+      );
+    },
+
+    ul: (props) => {
+      if (!props) return null;
+
+      return (
+        <ul className="list-disc pl-5">
+          {props.children.map((child, index) => (
+            <li key={index} className="mb-2 leading-6">
+              {child}
+            </li>
+          ))}
+        </ul>
+      );
+    },
+
+    ol: (props) => {
+      if (!props) return null;
+
+      return (
+        <ol className="list-decimal pl-5">
+          {props.children.map((child, index) => (
+            <li key={index} className="mb-2 leading-6">
+              {child}
+            </li>
+          ))}
+        </ol>
+      );
+    },
+
+    li: (props) => {
+      if (!props) return null;
+
+      return <li className="mb-2 leading-6">{props.children}</li>;
+    },
+
+    p: (props) => {
+      if (!props) return null;
+
+      return (
+        <p className="text-darkblue md:text-[16px] md:leading-7 text-[12px] font-normal leading-5">
+          {props.children}
+        </p>
+      );
+    },
+
+    div: (props) => {
+      if (!props) return null;
+
+      return <div {...props}>{props.children}</div>;
+    },
+
+    // span: (props) => {
+    //   if (!props) return null;
+
+    //   return <span {...props}>{props.children}</span>;
+    // },
+
+    // strong: (props) => {
+    //   if (!props) return null;
+
+    //   return <strong {...props}>{props.children}</strong>;
+    // },
+
+    a: (props) => {
+      if (!props) return null;
+
+      return <a {...props}>{props.children}</a>;
+    },
+
+    em: (props) => {
+      if (!props) return null;
+
+      return <em {...props}>{props.children}</em>;
+    },
+
+    layout_group: (props) => {
+      if (!props) return null;
+
+      // console.log("ImageProps: ", props);
+
+      return (
+        <>
+          <div className="flex flex-col gap-6">
+            <img
+              src={urlFor(props?.items[0]?.items[1]?.image?.asset?._ref)}
+              className="xl:max-w-[896px] xl:min-h-[567px] h-[178px] max-sm:w-full mt-[18px]"
+              alt=""
+              style={{ aspectRatio: 1 }}
+            />
+            {props?.items[0]?.items[0].text?.[locale] && (
+              <RootStyle>
+                <PortableText
+                  content={props?.items[0]?.items[0].text?.[locale]}
+                />
+              </RootStyle>
             )}
           </div>
-        );
+        </>
+      );
+    },
+  };
+
+  // console.log("actulData: ", actualData);
+  return (
+    <div className="my-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
+      {actualData.map((item: any, index: any) => {
+        if (item._type === "subsection") {
+          return (
+            <div key={index} className="text-black gap-[18px] flex flex-col ">
+              <div className="flex flex-col gap-[10px] md:text-[14px] md:leading-[34px] font-bold text-[20px] leading-[30px]">
+                <p
+                  id={removeSpace(item?.tagline?.[locale])}
+                  // onClick={() => }
+                  className="text-[24px] leading-[34px] font-bold text-darkblue"
+                >
+                  {item?.tagline?.[locale]}
+                </p>
+                <div className="border md:border-b-[3px] border-b border-[#FFBB0B] md:w-[88px} w-[101px]" />
+                {item?.content?.[locale]?.map((content: any, i: number) => (
+                  <RootStyle key={i}>
+                    <PortableText
+                      content={content}
+                      serializers={PortableTextSerializer}
+                    />
+                  </RootStyle>
+                ))}
+              </div>
+            </div>
+          );
+        } else if (item._type === "bannerSection") {
+          // console.log("BannerItem: ", item);
+          return (
+            <div key={index}>
+              <BannerSection
+                image={item.image}
+                description={item.description}
+                title={item.title}
+                locale={locale}
+              />
+            </div>
+          );
+        } else {
+          return null;
+        }
       })}
     </div>
   );
 };
+
+function BannerSection({
+  image,
+  title,
+  description,
+  locale,
+}: {
+  image: any;
+  title: string;
+  description: string;
+  locale: string;
+}) {
+  return (
+    <div className="flex items-center max-w-[896px] md:min-h-[188px]">
+      <div className="bg-[#3FA9F5] w-[50%] md:rounded-l-[16px] rounded-l-[6px] max-md:h-[100px]">
+        <div className="flex gap-5 items-center">
+          <img
+            className="opacity-50 max-md:h-[100px] rounded-l-[6px] md:rounded-l-[16px] md:h-full"
+            src="/demo/banner2.png"
+            alt="banner"
+          />
+          <div className="">
+            <p className="text-white md:text-[14px] md:leading-[22px] md:font-bold text-[8px] leading-3 font-medium">
+              {title?.[locale]}
+            </p>
+            <p className="text-white md:text-[28px] md:leading-[36px] md:font-bold text-[12px] leading-[18px] font-medium">
+              {description?.[locale]}
+            </p>
+            <Button className="bg-white text-primary md:text-[14px] md:leading-[22px] md:font-bold text-[8px] leading-3 font-medium md:mt-[26px] mt-[11px] max-md:h-5 max-md:max-w-[66px]">
+              View tours
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-[50%]">
+        <img
+          className="max-md:h-[100px] h-[188px] rounded-e-[6px] md:rounded-e-[16px]"
+          src={urlFor(image?.asset?._ref)}
+          alt="bannerTourPhoto"
+        />
+      </div>
+    </div>
+  );
+}
 
 export default BlogContentSection;

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-// import Image from "next/image";
 
 import { urlFor } from "../../../../sanity/lib/client";
 // import Slicer from "../../../../sanity/slicer";
@@ -23,7 +22,6 @@ import BlogDetailCard from "@/components/sections/BlogDetailCard";
 // import { BlogPageSectionsMap } from "@/components/sections";
 
 import { Pagination } from "@/components/sections/reviews/Reviews";
-import dummyArticles from "./data";
 import BlogChoose from "@/components/molecules/BlogChose";
 import HeroSection from "@/components/sections/hero/HeroSection";
 import GallerySect from "./GallerySect";
@@ -66,8 +64,9 @@ export default function BlogPage({
   const  imageHeaderData = sections.find((s) => s?._type === "image_header_section")
   const featuredImages = sections.find((s) => s?._type === "featured_images_section")
   const latestPosts = sections.find((s) => s?._type === "latest_posts_section")
+  const feature_blogs = sections.find((s) => s?._type === "featured_blogs_section")
 
-  console.log("BlogsData: ", latestPosts)
+  console.log("BlogsData: ", sections)
 
 
   const [pageNumber, setPageNumber] = React.useState(0);
@@ -92,7 +91,6 @@ export default function BlogPage({
       <HeroSection data={imageHeaderData} locale={locale} />
         <GallerySect data={featuredImages} locale={locale} />
         <Container>
-          {dummyArticles && (
             <div className="mt-[50px]">
               <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
                 {latestPosts?.tagline?.[locale] || "Latest Posts"}
@@ -108,19 +106,20 @@ export default function BlogPage({
 
                   };
                 })}
-              />
+                />
+              
 
               <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
-                {data?.sections[2]?.featured_blogs?.slice(pageNumber * pageSize, pageNumber * pageSize + pageSize)?.map((article, index) => {
+                {feature_blogs.featured_blogs?.slice(pageNumber * pageSize, pageNumber * pageSize + pageSize)?.map((article, index) => {
                   return (
                     <BlogDetailCard
                       country={(article.destination as any)?.name?.[locale]}
                       excerpt={article.introduction?.[locale]}
                       image={article.cover_image ? article.cover_image : ""}
-                      link={`${locale}/blog${article.slug?.current}`}
+                      link={`/${locale}/blog${article.slug?.current}`}
                       title={article.title?.[locale]}
                       date={article.time?.[locale]}
-                      author={article.author?.name}
+                      author={article.auther?.name?.[locale]}
                       key={index}
                     />
                   );
@@ -134,7 +133,7 @@ export default function BlogPage({
                 onChange={setPageNumber}
               />
             </div>
-          )}
+         
         </Container>
     </Layout>
   );

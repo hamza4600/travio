@@ -40,7 +40,7 @@ const InterestSection = (props) => {
                 }
               >
                 <Link
-                  href={`/${locale}/blog${item.slug?.current}`}
+                  href={`/${locale}/blogs${item.slug?.current}`}
                   className="justify-center items-center text-center flex flex-col"
                 >
                   {/* <div className=""> */}

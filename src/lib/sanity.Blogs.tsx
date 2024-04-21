@@ -19,6 +19,9 @@ export async function getMainDynamicBlogPage(slug: string) {
             featured_blogs[]->{
               ...,
               tags[]->,
+              auther->{
+                name
+              },
               destination-> {
                 name,
               }

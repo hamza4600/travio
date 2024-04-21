@@ -1,6 +1,7 @@
-import BlogPage from "@/components/pages/Dynamic-Blog-Page";
 import { getDynamicBlogPageSeo, getMainDynamicBlogPage } from "@/lib/sanity.Blogs";
 import { urlForImage } from "../../../../../sanity/lib/image";
+import dynamic from "next/dynamic";
+const BlogPage =  dynamic(() => import("@/components/pages/Dynamic-Blog-Page"));
 
 export async function generateMetadata({ params }) {
   const { language, slug } = params;
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export const revalidate = 3600;
+export const revalidate = 36;
 
 const Index = async ({ params }: { params: any }) => {
   

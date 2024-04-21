@@ -27,5 +27,7 @@ export function displayNumber(
 }
 
 export function getChars(chars: string, length: number) {
-  return chars.length > length ? chars.substring(0, length) + "..." : chars;
+  if(chars) {
+    return chars.length > length ? chars.substring(0, length) + "..." : chars;
+  }
 }

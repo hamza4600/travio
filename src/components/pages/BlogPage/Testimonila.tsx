@@ -2,7 +2,7 @@ import TravlerReviews from "@/components/sections/HappyTravelers";
 import { getTestimonials } from "@/lib/sanity.DynamicBlog";
 import useSWR from "swr";
 
-const ArticalTestinomial = () => {
+const ArticalTestinomial = ({ locale }: { locale: string }) => {
   const { data, isLoading } = useSWR("getTestimonials", getTestimonials);
 
   if (isLoading) return <div>Loading...</div>;
@@ -12,7 +12,7 @@ const ArticalTestinomial = () => {
     <>
       {/* {JSON.stringify(data.sections)} */}
       <div className="mb-[140px]">
-        <TravlerReviews data={data?.sections[0]} locale="en" />
+        <TravlerReviews data={data?.sections[0]} locale={locale} />
       </div>
     </>
   );

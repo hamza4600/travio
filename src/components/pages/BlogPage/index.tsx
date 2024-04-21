@@ -8,11 +8,9 @@ import InThisPost from "./InThisPost";
 
 import BlogReview from "@/components/organisms/BlogReview";
 import BlogSidebar from "@/components/organisms/BlogSidebar";
-import { articleDummy, postDummy } from "./data";
 
 import "swiper/css";
 import "swiper/css/navigation";
-// import RelatedArticles from "./RelatedArticles";
 import {
   FacebookShare,
   TwitterShare,
@@ -23,7 +21,7 @@ import useWindowSize from "@/hooks/useWindows";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 import ArticalTestinomial from "./Testimonila";
 import NewsletterSection from "@/components/sections/NewsletterSection";
-// import Container from "@/components/molecules/container";
+import FeatureBlogs from "../AllBlogs-Page/FeatureBlogs";
 
 export default function CurrentBlogPage({
   locale,
@@ -31,7 +29,7 @@ export default function CurrentBlogPage({
   newsLetterSection,
 }) {
   const { layout, data } = pageData || {};
-  console.log("dataBlogPage: ", data);
+  // console.log("dataBlogPage: ", data);
   const [showBlogSidebar, setShowBlogSidebar] = useState(false);
   const windows = useWindowSize();
   const isLaptop = windows.width < 1284;
@@ -49,9 +47,8 @@ export default function CurrentBlogPage({
       maxWidth={false}
     >
       <div className="font-satoshi">
-        <div className="flex justify-center md:gap-8 bg-white w-full">
+        <div className="flex md:gap-8 bg-white w-full max-w-[1440px] mx-auto">
           <div className="w-full max-w-[1000px]">
-            
             <ArticleHeroSection
               title={data?.title}
               image={data?.cover_image}
@@ -60,28 +57,44 @@ export default function CurrentBlogPage({
               time={data?.time}
               locale={locale}
               openSidebar={OpenSidebar}
+              slug={data?.slug?.current}
             />
 
-            <InThisPost data={postDummy} />
+            <InThisPost data={data?.subsections} locale={locale} />
 
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
               <p className="lg:hidden text-primary">Share</p>
               <div className="lg:hidden flex items-center justify-center gap-1">
-                <FacebookShare url="#" size={25} borderRadius={50} />
+                <FacebookShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={50}
+                />
 
                 <FacebookMessengerShare
-                  url="#"
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
                   size={25}
                   borderRadius={50}
                   appId={"dmm4kj9djk203k4liuf994p"}
                 />
 
-                <LinkedinShare url="#" size={25} borderRadius={71} />
+                <LinkedinShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={71}
+                />
 
-                <TwitterShare url="#" size={25} borderRadius={71} />
+                <TwitterShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={71}
+                />
               </div>
 
-              <BlogContentSection data={articleDummy} />
+              <BlogContentSection
+                actualData={data?.subsections}
+                locale={locale}
+              />
             </div>
           </div>
 
@@ -93,11 +106,11 @@ export default function CurrentBlogPage({
                   : "transition-transform translate-x-full"
               }`}
             >
-              <BlogSidebar />
+              <BlogSidebar data={data?.sidebar} locale={locale} />
             </div>
           ) : (
             <div className={"max-xl:hidden z-20"}>
-              <BlogSidebar />
+              <BlogSidebar data={data?.sidebar} locale={locale} />
             </div>
           )}
         </div>
@@ -108,8 +121,11 @@ export default function CurrentBlogPage({
 
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
-        {/* <RelatedArticles /> */}
-        <ArticalTestinomial />
+        <div className="w-full max-w-[1440px] mx-auto max-md:mt-[50px] bg-transparent">
+          <FeatureBlogs data={data?.related_articles} locale={locale} />
+        </div>
+
+        <ArticalTestinomial locale={locale} />
 
         <NewsletterSection data={newsLetterSection} locale={locale} />
       </div>
