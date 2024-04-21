@@ -34,7 +34,7 @@ const ArticleHeroSection = ({
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-    setIsFixed(scrollPosition > window.innerHeight / 1);
+    setIsFixed(scrollPosition > window.innerHeight);
   };
 
   useEffect(() => {

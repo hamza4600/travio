@@ -11,7 +11,6 @@ import BlogSidebar from "@/components/organisms/BlogSidebar";
 
 import "swiper/css";
 import "swiper/css/navigation";
-// import RelatedArticles from "./RelatedArticles";
 import {
   FacebookShare,
   TwitterShare,
@@ -30,7 +29,7 @@ export default function CurrentBlogPage({
   newsLetterSection,
 }) {
   const { layout, data } = pageData || {};
-  console.log("dataBlogPage: ", data);
+  // console.log("dataBlogPage: ", data);
   const [showBlogSidebar, setShowBlogSidebar] = useState(false);
   const windows = useWindowSize();
   const isLaptop = windows.width < 1284;
@@ -122,7 +121,7 @@ export default function CurrentBlogPage({
 
         <FeatureTourSection data={data?.suggested_tour} locale={locale} />
 
-        <div className="w-full max-w-[1440px] mx-auto max-md:mt-[50px]">
+        <div className="w-full max-w-[1440px] mx-auto max-md:mt-[50px] bg-transparent">
           <FeatureBlogs data={data?.related_articles} locale={locale} />
         </div>
 

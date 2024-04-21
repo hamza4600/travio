@@ -100,7 +100,7 @@ export const data1 = [
 ];
 
 const CardsSection = ({ data, locale }, props) => {
-  // console.log("data: ", data);
+  console.log("dataDeals: ", data);
   // console.log("props8585", props);
 
   return (
