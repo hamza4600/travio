@@ -16,6 +16,11 @@ function BlogChoose(props: BlogChooseProps) {
 
   const isMatch = `/blogs/${pathname?.slug[0]}`;
   const { items } = props;
+  
+  console.log(
+    "🚀 ~ file: BlogChoose.tsx ~ line 68 ~ BlogChoose ~ isMatch",
+    items
+  )
 
   return (
     <div className="flex gap-4 my-12 flex-wrap">
@@ -39,7 +44,7 @@ function BlogChoose(props: BlogChooseProps) {
             <a 
                 key={index}
                 onClick={() => {
-                  window.location.href = `?tag=${item.title.toLowerCase()}`;
+                  window.location.href = `?tag=${item.link.toLowerCase()}`;
                 }} 
                 >
               <BlogButton title={item.title} images={item.images}></BlogButton>

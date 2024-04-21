@@ -49,8 +49,6 @@
     "country-state-city": "^3.2.1",
     "date-fns": "^3.3.1",
     "embla-carousel-react": "^8.0.0-rc22",
-    "firebase": "^10.9.0",
-    "framer-motion": "^11.0.3",
     "lucide-react": "^0.323.0",
     "negotiator": "^0.6.3",
     "next": "14.1.0",
