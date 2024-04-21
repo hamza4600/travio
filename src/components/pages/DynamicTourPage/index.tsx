@@ -37,6 +37,8 @@ function transformArray(inputArray, lang) {
 const DynamicTourPage = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
 
+  console.log("DynamicTourPage -> data", data);
+
   const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb, language);
 
   return (

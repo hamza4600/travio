@@ -2,7 +2,9 @@ import { getTourPageSeo, getTourPage } from "@/lib/sanity.TourPage";
 import dynamic from "next/dynamic";
 import { urlForImage } from "../../../../../sanity/lib/image";
 
-const DynamicTourPage = dynamic(() => import("@/components/pages/DynamicTourPage"));
+const DynamicTourPage = dynamic(
+  () => import("@/components/pages/DynamicTourPage")
+);
 
 export async function generateMetadata({ params }) {
   const { handle, language } = params;
@@ -48,15 +50,10 @@ export const revalidate = 3600;
 
 const Index = async ({ params }: any) => {
   const { handle, language } = params;
-  
+
   const tourPage = await getTourPage(handle);
 
-  return (
-      <DynamicTourPage 
-        language={language} 
-        pageData={tourPage} 
-      />
-  );
+  return <DynamicTourPage language={language} pageData={tourPage} />;
 };
 
 export default Index;

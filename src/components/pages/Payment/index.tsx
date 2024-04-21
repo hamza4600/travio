@@ -29,31 +29,6 @@ import Tabs from "@/components/pages/Payment/Tabs";
 import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1";
 import Page2, { IContactInfo } from "./Page2";
 import Page3 from "./Page3";
-import { Toast } from "@radix-ui/react-toast";
-// import SEO from "@/components/Seo";
-
-// import { AddBookingMutationVariables } from "../../../../../__generated__/graphql";
-
-// type PageProps = {
-//   slug: string;
-//   data: SanityTourPage;
-//   globals: SanityGlobals;
-//   promo: SanityPromoCode[];
-//   locale: SanityLocale;
-//   from: number;
-//   to: number;
-// };
-
-// const mockPaymentTourExtras: IPaymentTourExtras = {
-//   adultMembers: 2,
-//   childrenMembers: 1,
-//   hotelChoice: "Standard Room",
-//   roomType: "Double Room",
-//   sharingRoomWith: "John Doe",
-//   optionalVisits: {
-//     city1: ["visit1", "visit2"],
-//   },
-// };
 
 export type PaymentSchema = IPaymentTourExtras & IContactInfo;
 export default function Page({ slug, data, locale, globals, promo }) {

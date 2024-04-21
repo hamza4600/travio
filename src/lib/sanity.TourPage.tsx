@@ -1,9 +1,8 @@
-
-import { pageLayout } from './sanity.HomePage';
-import { CLIENT } from './sanity.const';
+import { pageLayout } from "./sanity.HomePage";
+import { CLIENT } from "./sanity.const";
 
 export async function getTourPage(slug: string) {
-    const tourPageQuery = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
+  const tourPageQuery = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
         ...,
         destination->,
         sections[] {
@@ -22,6 +21,8 @@ export async function getTourPage(slug: string) {
           _type == "pricing_section" => {
             ...,
             "weekly_schedule": ^.timeline.timeline,
+            "days": ^.timeline.days,
+            "fixed_days": ^.timeline.fixed_days,
             "disabled": ^.timeline.disabled,
             "price_overrides": ^.price_overrides,
             "price": ^.overview_card.price,
@@ -40,28 +41,28 @@ export async function getTourPage(slug: string) {
         }
     }`;
 
-    const query = `{
+  const query = `{
       "layout":  ${pageLayout},
       "data": ${tourPageQuery}
     }`;
 
-    return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query);
 }
 
 // for Page SEO
 export async function getTourPageSeo(slug: string) {
-    const query = `*[_type == "tour_page" && slug.current == "/${slug}"][0]{
+  const query = `*[_type == "tour_page" && slug.current == "/${slug}"][0]{
     meta_data
   }`;
 
-    return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query);
 }
 
 // return slug of all the tours
 export async function getAllTourSlugs() {
-    const query = `*[_type == "tour_page"]{
+  const query = `*[_type == "tour_page"]{
     slug
   }`;
 
-    return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query);
 }

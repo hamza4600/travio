@@ -22,6 +22,8 @@ import Container from "@/components/molecules/container";
 
 import Input from "../TrailYourTour/Input";
 import { generatePriceList } from "@/utils/dates/generatePriceList";
+import { notFound } from "next/navigation";
+import { getPriceSymbol } from "@/utils/utils";
 
 export default function Tabs({
   children,
@@ -61,22 +63,38 @@ export default function Tabs({
   let actualPrice = 0;
   let currentPrice = 0;
 
-  const prices = generatePriceList(
-    tour,
-    5,
-    new Date(tour?.timeline?.timeline?.start_day!).getTime()
-  );
+  // @ts-ignore
+  const data = {
+    // @ts-ignore
+    days: tour?.timeline?.days,
+    disabled: tour?.timeline?.disabled,
+    // @ts-ignore
+    fixed_days: tour?.timeline?.fixed_days,
+    price: tour?.overview_card?.price,
+    // @ts-ignore
+    price_overrides: tour?.price_overrides,
+    title: tour?.hero_section?.title,
+    weekly_schedule: tour?.timeline?.timeline,
+  };
+  const prices = generatePriceList(data);
 
-  const pricesss = prices.find((p) => {
+  const actual_tour = prices.find((p) => {
     return (
       p.from.getTime() === startDate.getTime() &&
       p.to.getTime() === endDate.getTime()
     );
   });
 
-  if (pricesss) {
-    actualPrice = Number(pricesss.actualPrice[locale]);
-    currentPrice = Number(pricesss.currentPrice[locale]);
+  if (!actual_tour || actual_tour === undefined) {
+    // show 404
+    console.log("tour not found");
+
+    return notFound();
+  }
+
+  if (actual_tour) {
+    actualPrice = Number(actual_tour.actualPrice[locale]);
+    currentPrice = Number(actual_tour.currentPrice[locale]);
   }
 
   if (promoCode) {
@@ -213,6 +231,7 @@ export default function Tabs({
             adults={adultsNumber || 0}
             childrenNumber={childrenNumber || 0}
             addons={addons}
+            locale={locale}
           />
         </div>
       </div>
@@ -229,7 +248,6 @@ const SelectedTour = ({
 }) => {
   //   const { locale } = useContext(LocaleContext);
   // const locale = "en";
-  console.log("tour: ", tour);
   return (
     <div className="max-lg:hidden pb-10 px-10 pt-4 bg-primary border border-darkblue/10 rounded-2xl flex flex-col gap-4">
       <div>
@@ -287,7 +305,6 @@ const TripDuration = ({
   startDate: Date;
   endDate: Date;
 }) => {
-  console.log("dates: ", startDate.toLocaleDateString(), endDate);
   return (
     <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden max-lg:hidden">
       <div className="grid grid-cols-2 bg-[#3FA9F5] p-2">
@@ -323,6 +340,7 @@ const Costing = ({
   clearPromoCode,
   promoCode,
   addons,
+  locale,
 }: {
   adults: number;
   childrenNumber: number;
@@ -333,16 +351,14 @@ const Costing = ({
   clearPromoCode: () => void;
   promoCode?: string;
   addons?: number;
+  locale: string;
 }) => {
-  // const currentIntoInt = parseInt(currentPrice);
   const { control, handleSubmit, setError } = useForm();
   const people = adults + childrenNumber;
   const originalPrice =
     people * actualPrice + parseInt(people.toString()) * (addons || 0);
   const totalPrice =
     people * (currentPrice + (addons || 0)) - promoCodeDiscount;
-
-  // console.log("pirceeesss: ", currentPrice + addons);
 
   return (
     <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden md:p-10 p-6">
@@ -382,7 +398,8 @@ const Costing = ({
             <div className="flex justify-between gap-2">
               <p className="text-base font-medium text-gray">Discount</p>
               <p className="md:text-base text-[14px] leading-5 font-medium text-[#4CAF50]">
-                - $ {parseInt(people.toString()) * (actualPrice - currentPrice)}
+                - {getPriceSymbol(locale)}{" "}
+                {parseInt(people.toString()) * (actualPrice - currentPrice)}
               </p>
             </div>
           )}
@@ -390,7 +407,7 @@ const Costing = ({
             <div className="flex justify-between gap-2">
               <p className="text-base font-medium text-gray">Promo Code</p>
               <p className="text-base font-medium text-[#4CAF50]">
-                - $ {promoCodeDiscount}
+                - {getPriceSymbol(locale)} {promoCodeDiscount}
               </p>
             </div>
           )}
@@ -403,7 +420,7 @@ const Costing = ({
                 Original Price
               </p>
               <p className="text-base font-bold text-darkblue line-through">
-                $ {originalPrice}
+                {getPriceSymbol(locale)} {originalPrice}
               </p>
             </div>
           )}
@@ -411,20 +428,23 @@ const Costing = ({
             <div className="flex justify-between gap-2">
               <p className="text-base font-bold text-darkblue">Total Price</p>
               <p className="text-base font-bold text-darkblue">
-                $ {totalPrice}
+                {getPriceSymbol(locale)} {totalPrice}
               </p>
             </div>
             {originalPrice != totalPrice && (
               <div>
                 <p className="text-[#D10002] font-medium text-[10px] text-end">
-                  You save ${(originalPrice - totalPrice).toFixed(2)}
+                  You save {getPriceSymbol(locale)}
+                  {(originalPrice - totalPrice).toFixed(2)}
                 </p>
               </div>
             )}
           </div>
           <div className="flex justify-between gap-2 items-center">
             <p className="text-base font-bold text-darkblue">Total Price</p>
-            <p className="font-bold text-darkblue">$ {totalPrice}</p>
+            <p className="font-bold text-darkblue">
+              {getPriceSymbol(locale)} {totalPrice}
+            </p>
           </div>
         </div>
 

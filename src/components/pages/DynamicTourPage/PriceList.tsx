@@ -10,7 +10,7 @@ import Link from "next/link";
 //   SanityPricingSection,
 //   SanityTourTimeline,
 // } from "@/sanity/types";
-import DateFormat, { getFirstDayOfMonth } from "@/utils/utils";
+import DateFormat, { getFirstDayOfMonth, getPriceSymbol } from "@/utils/utils";
 import { CaretDown } from "@phosphor-icons/react";
 
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,6 @@ import Container from "@/components/molecules/container";
 import { Any } from "next-sanity";
 import { Input } from "@/components/ui/input";
 import { generatePriceList } from "@/utils/dates/generatePriceList";
-import { priceForWeek } from "@/utils/dates/priceForWeek";
 
 interface SinglePrice {
   from: Date;
@@ -70,7 +69,7 @@ function PriceList({
   const [collapsed, setCollapsed] = React.useState(false);
   const [show, setShow] = React.useState(4);
   const [startMonth, setStartMonth] = React.useState(new Date().getMonth());
-  let prices: SinglePrice[] = generatePriceList(data, 5, startMonth);
+  let prices: SinglePrice[] = generatePriceList(data);
   React.useEffect(() => {
     setCollapsed(window.innerWidth < 768);
     window.addEventListener("resize", () => {
@@ -79,8 +78,7 @@ function PriceList({
   }, []);
 
   React.useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    prices = generatePriceList(data, 5, startMonth);
+    prices = generatePriceList(data);
   }, [startMonth]);
 
   return (
@@ -219,12 +217,14 @@ function PriceList({
                         MAPPINGS[price.availability || "Available"].color
                       } ${selected === index ? "opacity-0" : ""}`}
                     >
-                      <p>$ {price.currentPrice?.[locale]}</p>
+                      <p>
+                        {getPriceSymbol(locale)} {price.currentPrice?.[locale]}
+                      </p>
                       {price.actualPrice && (
                         <p
                           className={`line-through font-satoshi text-gray text-[8px] font-bold md:text-xs`}
                         >
-                          $ {price.actualPrice?.[locale]}
+                          {getPriceSymbol(locale)} {price.actualPrice?.[locale]}
                         </p>
                       )}
                     </div>
@@ -249,7 +249,8 @@ function PriceList({
                             collapsed ? "text-base" : "text-4xl"
                           }`}
                         >
-                          $ {price.currentPrice?.[locale]}
+                          {getPriceSymbol(locale)}{" "}
+                          {price.currentPrice?.[locale]}
                         </h1>
                         {price.actualPrice && (
                           <h1
@@ -259,7 +260,8 @@ function PriceList({
                                 : "text-2xl"
                             }`}
                           >
-                            $ {price.actualPrice?.[locale]}
+                            {getPriceSymbol(locale)}{" "}
+                            {price.actualPrice?.[locale]}
                           </h1>
                         )}
                         {collapsed && (
