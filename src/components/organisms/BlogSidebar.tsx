@@ -56,7 +56,7 @@ function BlogSidebar({ data, locale }: any) {
         <div className="flex flex-col gap-3 py-5">
           {data[0]?.articles.map((article: any, index: number) => {
             // return <LatestArticle data={data?.[0]?.articles} key={index} />;
-            console.log("Article: ", article);
+            // console.log("Article: ", article);
             return (
               <Link
                 key={index}

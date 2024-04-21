@@ -24,6 +24,7 @@ import "swiper/css/navigation";
 import { urlFor } from "../../../../sanity/lib/client";
 import useWindowSize from "@/hooks/useWindows";
 import { truncateChar } from "@/utils/utils";
+import Container from "@/components/molecules/container";
 
 const TravlerReviews = (props) => {
   const {
@@ -36,7 +37,7 @@ const TravlerReviews = (props) => {
 
   return (
     <div className="w-full bg-[#F2FAFF] md:mt-[84px] mt-[50px] text-black py-[30px]  md:h-full relative md:px-20 px-5">
-      <div className={"lg:flex max-md:px-0 items-center gap-x-10 "}>
+      <Container className={"lg:flex max-md:px-0 items-center gap-x-10 "}>
         <div className="lg:max-w-xs font-satoshi shrink-0 w-full text-center md:text-start">
           <h2 className="text-xl md:text-[40px] leading-[30px] md:leading-tight -tracking-[1.2px] font-bold">
             <span className="text-[#3FA9F5] md:text-black">
@@ -63,13 +64,13 @@ const TravlerReviews = (props) => {
         <div className="overflow-x-none md:overflow-hidden lg:block h-full md:pt-8  pb-11 md:pb-0 ">
           <SwiperComponent
             scrollCount={2}
-            className={"gap-[40px] md:gap-[48px] md:!mr-10"}
+            className={"gap-6 md:gap-[48px] md:!mr-10"}
             length={testimonials?.length}
           >
             {testimonials?.map((item, index: any) => {
               return (
-                <div key={index} className="flex gap-6 items-center">
-                  <div className={"w-[284px] shrink-0"}>
+                <div key={index} className="flex gap-5 items-center">
+                  <div className={"w-[280px] shrink-0"}>
                     <div className="flex gap-x-0.5 mb-1.5">
                       <Star />
                       <Star />
@@ -110,6 +111,7 @@ const TravlerReviews = (props) => {
                       {/* <div className="w-[160px] h-[1px] rotate-90 opacity-10 bg-[#3FA9F5]" /> */}
                     </div>
                   </div>
+
                   <div className="h-[170px] w-[1px] border-r-2 border-[#257ab9] opacity-10 md:hidden block" />
                 </div>
               );
@@ -124,7 +126,7 @@ const TravlerReviews = (props) => {
           className="absolute -left-0 md:-left-5 -bottom-[75px] md:-bottom-[235px] max-md:w-[120px] max-md:rotate-12"
           alt="aeroplane"
         />
-      </div>
+      </Container>
     </div>
   );
 };
