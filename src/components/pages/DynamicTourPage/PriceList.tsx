@@ -17,6 +17,19 @@ import { Button } from "@/components/ui/button";
 import Container from "@/components/molecules/container";
 import { Any } from "next-sanity";
 import { Input } from "@/components/ui/input";
+import {
+  bookTourTn,
+  datesTn,
+  exactTn,
+  perPersonTn,
+  personalizeTn,
+  priceTitleTn,
+  roomTypeTn,
+  secureTn,
+  tripTn,
+  viewLessBtn,
+  viewMoreTn,
+} from "@/lib/utils";
 
 interface SinglePrice {
   from: Date;
@@ -172,8 +185,7 @@ function PriceList({
         <div className="flex-col font-satoshi  lg:flex-row  flex justify-between">
           <div className="gap-3 flex flex-col my-2">
             <h1 className="tracking-wide text-[14px] text-gray lg:text-base font-medium">
-              These dates don&apos;t work for you? Tailor your trip{" "}
-              {/* <span ></span>{" "} */}
+              {datesTn?.[locale]} {/* <span ></span>{" "} */}
               <Link
                 className="text-[#3FA9F5]"
                 href={"/" + locale + "/tailor_your_tour"}
@@ -184,7 +196,7 @@ function PriceList({
             <div className="flex items-center gap-2">
               <img src="/lock_icon.svg" height={24} width={24} alt="lock" />
               <p className="text-md font-semibold text-[14px] lg:text-base text-[#3FA9F5]">
-                Secure Payments
+                {secureTn?.[locale]}
               </p>
             </div>
           </div>
@@ -210,17 +222,17 @@ function PriceList({
             }`}
           >
             <h1 className="text-left ml-5 lg:col-span-2 text-darkblue font-satoshi col-span-1">
-              From
+              {priceTitleTn?.from?.[locale]}
             </h1>
             <p></p>
             <h1 className="lg:col-span-3 font-satoshi text-darkblue col-span-1">
-              To
+              {priceTitleTn.to?.[locale]}
             </h1>
 
             <>
               {/* <p className="lg:col-span-3"></p> */}
               <h1 className="lg:col-span-6 font-satoshi text-darkblue col-span-1 md:ml-0 ml-[65px] text-center">
-                Price
+                {priceTitleTn.price?.[locale]}
               </h1>
             </>
           </div>
@@ -353,26 +365,27 @@ function PriceList({
                               variant={"destructive"}
                               className="!bg-red font-satoshi flex items-center h-[28px] justify-center gap-1 md:px-3 px-[16px] !py-[5px] md:!py-3 !my-auto text-[12px] leading-[18px]"
                             >
-                              Book Tour
+                              {bookTourTn?.[locale]}
                             </Button>
                           </Link>
                         )}
                       </div>
                       <p className="text-gray font-satoshi mt-3 font-normal text-[10px] max-md:leading-5 md:text-sm">
-                        Per person in a {price.roomType || "Double Seater"}
+                        {perPersonTn?.[locale]}{" "}
+                        {price.roomType || "Double Seater"}
                       </p>
                       <p className="md:text-sm font-satoshi text-[12px] font-normal text-darkblue leading-5">
-                        Looking for a Different Room Type?
+                        {roomTypeTn?.[locale]}
                         <span className="text-[#3FA9F5] font-medium">
                           {" "}
-                          Find the pricing in the next steps.
+                          {exactTn?.[locale]}
                         </span>
                       </p>
                       <p className="md:text-sm font-satoshi font-normal text-darkblue text-[12px] leading-5">
                         <span className="text-[#3FA9F5] font-medium">
-                          Customize your trip
+                          {tripTn?.[locale]}
                         </span>{" "}
-                        with optional tours during booking!
+                        {personalizeTn?.[locale]}
                       </p>
                     </div>
                     {!collapsed && (
@@ -388,7 +401,7 @@ function PriceList({
                           variant={"destructive"}
                           className="!bg-red flex text-base md:h-12 h-10 items-center font-bold justify-center gap-2 px-5 !py-3 !my-auto"
                         >
-                          Book Tour{" "}
+                          {bookTourTn?.[locale]}{" "}
                           <Image
                             height={10}
                             width={20}
@@ -410,7 +423,7 @@ function PriceList({
               }}
               className="text-center font-satoshi flex gap-x-2 items-center justify-center text-base lg:text-lg font-semibold my-3 text-[#3FA9F5] cursor-pointer"
             >
-              View More <CaretDown />
+              {viewMoreTn?.[locale]} <CaretDown />
             </div>
           ) : (
             <div
@@ -419,7 +432,7 @@ function PriceList({
               }}
               className="text-center font-satoshi  text-base lg:text-lg font-semibold flex gap-x-2 items-center justify-center my-3 text-[#3FA9F5] cursor-pointer"
             >
-              View less
+              {viewLessBtn?.[locale]}
               <div className="rotate-180">
                 <CaretDown />
               </div>

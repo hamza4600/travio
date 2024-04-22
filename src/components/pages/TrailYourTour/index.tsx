@@ -58,20 +58,16 @@ const TailorYourTour = ({ language, data }) => {
     setSelectedDestination(updatedSelectedDestinations);
   };
 
-  const {
-    control,
-    handleSubmit,
-    setValue,
-    getValues,
-  } = useForm<TailorTripFormData>({
-    defaultValues: {
-      categories: [],
-      numberOfAdults: "0",
-      numberOfChildrens: "0",
-      selectedDestination: [],
-    },
-    resolver: resolver,
-  });
+  const { control, handleSubmit, setValue, getValues } =
+    useForm<TailorTripFormData>({
+      defaultValues: {
+        categories: [],
+        numberOfAdults: "0",
+        numberOfChildrens: "0",
+        selectedDestination: [],
+      },
+      resolver: resolver,
+    });
 
   return (
     <Layout
@@ -112,6 +108,7 @@ const TailorYourTour = ({ language, data }) => {
             locale={language}
           />
           <Step1
+            locale={language}
             onChange={useCallback(
               (value) => {
                 setValue("duration", value, { shouldValidate: true });
@@ -119,7 +116,7 @@ const TailorYourTour = ({ language, data }) => {
               [setValue]
             )}
           />
-          <Step2 control={control} setValue={setValue} />
+          <Step2 locale={language} control={control} setValue={setValue} />
         </Steps>
 
         <FAQSection data={FAQSECTION} locale={language} />

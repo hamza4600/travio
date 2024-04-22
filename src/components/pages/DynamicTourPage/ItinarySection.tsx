@@ -14,6 +14,15 @@ import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
 import { urlFor } from "../../../../sanity/lib/client";
 import PortableText from "react-portable-text";
+import {
+  formFieldsTn,
+  priceTitleTn,
+  membersTn,
+  moreTn,
+  selNatTn,
+  enqTn,
+  submitTn,
+} from "@/lib/utils";
 
 export default function ItinerarySection({
   data,
@@ -39,7 +48,7 @@ export default function ItinerarySection({
         {/* Enquire Tab */}
 
         {/* <div className="sticky min-w-full"> */}
-        <EnquireTab />
+        <EnquireTab locale={locale} />
         {/* </div> */}
       </div>
     </Container>
@@ -88,7 +97,7 @@ const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
   );
 };
 
-const EnquireTab = () => {
+const EnquireTab = ({ locale }: any) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -113,7 +122,7 @@ const EnquireTab = () => {
       <div className="py-2 px-5 bg-[#1A4767]">
         <div className="flex justify-between">
           <div className="">
-            <p className="font-bold text-xl">Enquire</p>
+            <p className="font-bold text-xl">{enqTn?.[locale]}</p>
             <div className="lg:w-1/2 w-1/3 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
           </div>
           <div className="relative w-7 h-7">
@@ -132,7 +141,7 @@ const EnquireTab = () => {
       </div>
       <div className="p-[18px] flex flex-col gap-[18px]">
         <div className="flex  font-medium text-base text-black flex-col gap-2">
-          <label htmlFor="name">Name*</label>
+          <label htmlFor="name">{formFieldsTn?.[locale]?.name}*</label>
           <input
             id="name"
             type="text"
@@ -144,7 +153,7 @@ const EnquireTab = () => {
           />
         </div>
         <div className="flex  font-medium text-base text-black flex-col gap-2 ">
-          <label htmlFor="email">Email*</label>
+          <label htmlFor="email">{formFieldsTn?.[locale]?.email}*</label>
           <input
             id="email"
             type="text"
@@ -156,7 +165,9 @@ const EnquireTab = () => {
           />
         </div>
         <div className="flex font-medium text-base text-black flex-col gap-2">
-          <label htmlFor="nationality">Nationality*</label>
+          <label htmlFor="nationality">
+            {formFieldsTn?.[locale]?.nationality}*
+          </label>
           <select
             id="nationality"
             className="border bg-white border-darkblue/10 text-black rounded p-1 py-2 focus:outline-secondary"
@@ -166,7 +177,7 @@ const EnquireTab = () => {
             }}
           >
             <option value="" disabled>
-              Select Nationality
+              {selNatTn?.[locale]}
             </option>
             {Country.getAllCountries().map((item: any, index: any) => {
               return (
@@ -180,7 +191,7 @@ const EnquireTab = () => {
           </select>
         </div>
         <div className="flex  font-medium text-base text-black flex-col gap-2">
-          <label htmlFor="mobileNumber">Mobile</label>
+          <label htmlFor="mobileNumber">{formFieldsTn?.[locale]?.mobile}</label>
           <div className="border bg-white text-base border-darkblue/10 text-black rounded p-1 grid grid-cols-[1fr_7fr] gap-1 divide-x-2 divide-darkblue/10 py-2">
             <input
               className="min-w-0 w-full flex focus:outline-secondary items-center justify-center h-full overflow-hidden focus:outline-none"
@@ -217,7 +228,7 @@ const EnquireTab = () => {
         </div>
         <div className="grid grid-cols-2 gap-2 ">
           <div className="flex min-w-0 w-full font-medium text-base text-black flex-col gap-2">
-            <label htmlFor="from">From</label>
+            <label htmlFor="from">{priceTitleTn?.from?.[locale]}</label>
             <input
               id="from"
               type="date"
@@ -229,7 +240,7 @@ const EnquireTab = () => {
             />
           </div>
           <div className="flex min-w-0 w-full font-medium text-base text-black flex-col gap-2">
-            <label htmlFor="to">To</label>
+            <label htmlFor="to">{priceTitleTn?.to?.[locale]}</label>
             <input
               id="to"
               type="date"
@@ -242,9 +253,11 @@ const EnquireTab = () => {
           </div>
         </div>
         <div className="flex font-medium text-base text-black flex-col gap-2">
-          <p>Member&apos;s</p>
+          <p>{membersTn?.[locale]}</p>
           <div className="border border-darkblue/10 flex gap-2 bg-white p-2 justify-between">
-            <div className="font-normal text-sm">Adults (+ 12 year)</div>
+            <div className="font-normal text-sm">
+              {formFieldsTn?.[locale]?.adults} (+ 12 year)
+            </div>
             <div className="flex">
               <div
                 className="w-[22px] h-[22px] bg-yellow flex items-center justify-center"
@@ -288,7 +301,7 @@ const EnquireTab = () => {
           </div>
         </div>
         <div className="flex  font-medium text-base text-black flex-col gap-2">
-          <label htmlFor="details">More Details</label>
+          <label htmlFor="details">{moreTn?.[locale]}</label>
           <textarea
             id="details"
             rows={3}
@@ -324,7 +337,7 @@ const EnquireTab = () => {
           variant="golden"
           className="md:h-12 h-10 text-[14px] leading-5"
         >
-          Submit
+          {submitTn?.[locale]}
         </Button>
       </div>
     </div>

@@ -3,6 +3,7 @@ import useWindowSize from "@/hooks/useWindows";
 import { Button } from "../ui/button";
 import useSWR from 'swr'
 import { getnewLetterSection } from "@/lib/sanity.NewLetter";
+import { signUpTn, tourFormTn } from "@/lib/utils";
 
 const NewsletterSection = ({ locale , data : pageSec }) => {
   
@@ -52,13 +53,13 @@ const NewsletterSection = ({ locale , data : pageSec }) => {
               variant={"golden"}
               className="absolute right-[5px] top-1/2 -translate-y-1/2 py-2 md:py-[7px] px-[18px] max-md:h-[34px] font-bold rounded-full"
             >
-              {"Sign Up"}
+              {signUpTn?.[locale]}
             </Button>
           </div>
 
           <footer className="flex md:flex-col w-[335px] items-center md:items-start gap-1.5 mt-2 md:mt-[30px]">
             <strong className="text-[12px] md:text-[20px] font-bold leading-[20px] md:leading-[32px] ">
-              Have any questions?
+              {tourFormTn?.[locale]}
             </strong>
             <div className="flex items-center gap-0.5 md:gap-1">
               <svg
