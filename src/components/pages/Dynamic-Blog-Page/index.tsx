@@ -2,76 +2,44 @@
 import React from "react";
 
 import { urlFor } from "../../../../sanity/lib/client";
-// import Slicer from "../../../../sanity/slicer";
-
-// import {
-//   SanityArticle,
-//   SanityBlogPage,
-//   SanityDestinationPage,
-//   SanityGlobals,
-//   SanityImageHeaderSection,
-//   SanityLocaleString,
-//   SanityPhoto,
-//   SanityTag,
-// } from "../../../../sanity/lib/types";
-
 import Container from "@/components/molecules/container";
 import Layout from "@/components/layout";
 
 import BlogDetailCard from "@/components/sections/BlogDetailCard";
 // import { BlogPageSectionsMap } from "@/components/sections";
 
-import { Pagination } from "@/components/sections/reviews/Reviews";
+// import { Pagination } from "@/components/sections/reviews/Reviews";
 import BlogChoose from "@/components/molecules/BlogChose";
 import HeroSection from "@/components/sections/hero/HeroSection";
 import GallerySect from "./GallerySect";
-
-// type BlogPageProps = {
-//   slug: string;
-//   locale: string;
-//   articles: SanityArticle[];
-//   content: SanityTag | SanityDestinationPage | SanityBlogPage;
-//   globals: SanityGlobals;
-//   destinations: { name: SanityLocaleString; slug: string; icon: SanityPhoto }[];
-//   tags: { name: SanityLocaleString; slug: string; icon: SanityPhoto }[];
-// };
+import { getArticalByTag } from "@/lib/sanity.DynamicBlog";
+import useSWR from "swr";
+import { Spinner } from "@/components/atom/Spinner";
 
 export default function BlogPage({
   locale,
   pageData,
+  tags,
 }: {
   locale: string;
   pageData: any;
+  tags: string[];
 }) {
+  console.log("BlogPage: ", pageData)
   const { layout, data } = pageData || {};
-  //   const imageHeaderData =
-  //     content?._type === "tag"
-  //       ? {
-  //           header: content?.name,
-  //           image: content.hero_image,
-  //           _type: "image_header_section" as const,
-  //         }
-  //       : content?._type === "destination_page"
-  //       ? (content?.sections?.find(
-  //           (s) => s?._type === "image_header_section"
-  //         ) as SanityImageHeaderSection)
-  //       : (content?.sections?.find(
-  //           (s) => s?._type === "image_header_section"
-  //         ) as SanityImageHeaderSection);
-  // console.log(articles)
   const sections = data?.sections || [];
-  
-  const  imageHeaderData = sections.find((s) => s?._type === "image_header_section")
+
+  const imageHeaderData = sections.find((s) => s?._type === "image_header_section")
   const featuredImages = sections.find((s) => s?._type === "featured_images_section")
   const latestPosts = sections.find((s) => s?._type === "latest_posts_section")
-  const feature_blogs = sections.find((s) => s?._type === "featured_blogs_section")
 
-  console.log("BlogsData: ", sections)
+  const urlTags = new URLSearchParams(window.location.search).getAll('tag');
+  const articalTags = urlTags.length > 0 ? urlTags : tags;
 
+  const { data: tagsArtical, isLoading } = useSWR("/api/sanity", () => getArticalByTag(articalTags));
 
-  const [pageNumber, setPageNumber] = React.useState(0);
-
-  const pageSize = 3
+  // const [pageNumber, setPageNumber] = React.useState(0);
+  // const pageSize = 3
   return (
     <Layout
       breadcrumbs={[
@@ -89,52 +57,60 @@ export default function BlogPage({
       promo_banner={layout?.banner}
     >
       <HeroSection data={imageHeaderData} locale={locale} />
-        <GallerySect data={featuredImages} locale={locale} />
-        <Container>
-            <div className="mt-[50px]">
-              <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
-                {latestPosts?.tagline?.[locale] || "Latest Posts"}
-              </h4>
-              <div className="text-yellow md:border-b-[3px] border-b-[#FFBB0B] md:w-[117px] w-[85px] rounded-full border-b-2 my-2" />
+      <GallerySect data={featuredImages} locale={locale} />
+      <Container>
+        <div className="mt-[50px]">
+          <h4 className="font-[700] text-[24px] text-darkblue font-satoshi">
+            {latestPosts?.tagline?.[locale] || "Latest Posts"}
+          </h4>
+          <div className="text-yellow md:border-b-[3px] border-b-[#FFBB0B] md:w-[117px] w-[85px] rounded-full border-b-2 my-2" />
 
-              <BlogChoose
-                items={[...latestPosts?.filter_tags].map((item) => {
-                  return {
-                    title: item?.name?.[locale] || "All",
-                    link: `${item.slug?.current}`,
-                    images: [urlFor(item.icon?.asset?._ref)],
+          <BlogChoose
+            items={[...latestPosts?.filter_tags].map((item) => {
+              return {
+                title: item?.name?.[locale] || "All",
+                link: `${item.slug?.current}`,
+                images: [urlFor(item.icon?.asset?._ref)],
+              };
+            })}
+          />
 
-                  };
-                })}
-                />
-              
-
-              <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
-                {feature_blogs.featured_blogs?.slice(pageNumber * pageSize, pageNumber * pageSize + pageSize)?.map((article, index) => {
-                  return (
-                    <BlogDetailCard
-                      country={(article.destination as any)?.name?.[locale]}
-                      excerpt={article.introduction?.[locale]}
-                      image={article.cover_image ? article.cover_image : ""}
-                      link={`/${locale}/blog${article.slug?.current}`}
-                      title={article.title?.[locale]}
-                      date={article.time?.[locale]}
-                      author={article.auther?.name?.[locale]}
-                      key={index}
-                    />
-                  );
-                })}
+          <div 
+            className={`grid  gap-6 max-lg:grid-cols-2 max-md:grid-cols-1
+            ${isLoading ? "h-[500px] grid-cols-1" : " h-[100%] grid-cols-3"}
+            `}>
+            {isLoading ? (
+              <div className="flex justify-center items-center">
+                  <Spinner radius={50}/>
               </div>
+            ) : (
+              tagsArtical?.map((article, index) => {
+                return (
+                  <BlogDetailCard
+                    country={(article.destination as any)?.name?.[locale]}
+                    excerpt={article.introduction?.[locale]}
+                    image={article.cover_image ? article.cover_image : ""}
+                    link={`/${locale}/blog${article.slug?.current}`}
+                    title={article.title?.[locale]}
+                    date={article.time?.[locale]}
+                    author={article.auther?.name?.[locale]}
+                    key={index}
+                  />
+                );
+              })
+            )}
+          </div>
 
-              <Pagination
-                total={data?.sections[2]?.featured_blogs?.length || 0}
-                pageSize={pageSize}
-                currentPage={pageNumber}
-                onChange={setPageNumber}
-              />
-            </div>
-         
-        </Container>
+{/* make it functional */}
+          {/* <Pagination
+            total={data?.sections[2]?.featured_blogs?.length || 0}
+            pageSize={pageSize}
+            currentPage={pageNumber}
+            onChange={setPageNumber}
+          /> */}
+        </div>
+
+      </Container>
     </Layout>
   );
 }
