@@ -30,6 +30,7 @@ export function getChars(chars: string, length: number) {
   if(chars) {
     return chars.length > length ? chars.substring(0, length) + "..." : chars;
   }
+  return "We are sorry! this content is only available in english"
 }
 
 export const cardButtonTn = {
@@ -352,4 +353,40 @@ export const enqTn = {
   en: "Enquire",
   es: "Consultar",
   por: "Consultar"
+}
+
+export const bookingBtn = {
+  en: "My Bookings",
+  es: "Mis Reservas",
+  por: "Minhas Reservas"
+}
+
+export const readMoreTn = {
+  en: "Read More",
+  es: "Leer Más",
+  por: "Leia Mais"
+}
+
+export const expandTn = {
+  en: "Expand All",
+  es: "Expandir Todo",
+  por: "Expandir Tudo"
+}
+
+export const hereTn = {
+  en: "here",
+  es: "aqui",
+  por: "aqui"
+}
+
+export const doubleSeaterTn = {
+  en: "Double Seater",
+  es: "Doble Asiento",
+  por: "Assento Duplo"
+}
+
+export const starTn = {
+  en: "Star",
+  es: "Estrella",
+  por: "Estrela"
 }

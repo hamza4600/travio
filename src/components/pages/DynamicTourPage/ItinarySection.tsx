@@ -22,6 +22,7 @@ import {
   selNatTn,
   enqTn,
   submitTn,
+  expandTn,
 } from "@/lib/utils";
 
 export default function ItinerarySection({
@@ -76,7 +77,7 @@ const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
             );
           }}
         >
-          Expand All <div className="hidden lg:block">{<CaretDown />}</div>
+          {expandTn?.[locale]} <div className="hidden lg:block">{<CaretDown />}</div>
         </button>
       </div>
       <div className="flex  flex-col gap-5">

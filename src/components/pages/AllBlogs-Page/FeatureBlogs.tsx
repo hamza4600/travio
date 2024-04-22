@@ -5,6 +5,8 @@ import Swiper from "@/components/molecules/Swiper";
 import { urlFor } from "../../../../sanity/lib/client";
 import SectionHeader from "@/components/molecules/secHeader";
 
+import { readMoreTn } from "@/lib/utils"
+
 const FeatureBlogs = ({ data, locale }) => {
   console.log("FeatureBlog: ", data)
   return (
@@ -33,6 +35,7 @@ const FeatureBlogs = ({ data, locale }) => {
                   date={blog?.time?.[locale]}
                   author={blog?.auther?.name?.[locale]}
                   key={index}
+                  linkText={readMoreTn?.[locale]}
                 />
               );
             })}

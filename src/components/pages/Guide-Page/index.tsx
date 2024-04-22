@@ -4,10 +4,12 @@ import { FC } from "react";
 
 import HeroSection from "../DynamicDestinations/HeroSection";
 
-import AppTabs from "@/components/molecules/AppTabs/AppTabse";
+// import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import SectionHeader from "@/components/molecules/secHeader";
 import InfoSection from "./InfoSection";
 import Container from "@/components/molecules/container";
+import FilterCountry from "../DynamicTravelWiki/FilterCountry";
+import { wikiTabs } from "../DynamicTravelWiki/data";
 
 interface GuidePageProps {
   language: string;
@@ -15,14 +17,14 @@ interface GuidePageProps {
 }
 
 // will be repace with actual data
-const tabs = [
-  { name: "Egypt", href: "#" },
-  { name: "Jordan", href: "#" },
-  { name: "Dubai", href: "#" },
-  { name: "Saudi Arabia", href: "#" },
-  { name: "Israel", href: "#" },
-  { name: "Turkey", href: "#" },
-];
+// const tabs = [
+//   { name: "Egypt", href: "#" },
+//   { name: "Jordan", href: "#" },
+//   { name: "Dubai", href: "#" },
+//   { name: "Saudi Arabia", href: "#" },
+//   { name: "Israel", href: "#" },
+//   { name: "Turkey", href: "#" },
+// ];
 
 const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
@@ -55,7 +57,7 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
           centerLine
         />
         <div className="md:mt-[68px] mt-[50px]">
-          <AppTabs tabs={tabs} />
+          <FilterCountry tabs={wikiTabs} locale={language} />
         </div>
         
         <Container className=" px-0">
