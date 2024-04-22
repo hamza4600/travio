@@ -3,11 +3,17 @@ import { urlForImage } from "../../../../../sanity/lib/image";
 import dynamic from "next/dynamic";
 const BlogPage =  dynamic(() => import("@/components/pages/Dynamic-Blog-Page"));
 
+const extractTags = (pageData) => {
+  const sections = pageData?.data?.sections || [];
+  const latestPosts = sections.find((section) => section?._type === "latest_posts_section");
+  const tags = latestPosts?.filter_tags || [];
+  return tags.map((tag) => tag?.slug?.current);
+};
+
 export async function generateMetadata({ params }) {
   const { language, slug } = params;
-  const handle = slug[0];
 
-  const seo = await getDynamicBlogPageSeo(handle);
+  const seo = await getDynamicBlogPageSeo(slug);
   const meta = seo?.meta_data || {};
   const metaTitle = meta?.meta_title[language];
   const metaDescription = meta?.meta_description[language];
@@ -44,18 +50,21 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export const revalidate = 36;
+export const revalidate = 3600;
 
 const Index = async ({ params }: { params: any }) => {
   
   const { language, slug } = params;
-  const handle = slug[0];
-  const pageData = await getMainDynamicBlogPage(handle);
 
+  const pageData = await getMainDynamicBlogPage(slug);
+
+  const tagsData = extractTags(pageData);
+  
   return (
       <BlogPage 
         locale={language} 
         pageData={pageData}
+        tags = {tagsData}
       />
   );
 };

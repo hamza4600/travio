@@ -11,7 +11,7 @@ import { SectionMap } from "@/components/sections";
 
 const HomePage = ({ pageData, locale }) => {
   const { layout } = pageData || {};
-  console.log("pageData", pageData?.pageData?.sections);
+
   return (
     <Layout
       breadcrumbs={[]}

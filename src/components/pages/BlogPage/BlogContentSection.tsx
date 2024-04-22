@@ -122,10 +122,10 @@ const BlogContentSection = ({ actualData, locale }: any) => {
 
       return (
         <>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 relative">
             <img
               src={urlFor(props?.items[0]?.items[1]?.image?.asset?._ref)}
-              className="xl:max-w-[896px] xl:min-h-[567px] h-[178px] max-sm:w-full mt-[18px]"
+              className="xl:max-w-[896px] md:min-h-[567px] h-[178px] max-sm:w-full mt-[18px]"
               alt=""
               style={{ aspectRatio: 1 }}
             />

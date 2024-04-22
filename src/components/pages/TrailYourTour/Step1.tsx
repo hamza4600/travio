@@ -1,4 +1,5 @@
 import OptionSelectButton from "@/components/atom/OptionSelectButton";
+import { approxTn, exactTripTn, selectMonthTn, diffDatesTn } from "@/lib/utils";
 import React, { useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -99,14 +100,25 @@ const CalenderWrapper = styled.div`
   }
 `;
 
-const Durations = [
-  { name: "Less than 1 Week", gridSpan: "col-span-2" },
-  { name: "1 Week", gridSpan: "col-span-1" },
-  { name: "2 Week", gridSpan: "col-span-1" },
-  { name: "3 Week", gridSpan: "col-span-1" },
-  { name: "4 Week", gridSpan: "col-span-1" },
-  { name: "More than 1 Months", gridSpan: "col-span-2" },
-];
+const durationTn = {
+  less: {
+    en: "Less than 1 Week",
+    es: "Menos de 1 seman",
+    por: "Menos de 1 semana"
+  },
+
+  week: {
+    en: "Week",
+    es: "Semana",
+    por: "Semana"
+  },
+
+  months: {
+    en: "More than 1 Months",
+    es: "Más de 1 mes",
+    por: "Mais de 1 mês"
+  }
+}
 
 const Months = [
   "January",
@@ -125,13 +137,25 @@ const Months = [
 
 export default function Step1({
   onChange,
+  locale,
 }: {
   onChange: (date: string) => void;
+  locale: string;
 }) {
   const [mode, setMode] = React.useState("exactDates");
   const [duration, setDuration] = React.useState("");
   const [month, setMonth] = React.useState("");
   const [date, setDate] = React.useState<Date[]>();
+
+  const Durations = [
+    { name: durationTn?.less?.[locale], gridSpan: "col-span-2" },
+    { name: `1 ${durationTn?.week?.[locale]}`, gridSpan: "col-span-1" },
+    { name: `2 ${durationTn?.week?.[locale]}`, gridSpan: "col-span-1" },
+    { name: `3 ${durationTn?.week?.[locale]}`, gridSpan: "col-span-1" },
+    { name: `4 ${durationTn?.week?.[locale]}`, gridSpan: "col-span-1" },
+    { name: durationTn.months?.[locale], gridSpan: "col-span-2" },
+  ];
+  
 
   useEffect(() => {
     if (date)
@@ -151,8 +175,8 @@ export default function Step1({
             setMode("exactDates");
           }}
         >
-          <OptionSelectButton value={mode == "exactDates"} /> I know the exact
-          dates of my trip
+          <OptionSelectButton value={mode == "exactDates"} />{" "}
+          {exactTripTn?.[locale]}
         </div>
         <div
           className="md:text-lg font-medium text-darkblue flex gap-[6px] items-center flex-nowrap whitespace-nowrap font-satoshi"
@@ -160,8 +184,8 @@ export default function Step1({
             setMode("approxDates");
           }}
         >
-          <OptionSelectButton value={mode == "approxDates"} /> I have
-          approximate dates.
+          <OptionSelectButton value={mode == "approxDates"} />{" "}
+          {diffDatesTn?.[locale]}
         </div>
       </div>
       <CalenderWrapper>
@@ -180,7 +204,7 @@ export default function Step1({
           <div className="flex justify-center items-center flex-col md:flex-row gap-4 md:px-1 px-4 md:gap-12">
             <div className="flex flex-col gap-3 w-full ml-auto text-base text-gray ">
               <p className="font-normal font-satoshi max-md:hidden text-base">
-                (1) Select Month
+                (1) {selectMonthTn?.[locale]}
               </p>
               <div className="p-4 max-w-[300px] max-lg:min-w-[300px] max-md:max-w-full min-h-[300px] grid grid-cols-3 gap-x-1 bg-white rounded shadow-md">
                 {Months.map((item: any, index) => (
@@ -211,7 +235,7 @@ export default function Step1({
             </div>
             <div className="flex flex-col w-full gap-2 text-base text-gray ">
               <p className="font-satoshi max-md:hidden">
-                (2) Trip duration (approx)
+                (2) {approxTn?.[locale]}
               </p>
               <div className="p-5 grid grid-cols-2 w-full bg-white gap-4 rounded shadow-md  min-h-[300px]">
                 {Durations.map((item: any) => (

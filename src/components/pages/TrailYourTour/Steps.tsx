@@ -1,5 +1,6 @@
 import SectionHeader from "@/components/molecules/secHeader";
 import { Button } from "@/components/ui/button";
+import { backTn, loadingTn, nextStepTn, submitTn } from "@/lib/utils";
 import React, { useState, useTransition } from "react";
 
 export default function Steps({
@@ -63,7 +64,7 @@ export default function Steps({
                   }}
                   className="px-[30px] py-3 h-12 w-[246px] max-md:max-w-[160px] max-[375px]:max-w-[120px] max-md:h-10"
                 >
-                  {isPending ? "Loading..." : "Back"}
+                  {isPending ?  loadingTn?.[locale] : backTn?.[locale]}
                 </Button>
               ) : (
                 <></>
@@ -79,7 +80,7 @@ export default function Steps({
                   }}
                   disabled={disableNext}
                 >
-                  {isPending ? "Loading..." : "Next Step"}
+                  {isPending ? loadingTn?.[locale] : nextStepTn?.[locale]}
                 </Button>
               ) : (
                 <Button
@@ -88,7 +89,7 @@ export default function Steps({
                   className="h-12 w-[246px] max-md:max-w-[160px] max-[375px]:max-w-[120px] max-md:h-10"
                   onClick={onSubmit}
                 >
-                  {loading ? "Submitting..." : "Submit"}
+                  {loading ? submitTn?.submitting?.[locale] : submitTn?.[locale]}
                 </Button>
               )}
             </div>

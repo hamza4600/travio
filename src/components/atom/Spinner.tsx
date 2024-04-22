@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
@@ -15,7 +14,7 @@ const spinAnimation = keyframes`
   }
 `;
 
-const SpinnerContainer = styled(motion.div)<SpinnerProps>`
+const SpinnerContainer = styled.div<SpinnerProps>`
   display: inline-block;
   width: ${(props) => props.radius}px;
   height: ${(props) => props.radius}px;
@@ -32,23 +31,13 @@ const CenteredContainer = styled.div`
   height: 100vh;
 `;
 
-const exitAnimation = {
-  opacity: 0,
-  transition: { duration: 0.5 },
-};
-
 const PageSpinner: React.FC<SpinnerProps> = ({ radius }) => {
   return (
     <CenteredContainer>
-      <AnimatePresence>
         <SpinnerContainer
           radius={radius}
           key="spinner"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={exitAnimation}
         />
-      </AnimatePresence>
     </CenteredContainer>
   );
 };

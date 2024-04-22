@@ -86,3 +86,30 @@ export async function getTestimonials() {
 
   return await CLIENT.fetch(query);
 }
+
+// get Artical on base of the tags slug
+export async function getArticalByTag(tagSlug: string[]) {
+  
+  if (!tagSlug.length) {
+    return [];
+  }
+
+  const query = `*[_type == "article"  && 
+  count(tags[@->slug.current in ${JSON.stringify(tagSlug)}]) > 0
+ ]{
+  tags []-> {
+    slug
+  },
+  introduction,
+  time,
+  cover_image,
+  title,
+  slug,
+  auther->{
+    name
+  }
+}
+`;
+
+  return await CLIENT.fetch(query);
+}

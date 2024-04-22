@@ -7,17 +7,20 @@ import Container from "@/components/molecules/container";
 import { Star } from "../HappyTravelers";
 import SectionHeader from "@/components/molecules/secHeader";
 import { urlFor } from "../../../../sanity/lib/client";
+import { filterTn, nextTn, prevTn } from "@/lib/utils";
 
 export function Pagination({
   onChange,
   total,
   pageSize,
   currentPage,
+  locale
 }: {
   onChange: (page: number) => void;
   total: number;
   pageSize: number;
   currentPage: number;
+  locale?: string | any
 }) {
   return (
     <div className={"flex items-center justify-between w-full my-12"}>
@@ -29,7 +32,7 @@ export function Pagination({
         }
         type="button"
       >
-        Prev
+        {prevTn?.[locale]}
       </button>
       <div className={"flex gap-3"}>
         {Array.from(Array(Math.ceil(total / pageSize)).keys()).map((x, i) => (
@@ -59,7 +62,7 @@ export function Pagination({
         }
         type="button"
       >
-        Next
+        {nextTn?.[locale]}
       </button>
     </div>
   );
@@ -70,11 +73,13 @@ const Filter = ({
   addSelectedRating,
   removeSelectedRating,
   selectedRating,
+  locale
 }: {
   addSelectedRating: (x: number) => void;
   removeSelectedRating: (x: number) => void;
   selectedRating: number[];
   ratings: { count: number; stars: number }[];
+  locale: string
 }) => {
   const reverseRatings = [...ratings].reverse();
 
@@ -86,7 +91,7 @@ const Filter = ({
       }}
     >
       <div className=" py-[16px] tracking-wide font-medium rounded-t-2xl px-[18px] bg-[#ecf4ff] ">
-        Filter by Rating
+        {filterTn?.[locale]}
       </div>
       <div className="flex flex-col px-6 py-5 gap-y-5 md:gap-y-8">
         {reverseRatings?.map((rating, idx) => (
@@ -231,6 +236,7 @@ const ReviewSection = (props) => {
       <div className="flex font-satoshi gap-y-[30px] md:gap-x-5 px-0 lg:px-5 mt-[30px] flex-col md:flex-row">
         <div className="w-full md:w-[430px] ">
           <Filter
+          locale={locale}
             addSelectedRating={(rating) =>
               setSelectedRating((old) => [...old, rating])
             }
@@ -261,6 +267,7 @@ const ReviewSection = (props) => {
             currentPage={pageNumber}
             pageSize={pageSize}
             onChange={setPageNumber}
+            locale={locale}
             total={reviews?.length || 0}
           />
         </div>

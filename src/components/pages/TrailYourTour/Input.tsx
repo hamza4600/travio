@@ -20,13 +20,14 @@ interface Props {
   variant?: "primary" | "secondary";
   placeholder?: string;
   label?: any;
-  options?: { label: string; value: any }[] | { name: string; icon: any }[];
+  options?: { label: string; value: any }[] | { name: any; icon: any }[];
   className?: string;
   checkboxValue?: any;
   rules?: RegisterOptions;
   disabled?: boolean;
   editable?: boolean;
   defaultValue?: any;
+  locale?: string | any
 }
 
 const VARIANT = {
@@ -58,6 +59,7 @@ export default function Input({
   rules,
   defaultValue,
   editable = true,
+  locale
 }: Props) {
   const {
     field,
@@ -202,31 +204,31 @@ export default function Input({
         <div className="flex justify-center gap-3 flex-wrap">
           {options?.map((option: any) => (
             <div
-              key={option.name}
+              key={option.name?.[locale]}
               // style={{
               //   filter: `${
               //     field.value.includes(option.name) && "brightness(0) invert(1)"
               //   } `,
               // }}
               className={`flex border w-fit border-darkblue/10 rounded ${
-                field.value.includes(option.name)
+                field.value.includes(option.name?.[locale])
                   ? "text-white bg-[#3FA9F5] fill-white"
                   : "text-gray bg-white"
               } px-3 py-[10px] text-sm gap-2 items-center whitespace-nowrap flex-nowrap`}
               onClick={() => {
-                if (field.value.includes(option.name)) {
+                if (field.value.includes(option.name?.[locale])) {
                   field.onChange(
-                    field.value.filter((item: any) => item != option.name)
+                    field.value.filter((item: any) => item != option)
                   );
                 } else {
-                  field.onChange([...field.value, option.name]);
+                  field.onChange([...field.value, option.name?.[locale]]);
                 }
               }}
             >
-              {field.value.includes(option.name)
+              {field.value.includes(option.name?.[locale])
                 ? option.iconSelected
                 : option.icon}{" "}
-              {option.name}
+              {option.name?.[locale]}
             </div>
           ))}
         </div>

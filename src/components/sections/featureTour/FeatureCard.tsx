@@ -4,6 +4,7 @@ import Image from "next/image";
 import { urlFor } from "../../../../sanity/lib/client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { cardButtonTn, overviewTn, saveTn } from "@/lib/utils";
 
 const type =
   "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center";
@@ -80,7 +81,7 @@ const FeatureCard = ({
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
               />
               <Text variant={"darkblue"} fontWeight={"500"}>
-                {cities} Cites
+                {cities} {overviewTn?.[locale]?.Cities}
               </Text>
             </div>
             <div className={type}>
@@ -93,7 +94,7 @@ const FeatureCard = ({
                 quality={100}
               />
               <Text fontWeight={"500"} variant={"darkblue"}>
-                {countries} Countries
+                {countries} {overviewTn?.[locale]?.Countries}
               </Text>
             </div>
           </div>
@@ -110,7 +111,7 @@ const FeatureCard = ({
                 variant={"destructive"}
                 className="text-[10px] md:-mt-2 md:text-xs font-bold leading-[20px] md:leading-[28px]"
               >
-                You Save ${old_price - price}
+                {saveTn?.[locale]} ${old_price - price}
               </Text>
             </div>
           </div>
@@ -121,7 +122,7 @@ const FeatureCard = ({
             variant={"sky"}
             style={{ width: "100%" }}
           >
-            View Trip
+            {cardButtonTn?.[locale]}
           </Button>
         </div>
       </div>
