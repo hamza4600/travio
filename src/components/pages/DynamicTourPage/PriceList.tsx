@@ -30,6 +30,7 @@ import {
   viewLessBtn,
   viewMoreTn,
 } from "@/lib/utils";
+import { generatePriceList } from "@/utils/dates/generatePriceList";
 
 interface SinglePrice {
   from: Date;
