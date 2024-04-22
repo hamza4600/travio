@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
-interface BlogChooseProps {
+  interface BlogChooseProps {
   items: {
     title: string;
     link: string;
@@ -19,7 +18,6 @@ function BlogChoose(props: BlogChooseProps) {
     const existingTags = new URLSearchParams(window.location.search).getAll('tag');
     const newTags = Array.isArray(existingTags) ? existingTags : [];
     const tag = item.link.toLowerCase();
-    console.log("🚀 ~ file: BlogChoose.tsx ~ line 68 ~ BlogChoose ~ tag", existingTags)
     if (newTags.includes(tag)) {
       newTags.splice(newTags.indexOf(tag), 1);
     } else {

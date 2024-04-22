@@ -5,7 +5,8 @@ import { CLIENT } from './sanity.const';
 export async function getMainDynamicBlogPage(slug: string) {
 
     const blogPageQuery = `*[_type == "blog_page" && slug.current == "/${slug}"][0]{
-        ...,
+        breadcrumb,
+        is_country_blogs,
         sections[] {
           ...,
           _type == "latest_posts_section" => {
@@ -16,16 +17,6 @@ export async function getMainDynamicBlogPage(slug: string) {
            },
           _type == "featured_blogs_section" => {
             ...,
-            featured_blogs[]->{
-              ...,
-              tags[]->,
-              auther->{
-                name
-              },
-              destination-> {
-                name,
-              }
-            }
           },
           _type == "featured_place_blogs_section" => {
             ...,
