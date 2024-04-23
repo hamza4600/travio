@@ -43,6 +43,8 @@ import travel_wiki, {
     TravelWikiSection as travel_wiki_section,
 } from "./schemas/documents/TravelWiki";
 import { BlogSectionExports } from "./schemas/sections/Blog";
+import { countryBlogCard } from "./schemas/sections/Blog/FeaturedPlaceBlogsSection";
+import { interestCard } from "./schemas/sections/Blog/InterestsSection";
 import content_section from "./schemas/sections/ContentSection";
 import deals_section from "./schemas/sections/DealsSection";
 import { DestinationSectionExports } from "./schemas/sections/Destination";
@@ -93,6 +95,8 @@ export const schemaTypes= [
         content_link_card,
         rich_text,
         // sections
+        interestCard,
+        countryBlogCard,
         content_section,
         ShowNewLetterSection,
         deals_section,
