@@ -46,13 +46,9 @@ const LanguageDropdown = ({ locale }) => {
     [translations]
   );
 
-  console.log("language: ", language)
-
   const selectedLanguage = availableTranslations.find(
     (version) => version.language === language
   );
-
-  console.log("Selected Language: ", availableTranslations)
 
   return (
     <div className="relative" style={{ zIndex: "1000" }}>
@@ -102,7 +98,7 @@ const LanguageDropdown = ({ locale }) => {
                       : "/por.png"
                   }
                 />
-                <p>{version.title?.[language]}</p>
+                <p>{version.title}</p>
               </Link>
             );
           })}

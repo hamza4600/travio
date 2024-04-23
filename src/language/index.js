@@ -12,7 +12,7 @@ const languages = [
     id: "es",
     title: {
       en: "Spanish",
-      es: "Espanhol",
+      es: "Español",
       por: "Espanhol",
     },
   },
