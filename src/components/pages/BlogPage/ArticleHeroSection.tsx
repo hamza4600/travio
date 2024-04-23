@@ -69,14 +69,14 @@ const ArticleHeroSection = ({
 
       <div className="flex gap-[18px] items-center justify-center max-md:px-5">
         <div
-          className="w-full max-lg:hidden max-w-[36px]"
+          className="w-full max-lg:hidden max-w-[36px] bg-transparent"
           style={{
             position: isFixed ? "fixed" : "relative",
             top: 100,
             left: isFixed ? 20 : 0,
             zIndex: 1000,
             marginTop: isFixed ? "0" : "10px",
-            backgroundColor: "white", // Optional: set a background color
+            // backgroundColor: "", // Optional: set a background color
             transition: "top 0.3s, position 0.3s, margin-top 0.3s", // Add transitions
           }}
           ref={tabsRef}
@@ -86,32 +86,34 @@ const ArticleHeroSection = ({
             Share
           </p>
 
-          <FacebookShare
-            url={`https://travio-seven.vercel.app/en/blog${slug}`}
-            size={36}
-            borderRadius={8}
-            quote={title?.[locale]}
-            i18nIsDynamicList
-          />
+          <div className="mt-1">
+            <FacebookShare
+              url={`https://travio-seven.vercel.app/en/blog${slug}`}
+              size={36}
+              borderRadius={8}
+              quote={title?.[locale]}
+              i18nIsDynamicList
+            />
 
-          <FacebookMessengerShare
-            url={`https://travio-seven.vercel.app/en/blog${slug}`}
-            size={36}
-            borderRadius={8}
-            appId={"dmm4kj9djk203k4liuf994p"}
-          />
+            <FacebookMessengerShare
+              url={`https://travio-seven.vercel.app/en/blog${slug}`}
+              size={36}
+              borderRadius={8}
+              appId={"dmm4kj9djk203k4liuf994p"}
+            />
 
-          <LinkedinShare
-            url={`https://travio-seven.vercel.app/en/blog${slug}`}
-            size={36}
-            borderRadius={8}
-          />
+            <LinkedinShare
+              url={`https://travio-seven.vercel.app/en/blog${slug}`}
+              size={36}
+              borderRadius={8}
+            />
 
-          <TwitterShare
-            url={`https://travio-seven.vercel.app/en/blog${slug}`}
-            size={36}
-            borderRadius={8}
-          />
+            <TwitterShare
+              url={`https://travio-seven.vercel.app/en/blog${slug}`}
+              size={36}
+              borderRadius={8}
+            />
+          </div>
         </div>
         <img
           src={urlFor(image?.asset?._ref)}
@@ -125,7 +127,7 @@ const ArticleHeroSection = ({
         />
       </div>
 
-      <p className="mt-7 lg:pl-20 px-5 font-normal md:font-medium md:leading-7 opacity-70 text-[rgba(20, 13, 49, 0.75)] md:text-[16px] text-[14px] leading-6">
+      <p className="md:mt-7 mt-5 lg:pl-20 px-5 font-normal md:font-medium md:leading-7 md:opacity-70 text-[rgba(20, 13, 49, 0.75)] md:text-[16px] text-[14px] leading-6">
         {" "}
         {introduction?.[locale]}{" "}
       </p>

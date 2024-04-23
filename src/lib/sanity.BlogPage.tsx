@@ -9,6 +9,9 @@ const blogPageQuery = `*[_type == "blog_page" && slug.current == "/"][0]{
       ...,
       featured_blogs[]->{
         ...,
+        auther->{
+          name
+        },
         tags[]->,
         destination-> {
           name,

@@ -11,7 +11,7 @@ const ArticalTestinomial = ({ locale }: { locale: string }) => {
   return (
     <>
       {/* {JSON.stringify(data.sections)} */}
-      <div className="mb-[140px]">
+      <div className="md:mb-[140px] mb-[50px]">
         <TravlerReviews data={data?.sections[0]} locale={locale} />
       </div>
     </>

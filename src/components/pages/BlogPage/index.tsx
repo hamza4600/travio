@@ -40,7 +40,16 @@ export default function CurrentBlogPage({
 
   return (
     <Layout
-      breadcrumbs={[]}
+      breadcrumbs={[
+        {
+          value: "/blogs",
+          label: "Blog",
+        },
+        {
+          value: "/egypt-blog",
+          label: "8 best things to do in Cairo",
+        },
+      ]}
       locale={locale}
       globals={layout}
       promo_banner={layout?.banner}
@@ -63,7 +72,7 @@ export default function CurrentBlogPage({
             <InThisPost data={data?.subsections} locale={locale} />
 
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
-              <p className="lg:hidden text-primary">Share</p>
+              <p className="lg:hidden text-primary text-[12px] leading-3">Share</p>
               <div className="lg:hidden flex items-center justify-center gap-1">
                 <FacebookShare
                   url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
@@ -95,6 +104,33 @@ export default function CurrentBlogPage({
                 actualData={data?.subsections}
                 locale={locale}
               />
+
+              <div className="lg:hidden flex items-center justify-center gap-1">
+                <FacebookShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={50}
+                />
+
+                <FacebookMessengerShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={50}
+                  appId={"dmm4kj9djk203k4liuf994p"}
+                />
+
+                <LinkedinShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={71}
+                />
+
+                <TwitterShare
+                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
+                  size={25}
+                  borderRadius={71}
+                />
+              </div>
             </div>
           </div>
 
