@@ -19,7 +19,7 @@ export default defineType({
   fields: i18n.languages.map((lang) =>
   defineField({
       name: lang.id,
-      title: lang.title,
+      title: lang.title.en,
       type: "text",
       fieldset: lang.isDefault ? undefined : "translations",
   })
