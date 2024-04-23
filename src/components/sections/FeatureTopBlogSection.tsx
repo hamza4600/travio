@@ -10,7 +10,7 @@ const FeatureTopBlogSection = (props: any) => {
   const {
     data: { cards },
   } = props;
-  console.log("data9999: ", props);
+  // console.log("data9999: ", cards);
   return (
     <Container
       className={"mx-auto max-w-[1312px] font-satoshi px-4 md:mt-16 mt-[90px]"}
@@ -28,10 +28,13 @@ const FeatureTopBlogSection = (props: any) => {
         </div>
 
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-3 lg:gap-7">
-          {cards?.map((card, i) => (
+          {cards.map((card, i) => {
+            // console.log("cards: ", cards)
+
+            return (
             <Link
               key={i}
-              href={`/${props.locale}/destinations` + card.slug?.current}
+              href={`/${props.locale}/blogs` + card?.link?.slug?.current}
               className={
                 "bg-red relative rounded-2xl overflow-hidden lg:" +
                 ((i + 1) % 3 === Math.floor(i / 3) ? "col-span-2" : "")
@@ -44,7 +47,7 @@ const FeatureTopBlogSection = (props: any) => {
               >
                 {card?.name?.[props.locale]}
               </div>
-              {card?.sections?.map((section, i) => (
+              {card?.link?.sections?.map((section, i) => (
                 <div key={i}>
                   {section?.image && (
                     <>
@@ -67,7 +70,8 @@ const FeatureTopBlogSection = (props: any) => {
                 </div>
               ))}
             </Link>
-          ))}
+            )
+          })}
         </div>
       </div>
     </Container>

@@ -7,7 +7,7 @@ import Container from "@/components/molecules/container";
 import { Star } from "../HappyTravelers";
 import SectionHeader from "@/components/molecules/secHeader";
 import { urlFor } from "../../../../sanity/lib/client";
-import { filterTn, nextTn, prevTn } from "@/lib/utils";
+import { filterTn, nextTn, prevTn, starTn } from "@/lib/utils";
 
 export function Pagination({
   onChange,
@@ -107,7 +107,7 @@ const Filter = ({
               className="w-fit"
             />
             <span className="text-sm  opacity-60 font-medium">
-              {rating.stars} Star
+              {rating.stars} {starTn?.[locale]}
             </span>
             <div className={"grow"}>
               <Line

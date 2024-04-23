@@ -8,7 +8,7 @@ const InterestSection = (props) => {
     locale,
   } = props as any;
 
-  // console.log("interestSection: ", props);
+  console.log("interestSection: ", interests);
 
   return (
     <Container className="md:my-[68px] my-[50px] flex flex-col justify-center items-center font-satoshi max-md:px-5">
@@ -40,7 +40,7 @@ const InterestSection = (props) => {
                 }
               >
                 <Link
-                  href={`/${locale}/blogs${item.slug?.current}`}
+                  href={`/${locale}/blogs${item?.link?.slug?.current}`}
                   className="justify-center items-center text-center flex flex-col"
                 >
                   {/* <div className=""> */}

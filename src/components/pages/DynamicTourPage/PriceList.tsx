@@ -20,7 +20,9 @@ import { Input } from "@/components/ui/input";
 import {
   bookTourTn,
   datesTn,
+  doubleSeaterTn,
   exactTn,
+  hereTn,
   perPersonTn,
   personalizeTn,
   priceTitleTn,
@@ -190,7 +192,7 @@ function PriceList({
                 className="text-[#3FA9F5]"
                 href={"/" + locale + "/tailor_your_tour"}
               >
-                here
+                {hereTn?.[locale]}
               </Link>
             </h1>
             <div className="flex items-center gap-2">
@@ -372,7 +374,7 @@ function PriceList({
                       </div>
                       <p className="text-gray font-satoshi mt-3 font-normal text-[10px] max-md:leading-5 md:text-sm">
                         {perPersonTn?.[locale]}{" "}
-                        {price.roomType || "Double Seater"}
+                        {price.roomType || doubleSeaterTn?.[locale]}
                       </p>
                       <p className="md:text-sm font-satoshi text-[12px] font-normal text-darkblue leading-5">
                         {roomTypeTn?.[locale]}

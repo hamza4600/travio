@@ -249,27 +249,51 @@ export const filterWikiData = {
 
 export const wikiTabs = [
   {
-    name: "Egypt",
+    name: {
+      en: "Egypt",
+      es: "Egipto",
+      por: "Egito"
+    },
     href: "/egypt",
   },
   {
-    name: "Jordan",
+    name: {
+      en: "Jordan",
+      es: "Jordania",
+      por: "Jordânia"
+    },
     href: "/jordan",
   },
   {
-    name: "Dubai",
+    name: {
+      en: "Dubai",
+      es: "Dubái",
+      por: "Dubai"
+    },
     href: "/dubai",
   },
   {
-    name: "Saudi Arabia",
+    name: {
+      en: "Saudi Arabia",
+      es: "Arabia Saudita",
+      por: "Arábia Saudita"
+    },
     href: "/saudi-arabia",
   },
   {
-    name: "Oman",
+    name: {
+      en: "Oman",
+      es: "Omán",
+      por: "Omã"
+    },
     href: "/oman",
   },
   {
-    name: "Turkey",
+    name: {
+      en: "Turkey",
+      es: "Turquía",
+      por: "Turquia"
+    },
     href: "/turkey",
   },
 ];

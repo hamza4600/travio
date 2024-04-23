@@ -22,8 +22,9 @@ function BlogDetailCard(props: {
   excerpt: string;
   author: string;
   className?: string;
+  linkText?: string 
 }) {
-  const { country, title, date, image, excerpt, link, author } = props;
+  const { country, title, date, image, excerpt, link, author, linkText } = props;
   return (
     <div className="md:max-w-[410px] md:min-h-[530px] max-w-[250px] min-h-[399px] rounded-[12px] md:rounded-[16px] mb-6 text-darkblue font-satoshi shadow-xl shadow-[#f5f5f5]">
       <img
@@ -45,7 +46,7 @@ function BlogDetailCard(props: {
             {getChars(excerpt, 120)}
           </span>
           <Link href={link} className="underline text-primary ml-1">
-            Read More
+            {linkText}
           </Link>
         </div>
         <p className="text-gray text-xs">
