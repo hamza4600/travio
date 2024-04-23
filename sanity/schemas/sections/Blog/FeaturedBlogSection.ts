@@ -1,4 +1,4 @@
-import {  defineField, defineType } from 'sanity'
+import {  defineField, defineType, defineArrayMember } from 'sanity'
 import {  displayNumber, joinStrings } from '@/lib/utils'
 import { Article } from '@phosphor-icons/react'
 
