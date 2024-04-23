@@ -43,14 +43,14 @@ const InterestSection = (props) => {
                   href={`/${locale}/blogs${item?.link?.slug?.current}`}
                   className="justify-center items-center text-center flex flex-col"
                 >
-                  {/* <div className=""> */}
-                  <img
-                    // style={{ margin: "auto" }}
-                    src={urlFor(item.icon)}
-                    className="w-full md:max-w-[104px] md:min-h-[104px] max-w-[60px] min-h-[60px] rounded-[8px] bg-[#F2FAFF] padding-[18px]"
-                    alt=""
-                  />
-                  {/* </div> */}
+                  <div className="w-full md:max-w-[104px] bg-[#F2FAFF] max-w-[60px] md:p-[18px] p-[10px] h-full rounded-[8px]">
+                    <img
+                      // style={{ margin: "auto" }}
+                      src={urlFor(item.icon)}
+                      className="w-full md:max-w-[68px] md:min-h-[68px] max-w-[40px] min-h-[40px] md:rounded-[8px] rounded-[4px]"
+                      alt=""
+                    />
+                  </div>
                   <p className="text-center text-base max-md:text-[14px] max-md:leading-5 md:my-5 my-2.5 font-medium text-primary">
                     {item.name?.[props.locale]}
                   </p>

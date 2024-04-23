@@ -36,7 +36,7 @@ const BlogCard = ({ blog, locale }) => {
             </h3>
 
             <p className="mt-[6px] md:mt-2 text-[10px] md:text-xs font-normal leading-3 md:leading-[20px]  text-gray ">{`By ${
-              blog?.author?.name?.[locale]
+              blog?.auther?.name?.[locale]
             } ${
               blog?._updatedAt
                 ? "on " + DateFormat(new Date(blog?._updatedAt))

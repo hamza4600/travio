@@ -390,3 +390,15 @@ export const starTn = {
   es: "Estrella",
   por: "Estrela"
 }
+
+export const wantToTn = {
+  en: "Want to create your own tour",
+  es: "¿Quieres crear tu propio recorrido?",
+  por: "Queres criar o teu próprio passeio?"
+}
+
+export const tailTourTn = {
+  en: "Tailor your tour",
+  es: "Adapta tu recorrido",
+  por: "Personaliza o teu passeio"
+}

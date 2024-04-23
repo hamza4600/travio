@@ -144,7 +144,7 @@ const BlogContentSection = ({ actualData, locale }: any) => {
 
   // console.log("actulData: ", actualData);
   return (
-    <div className="my-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
+    <div className="mt-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
       {actualData.map((item: any, index: any) => {
         if (item._type === "subsection") {
           return (
