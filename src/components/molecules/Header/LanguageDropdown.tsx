@@ -11,7 +11,7 @@ type Translation = {
   language: string;
 };
 
-const LanguageDropdown = () => {
+const LanguageDropdown = ({ locale }) => {
   const [open, setOpen] = React.useState(false);
 
   const pathname = usePathname();
@@ -25,7 +25,7 @@ const LanguageDropdown = () => {
     return {
       language: lang.id,
       path: `/${lang.id}${destinationPath}`,
-      title: lang.title,
+      title: lang.title?.[locale],
     };
   });
 
@@ -46,9 +46,14 @@ const LanguageDropdown = () => {
     [translations]
   );
 
+  console.log("language: ", language)
+
   const selectedLanguage = availableTranslations.find(
     (version) => version.language === language
   );
+
+  console.log("Selected Language: ", availableTranslations)
+
   return (
     <div className="relative" style={{ zIndex: "1000" }}>
       <div
@@ -97,7 +102,7 @@ const LanguageDropdown = () => {
                       : "/por.png"
                   }
                 />
-                <p>{version.title}</p>
+                <p>{version.title?.[language]}</p>
               </Link>
             );
           })}

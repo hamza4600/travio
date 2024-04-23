@@ -1,12 +1,34 @@
 const languages = [
-    { id: "en", title: "English", isDefault: true },
-    { id: "es", title: "Spanish" },
-    { id: "por", title: "Portuguese" },
+  {
+    id: "en",
+    title: {
+      en: "English",
+      es: "Inglés",
+      por: "Inglês",
+    },
+    isDefault: true,
+  },
+  {
+    id: "es",
+    title: {
+      en: "Spanish",
+      es: "Espanhol",
+      por: "Espanhol",
+    },
+  },
+  {
+    id: "por",
+    title: {
+      en: "Portuguese",
+      es: "Portugués",
+      por: "Português",
+    },
+  },
 ];
 
 const i18n = {
-    languages,
-    base: languages.find((item) => item.isDefault).id,
+  languages,
+  base: languages.find((item) => item.isDefault).id,
 };
 
 export { i18n, languages };

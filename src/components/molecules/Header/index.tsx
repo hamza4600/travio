@@ -120,7 +120,7 @@ const Header = ({
                 </Text>{" "}
               </Button>
 
-              <LanguageDropdown />
+              <LanguageDropdown locale={locale} />
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@ const Header = ({
               </a>
             )}
             {/* Language selector */}
-            <LanguageDropdown />
+            <LanguageDropdown locale={locale} />
             <button onClick={() => setIsOpen(!isOppen)}>
               <OpenSvg />
             </button>
