@@ -402,3 +402,9 @@ export const tailTourTn = {
   es: "Adapta tu recorrido",
   por: "Personaliza o teu passeio"
 }
+
+export const sidebarFooterTn = {
+  en: "Promo Trend Travel is a Travel Agency that was established 15 years ago in Egypt. Our aim is to ensure and provide a full service to our customers with professionalism, quality and creativity.",
+  es: "Promo Trend Travel es una agencia de viajes que fue establecida hace 15 años en Egipto. Nuestro objetivo es garantizar y proporcionar un servicio completo a nuestros clientes con profesionalismo, calidad y creatividad.",
+  por: "A Promo Trend Travel é uma agência de viagens que foi estabelecida há 15 anos no Egito. Nosso objetivo é garantir e fornecer um serviço completo aos nossos clientes com profissionalismo, qualidade e criatividade."
+}
