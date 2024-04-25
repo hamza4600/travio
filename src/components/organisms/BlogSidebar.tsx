@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import Container from "../molecules/container";
 import Link from "next/link";
 import { urlFor } from "../../../sanity/lib/client";
-import { wantToTn, tailTourTn } from "@/lib/utils"
+import { wantToTn, tailTourTn, sidebarFooterTn } from "@/lib/utils"
 
 // const Search = () => (
 //   <svg
@@ -62,7 +62,7 @@ function BlogSidebar({ data, locale }: any) {
               <Link
                 key={index}
                 href={`/${locale}/blog${article?.slug?.current}`}
-                className="p-3 rounded-xl flex items-center justify-center gap-2 bg-white shadow-md"
+                className="p-3 rounded-xl flex items-center md:justify-center gap-2 bg-white shadow-md"
               >
                 <div className="min-w-[75px] min-h-[75px] h-full rounded-xl overflow-hidden relative">
                   <Image
@@ -93,9 +93,9 @@ function BlogSidebar({ data, locale }: any) {
                 <Link
                   href={`/${locale}/tours${tour?.slug?.current}`}
                   key={index}
-                  className="p-3 rounded-xl flex justify-center gap-2 bg-white shadow-md"
+                  className="p-3 rounded-xl flex gap-2 bg-white shadow-md"
                 >
-                  <div className="w-[73px] min-h-[103px] h-full rounded-xl overflow-hidden relative">
+                  <div className="w-[87px] min-h-[94px] h-full rounded-xl overflow-hidden relative">
                     <Image
                       src={urlFor(tour?.hero_section?.image?.asset?._ref)}
                       quality={100}
@@ -191,9 +191,7 @@ function BlogSidebar({ data, locale }: any) {
             alt="logo"
           />
           <p className="md:text-darkblue text-gray text-[12px] leading-5 md:text-[16px] md:leading-7 text-center">
-            Promo Trend Travel is a Travel Agency that was established 15 years
-            ago in Egypt. Our aim is to ensure and provide a full service to our
-            customers with professionalism, quality and creativity.
+            {sidebarFooterTn?.[locale]}
           </p>
         </div>
       </div>

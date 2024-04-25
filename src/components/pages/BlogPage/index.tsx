@@ -11,12 +11,7 @@ import BlogSidebar from "@/components/organisms/BlogSidebar";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import {
-  FacebookShare,
-  TwitterShare,
-  LinkedinShare,
-  FacebookMessengerShare,
-} from "react-share-kit";
+import SharingOpt from "@/components/atom/SharingOpt"
 import useWindowSize from "@/hooks/useWindows";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 import ArticalTestinomial from "./Testimonila";
@@ -74,30 +69,7 @@ export default function CurrentBlogPage({
             <div className="flex flex-col gap-[10px] items-center justify-center mt-5">
               <p className="lg:hidden text-primary text-[12px] leading-3">Share</p>
               <div className="lg:hidden flex items-center justify-center gap-1">
-                <FacebookShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={50}
-                />
-
-                <FacebookMessengerShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={50}
-                  appId={"dmm4kj9djk203k4liuf994p"}
-                />
-
-                <LinkedinShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={71}
-                />
-
-                <TwitterShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={71}
-                />
+                <SharingOpt  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`} appId="dmm4kj9djk203k4liuf994p" />
               </div>
 
               <BlogContentSection
@@ -106,30 +78,7 @@ export default function CurrentBlogPage({
               />
 
               <div className="lg:hidden flex items-center justify-center gap-1">
-                <FacebookShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={50}
-                />
-
-                <FacebookMessengerShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={50}
-                  appId={"dmm4kj9djk203k4liuf994p"}
-                />
-
-                <LinkedinShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={71}
-                />
-
-                <TwitterShare
-                  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`}
-                  size={25}
-                  borderRadius={71}
-                />
+                <SharingOpt  url={`https://travio-seven.vercel.app/en/blog${data?.slug?.current}`} />
               </div>
             </div>
           </div>

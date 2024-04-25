@@ -19,7 +19,7 @@ const CardsSection = ({ data, locale }, props) => {
       />
       <div className="h-fit relative z-20 md:mt-12 mt-[30px]">
         <Swiper
-          className={"gap-6 pb-2 pl-1.5"}
+          className={"gap-6 pb-2 pl-3"}
           length={data.deals.length}
           scrollCount={4}
         >

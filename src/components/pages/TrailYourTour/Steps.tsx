@@ -47,7 +47,7 @@ export default function Steps({
       <div
         className={`${
           step == 1 ? " bg-white" : "bg-primary"
-        }  sm:rounded-[20px] md:pt-10 pt-3 flex flex-col gap-4 md:w-auto w-[100%]`}
+        }  sm:rounded-[20px] md:pt-10 md:pb-12 py-10 flex flex-col gap-4 md:w-auto w-[100%]`}
         // style={{ minHeight: "450px" }}
       >
         {children && (
