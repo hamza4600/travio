@@ -105,7 +105,7 @@ export const topbarTn = {
     "TripHighlights": "Trip Highlights",
     "Itinerary": "Itinerary",
     "Inclusions": "Inclusions",
-    "Essentials Travel Information": "Essentials Travel Information",
+    "EssentialsTravelInformation": "Essentials Travel Information",
     "Reviews": "Reviews"
   },
   "es": {
