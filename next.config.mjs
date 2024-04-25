@@ -7,6 +7,7 @@ const bundleAnalyzer = withBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     images: { remotePatterns: [{ hostname: "cdn.sanity.io" }, { hostname: 'images.unsplash.com' }] },
     swcMinify: true,
     compiler: {
