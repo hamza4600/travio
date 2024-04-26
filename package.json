@@ -12,6 +12,7 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
     "@hookform/resolvers": "^3.3.4",
+    "@nadfri/react-scroll-progress-bar": "^0.2.3",
     "@next/bundle-analyzer": "^14.1.0",
     "@phosphor-icons/react": "^2.0.15",
     "@radix-ui/react-accordion": "^1.1.2",
