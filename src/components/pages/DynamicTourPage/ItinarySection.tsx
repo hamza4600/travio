@@ -347,19 +347,6 @@ const EnquireTab = ({ locale }: any) => {
   );
 };
 
-const optionalAct = [
-  {
-    img: "/demo/activities.png",
-    title: "Cairo - Coptic Museum (entrance fee) - EGP150",
-    desc: "Coptic Museum",
-  },
-  {
-    img: "/demo/activities.png",
-    title: "Cairo - Coptic Museum (entrance fee) - EGP150",
-    desc: "Coptic Museum",
-  },
-];
-
 const Expandable = ({
   data,
   isOpen,
