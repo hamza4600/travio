@@ -1,30 +1,4 @@
-// import React, { ComponentClass, FunctionComponent } from 'react'
-
-// export default function Slicer({
-//   sections,
-//   components,
-//   locale,
-// }: {
-//   sections?: ({ _type: string; _key: string } & { [x in string]: any })[]
-//   components: { [name in string]: FunctionComponent<any> | ComponentClass<any, any> }
-//   locale: string
-//  }) {
-
-//   return (
-//     <>
-//       {sections?.map((section) => (
-//         <React.Fragment key={section._key}>
-//           {components[section._type] &&
-//             React.createElement(components[section?._type], {
-//               data: section,
-//               locale,
-//               key: section._key,
-//             })}
-//         </React.Fragment>
-//       ))}
-//     </>
-//   )
-// }
+"use client";
 
 import React, { useState, useEffect } from 'react';
 

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+
 const HomePage = dynamic(() => import("@/components/pages/HomePage"));
 import { getAllHomePage, getHomePageSeo } from "@/lib/sanity.HomePage";
 import { urlForImage } from "../../../sanity/lib/image";
@@ -46,7 +47,8 @@ export async function generateMetadata({ params }) {
 export const revalidate = 3600;
 
 export default async function Home({ params }) {
-  const homePage = await getAllHomePage();
+  
+  const homePage =  await getAllHomePage();
 
   const { language } = params;
 
