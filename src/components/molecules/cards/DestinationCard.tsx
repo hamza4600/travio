@@ -5,6 +5,8 @@ import { displayNumber } from "@/utils/utils";
 import { urlFor } from "../../../../sanity/lib/client";
 import { tourPackagesTn } from "@/lib/utils";
 
+import Image from "next/image";
+
 const DestinationCard = ({ data, tourCount, locale }) => {
   const image = data?.image;
 
@@ -12,11 +14,15 @@ const DestinationCard = ({ data, tourCount, locale }) => {
     <div className="w-full h-fit font-satoshi">
       <div className={"min-h-[250px] md:min-h-[310px]  relative"}>
         {image && (
-          <img
+          <Image
             // loading="lazy"
             className="w-full h-full rounded-2xl max-w-[408px] min-h-[310px] max-sm:min-h-[250px]"
             src={urlFor(image)}
             alt=""
+            priority
+            quality={100}
+            width={408}
+            height={310}
           />
         )}
       </div>
