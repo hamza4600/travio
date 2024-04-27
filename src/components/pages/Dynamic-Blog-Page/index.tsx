@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { urlFor } from "../../../../sanity/lib/client";
 import Container from "@/components/molecules/container";
@@ -41,11 +41,17 @@ export default function BlogPage({
 
   const searchParams = useSearchParams();
   const urlTags = searchParams?.getAll("tag")
-  const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags;
+  const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags
 
-  const { data: tagsArtical, isLoading } = useSWR("/api/sanity", () =>
-    getArticalByTag(articalTags)
+  const { data: tagsArtical, isLoading, mutate   } = useSWR("/blogsTags", () =>
+    getArticalByTag(articalTags) , {
+      // refreshInterval: 1000,
+    }
   );
+
+  useEffect(() => {
+    mutate('/blogsTags')
+  },[searchParams])
 
   // const [pageNumber, setPageNumber] = React.useState(0);
   // const pageSize = 3
@@ -94,7 +100,8 @@ export default function BlogPage({
                 <Spinner radius={50} />
               </div>
             ) : (
-              tagsArtical?.map((article, index) => {
+              Array.isArray(tagsArtical) && tagsArtical.length > 0 &&
+              tagsArtical.map((article, index) => {
                 return (
                   <BlogDetailCard
                     country={(article.destination as any)?.name?.[locale]}

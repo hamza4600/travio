@@ -8,7 +8,7 @@ import SectionHeader from "@/components/molecules/secHeader";
 import { readMoreTn } from "@/lib/utils"
 
 const FeatureBlogs = ({ data, locale }) => {
-  console.log("FeatureBlog: ", data)
+
   return (
     <>
       <SectionHeader
