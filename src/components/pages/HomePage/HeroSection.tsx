@@ -28,6 +28,7 @@ const HeroSection = ({ data, locale }) => {
           quality={100}
           width={1440}
           height={538}
+          loading="lazy"
           className={
             "max-md:hidden absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
@@ -48,9 +49,10 @@ const HeroSection = ({ data, locale }) => {
           quality={100}
           width={1440}
           height={540}
-          priority
+          // priority
+          loading="lazy"
           className={
-            "absolute md:hidden min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+            "absolute md:hidden max-w-full rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
           src={urlFor(data.image?.mobile.asset?._ref)}
           alt={"hero"}
