@@ -1,11 +1,12 @@
 import Swiper from "@/components/molecules/Swiper";
-import TourCard from "@/components/molecules/cards/Card";
 import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
+import dynamic from "next/dynamic";
+
+const TourCard = dynamic(() => import("@/components/molecules/cards/Card"));
 
 import "swiper/css";
 import "swiper/css/navigation";
-
 
 const CardsSection = ({ data, locale }, props) => {
   console.log("dataDeals: ", data);

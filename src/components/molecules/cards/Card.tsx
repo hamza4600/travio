@@ -55,6 +55,7 @@ const TourCard = ({
           alt={`pic-${link}`}
           quality={100}
           priority
+          loading="lazy"
         />
         <Image
           width={302}
@@ -64,6 +65,7 @@ const TourCard = ({
           alt={`pic-${link}`}
           quality={100}
           priority
+          loading="lazy"
         />
         <div className="p-4">
           <Text className="text-base md:text-xl text-darkblue font-bold min-h-[56px]">
