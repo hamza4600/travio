@@ -16,6 +16,7 @@ import { getArticalByTag } from "@/lib/sanity.DynamicBlog";
 import useSWR from "swr";
 import { Spinner } from "@/components/atom/Spinner";
 import { readMoreTn } from "@/lib/utils";
+import { useSearchParams } from "next/navigation";
 
 export default function BlogPage({
   locale,
@@ -38,8 +39,9 @@ export default function BlogPage({
   );
   const latestPosts = sections.find((s) => s?._type === "latest_posts_section");
 
-  const urlTags = new URLSearchParams(window.location.search).getAll("tag");
-  const articalTags = urlTags.length > 0 ? urlTags : tags;
+  const searchParams = useSearchParams();
+  const urlTags = searchParams?.getAll("tag")
+  const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags;
 
   const { data: tagsArtical, isLoading } = useSWR("/api/sanity", () =>
     getArticalByTag(articalTags)
