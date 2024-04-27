@@ -4,12 +4,15 @@ import Container from "@/components/molecules/container";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { urlFor } from "../../../../sanity/lib/client";
+import { useAmp } from "next/amp";
+
+export const config = { amp: "hybrid" };
 
 import React from "react";
+import Head from "next/head";
 const HeroSection = ({ data, locale }) => {
   const linearGradient =
     "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
-
 
   return (
     <Container className="px-0">
@@ -24,15 +27,27 @@ const HeroSection = ({ data, locale }) => {
           }
           style={{ background: linearGradient }}
         />
-        <Image
-          width={1440}
-          height={538}
-          className={
-            "max-md:hidden absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
-          }
-          src={urlFor(data.image?.asset?._ref)}
-          alt={"hero"}
-        />
+        {useAmp() ? (
+          <amp-img
+            width={1440}
+            height={538}
+            // className={
+            //   "max-md:hidden absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+            // }
+            src={urlFor(data.image?.asset?._ref)}
+            alt={"hero"}
+          ></amp-img>
+        ) : (
+          <Image
+            width={1440}
+            height={538}
+            className={
+              "max-md:hidden absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+            }
+            src={urlFor(data.image?.asset?._ref)}
+            alt={"hero"}
+          />
+        )}
         <div
           className={
             "w-full h-[540px] rounded-[24px] md:hidden block max-lg:rounded-none lg:h-full absolute top-0 -z-10"
@@ -42,16 +57,40 @@ const HeroSection = ({ data, locale }) => {
               "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 54.09%, rgba(0, 0, 0, 0.80) 96.01%)",
           }}
         />
-        <Image
-          id="mobile-75i"
-          width={1440}
-          height={540}
-          className={
-            "absolute md:hidden max-w-full rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
-          }
-          src={urlFor(data.image?.mobile.asset?._ref)}
-          alt={"hero"}
-        />
+
+        {useAmp() ? (
+          <amp-img
+            // id="mobile-75i"
+            width={600}
+            height={540}
+            // className={
+            //   "absolute md:hidden max-w-full rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+            // }
+            src={urlFor(data.image?.mobile.asset?._ref)}
+            alt={"hero"}
+          ></amp-img>
+        ) : (
+          <>
+            <Head>
+              <link
+                rel="preload"
+                as="image"
+                href={urlFor(data.image?.asset?._ref)}
+              />
+            </Head>
+            <Image
+              id="mobile-75i"
+              width={600}
+              // sizes="100vw"
+              height={540}
+              className={
+                "absolute md:hidden max-w-full rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
+              }
+              src={urlFor(data.image?.mobile.asset?._ref)}
+              alt={""}
+            />
+          </>
+        )}
 
         <div className="text-white py-5 z-10 w-full md:px-10">
           <div className="-mt-20 md:mt-0 flex items-center md:items-start justify-center md:justify-between flex-col">

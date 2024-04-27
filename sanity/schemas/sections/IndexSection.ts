@@ -11,7 +11,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       description: 'The title of the section',
-      type: 'locale_rich_text',
+      type: 'locale_string',
     }),
     defineField({
       name: 'tours',
