@@ -1,20 +1,18 @@
+
 import { ReactNode } from "react";
 import dynamic from "next/dynamic";
 
 import {
   SanityGlobals,
-  // SanityLocale,
-  // SanityPromoBanner,
 } from "../../../sanity/lib/types";
 
 import { urlFor } from "../../../sanity/lib/client";
 const PromoBanner = dynamic(() => import("../molecules/Promobanner"));
 const Footer = dynamic(() => import("../molecules/footer"));
-import Header from "../molecules/Header";
+const Header = dynamic(() => import("../molecules/Header"));
 import Schema from "../atom/Schema";
 import Breadcrumbs, { Breadcrumb } from "../atom/Breadcrumbs";
 
-// const myFont = localFont({ src: '../../../public/Satoshi-Variable.ttf' })
 const Layout = ({
   children,
   globals,

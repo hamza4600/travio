@@ -1,3 +1,4 @@
+'use client';
 import { urlFor } from "../../../../sanity/lib/client";
 import { SanityWhatsIncludedSection } from "../../../../sanity/lib/types";
 import Container from "@/components/molecules/container";

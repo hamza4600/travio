@@ -10,31 +10,18 @@ import {
 } from "../../../sanity/lib/types";
 
 const FeatureTourSection = dynamic(() => import("./featureTour/FeatureTour"));
-const ContactSection = dynamic(
-  () => import("../pages/DynamicDestinations/ContactSection")
-);
+const ContactSection = dynamic(() => import("../pages/DynamicDestinations/ContactSection"));
 
-const ReviewRatingSections = dynamic(
-  () => import("@/components/sections/reviews/Reviews")
-);
+const ReviewRatingSections = dynamic(() => import("@/components/sections/reviews/Reviews"));
 
-const BlogHeroSection = dynamic(() => import("./BlogHeroSection"), {
-  ssr: false,
-});
-const NewsletterSection = dynamic(() => import("./NewsletterSection"), {
-  ssr: false,
-});
-const InterestSection = dynamic(() => import("./InterestSection"), {
-  ssr: false,
-});
-const FeatureTopBlogSection = dynamic(() => import("./FeatureTopBlogSection"), {
-  ssr: false,
-});
+const BlogHeroSection = dynamic(() => import("./BlogHeroSection"));
+const NewsletterSection = dynamic(() => import("./NewsletterSection"));
+const InterestSection = dynamic(() => import("./InterestSection"));
+const FeatureTopBlogSection = dynamic(() => import("./FeatureTopBlogSection"));
 const BlogSection = dynamic(
   () => import("@/components/sections/blogs/BlogSection"),
   {
     loading: () => <p>Loading...</p>,
-    ssr: false,
   }
 );
 
@@ -42,7 +29,6 @@ const AllBlogsSection = dynamic(
   () => import("@/components/pages/AllBlogs-Page/FeatureBlogs"),
   {
     loading: () => <p>Loading...</p>,
-    ssr: false,
   }
 );
 
