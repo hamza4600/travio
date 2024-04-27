@@ -13,6 +13,11 @@ const nextConfig = {
     compiler: {
         styledComponents: true,
     },
+    experimental: {
+        amp: {
+          skipValidation: true
+        }
+    }
 };
 
 export default bundleAnalyzer(nextConfig);

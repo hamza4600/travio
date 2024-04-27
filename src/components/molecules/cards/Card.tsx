@@ -53,9 +53,8 @@ const TourCard = ({
           className="rounded-t-2xl h-[220px] max-sm:hidden"
           src={urlFor(pic)}
           alt={`pic-${link}`}
-          quality={100}
-          priority
-          loading="lazy"
+          // quality={100}
+          // loading="lazy"
         />
         <Image
           width={302}
@@ -63,8 +62,7 @@ const TourCard = ({
           className="rounded-t-2xl h-[180px] sm:hidden"
           src={urlFor(mobilePic)}
           alt={`pic-${link}`}
-          quality={100}
-          priority
+          // quality={100}
           loading="lazy"
         />
         <div className="p-4">
@@ -76,8 +74,8 @@ const TourCard = ({
               <Image
                 height={100}
                 width={100}
-                quality={100}
-                priority
+                // quality={100}
+                // priority
                 alt="calendar"
                 src="/calendar.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
@@ -102,8 +100,8 @@ const TourCard = ({
               <Image
                 height={100}
                 width={100}
-                quality={100}
-                priority
+                // quality={100}
+                // priority
                 alt="globe"
                 src="/globe.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
