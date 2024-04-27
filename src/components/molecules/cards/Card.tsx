@@ -52,17 +52,18 @@ const TourCard = ({
           // alt={image.alt}
           className="rounded-t-2xl h-[220px] max-sm:hidden"
           src={urlFor(pic)}
-          alt=""
+          alt={`pic-${link}`}
           quality={100}
+          priority
         />
         <Image
           width={302}
           height={100}
-          // alt={image.alt}
           className="rounded-t-2xl h-[180px] sm:hidden"
           src={urlFor(mobilePic)}
-          alt=""
+          alt={`pic-${link}`}
           quality={100}
+          priority
         />
         <div className="p-4">
           <Text className="text-base md:text-xl text-darkblue font-bold min-h-[56px]">
@@ -70,10 +71,12 @@ const TourCard = ({
           </Text>
           <div className="flex mt-3 justify-between">
             <div className={type}>
-              <img
+              <Image
                 height={100}
                 width={100}
-                alt=""
+                quality={100}
+                priority
+                alt="calendar"
                 src="/calendar.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
               />
@@ -82,10 +85,10 @@ const TourCard = ({
               </Text>
             </div>
             <div className={type}>
-              <img
+              <Image
                 height={100}
                 width={100}
-                alt=""
+                alt="plain"
                 src="/map_plain.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
               />
@@ -97,10 +100,11 @@ const TourCard = ({
               <Image
                 height={100}
                 width={100}
-                alt=""
+                quality={100}
+                priority
+                alt="globe"
                 src="/globe.svg"
                 className="h-4 w-4 md:h-[18px] md:w-[18px]"
-                quality={100}
               />
               <Text fontWeight={"500"} variant={"darkblue"}>
                 {countries} Countries

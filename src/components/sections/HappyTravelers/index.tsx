@@ -50,7 +50,11 @@ const TravlerReviews = (props) => {
           <p className="text-sm font-medium lg:font-normal md:text-lg md:leading-[28px] mt-2.5 md:mt-3 text-gray ">
             {subtitle?.[locale]}
           </p>
-          <img
+          <Image
+            width={320}
+            height={230}
+            quality={100}
+            priority
             src={urlFor(
               isMobile ? image?.mobile?.asset?._ref : image?.asset?._ref
             )}
@@ -88,15 +92,22 @@ const TravlerReviews = (props) => {
                     </p>
                     <div className="flex gap-x-3 mt-4 items-center">
                       <div>
-                        <img
-                          alt={""}
+                        <Image
+                          alt={`country-${index}`}
                           className="min-h-[38px] max-w-[38px] max-md:hidden"
                           src={urlFor(item?.avatar?.asset?._ref)}
+                          width={38}
+                          height={38}
+                          priority
                         />
-                        <img
-                          alt={""}
+                        <Image
+                          alt={`country-mobile-${index}`}
                           className="min-h-[38px] max-w-[38px] md:hidden"
+                          width={38}
+                          height={38}
                           src={urlFor(item?.avatar?.mobile?.asset?._ref)}
+                          quality={100}
+                          priority
                         />
                       </div>
                       <div className="gap-1 font-satoshi md:gap-0">
@@ -122,6 +133,8 @@ const TravlerReviews = (props) => {
           src="/demo/airp.png"
           height={200}
           width={200}
+          quality={100}
+          priority
           // className="absolur"
           className="absolute -left-0 md:-left-5 -bottom-[75px] md:-bottom-[235px] max-md:w-[120px] max-md:rotate-12"
           alt="aeroplane"

@@ -23,7 +23,11 @@ const HeroSection = ({ data, locale }) => {
           }
           style={{ background: linearGradient }}
         />
-        <img
+        <Image
+          priority
+          quality={100}
+          width={1440}
+          height={538}
           className={
             "max-md:hidden absolute min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
@@ -39,8 +43,12 @@ const HeroSection = ({ data, locale }) => {
               "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 54.09%, rgba(0, 0, 0, 0.80) 96.01%)",
           }}
         />
-        <img
+        <Image
           id="mobile-75i"
+          quality={100}
+          width={1440}
+          height={540}
+          priority
           className={
             "absolute md:hidden min-h-[538px] max-w-[1440px] rounded-[24px] max-sm:rounded-none -z-20 left-0 top-0 w-full h-[540px] lg:h-full object-cover max-xl:rounded-none"
           }
@@ -106,7 +114,11 @@ const HeroSection = ({ data, locale }) => {
                   alt=""
                   quality={100}
                 />
-                <img
+                <Image
+                  quality={100}
+                  width={136}
+                  height={73}
+                  priority
                   className="md:hidden"
                   src={urlFor(data?.scores[0]?.mobile?.asset?._ref)}
                   alt=""
@@ -136,7 +148,11 @@ const HeroSection = ({ data, locale }) => {
                   alt=""
                   quality={100}
                 />
-                <img
+                <Image
+                  priority
+                  quality={100}
+                  width={136}
+                  height={73}
                   className="md:hidden"
                   src={urlFor(data?.scores[1]?.mobile?.asset?._ref)}
                   alt=""

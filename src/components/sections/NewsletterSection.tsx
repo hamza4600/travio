@@ -5,6 +5,8 @@ import useSWR from 'swr'
 import { getnewLetterSection } from "@/lib/sanity.NewLetter";
 import { signUpTn, tourFormTn } from "@/lib/utils";
 
+import Image from "next/image";
+
 const NewsletterSection = ({ locale , data : pageSec }) => {
   
   const window = useWindowSize();
@@ -21,9 +23,11 @@ const NewsletterSection = ({ locale , data : pageSec }) => {
   return (
     <Container className="md:pb-[60px] pb-[50px] px-0 flex justify-center items-center bg-white text-white">
       <div className="pt-[30px] md:pt-[55px] pb-[45px] px-[60px] h-[300px] md:h-full w-screen md:w-full bg-blue md:rounded-3xl overflow-hidden relative">
-        <img
+        <Image
           width={640}
           height={222}
+          quality={100}
+          priority
           src={
             isMobile ? "/demo/form-bg-mobile.png" : "/demo/formbg-desktop.png"
           }
