@@ -69,10 +69,14 @@ export default function FeatureSection({ data, locale }) {
             </svg>
           </div>
           <div className="w-[180px] h-[120px] md:h-[132px] md:w-[300px] absolute right-0 md:bottom-32 -bottom-12">
-            <img
+            <Image
               src={"/airplane-bg.svg"}
               alt=""
               className="object-contain h-full w-full z-50"
+              priority
+              quality={100}
+              width={300}
+              height={132}
             />
           </div>
           <div className="absolute w-inherit  md:hidden space-y-[79px] ">
