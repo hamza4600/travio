@@ -49,13 +49,13 @@ export default defineType({
     //   type: 'reference',
     //   to: [{ type: 'article' }],
     // }),
-    defineField({
-      name: 'tags',
-      title: 'Tags to fetch articles for (if this is not an article page)',
-      description : 'Tags to fetch articles for latest articles section on the page',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
-    }),
+    // defineField({
+    //   name: 'tags',
+    //   title: 'Tags to fetch articles for (if this is not an article page)',
+    //   description : 'Tags to fetch articles for latest articles section on the page',
+    //   type: 'array',
+    //   of: [{ type: 'reference', to: [{ type: 'tag' }] }],
+    // }),
     defineField({
       name: 'sections',
       title: 'Sections',
