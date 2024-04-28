@@ -30,6 +30,7 @@ export function getChars(chars: string, length: number) {
   if(chars) {
     return chars.length > length ? chars.substring(0, length) + "..." : chars;
   }
+  return "We are sorry! this content is only available in english"
 }
 
 export const cardButtonTn = {
@@ -104,7 +105,7 @@ export const topbarTn = {
     "TripHighlights": "Trip Highlights",
     "Itinerary": "Itinerary",
     "Inclusions": "Inclusions",
-    "Essentials Travel Information": "Essentials Travel Information",
+    "EssentialsTravelInformation": "Essentials Travel Information",
     "Reviews": "Reviews"
   },
   "es": {
@@ -352,4 +353,58 @@ export const enqTn = {
   en: "Enquire",
   es: "Consultar",
   por: "Consultar"
+}
+
+export const bookingBtn = {
+  en: "My Bookings",
+  es: "Mis Reservas",
+  por: "Minhas Reservas"
+}
+
+export const readMoreTn = {
+  en: "Read More",
+  es: "Leer Más",
+  por: "Leia Mais"
+}
+
+export const expandTn = {
+  en: "Expand All",
+  es: "Expandir Todo",
+  por: "Expandir Tudo"
+}
+
+export const hereTn = {
+  en: "here",
+  es: "aqui",
+  por: "aqui"
+}
+
+export const doubleSeaterTn = {
+  en: "Double Seater",
+  es: "Doble Asiento",
+  por: "Assento Duplo"
+}
+
+export const starTn = {
+  en: "Star",
+  es: "Estrella",
+  por: "Estrela"
+}
+
+export const wantToTn = {
+  en: "Want to create your own tour",
+  es: "¿Quieres crear tu propio recorrido?",
+  por: "Queres criar o teu próprio passeio?"
+}
+
+export const tailTourTn = {
+  en: "Tailor your tour",
+  es: "Adapta tu recorrido",
+  por: "Personaliza o teu passeio"
+}
+
+export const sidebarFooterTn = {
+  en: "Promo Trend Travel is a Travel Agency that was established 15 years ago in Egypt. Our aim is to ensure and provide a full service to our customers with professionalism, quality and creativity.",
+  es: "Promo Trend Travel es una agencia de viajes que fue establecida hace 15 años en Egipto. Nuestro objetivo es garantizar y proporcionar un servicio completo a nuestros clientes con profesionalismo, calidad y creatividad.",
+  por: "A Promo Trend Travel é uma agência de viagens que foi estabelecida há 15 anos no Egito. Nosso objetivo é garantir e fornecer um serviço completo aos nossos clientes com profissionalismo, qualidade e criatividade."
 }

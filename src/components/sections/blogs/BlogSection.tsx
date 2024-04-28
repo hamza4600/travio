@@ -10,6 +10,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { urlFor } from "../../../../sanity/lib/client";
 
+import Image from "next/image";
+
 const BlogCard = ({ blog, locale }) => {
   return (
     blog && (
@@ -20,11 +22,14 @@ const BlogCard = ({ blog, locale }) => {
         <div className=" w-full">
           <div className={"rounded-3xl max-sm:rounded-[8px] overflow-hidden"}>
             {blog?.cover_image && (
-              <img
-                loading="lazy"
+              <Image
+                priority
+                height={460}
+                width={410}
+                quality={100}
                 className="w-full min-h-[460px] max-w-[410px] max-sm:min-h-[280px] max-sm:max-w-[250px]"
                 src={urlFor(blog?.cover_image)}
-                alt="cover_image"
+                alt={`cover_image-${blog?.slug?.current}`}
               />
             )}
           </div>
@@ -36,7 +41,7 @@ const BlogCard = ({ blog, locale }) => {
             </h3>
 
             <p className="mt-[6px] md:mt-2 text-[10px] md:text-xs font-normal leading-3 md:leading-[20px]  text-gray ">{`By ${
-              blog?.author?.name?.[locale]
+              blog?.auther?.name?.[locale]
             } ${
               blog?._updatedAt
                 ? "on " + DateFormat(new Date(blog?._updatedAt))

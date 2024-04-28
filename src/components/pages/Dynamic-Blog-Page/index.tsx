@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { urlFor } from "../../../../sanity/lib/client";
 import Container from "@/components/molecules/container";
@@ -15,6 +15,8 @@ import GallerySect from "./GallerySect";
 import { getArticalByTag } from "@/lib/sanity.DynamicBlog";
 import useSWR from "swr";
 import { Spinner } from "@/components/atom/Spinner";
+import { readMoreTn } from "@/lib/utils";
+import { useSearchParams } from "next/navigation";
 
 export default function BlogPage({
   locale,
@@ -25,18 +27,31 @@ export default function BlogPage({
   pageData: any;
   tags: string[];
 }) {
-  console.log("BlogPage: ", pageData)
+  console.log("BlogPage: ", pageData);
   const { layout, data } = pageData || {};
   const sections = data?.sections || [];
 
-  const imageHeaderData = sections.find((s) => s?._type === "image_header_section")
-  const featuredImages = sections.find((s) => s?._type === "featured_images_section")
-  const latestPosts = sections.find((s) => s?._type === "latest_posts_section")
+  const imageHeaderData = sections.find(
+    (s) => s?._type === "image_header_section"
+  );
+  const featuredImages = sections.find(
+    (s) => s?._type === "featured_images_section"
+  );
+  const latestPosts = sections.find((s) => s?._type === "latest_posts_section");
 
-  const urlTags = new URLSearchParams(window.location.search).getAll('tag');
-  const articalTags = urlTags.length > 0 ? urlTags : tags;
+  const searchParams = useSearchParams();
+  const urlTags = searchParams?.getAll("tag")
+  const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags
 
-  const { data: tagsArtical, isLoading } = useSWR("/api/sanity", () => getArticalByTag(articalTags));
+  const { data: tagsArtical, isLoading, mutate   } = useSWR("/blogsTags", () =>
+    getArticalByTag(articalTags) , {
+      // refreshInterval: 1000,
+    }
+  );
+
+  useEffect(() => {
+    mutate('/blogsTags')
+  },[searchParams])
 
   // const [pageNumber, setPageNumber] = React.useState(0);
   // const pageSize = 3
@@ -75,16 +90,18 @@ export default function BlogPage({
             })}
           />
 
-          <div 
+          <div
             className={`grid  gap-6 max-lg:grid-cols-2 max-md:grid-cols-1
             ${isLoading ? "h-[500px] grid-cols-1" : " h-[100%] grid-cols-3"}
-            `}>
+            `}
+          >
             {isLoading ? (
               <div className="flex justify-center items-center">
-                  <Spinner radius={50}/>
+                <Spinner radius={50} />
               </div>
             ) : (
-              tagsArtical?.map((article, index) => {
+              Array.isArray(tagsArtical) && tagsArtical.length > 0 &&
+              tagsArtical.map((article, index) => {
                 return (
                   <BlogDetailCard
                     country={(article.destination as any)?.name?.[locale]}
@@ -94,6 +111,7 @@ export default function BlogPage({
                     title={article.title?.[locale]}
                     date={article.time?.[locale]}
                     author={article.auther?.name?.[locale]}
+                    linkText={readMoreTn?.[locale]}
                     key={index}
                   />
                 );
@@ -101,7 +119,8 @@ export default function BlogPage({
             )}
           </div>
 
-{/* make it functional */}
+          {/* make it functional --> for this we just need to slice the array upto the number of pageSize and the blogs or items that are left (can be done when there is more blogs here)  */}
+          
           {/* <Pagination
             total={data?.sections[2]?.featured_blogs?.length || 0}
             pageSize={pageSize}
@@ -109,7 +128,6 @@ export default function BlogPage({
             onChange={setPageNumber}
           /> */}
         </div>
-
       </Container>
     </Layout>
   );

@@ -4,8 +4,10 @@ import React, { useState, useEffect, useRef } from "react";
 
 const FilterCountry = ({
   tabs,
+  locale
 }: {
-  tabs: Array<{ name: string; href: string }>;
+  tabs: Array<{ name: object; href: string }>;
+  locale: string
 }) => {
   const [isFixed, setIsFixed] = useState(false);
 
@@ -51,7 +53,7 @@ const FilterCountry = ({
             >
               {tabs.map((tab, index) => (
                 <Link
-                  key={tab?.name}
+                  key={index}
                   scroll={false}
                   href={`/wiki/${tab.href}`}
                   // onClick={() => setCurrentTab(index)}
@@ -62,7 +64,7 @@ const FilterCountry = ({
                     "whitespace-nowrap border-b-4 font-satoshi border-gray-100 py-4 px-2 lg:text-base text-xs font-medium"
                   )}
                 >
-                  {tab?.name}
+                  {tab?.name?.[locale]}
                 </Link>
               ))}
             </nav>

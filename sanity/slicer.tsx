@@ -1,33 +1,43 @@
-import React, { ComponentClass, FunctionComponent } from 'react'
+"use client";
 
-// import { SanityGlobals, SanityPromoBanner } from './lib/types'
+import React, { useState, useEffect } from 'react';
 
-// import { Breadcrumb } from '@/components/atom/Breadcrumbs'
+interface Section {
+  _type: string;
+  _key: string;
+  [x: string]: any;
+}
 
-export default function Slicer({
-  sections,
-  components,
-  locale,
+interface Props {
+  sections: Section[];
+  components: { [name: string]: React.ComponentType<any> };
+  locale: string;
+}
 
-  // globals,
-  // breadcrumbs,
-  // promo_banner,
-}: {
-  sections?: ({ _type: string; _key: string } & { [x in string]: any })[]
-  components: { [name in string]: FunctionComponent<any> | ComponentClass<any, any> }
-  locale: string
-  
-  // globals?: SanityGlobals
-  // breadcrumbs: Breadcrumb[]
-  // promo_banner?: SanityPromoBanner
-}) {
+const Slicer: React.FC<Props> = ({ sections, components, locale }) => {
+  const [visibleSections, setVisibleSections] = useState(3);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.scrollY;
+      if (currentPosition > scrollPosition) {
+        setVisibleSections(sections.length);
+      }
+      setScrollPosition(currentPosition);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [sections, scrollPosition]);
 
   return (
     <>
-      {sections?.map((section) => (
+      {sections.slice(0, visibleSections).map((section) => (
         <React.Fragment key={section._key}>
           {components[section._type] &&
-            React.createElement(components[section?._type], {
+            React.createElement(components[section._type], {
               data: section,
               locale,
               key: section._key,
@@ -35,5 +45,7 @@ export default function Slicer({
         </React.Fragment>
       ))}
     </>
-  )
-}
+  );
+};
+
+export default Slicer;

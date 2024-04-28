@@ -4,8 +4,6 @@ import Link from "next/link";
 import { A11y, Controller, Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
-
 import Container from "@/components/molecules/container";
 
 // Import Swiper styles
@@ -131,6 +129,7 @@ export default function MemorableExperiencesSection({
 
 const Card = ({ data }: { data: any }) => {
   if (!data) return null;
+  console.log(data , "data9999");
   return (
     <Link href={"/#" + data.slug?.current}>
       <div className="max-w-[302px] md:min-h-[404px] min-h-[339px] rounded-2xl overflow-hidden bg-white shadow-md m-1">

@@ -89,7 +89,9 @@ const TourGallery = (props: GallerySectionProps) => {
           } `}
         >
           {forTourPage ? null : (
-            <img
+            <Image
+              quality={100}
+              priority
               width={80}
               height={40}
               src={"/small-logo.svg"}
@@ -121,6 +123,7 @@ const TourGallery = (props: GallerySectionProps) => {
                       alt={"image"}
                       className={"w-full h-full flex-shrink-0"}
                       quality={100}
+                      priority
                     />
                   </PhotoView>
                 </div>
@@ -144,6 +147,7 @@ const TourGallery = (props: GallerySectionProps) => {
                         alt={"image"}
                         className={"object-cover w-full h-full"}
                         quality={100}
+                        priority
                       />
                     </PhotoView>
                   </div>
@@ -161,6 +165,7 @@ const TourGallery = (props: GallerySectionProps) => {
                           alt={"image"}
                           className={"object-cover w-full h-full"}
                           quality={100}
+                          priority
                         />
                       </PhotoView>
                       <PhotoView key={i} src={urlFor(image[1])}>
@@ -171,6 +176,7 @@ const TourGallery = (props: GallerySectionProps) => {
                           alt={"image"}
                           className={"object-cover w-full h-full"}
                           quality={100}
+                          priority
                         />
                       </PhotoView>
                     </div>
@@ -196,6 +202,7 @@ const TourGallery = (props: GallerySectionProps) => {
                     alt={"image"}
                     className={"object-cover w-full h-full"}
                     quality={100}
+                    priority
                   />
                 </PhotoView>
               </div>
@@ -216,6 +223,7 @@ const TourGallery = (props: GallerySectionProps) => {
                       quality={100}
                       alt={"image"}
                       className={"w-full h-full flex-shrink-0 object-cover "}
+                      priority
                     />
                   </PhotoView>
                 </div>
@@ -239,6 +247,7 @@ const TourGallery = (props: GallerySectionProps) => {
                         quality={100}
                         alt={"image"}
                         className={"object-cover w-full h-full"}
+                        priority
                       />
                     </PhotoView>
                   </div>
@@ -256,6 +265,7 @@ const TourGallery = (props: GallerySectionProps) => {
                           quality={100}
                           alt={"image"}
                           className={"object-cover w-full h-full"}
+                          priority
                         />
                       </PhotoView>
                     </div>

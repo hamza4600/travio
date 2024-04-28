@@ -2,7 +2,7 @@ import { pageLayout } from "./sanity.HomePage";
 import { CLIENT } from "./sanity.const";
 
 export async function getTourPage(slug: string) {
-  const tourPageQuery = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
+    const tourPageQuery = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
         ...,
         destination->,
         sections[] {
@@ -39,7 +39,7 @@ export async function getTourPage(slug: string) {
             }
           }
         }
-      }`;
+    }`;
 
   const query = `{
       "layout":  ${pageLayout},

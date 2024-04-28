@@ -26,6 +26,7 @@ const DynamicTravelWiki = ({
   const { sections, suggested_tour } = data || {};
 
   console.log("dataTravelwiki555: ", data);
+  
 
   return (
     <Layout
@@ -61,7 +62,7 @@ const DynamicTravelWiki = ({
 
       {/* <WikiSection wikiData={wikiData} filterWiki={filterWikiData} /> */}
       <div className="md:mt-12 mt-[50px]">
-        <FilterCountry tabs={wikiTabs} />
+        <FilterCountry tabs={wikiTabs} locale={language} />
       </div>
       <Container className="flex xl:flex-row flex-col justify-between gap-10 px-0 md:mt-[68px] mt-[50px]">
         <Sidebar sections={sections} locale={language} />

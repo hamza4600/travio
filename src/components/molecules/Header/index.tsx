@@ -14,6 +14,7 @@ import { BookingIcon } from "@/components/icons";
 import { Text } from "@/components/ui/text";
 import { SanityGlobals } from "../../../../sanity/lib/types";
 import styled from "styled-components";
+import { bookingBtn } from "@/lib/utils";
 
 const Root = styled.div`
   a:empty {
@@ -115,11 +116,11 @@ const Header = ({
                   variant={"tertiary"}
                   className="font-bold text-[16px] leading-6"
                 >
-                  My Bookings
+                {bookingBtn?.[locale]}
                 </Text>{" "}
               </Button>
 
-              <LanguageDropdown />
+              <LanguageDropdown locale={locale} />
             </div>
           </div>
         </div>
@@ -144,7 +145,7 @@ const Header = ({
               </a>
             )}
             {/* Language selector */}
-            <LanguageDropdown />
+            <LanguageDropdown locale={locale} />
             <button onClick={() => setIsOpen(!isOppen)}>
               <OpenSvg />
             </button>

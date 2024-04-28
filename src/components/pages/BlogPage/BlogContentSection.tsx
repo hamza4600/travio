@@ -125,9 +125,9 @@ const BlogContentSection = ({ actualData, locale }: any) => {
           <div className="flex flex-col gap-6 relative">
             <img
               src={urlFor(props?.items[0]?.items[1]?.image?.asset?._ref)}
-              className="xl:max-w-[896px] md:min-h-[567px] h-[178px] max-sm:w-full mt-[18px]"
+              className="xl:max-w-[896px] md:min-h-[567px] max-sm:w-full mt-[18px]"
               alt=""
-              style={{ aspectRatio: 1 }}
+              style={{ aspectRatio: 1.5 }}
             />
             {props?.items[0]?.items[0].text?.[locale] && (
               <RootStyle>
@@ -144,7 +144,7 @@ const BlogContentSection = ({ actualData, locale }: any) => {
 
   // console.log("actulData: ", actualData);
   return (
-    <div className="my-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
+    <div className="mt-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
       {actualData.map((item: any, index: any) => {
         if (item._type === "subsection") {
           return (

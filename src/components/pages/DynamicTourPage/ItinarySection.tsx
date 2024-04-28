@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Country } from "country-state-city";
@@ -22,6 +23,7 @@ import {
   selNatTn,
   enqTn,
   submitTn,
+  expandTn,
 } from "@/lib/utils";
 
 export default function ItinerarySection({
@@ -76,7 +78,8 @@ const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
             );
           }}
         >
-          Expand All <div className="hidden lg:block">{<CaretDown />}</div>
+          {expandTn?.[locale]}{" "}
+          <div className="hidden lg:block">{<CaretDown />}</div>
         </button>
       </div>
       <div className="flex  flex-col gap-5">
@@ -344,19 +347,6 @@ const EnquireTab = ({ locale }: any) => {
   );
 };
 
-const optionalAct = [
-  {
-    img: "/demo/activities.png",
-    title: "Cairo - Coptic Museum (entrance fee) - EGP150",
-    desc: "Coptic Museum",
-  },
-  {
-    img: "/demo/activities.png",
-    title: "Cairo - Coptic Museum (entrance fee) - EGP150",
-    desc: "Coptic Museum",
-  },
-];
-
 const Expandable = ({
   data,
   isOpen,
@@ -368,6 +358,8 @@ const Expandable = ({
   data: any;
   locale: string;
 }) => {
+  // console the data
+  console.log("IternaryData: ", data);
   return (
     <div>
       <button
@@ -438,12 +430,14 @@ const Expandable = ({
             </div>
           </div>
           <div className="flex gap-6 max-md:flex-col max-md:items-center max-md:gap-3">
-            {optionalAct.map((data, i: number) => (
+            {data?.activity_cards?.map((data, i: number) => (
               <OptionalActivites
                 key={i}
-                title={data.title}
-                img={data.img}
-                desc={data.desc}
+                title={data.name?.[locale]}
+                img={data.image?.asset?._ref}
+                level={data.level}
+                desc={data.description?.[locale]}
+                price={data.price}
               />
             ))}
           </div>
@@ -460,23 +454,49 @@ const Expandable = ({
   );
 };
 
-const OptionalActivites = ({ title, img, desc }) => {
+const OptionalActivites = ({ title, img, desc, price, level }) => {
+  const isLow = level?.toLowerCase() === "low";
+  const isMedium = level?.toLowerCase() === "medium";
+  const isHigh = level?.toLowerCase() === "high";
   return (
     <div
       style={{ boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)" }}
       className="max-w-[302px] font-satoshi text-darkblue 
      rounded-[16px]"
     >
-      <img src={img} alt="optioanl" />
+      <Image
+        className="max-w-[302px] rounded-t-[16px]"
+        width={302}
+        height={201}
+        quality={100}
+        src={urlFor(img)}
+        alt="optional_activites"
+      />
 
       <div className="flex flex-col md:gap-3 pt-4 px-4 pb-7">
         <p className=" md:text-xl text-darkblue font-bold">{title}</p>
 
         <div className="flex gap-2.5 items-center max-md:hidden">
           <div className="flex gap-[5px] ">
-            <div className="w-3.5 h-3.5 bg-[#3FA9F5] rounded-full" />
+            <div
+              className={`w-3.5 h-3.5 border border-gray rounded-full ${
+                isLow || isMedium || isHigh
+                  ? " bg-[#3FA9F5] border-none "
+                  : " bg-white "
+              }`}
+            />
+            <div
+              className={`w-3.5 h-3.5 border border-gray rounded-full ${
+                isMedium || isHigh ? " bg-[#3FA9F5] border-none " : " bg-white "
+              }`}
+            />
+            <div
+              className={`w-3.5 h-3.5 border border-gray rounded-full ${
+                isHigh ? " bg-[#3FA9F5] border-none " : " bg-white "
+              }`}
+            />
           </div>
-          <p className="text-gray">Light</p>
+          <p className="text-gray">{level}</p>
         </div>
 
         <div className="mt-3.5 flex gap-2 md:hidden ">

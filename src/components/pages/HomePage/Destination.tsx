@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 import Container from "@/components/molecules/container";
-import DestinationCard from "@/components/molecules/cards/DestinationCard";
+import dynamic from "next/dynamic";
+const DestinationCard = dynamic(() => import("@/components/molecules/cards/DestinationCard"));
 
 const DestinationsSection = ({ data, locale }) => {
 

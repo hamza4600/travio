@@ -1,4 +1,4 @@
-import {  defineField, defineType } from 'sanity'
+import {  defineField, defineType, defineArrayMember } from 'sanity'
 import {  displayNumber, joinStrings } from '@/lib/utils'
 import { Article } from '@phosphor-icons/react'
 
@@ -21,22 +21,22 @@ export default defineType({
       description: 'The heading for the featured blog section',
       type: 'locale_string',
     }),
-    // defineField({
-    //   name: 'featured_blogs',
-    //   title: 'Blogs',
-    //   description: 'The blogs for the featured blog section',
-    //   type: 'array',
-    //   of: [
-    //     defineArrayMember({
-    //       name: 'featured_blog',
-    //       title: 'Featured Blog',
-    //       description: 'A featured blog',
-    //       icon: Article as any,
-    //       type: 'reference',
-    //       to: [{ type: 'article' }],
-    //     }),
-    //   ],
-    // }),
+    defineField({
+      name: 'featured_blogs',
+      title: 'Blogs',
+      description: 'The blogs for the featured blog section',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          name: 'featured_blog',
+          title: 'Featured Blog',
+          description: 'A featured blog',
+          icon: Article as any,
+          type: 'reference',
+          to: [{ type: 'article' }],
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

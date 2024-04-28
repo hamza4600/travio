@@ -53,11 +53,7 @@ export default defineType({
     defineField({
       name: 'tab_title',
       title: 'Tab Title',
-      type: 'locale_string',
-    }),
-    defineField({
-      name: 'location',
-      title: 'Location',
+      description: 'Title to display in the tab name os secondary bar',
       type: 'locale_string',
     }),
     defineField({

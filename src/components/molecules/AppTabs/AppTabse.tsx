@@ -10,6 +10,8 @@ function AppTabs({ tabs }: TabsProp) {
 
   const tabsRef = useRef<HTMLDivElement | null>(null);
 
+  console.log("iFixed: ", isFixed)
+
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     setIsFixed(scrollPosition > window.innerHeight / 1);
