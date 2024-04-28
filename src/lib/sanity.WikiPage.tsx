@@ -1,6 +1,11 @@
 import { pageLayout } from "./sanity.HomePage";
 import { CLIENT } from "./sanity.const";
 
+const wikiList = `*[_type == "travel_wiki"]{
+  "name": tab_title,
+  "href": slug.current
+}`;
+
 export async function getWikiPage(slug: string) {
   const wikiPageQuery = `*[_type == "travel_wiki"  && slug.current == "/${slug}"][0]{
         ...,
@@ -21,7 +26,8 @@ export async function getWikiPage(slug: string) {
 
   const query = `{
         "layout":  ${pageLayout},
-        "data": ${wikiPageQuery}
+        "data": ${wikiPageQuery},
+        "wikiList": ${wikiList}
     }`;
 
   return await CLIENT.fetch(query);
