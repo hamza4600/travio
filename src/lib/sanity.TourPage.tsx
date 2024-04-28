@@ -39,7 +39,7 @@ export async function getTourPage(slug: string) {
             }
           }
         }
-    }`;
+      }`;
 
   const query = `{
       "layout":  ${pageLayout},

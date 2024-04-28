@@ -3,7 +3,6 @@ import { SuitcaseRolling } from "@phosphor-icons/react";
 
 import { TourSections } from "../sections/Tours";
 import { joinStrings, displayNumber } from "@/lib/utils";
-import { array, object } from "zod";
 
 export default defineType({
   name: "tour_page",
@@ -244,8 +243,8 @@ export default defineType({
     }),
     defineField({
       name: "payment",
-      title: "Payment",
-      description: "Options for payment for the page",
+      title: "Hotel Types, Room Options and Tour Extras",
+      description: "Hotel types, room options and tour extras",
       type: "object",
       options: {
         collapsible: true,
@@ -253,112 +252,119 @@ export default defineType({
       },
       fields: [
         defineField({
-          name: "room_options",
-          title: "Room Options",
-          description: "Room options for the page",
+          name: "hotel_types",
+          title: "Hotel Types",
+          description: "Hotel types for the page",
           type: "array",
-          of: [
-            defineArrayMember({
-              name: "room_option",
-              title: "Room Option",
-              type: "object",
-              fields: [
-                defineField({
-                  name: "title",
-                  title: "Title",
-                  type: "locale_string",
-                }),
-                defineField({
-                  name: "description",
-                  title: "Description",
-                  type: "locale_string",
-                }),
-                defineField({
-                  name: "image",
-                  title: "Image",
-                  type: "photo",
-                }),
-                defineField({
-                  name: "rating",
-                  title: "Rating",
-                  description: "Rating of the room (1- 5)",
-                  type: "number",
-                }),
-                defineField({
-                  name: "price",
-                  title: "Price",
-                  description: "Extra price for the room",
-                  type: "price",
-                }),
-              ],
-              preview: {
-                select: {
-                  title: "title.en",
-                  rating: "rating",
-                  media: "image",
-                },
-                prepare: ({ title, rating, media }) => {
-                  return {
-                    title: joinStrings(
-                      ":",
-                      title || "No title",
-                      displayNumber(rating, "star")
-                    ),
-                    media,
-                  };
-                },
-              },
-            }),
-          ],
+          of: [{ type: "hotel" }],
         }),
-        defineField({
-          name: "room_sharing_options",
-          title: "Room Sharing Options",
-          description: "Room sharing options for the page",
-          type: "array",
-          of: [
-            defineArrayMember({
-              name: "room_sharing_option",
-              title: "Room Sharing Option",
-              type: "object",
-              fields: [
-                defineField({
-                  name: "title",
-                  title: "Title",
-                  type: "locale_string",
-                }),
-                defineField({
-                  name: "description",
-                  title: "Description",
-                  type: "locale_string",
-                }),
-                defineField({
-                  name: "image",
-                  title: "Image",
-                  type: "photo",
-                }),
-                defineField({
-                  name: "price",
-                  title: "Price",
-                  description: "Extra price for the room sharing option",
-                  type: "price",
-                }),
-              ],
-              preview: {
-                select: {
-                  title: "title.en",
-                  media: "image",
-                },
-                prepare: ({ title, media }) => {
-                  return {
-                    title: joinStrings(":", title || "No title"),
-                    media,
-                  };
-                },
-              },
-            }),
-          ],
-        }),
+        // defineField({
+        //   name: "room_options",
+        //   title: "Room Options",
+        //   description: "Room options for the page",
+        //   type: "array",
+        //   of: [
+        //     defineArrayMember({
+        //       name: "room_option",
+        //       title: "Room Option",
+        //       type: "object",
+        //       fields: [
+        //         defineField({
+        //           name: "title",
+        //           title: "Title",
+        //           type: "locale_string",
+        //         }),
+        //         defineField({
+        //           name: "description",
+        //           title: "Description",
+        //           type: "locale_string",
+        //         }),
+        //         defineField({
+        //           name: "image",
+        //           title: "Image",
+        //           type: "photo",
+        //         }),
+        //         defineField({
+        //           name: "rating",
+        //           title: "Rating",
+        //           description: "Rating of the room (1- 5)",
+        //           type: "number",
+        //         }),
+        //         defineField({
+        //           name: "price",
+        //           title: "Price",
+        //           description: "Extra price for the room",
+        //           type: "price",
+        //         }),
+        //       ],
+        //       preview: {
+        //         select: {
+        //           title: "title.en",
+        //           rating: "rating",
+        //           media: "image",
+        //         },
+        //         prepare: ({ title, rating, media }) => {
+        //           return {
+        //             title: joinStrings(
+        //               ":",
+        //               title || "No title",
+        //               displayNumber(rating, "star")
+        //             ),
+        //             media,
+        //           };
+        //         },
+        //       },
+        //     }),
+        //   ],
+        // }),
+        // defineField({
+        //   name: "room_sharing_options",
+        //   title: "Room Sharing Options",
+        //   description: "Room sharing options for the page",
+        //   type: "array",
+        //   of: [
+        //     defineArrayMember({
+        //       name: "room_sharing_option",
+        //       title: "Room Sharing Option",
+        //       type: "object",
+        //       fields: [
+        //         defineField({
+        //           name: "title",
+        //           title: "Title",
+        //           type: "locale_string",
+        //         }),
+        //         defineField({
+        //           name: "description",
+        //           title: "Description",
+        //           type: "locale_string",
+        //         }),
+        //         defineField({
+        //           name: "image",
+        //           title: "Image",
+        //           type: "photo",
+        //         }),
+        //         defineField({
+        //           name: "price",
+        //           title: "Price",
+        //           description: "Extra price for the room sharing option",
+        //           type: "price",
+        //         }),
+        //       ],
+        //       preview: {
+        //         select: {
+        //           title: "title.en",
+        //           media: "image",
+        //         },
+        //         prepare: ({ title, media }) => {
+        //           return {
+        //             title: joinStrings(":", title || "No title"),
+        //             media,
+        //           };
+        //         },
+        //       },
+        //     }),
+        //   ],
+        // }),
         defineField({
           name: "extras",
           title: "Extras",

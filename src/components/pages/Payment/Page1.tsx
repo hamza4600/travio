@@ -20,9 +20,10 @@ import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import { ERROR_MESSAGES } from "../TrailYourTour/Input";
 // import { Input } from '@/components/ui/input'
 import Input from "../TrailYourTour/Input";
+import { useSelector } from "react-redux";
+import { hotelState } from "@/lib/features/hotel/hotelSlice";
 
 // import { BookingsQuery } from '../../../../__generated__/graphql'
-
 export interface IPaymentTourExtras {
   adultMembers: number;
   childrenMembers: number;
@@ -36,12 +37,16 @@ export default function Page1({
   control,
   errors,
   locale,
+  getValues,
 }: {
   payment: any;
   control: any;
   errors: any;
   locale: string;
+  getValues: (key: string) => any;
 }) {
+  const selectedHotel = useSelector((state: hotelState) => state.hotel?.name);
+
   return (
     <div className="flex flex-col gap-7">
       <div className="md:p-[38px] p-6 bg-primary border border-darkblue/10 rounded-2xl">
@@ -69,13 +74,19 @@ export default function Page1({
       <HotelChoosing
         errorMsg={(ERROR_MESSAGES as any)[errors?.["hotelChoice"]?.type]}
         control={control}
-        room_options={payment?.room_options}
+        room_options={payment?.hotel_types}
         locale={locale}
+        selectedHotel={selectedHotel || "Basic"}
       />
       <RomeType
         errorMsg1={(ERROR_MESSAGES as any)[errors?.["roomType"]?.type]}
         control={control}
-        room_sharing_options={payment?.room_sharing_options}
+        room_sharing_options={
+          payment?.hotel_types?.filter(
+            (hotel: { name: string }) =>
+              hotel?.name?.[locale] === getValues("hotelChoice")
+          )[0]?.rooms
+        }
         locale={locale}
       />
       <OptionalVisits
@@ -93,12 +104,14 @@ const HotelChoosing = ({
   errorMsg,
   control,
   locale,
+  selectedHotel,
 }: {
-  room_options?: Exclude<SanityTourPage["payment"], undefined>["room_options"];
+  room_options?: any;
 
   errorMsg?: string;
   control: Control<any>;
   locale: string;
+  selectedHotel: string;
 }) => {
   //   const { locale } = useContext(LocaleContext);
   return (
@@ -109,35 +122,36 @@ const HotelChoosing = ({
         </p>
       </div>
       <div className="md:py-7 md:px-[38px] py-5 px-6 flex flex-col divide-y divide-[#FFBB0B]">
-        {room_options?.map((room, index) => (
+        {room_options?.map((hotel, index) => (
           <div key={index} className="flex justify-between gap-2 py-[18px]">
             <div className="flex flex-col gap-1">
               <p className="font-bold text-darkblue md:text-[20px] md:leading-8 text-base">
-                {room.title?.[locale]}
+                {hotel.name?.[locale]}
               </p>
               {/* @ts-ignore */}
               <ReactStars
-                count={room.rating}
-                value={room.rating}
+                count={hotel.rating}
+                value={hotel.rating}
                 edit={false}
                 size={16}
               />
               <p className="md:text-sm text-[12px] leading-[18px] font-medium text-gray">
-                {room.description?.[locale]}
+                {hotel.description?.[locale]}
               </p>
             </div>
             <div className="w-[76px] flex flex-col justify-around items-center">
               <Input
-                checkboxValue={room.title?.[locale]}
+                checkboxValue={hotel?.name?.[locale]} // e.g basic
                 name="hotelChoice"
                 type="checkbox"
                 control={control}
                 rules={{ required: true }}
+                defaultValue={room_options[0]?.name?.[locale]}
               />
-              {room.price?.discounted_price && (
+              {hotel.price?.discounted_price && (
                 <p className="text-primary font-medium text-nowrap max-md:text-[12px] max-md:leading-[18px]">
-                  {room.price?.currency_symbol?.[locale]}
-                  {room.price?.discounted_price?.[locale]} Extra
+                  {hotel.price?.currency_symbol?.[locale]}
+                  {hotel.price?.discounted_price?.[locale]} Extra
                 </p>
               )}
             </div>
@@ -182,7 +196,7 @@ const RomeType = ({
               </div>
               <div className="flex flex-col gap-1">
                 <p className="font-bold text-darkblue md:text-[20px] md:leading-8 text-base">
-                  {option.title?.[locale]}
+                  {option.name?.[locale]}
                 </p>
                 <p className="md:text-sm text-[12px] leading-5 font-medium text-gray">
                   {option.description?.[locale]}
@@ -191,11 +205,12 @@ const RomeType = ({
             </div>
             <div className="w-[76px] flex flex-col justify-around items-center">
               <Input
-                checkboxValue={localizedString(option.title)}
+                checkboxValue={option.name?.[locale]}
                 name="roomType"
                 type="checkbox"
                 control={control}
                 rules={{ required: true }}
+                defaultValue={room_sharing_options[1]?.name?.[locale]}
               />
               {option.price?.discounted_price && (
                 <p className="text-primary font-medium">

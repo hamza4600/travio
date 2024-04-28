@@ -2,13 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Control, useForm } from "react-hook-form";
 
-import {
-  localizedNumber,
-  urlFor,
-  // localizedString,
-} from "../../../../sanity/lib/client";
-
-// import { urlFor } from "../../../../sanity/lib/client";
+import { urlFor } from "../../../../sanity/lib/client";
 
 import {
   SanityLocale,
@@ -95,6 +89,7 @@ export default function Tabs({
   if (actual_tour) {
     actualPrice = Number(actual_tour.actualPrice[locale]);
     currentPrice = Number(actual_tour.currentPrice[locale]);
+    setTotalPrice(currentPrice);
   }
 
   if (promoCode) {
@@ -103,8 +98,12 @@ export default function Tabs({
     if (promoCode.max_discount && discount > promoCode.max_discount) {
       discount = promoCode.max_discount;
     }
+
+    setTotalPrice(currentPrice - discount);
   }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [page, setPage] = useState(1);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {}, [page]);
 
   return (
@@ -383,7 +382,9 @@ const Costing = ({
               Tour Package
             </p>
             <p className="md:text-base text-[14px] leading-5 font-medium text-gray">
-              {`${parseInt(people.toString())} x $ ${actualPrice}`}
+              {`${parseInt(people.toString())} x ${getPriceSymbol(
+                locale
+              )} ${actualPrice}`}
             </p>
           </div>
           {addons != 0 && (

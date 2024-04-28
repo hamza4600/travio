@@ -1,34 +1,23 @@
 "use client";
 import React, { useEffect, useState } from "react";
-// import { GetServerSideProps } from "next";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
-// import * as yup from "yup";
 
 import {
   localizedNumber,
   localizedString,
 } from "../../../../sanity/lib/client";
-// import { useYupValidationResolver } from "@/components/pages/TrailYourTour/Input"
-// import { urlFor } from "../../../../sanity/lib/client";
 
-import {
-  // SanityGlobals,
-  // SanityLocale,
-  SanityPricingSection,
-  // SanityPromoCode,
-  // SanityTourPage,
-} from "../../../../sanity/lib/types";
-
-// import { getSanitySlugFromSlugs } from "@/utils/utils";
+import { SanityPricingSection } from "../../../../sanity/lib/types";
 
 import Layout from "@/components/layout";
 
-// import Page3 from "@/components/sections/Payment/Page3";
 import Tabs from "@/components/pages/Payment/Tabs";
 import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1";
 import Page2, { IContactInfo } from "./Page2";
 import Page3 from "./Page3";
+import { useSelector, useDispatch } from "react-redux";
+import { hotelState, setHotel } from "@/lib/features/hotel/hotelSlice";
 
 export type PaymentSchema = IPaymentTourExtras & IContactInfo;
 export default function Page({ slug, data, locale, globals, promo }) {
@@ -57,6 +46,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
   const [roomTypes, setRoomTypes] = useState<number>(0);
   const [hotelChoice, setHotelChoice] = useState<number>(0);
   // get url
+
   const searchParams = useSearchParams();
   const from = Number(searchParams?.get("from"));
   const to = Number(searchParams?.get("to"));
@@ -66,7 +56,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
 
   useEffect(() => {
     const unsub = watch((value: any, _info: any) => {
-      const info = _info as { name: keyof typeof value };
+      const info = _info as { name: keyof typeof value; values: any };
       //@ts-ignore
       if (info.name?.startsWith("optionalVisits")) {
         let sum = 0;
@@ -88,34 +78,47 @@ export default function Page({ slug, data, locale, globals, promo }) {
         setOptionalVisits(sum);
       }
       if (info.name === "roomType") {
-        setRoomTypes(
-          data?.payment?.room_sharing_options?.reduce(
-            (acc, extra) =>
-              acc +
-              (value["roomType"] === extra?.title?.[locale]
-                ? Number(extra.price?.discounted_price?.[locale])
-                : 0),
-            0
-          ) || 0
-        );
+        const price =
+          Number(
+            data?.payment?.hotel_types
+              ?.find(
+                (hotel) => hotel.name?.[locale] === getValues("hotelChoice")
+              )
+              ?.rooms?.find(
+                (room) => room.name?.[locale] === info.values.roomType
+              )?.price?.discounted_price?.[locale]
+          ) || 0;
+        setRoomTypes(price);
+        // set total price price variable with existing amounbt
+        setTotalPrice((prev) => Number(prev + price));
       }
       if (info.name === "hotelChoice") {
-        setHotelChoice(
-          data?.payment?.room_options?.reduce(
-            (acc, extra) =>
-              acc +
-              (value["hotelChoice"] === localizedString(extra?.title, locale)
-                ? Number(localizedNumber(extra.price?.discounted_price, locale))
-                : 0),
-            0
-          ) || 0
-        );
+        // dispatch(setHotel(info.values.hotelChoice));
+        const price1 =
+          Number(
+            data?.payment?.hotel_types?.find(
+              (hotel) => hotel.name?.[locale] === info.values.hotelChoice
+            )?.price?.discounted_price?.[locale]
+          ) || 0;
+        setHotelChoice(price1);
+        const price2 =
+          Number(
+            data?.payment?.hotel_types
+              ?.find(
+                (hotel) => hotel.name?.[locale] === info.values.hotelChoice
+              )
+              ?.rooms?.find(
+                (room) => room.name?.[locale] === getValues("roomType")
+              )?.price?.discounted_price?.[locale]
+          ) || 0;
+        setRoomTypes(price2);
+        // set total price price variable with existing amounbt
+        setTotalPrice((prev) => Number(prev + price1 + price2));
       }
     });
     return unsub?.unsubscribe;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
   const onSubmit: SubmitHandler<PaymentSchema> = async (_data) => {
@@ -189,27 +192,12 @@ export default function Page({ slug, data, locale, globals, promo }) {
       email: _data.email,
       optionalTours: optionalVisits,
     };
-    console.log(booking);
-    // fetch("/api/payment", {
-    //   method: "POST",
-    //   body: JSON.stringify(booking),
-    // })
-    //   .then(async (res) => {
-    //     if (paymentMethod === "bank") {
-    //       alert("Payment info sent to the bank!");
-    //     }
-    //     const url = await res.json();
-    //     router.replace(url);
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
     fetch("/api/booking", {
       method: "POST",
       body: JSON.stringify(booking),
     })
       .then(async (res) => {
-        const data = await res.json();
+        // const data = await res.json();
         alert("Booking sent successfully!. Please wait for confirmation.");
       })
       .catch((err) => {
@@ -224,7 +212,6 @@ export default function Page({ slug, data, locale, globals, promo }) {
   const [paymentMethod, setPaymentMethod] = useState<
     "stripe" | "paypal" | "bank"
   >("stripe");
-
   return (
     <Layout
       locale={locale}
@@ -253,6 +240,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
           errors={errors}
           control={control}
           payment={data.payment}
+          getValues={getValues}
         />
         <Page2
           addPassenger={() =>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { AppThemeProvider } from "../../theme/provider";
-
 const satoshiVariable = localFont({
   src: [
     {
@@ -99,12 +98,12 @@ export const metadata: Metadata = {
   description: "Traviio Tours",
   openGraph: {
     images:
-      'https://travel-tour-ya83.vercel.app/_next/static/media/logo.5f25ce06.png',
-    url: 'https://www.promotravel.tours/en/',
-    type: 'website',
+      "https://travel-tour-ya83.vercel.app/_next/static/media/logo.5f25ce06.png",
+    url: "https://www.promotravel.tours/en/",
+    type: "website",
   },
   keywords:
-    'travel, tour, app, destination, trip, book, favorite, destination, travel and tour app, travel and tour, travel app, tour app, travel and tour app,',
+    "travel, tour, app, destination, trip, book, favorite, destination, travel and tour app, travel and tour, travel app, tour app, travel and tour app,",
 };
 
 export default function RootLayout({

@@ -9,6 +9,7 @@ import rich_text from "./schemas/atoms/content/Richtext";
 import layout_stack from "./schemas/atoms/content/Stack";
 import content_text from "./schemas/atoms/content/Text";
 import { form_button, form_input_field } from "./schemas/atoms/Form";
+import hotel from "./schemas/atoms/Hotel";
 import icon from "./schemas/atoms/Icon";
 import link from "./schemas/atoms/Link";
 import link_button from "./schemas/atoms/LinkButton";
@@ -38,9 +39,9 @@ import ThingsToDo from "./schemas/documents/ThingsToDo";
 import tour_page from "./schemas/documents/TourPage";
 import travel_guide from "./schemas/documents/TravelGuide";
 import travel_wiki, {
-    newNestedObj,
-    newObj,
-    TravelWikiSection as travel_wiki_section,
+  newNestedObj,
+  newObj,
+  TravelWikiSection as travel_wiki_section,
 } from "./schemas/documents/TravelWiki";
 import { BlogSectionExports } from "./schemas/sections/Blog";
 import content_section from "./schemas/sections/ContentSection";
@@ -59,82 +60,83 @@ import office_locations_section from "./schemas/sections/OfficeLocationsSection"
 import reviews_section from "./schemas/sections/ReviewsSection";
 import ShowNewLetterSection from "./schemas/sections/ShowNewLetterSection";
 import {
-    testimonial,
-    testimonial_section,
+  testimonial,
+  testimonial_section,
 } from "./schemas/sections/TestimonialSection";
 import { TourSectionExports } from "./schemas/sections/Tours";
 
-export const schemaTypes= [
-        // atoms
-        blockContent,
-        locale_string,
-        locale_number,
-        locale_text,
-        locale_rich_text,
-        form_button,
-        form_input_field,
-        icon,
-        link,
-        link_button,
-        photo,
-        meta_data,
-        promo_banner,
-        price,
-        tour_timeline,
-        timeline,
-        wattsappbanner,
-        Breadcrumb,
-        authersocial,
-        // content
-        content_text,
-        content_image,
-        layout_group,
-        layout_stack,
-        content_link_card,
-        rich_text,
-        // sections
-        content_section,
-        ShowNewLetterSection,
-        deals_section,
-        destinations_section,
-        faq_section,
-        faq,
-        feature_section,
-        feature,
-        gallery_section,
-        hero_section,
-        image_header_section,
-        index_section,
-        office_locations_section,
-        reviews_section,
-        testimonial_section,
-        testimonial,
-        hero_card_section,
-        travel_wiki_section,
-        newObj,
-        newNestedObj,
-        // Blog Sections
-        ...BlogSectionExports,
-        ...TourSectionExports,
-        ...DestinationSectionExports,
-        // Singletons
-        tailor_your_tour,
-        // documents
-        Article,
-        Activity,
-        blog_page,
-        tour_page,
-        Page,
-        Tag,
-        Auther,
-        Globals,
-        TourDropdown,
-        travel_guide,
-        travel_wiki,
-        destination_page,
-        PromoCode,
-        ThingsToDo,
-        MemorableExperiences,
-        newsletter_section,
-    ];
+export const schemaTypes = [
+  // atoms
+  blockContent,
+  locale_string,
+  locale_number,
+  locale_text,
+  locale_rich_text,
+  form_button,
+  form_input_field,
+  icon,
+  link,
+  link_button,
+  photo,
+  meta_data,
+  promo_banner,
+  price,
+  tour_timeline,
+  timeline,
+  wattsappbanner,
+  Breadcrumb,
+  authersocial,
+  // content
+  content_text,
+  content_image,
+  layout_group,
+  layout_stack,
+  content_link_card,
+  rich_text,
+  // sections
+  content_section,
+  ShowNewLetterSection,
+  deals_section,
+  destinations_section,
+  faq_section,
+  faq,
+  feature_section,
+  feature,
+  gallery_section,
+  hero_section,
+  image_header_section,
+  index_section,
+  office_locations_section,
+  reviews_section,
+  testimonial_section,
+  testimonial,
+  hero_card_section,
+  travel_wiki_section,
+  newObj,
+  newNestedObj,
+  // Blog Sections
+  ...BlogSectionExports,
+  ...TourSectionExports,
+  ...DestinationSectionExports,
+  // Singletons
+  tailor_your_tour,
+  // documents
+  Article,
+  Activity,
+  blog_page,
+  tour_page,
+  Page,
+  Tag,
+  Auther,
+  Globals,
+  TourDropdown,
+  travel_guide,
+  travel_wiki,
+  destination_page,
+  PromoCode,
+  ThingsToDo,
+  MemorableExperiences,
+  newsletter_section,
+  hotel,
+];
 // };

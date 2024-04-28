@@ -37,8 +37,6 @@ function transformArray(inputArray, lang) {
 const DynamicTourPage = ({ language, pageData }) => {
   const { layout, data } = pageData || {};
 
-  console.log("DynamicTourPage -> data", data);
-
   const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb, language);
 
   const tabsData = [
@@ -46,7 +44,10 @@ const DynamicTourPage = ({ language, pageData }) => {
     { name: topbarTn?.[language]?.TripHighlights, href: "#price-list" },
     { name: topbarTn?.[language]?.Itinerary, href: "#itinerary" },
     { name: topbarTn?.[language]?.Inclusions, href: "#inclusions" },
-    { name: topbarTn?.[language]?.EssentialsTravelInformation, href: "#travel-info" },
+    {
+      name: topbarTn?.[language]?.EssentialsTravelInformation,
+      href: "#travel-info",
+    },
     { name: topbarTn?.[language]?.Reviews, href: "#reviews" },
   ];
 
