@@ -23,11 +23,13 @@ export default defineType({
       description: 'The image for the card',
       type: 'image',
     },
+    // dropdown with the wiki page 
     {
-      name: 'link',
-      title: 'Link',
-      description: 'The link for the card',
-      type: 'locale_string',
+      name: 'wiki',
+      title: 'Wiki',
+      description: 'The wiki page for the card',
+      type: 'reference',
+      to: [{ type: 'travel_wiki' }],
     },
   ],
 })
