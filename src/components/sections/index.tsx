@@ -112,7 +112,9 @@ const TourGallerySection = dynamic(
   () => import("../molecules/TourGallery/TourGallerySection")
 );
 
-FeatureTourSection;
+const ImageHeaderSection = dynamic(() => import("@/components/sections/hero/HeroSection"));
+
+const OfficeLocations = dynamic(() => import("../pages/About-Us/OfficeLocation"));
 
 export const BlogPageSectionsMap: {
   [name in SanityBlogPageSectionNames]?:
@@ -141,11 +143,11 @@ export const SectionMap: {
   testimonial_section: Testimonials,
   featured_blogs_section: BlogSection,
   gallery_section: GallerySection,
-  // content_section: ContentSection,
+  content_section: SummarySection,
   reviews_section: ReviewRatingSections,
-  // office_locations_section: OfficeLocationSection,
+  office_locations_section: OfficeLocations,
   index_section: IndexSection,
-  // image_header_section: ImageHeaderSection,
+  image_header_section: ImageHeaderSection,
 };
 
 export const DestinationSectionsMap: {

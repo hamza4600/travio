@@ -50,8 +50,28 @@ const LanguageDropdown = ({ locale }) => {
     (version) => version.language === language
   );
 
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef?.current?.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="relative" style={{ zIndex: "1000" }}>
+    <div ref={dropdownRef} className="relative" style={{ zIndex: "1000" }}>
       <div
         className="rounded-full bg-opacity-5 bg-[#325EFB] border-[#325EFB] border border-opacity-10 py-1 md:py-[8px] px-1 md:px-[10px] flex items-center cursor-pointer gap-1 md:gap-2.5 max-sm:h-[24px]"
         onClick={() => setOpen(!open)}

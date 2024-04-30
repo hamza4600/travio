@@ -10,7 +10,10 @@ export const pageLayout = `*[_type == "globals"][0]{
         ...,
         destinations[] {
           ...,
-          destination->,
+          destination-> {
+          name,
+            slug
+          },
           tours[]-> {
             slug,
             overview_card,

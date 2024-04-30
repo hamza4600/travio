@@ -44,7 +44,7 @@ export async function generateMetadata({ params }) {
   };
 }
 // revalidate: 1 hour
-export const revalidate = 360;
+export const revalidate = 3600;
 
 export default async function Home({ params }) {
   

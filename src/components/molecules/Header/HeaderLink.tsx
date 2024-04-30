@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 import Card from "./Card";
 import Selector from "./Selector";
-import { localizedString, urlFor } from "../../../../sanity/lib/client";
+import { urlFor } from "../../../../sanity/lib/client";
 
 function HeaderLink({ locale, data, open, setOpen }) {
   // const [open, setOpen] = React.useState(false);
@@ -21,6 +21,23 @@ function HeaderLink({ locale, data, open, setOpen }) {
       document.body.classList.remove("overflow-hidden");
     }
   }, [open]);
+
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (dropdownRef.current && !dropdownRef?.current?.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -43,10 +60,14 @@ function HeaderLink({ locale, data, open, setOpen }) {
 
             {item?._type === "tour_dropdown" && (
               <>
-                <div className={"hidden lg:flex items-center"}>
+                <div ref={dropdownRef} className={"hidden lg:flex items-center"}>
                   <span
                     className="flex items-center cursor-pointer"
-                    onClick={() => setOpen(!open)}
+                    onClick={() => {
+                      setOpen(!open)
+                      setDest(0)
+                    } 
+                  }
                   >
                     <p className={"font-medium font-satoshi leading-[24px]"}>
                       Destinations
@@ -71,11 +92,13 @@ function HeaderLink({ locale, data, open, setOpen }) {
                       <div className="flex flex-wrap lg:gap-[85px] gap-5">
                         <Selector
                           title={item.destinations_title?.[locale]}
+                          locale={locale}
                           items={
                             item.destinations?.map((item, index) => {
-                              return localizedString(
-                                (item.destination as any)?.name
-                              );
+                              return {
+                                name: item.destination?.name?.[locale],
+                                slug: item?.destination?.slug?.current
+                              }
                             }) as any[]
                           }
                           selectedItem={dest}
@@ -93,7 +116,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                               return (
                                 <Link
                                   key={index}
-                                  className="font-satoshi text-gray hover:text-primary"
+                                  className="font-satoshi text-gray hover:text-primary hover:font-medium"
                                   href={`/${locale}/blog${item.slug.current}`}
                                 >
                                   <p>{item.title[locale]}</p>
