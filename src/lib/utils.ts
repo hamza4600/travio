@@ -152,7 +152,7 @@ export const secureTn = {
 
 export const priceTitleTn = {
   from: {
-    em: "From",
+    en: "From",
     es: "Desde",
     por: "de"
   },

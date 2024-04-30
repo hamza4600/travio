@@ -38,7 +38,12 @@ export async function getTourPage(slug: string) {
         },
         _type == "memorable_experiences_section" => {
           ...,
-          experience_cards[]->
+          experience_cards[]-> {
+            ...,
+            wiki -> {
+              slug
+            }
+          }
         },
         _type == "other_tours_section" => {
           ...,

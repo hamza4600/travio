@@ -4,10 +4,12 @@ import React, { useState, useEffect, useRef } from "react";
 
 const FilterCountry = ({
   tabs,
-  locale
+  locale,
+  pageType
 }: {
   tabs: Array<{ name: object; href: string }>;
-  locale: string
+  locale: string;
+  pageType: string
 }) => {
   const [isFixed, setIsFixed] = useState(false);
 
@@ -32,6 +34,8 @@ const FilterCountry = ({
     return classes.filter(Boolean).join(" ");
   }
 
+  console.log("Params: ", params)  
+
   return (
     <div className="max-w-full relative">
       <div
@@ -55,10 +59,10 @@ const FilterCountry = ({
                 <Link
                   key={index}
                   scroll={false}
-                  href={`/wiki/${tab.href}`}
+                  href={`/${locale}/${pageType}${tab.href}`}
                   // onClick={() => setCurrentTab(index)}
                   className={cNames(
-                    `/${params?.handle[0]}` === tab?.href
+                    `/${params?.handle}` === tab?.href
                       ? "border-[#FFBB0B] text-darkblue"
                       : "border-transparent text-gray-500 hover:border-gray-200 text-gray hover:text-gray-700",
                     "whitespace-nowrap border-b-4 font-satoshi border-gray-100 py-4 px-2 lg:text-base text-xs font-medium"

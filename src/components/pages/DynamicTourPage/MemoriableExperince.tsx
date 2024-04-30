@@ -74,7 +74,7 @@ export default function MemorableExperiencesSection({
           >
             {data?.experience_cards?.map((card: any, index: number) => (
               <SwiperSlide key={index}>
-                <Card data={card} />
+                <Card data={card} locale={locale} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -127,11 +127,11 @@ export default function MemorableExperiencesSection({
   );
 }
 
-const Card = ({ data }: { data: any }) => {
+const Card = ({ data, locale }: { data: any, locale: string }) => {
   if (!data) return null;
   console.log(data , "data9999");
   return (
-    <Link href={"/#" + data.slug?.current}>
+    <Link href={`/${locale}/wiki${data.wiki?.slug?.current}`}>
       <div className="max-w-[302px] md:min-h-[404px] min-h-[339px] rounded-2xl overflow-hidden bg-white shadow-md m-1">
         <div className="md:min-h-[220px] min-h-[180px] relative max-w-[302px]">
           <Image
@@ -144,10 +144,10 @@ const Card = ({ data }: { data: any }) => {
         </div>
         <div className="p-4 max-lg:{pt-3 pb-[15px] px-[15px]} flex flex-col gap-1">
           <p className="font-bold md:text-xl max-md:{text-base} font-satoshi text-darkblue">
-            {data.title?.en}
+            {data.title?.[locale]}
           </p>
           <p className="md:font-medium md:text-[14px] md:leading-[22px] font-normal text-[12px] leading-5 font-satoshi text-gray">
-            {data.description?.en}
+            {data.description?.[locale]}
           </p>
         </div>
       </div>

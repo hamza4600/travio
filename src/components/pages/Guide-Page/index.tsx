@@ -9,27 +9,18 @@ import SectionHeader from "@/components/molecules/secHeader";
 import InfoSection from "./InfoSection";
 import Container from "@/components/molecules/container";
 import FilterCountry from "../DynamicTravelWiki/FilterCountry";
-import { wikiTabs } from "../DynamicTravelWiki/data";
 
 interface GuidePageProps {
   language: string;
   pageData: any;
 }
 
-// will be repace with actual data
-// const tabs = [
-//   { name: "Egypt", href: "#" },
-//   { name: "Jordan", href: "#" },
-//   { name: "Dubai", href: "#" },
-//   { name: "Saudi Arabia", href: "#" },
-//   { name: "Israel", href: "#" },
-//   { name: "Turkey", href: "#" },
-// ];
-
 const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
-  const { layout, data } = pageData || {};
+  const { layout, data, guideList } = pageData || {};
 
   const slug = data?.slug?.current;
+
+  console.log("Data666: ", data)
 
   return (
     <Layout
@@ -37,8 +28,12 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
       locale={language}
       breadcrumbs={[
         {
-          label: "Egypt",
-          value: `/${language}/guide${slug}`,
+          label: "Guide",
+          value: `/`
+        },
+        {
+          label: `${data?.tab_title?.[language]}`,
+          value: `/guide${slug}`,
         },
       ]}
       promo_banner={layout?.banner}
@@ -57,7 +52,7 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
           centerLine
         />
         <div className="md:mt-[68px] mt-[50px]">
-          <FilterCountry tabs={wikiTabs} locale={language} />
+          <FilterCountry tabs={guideList} locale={language} pageType="guide" />
         </div>
         
         <Container className=" px-0">
