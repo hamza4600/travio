@@ -44,9 +44,7 @@ export async function generateMetadata({ params }) {
   };
 }
 // revalidate: 1 hour
-export const revalidate = 3600;
-
-// export const config = { amp: 'hybrid' }
+export const revalidate = 360;
 
 export default async function Home({ params }) {
   

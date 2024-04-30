@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
 type TabsProp = {
@@ -51,7 +52,7 @@ function AppTabs({ tabs }: TabsProp) {
               aria-label="Tabs"
             >
               {tabs.map((tab, index) => (
-                <a
+                <Link
                   key={tab?.name}
                   href={tab?.href}
                   onClick={() => setCurrentTab(index)}
@@ -64,7 +65,7 @@ function AppTabs({ tabs }: TabsProp) {
                   aria-current={currentTab ? "page" : undefined}
                 >
                   {tab?.name}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
