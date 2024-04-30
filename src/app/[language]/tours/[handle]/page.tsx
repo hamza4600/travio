@@ -44,7 +44,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// export const revalidate = 3600;
+export const revalidate = 3600;
 
 const Index = async ({ params }: any) => {
   const { handle, language } = params;
