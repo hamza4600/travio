@@ -404,4 +404,13 @@ export const TourDropdown = defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'destinations_title.en',
+    },
+    prepare: ({ title }) => ({
+      title: `Tour Dropdown`,
+      subtitle: title,
+    }),
+  },
 })

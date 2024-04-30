@@ -3,8 +3,8 @@ import { defineField, defineType } from 'sanity'
 import { Tag } from '@phosphor-icons/react'
 
 export default defineType({
-  name: 'tag',
-  title: 'Tags',
+  name: 'touretag',
+  title: 'Toure Tags',
   icon: Tag as any,
   description: 'A tag',
   type: 'document',
@@ -14,7 +14,7 @@ export default defineType({
       title: 'Name',
       type: 'locale_string',
     }),
-    defineField({
+     defineField({
       name: 'slug',
       title: 'Slug',
       description : 'The slug is the URL path segment for this tag. It should be unique eg :(outdoor, turkey).',
@@ -22,11 +22,6 @@ export default defineType({
       options: {
         source: 'name',
       },
-    }),
-    defineField({
-      name: 'icon',
-      title: 'Icon',
-      type  : 'image',
     }),
   ],
   preview: {

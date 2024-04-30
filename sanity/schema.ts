@@ -35,6 +35,7 @@ import PromoCode from "./schemas/documents/PromoCode";
 import Tag from "./schemas/documents/Tag";
 import tailor_your_tour from "./schemas/documents/TailorYourTour";
 import ThingsToDo from "./schemas/documents/ThingsToDo";
+import ToureTag from "./schemas/documents/ToureTag";
 import tour_page from "./schemas/documents/TourPage";
 import travel_guide from "./schemas/documents/TravelGuide";
 import travel_wiki, {
@@ -87,6 +88,7 @@ export const schemaTypes= [
         wattsappbanner,
         Breadcrumb,
         authersocial,
+        ToureTag,
         // content
         content_text,
         content_image,
