@@ -1,19 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import {
-  localizedNumber,
-  localizedString,
-} from "../../../../sanity/lib/client";
+import { localizedString } from "../../../../sanity/lib/client";
 
 import { SanityPricingSection } from "../../../../sanity/lib/types";
 
 import Layout from "@/components/layout";
 
-import Tabs from "@/components/pages/Payment/Tabs";
 import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1";
+import Tabs from "@/components/pages/Payment/Tabs";
 import Page2, { IContactInfo } from "./Page2";
 import Page3 from "./Page3";
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 import { Control, useForm } from "react-hook-form";
 
 import { urlFor } from "../../../../sanity/lib/client";
@@ -11,13 +11,13 @@ import {
   SanityTourPage,
 } from "../../../../sanity/lib/types";
 
-import { Button } from "@/components/ui/button";
 import Container from "@/components/molecules/container";
+import { Button } from "@/components/ui/button";
 
-import Input from "../TrailYourTour/Input";
 import { generatePriceList } from "@/utils/dates/generatePriceList";
-import { notFound } from "next/navigation";
 import { getPriceSymbol } from "@/utils/utils";
+import { notFound } from "next/navigation";
+import Input from "../TrailYourTour/Input";
 
 export default function Tabs({
   children,
@@ -58,7 +58,6 @@ export default function Tabs({
   let discount = 0;
   let actualPrice = 0;
   let currentPrice = 0;
-  let promoApplied = false;
 
   // @ts-ignore
   const data = {
@@ -109,7 +108,6 @@ export default function Tabs({
     if (promoCode.max_discount && discount > promoCode.max_discount) {
       discount = promoCode.max_discount;
     }
-    promoApplied = true;
     // @ts-ignore
     setTotalPrice((prev) => prev - discount);
   }

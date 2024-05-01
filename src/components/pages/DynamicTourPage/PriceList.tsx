@@ -1,16 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/router";
-
-// import { localizedNumber } from "@/contexts/LocaleProvider";
-// import {
-//   SanityLocaleNumber,
-//   SanityPrice,
-//   SanityPricingSection,
-//   SanityTourTimeline,
-// } from "@/sanity/types";
-import DateFormat, { getFirstDayOfMonth, getPriceSymbol } from "@/utils/utils";
+import DateFormat, { getPriceSymbol } from "@/utils/utils";
 import { CaretDown } from "@phosphor-icons/react";
 
 import { Button } from "@/components/ui/button";

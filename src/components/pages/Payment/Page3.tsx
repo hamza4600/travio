@@ -1,11 +1,11 @@
-import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
-import Input from "../TrailYourTour/Input";
 import OptionSelectButton from "@/components/atom/OptionSelectButton";
+import Input from "../TrailYourTour/Input";
 
 export function PaymentMethod({
   paymentMethod,
@@ -84,17 +84,17 @@ export default function Page3({
     "/paypal.png",
     "/bank-transfer.png",
   ];
-  const handleSubmit = () => {
-    const response = fetch("/api/payment", {
-      method: "POST",
-      body: JSON.stringify({
-        trip: {
-          name: "Trip Name",
-        },
-      }),
-    });
-    console.log(response);
-  };
+  // const handleSubmit = () => {
+  //   const response = fetch("/api/payment", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       trip: {
+  //         name: "Trip Name",
+  //       },
+  //     }),
+  //   });
+  //   console.log(response);
+  // };
 
   console.log(setValue, formData);
 

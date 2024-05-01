@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  Control,
-  //   FieldErrors,
-  useController,
-  useForm,
-  //   UseFormGetValues,
-  //   UseFormRegister,
-  //   UseFormSetValue,
-} from "react-hook-form";
+import { useEffect, useState } from "react";
+import { Control, useController, useForm } from "react-hook-form";
 import ReactStars from "react-stars";
 
 import { localizedString } from "../../../../sanity/lib/client";
-// import { PaymentSchema } from '@/pages/tours/[slug]/payment'
+import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import { urlFor } from "../../../../sanity/lib/client";
 import { SanityTourPage } from "../../../../sanity/lib/types";
-import { CaretDown, CaretUp } from "@phosphor-icons/react";
 
 import { ERROR_MESSAGES } from "../TrailYourTour/Input";
-// import { Input } from '@/components/ui/input'
 import Input from "../TrailYourTour/Input";
-
-// import { BookingsQuery } from '../../../../__generated__/graphql'
 export interface IPaymentTourExtras {
   adultMembers: number;
   childrenMembers: number;

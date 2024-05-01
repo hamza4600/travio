@@ -38,6 +38,7 @@ import ThingsToDo from "./schemas/documents/ThingsToDo";
 import ToureTag from "./schemas/documents/ToureTag";
 import tour_page from "./schemas/documents/TourPage";
 import travel_guide from "./schemas/documents/TravelGuide";
+import hotel from "./schemas/atoms/Hotel";
 import travel_wiki, {
   newNestedObj,
   newObj,
@@ -142,5 +143,6 @@ export const schemaTypes = [
   ThingsToDo,
   MemorableExperiences,
   newsletter_section,
+  hotel,
 ];
 // };
