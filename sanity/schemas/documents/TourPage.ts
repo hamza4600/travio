@@ -239,7 +239,7 @@ export default defineType({
       title: "Tags",
       description: "Tags for the page",
       type: "array",
-      of: [{ type: "reference", to: [{ type: "tag" }] }],
+      of: [{ type: "reference", to: [{ type: "touretag" }] }],
     }),
     defineField({
       name: "payment",

@@ -38,6 +38,32 @@ export async function getTourPage(slug: string) {
               content->
             }
           }
+<<<<<<< HEAD
+=======
+        },
+        _type == "pricing_section" => {
+          ...,
+          "weekly_schedule": ^.timeline.timeline,
+          "disabled": ^.timeline.disabled,
+          "price_overrides": ^.price_overrides,
+          "price": ^.overview_card.price,
+        },
+        _type == "memorable_experiences_section" => {
+          ...,
+          experience_cards[]-> {
+            ...,
+            wiki -> {
+              slug
+            }
+          }
+        },
+        _type == "other_tours_section" => {
+          ...,
+          tour_cards[] {
+            ...,
+            content->
+          }
+>>>>>>> b40325fd448d7ab4a04038022b579c05433880c9
         }
     }`;
 

@@ -1,14 +1,11 @@
 "use client";
 import Layout from "@/components/layout";
-import { wikiTabs } from "./data";
-// import WikiSection from "./WikiSection";
 import HeroSection from "../DynamicDestinations/HeroSection";
 
 import NewsletterSection from "@/components/sections/NewsletterSection";
 import FeatureTourSection from "@/components/sections/featureTour/FeatureTour";
 import Sidebar from "./Sidebar";
 import Content from "./Content";
-// import AppTabs from "@/components/molecules/AppTabs/AppTabse";
 import FilterCountry from "./FilterCountry";
 import SectionHeader from "@/components/molecules/secHeader";
 import Container from "@/components/molecules/container";
@@ -22,7 +19,7 @@ const DynamicTravelWiki = ({
   pageData: any;
   newLetterSection: any;
 }) => {
-  const { layout, data } = pageData || {};
+  const { layout, data, wikiList } = pageData || {};
   const { sections, suggested_tour } = data || {};
 
   console.log("dataTravelwiki555: ", data);
@@ -37,11 +34,11 @@ const DynamicTravelWiki = ({
       breadcrumbs={[
         {
           label: "wiki",
-          value: "/wiki",
+          value: "/",
         },
         {
-          label: "Egypt",
-          value: "/Egypt",
+          label: `${data?.tab_title?.[language]}`,
+          value: `/wiki${data?.slug?.current}`,
         },
       ]}
     >
@@ -62,7 +59,7 @@ const DynamicTravelWiki = ({
 
       {/* <WikiSection wikiData={wikiData} filterWiki={filterWikiData} /> */}
       <div className="md:mt-12 mt-[50px]">
-        <FilterCountry tabs={wikiTabs} locale={language} />
+        <FilterCountry tabs={wikiList} locale={language} pageType="wiki" />
       </div>
       <Container className="flex xl:flex-row flex-col justify-between gap-10 px-0 md:mt-[68px] mt-[50px]">
         <Sidebar sections={sections} locale={language} />

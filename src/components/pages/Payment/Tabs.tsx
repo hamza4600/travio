@@ -110,6 +110,7 @@ export default function Tabs({
       discount = promoCode.max_discount;
     }
     promoApplied = true;
+    // @ts-ignore
     setTotalPrice((prev) => prev - discount);
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks

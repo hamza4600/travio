@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
+
 import { cn } from "@/lib/utils";
 
 const textVariants = cva("", {
@@ -16,8 +17,10 @@ const textVariants = cva("", {
 
     font: {
       default: "font-satoshi",
+      // black: "font-staoshiblack",
       montserrat: "font-montserrat",
       nova: "font-nova",
+      // plain: "font-plain",
       secondary: "font-outfit",
     },
     fontWeight: {
@@ -31,10 +34,26 @@ const textVariants = cva("", {
       "800": "font-extrabold",
       "900": "font-black",
     },
+
+    // size: {
+    //   default: "text-base", // fon-size = 16x line-height: 24px;
+    //   extraSm: "text-extraSm", // 10px and 12px
+    //   xss: "text-xs", // font-size = 12x line-height: 20px;
+    //   xs: "text-xs", // 14px and 24px
+    //   smm: "text-smm", // font-size = 14pxpx / line-height: 22px
+    //   sm: "text-sm", // font-size = 14x line-height: 20px;
+    //   lg: "text-lg", // font-size = 18x line-height: 28px.
+    //   xl: "text-xl", // font-size = 20x and 28px
+    //   xll: "text-xll", // 20px and 32 px
+    //   "2xl": "text-2xl", // 24px and 32px
+    //   hero: "text-hero", // 56px and 76px
+    //   h1: "text-heading", // 40px and 50px
+    // },
   },
   defaultVariants: {
     variant: "default",
     font: "default",
+    // size: "default",
     fontWeight: "default",
   },
 });
@@ -43,7 +62,6 @@ export interface TextProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof textVariants> {
   asChild?: boolean;
-  component?: string;
   as?: React.ElementType; // prop for the HTML element type
 }
 
@@ -56,23 +74,27 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
       variant,
       asChild = false,
       as = "p",
-      component = "p",
       ...props
     },
     ref
   ) => {
-    const Comp = asChild ? Slot : component;
+    const Comp: React.ElementType | any = asChild ? Slot : as;
 
+    if (typeof as !== 'string') {
+      throw new Error(`Invalid value for 'as' prop: ${as}`);
+    }
+
+    // Filter out undefined and null values from props
     const filteredProps: React.HTMLAttributes<HTMLParagraphElement> =
       Object.fromEntries(
-        Object.entries({ ...props, className, ref }).filter(
+        Object.entries(props).filter(
           ([_, value]) => value !== undefined && value !== null
         )
       );
 
     return (
       <Comp
-        className={cn(textVariants({ variant, font, fontWeight }), className)}
+        className={cn(textVariants({ variant, className, font, fontWeight }))}
         ref={ref}
         {...filteredProps}
       />

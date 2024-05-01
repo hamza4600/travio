@@ -9,7 +9,6 @@ import rich_text from "./schemas/atoms/content/Richtext";
 import layout_stack from "./schemas/atoms/content/Stack";
 import content_text from "./schemas/atoms/content/Text";
 import { form_button, form_input_field } from "./schemas/atoms/Form";
-import hotel from "./schemas/atoms/Hotel";
 import icon from "./schemas/atoms/Icon";
 import link from "./schemas/atoms/Link";
 import link_button from "./schemas/atoms/LinkButton";
@@ -36,6 +35,7 @@ import PromoCode from "./schemas/documents/PromoCode";
 import Tag from "./schemas/documents/Tag";
 import tailor_your_tour from "./schemas/documents/TailorYourTour";
 import ThingsToDo from "./schemas/documents/ThingsToDo";
+import ToureTag from "./schemas/documents/ToureTag";
 import tour_page from "./schemas/documents/TourPage";
 import travel_guide from "./schemas/documents/TravelGuide";
 import travel_wiki, {
@@ -44,6 +44,8 @@ import travel_wiki, {
   TravelWikiSection as travel_wiki_section,
 } from "./schemas/documents/TravelWiki";
 import { BlogSectionExports } from "./schemas/sections/Blog";
+import { countryBlogCard } from "./schemas/sections/Blog/FeaturedPlaceBlogsSection";
+import { interestCard } from "./schemas/sections/Blog/InterestsSection";
 import content_section from "./schemas/sections/ContentSection";
 import deals_section from "./schemas/sections/DealsSection";
 import { DestinationSectionExports } from "./schemas/sections/Destination";
@@ -64,8 +66,7 @@ import {
   testimonial_section,
 } from "./schemas/sections/TestimonialSection";
 import { TourSectionExports } from "./schemas/sections/Tours";
-import { interestCard } from "./schemas/sections/Blog/InterestsSection";
-import { countryBlogCard } from "./schemas/sections/Blog/FeaturedPlaceBlogsSection";
+
 export const schemaTypes = [
   // atoms
   blockContent,
@@ -87,6 +88,7 @@ export const schemaTypes = [
   wattsappbanner,
   Breadcrumb,
   authersocial,
+  ToureTag,
   // content
   content_text,
   content_image,
@@ -95,6 +97,8 @@ export const schemaTypes = [
   content_link_card,
   rich_text,
   // sections
+  interestCard,
+  countryBlogCard,
   content_section,
   ShowNewLetterSection,
   deals_section,
@@ -138,8 +142,5 @@ export const schemaTypes = [
   ThingsToDo,
   MemorableExperiences,
   newsletter_section,
-  hotel,
-  interestCard,
-  countryBlogCard,
 ];
 // };

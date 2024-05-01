@@ -8,6 +8,7 @@ import Image from "next/image";
 import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
 import { urlFor } from "../../../../sanity/lib/client";
+import Link from "next/link";
 // export type AtAGlanceSectionProps = {
 //   data: SanityAtGlanceSection;
 // };
@@ -69,7 +70,7 @@ const CountryFacts = (props) => {
               (item: any, index: any) => {
                 return (
                   <div key={index}>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <div className="flex font-satoshi items-center gap-x-2 ">
                         <Image
                           quality={100}
@@ -84,7 +85,7 @@ const CountryFacts = (props) => {
                           {item.title?.[locale]}
                         </span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 );
               }
