@@ -23,7 +23,7 @@ const RootStyle = styled.div`
     p,
     li,
     ul {
-      font-size: 14px;
+      font-size: 16px;
       font-style: normal;
       font-weight: 400;
       line-height: 24px;
@@ -48,7 +48,7 @@ const LayoutGroup = styled.div`
       gap: 6px;
 
       p {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 24px;
       }
     }
@@ -80,7 +80,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
             className="font-bold text-2xl font-satoshi text-darkblue"
             {...props}
           />
-          <div className="md:w-[74px] border-b md:my-2 my-1 md:border-b-[3px] border-[#FFBB0B] max-w-[25%]  rounded-full" />
+          <div className="md:w-[74px] md:my-2 my-1 border-b-[3px] border-[#FFBB0B] max-w-[25%]  rounded-full" />
         </div>
       );
     },

@@ -38,7 +38,7 @@ export default function AccommdationTypesSection({
           <h2 className="text-darkblue font-satoshi font-bold text-xl lg:text-2xl text-c">
             {data?.title?.[locale]}
           </h2>
-          <div className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
+          <div className="md:w-[117px] w-[89px] md:mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] border-b-[3px]" />
         </div>
         <div className=" pl-5 mt-2 md:pl-0 md:font-normal font-medium">
           <span className="text-gray font-satoshi text-base mt-3 lg:text-lg">

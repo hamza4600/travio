@@ -28,8 +28,6 @@ export default function WhatsIncludedSection({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [expandedNotes, setExpandedNotes] = useState<any>([]);
 
-  console.log("WhtsIncluded: ", data);
-
   const whiteStyle = {
     filter: "grayscale(100%) brightness(1000%) sepia(100%) hue-rotate(50deg)",
   };
@@ -173,7 +171,7 @@ export default function WhatsIncludedSection({
                 </p>
               </div>
             }
-            <div className="flex text-[14px] flex-col">
+            <div className="flex text-base flex-col">
               <RootStyle>
                 <PortableText
                   content={
