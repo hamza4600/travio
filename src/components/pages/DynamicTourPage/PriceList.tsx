@@ -97,7 +97,7 @@ function PriceList({
       >
         <div className="flex-col font-satoshi  lg:flex-row  flex justify-between">
           <div className="gap-3 flex flex-col my-2">
-            <h1 className="tracking-wide text-[14px] text-gray lg:text-base font-medium">
+            <h1 className="tracking-wide max-md:text-[14px] text-gray font-medium">
               {datesTn?.[locale]} {/* <span ></span>{" "} */}
               <Link
                 className="text-[#3FA9F5]"
@@ -108,7 +108,7 @@ function PriceList({
             </h1>
             <div className="flex items-center gap-2">
               <img src="/lock_icon.svg" height={24} width={24} alt="lock" />
-              <p className="text-md font-semibold text-[14px] lg:text-base text-[#3FA9F5]">
+              <p className="font-bold text-[14px] lg:text-base text-[#3FA9F5]">
                 {secureTn?.[locale]}
               </p>
             </div>
@@ -130,7 +130,7 @@ function PriceList({
         </div>
         <div className="flex flex-col gap-3">
           <div
-            className={`md:grid  flex frow-row justify-start gap-10 md:gap-2 w-full text-[14px]  py-3 px-2 font-semibold lg:text-xl ${
+            className={`md:grid  flex frow-row justify-start gap-10 md:gap-2 w-full text-[14px]  py-3 px-2 font-medium lg:text-[20px] lg:leading-8 ${
               collapsed ? " grid-cols-6" : "grid-cols-12"
             }`}
           >
@@ -160,22 +160,22 @@ function PriceList({
                 key={index}
               >
                 <div
-                  className={`md:grid flex justify-between items-center  gap-2 py-[7px] md:px-2 px-5 cursor-pointer font-semibold text-xl ${
+                  className={`md:grid flex justify-between items-center font-bold  gap-2 py-[7px] md:px-2 px-5 cursor-pointer text-xl ${
                     collapsed ? " grid-cols-6" : "grid-cols-12"
                   }`}
                   onClick={() => {
                     selected === index ? setSelected(-1) : setSelected(index);
                   }}
                 >
-                  <h1
-                    className={`md:col-span-2 font-satoshi whitespace-nowrap  md:text-base md:leading-6 text-[10px] leading-[12px] max-md:w-[72px] ${
+                  <p
+                    className={`md:col-span-2 font-satoshi whitespace-nowrap  text-base md:leading-6 max-md:text-[10px] max-md:leading-[12px] max-md:w-[72px] ${
                       collapsed
                         ? "text-[12px] max-md:leading-3 md:text-sm ml-2"
                         : "ml-5"
                     }`}
                   >
                     {DateFormat(price.from, true)}
-                  </h1>
+                  </p>
 
                   <img
                     src={
@@ -199,17 +199,17 @@ function PriceList({
                       fill="#FFBB0B"
                     />
                   </svg>
-                  <h1
-                    className={`md:col-span-2 whitespace-nowrap font-satoshi text-[10px] max-md:leading-3 md:text-base w-[75px] ${
+                  <p
+                    className={`md:col-span-2 whitespace-nowrap font-satoshi max-md:text-[10px] max-md:leading-3 text-base w-[75px] ${
                       collapsed && "text-[12px] max-md:leading-3"
                     }`}
                   >
                     {DateFormat(price.to, true)}
-                  </h1>
+                  </p>
 
                   <>
                     <p
-                      className={`md:col-span-3 font-satoshi text-center text-[12px] max-md:leading-3 md:text-base ${
+                      className={`md:col-span-3 font-satoshi text-center text-[10px] max-md:leading-3 md:text-base ${
                         MAPPINGS[price.availability || "Available"]
                           .availablecolor
                       } ${selected === index ? "text-white" : ""}`}
@@ -218,7 +218,7 @@ function PriceList({
                     </p>
 
                     <div
-                      className={`md:col-span-2 font-satoshi  text-[12px] max-md:leading-3 md:text-base text-center md:flex items-center gap-2 ${
+                      className={`md:col-span-2 font-satoshi  text-[10px] max-md:leading-3 md:text-base text-center md:flex items-center gap-2 ${
                         MAPPINGS[price.availability || "Available"].color
                       } ${selected === index ? "opacity-0" : ""}`}
                     >
@@ -247,16 +247,17 @@ function PriceList({
                   <div className="bg-white text-darkblue lg:p-8 p-5 rounded-b-lg col-span-full flex justify-between">
                     <div className="flex gap-2 flex-col">
                       <div className="flex font-satoshi gap-3 items-center">
-                        <h1
+                        <p
                           className={`${
                             MAPPINGS[price.availability || "Available"].color
                           } font-bold whitespace-nowrap text-destructive ${
-                            collapsed ? "text-base" : "text-4xl"
+                            collapsed
+                              ? "text-base"
+                              : " text-[40px] leading-[50px] "
                           }`}
                         >
-                          {getPriceSymbol(locale)}{" "}
-                          {price.currentPrice?.[locale]}
-                        </h1>
+                          $ {price.currentPrice?.[locale]}
+                        </p>
                         {price.actualPrice && (
                           <h1
                             className={`text-gray line-through md:text-[24px] leading-9 font-bold whitespace-nowrap ${
@@ -338,7 +339,7 @@ function PriceList({
               onClick={() => {
                 setShow(show + 4);
               }}
-              className="text-center font-satoshi flex gap-x-2 items-center justify-center text-base lg:text-lg font-semibold my-3 text-[#3FA9F5] cursor-pointer"
+              className="text-center font-satoshi flex gap-x-2 items-center justify-center text-base lg:text-base font-semibold my-3 text-[#3FA9F5] cursor-pointer"
             >
               {viewMoreTn?.[locale]} <CaretDown />
             </div>

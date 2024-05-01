@@ -112,7 +112,7 @@ const TourCard = ({
             </div>
           </div>
           <div className="mt-6 flex justify-between items-start">
-            <Text className="line-through opacity-50 text-gray font-bold text-sm md:text-[18px] leading-[20px] md:leading-[28px]">
+            <Text className="line-through text-gray font-bold text-sm md:text-[18px] leading-[20px] md:leading-[28px]">
               ${formattedPrice(old_price)}
             </Text>
 
@@ -122,7 +122,7 @@ const TourCard = ({
               </Text>
               <Text
                 variant={"destructive"}
-                className="text-[10px] md:-mt-2 md:text-xs font-bold leading-[20px] md:leading-[28px]"
+                className="text-[10px] md:-mt-2 md:text-[12px] font-bold leading-[20px] md:leading-[28px]"
               >
                 {saveTn?.[locale]} ${formattedPrice(old_price - price)}
               </Text>

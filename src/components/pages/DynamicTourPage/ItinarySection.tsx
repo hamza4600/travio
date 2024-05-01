@@ -496,7 +496,7 @@ const OptionalActivites = ({ title, img, desc, price, level }) => {
               }`}
             />
           </div>
-          <p className="text-gray">{level}</p>
+          <p className="text-gray font-satoshi">{level}</p>
         </div>
 
         <div className="mt-3.5 flex gap-2 md:hidden ">
