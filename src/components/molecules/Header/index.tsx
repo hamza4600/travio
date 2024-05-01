@@ -50,7 +50,9 @@ const Header = ({
     }
   }, [isOppen]);
 
-  const dropdownList = ["Egypt", "Dubai", "Isreal"]; // is ko dynamic karna ha 
+  // destination dropdown for mobile
+  //@ts-ignore
+  const destinations = navbar?.links?.filter((item: any) => item?._type === "tour_dropdown")[0]?.destinations?.map((item: any) => item?.destination)
 
   return (
     <Root>
@@ -211,16 +213,16 @@ const Header = ({
                     </span>
                     {openDropDown && (
                       <div className="">
-                        {dropdownList.map((item, index) => (
+                        {destinations.map((item, index) => (
                           <div className="" key={index}>
                             <div className="flex font-satoshi items-center gap-3 text-[#726E83] p-[10px] px-[24px]">
                               <Link
                                 className="font-satoshi font-medium"
                                 key={index}
-                                href={`/${locale}`}
+                                href={`/${locale}/destinations${item?.slug?.current}`}
                               >
                                 {" "}
-                                {item}
+                                {item?.name?.[locale]}
                               </Link>
                             </div>
                           </div>

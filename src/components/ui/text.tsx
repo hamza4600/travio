@@ -80,10 +80,6 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
   ) => {
     const Comp: React.ElementType | any = asChild ? Slot : as;
 
-    if (typeof as !== 'string') {
-      throw new Error(`Invalid value for 'as' prop: ${as}`);
-    }
-
     // Filter out undefined and null values from props
     const filteredProps: React.HTMLAttributes<HTMLParagraphElement> =
       Object.fromEntries(

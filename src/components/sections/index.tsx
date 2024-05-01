@@ -158,7 +158,7 @@ export const DestinationSectionsMap: {
   image_header_section: HeroSectionTours,
   reviews_section: ReviewRatingSections,
   faq_section: FAQSection,
-  // all_blogs_section: BlogSection,
+  all_blogs_section: BlogSection,
   featured_blogs_section: BlogSection,
   featured_tours_section: FeatureTourSection,
   at_glance_section: CountryFacts,
