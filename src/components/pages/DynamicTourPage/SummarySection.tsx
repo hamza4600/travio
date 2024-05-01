@@ -233,9 +233,6 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
   );
 };
 
-
-
-
 // const links = [
 //   {
 //     id: 1,

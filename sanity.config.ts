@@ -15,16 +15,12 @@ import {
 
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-// import {structureTool} from 'sanity/structure'
 import { deskTool, type DeskToolOptions } from "sanity/desk";
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 
 import { apiVersion } from "./sanity/env";
 import { schemaTypes } from "./sanity/schema";
 import { Activity } from "lucide-react";
-
-// const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
-// const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 const CustomDocumentTypes = new Set([
   "page",

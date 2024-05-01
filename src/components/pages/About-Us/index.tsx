@@ -48,19 +48,11 @@ const AboutUsPage = ({ language, pageData }) => {
         />
       </div>
 
-      {/* <div>
-        <TravlerReviews />
-      </div> */}
-
-      {/* <div className="md:px-20 px-5"> */}
       <OfficeLocations
         title={LOCATIONS?.title[language]}
         data={LOCATIONS.locations}
         locale={language}
       />
-      {/* </div> */}
-
-      {/* <ReviewSection data={aboutReviewData} locale={language} /> */}
     </Layout>
   );
 };
