@@ -35,6 +35,7 @@ export default function Tabs({
   trigger,
   loading,
   promo,
+  totalPrice,
 }: {
   children?: any[];
   tour: SanityTourPage;
@@ -51,11 +52,13 @@ export default function Tabs({
   loading: boolean;
   locale: SanityLocale;
   promo: SanityPromoCode[];
+  totalPrice: number;
 }) {
   const [promoCode, setPromoCode] = useState<SanityPromoCode>();
   let discount = 0;
   let actualPrice = 0;
   let currentPrice = 0;
+  let promoApplied = false;
 
   // @ts-ignore
   const data = {
@@ -80,31 +83,38 @@ export default function Tabs({
   });
 
   if (!actual_tour || actual_tour === undefined) {
-    // show 404
-    console.log("tour not found");
-
     return notFound();
   }
 
   if (actual_tour) {
     actualPrice = Number(actual_tour.actualPrice[locale]);
     currentPrice = Number(actual_tour.currentPrice[locale]);
-    setTotalPrice(currentPrice);
+    setTotalPrice(
+      Number(currentPrice) * (Number(adultsNumber) + Number(childrenNumber)) +
+        // adons with number of people
+        Number(Number(adultsNumber) + Number(childrenNumber)) * (addons || 0)
+    );
   }
 
   if (promoCode) {
-    discount = (currentPrice * promoCode.percent) / 100;
+    actualPrice = Number(actual_tour.actualPrice[locale]);
+    currentPrice = Number(actual_tour.currentPrice[locale]);
+    const price =
+      Number(currentPrice) * (Number(adultsNumber) + Number(childrenNumber)) +
+      // adons with number of people
+      Number(Number(adultsNumber) + Number(childrenNumber)) * (addons || 0);
+
+    discount = Math.round(((promoCode.percent || 0) / 100) * price);
 
     if (promoCode.max_discount && discount > promoCode.max_discount) {
       discount = promoCode.max_discount;
     }
-
-    setTotalPrice(currentPrice - discount);
+    promoApplied = true;
+    setTotalPrice((prev) => prev - discount);
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [page, setPage] = useState(1);
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {}, [page]);
 
   return (
     <Container className="flex flex-col gap-16 py-16 xl:px-[108px] max-md:px-5">
@@ -212,10 +222,8 @@ export default function Tabs({
             clearPromoCode={() => setPromoCode(undefined)}
             setPromoCode={(x: string) => {
               const values = Object.values(promo);
-              console.log("values: ", values);
 
               const code = values.filter((p) => p.code === x)[0];
-              console.log("code: ", code);
 
               if (code) {
                 setPromoCode(code);
@@ -353,11 +361,13 @@ const Costing = ({
   locale: string;
 }) => {
   const { control, handleSubmit, setError } = useForm();
-  const people = adults + childrenNumber;
+  const people = Number(adults) + Number(childrenNumber);
   const originalPrice =
-    people * actualPrice + parseInt(people.toString()) * (addons || 0);
+    Number(people) * Number(actualPrice) +
+    parseInt(people.toString()) * (addons || 0);
   const totalPrice =
-    people * (currentPrice + (addons || 0)) - promoCodeDiscount;
+    Number(people) * (Number(currentPrice) + (addons || 0)) -
+    Number(promoCodeDiscount);
 
   return (
     <div className="bg-primary border border-darkblue/10 rounded-2xl overflow-hidden md:p-10 p-6">

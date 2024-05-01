@@ -20,8 +20,6 @@ import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import { ERROR_MESSAGES } from "../TrailYourTour/Input";
 // import { Input } from '@/components/ui/input'
 import Input from "../TrailYourTour/Input";
-import { useSelector } from "react-redux";
-import { hotelState } from "@/lib/features/hotel/hotelSlice";
 
 // import { BookingsQuery } from '../../../../__generated__/graphql'
 export interface IPaymentTourExtras {
@@ -45,8 +43,6 @@ export default function Page1({
   locale: string;
   getValues: (key: string) => any;
 }) {
-  const selectedHotel = useSelector((state: hotelState) => state.hotel?.name);
-
   return (
     <div className="flex flex-col gap-7">
       <div className="md:p-[38px] p-6 bg-primary border border-darkblue/10 rounded-2xl">
@@ -76,7 +72,7 @@ export default function Page1({
         control={control}
         room_options={payment?.hotel_types}
         locale={locale}
-        selectedHotel={selectedHotel || "Basic"}
+        selectedHotel={getValues("hotel") || "Basic"}
       />
       <RomeType
         errorMsg1={(ERROR_MESSAGES as any)[errors?.["roomType"]?.type]}

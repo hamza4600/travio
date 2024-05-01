@@ -2,21 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  // ErrorOption,
-  // Field,
-  // FieldArray,
-  // FieldArrayPath,
-  // FieldError,
-  // FieldErrors,
-  // FieldValues,
-  // FormState,
-  // RegisterOptions,
-  // SubmitErrorHandler,
-  // SubmitHandler,
-  // UseFormRegisterReturn,
-  useForm,
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import Input from "../TrailYourTour/Input";
 import OptionSelectButton from "@/components/atom/OptionSelectButton";

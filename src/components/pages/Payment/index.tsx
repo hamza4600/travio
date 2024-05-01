@@ -16,8 +16,6 @@ import Tabs from "@/components/pages/Payment/Tabs";
 import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1";
 import Page2, { IContactInfo } from "./Page2";
 import Page3 from "./Page3";
-import { useSelector, useDispatch } from "react-redux";
-import { hotelState, setHotel } from "@/lib/features/hotel/hotelSlice";
 
 export type PaymentSchema = IPaymentTourExtras & IContactInfo;
 export default function Page({ slug, data, locale, globals, promo }) {
@@ -45,6 +43,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
   const [optionalVisits, setOptionalVisits] = useState<number>(0);
   const [roomTypes, setRoomTypes] = useState<number>(0);
   const [hotelChoice, setHotelChoice] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   // get url
 
   const searchParams = useSearchParams();
@@ -76,6 +75,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
           }
         }
         setOptionalVisits(sum);
+        setTotalPrice((prev) => Number(prev + sum));
       }
       if (info.name === "roomType") {
         const price =
@@ -136,7 +136,8 @@ export default function Page({ slug, data, locale, globals, promo }) {
               cityName: localizedString(city?.city_name, locale),
               visitName: localizedString(visit?.title, locale),
               price: Number(
-                localizedNumber(visit?.price?.discounted_price, locale)
+                // localizedNumber(visit?.price?.discounted_price, locale)
+                visit?.price?.discounted_price?.[locale]
               ),
             };
           });
@@ -207,7 +208,6 @@ export default function Page({ slug, data, locale, globals, promo }) {
         setLoading(false);
       });
   };
-  const [totalPrice, setTotalPrice] = useState(0);
   const [bookOnly, setBookOnly] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<
     "stripe" | "paypal" | "bank"
@@ -234,6 +234,7 @@ export default function Page({ slug, data, locale, globals, promo }) {
         loading={loading}
         addons={roomTypes + hotelChoice + optionalVisits}
         locale={locale}
+        totalPrice={totalPrice}
       >
         <Page1
           locale={locale}
