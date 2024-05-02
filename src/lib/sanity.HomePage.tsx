@@ -41,7 +41,12 @@ const homePageQuery = `*[_type == "page"  && slug.current == "/"][0]{
       ...,
       deals[] {
         ...,
-        tour->
+        tour-> {
+          slug,
+          hero_section,
+          price_overrides,
+          overview_card
+        }
       }
     },
     _type == "destinations_section" => {
