@@ -20,8 +20,6 @@ const GuidePage: FC<GuidePageProps> = ({ language, pageData }) => {
 
   const slug = data?.slug?.current;
 
-  console.log("Data666: ", data)
-
   return (
     <Layout
       globals={layout}

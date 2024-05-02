@@ -15,7 +15,6 @@ export type FeaturedTour = {
 };
 
 const FeatureTourSection = (FeaturedTour: any) => {
-  console.log("FeaturedTour: ", FeaturedTour);
   const { locale } = FeaturedTour;
 
   return (

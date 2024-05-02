@@ -30,7 +30,6 @@ import { wantToTn, tailTourTn, sidebarFooterTn } from "@/lib/utils"
 // );
 
 function BlogSidebar({ data, locale }: any) {
-  console.log("DataSidebar: ", data);
 
   // const tags = ["India", "Jaipur", "Rajasthan", "Monuments"];
   return (
@@ -57,7 +56,6 @@ function BlogSidebar({ data, locale }: any) {
         <div className="flex flex-col gap-3 py-5">
           {data[0]?.articles.map((article: any, index: number) => {
             // return <LatestArticle data={data?.[0]?.articles} key={index} />;
-            // console.log("Article: ", article);
             return (
               <Link
                 key={index}
@@ -87,7 +85,6 @@ function BlogSidebar({ data, locale }: any) {
         <div className="border-[#FFBB0B] rounded-full my-1 w-[66px] md:border-b-[3px] border-b-2" />
         <div className="flex flex-col gap-3 py-5">
           {data[1]?.tours.map((tour: any, index: number) => {
-            // console.log("ToursData: ", tour);
             return (
               <>
                 <Link

@@ -32,9 +32,6 @@ const TourGallery = (props: GallerySectionProps) => {
     forTourPage,
   } = props;
 
-  // const windows = useWindowSize();
-  // const isMobile = windows.width < 768;
-  // console.log("subtitle: ", subtitle);
   const imgs: any[][] = [];
   if (images) {
     let single = true;

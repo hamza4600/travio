@@ -15,7 +15,7 @@ export type FeatureSectionProps = {
   data: SanityFeatureSection;
 };
 const TourFeature = ({ data, locale }) => {
-  console.log("locale: ", locale);
+
   return (
     <Container className="font-satoshi mx-auto max-w-[1312px] mb-[69px] my-20 max-md:mb-[50px] max-md:my-10  text-darkblue">
       {data.title?.en && (
@@ -95,7 +95,7 @@ const LargeFeature = ({
       {data.icon?.asset?._ref && (
         <Image
           src={urlFor(data.icon)}
-          className="max-md:h-[18px] max-md:w-[18px]"
+          className="max-md:h-[24px] max-md:w-[24px]"
           width={28}
           height={28}
           alt=""

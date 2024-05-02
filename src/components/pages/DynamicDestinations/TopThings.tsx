@@ -12,7 +12,7 @@ import { urlFor } from "../../../../sanity/lib/client";
 
 const TopThingsToDo = (props) => {
   const { data, locale } = props;
-  console.log("Things To do data: ", data);
+  
   return (
     <div className="md:px-20 px-5">
       <div>

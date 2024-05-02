@@ -19,10 +19,10 @@ export const pageLayout = `*[_type == "globals"][0]{
             overview_card,
             hero_section,
           },
-          blogs[]-> {
-            slug,
-            title
-          },
+          text_tours[]-> {
+            "slug" : slug.current ,
+            "title" : hero_section.title
+          }
         }
       }
     }

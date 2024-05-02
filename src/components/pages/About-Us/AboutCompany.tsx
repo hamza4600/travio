@@ -144,7 +144,7 @@ const Desc = styled.div`
 
 const AboutComapny = ({ data, locale }) => {
   return (
-    <Container>
+    <Container className="px-0">
       <Wrapper>
         <TextConatiner>
           <SectionHeader

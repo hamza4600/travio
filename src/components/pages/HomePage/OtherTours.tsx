@@ -8,8 +8,6 @@ const OtherTours = (props) => {
     data: { tours },
     locale,
   } = props;
-
-  console.log("otherTours: ", props)
   return (
     <Container className="my-5 font-satoshi md:my-10">
       <h2 className="font-[700] text-darkblue text-[24px] leading-8">

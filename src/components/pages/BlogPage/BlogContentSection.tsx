@@ -118,8 +118,6 @@ const BlogContentSection = ({ actualData, locale }: any) => {
     layout_group: (props) => {
       if (!props) return null;
 
-      // console.log("ImageProps: ", props);
-
       return (
         <>
           <div className="flex flex-col gap-6 relative">
@@ -142,7 +140,6 @@ const BlogContentSection = ({ actualData, locale }: any) => {
     },
   };
 
-  // console.log("actulData: ", actualData);
   return (
     <div className="mt-10 flex flex-col md:gap-[68px] gap-[50px] lg:pl-20 px-5">
       {actualData.map((item: any, index: any) => {
@@ -170,7 +167,6 @@ const BlogContentSection = ({ actualData, locale }: any) => {
             </div>
           );
         } else if (item._type === "bannerSection") {
-          // console.log("BannerItem: ", item);
           return (
             <div key={index}>
               <BannerSection

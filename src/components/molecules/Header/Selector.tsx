@@ -18,8 +18,8 @@ function Selector(props: {
             href={`/${locale}/destinations${item?.slug}`}
             key={index}
             className={`${
-              index === selectedItem ? " text-primary font-medium " : " text-gray  "
-            } cursor-pointer hover:underline transition-all font-satoshi text-base `}
+              index === selectedItem ? " text-primary " : " text-gray  "
+            } cursor-pointer hover:underline font-satoshi text-base `}
             onMouseEnter={() => {
               selectedItemToggle(index);
             }}
