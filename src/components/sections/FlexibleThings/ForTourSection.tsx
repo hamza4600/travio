@@ -28,7 +28,7 @@ const TourFeature = ({ data, locale }) => {
               data?.type == "small"
                 ? " w-[89px] md:w-[120px] "
                 : " w-[143px] md:w-[120px] "
-            } border-b  md:my-2 md:border-b-[3px] border-b-[#FFBB0B] rounded-full md:rounded-[3px] mb-5`}
+            } md:my-2 border-b-[3px] border-b-[#FFBB0B] rounded-full md:rounded-[3px] mb-5`}
           />
         </div>
       )}
@@ -75,7 +75,7 @@ const Feature = ({ data, locale }: { data: SanityFeature; locale: string }) => {
 
       {/* {data.title?.en} */}
 
-      <p className="font-[500] lg:text-base leading-5 text-[12px]">
+      <p className="font-[500] text-base">
         {data.title?.[locale]}
       </p>
       <p className="mx-20 opacity-60"> {data.description?.[locale]}</p>
@@ -103,7 +103,7 @@ const LargeFeature = ({
       )}
 
       <div className=" flex-1">
-        <p className="font-[500] md:text-xl text-[12px] leading-5">
+        <p className="font-[500] md:text-xl text-base">
           {data.title?.[locale]}
         </p>
         <p className="opacity-60"> {data.description?.[locale]}</p>

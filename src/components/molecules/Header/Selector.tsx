@@ -15,7 +15,7 @@ function Selector(props: {
       {items.map((item, index) => {
         return (
           <Link
-            href={`${locale}/destinations${item?.slug}`}
+            href={`/${locale}/destinations${item?.slug}`}
             key={index}
             className={`${
               index === selectedItem ? " text-primary font-medium " : " text-gray  "
