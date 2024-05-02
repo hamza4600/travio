@@ -39,6 +39,8 @@ function HeaderLink({ locale, data, open, setOpen }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log("data: ", data)
+
   return (
     <>
       {data.map((item: any, index: any) => {
@@ -112,12 +114,12 @@ function HeaderLink({ locale, data, open, setOpen }) {
                             ?.filter((item, index) => {
                               return index === dest;
                             })[0]
-                            .blogs?.map((item: any, index: any) => {
+                            .text_tours?.map((item: any, index: any) => {
                               return (
                                 <Link
                                   key={index}
                                   className="font-satoshi text-gray hover:text-primary hover:font-medium"
-                                  href={`/${locale}/blog${item.slug.current}`}
+                                  href={`/${locale}/tours${item.slug}`}
                                 >
                                   <p>{item.title[locale]}</p>
                                 </Link>

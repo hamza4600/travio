@@ -76,12 +76,12 @@ export default function WhatsIncludedSection({
   };
 
   return (
-    <Container className="flex flex-col py-7 mx-auto max-w-[1312px] px-4 font-satoshi relative">
-      <div id="inclusions">
+    <Container id="inclusions" className="flex flex-col py-7 mx-auto max-w-[1312px] px-4 font-satoshi relative">
+      <div >
         <h2 className="font-bold text-[20px] leading-[30px] lg:text-[24px] lg:leading-[34px] text-darkblue">
           {data?.title?.[locale]}
         </h2>
-        <div className="w-28 my-2 text-yellow border-[#FFBB0B]  rounded-full border-2 max-md:my-1" />
+        <div className="w-28 my-2 text-yellow border-[#FFBB0B]  rounded-full border-b-[3px] max-md:my-1" />
       </div>
       <div className="hidden divide-y divide-darkblue/10 lg:block  my-3 lg:w-3/4  w-full">
         {data?.inclusion_list?.map((item, index) => {

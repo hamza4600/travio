@@ -13,7 +13,7 @@ const BottomBar = () => {
           transition: "top 0.3s, position 0.3s, margin-top 0.3s",
         }}
       >
-        <div className="bg-[#3FA9F5] flex justify-between px-[32.5px] py-3 mt-[50px] md:hidden font-satoshi">
+        <div className="bg-[#3FA9F5] flex justify-between shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] rounded-t-[9px] px-[32.5px] py-2.5 mt-[50px] md:hidden font-satoshi">
           <div className="flex flex-col gap-1 items-center">
             <Email />
             <p className="text-[14px] leading-6 text-white opacity-50">
@@ -22,7 +22,7 @@ const BottomBar = () => {
           </div>
           <div className="flex flex-col gap-1 items-center">
             <Trail />
-            <p className="text-[14px] leading-6 text-white">Trail Your Tour</p>
+            <p className="text-[14px] leading-6 text-white">Tailor Your Tour</p>
           </div>
           <div className="flex flex-col gap-1 items-center">
             <WhatsApp />

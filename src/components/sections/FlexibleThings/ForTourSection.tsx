@@ -95,7 +95,7 @@ const LargeFeature = ({
       {data.icon?.asset?._ref && (
         <Image
           src={urlFor(data.icon)}
-          className="max-md:h-[18px] max-md:w-[18px]"
+          className="max-md:h-[24px] max-md:w-[24px]"
           width={28}
           height={28}
           alt=""
