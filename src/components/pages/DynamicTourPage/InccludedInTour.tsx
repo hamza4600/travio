@@ -34,7 +34,6 @@ export default function WhatsIncludedSection({
 
   // const Seralizer = {
   //   list_item: (props: any) => {
-  //     console.log("ListData: ", props);
   //     return (
   //       <ul className="list-disc pl-5">
   //         {props.children.map((child: any, index: number) => (
@@ -60,8 +59,6 @@ export default function WhatsIncludedSection({
       setExpandedNotes([...expandedNotes, index]);
     }
   };
-
-  console.log("expandedNotes: ", expandedNotes);
 
   // Function to check if note is expanded
   const isNoteExpanded = (index) => {

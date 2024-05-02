@@ -6,7 +6,6 @@ const ArticalTestinomial = ({ locale }: { locale: string }) => {
   const { data, isLoading } = useSWR("getTestimonials", getTestimonials);
 
   if (isLoading) return <div>Loading...</div>;
-  // console.log("Testi: ", data.sections[0])
 
   return (
     <>

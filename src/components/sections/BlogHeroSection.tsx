@@ -5,7 +5,7 @@ const BlogHeroSection = (props: any) => {
     data: { header, image },
     locale,
   } = props;
-  // console.log("data: ", props);
+  
   return (
     <div className="relative md:mb-12 mb-[50px]">
       <div className="w-full h-full flex flex-col justify-center items-center">

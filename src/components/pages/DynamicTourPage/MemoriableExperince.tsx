@@ -129,7 +129,7 @@ export default function MemorableExperiencesSection({
 
 const Card = ({ data, locale }: { data: any, locale: string }) => {
   if (!data) return null;
-  console.log(data , "data9999");
+  
   return (
     <Link href={`/${locale}/wiki${data.wiki?.slug?.current}`}>
       <div className="max-w-[302px] md:min-h-[404px] min-h-[339px] rounded-2xl overflow-hidden bg-white shadow-md m-1">

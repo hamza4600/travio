@@ -49,7 +49,6 @@ export const revalidate = 3600;
 
 const Index = async ({ params }: { params: any }) => {
   const { handle, language } = params;
-  console.log(handle);
 
   const firstSlug = handle[0];
   const pageData = await getArticalBlogPage(firstSlug);

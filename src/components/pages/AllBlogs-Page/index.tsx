@@ -7,7 +7,6 @@ import { BlogPageSectionsMap } from "@/components/sections";
 
 const MainBlogPage = ({ language, pageData }) => {
   const { layout, data, allBlogs } = pageData || {};
-  console.log("pageData", data);
   
   return (
     <Layout

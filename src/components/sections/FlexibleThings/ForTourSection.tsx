@@ -15,7 +15,7 @@ export type FeatureSectionProps = {
   data: SanityFeatureSection;
 };
 const TourFeature = ({ data, locale }) => {
-  console.log("locale: ", locale);
+
   return (
     <Container className="font-satoshi mx-auto max-w-[1312px] mb-[69px] my-20 max-md:mb-[50px] max-md:my-10  text-darkblue">
       {data.title?.en && (

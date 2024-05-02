@@ -12,8 +12,6 @@ const InfoSection = ({ data, locale }: any) => {
   const handleClickScroll = (name: string) => {
     const element = document.getElementById(name);
 
-    console.log("Element: ", element)
-
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 150,

@@ -28,7 +28,7 @@ const serializers = {
 
   p: ({ children }: any) => {
     const sanitizedText = children.replace(/\n\n/g, " ").replace(/\n/g, " ");
-    console.log("sanitized Text:", sanitizedText);
+  
     <p className="md:text-[16px] md:leading-[28px] text-[12px] leading-5">
       {sanitizedText}
     </p>;
@@ -45,8 +45,6 @@ const Content = ({ sections, locale }) => {
   const slug = router?.get("slug");
 
   const [editorValue, setEditorValue] = useState(null);
-
-  console.log("sec: ", sections);
 
   const findContent = (sections, slug) => {
     for (let section of sections) {

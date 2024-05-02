@@ -359,7 +359,7 @@ const Expandable = ({
   locale: string;
 }) => {
   // console the data
-  console.log("IternaryData: ", data);
+  
   return (
     <div>
       <button

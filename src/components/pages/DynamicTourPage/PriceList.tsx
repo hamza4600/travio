@@ -157,7 +157,6 @@ function PriceList({
   slug: any;
   locale: string;
 }) {
-  console.log("priceList5655: ", slug, locale);
 
   const [selected, setSelected] = React.useState(-1);
   const [collapsed, setCollapsed] = React.useState(false);
@@ -211,7 +210,7 @@ function PriceList({
                 id=""
                 onChange={(e) => {
                   setStartMonth(new Date(e.target.value).getMonth());
-                  // console.log(new Date(e.target.value).getMonth())
+                  
                 }}
               />
             </div>

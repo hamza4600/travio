@@ -39,8 +39,6 @@ function HeaderLink({ locale, data, open, setOpen }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("data: ", data)
-
   return (
     <>
       {data.map((item: any, index: any) => {
@@ -106,7 +104,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                           selectedItem={dest}
                           selectedItemToggle={setDest}
                         />
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-3 max-w-[223px]">
                           <p className="font-semibold  mb-2 font-satoshi">
                             {item.tours_title?.[locale]}
                           </p>
@@ -118,7 +116,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                               return (
                                 <Link
                                   key={index}
-                                  className="font-satoshi text-gray hover:text-primary hover:font-medium"
+                                  className="font-satoshi text-gray hover:text-primary"
                                   href={`/${locale}/tours${item.slug}`}
                                 >
                                   <p>{item.title[locale]}</p>

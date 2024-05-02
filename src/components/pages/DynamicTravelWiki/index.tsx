@@ -22,7 +22,6 @@ const DynamicTravelWiki = ({
   const { layout, data, wikiList } = pageData || {};
   const { sections, suggested_tour } = data || {};
 
-  console.log("dataTravelwiki555: ", data);
   
 
   return (

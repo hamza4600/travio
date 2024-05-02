@@ -34,7 +34,6 @@ const FilterCountry = ({
     return classes.filter(Boolean).join(" ");
   }
 
-  console.log("Params: ", params)  
 
   return (
     <div className="max-w-full relative">
