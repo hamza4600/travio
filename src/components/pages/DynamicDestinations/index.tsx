@@ -3,13 +3,7 @@ import Layout from "@/components/layout";
 
 import Slicer from "../../../../sanity/slicer";
 import { DestinationSectionsMap } from "@/components/sections";
-
-export const bannerText = {
-  text: "More summer for less. Save up to 20% off selected trips*.",
-  link: {
-    text: "Book now",
-  },
-};
+import FilterTour from "./FilterTour";
 
 const DynamicDestionations = ({ language, pageData }) => {
   const { layout, data } = pageData;
@@ -35,6 +29,7 @@ const DynamicDestionations = ({ language, pageData }) => {
         sections={data.sections}
         components={DestinationSectionsMap}
       />
+      <FilterTour />
     </Layout>
   );
 };
