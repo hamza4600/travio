@@ -2,7 +2,6 @@ import { pageLayout } from "./sanity.HomePage";
 import { CLIENT } from "./sanity.const";
 
 export async function getPaymentPage(slug: string) {
-
   const tourData = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
     ...,
     destination->,
@@ -27,7 +26,7 @@ export async function getPaymentPage(slug: string) {
         "price": ^.overview_card.price,
       }
     }
-  }`
+  }`;
 
   const query = `{
         "layout":  ${pageLayout},
@@ -36,7 +35,6 @@ export async function getPaymentPage(slug: string) {
 
   return await CLIENT.fetch(query);
 }
-
 
 // for Page SEO
 export async function getTourPaymentPageSeo(slug: string) {

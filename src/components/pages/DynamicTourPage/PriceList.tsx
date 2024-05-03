@@ -1,16 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/router";
-
-// import { localizedNumber } from "@/contexts/LocaleProvider";
-// import {
-//   SanityLocaleNumber,
-//   SanityPrice,
-//   SanityPricingSection,
-//   SanityTourTimeline,
-// } from "@/sanity/types";
-import DateFormat, { getFirstDayOfMonth } from "@/utils/utils";
+import DateFormat, { getPriceSymbol } from "@/utils/utils";
 import { CaretDown } from "@phosphor-icons/react";
 
 import { Button } from "@/components/ui/button";
@@ -32,6 +23,7 @@ import {
   viewLessBtn,
   viewMoreTn,
 } from "@/lib/utils";
+import { generatePriceList } from "@/utils/dates/generatePriceList";
 
 interface SinglePrice {
   from: Date;
@@ -66,87 +58,7 @@ const MAPPINGS = {
   },
 };
 
-function getDay(day: any): 1 | 2 | 3 | 4 | 5 | 6 | 7 | undefined {
-  switch (day) {
-    case "mon":
-      return 1;
-    case "tue":
-      return 2;
-    case "wed":
-      return 3;
-    case "thu":
-      return 4;
-    case "fri":
-      return 5;
-    case "sat":
-      return 6;
-    case "sun":
-      return 7;
-    default:
-      return undefined; // handle the case where 'day' is undefined or not one of the expected values
-  }
-}
-
-function generatePriceList(
-  data: any,
-  n: number = 5,
-  startMonth: number = new Date().getMonth()
-) {
-  // The day of the week on which the tour starts
-  const startDay = data.weekly_schedule?.start_day ?? "mon";
-  // The duration of the tour in days
-  const duration = data.weekly_schedule?.duration ?? 3;
-  // The default price of the tour
-  const price = (data as any)?.price;
-
-  // Prices to override the default price
-  const priceOverrides = (data as any).price_override ?? [];
-
-  // Generate the next 5 weeks for the tour on the basis of the start day and duration
-  const next5WeekPrices: {
-    from: Date;
-    to: Date;
-    currentPrice?: any;
-    actualPrice?: any;
-  }[] = [];
-  for (let i = 0; i < n; i++) {
-    const startDate = getFirstDayOfMonth(
-      !Number.isNaN(startMonth) ? startMonth : new Date().getMonth()
-    );
-
-    startDate.setDate(startDate.getDate() + (i + 1) * 7);
-    startDate.setDate(
-      // @ts-ignore
-      startDate.getDate() + ((getDay(startDay) - startDate.getDay() + 7) % 7)
-    );
-
-    const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + duration);
-    // check if the price is overridden for this week
-    priceOverrides.filter((override: any) => {
-      const overrideStartDate = new Date(override.timeline?.start_date ?? "");
-      const overrideEndDate = new Date(override.timeline?.end_date ?? "");
-      return (
-        startDate.getTime() >= overrideStartDate.getTime() &&
-        endDate.getTime() <= overrideEndDate.getTime()
-      );
-    });
-
-    next5WeekPrices.push({
-      from: startDate,
-      to: endDate,
-      currentPrice:
-        priceOverrides.length > 0
-          ? priceOverrides[0].price?.discounted_price
-          : price?.discounted_price,
-      actualPrice:
-        priceOverrides.length > 0
-          ? priceOverrides[0].price?.initial_price
-          : price?.initial_price,
-    });
-  }
-  return next5WeekPrices;
-}
+// write a function that takes start date and end date and returns the price for that week using the the function generatePriceList
 
 function PriceList({
   data,
@@ -162,7 +74,7 @@ function PriceList({
   const [collapsed, setCollapsed] = React.useState(false);
   const [show, setShow] = React.useState(4);
   const [startMonth, setStartMonth] = React.useState(new Date().getMonth());
-  let prices: SinglePrice[] = generatePriceList(data, 5, startMonth);
+  let prices: SinglePrice[] = generatePriceList(data);
   React.useEffect(() => {
     setCollapsed(window.innerWidth < 768);
     window.addEventListener("resize", () => {
@@ -171,8 +83,7 @@ function PriceList({
   }, []);
 
   React.useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    prices = generatePriceList(data, 5, startMonth);
+    prices = generatePriceList(data);
   }, [startMonth]);
 
   return (
@@ -310,12 +221,14 @@ function PriceList({
                         MAPPINGS[price.availability || "Available"].color
                       } ${selected === index ? "opacity-0" : ""}`}
                     >
-                      <p>$ {price.currentPrice?.[locale]}</p>
+                      <p>
+                        {getPriceSymbol(locale)} {price.currentPrice?.[locale]}
+                      </p>
                       {price.actualPrice && (
                         <p
                           className={`line-through font-satoshi text-gray text-[8px] font-bold md:text-xs`}
                         >
-                          $ {price.actualPrice?.[locale]}
+                          {getPriceSymbol(locale)} {price.actualPrice?.[locale]}
                         </p>
                       )}
                     </div>
@@ -337,7 +250,9 @@ function PriceList({
                           className={`${
                             MAPPINGS[price.availability || "Available"].color
                           } font-bold whitespace-nowrap text-destructive ${
-                            collapsed ? "text-base" : " text-[40px] leading-[50px] "
+                            collapsed
+                              ? "text-base"
+                              : " text-[40px] leading-[50px] "
                           }`}
                         >
                           $ {price.currentPrice?.[locale]}
@@ -350,7 +265,8 @@ function PriceList({
                                 : "text-2xl"
                             }`}
                           >
-                            $ {price.actualPrice?.[locale]}
+                            {getPriceSymbol(locale)}{" "}
+                            {price.actualPrice?.[locale]}
                           </h1>
                         )}
                         {collapsed && (

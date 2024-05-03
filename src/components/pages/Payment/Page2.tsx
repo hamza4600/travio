@@ -1,15 +1,4 @@
-import React from "react";
-// { Dispatch, SetStateAction, useState }
-
-import {
-  Control,
-  //   FieldErrors,
-  //   UseFormGetValues,
-  //   UseFormRegister,
-  //   UseFormSetValue,
-} from "react-hook-form";
-
-// import { PaymentSchema } from ".";
+import { Control } from "react-hook-form";
 
 import countries from "../../../utils/countries.json";
 import Input from "../TrailYourTour/Input";
