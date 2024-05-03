@@ -10,7 +10,6 @@ const FeatureTopBlogSection = (props: any) => {
   const {
     data: { cards },
   } = props;
-  // console.log("data9999: ", cards);
   return (
     <Container
       className={"mx-auto max-w-[1312px] font-satoshi px-4 md:mt-16 mt-[90px]"}
@@ -29,7 +28,6 @@ const FeatureTopBlogSection = (props: any) => {
 
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-3 lg:gap-7">
           {cards.map((card, i) => {
-            // console.log("cards: ", cards)
 
             return (
             <Link

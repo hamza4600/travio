@@ -34,7 +34,6 @@ export default function CurrentBlogPage({
   newsLetterSection,
 }) {
   const { layout, data } = pageData || {};
-  // console.log("dataBlogPage: ", data);
   const [showBlogSidebar, setShowBlogSidebar] = useState(false);
   const windows = useWindowSize();
   const isLaptop = windows.width < 1284;

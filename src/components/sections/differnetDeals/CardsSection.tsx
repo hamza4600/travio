@@ -9,8 +9,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const CardsSection = ({ data, locale }, props) => {
-  console.log("dataDeals: ", data);
-  // console.log("props8585", props);
 
   return (
     <Container className="text-black w-full mt-[50px]">

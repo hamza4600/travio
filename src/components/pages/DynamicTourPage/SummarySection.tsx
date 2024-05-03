@@ -23,7 +23,7 @@ const RootStyle = styled.div`
     p,
     li,
     ul {
-      font-size: 14px;
+      font-size: 16px;
       font-style: normal;
       font-weight: 400;
       line-height: 24px;
@@ -48,7 +48,7 @@ const LayoutGroup = styled.div`
       gap: 6px;
 
       p {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 24px;
       }
     }
@@ -66,8 +66,6 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     locale,
   } = props;
 
-  // console.log("data12312: ", props);
-
   // if (!content || content[locale]) return null;
 
   const PortableTextSerializer = {
@@ -80,7 +78,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
             className="font-bold text-2xl font-satoshi text-darkblue"
             {...props}
           />
-          <div className="md:w-[74px] border-b md:my-2 my-1 md:border-b-[3px] border-[#FFBB0B] max-w-[25%]  rounded-full" />
+          <div className="md:w-[74px] md:my-2 my-1 border-b-[3px] border-[#FFBB0B] max-w-[25%]  rounded-full" />
         </div>
       );
     },
@@ -100,17 +98,14 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     },
 
     // span: (props: any) => {
-    //   console.log("Data: ", props);
     //   return <p>{props.children}</p>;
     // },
 
     // strong: (props: any) => {
-    //   console.log("strongData: ", props);
     //   return <strong>{props.children}</strong>;
     // },
 
     // layout_group: (props: any) => {
-    //   console.log(props, "data");
 
     //   return (
     //     props.items.[0].items
@@ -123,8 +118,6 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
       return (
         <div className="flex w-full font-satoshi text-darkblue max-md:flex-col  gap-4 md:gap-12">
           {props?.items[0]?.items?.map((item: any, index: number) => {
-            // console.log("items: ", item);
-            // const text = item.text[locale];
 
             return (
               <PortableText
@@ -148,7 +141,7 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
     },
 
     layout_stack: (props: any) => {
-      // console.log("StackData: ", props);
+
       if (!props) return null;
 
       return (
@@ -175,13 +168,12 @@ const ContentSection = (props: PropsWithLocale<ContentSectionProps>) => {
       );
     },
     // content_text: (props: any) => {
-    //   // console.log("text:", props)
     //   return (
     //     <p style={{ color: props.styles?.color }}>{props.text?.[locale]}</p>
     //   );
     // },
     // content_image: (props: any) => {
-    //   console.log(props, "ContentData");
+  
     //   const { dimensions } = decodeAssetId(props.image.asset._ref);
 
     //   return (

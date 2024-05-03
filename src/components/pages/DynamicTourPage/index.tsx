@@ -40,15 +40,12 @@ const DynamicTourPage = ({ language, pageData }) => {
   const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb, language);
 
   const tabsData = [
-    { name: topbarTn?.[language]?.Overview, href: "#overview" },
-    { name: topbarTn?.[language]?.TripHighlights, href: "#price-list" },
-    { name: topbarTn?.[language]?.Itinerary, href: "#itinerary" },
-    { name: topbarTn?.[language]?.Inclusions, href: "#inclusions" },
-    {
-      name: topbarTn?.[language]?.EssentialsTravelInformation,
-      href: "#travel-info",
-    },
-    { name: topbarTn?.[language]?.Reviews, href: "#reviews" },
+    { name: topbarTn?.[language]?.Overview, href: "overview" },
+    { name: topbarTn?.[language]?.TripHighlights, href: "price-list" },
+    { name: topbarTn?.[language]?.Itinerary, href: "itinerary" },
+    { name: topbarTn?.[language]?.Inclusions, href: "inclusions" },
+    { name: topbarTn?.[language]?.EssentialsTravelInformation, href: "travel-info" },
+    { name: topbarTn?.[language]?.Reviews, href: "reviews" },
   ];
 
   return (
@@ -59,7 +56,7 @@ const DynamicTourPage = ({ language, pageData }) => {
       breadcrumbs={breadcrumbs}
       promo_banner={layout?.banner}
     >
-      <Container className=" px-0">
+      <Container className="px-0">
         <HeroSection data={data?.hero_section} locale={language} />
       </Container>
 

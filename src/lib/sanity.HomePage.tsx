@@ -19,10 +19,10 @@ export const pageLayout = `*[_type == "globals"][0]{
             overview_card,
             hero_section,
           },
-          blogs[]-> {
-            slug,
-            title
-          },
+          text_tours[]-> {
+            "slug" : slug.current ,
+            "title" : hero_section.title
+          }
         }
       }
     }
@@ -41,7 +41,12 @@ const homePageQuery = `*[_type == "page"  && slug.current == "/"][0]{
       ...,
       deals[] {
         ...,
-        tour->
+        tour-> {
+          slug,
+          hero_section,
+          price_overrides,
+          overview_card
+        }
       }
     },
     _type == "destinations_section" => {

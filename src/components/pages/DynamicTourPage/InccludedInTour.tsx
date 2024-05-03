@@ -28,15 +28,12 @@ export default function WhatsIncludedSection({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [expandedNotes, setExpandedNotes] = useState<any>([]);
 
-  console.log("WhtsIncluded: ", data);
-
   const whiteStyle = {
     filter: "grayscale(100%) brightness(1000%) sepia(100%) hue-rotate(50deg)",
   };
 
   // const Seralizer = {
   //   list_item: (props: any) => {
-  //     console.log("ListData: ", props);
   //     return (
   //       <ul className="list-disc pl-5">
   //         {props.children.map((child: any, index: number) => (
@@ -63,8 +60,6 @@ export default function WhatsIncludedSection({
     }
   };
 
-  console.log("expandedNotes: ", expandedNotes);
-
   // Function to check if note is expanded
   const isNoteExpanded = (index) => {
     return expandedNotes.includes(index);
@@ -78,12 +73,12 @@ export default function WhatsIncludedSection({
   };
 
   return (
-    <Container className="flex flex-col py-7 mx-auto max-w-[1312px] px-4 font-satoshi relative">
-      <div id="inclusions">
+    <Container id="inclusions" className="flex flex-col py-7 mx-auto max-w-[1312px] px-4 font-satoshi relative">
+      <div >
         <h2 className="font-bold text-[20px] leading-[30px] lg:text-[24px] lg:leading-[34px] text-darkblue">
           {data?.title?.[locale]}
         </h2>
-        <div className="w-28 my-2 text-yellow border-[#FFBB0B]  rounded-full border-2 max-md:my-1" />
+        <div className="w-28 my-2 text-yellow border-[#FFBB0B]  rounded-full border-b-[3px] max-md:my-1" />
       </div>
       <div className="hidden divide-y divide-darkblue/10 lg:block  my-3 lg:w-3/4  w-full">
         {data?.inclusion_list?.map((item, index) => {
@@ -173,7 +168,7 @@ export default function WhatsIncludedSection({
                 </p>
               </div>
             }
-            <div className="flex text-[14px] flex-col">
+            <div className="flex text-base flex-col">
               <RootStyle>
                 <PortableText
                   content={

@@ -19,8 +19,6 @@ const CountryFacts = (props) => {
     locale,
   } = props;
 
-  console.log(locale, "data: ", props);
-
   return (
     <div className="text-darkblue">
       <Container className="bg-[#F2FAFF] mx-auto max-w-[1312px] px-4 py-12">

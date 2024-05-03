@@ -359,7 +359,7 @@ const Expandable = ({
   locale: string;
 }) => {
   // console the data
-  console.log("IternaryData: ", data);
+  
   return (
     <div>
       <button
@@ -405,7 +405,7 @@ const Expandable = ({
             {data.description?.[locale]}
           </p> */}
           <PortableText
-            className="flex-1 text-darkblue text-[14px] leading-6 md:text-base font-satoshi"
+            className="flex-1 text-darkblue text-base font-satoshi"
             content={data?.description?.[locale]}
             serializers={{}}
           />

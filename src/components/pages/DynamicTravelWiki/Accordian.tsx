@@ -1,5 +1,5 @@
 // import Link from "next/link";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const CustomAccordion = ({ data }) => {
@@ -24,10 +24,6 @@ const CustomAccordion = ({ data }) => {
     const storedState = localStorage.getItem("accordionFilteredItems");
     return storedState ? JSON.parse(storedState) : -1;
   });
-
-  const pathname = usePathname();
-
-  console.log("pathname: ", pathname);
 
   const router = useRouter();
 

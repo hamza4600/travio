@@ -15,7 +15,7 @@ export type FeatureSectionProps = {
   data: SanityFeatureSection;
 };
 const TourFeature = ({ data, locale }) => {
-  console.log("locale: ", locale);
+
   return (
     <Container className="font-satoshi mx-auto max-w-[1312px] mb-[69px] my-20 max-md:mb-[50px] max-md:my-10  text-darkblue">
       {data.title?.en && (
@@ -28,7 +28,7 @@ const TourFeature = ({ data, locale }) => {
               data?.type == "small"
                 ? " w-[89px] md:w-[120px] "
                 : " w-[143px] md:w-[120px] "
-            } border-b  md:my-2 md:border-b-[3px] border-b-[#FFBB0B] rounded-full md:rounded-[3px] mb-5`}
+            } md:my-2 border-b-[3px] border-b-[#FFBB0B] rounded-full md:rounded-[3px] mb-5`}
           />
         </div>
       )}
@@ -75,7 +75,7 @@ const Feature = ({ data, locale }: { data: SanityFeature; locale: string }) => {
 
       {/* {data.title?.en} */}
 
-      <p className="font-[500] lg:text-base leading-5 text-[12px]">
+      <p className="font-[500] text-base">
         {data.title?.[locale]}
       </p>
       <p className="mx-20 opacity-60"> {data.description?.[locale]}</p>
@@ -95,7 +95,7 @@ const LargeFeature = ({
       {data.icon?.asset?._ref && (
         <Image
           src={urlFor(data.icon)}
-          className="max-md:h-[18px] max-md:w-[18px]"
+          className="max-md:h-[24px] max-md:w-[24px]"
           width={28}
           height={28}
           alt=""
@@ -103,7 +103,7 @@ const LargeFeature = ({
       )}
 
       <div className=" flex-1">
-        <p className="font-[500] md:text-xl text-[12px] leading-5">
+        <p className="font-[500] md:text-xl text-base">
           {data.title?.[locale]}
         </p>
         <p className="opacity-60"> {data.description?.[locale]}</p>

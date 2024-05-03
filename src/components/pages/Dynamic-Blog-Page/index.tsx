@@ -27,7 +27,6 @@ export default function BlogPage({
   pageData: any;
   tags: string[];
 }) {
-  console.log("BlogPage: ", pageData);
   const { layout, data } = pageData || {};
   const sections = data?.sections || [];
 

@@ -22,7 +22,6 @@ const AboutUsPage = ({ language, pageData }) => {
     [3]: LOCATIONS,
   } = SECTIONS || {};
 
-  // console.log("PageDataAbout: ", pageData);
 
   return (
     <Layout

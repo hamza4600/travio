@@ -9,8 +9,6 @@ const InThisPost = ({ data, locale }: any) => {
     
     const element = document.getElementById(name)
 
-    console.log("element: ", name)
-
     if (element) {
       window.scrollTo({
         top: element.offsetTop,

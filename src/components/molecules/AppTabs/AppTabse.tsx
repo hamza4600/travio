@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
 type TabsProp = {
@@ -10,8 +9,6 @@ function AppTabs({ tabs }: TabsProp) {
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabsRef = useRef<HTMLDivElement | null>(null);
-
-  console.log("iFixed: ", isFixed)
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -29,6 +26,18 @@ function AppTabs({ tabs }: TabsProp) {
   function cNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const handleClickScroll = (name: string) => {
+    const element = document.getElementById(name);
+
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 150,
+        behavior: "smooth",
+      });
+      window.history.pushState({}, "", `#${name}`);
+    }
+  };
 
   return (
     <div className="max-w-full relative">
@@ -52,10 +61,12 @@ function AppTabs({ tabs }: TabsProp) {
               aria-label="Tabs"
             >
               {tabs.map((tab, index) => (
-                <Link
+                <button
                   key={tab?.name}
-                  href={tab?.href}
-                  onClick={() => setCurrentTab(index)}
+                  onClick={() => {
+                    setCurrentTab(index)
+                    handleClickScroll(tab.href)
+                  }}
                   className={cNames(
                     currentTab === index
                       ? "border-[#FFBB0B] text-darkblue"
@@ -65,7 +76,7 @@ function AppTabs({ tabs }: TabsProp) {
                   aria-current={currentTab ? "page" : undefined}
                 >
                   {tab?.name}
-                </Link>
+                </button>
               ))}
             </nav>
           </div>

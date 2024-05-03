@@ -8,8 +8,6 @@ const InterestSection = (props) => {
     locale,
   } = props as any;
 
-  console.log("interestSection: ", interests);
-
   return (
     <Container className="md:my-[68px] my-[50px] flex flex-col justify-center items-center font-satoshi max-md:px-5">
       <h2 className="text-primary text-sm lg:text-base font-medium text-center">

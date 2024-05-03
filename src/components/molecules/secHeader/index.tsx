@@ -31,7 +31,7 @@ const SectionHeader: FC<SectionHeaderProps> = ({
           {subtitle}
         </Text>
       </div>
-      <div className="w-[85px] md:w-[117px] border-[#FFBB0B] text-yellow mt-1 md:mt-3 rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[2px]" />
+      <div className="w-[85px] md:w-[117px] border-[#FFBB0B] text-yellow mt-1 md:mt-3 rounded-full md:rounded-[3px] border-b-[3px]" />
     </div>
   );
 };

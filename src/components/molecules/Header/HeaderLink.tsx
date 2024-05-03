@@ -104,7 +104,7 @@ function HeaderLink({ locale, data, open, setOpen }) {
                           selectedItem={dest}
                           selectedItemToggle={setDest}
                         />
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-3 max-w-[223px]">
                           <p className="font-semibold  mb-2 font-satoshi">
                             {item.tours_title?.[locale]}
                           </p>
@@ -112,12 +112,12 @@ function HeaderLink({ locale, data, open, setOpen }) {
                             ?.filter((item, index) => {
                               return index === dest;
                             })[0]
-                            .blogs?.map((item: any, index: any) => {
+                            .text_tours?.map((item: any, index: any) => {
                               return (
                                 <Link
                                   key={index}
-                                  className="font-satoshi text-gray hover:text-primary hover:font-medium"
-                                  href={`/${locale}/blog${item.slug.current}`}
+                                  className="font-satoshi text-gray hover:text-primary"
+                                  href={`/${locale}/tours${item.slug}`}
                                 >
                                   <p>{item.title[locale]}</p>
                                 </Link>

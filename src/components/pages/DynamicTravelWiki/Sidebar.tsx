@@ -10,8 +10,6 @@ const Sidebar = ({ sections, locale }) => {
   const [selectedSubSection, setSelectedSubSection] = useState(null);
   const [nestedSlugSection, setNestedSection] = useState(null);
 
-  console.log("nestedSection: ", nestedSlugSection);
-
   //   const router = useRouter();
   const pathname = usePathname();
 

@@ -13,9 +13,6 @@ export const bannerText = {
 
 const DynamicDestionations = ({ language, pageData }) => {
   const { layout, data } = pageData;
-  console.log(data, "555555");
-
-  console.log("lang: ", language);
 
   return (
     <Layout
