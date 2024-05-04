@@ -36,7 +36,7 @@ const ToureTags: FC<Props> = ({ data, locale }) => {
     };
 
     return (
-        <div className="mt-4 flex gap-2.5 flex-wrap">
+        <div className="mt-4 flex gap-2.5 max-w-full overflow-x-auto">
             {data.map((tag: any, index: number) => (
                 <Button
                     key={tag._id}
