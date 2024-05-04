@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation";
 import TourCard from "@/components/molecules/cards/Card";
 import styled from "styled-components";
 import FilterSidebar from "./FilterSideebar";
+import { Spinner } from "@/components/atom/Spinner";
 
 const RootStyle = styled.div`
   a {
@@ -19,17 +20,21 @@ const RootStyle = styled.div`
   }
 `;
 
-
-
 const FilterTourSection = ({ data, locale, tags }) => {
   const searchParams = useSearchParams();
   const urlTags = searchParams?.getAll("tag");
   const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags;
 
-  const { data: tagsToures, mutate } = useSWR("/tagsToures", () =>
-    getTourByTags(articalTags)
-  );
-  
+  const {
+    data: tagsToures,
+    mutate,
+    isLoading,
+  } = useSWR("/tagsToures", () => getTourByTags(articalTags));
+
+  const header = document.getElementById("headerGet");
+
+  console.log("Header: ", header);
+
   useEffect(() => {
     mutate("/blogsTags");
   }, [mutate, searchParams]);
@@ -52,13 +57,18 @@ const FilterTourSection = ({ data, locale, tags }) => {
 
         <div className="max-md:mt-10">
           <p className="md:font-medium md:text-gray  md:text-[20px] md:leading-7 font-satoshi">
-            Found 148 Tours - Egypt
+            Found 148 Tours - {header?.innerHTML}
           </p>
 
           <ToureTags data={data.tags} locale={locale} />
 
           <div className="grid xl:grid-cols-3 md:mt-5 mt-10 gap-6 lg:grid-cols-2 max-md:-grid-cols-1">
-            {Array.isArray(tagsToures) &&
+            {isLoading ? (
+              <div className="min-h-[300px] flex items-center justify-center">
+                <Spinner radius={50} />
+              </div>
+            ) : (
+              Array.isArray(tagsToures) &&
               tagsToures.length > 0 &&
               tagsToures.map((data: any, i: number) => (
                 <RootStyle key={i}>
@@ -78,7 +88,8 @@ const FilterTourSection = ({ data, locale, tags }) => {
                     price={data.price_overrides[0].price.initial_price[locale]}
                   />
                 </RootStyle>
-              ))}
+              ))
+            )}
           </div>
         </div>
       </section>

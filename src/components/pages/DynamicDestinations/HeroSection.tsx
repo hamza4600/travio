@@ -33,7 +33,7 @@ const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
           loading="lazy"
           alt={data?.alt?.[locale]}
         />
-        <h1 className="font-satoshi lg:w-full text-white max-lg:hidden font-black absolute z-50 bottom-12 text-center text-[56px] leading-[72px]">
+        <h1 id={"headerGet"} className="font-satoshi lg:w-full text-white max-lg:hidden font-black absolute z-50 bottom-12 text-center text-[56px] leading-[72px]">
           {data.header?.[locale]}
         </h1>
       </div>

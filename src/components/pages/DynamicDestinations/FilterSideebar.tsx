@@ -42,15 +42,15 @@ export default function FilterSidebar({ locale, data }) {
         {filterItems.map((item: any, index: number) => (
           <AccordionItem key={index} value={item.name}>
             <AccordionTrigger
-              className={`text-darkblue md:text-lg font-medium p-[18px] bg-[#F2FAFF] ${
+              className={`text-darkblue md:text-lg font-medium md:p-[18px] p-3 bg-[#F2FAFF] ${
                 index == 0 && " md:rounded-t-[16px]"
               } max-md:rounded-[8px\]`}
             >
               {item.name?.[locale]}
             </AccordionTrigger>
             <AccordionContent className="grid grid-cols-2 gap-y-2.5 justify-between items-center">
-              {data.map((country: any, index: number) => (
-                <div key={index} className="flex gap-2 px-6 items-center py-2.5">
+              {data?.map((country: any, index: number) => (
+                <div key={index} className="flex gap-2 px-6 items-center pt-2.5">
                   <input
                     type="radio"
                     className="w-3.5 h-3.5 hover:cursor-pointer"
