@@ -37,7 +37,9 @@ const ToureTags: FC<Props> = ({ data, locale }) => {
 
     return (
         <div className="mt-4 flex gap-2.5 flex-wrap">
-            {data.map((tag: any, index: number) => (
+            {Array.isArray(data) &&
+            data.length > 0 &&
+             data.map((tag: any, index: number) => (
                 <Button
                     key={tag._id}
                     id={tag._id}
@@ -46,11 +48,11 @@ const ToureTags: FC<Props> = ({ data, locale }) => {
                     ${isSelected(tag.slug?.current) ? " bg-[#3FA9F5] text-white" : "bg-white"}
                     `}
                     onClick={() => handleTagClick(tag.slug?.current)}
-                    aria-label={`Toggle tag ${tag.name[locale]}`}
+                    // aria-label={`Toggle tag ${tag.name[locale]}`}
                     aria-pressed={isSelected(tag.slug?.current) ? "true" : "false"}
                     tabIndex={0}
                 >
-                    {tag.name[locale]}
+                    {tag.name?.[locale]}
                 </Button>
             ))}
         </div>

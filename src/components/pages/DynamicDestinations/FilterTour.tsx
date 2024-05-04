@@ -60,16 +60,15 @@ function FilterSidebar() {
   );
 }
 
-const FilterTourSection = ({ data, locale }) => {
+const FilterTourSection = ({ data, locale, tags }) => {
   const searchParams = useSearchParams();
   const urlTags = searchParams?.getAll("tag");
-  const articalTags = urlTags && urlTags.length > 0 ? urlTags : [];
+  const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags;
 
   const { data: tagsToures, mutate } = useSWR("/tagsToures", () =>
     getTourByTags(articalTags)
   );
-
-  console.log(data, "tagsToures");
+  
   useEffect(() => {
     mutate("/blogsTags");
   }, [mutate, searchParams]);

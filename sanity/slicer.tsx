@@ -12,9 +12,10 @@ interface Props {
   sections: Section[];
   components: { [name: string]: React.ComponentType<any> };
   locale: string;
+  tags?: any;
 }
 
-const Slicer: React.FC<Props> = ({ sections, components, locale }) => {
+const Slicer: React.FC<Props> = ({ sections, components, locale,  tags }) => {
   const [visibleSections, setVisibleSections] = useState(3);
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -41,6 +42,7 @@ const Slicer: React.FC<Props> = ({ sections, components, locale }) => {
               data: section,
               locale,
               key: section._key,
+              tags: section._type === "tour_selection_section" ? tags : null
             })}
         </React.Fragment>
       ))}

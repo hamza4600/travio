@@ -4,6 +4,14 @@ import { urlForImage } from "../../../../../sanity/lib/image";
 
 const DynamicDestionations = dynamic(() => import("@/components/pages/DynamicDestinations"));
 
+const extractTags = (pageData) => {
+  const sections = pageData?.data?.sections || [];
+  const latestPosts = sections.find((section) => section?._type === "tour_selection_section");
+  const tags = latestPosts?.tags || [];
+  const destinationTags = latestPosts?.destination_tags || [];
+  return tags.concat(destinationTags).map((tag) => tag?.slug?.current);
+};
+
 export async function generateMetadata({ params }) {
   const { handle, language } = params;
 
@@ -50,12 +58,13 @@ const Index = async ({ params }: any) => {
   const { handle, language } = params;
 
   const destinationPage = await getDestinationPage(handle);
-
-  // extracr all tags
+  const tagsData = extractTags(destinationPage);
+  
   return (
     <DynamicDestionations 
       language={language}
-      pageData={destinationPage} 
+      pageData={destinationPage}
+      tags = {tagsData}
     />
   );
 };

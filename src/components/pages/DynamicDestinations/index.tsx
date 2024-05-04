@@ -4,9 +4,9 @@ import Layout from "@/components/layout";
 import Slicer from "../../../../sanity/slicer";
 import { DestinationSectionsMap } from "@/components/sections";
 
-const DynamicDestionations = ({ language, pageData }) => {
+const DynamicDestionations = ({ language, pageData, tags }) => {
   const { layout, data } = pageData;
-  
+
   return (
     <Layout
       locale={`${language}`}
@@ -27,6 +27,7 @@ const DynamicDestionations = ({ language, pageData }) => {
         locale={language}
         sections={data.sections}
         components={DestinationSectionsMap}
+        tags={tags}
       />
     </Layout>
   );
