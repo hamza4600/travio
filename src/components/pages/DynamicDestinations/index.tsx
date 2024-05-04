@@ -3,7 +3,6 @@ import Layout from "@/components/layout";
 
 import Slicer from "../../../../sanity/slicer";
 import { DestinationSectionsMap } from "@/components/sections";
-import FilterTour from "./FilterTour";
 
 const DynamicDestionations = ({ language, pageData }) => {
   const { layout, data } = pageData;
@@ -29,7 +28,6 @@ const DynamicDestionations = ({ language, pageData }) => {
         sections={data.sections}
         components={DestinationSectionsMap}
       />
-      <FilterTour />
     </Layout>
   );
 };

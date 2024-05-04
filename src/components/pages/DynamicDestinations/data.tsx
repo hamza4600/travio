@@ -364,8 +364,3 @@ export const filterItems = [
     countries: ["Egypt", "dubai", "Bahrain", "Oman"]
   },
 ]
-
-export const tags = [
-  "Classic Tour",
-  "Famity Tour"
-]

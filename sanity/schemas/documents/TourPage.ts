@@ -17,13 +17,13 @@ export default defineType({
       type: 'meta_data',
     }),
       // select destination from a list as many needed
-    defineField({
-      name: 'destination',
-      title: 'Destination',
-      description: 'Destination this tour is meant for',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'destination_page' }] }],
-    }),
+    // defineField({
+    //   name: 'destination',
+    //   title: 'Destination',
+    //   description: 'Destination this tour is meant for',
+    //   type: 'array',
+    //   of: [{ type: 'reference', to: [{ type: 'destination_page' }] }],
+    // }),
 
     defineField({
       name: 'slug',

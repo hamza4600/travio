@@ -42,9 +42,8 @@ export default function BlogPage({
   const urlTags = searchParams?.getAll("tag")
   const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags
 
-  const { data: tagsArtical, isLoading, mutate   } = useSWR("/blogsTags", () =>
+  const { data: tagsArtical, isLoading, mutate } = useSWR("/blogsTags", () =>
     getArticalByTag(articalTags) , {
-      // refreshInterval: 1000,
     }
   );
 
@@ -52,8 +51,6 @@ export default function BlogPage({
     mutate('/blogsTags')
   },[searchParams])
 
-  // const [pageNumber, setPageNumber] = React.useState(0);
-  // const pageSize = 3
   return (
     <Layout
       breadcrumbs={[

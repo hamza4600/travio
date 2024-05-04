@@ -3,7 +3,7 @@ import { pageLayout } from './sanity.HomePage';
 import { CLIENT } from './sanity.const';
 
 export async function getTourPage(slug: string) {
-    const tourPageQuery = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
+  const tourPageQuery = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
 
       ...,
       destination->,
@@ -55,28 +55,47 @@ export async function getTourPage(slug: string) {
       }
   }`;
 
-    const query = `{
+  const query = `{
       "layout":  ${pageLayout},
       "data": ${tourPageQuery}
     }`;
 
-    return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query);
 }
 
 // for Page SEO
 export async function getTourPageSeo(slug: string) {
-    const query = `*[_type == "tour_page" && slug.current == "/${slug}"][0]{
+  const query = `*[_type == "tour_page" && slug.current == "/${slug}"][0]{
     meta_data
   }`;
 
-    return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query);
 }
 
 // return slug of all the tours
 export async function getAllTourSlugs() {
-    const query = `*[_type == "tour_page"]{
+  const query = `*[_type == "tour_page"]{
     slug
   }`;
 
-    return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query);
+}
+
+// get toures on base of the tags slug
+export async function getTourByTags(tags: string[]) {
+
+  if (!tags.length) {
+    return [];
+  }
+
+  const query = `*[_type == "tour_page"  && 
+  count(tags[@->slug.current in ${JSON.stringify(tags)}]) > 0
+ ]{
+  slug,
+  overview_card,
+  hero_section,
+}
+`;
+
+  return await CLIENT.fetch(query);
 }

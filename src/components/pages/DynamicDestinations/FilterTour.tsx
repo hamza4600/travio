@@ -1,8 +1,7 @@
 import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
-import { Button } from "@/components/ui/button";
-import React from "react";
-import { filterItems, tags } from "./data";
+import React, { useEffect } from "react";
+import { filterItems } from "./data";
 
 import {
   Accordion,
@@ -10,6 +9,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import ToureTags from "./touerTags";
+import { getTourByTags } from "@/lib/sanity.TourPage";
+import useSWR from "swr";
+import { useSearchParams } from "next/navigation";
+// import TourCard from "@/components/molecules/cards/Card";
 
 function FilterSidebar() {
   return (
@@ -37,12 +41,26 @@ function FilterSidebar() {
   );
 }
 
-const FilterTour = () => {
+const FilterTourSection = ({ data, locale }) => {
+
+  const searchParams = useSearchParams();
+  const urlTags = searchParams?.getAll("tag")
+  const articalTags = urlTags && urlTags.length > 0 ? urlTags : []
+
+  const { data: tagsToures, mutate } = useSWR("/tagsToures", () =>
+    getTourByTags(articalTags)
+  );
+
+  useEffect(() => {
+    mutate('/blogsTags')
+  }, [mutate, searchParams])
+
+  console.log(tagsToures, 'tagsToures')
   return (
     <Container className="md:mb-[90px] mb-[50px]">
       <SectionHeader
-        title="Tours & Trips"
-        subtitle="Best Tours of Egypt"
+        title={data.title?.[locale]}
+        subtitle={data.tagline?.[locale]}
         centerLine
       />
 
@@ -56,21 +74,32 @@ const FilterTour = () => {
             Found 148 Tours - Egypt
           </p>
 
-          <div className="mt-4 flex gap-2.5 flex-wrap">
-            {tags.map((tag: any, index: number) => (
-              <Button
-                key={index}
-                variant="roundedOutline"
-                className="rounded-full text-gray text-xs font-medium max-md:h-7"
-              >
-                {tag}
-              </Button>
-            ))}
-          </div>
+          <ToureTags data={data.tags} locale={locale} />
+
+          {/* {Array.isArray(tagsToures) &&
+            tagsToures.length > 0 &&
+            tagsToures.map((data: any, i: number) => (
+              <TourCard
+                key={i}
+                locale={locale}
+                link={data?.slug.current}
+                label={data?.label?.[locale]}
+                pic={data.hero_section.image?.asset._ref}
+                mobilePic={data.hero_section.image.mobile?.asset._ref}
+                tourType={data.hero_section.title?.[locale]}
+                days={data.overview_card?.duration?.[locale]}
+                cities={data.overview_card.cities}
+                countries={data.overview_card.countries}
+                old_price={
+                  data.price_overrides[0].price.discounted_price[locale]
+                }
+                price={data.price_overrides[0].price.initial_price[locale]}
+              />
+            ))} */}
         </div>
       </section>
     </Container>
   );
 };
 
-export default FilterTour;
+export default FilterTourSection;

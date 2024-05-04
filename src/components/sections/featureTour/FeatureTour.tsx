@@ -27,10 +27,12 @@ const FeatureTourSection = (FeaturedTour: any) => {
       <div className="h-fit relative md:mt-12 mt-[30px]">
         <Swiper
           className={"gap-6 pb-3"}
-          length={FeaturedTour?.data?.tour_cards.length}
+          length={FeaturedTour?.data?.tour_cards.length ?? 0}
           scrollCount={4}
         >
-          {FeaturedTour?.data?.tour_cards?.map((item: any, i: number) => (
+          {Array.isArray(FeaturedTour?.data?.tour_cards) &&
+          FeaturedTour?.data?.tour_cards.length > 0 &&
+          FeaturedTour?.data?.tour_cards?.map((item: any, i: number) => (
             <FeatureCard
               key={i}
               locale={locale}

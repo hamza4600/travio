@@ -9,11 +9,10 @@ import {
   SanityTourSectionNames,
 } from "../../../sanity/lib/types";
 
+const FilterTourSection = dynamic(() => import("../pages/DynamicDestinations/FilterTour"));
 const FeatureTourSection = dynamic(() => import("./featureTour/FeatureTour"));
 const ContactSection = dynamic(() => import("../pages/DynamicDestinations/ContactSection"));
-
 const ReviewRatingSections = dynamic(() => import("@/components/sections/reviews/Reviews"));
-
 const BlogHeroSection = dynamic(() => import("./BlogHeroSection"));
 const NewsletterSection = dynamic(() => import("./NewsletterSection"));
 const InterestSection = dynamic(() => import("./InterestSection"));
@@ -160,9 +159,9 @@ export const DestinationSectionsMap: {
   faq_section: FAQSection,
   all_blogs_section: BlogSection,
   featured_blogs_section: BlogSection,
-  featured_tours_section: FeatureTourSection,
+  // featured_tours_section: FeatureTourSection,
   at_glance_section: CountryFacts,
-  // tour_selection_section: BestToursSection,
+  tour_selection_section: FilterTourSection,
   top_things_section: TopThingsToDo,
   contact_agent_section: ContactSection,
 };
