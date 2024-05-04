@@ -20,7 +20,7 @@ export default function FilterSidebar({ locale, data }) {
     const handleTagClick = (item: string) => {
       const existingTags = searchParams?.getAll("tag");
       const newTags = Array.isArray(existingTags) ? existingTags : [];
-      const tag = item.toLowerCase();
+      const tag = item
       if (newTags.includes(tag)) {
         newTags.splice(newTags.indexOf(tag), 1);
       } else {
