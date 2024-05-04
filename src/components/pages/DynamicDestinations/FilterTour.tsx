@@ -69,11 +69,12 @@ const FilterTourSection = ({ data, locale }) => {
     getTourByTags(articalTags)
   );
 
+  console.log(data, "tagsToures");
   useEffect(() => {
     mutate("/blogsTags");
   }, [mutate, searchParams]);
 
-  console.log(tagsToures, "tagsToures");
+  // console.log(tagsToures, "tagsToures");
   return (
     <Container className="md:mb-[90px] mb-[50px]">
       <SectionHeader

@@ -14,7 +14,8 @@ export async function getDestinationPage(slug: string) {
         },
         _type == "tour_selection_section" => {
           ...,
-          tags[]->
+          tags[]->,
+          destination_tags[]->
         },
         _type == "featured_blogs_section" => {
           ...,

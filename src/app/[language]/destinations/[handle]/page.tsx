@@ -44,13 +44,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export const revalidate = 360;
+export const revalidate = 3600;
 
 const Index = async ({ params }: any) => {
   const { handle, language } = params;
 
   const destinationPage = await getDestinationPage(handle);
-  
+
+  // extracr all tags
   return (
     <DynamicDestionations 
       language={language}

@@ -6,7 +6,7 @@ import { DestinationSectionsMap } from "@/components/sections";
 
 const DynamicDestionations = ({ language, pageData }) => {
   const { layout, data } = pageData;
-
+  
   return (
     <Layout
       locale={`${language}`}

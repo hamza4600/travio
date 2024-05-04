@@ -17,8 +17,6 @@ export type FeaturedTour = {
 const FeatureTourSection = (FeaturedTour: any) => {
   const { locale } = FeaturedTour;
 
-  console.log("FeatureTOur: ", FeaturedTour);
-
   return (
     <Container className="text-black w-full mt-[50px] md:mb-[90px] mb:[50px]">
       <SectionHeader
