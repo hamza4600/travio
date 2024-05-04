@@ -25,7 +25,7 @@ export default defineType({
       title: 'Tags',
       description: 'The tags for the tour selection section',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
+      of: [{ type: 'reference', to: [{ type: 'touretag' }] }],
     }),
     defineField({
       name: 'filters',
