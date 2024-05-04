@@ -348,3 +348,24 @@ export const faqSectionData = {
   ],
   //   },
 };
+
+
+export const filterItems = [
+  {
+    name: 'Destinations',
+    countries: ["Egypt", "dubai", "Bahrain", "Oman"]
+  },
+  {
+    name: 'Special Offers',
+    countries: ["Egypt", "dubai", "Bahrain", "Oman"]
+  },
+  {
+    name: 'Number of Cities',
+    countries: ["Egypt", "dubai", "Bahrain", "Oman"]
+  },
+]
+
+export const tags = [
+  "Classic Tour",
+  "Famity Tour"
+]
