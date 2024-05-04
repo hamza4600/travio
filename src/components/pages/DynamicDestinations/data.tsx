@@ -352,15 +352,19 @@ export const faqSectionData = {
 
 export const filterItems = [
   {
-    name: 'Destinations',
+    name: {
+      en: 'Destinations',
+      es: 'Destinos',
+      por: 'Destinos'
+    },
     countries: ["Egypt", "dubai", "Bahrain", "Oman"]
   },
-  {
-    name: 'Special Offers',
-    countries: ["Egypt", "dubai", "Bahrain", "Oman"]
-  },
-  {
-    name: 'Number of Cities',
-    countries: ["Egypt", "dubai", "Bahrain", "Oman"]
-  },
+  // {
+  //   name: 'Special Offers',
+  //   countries: ["Egypt", "dubai", "Bahrain", "Oman"]
+  // },
+  // {
+  //   name: 'Number of Cities',
+  //   countries: ["Egypt", "dubai", "Bahrain", "Oman"]
+  // },
 ]
