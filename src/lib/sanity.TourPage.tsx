@@ -94,6 +94,7 @@ export async function getTourByTags(tags: string[]) {
   slug,
   overview_card,
   hero_section,
+  price_overrides
 }
 `;
 

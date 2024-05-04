@@ -12,7 +12,7 @@ const type =
 const FeatureCard = ({
   pic,
   tourType,
-  //   label,
+    label,
   days,
   cities,
   countries,

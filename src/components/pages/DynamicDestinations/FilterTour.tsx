@@ -13,7 +13,20 @@ import ToureTags from "./touerTags";
 import { getTourByTags } from "@/lib/sanity.TourPage";
 import useSWR from "swr";
 import { useSearchParams } from "next/navigation";
-// import TourCard from "@/components/molecules/cards/Card";
+import TourCard from "@/components/molecules/cards/Card";
+import styled from "styled-components";
+
+const RootStyle = styled.div`
+  a {
+    max-width: 100%;
+  
+      
+   
+  }
+  img {
+        max-width: 100%;
+      }
+`;
 
 function FilterSidebar() {
   return (
@@ -24,14 +37,23 @@ function FilterSidebar() {
     >
       {filterItems.map((item: any, index: number) => (
         <AccordionItem key={index} value={item.name}>
-          <AccordionTrigger className={`text-darkblue md:text-lg font-medium p-[18px] bg-[#F2FAFF] ${index == 0 && ' md:rounded-t-[16px]'} max-md:rounded-[8px\]`}>
+          <AccordionTrigger
+            className={`text-darkblue md:text-lg font-medium p-[18px] bg-[#F2FAFF] ${
+              index == 0 && " md:rounded-t-[16px]"
+            } max-md:rounded-[8px\]`}
+          >
             {item.name}
           </AccordionTrigger>
           <AccordionContent className="grid grid-cols-2 gap-y-2.5 justify-between items-center">
             {item.countries.map((country: any, index: number) => (
               <div key={index} className="flex gap-2 px-6 items-center py-2.5">
                 <input type="radio" className="w-3.5 h-3.5" id={country} />
-                <label className="text-xs text-gray font-medium" htmlFor={country}>{country}</label>
+                <label
+                  className="text-xs text-gray font-medium"
+                  htmlFor={country}
+                >
+                  {country}
+                </label>
               </div>
             ))}
           </AccordionContent>
@@ -42,20 +64,19 @@ function FilterSidebar() {
 }
 
 const FilterTourSection = ({ data, locale }) => {
-
   const searchParams = useSearchParams();
-  const urlTags = searchParams?.getAll("tag")
-  const articalTags = urlTags && urlTags.length > 0 ? urlTags : []
+  const urlTags = searchParams?.getAll("tag");
+  const articalTags = urlTags && urlTags.length > 0 ? urlTags : [];
 
   const { data: tagsToures, mutate } = useSWR("/tagsToures", () =>
     getTourByTags(articalTags)
   );
 
   useEffect(() => {
-    mutate('/blogsTags')
-  }, [mutate, searchParams])
+    mutate("/blogsTags");
+  }, [mutate, searchParams]);
 
-  console.log(tagsToures, 'tagsToures')
+  console.log(tagsToures, "tagsToures");
   return (
     <Container className="md:mb-[90px] mb-[50px]">
       <SectionHeader
@@ -64,8 +85,8 @@ const FilterTourSection = ({ data, locale }) => {
         centerLine
       />
 
-      <section className="flex max-md:flex-col gap-6 md:mt-12 mt-[46px]">
-        <div className="w-full max-w-[302px] max-md:max-w-full">
+      <section className="flex max-xl:flex-col gap-6 md:mt-12 mt-[46px]">
+        <div className="w-full max-w-[302px] max-xl:max-w-full">
           <FilterSidebar />
         </div>
 
@@ -76,26 +97,30 @@ const FilterTourSection = ({ data, locale }) => {
 
           <ToureTags data={data.tags} locale={locale} />
 
-          {/* {Array.isArray(tagsToures) &&
-            tagsToures.length > 0 &&
-            tagsToures.map((data: any, i: number) => (
-              <TourCard
-                key={i}
-                locale={locale}
-                link={data?.slug.current}
-                label={data?.label?.[locale]}
-                pic={data.hero_section.image?.asset._ref}
-                mobilePic={data.hero_section.image.mobile?.asset._ref}
-                tourType={data.hero_section.title?.[locale]}
-                days={data.overview_card?.duration?.[locale]}
-                cities={data.overview_card.cities}
-                countries={data.overview_card.countries}
-                old_price={
-                  data.price_overrides[0].price.discounted_price[locale]
-                }
-                price={data.price_overrides[0].price.initial_price[locale]}
-              />
-            ))} */}
+          <div className="grid xl:grid-cols-3 mt-5 gap-6 lg:grid-cols-2 max-md:-grid-cols-1">
+            {Array.isArray(tagsToures) &&
+              tagsToures.length > 0 &&
+              tagsToures.map((data: any, i: number) => (
+                <RootStyle>
+                  <TourCard
+                    key={i}
+                    locale={locale}
+                    link={data?.slug.current}
+                    label={data?.label?.[locale]}
+                    pic={data.hero_section.image?.asset._ref}
+                    mobilePic={data.hero_section.image.mobile?.asset._ref}
+                    tourType={data.hero_section.title?.[locale]}
+                    days={data.overview_card?.duration?.[locale]}
+                    cities={data.overview_card.cities}
+                    countries={data.overview_card.countries}
+                    old_price={
+                      data.price_overrides[0].price.discounted_price[locale]
+                    }
+                    price={data.price_overrides[0].price.initial_price[locale]}
+                  />
+                </RootStyle>
+              ))}
+          </div>
         </div>
       </section>
     </Container>
