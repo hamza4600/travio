@@ -19,13 +19,10 @@ import styled from "styled-components";
 const RootStyle = styled.div`
   a {
     max-width: 100%;
-  
-      
-   
   }
   img {
-        max-width: 100%;
-      }
+    max-width: 100%;
+  }
 `;
 
 function FilterSidebar() {
@@ -101,9 +98,9 @@ const FilterTourSection = ({ data, locale }) => {
             {Array.isArray(tagsToures) &&
               tagsToures.length > 0 &&
               tagsToures.map((data: any, i: number) => (
-                <RootStyle>
+                <RootStyle key={i}>
                   <TourCard
-                    key={i}
+                    
                     locale={locale}
                     link={data?.slug.current}
                     label={data?.label?.[locale]}
