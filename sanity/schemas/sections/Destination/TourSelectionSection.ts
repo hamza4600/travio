@@ -1,6 +1,6 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import {  displayNumber, joinStrings } from '@/lib/utils'
-import { CursorClick, Funnel } from '@phosphor-icons/react'
+import { CursorClick } from '@phosphor-icons/react'
 
 export default defineType({
   name: 'tour_selection_section',
@@ -27,44 +27,52 @@ export default defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'touretag' }] }],
     }),
+    // destination tags 
     defineField({
-      name: 'filters',
-      title: 'Filters',
-      description: 'The filters for the tour selection section',
+      name: 'destination_tags',
+      title: 'Destination Tags',
+      description: 'The destination tags for the tour selection section',
       type: 'array',
-      of: [
-        defineArrayMember({
-          name: 'filter',
-          title: 'Filter',
-          icon: Funnel as any,
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'title',
-              title: 'Title',
-              description: 'The title for the filter',
-              type: 'locale_string',
-            }),
-            defineField({
-              name: 'filter_type',
-              title: 'Filter Type',
-              description: 'The filter type for the filter',
-              type: 'string',
-              options: {
-                list: [
-                  { value: 'destinations', title: 'Destinations' },
-                  { value: 'special_offers', title: 'Special Offers' },
-                  { value: 'city_count', title: 'Number of cities' },
-                  { value: 'trip_type', title: 'Trip Type' },
-                  { value: 'price_range', title: 'Price Range' },
-                  { value: 'duration', title: 'Duration' },
-                ],
-              },
-            }),
-          ],
-        }),
-      ],
+      of: [{ type: 'reference', to: [{ type: 'touretag' }] }],
     }),
+    // defineField({
+    //   name: 'filters',
+    //   title: 'Filters',
+    //   description: 'The filters for the tour selection section',
+    //   type: 'array',
+    //   of: [
+    //     defineArrayMember({
+    //       name: 'filter',
+    //       title: 'Filter',
+    //       icon: Funnel as any,
+    //       type: 'object',
+    //       fields: [
+    //         defineField({
+    //           name: 'title',
+    //           title: 'Title',
+    //           description: 'The title for the filter',
+    //           type: 'locale_string',
+    //         }),
+    //         defineField({
+    //           name: 'filter_type',
+    //           title: 'Filter Type',
+    //           description: 'The filter type for the filter',
+    //           type: 'string',
+    //           options: {
+    //             list: [
+    //               { value: 'destinations', title: 'Destinations' },
+    //               { value: 'special_offers', title: 'Special Offers' },
+    //               { value: 'city_count', title: 'Number of cities' },
+    //               { value: 'trip_type', title: 'Trip Type' },
+    //               { value: 'price_range', title: 'Price Range' },
+    //               { value: 'duration', title: 'Duration' },
+    //             ],
+    //           },
+    //         }),
+    //       ],
+    //     }),
+    //   ],
+    // }),
   ],
   preview: {
     select: {
