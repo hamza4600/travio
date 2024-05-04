@@ -46,7 +46,7 @@ const ToureTags: FC<Props> = ({ data, locale }) => {
                     ${isSelected(tag.slug?.current) ? " bg-[#3FA9F5] text-white" : "bg-white"}
                     `}
                     onClick={() => handleTagClick(tag.slug?.current)}
-                    // aria-label={`Toggle tag ${tag.name[locale]}`}
+                    aria-label={`Toggle tag ${tag.name?.[locale]}`}
                     aria-pressed={isSelected(tag.slug?.current) ? "true" : "false"}
                     tabIndex={0}
                 >
