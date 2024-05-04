@@ -26,7 +26,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
       />
       <div className="h-fit relative md:mt-12 mt-[30px]">
         <Swiper
-          className={"gap-6 pb-3 pl-3"}
+          className={"gap-6 pb-3"}
           length={FeaturedTour?.data?.tour_cards.length}
           scrollCount={4}
         >
