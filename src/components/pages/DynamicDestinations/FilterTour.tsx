@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/components/molecules/container";
 import SectionHeader from "@/components/molecules/secHeader";
 import React, { useEffect } from "react";
@@ -33,15 +34,10 @@ const FilterTourSection = ({ data, locale, tags }) => {
 
   const header = document.getElementById("headerGet");
 
-  console.log("Header: ", header);
-
   useEffect(() => {
     mutate("/blogsTags");
-  }, [mutate, searchParams]);
+  }, [searchParams]);
 
-  console.log("DataCountries: ", data);
-
-  // console.log(tagsToures, "tagsToures");
   return (
     <Container className="md:mb-[90px] mb-[50px]">
       <SectionHeader
@@ -64,7 +60,7 @@ const FilterTourSection = ({ data, locale, tags }) => {
 
           <div className="grid xl:grid-cols-3 md:mt-5 mt-10 gap-6 lg:grid-cols-2 max-md:-grid-cols-1">
             {isLoading ? (
-              <div className="min-h-[300px] flex items-center justify-center">
+              <div className="min-h-[350px] flex items-center justify-center">
                 <Spinner radius={50} />
               </div>
             ) : (

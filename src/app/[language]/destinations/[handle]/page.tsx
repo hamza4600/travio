@@ -9,7 +9,10 @@ const extractTags = (pageData) => {
   const latestPosts = sections.find((section) => section?._type === "tour_selection_section");
   const tags = latestPosts?.tags || [];
   const destinationTags = latestPosts?.destination_tags || [];
-  return tags.concat(destinationTags).map((tag) => tag?.slug?.current);
+  const priceTags = latestPosts?.price_tags || [];
+  const durationTags = latestPosts?.duration_tags || [];
+  // retun all array of tags
+  return tags.concat(destinationTags, priceTags, durationTags).map((tag) => tag?.slug?.current);
 };
 
 export async function generateMetadata({ params }) {
@@ -59,7 +62,7 @@ const Index = async ({ params }: any) => {
 
   const destinationPage = await getDestinationPage(handle);
   const tagsData = extractTags(destinationPage);
-  
+
   return (
     <DynamicDestionations 
       language={language}
