@@ -48,7 +48,7 @@ const FilterTourSection = ({ data, locale, tags }) => {
 
       <section className="flex max-xl:flex-col gap-6 md:mt-12 mt-[46px]">
         <div className="w-full max-w-[302px] max-xl:max-w-full">
-          <FilterSidebar locale={locale} data={data?.destination_tags} />
+          <FilterSidebar locale={locale} data={data?.destination_tags} priceTags={data?.price_tags} durationTags={data?.duration_tags} />
         </div>
 
         <div className="max-md:mt-10">
