@@ -35,44 +35,22 @@ export default defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'touretag' }] }],
     }),
-    // defineField({
-    //   name: 'filters',
-    //   title: 'Filters',
-    //   description: 'The filters for the tour selection section',
-    //   type: 'array',
-    //   of: [
-    //     defineArrayMember({
-    //       name: 'filter',
-    //       title: 'Filter',
-    //       icon: Funnel as any,
-    //       type: 'object',
-    //       fields: [
-    //         defineField({
-    //           name: 'title',
-    //           title: 'Title',
-    //           description: 'The title for the filter',
-    //           type: 'locale_string',
-    //         }),
-    //         defineField({
-    //           name: 'filter_type',
-    //           title: 'Filter Type',
-    //           description: 'The filter type for the filter',
-    //           type: 'string',
-    //           options: {
-    //             list: [
-    //               { value: 'destinations', title: 'Destinations' },
-    //               { value: 'special_offers', title: 'Special Offers' },
-    //               { value: 'city_count', title: 'Number of cities' },
-    //               { value: 'trip_type', title: 'Trip Type' },
-    //               { value: 'price_range', title: 'Price Range' },
-    //               { value: 'duration', title: 'Duration' },
-    //             ],
-    //           },
-    //         }),
-    //       ],
-    //     }),
-    //   ],
-    // }),
+    // price range
+    defineField({
+      name: 'price_tags',
+      title: 'Price Tags',
+      description: 'The Pricing tags for the tour selection section',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'touretag' }] }],
+    }),
+    // duration tags
+    defineField({
+      name: 'duration_tags',
+      title: 'Duration Tags',
+      description: 'The duration tags for the tour selection section',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'touretag' }] }],
+    }),
   ],
   preview: {
     select: {

@@ -15,7 +15,9 @@ export async function getDestinationPage(slug: string) {
         _type == "tour_selection_section" => {
           ...,
           tags[]->,
-          destination_tags[]->
+          destination_tags[]->,
+          price_tags[]->,
+          duration_tags[]->
         },
         _type == "featured_blogs_section" => {
           ...,
