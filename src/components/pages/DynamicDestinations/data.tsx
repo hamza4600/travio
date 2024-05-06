@@ -349,22 +349,32 @@ export const faqSectionData = {
   //   },
 };
 
-
 export const filterItems = [
   {
     name: {
-      en: 'Destinations',
-      es: 'Destinos',
-      por: 'Destinos'
+      en: "Destinations",
+      es: "Destinos",
+      por: "Destinos",
     },
-    countries: ["Egypt", "dubai", "Bahrain", "Oman"]
   },
-  // {
-  //   name: 'Special Offers',
-  //   countries: ["Egypt", "dubai", "Bahrain", "Oman"]
-  // },
-  // {
-  //   name: 'Number of Cities',
-  //   countries: ["Egypt", "dubai", "Bahrain", "Oman"]
-  // },
-]
+];
+
+export const priceItems = [
+  {
+    name: {
+      en: "Price Range",
+      es: "Rango de precios",
+      por: "Intervalo de preços",
+    },
+  }
+];
+
+export const durationItems = [
+  {
+    name: {
+      en: "Duration",
+      es: "Duración",
+      por: "Duração",
+    },
+  }
+];
