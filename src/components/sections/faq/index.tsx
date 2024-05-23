@@ -32,7 +32,7 @@ const FAQSection = ({ data, locale }: { data: any; locale: string }) => {
                   } transition-all`}
                 />
 
-                <strong className="font-medium font-satoshi text-base text-darkblue md:text-xl leading-normal md:leading-[32px] md:tracking-[-0.6px]">
+                <strong className="font-medium font-satoshi text-[12px] text-darkblue md:text-xl leading-normal md:leading-[32px] md:tracking-[-0.6px]">
                   {faq?.question[locale]}
                 </strong>
               </div>

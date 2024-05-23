@@ -43,8 +43,8 @@ const Root = styled.div`
       bottom: 5px;
       left: 5px;
       padding: 6px 16px;
-      font-size: 12px;
-      font-weight: 400;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     @media (max-width: 375px) {

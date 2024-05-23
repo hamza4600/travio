@@ -41,7 +41,7 @@ const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
         <div className="lg:hidden flex flex-col gap-1 items-center mb-[10px]">
           <Text
             variant={"darkblue"}
-            className="font-bold text-[20px] leading-[30px]"
+            className="font-bold text-2xl"
           >
             {data.header?.[locale]}
           </Text>
