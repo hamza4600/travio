@@ -81,13 +81,9 @@ const TailorYourTour = ({ language, data }) => {
         },
       ]}
     >
-      <div className="">
-        <div
-          className="md:hidden absolute top-[136px] left-0 border-b-[#3FA9F5] border-b-2 z-50"
-          style={{ width: "117px" }}
-        />
+      {/* <div className="">
         <div className="bg-gray border-b-2 md:hidden" />
-      </div>
+      </div> */}
 
       <div className="flex md:mt-10 flex-col mt-2">
         <Steps

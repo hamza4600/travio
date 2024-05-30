@@ -95,7 +95,7 @@ const LargeFeature = ({
       {data.icon?.asset?._ref && (
         <Image
           src={urlFor(data.icon)}
-          className="max-md:h-[24px] max-md:w-[24px]"
+          className="max-md:h-[36px] max-md:w-[36px]"
           width={28}
           height={28}
           alt=""
@@ -103,7 +103,7 @@ const LargeFeature = ({
       )}
 
       <div className=" flex-1">
-        <p className="font-[500] md:text-xl text-base">
+        <p className="font-[500] md:text-xl text-[14px]">
           {data.title?.[locale]}
         </p>
         <p className="opacity-60"> {data.description?.[locale]}</p>

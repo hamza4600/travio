@@ -62,7 +62,7 @@ function BlogSidebar({ data, locale }: any) {
                 href={`/${locale}/blog${article?.slug?.current}`}
                 className="p-3 rounded-xl flex items-center md:justify-center gap-2 bg-white shadow-md"
               >
-                <div className="min-w-[75px] min-h-[75px] h-full rounded-xl overflow-hidden relative">
+                <div className="min-w-[95px] min-h-[75px] h-full rounded-xl overflow-hidden relative">
                   <Image
                     src={urlFor(article?.cover_image?.asset?._ref)}
                     fill
@@ -70,7 +70,7 @@ function BlogSidebar({ data, locale }: any) {
                     style={{ objectFit: "cover", aspectRatio: 1 }}
                   />
                 </div>
-                <p className="font-semibold md:text-base text-[12px] leading-[18px]">
+                <p className="font-bold md:text-base text-[12px] leading-[18px]">
                   {article?.title?.[locale]}
                 </p>
               </Link>
@@ -103,7 +103,7 @@ function BlogSidebar({ data, locale }: any) {
                   </div>
 
                   <div className="max-w-[203px]">
-                    <p className="font-semibold md:text-base text-[12px] leading-[18px]">
+                    <p className="font-bold md:text-base text-[12px] leading-[18px]">
                       {tour?.hero_section?.title?.[locale]}
                     </p>
                     <div className="grid grid-cols-2 mt-2">
