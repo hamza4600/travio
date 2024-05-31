@@ -80,3 +80,24 @@ export async function getAllTourSlugs() {
 
   return await CLIENT.fetch(query);
 }
+
+
+// get toures on base of the tags slug
+export async function getTourByTags(tags: string[]) {
+
+  if (!tags.length) {
+    return [];
+  }
+
+  const query = `*[_type == "tour_page"  && 
+  count(tags[@->slug.current in ${JSON.stringify(tags)}]) > 0
+ ]{
+  slug,
+  overview_card,
+  hero_section,
+  price_overrides
+}
+`;
+
+  return await CLIENT.fetch(query);
+}
