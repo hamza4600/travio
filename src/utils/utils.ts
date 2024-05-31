@@ -99,6 +99,13 @@ export async function getAllPages(): Promise<PageData[]> {
   return pages;
 }
 
+export function getPriceSymbol(locale: string) {
+  if (locale === "en") return "$";
+  else if (locale === "es") return "€";
+  else if (locale === "por") return "€";
+  else return "$";
+}
+
 // export function getSanitySlugFromSlugs(
 //   slugs: string | string[] | undefined
 // ): string {

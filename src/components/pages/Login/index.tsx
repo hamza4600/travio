@@ -5,8 +5,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { AuthResponse } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
 
 const LoginPage = ({ language }) => {
+  const navigation = useRouter();
+
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -17,10 +21,24 @@ const LoginPage = ({ language }) => {
   const router = usePathname();
   const isSignPage = router === `/${language}/signup`;
 
-  function onSubmit(data: { email: string; password: string }) {
-    // login(data.email, data.password).then(() => {
-    //   router.push('/account')
-    // })
+  async function onSubmit(data: { email: string; password: string }) {
+    const res = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const resData: AuthResponse["data"]["user"] = await res.json();
+    if (res.ok) {
+      navigation.replace(`/${language}/dashboard`);
+    } else {
+      alert(resData);
+    }
   }
 
   return (

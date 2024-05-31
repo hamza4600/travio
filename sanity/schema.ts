@@ -9,6 +9,7 @@ import rich_text from "./schemas/atoms/content/Richtext";
 import layout_stack from "./schemas/atoms/content/Stack";
 import content_text from "./schemas/atoms/content/Text";
 import { form_button, form_input_field } from "./schemas/atoms/Form";
+import Hotel from "./schemas/atoms/Hotel";
 import icon from "./schemas/atoms/Icon";
 import link from "./schemas/atoms/Link";
 import link_button from "./schemas/atoms/LinkButton";
@@ -89,6 +90,7 @@ export const schemaTypes= [
         Breadcrumb,
         authersocial,
         ToureTag,
+        Hotel,
         // content
         content_text,
         content_image,
