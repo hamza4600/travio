@@ -1,5 +1,6 @@
-import React from "react";
-import { urlFor } from "../../../../sanity/lib/client";
+import React from "react"
+import { urlFor } from "../../../../sanity/lib/client"
+import Image from "next/image"
 
 const HeroSection = ({ data, locale }) => {
   return (
@@ -15,15 +16,19 @@ const HeroSection = ({ data, locale }) => {
             zIndex: 1,
           }}
         />
-        <img
-          className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] max-sm:hidden"
+        <Image
+          className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] max-sm:hidden object-cover"
           src={urlFor(data?.image?.asset?._ref)}
           alt={data?.image?.alt?.[locale]}
+          width={1000}
+          height={212}
         />
-        <img
-          className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] sm:hidden"
+        <Image
+          className="lg:rounded-[16px] rounded-none min-h-[480px] max-md:min-h-[212px] sm:hidden object-cover"
           src={urlFor(data?.image?.mobile?.asset?._ref)}
           alt={data?.image?.alt?.[locale]}
+          width={1000}
+          height={212}
         />
 
         <h1 className="max-lg:hidden left-8 font-black absolute z-50 bottom-[13px] text-white font-satoshi text-[56px] leading-[66px]">
@@ -40,18 +45,20 @@ const HeroSection = ({ data, locale }) => {
         {data?.images?.map((img: any, i: number) => {
           return (
             data?.images && (
-              <img
+              <Image
                 key={i}
-                className="h-[226px] max-w-[336px] max-lg:hidden rounded-2xl"
+                className="h-[226px] max-w-[336px] max-lg:hidden rounded-2xl object-cover"
                 src={img?.asset?._ref ? urlFor(img.asset._ref) : ""}
                 alt="hero_supprt_img"
+                width={1000}
+                height={212}
               />
             )
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection
