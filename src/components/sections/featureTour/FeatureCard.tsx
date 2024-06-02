@@ -1,18 +1,18 @@
-import React from "react";
-import { Text } from "@/components/ui/text";
-import Image from "next/image";
-import { urlFor } from "../../../../sanity/lib/client";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { cardButtonTn, overviewTn, saveTn } from "@/lib/utils";
+import React from "react"
+import { Text } from "@/components/ui/text"
+import Image from "next/image"
+import { urlFor } from "../../../../sanity/lib/client"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { cardButtonTn, overviewTn, saveTn } from "@/lib/utils"
 
 const type =
-  "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center";
+  "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center"
 
 const FeatureCard = ({
   pic,
   tourType,
-    label,
+  label,
   days,
   cities,
   countries,
@@ -28,20 +28,20 @@ const FeatureCard = ({
       href={`/${locale}/tours${link}`}
     >
       <div className="bg-white relative h-min shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] transition-all rounded-2xl cursor-pointer">
-        {/* {label && (
+        {label && (
           <Text
             variant={"tertiary"}
             className="bg-[#D10002] absolute m-3 right-0 px-3 py-1 text-white font-bold text-[10px] md:text-[12px] md:leading-5 rounded-full"
           >
             {label}
           </Text>
-        )} */}
+        )}
 
         <Image
           width={302}
           height={100}
           // alt={image.alt}
-          className="rounded-t-2xl h-[220px] max-sm:hidden"
+          className="rounded-t-2xl h-[220px] max-sm:hidden "
           src={urlFor(pic)}
           alt=""
           quality={100}
@@ -99,12 +99,12 @@ const FeatureCard = ({
             </div>
           </div>
           <div className="mt-6 flex justify-between items-start">
-            <Text className="line-through opacity-50 text-gray font-bold text-sm md:text-[18px] leading-[20px] md:leading-[28px]">
+            <Text className="line-through opacity-50 text-gray font-bold text-sm md:text-lg leading-[20px] md:leading-[28px]">
               ${old_price}
             </Text>
 
             <div className="text-right">
-              <Text className="text-base md:text-lg font-black text-darkblue leading-[20px] md:leading-[28px]">
+              <Text className="text-sm md:text-lg font-black text-darkblue leading-[20px] md:leading-[28px]">
                 From ${price}
               </Text>
               <Text
@@ -127,7 +127,7 @@ const FeatureCard = ({
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default FeatureCard;
+export default FeatureCard

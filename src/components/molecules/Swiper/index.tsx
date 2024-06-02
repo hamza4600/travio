@@ -1,8 +1,8 @@
-'use client';
-import { PropsWithChildren, useEffect, useRef, useState } from "react";
+"use client"
+import { PropsWithChildren, useEffect, useRef, useState } from "react"
 
-import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css"
+import "swiper/css/navigation"
 
 export default function SwiperComponent({
   children,
@@ -10,13 +10,13 @@ export default function SwiperComponent({
   scrollCount = 1,
   className,
 }: PropsWithChildren<{
-  className?: string;
-  length?: number;
-  scrollCount?: number;
+  className?: string
+  length?: number
+  scrollCount?: number
 }>) {
-  const swiperRef = useRef<HTMLDivElement>(null);
-  const [showNext, setShowNext] = useState(false);
-  const [showPrev, setShowPrev] = useState(false);
+  const swiperRef = useRef<HTMLDivElement>(null)
+  const [showNext, setShowNext] = useState(false)
+  const [showPrev, setShowPrev] = useState(false)
 
   useEffect(() => {
     if (
@@ -26,19 +26,19 @@ export default function SwiperComponent({
         (swiperRef.current?.scrollWidth || 0) -
           (swiperRef.current?.clientWidth || 0)
     )
-      setShowNext(true);
+      setShowNext(true)
     swiperRef.current?.addEventListener("scroll", (e: any) => {
       if (e.target?.scrollLeft <= 0) {
-        setShowPrev(false);
-      } else setShowPrev(true);
+        setShowPrev(false)
+      } else setShowPrev(true)
       if (
         e.target?.scrollLeft >=
         e.target?.scrollWidth - e.target?.clientWidth
       ) {
-        setShowNext(false);
-      } else setShowNext(true);
-    });
-  }, []);
+        setShowNext(false)
+      } else setShowNext(true)
+    })
+  }, [])
 
   function onNext() {
     swiperRef.current?.scrollBy(
@@ -47,7 +47,7 @@ export default function SwiperComponent({
             (window.innerWidth <= 768 ? 1 : scrollCount)
         : 100,
       0
-    );
+    )
   }
   function onPrev() {
     swiperRef.current?.scrollBy(
@@ -56,7 +56,7 @@ export default function SwiperComponent({
             (window.innerWidth <= 768 ? 1 : scrollCount)
         : -100,
       0
-    );
+    )
   }
 
   return (
@@ -75,7 +75,7 @@ export default function SwiperComponent({
       {showNext && (
         <button
           className={
-            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 absolute right-2.5 md:-bottom-10 -bottom-14 md:top-1/2 -translate-y-1/2 cursor-pointer"
+            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 absolute right-2 md:-bottom-10 -bottom-14 md:top-1/2 -translate-y-1/2 cursor-pointer"
           }
           onClick={onNext}
         >
@@ -96,7 +96,7 @@ export default function SwiperComponent({
       {showPrev && (
         <button
           className={
-            "rounded-full z-[1000] bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 absolute right-16 md:-bottom-10 -bottom-14 md:right-0 md:left-0 md:top-1/2 -translate-y-1/2 cursor-pointer "
+            "rounded-full z-[1000] bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 absolute right-16 md:-bottom-10 -bottom-14 md:right-0 md:left-5 md:top-1/2 -translate-y-1/2 cursor-pointer "
           }
           onClick={onPrev}
         >
@@ -116,5 +116,5 @@ export default function SwiperComponent({
         </button>
       )}
     </div>
-  );
+  )
 }

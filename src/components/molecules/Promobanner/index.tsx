@@ -1,14 +1,13 @@
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
+  const pathname = usePathname()
 
-  const pathname = usePathname();
+  if (!banner) return null
+  const url = `/${locale}`
 
-  if (!banner) return null;
-  const url = `/${locale}`;
-
-  const isHome = pathname === url;
+  const isHome = pathname === url
 
   return (
     <div
@@ -18,11 +17,7 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
       }`}
     >
       <div>
-        <div
-          className={
-            "font-medium text-[11px] md:text-sm leading-5 md:leading-[24px] text-center "
-          }
-        >
+        <div className={"font-medium text-[12px] md:text-sm text-center "}>
           {banner.promo_banner.text?.[locale]}
           <Link
             href={banner.promo_banner.link.url}
@@ -33,7 +28,7 @@ function PromoBanner({ banner, locale }: { banner?: any; locale: string }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default PromoBanner;
+export default PromoBanner

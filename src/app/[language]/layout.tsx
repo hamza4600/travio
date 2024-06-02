@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import localFont from "next/font/local";
-import { AppThemeProvider } from "../../theme/provider";
+import type { Metadata } from "next"
+import "./globals.css"
+import localFont from "next/font/local"
+import { AppThemeProvider } from "../../theme/provider"
 
 const satoshiVariable = localFont({
   src: [
@@ -31,7 +31,7 @@ const satoshiVariable = localFont({
     },
   ],
   variable: "--font-satoshi",
-});
+})
 
 const montserratFont = localFont({
   src: [
@@ -82,35 +82,35 @@ const montserratFont = localFont({
     },
   ],
   variable: "--font-montserrat",
-});
+})
 
 const novo = localFont({
   src: "../../fonts/ProximaNovaRegular.woff",
   variable: "--font-nova",
-});
+})
 
 const plain = localFont({
   src: "../../fonts/Plain.woff",
   variable: "--font-plain",
-});
+})
 
 export const metadata: Metadata = {
   title: "Traviio Tours",
   description: "Traviio Tours",
   openGraph: {
     images:
-      'https://travel-tour-ya83.vercel.app/_next/static/media/logo.5f25ce06.png',
-    url: 'https://www.promotravel.tours/en/',
-    type: 'website',
+      "https://travel-tour-ya83.vercel.app/_next/static/media/logo.5f25ce06.png",
+    url: "https://www.promotravel.tours/en/",
+    type: "website",
   },
   keywords:
-    'travel, tour, app, destination, trip, book, favorite, destination, travel and tour app, travel and tour, travel app, tour app, travel and tour app,',
-};
+    "travel, tour, app, destination, trip, book, favorite, destination, travel and tour app, travel and tour, travel app, tour app, travel and tour app,",
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -120,5 +120,5 @@ export default function RootLayout({
         <AppThemeProvider>{children}</AppThemeProvider>
       </body>
     </html>
-  );
+  )
 }

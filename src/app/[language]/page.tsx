@@ -1,19 +1,19 @@
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic"
 
-const HomePage = dynamic(() => import("@/components/pages/HomePage"));
-import { getAllHomePage, getHomePageSeo } from "@/lib/sanity.HomePage";
-import { urlForImage } from "../../../sanity/lib/image";
+const HomePage = dynamic(() => import("@/components/pages/HomePage"))
+import { getAllHomePage, getHomePageSeo } from "@/lib/sanity.HomePage"
+import { urlForImage } from "../../../sanity/lib/image"
 
 export async function generateMetadata({ params }) {
-  const { language } = params;
+  const { language } = params
 
-  const seo = await getHomePageSeo();
-  const meta = seo?.meta_data || {};
-  const metaTitle = meta?.meta_title[language];
-  const metaDescription = meta?.meta_description[language];
-  const metaImage = meta?.meta_image;
-  const keywords = meta?.meta_keywords[language];
-  const imgUrl = urlForImage(metaImage?.asset?._ref);
+  const seo = await getHomePageSeo()
+  const meta = seo?.meta_data || {}
+  const metaTitle = meta?.meta_title[language]
+  const metaDescription = meta?.meta_description[language]
+  const metaImage = meta?.meta_image
+  const keywords = meta?.meta_keywords[language]
+  const imgUrl = urlForImage(metaImage?.asset?._ref)
 
   return {
     title: metaTitle,
@@ -41,21 +41,15 @@ export async function generateMetadata({ params }) {
       type: "website",
       locale: language,
     },
-  };
+  }
 }
 // revalidate: 1 hour
-export const revalidate = 3600;
+export const revalidate = 3600
 
 export default async function Home({ params }) {
-  
-  const homePage =  await getAllHomePage();
+  const homePage = await getAllHomePage()
 
-  const { language } = params;
+  const { language } = params
 
-  return (
-    <HomePage
-      pageData={homePage}
-      locale={language}
-    />
-  );
+  return <HomePage pageData={homePage} locale={language} />
 }

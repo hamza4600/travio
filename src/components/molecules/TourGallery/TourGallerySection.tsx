@@ -1,47 +1,47 @@
-import React from "react";
-import Image from "next/image";
+import React from "react"
+import Image from "next/image"
 // import Plane from "../../../public/plane.svg";
-import { PhotoProvider, PhotoView } from "react-photo-view";
+import { PhotoProvider, PhotoView } from "react-photo-view"
 
-import { urlFor } from "../../../../sanity/lib/client";
+import { urlFor } from "../../../../sanity/lib/client"
 
-import Container from "../container";
-import Swiper from "../Swiper";
+import Container from "../container"
+import Swiper from "../Swiper"
 
 import {
   //   SanityImage,
   SanityGallerySection,
-} from "../../../../sanity/lib/types";
+} from "../../../../sanity/lib/types"
 
-import "react-photo-view/dist/react-photo-view.css";
+import "react-photo-view/dist/react-photo-view.css"
 
-import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css"
+import "swiper/css/navigation"
 export type GallerySectionProps = {
-  data: SanityGallerySection;
-  locale;
-};
+  data: SanityGallerySection
+  locale
+}
 const TourGallerySection = (props: GallerySectionProps) => {
   const {
     data: { title, subtitle, images },
     locale,
-  } = props;
-  const imgs: any[][] = [];
+  } = props
+  const imgs: any[][] = []
   if (images) {
-    let single = true;
+    let single = true
     for (let i = 0; i < images.length; i++) {
       if (single) {
-        imgs.push([images[i]]);
+        imgs.push([images[i]])
       } else {
-        imgs.push(images.slice(i, i + 2));
-        i++;
+        imgs.push(images.slice(i, i + 2))
+        i++
       }
-      single = !single;
+      single = !single
     }
   }
 
   return (
-    <div className="py-10  text-black">
+    <div className="py-10 text-black">
       <Container>
         <div className=" mx-auto max-w-[1312px] md:px-4">
           <h3 className="text-[24px] font-satoshi  text-center lg:text-start leading-tight -tracking-[1.2px] font-bold ">
@@ -57,7 +57,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
           </div>
         </div>
         <div className={"mt-2 mb-[40px] md:block hidden"}>
-          <img
+          <Image
             width={80}
             height={40}
             src={"/small-logo.svg"}
@@ -141,7 +141,7 @@ const TourGallerySection = (props: GallerySectionProps) => {
         </div>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default TourGallerySection;
+export default TourGallerySection

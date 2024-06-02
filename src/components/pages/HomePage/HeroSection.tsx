@@ -1,18 +1,18 @@
-import Image from "next/image";
+import Image from "next/image"
 
-import Container from "@/components/molecules/container";
-import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
-import { urlFor } from "../../../../sanity/lib/client";
-import { useAmp } from "next/amp";
+import Container from "@/components/molecules/container"
+import { Button } from "@/components/ui/button"
+import { Text } from "@/components/ui/text"
+import { urlFor } from "../../../../sanity/lib/client"
+import { useAmp } from "next/amp"
 
-export const config = { amp: "hybrid" };
+export const config = { amp: "hybrid" }
 
-import React from "react";
-import Head from "next/head";
+import React from "react"
+import Head from "next/head"
 const HeroSection = ({ data, locale }) => {
   const linearGradient =
-    "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
+    "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)"
 
   return (
     <Container className="px-0">
@@ -172,7 +172,7 @@ const HeroSection = ({ data, locale }) => {
                     d="M1 74L1 0.999997"
                     stroke="#FFBB0B"
                     stroke-width="0.689655"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                   />
                 </svg>
 
@@ -199,7 +199,7 @@ const HeroSection = ({ data, locale }) => {
         </div>
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

@@ -36,7 +36,7 @@ export const WhatsappIcon = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const CalIcon = () => (
   <svg
@@ -64,7 +64,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -72,7 +72,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -80,7 +80,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -88,7 +88,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -96,7 +96,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -104,7 +104,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -112,7 +112,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -120,7 +120,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -128,7 +128,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -136,7 +136,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -144,7 +144,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -152,7 +152,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -160,7 +160,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -168,7 +168,7 @@ export const CalIcon = () => (
           stroke="#726E83"
           stroke-width="1.05469"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
       </g>
@@ -179,7 +179,7 @@ export const CalIcon = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const LocationIcon = () => (
   <svg
@@ -206,7 +206,7 @@ export const LocationIcon = () => (
         stroke="#726E83"
         stroke-width="1.05469"
         stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeLinecap="round"
         stroke-linejoin="round"
       />
       <path
@@ -214,12 +214,12 @@ export const LocationIcon = () => (
         stroke="#726E83"
         stroke-width="1.05469"
         stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeLinecap="round"
         stroke-linejoin="round"
       />
     </g>
   </svg>
-);
+)
 
 export const CountryIcon = () => (
   <svg
@@ -261,7 +261,7 @@ export const CountryIcon = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const BookingIcon = () => (
   <svg
@@ -280,7 +280,7 @@ export const BookingIcon = () => (
       fill="white"
     />
   </svg>
-);
+)
 
 export const Boat = () => (
   <svg
@@ -295,4 +295,4 @@ export const Boat = () => (
       fill="white"
     />
   </svg>
-);
+)

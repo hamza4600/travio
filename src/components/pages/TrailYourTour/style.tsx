@@ -19,7 +19,7 @@ export const Cross = () => (
       fill="#726E83"
     />
   </svg>
-);
+)
 
 export const CrossSelected = () => (
   <svg
@@ -42,7 +42,7 @@ export const CrossSelected = () => (
       fill="#FFFFFF"
     />
   </svg>
-);
+)
 
 export const Car = () => (
   <svg
@@ -77,7 +77,7 @@ export const Car = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const CarSelected = () => (
   <svg
@@ -112,7 +112,7 @@ export const CarSelected = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const Boat = () => (
   <svg
@@ -139,7 +139,7 @@ export const Boat = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const BoatSelected = () => (
   <svg
@@ -166,7 +166,7 @@ export const BoatSelected = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const Compass = () => (
   <svg
@@ -185,7 +185,7 @@ export const Compass = () => (
       fill="#726E83"
     />
   </svg>
-);
+)
 
 export const CompassSelected = () => (
   <svg
@@ -204,7 +204,7 @@ export const CompassSelected = () => (
       fill="#ffffff"
     />
   </svg>
-);
+)
 
 export const FinnTheHuman = () => (
   <svg
@@ -240,7 +240,7 @@ export const FinnTheHuman = () => (
       fill="#726E83"
     />
   </svg>
-);
+)
 
 export const FinnTheHumanSelected = () => (
   <svg
@@ -276,7 +276,7 @@ export const FinnTheHumanSelected = () => (
       fill="#ffffff"
     />
   </svg>
-);
+)
 
 export const WaveTriangle = () => (
   <svg
@@ -304,7 +304,7 @@ export const WaveTriangle = () => (
           stroke="#726E83"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -312,7 +312,7 @@ export const WaveTriangle = () => (
           stroke="#726E83"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -320,7 +320,7 @@ export const WaveTriangle = () => (
           stroke="#726E83"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -328,7 +328,7 @@ export const WaveTriangle = () => (
           stroke="#726E83"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -336,7 +336,7 @@ export const WaveTriangle = () => (
           stroke="#726E83"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -344,7 +344,7 @@ export const WaveTriangle = () => (
           stroke="#726E83"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
       </g>
@@ -360,7 +360,7 @@ export const WaveTriangle = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const WaveTriangleSelected = () => (
   <svg
@@ -388,7 +388,7 @@ export const WaveTriangleSelected = () => (
           stroke="#ffffff"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -396,7 +396,7 @@ export const WaveTriangleSelected = () => (
           stroke="#ffffff"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -404,7 +404,7 @@ export const WaveTriangleSelected = () => (
           stroke="#ffffff"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -412,7 +412,7 @@ export const WaveTriangleSelected = () => (
           stroke="#ffffff"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -420,7 +420,7 @@ export const WaveTriangleSelected = () => (
           stroke="#ffffff"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -428,7 +428,7 @@ export const WaveTriangleSelected = () => (
           stroke="#ffffff"
           stroke-width="0.6"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
       </g>
@@ -444,7 +444,7 @@ export const WaveTriangleSelected = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const Leaf = () => (
   <svg
@@ -472,7 +472,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -480,7 +480,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -488,7 +488,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -496,7 +496,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -504,7 +504,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -512,7 +512,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -520,7 +520,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -528,7 +528,7 @@ export const Leaf = () => (
           stroke="#726E83"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
       </g>
@@ -544,7 +544,7 @@ export const Leaf = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export const LeafSelected = () => (
   <svg
@@ -572,7 +572,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -580,7 +580,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -588,7 +588,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -596,7 +596,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -604,7 +604,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -612,7 +612,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -620,7 +620,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
         <path
@@ -628,7 +628,7 @@ export const LeafSelected = () => (
           stroke="#ffffff"
           stroke-width="0.9"
           stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
       </g>
@@ -644,4 +644,4 @@ export const LeafSelected = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)

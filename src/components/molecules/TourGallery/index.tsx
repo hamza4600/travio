@@ -1,48 +1,48 @@
-import React from "react";
-import Image from "next/image";
-import { PhotoProvider, PhotoView } from "react-photo-view";
+import React from "react"
+import Image from "next/image"
+import { PhotoProvider, PhotoView } from "react-photo-view"
 
 // import { urlFor } from '@/sanity/client'
 
-import Container from "../container";
-import SwiperComponent from "../Swiper";
+import Container from "../container"
+import SwiperComponent from "../Swiper"
 
 // import { SanityGallerySection, SanityImage } from '../../sanity/types'
 
-import "react-photo-view/dist/react-photo-view.css";
+import "react-photo-view/dist/react-photo-view.css"
 
-import "swiper/css";
-import "swiper/css/navigation";
-import { urlFor } from "../../../../sanity/lib/client";
-import "react-photo-view/dist/react-photo-view.css";
+import "swiper/css"
+import "swiper/css/navigation"
+import { urlFor } from "../../../../sanity/lib/client"
+import "react-photo-view/dist/react-photo-view.css"
 
 // import useWindowSize from "@/hooks/useWindows";
 export type GallerySectionProps = {
   // data: SanityGallerySection
-  data: any;
-  banner?: any;
-  locale: string;
-  forTourPage?: boolean;
-};
+  data: any
+  banner?: any
+  locale: string
+  forTourPage?: boolean
+}
 
 const TourGallery = (props: GallerySectionProps) => {
   const {
     data: { title, subtitle, images },
     locale,
     forTourPage,
-  } = props;
+  } = props
 
-  const imgs: any[][] = [];
+  const imgs: any[][] = []
   if (images) {
-    let single = true;
+    let single = true
     for (let i = 0; i < images.length; i++) {
       if (single) {
-        imgs.push([images[i]]);
+        imgs.push([images[i]])
       } else {
-        imgs.push(images.slice(i, i + 2));
-        i++;
+        imgs.push(images.slice(i, i + 2))
+        i++
       }
-      single = !single;
+      single = !single
     }
   }
 
@@ -97,148 +97,166 @@ const TourGallery = (props: GallerySectionProps) => {
             />
           )}
         </div>
-
-        <PhotoProvider maskOpacity={0.6}>
-          <SwiperComponent
-            className="gap-2 md:gap-2 lg:gap-2.5 !pb-0 "
-            scrollCount={4}
-            length={images?.length}
-          >
-            {imgs.slice(0, 3)?.map((image, i) =>
-              i % 2 == 0 ? (
-                <div
-                  key={i}
-                  className={
-                    "min-w-[303px] md:min-w-[350px] w-full md:max-w-[350px] h-[247px] md:h-[320px]  overflow-hidden rounded-xl"
-                  }
-                >
-                  <PhotoView key={i} src={urlFor(image[0])}>
-                    <Image
-                      src={urlFor(image[0])}
-                      width={350}
-                      height={320}
-                      alt={"image"}
-                      className={"w-full h-full flex-shrink-0"}
-                      quality={100}
-                      priority
-                    />
-                  </PhotoView>
-                </div>
-              ) : (
-                <div
-                  key={i}
-                  className={
-                    "w-full h-[247px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5"
-                  }
-                >
-                  <div
-                    className={
-                      "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
-                    }
-                  >
-                    <PhotoView key={i} src={urlFor(image[0])}>
-                      <Image
-                        src={urlFor(image[0])}
-                        width={160}
-                        height={160}
-                        alt={"image"}
-                        className={"object-cover w-full h-full"}
-                        quality={100}
-                        priority
-                      />
-                    </PhotoView>
-                  </div>
-                  {image[1] && (
-                    <div
-                      className={
-                        "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
-                      }
-                    >
-                      <PhotoView key={i} src={urlFor(image[1])}>
-                        <Image
-                          src={urlFor(image[1])}
-                          width={160}
-                          height={160}
-                          alt={"image"}
-                          className={"object-cover w-full h-full"}
-                          quality={100}
-                          priority
-                        />
-                      </PhotoView>
-                      <PhotoView key={i} src={urlFor(image[1])}>
-                        <Image
-                          src={urlFor(image[1])}
-                          width={160}
-                          height={160}
-                          alt={"image"}
-                          className={"object-cover w-full h-full"}
-                          quality={100}
-                          priority
-                        />
-                      </PhotoView>
-                    </div>
-                  )}
-                </div>
-              )
-            )}
-            <div
-              className={
-                "w-full  h-[247px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
-              }
-            >
+      </Container>
+      <PhotoProvider maskOpacity={0.6}>
+        <SwiperComponent
+          className="gap-2 md:gap-2 lg:gap-2.5 !pb-0 !px-0 !pl-0"
+          scrollCount={4}
+          length={images?.length}
+        >
+          {imgs.slice(0, 3)?.map((image, i) =>
+            i % 2 == 0 ? (
               <div
+                key={i}
                 className={
-                  "w-[122.2px] md:w-[118.3px] h-full overflow-hidden rounded-xl "
+                  "min-w-[303px] md:min-w-[350px] w-full md:max-w-[350px] h-[247px] md:h-[320px]  overflow-hidden rounded-xl"
                 }
               >
-                <PhotoView src={urlFor(imgs[5][0])}>
+                <PhotoView key={i} src={urlFor(image[0])}>
                   <Image
-                    src={urlFor(imgs[5][0])}
-                    width={160}
-                    height={160}
+                    src={urlFor(image[0])}
+                    width={350}
+                    height={320}
                     alt={"image"}
-                    className={"object-cover w-full h-full"}
+                    className={"w-full h-full flex-shrink-0"}
                     quality={100}
                     priority
                   />
                 </PhotoView>
               </div>
-            </div>
-            {imgs.slice(3, 6)?.map((image, i) =>
-              i % 2 == 1 ? (
+            ) : (
+              <div
+                key={i}
+                className={
+                  "w-full h-[247px] md:h-[320px] flex flex-col gap-2 lg:gap-2.5"
+                }
+              >
                 <div
-                  key={i}
                   className={
-                    "min-w-[303px] w-full h-[247px]  md:h-[320px]   md:min-w-[310px] md:max-w-[400px]  overflow-hidden rounded-xl"
+                    "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                   }
                 >
                   <PhotoView key={i} src={urlFor(image[0])}>
                     <Image
                       src={urlFor(image[0])}
-                      width={320}
-                      height={320}
-                      quality={100}
+                      width={160}
+                      height={160}
                       alt={"image"}
-                      className={"w-full h-full flex-shrink-0 object-cover "}
+                      className={"object-cover w-full h-full"}
+                      quality={100}
                       priority
                     />
                   </PhotoView>
                 </div>
-              ) : (
-                <div
-                  key={i}
-                  className={
-                    "w-full  h-[247px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
-                  }
-                >
+                {image[1] && (
                   <div
                     className={
                       "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
                     }
                   >
-                    <PhotoView key={i} src={urlFor(image[0])}>
+                    <PhotoView key={i} src={urlFor(image[1])}>
                       <Image
-                        src={urlFor(image[0])}
+                        src={urlFor(image[1])}
+                        width={160}
+                        height={160}
+                        alt={"image"}
+                        className={"object-cover w-full h-full"}
+                        quality={100}
+                        priority
+                      />
+                    </PhotoView>
+                    <PhotoView key={i} src={urlFor(image[1])}>
+                      <Image
+                        src={urlFor(image[1])}
+                        width={160}
+                        height={160}
+                        alt={"image"}
+                        className={"object-cover w-full h-full"}
+                        quality={100}
+                        priority
+                      />
+                    </PhotoView>
+                  </div>
+                )}
+              </div>
+            )
+          )}
+          <div
+            className={
+              "w-full  h-[247px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
+            }
+          >
+            <div
+              className={
+                "w-[122.2px] md:w-[118.3px] h-full overflow-hidden rounded-xl "
+              }
+            >
+              <PhotoView src={urlFor(imgs[5][0])}>
+                <Image
+                  src={urlFor(imgs[5][0])}
+                  width={160}
+                  height={160}
+                  alt={"image"}
+                  className={"object-cover w-full h-full"}
+                  quality={100}
+                  priority
+                />
+              </PhotoView>
+            </div>
+          </div>
+          {imgs.slice(3, 6)?.map((image, i) =>
+            i % 2 == 1 ? (
+              <div
+                key={i}
+                className={
+                  "min-w-[303px] w-full h-[247px]  md:h-[320px]   md:min-w-[310px] md:max-w-[400px]  overflow-hidden rounded-xl"
+                }
+              >
+                <PhotoView key={i} src={urlFor(image[0])}>
+                  <Image
+                    src={urlFor(image[0])}
+                    width={320}
+                    height={320}
+                    quality={100}
+                    alt={"image"}
+                    className={"w-full h-full flex-shrink-0 object-cover "}
+                    priority
+                  />
+                </PhotoView>
+              </div>
+            ) : (
+              <div
+                key={i}
+                className={
+                  "w-full  h-[247px]  md:h-[320px] flex flex-col gap-2 lg:gap-2.5 "
+                }
+              >
+                <div
+                  className={
+                    "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                  }
+                >
+                  <PhotoView key={i} src={urlFor(image[0])}>
+                    <Image
+                      src={urlFor(image[0])}
+                      width={160}
+                      height={160}
+                      quality={100}
+                      alt={"image"}
+                      className={"object-cover w-full h-full"}
+                      priority
+                    />
+                  </PhotoView>
+                </div>
+                {image[1] && (
+                  <div
+                    className={
+                      "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
+                    }
+                  >
+                    <PhotoView key={i} src={urlFor(image[1])}>
+                      <Image
+                        src={urlFor(image[1])}
                         width={160}
                         height={160}
                         quality={100}
@@ -248,33 +266,14 @@ const TourGallery = (props: GallerySectionProps) => {
                       />
                     </PhotoView>
                   </div>
-                  {image[1] && (
-                    <div
-                      className={
-                        "w-[122.2px] h-[118.3px] md:h-[160px] md:w-[160px] overflow-hidden rounded-xl "
-                      }
-                    >
-                      <PhotoView key={i} src={urlFor(image[1])}>
-                        <Image
-                          src={urlFor(image[1])}
-                          width={160}
-                          height={160}
-                          quality={100}
-                          alt={"image"}
-                          className={"object-cover w-full h-full"}
-                          priority
-                        />
-                      </PhotoView>
-                    </div>
-                  )}
-                </div>
-              )
-            )}
-          </SwiperComponent>
-        </PhotoProvider>
-      </Container>
+                )}
+              </div>
+            )
+          )}
+        </SwiperComponent>
+      </PhotoProvider>
     </div>
-  );
-};
+  )
+}
 
-export default TourGallery;
+export default TourGallery

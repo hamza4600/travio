@@ -1,56 +1,56 @@
-import React, { useMemo } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
-import { i18n } from "@/language";
-import { clean } from "@/utils/utils";
+import React, { useMemo } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { useParams, usePathname } from "next/navigation"
+import { i18n } from "@/language"
+import { clean } from "@/utils/utils"
 
 type Translation = {
-  title: string;
-  path: string;
-  language: string;
-};
+  title: string
+  path: string
+  language: string
+}
 
 const LanguageDropdown = ({ locale }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
-  const pathname = usePathname();
-  const languageCodes = ["en", "es", "por"];
+  const pathname = usePathname()
+  const languageCodes = ["en", "es", "por"]
   const destinationPath = languageCodes.reduce(
     (path, code) => (path ? path.replace(`/${code}`, "") : path),
     pathname
-  );
+  )
 
   const translations = i18n.languages.map((lang) => {
     return {
       language: lang.id,
       path: `/${lang.id}${destinationPath}`,
       title: lang.title?.[locale],
-    };
-  });
+    }
+  })
 
-  const params = useParams();
+  const params = useParams()
 
   const language = Array.isArray(params!.language)
     ? params!.language[0]
-    : params!.language;
+    : params!.language
 
   const availableTranslations = useMemo<Translation[]>(
     () =>
       i18n.languages.reduce<Translation[]>((acc, cur) => {
         const availableTranslation = translations.find(
           (translation) => translation.language === cur.id
-        );
-        return availableTranslation ? [...acc, availableTranslation] : acc;
+        )
+        return availableTranslation ? [...acc, availableTranslation] : acc
       }, []),
     [translations]
-  );
+  )
 
   const selectedLanguage = availableTranslations.find(
     (version) => version.language === language
-  );
+  )
 
-  const dropdownRef = React.useRef<HTMLDivElement>(null);
+  const dropdownRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -58,22 +58,22 @@ const LanguageDropdown = ({ locale }) => {
         dropdownRef.current &&
         !dropdownRef?.current?.contains(event.target)
       ) {
-        setOpen(false);
+        setOpen(false)
       }
-    };
+    }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside)
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div ref={dropdownRef} className="relative" style={{ zIndex: "1000" }}>
       <div
-        className="rounded-full bg-opacity-5 bg-[#325EFB] border-[#325EFB] border border-opacity-10 py-1 md:py-[8px] px-1 md:px-[10px] flex items-center cursor-pointer gap-1 md:gap-2.5 max-sm:h-[24px]"
+        className="rounded-full bg-opacity-5 bg-[#325EFB] border-[#325EFB] border border-opacity-10 py-2 md:py-[8px] px-2 md:px-[10px] flex items-center cursor-pointer gap-1 md:gap-2.5 max-sm:h-[30px]"
         onClick={() => setOpen(!open)}
       >
         <img
@@ -120,12 +120,12 @@ const LanguageDropdown = ({ locale }) => {
                 />
                 <p>{version.title}</p>
               </Link>
-            );
+            )
           })}
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default LanguageDropdown;
+export default LanguageDropdown
