@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import Layout from "@/components/layout";
+import Layout from "@/components/layout"
 // import dynamic from "next/dynamic";
-import Slicer from "../../../../sanity/slicer";
+import Slicer from "../../../../sanity/slicer"
 
 // const Popup = dynamic(() => import("@/components/molecules/Popup"));
 
-import "react-photo-view/dist/react-photo-view.css";
-import { SectionMap } from "@/components/sections";
+import "react-photo-view/dist/react-photo-view.css"
+import { SectionMap } from "@/components/sections"
 
 const HomePage = ({ pageData, locale }) => {
-  const { layout } = pageData || {};
+  const { layout } = pageData || {}
 
   return (
     <Layout
@@ -27,7 +27,7 @@ const HomePage = ({ pageData, locale }) => {
         sections={pageData?.pageData?.sections}
       />
     </Layout>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

@@ -1,30 +1,29 @@
-import Link from "next/link";
-import Container from "../molecules/container";
+import Link from "next/link"
+import Container from "../molecules/container"
 
 export interface Breadcrumb {
-  label: string;
-  value: string;
+  label: string
+  value: string
 }
 
 const Breadcrumbs = ({
   paths,
   locale,
 }: {
-  paths: Breadcrumb[];
-  locale: string;
+  paths: Breadcrumb[]
+  locale: string
 }) => {
+  if (!paths?.length) return null
+  const lastIndex = paths.length - 1
 
-  if (!paths?.length) return null;
-  const lastIndex = paths.length - 1;
-  
   return (
-    <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-[1312px] px-4  tracking-tight flex md:items-center gap-1 text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
+    <Container className="w-full font-satoshi my-2 md:my-5  mx-auto max-w-7xl px-4  tracking-tight flex md:items-center gap-1 text-[12px] max-md:leading-5  md:text-base  font-normal leading-tight md:leading-normal">
       <Link href={`/${locale}`} className="">
         Home
       </Link>
       {paths.map((path, i) => (
         <div
-          key = {i + path.label}
+          key={i + path.label}
           aria-label={path.label}
           className="flex items-center gap-1"
         >
@@ -55,7 +54,7 @@ const Breadcrumbs = ({
         </div>
       ))}
     </Container>
-  );
-};
+  )
+}
 
-export default Breadcrumbs;
+export default Breadcrumbs

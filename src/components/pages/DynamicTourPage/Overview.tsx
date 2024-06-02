@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import ReactStars from "react-stars";
-import Image from "next/image";
-import { Text } from "@/components/ui/text";
-import { overviewTn } from "@/lib/utils";
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import ReactStars from "react-stars"
+import Image from "next/image"
+import { Text } from "@/components/ui/text"
+import { overviewTn } from "@/lib/utils"
+import Container from "@/components/molecules/container"
 
 const DownArrow = () => (
   <svg
@@ -18,23 +19,23 @@ const DownArrow = () => (
       fill="white"
     />
   </svg>
-);
+)
 
 const OverViewCard = ({
   data,
   slug,
   locale,
 }: {
-  data: any;
-  slug?: string;
-  locale: string;
+  data: any
+  slug?: string
+  locale: string
 }) => {
-  const price: any = data?.price;
+  const price: any = data?.price
 
   return (
-    <div className="relative font-satoshi lg:h-[80px] bg-primary lg:bg-transparent pb-6 h-fit ">
-      <div className="lg:absolute grid p-[26px] max-xl:grid-cols-2 gap-3 lg:flex items-center max-w-[1280px]  inset-x-0 lg:divide-x-2 top-[-34px] mx-auto bg-primary rounded-2xl max-md:p-[20px]">
-        <div className="flex gap-2 items-center bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] lg:w-fit max-md:py-[4px]">
+    <Container className="relative font-satoshi lg:h-[80px] bg-primary bg-opacity-100 rounded-2xl pb-6 h-fit">
+      <div className="lg:absolute grid p-[26px] max-xl:grid-cols-2 gap-3 lg:flex items-center  inset-x-0 lg:divide-x-2 top-[-34px] mx-auto bg-primary bg-opacity-100 rounded-2xl max-md:p-[20px]">
+        <div className="flex gap-2 items-center  justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] lg:w-fit max-md:py-[4px]">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">
             <img
               alt=""
@@ -52,7 +53,7 @@ const OverViewCard = ({
           </div>
         </div>
 
-        <div className="flex gap-2 bg-white lg:bg-transparent justify-start items-center lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] w-full lg:w-fit max-md:py-[4px]">
+        <div className="flex gap-2  justify-start items-center lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] w-full lg:w-fit max-md:py-[4px]">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">
             <Image
               alt=""
@@ -71,7 +72,7 @@ const OverViewCard = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 w-full lg:w-fit max-md:py-[4px]">
+        <div className="flex items-center gap-2  justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-2 w-full lg:w-fit max-md:py-[4px]">
           {/* <div className="relative h-12 w-12">
               <Image alt="" src={'/calendar.svg'} fill className="object-contain" />
             </div> */}
@@ -116,7 +117,7 @@ const OverViewCard = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 bg-white lg:bg-transparent justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] w-full lg:w-fit max-md:py-[4px]">
+        <div className="flex items-center gap-2  justify-start lg:justify-center lg:px-5 shadow-lg lg:shadow-none shadow-[rgba(200,200,200,0.2)] lg:rounded-none rounded-xl p-[10px] w-full lg:w-fit max-md:py-[4px]">
           <div className="relative lg:h-12 w-8 h-8 lg:w-12">
             <img
               alt=""
@@ -168,8 +169,8 @@ const OverViewCard = ({
           {data?.cta_helper_text?.[locale]}
         </Text>
       </div>
-    </div>
-  );
-};
+    </Container>
+  )
+}
 
-export default OverViewCard;
+export default OverViewCard

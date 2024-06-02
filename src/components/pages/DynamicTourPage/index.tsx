@@ -1,19 +1,17 @@
-"use client";
+"use client"
 
-import Layout from "@/components/layout";
-import dynamic from "next/dynamic";
+import Layout from "@/components/layout"
+import dynamic from "next/dynamic"
 
-import React from "react";
-import { TourSectionsMap } from "@/components/sections";
-import styled from "styled-components";
-import Container from "@/components/molecules/container";
-const AppTabs = dynamic(
-  () => import("@/components/molecules/AppTabs/AppTabse")
-);
-import { topbarTn } from "@/lib/utils";
+import React from "react"
+import { TourSectionsMap } from "@/components/sections"
+import styled from "styled-components"
+import Container from "@/components/molecules/container"
+const AppTabs = dynamic(() => import("@/components/molecules/AppTabs/AppTabse"))
+import { topbarTn } from "@/lib/utils"
 
-const OverViewCard = dynamic(() => import("./Overview"));
-const HeroSection = dynamic(() => import("./HeroSection"));
+const OverViewCard = dynamic(() => import("./Overview"))
+const HeroSection = dynamic(() => import("./HeroSection"))
 
 const Root = styled.div`
   padding-bottom: 3rem;
@@ -21,32 +19,35 @@ const Root = styled.div`
   @media (max-width: 768px) {
     padding-bottom: 3.5rem;
   }
-`;
+`
 
 // move it it global space
 function transformArray(inputArray, lang) {
-  if (!inputArray || inputArray.length === 0) return [];
+  if (!inputArray || inputArray.length === 0) return []
   return inputArray.map((item) => {
     return {
       label: item.title[lang] || item.title.en,
       value: item.url,
-    };
-  });
+    }
+  })
 }
 
 const DynamicTourPage = ({ language, pageData }) => {
-  const { layout, data } = pageData || {};
+  const { layout, data } = pageData || {}
 
-  const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb, language);
+  const breadcrumbs = transformArray(data?.breadcrumb?.breadcrumb, language)
 
   const tabsData = [
     { name: topbarTn?.[language]?.Overview, href: "overview" },
     { name: topbarTn?.[language]?.TripHighlights, href: "price-list" },
     { name: topbarTn?.[language]?.Itinerary, href: "itinerary" },
     { name: topbarTn?.[language]?.Inclusions, href: "inclusions" },
-    { name: topbarTn?.[language]?.EssentialsTravelInformation, href: "travel-info" },
+    {
+      name: topbarTn?.[language]?.EssentialsTravelInformation,
+      href: "travel-info",
+    },
     { name: topbarTn?.[language]?.Reviews, href: "reviews" },
-  ];
+  ]
 
   return (
     <Layout
@@ -56,7 +57,7 @@ const DynamicTourPage = ({ language, pageData }) => {
       breadcrumbs={breadcrumbs}
       promo_banner={layout?.banner}
     >
-      <Container className="px-0">
+      <Container className="px-0 md:px-4">
         <HeroSection data={data?.hero_section} locale={language} />
       </Container>
 
@@ -69,7 +70,7 @@ const DynamicTourPage = ({ language, pageData }) => {
       </div>
       <Root>
         {data?.sections?.map((section) => {
-          const Component = TourSectionsMap[section?._type];
+          const Component = TourSectionsMap[section?._type]
           return (
             <React.Fragment key={section._key}>
               {Component &&
@@ -79,11 +80,11 @@ const DynamicTourPage = ({ language, pageData }) => {
                   locale: language,
                 })}
             </React.Fragment>
-          );
+          )
         })}
       </Root>
     </Layout>
-  );
-};
+  )
+}
 
-export default DynamicTourPage;
+export default DynamicTourPage

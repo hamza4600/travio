@@ -1,15 +1,12 @@
+import { ReactNode } from "react"
+import dynamic from "next/dynamic"
 
-import { ReactNode } from "react";
-import dynamic from "next/dynamic";
+import { SanityGlobals } from "../../../sanity/lib/types"
 
-import {
-  SanityGlobals,
-} from "../../../sanity/lib/types";
-
-const PromoBanner = dynamic(() => import("../molecules/Promobanner"));
-const Footer = dynamic(() => import("../molecules/footer"));
-const Header = dynamic(() => import("../molecules/Header"));
-import Breadcrumbs, { Breadcrumb } from "../atom/Breadcrumbs";
+const PromoBanner = dynamic(() => import("../molecules/Promobanner"))
+const Footer = dynamic(() => import("../molecules/footer"))
+const Header = dynamic(() => import("../molecules/Header"))
+import Breadcrumbs, { Breadcrumb } from "../atom/Breadcrumbs"
 
 const Layout = ({
   children,
@@ -20,13 +17,13 @@ const Layout = ({
   head,
   maxWidth = true,
 }: {
-  children: ReactNode;
-  globals?: SanityGlobals;
-  breadcrumbs: Breadcrumb[];
-  promo_banner?: any;
-  locale: any;
-  head?: any;
-  maxWidth?: boolean;
+  children: ReactNode
+  globals?: SanityGlobals
+  breadcrumbs: Breadcrumb[]
+  promo_banner?: any
+  locale: any
+  head?: any
+  maxWidth?: boolean
 }) => {
   return (
     <div className="bg-white">
@@ -44,8 +41,7 @@ const Layout = ({
 
         <PromoBanner banner={promo_banner} locale={locale} />
         <main
-          className={`grow w-full ${maxWidth ? "max-w-[1440px] mx-auto " : ""
-            }`}
+          className={`grow w-full ${maxWidth ? "max-w-[1440px] mx-auto " : ""}`}
         >
           <Breadcrumbs paths={breadcrumbs} locale={locale} />
 
@@ -54,7 +50,7 @@ const Layout = ({
         <Footer footer={globals?.footer} language={locale} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

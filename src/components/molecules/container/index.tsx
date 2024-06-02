@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react"
 
 interface PropsType {
-  className?: string;
-  id?: string;
-  style?: any;
+  className?: string
+  id?: string
+  style?: any
 }
 
 function Container(props: PropsWithChildren<PropsType>) {
@@ -15,7 +15,7 @@ function Container(props: PropsWithChildren<PropsType>) {
     >
       {props.children}
     </section>
-  );
+  )
 }
 
-export default Container;
+export default Container
