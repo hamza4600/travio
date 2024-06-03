@@ -128,8 +128,8 @@ const Header = ({
           </div>
         </div>
       </div>
-      <div className="w-full lg:hidden z-50 lg:h-[80px] h-[60px] p-base">
-        <div className="px-5 flex justify-between items-center w-full relative h-full  py-[16px] md:py-5 z-[50]">
+      <div className="w-full lg:hidden z-[999] lg:h-[80px] h-[60px] p-base">
+        <div className="px-5 flex justify-between items-center w-full relative h-full  py-[16px] md:py-5 z-999">
           <button
             onClick={() => setIsOpen(!isOppen)}
             className="bg-primary/80 rounded-full p-1"

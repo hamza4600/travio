@@ -1,43 +1,43 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react"
 
 type TabsProp = {
-  tabs: Array<{ name: string; href: string }>;
-};
+  tabs: Array<{ name: string; href: string }>
+}
 
 function AppTabs({ tabs }: TabsProp) {
-  const [isFixed, setIsFixed] = useState(false);
-  const [currentTab, setCurrentTab] = useState(0);
+  const [isFixed, setIsFixed] = useState(false)
+  const [currentTab, setCurrentTab] = useState(0)
 
-  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const tabsRef = useRef<HTMLDivElement | null>(null)
 
   const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    setIsFixed(scrollPosition > window.innerHeight / 1);
-  };
+    const scrollPosition = window.scrollY
+    setIsFixed(scrollPosition > window.innerHeight / 1)
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
     // Cleanup the event listener on component unmount
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   function cNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
+    return classes.filter(Boolean).join(" ")
   }
 
   const handleClickScroll = (name: string) => {
-    const element = document.getElementById(name);
+    const element = document.getElementById(name)
 
     if (element) {
       window.scrollTo({
-        top: element.offsetTop - 150,
+        top: element.offsetTop - 50,
         behavior: "smooth",
-      });
-      window.history.pushState({}, "", `#${name}`);
+      })
+      window.history.pushState({}, "", `#${name}`)
     }
-  };
+  }
 
   return (
     <div className="max-w-full relative">
@@ -71,7 +71,7 @@ function AppTabs({ tabs }: TabsProp) {
                     currentTab === index
                       ? "border-[#FFBB0B] text-darkblue"
                       : "border-transparent text-gray-500 hover:border-gray-200 text-gray hover:text-gray-700",
-                    "whitespace-nowrap md:border-b-4 border-b-[3px] font-satoshi border-gray-100 md:py-4 md:px-6 px-2 py-[13px] lg:text-base text-xs font-medium"
+                    "whitespace-nowrap md:border-b-4 border-b-[3px] font-satoshi border-gray-100 md:py-4 md:px-4 px-2 py-[13px] lg:text-base text-xs font-medium"
                   )}
                   aria-current={currentTab ? "page" : undefined}
                 >
@@ -83,7 +83,7 @@ function AppTabs({ tabs }: TabsProp) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default AppTabs;
+export default AppTabs

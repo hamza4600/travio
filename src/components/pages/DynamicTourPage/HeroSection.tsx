@@ -2,7 +2,8 @@ import React from "react"
 import { urlFor } from "../../../../sanity/lib/client"
 import Image from "next/image"
 import { PhotoProvider, PhotoView } from "react-photo-view"
-import SwiperComponent from "@/components/molecules/Swiper"
+
+import { Swiper, SwiperSlide } from "swiper/react"
 
 const HeroSection = ({ data, locale }) => {
   return (
@@ -65,6 +66,36 @@ const HeroSection = ({ data, locale }) => {
             </div>
           </div>
         </PhotoProvider>
+      </div>
+      <div className="lg:hidden ">
+        <Swiper spaceBetween={8} slidesPerView={1.1}>
+          <SwiperSlide>
+            {" "}
+            <Image
+              className="lg:rounded-[16px]  h-[230px] object-cover  cursor-pointer"
+              src={urlFor(data?.image?.mobile?.asset?._ref)}
+              alt={data?.image?.alt?.[locale]}
+              width={1000}
+              height={1000}
+            />
+          </SwiperSlide>
+          {data?.images?.map((img: any, i: number) => {
+            return (
+              data?.images && (
+                <SwiperSlide key={i}>
+                  <Image
+                    key={i}
+                    className="  h-[230px] object-cover   cursor-pointer"
+                    src={img?.asset?._ref ? urlFor(img.asset._ref) : ""}
+                    alt="hero_supprt_img"
+                    width={1000}
+                    height={212}
+                  />
+                </SwiperSlide>
+              )
+            )
+          })}
+        </Swiper>
       </div>
     </>
   )

@@ -1,16 +1,16 @@
-import React from "react";
-import Link from "next/link";
+import React from "react"
+import Link from "next/link"
 
-import DateFormat from "@/utils/utils";
+import DateFormat from "@/utils/utils"
 
-import Container from "@/components/molecules/container";
-import SwiperComponent from "@/components/molecules/Swiper";
+import Container from "@/components/molecules/container"
+import SwiperComponent from "@/components/molecules/Swiper"
 
-import "swiper/css";
-import "swiper/css/navigation";
-import { urlFor } from "../../../../sanity/lib/client";
+import "swiper/css"
+import "swiper/css/navigation"
+import { urlFor } from "../../../../sanity/lib/client"
 
-import Image from "next/image";
+import Image from "next/image"
 
 const BlogCard = ({ blog, locale }) => {
   return (
@@ -27,7 +27,7 @@ const BlogCard = ({ blog, locale }) => {
                 height={460}
                 width={410}
                 quality={100}
-                className="w-full min-h-[460px] max-w-[410px] max-sm:min-h-[280px] max-sm:max-w-[250px]"
+                className="w-[250px] h-[280px] lg:w-[410px] lg:h-[460px] object-cover"
                 src={urlFor(blog?.cover_image)}
                 alt={`cover_image-${blog?.slug?.current}`}
               />
@@ -51,16 +51,16 @@ const BlogCard = ({ blog, locale }) => {
         </div>
       </Link>
     )
-  );
-};
+  )
+}
 
 const BlogSection = (props) => {
-  if (!props.data) return null;
+  if (!props.data) return null
 
   const {
     data: { tagline, title, featured_blogs },
     locale,
-  } = props;
+  } = props
 
   return (
     <Container className="text-darkblue md:mt-[84px] mt-[50px] md:mb-[68px] mb-[70px]">
@@ -92,7 +92,7 @@ const BlogSection = (props) => {
         <div className=" absolute hidden md:block w-40 top-0 p-3 h-full z-[300] bg-gradient-to-r from-transparent  via-[rgba(255,255,255,0.2)] to-white right-0" />
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default BlogSection;
+export default BlogSection

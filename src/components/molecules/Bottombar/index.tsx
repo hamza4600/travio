@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react"
 
 const BottomBar = () => {
+  const [scrollY, setScrollY] = useState(0)
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY)
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <div className="max-w-full relative">
+    <div className={`max-w-full relative`}>
       <div
-        className="w-full"
+        className={`w-full transform transition-transform duration-500 fixed bottom-0 ${
+          scrollY > window.innerHeight * 0.001
+            ? "tranlate-y-0"
+            : " translate-y-20"
+        }`}
         style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
           zIndex: 1000,
-          transition: "top 0.3s, position 0.3s, margin-top 0.3s",
         }}
       >
-        <div className="bg-[#3FA9F5] flex justify-between shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] rounded-t-[9px] px-[32.5px] py-2.5 mt-[50px] md:hidden font-satoshi">
+        <div
+          className="bg-[#3FA9F5] flex justify-between shadow-[0px_4px_20px_0px_rgba(0,0,0,0.06)] rounded-t-[9px] px-[32.5px] py-2.5 mt-[50px] md:hidden font-satoshi"
+          style={{
+            boxShadow:
+              "0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -10px 10px -1px rgba(0, 0, 0, 0.1)",
+          }}
+        >
           <div className="flex flex-col gap-1 items-center">
             <Email />
             <p className="text-[14px] leading-6 text-white opacity-50">
@@ -33,10 +50,10 @@ const BottomBar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BottomBar;
+export default BottomBar
 
 const Trail = () => (
   <svg
@@ -74,7 +91,7 @@ const Trail = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 const WhatsApp = () => (
   <svg
@@ -104,7 +121,7 @@ const WhatsApp = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 const Email = () => (
   <svg
@@ -125,4 +142,4 @@ const Email = () => (
       fill-opacity="0.5"
     />
   </svg>
-);
+)

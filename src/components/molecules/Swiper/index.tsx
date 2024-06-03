@@ -60,10 +60,10 @@ export default function SwiperComponent({
   }
 
   return (
-    <div className={"relative md:-left-4"}>
+    <div className={"relative "}>
       <div
         className={
-          "flex justify-start overflow-hidden relative overflow-x-auto md:pl-4 " +
+          "flex justify-start overflow-hidden relative overflow-x-auto " +
           className
         }
         ref={swiperRef}
@@ -75,7 +75,7 @@ export default function SwiperComponent({
       {showNext && (
         <button
           className={
-            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 absolute right-2 md:-bottom-10 -bottom-14 md:top-1/2 -translate-y-1/2 cursor-pointer"
+            "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 z-[600] flex items-center justify-center md:w-10 absolute  right-0 top-1/2 cursor-pointer"
           }
           onClick={onNext}
         >
@@ -96,7 +96,7 @@ export default function SwiperComponent({
       {showPrev && (
         <button
           className={
-            "rounded-full z-[1000] bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 absolute right-16 md:-bottom-10 -bottom-14 md:right-0 md:left-5 md:top-1/2 -translate-y-1/2 cursor-pointer "
+            "rounded-full bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10 absolute top-1/2 left-0 cursor-pointer "
           }
           onClick={onPrev}
         >
