@@ -62,7 +62,11 @@ const DynamicTourPage = ({ language, pageData }) => {
       </Container>
 
       <div className="lg:mt-16">
-        <OverViewCard data={data?.overview_card} locale={language} />
+        <OverViewCard
+          data={data?.overview_card}
+          locale={language}
+          title={data.hero_section.title}
+        />
       </div>
 
       <div className="md:mt-12 mt-6">
