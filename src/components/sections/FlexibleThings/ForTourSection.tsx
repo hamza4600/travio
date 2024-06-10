@@ -1,21 +1,20 @@
-import React from "react";
-import Image from "next/image";
+import React from "react"
+import Image from "next/image"
 
-import { urlFor } from "../../../../sanity/lib/client";
+import { urlFor } from "../../../../sanity/lib/client"
 
 import {
   SanityFeature,
   SanityFeatureSection,
-} from "../../../../sanity/lib/types";
+} from "../../../../sanity/lib/types"
 
-import Container from "@/components/molecules/container";
-import { simpleThingTn } from "@/lib/utils";
+import Container from "@/components/molecules/container"
+import { simpleThingTn } from "@/lib/utils"
 
 export type FeatureSectionProps = {
-  data: SanityFeatureSection;
-};
+  data: SanityFeatureSection
+}
 const TourFeature = ({ data, locale }) => {
-
   return (
     <Container className="font-satoshi mx-auto max-w-[1312px] mb-[69px] my-20 max-md:mb-[50px] max-md:my-10  text-darkblue">
       {data.title?.en && (
@@ -59,8 +58,8 @@ const TourFeature = ({ data, locale }) => {
         )}
       </div>
     </Container>
-  );
-};
+  )
+}
 
 const Feature = ({ data, locale }: { data: SanityFeature; locale: string }) => {
   return (
@@ -75,20 +74,18 @@ const Feature = ({ data, locale }: { data: SanityFeature; locale: string }) => {
 
       {/* {data.title?.en} */}
 
-      <p className="font-[500] text-base">
-        {data.title?.[locale]}
-      </p>
+      <p className="font-[500] text-xs md:text-base">{data.title?.[locale]}</p>
       <p className="mx-20 opacity-60"> {data.description?.[locale]}</p>
     </div>
-  );
-};
+  )
+}
 
 const LargeFeature = ({
   data,
   locale,
 }: {
-  data: SanityFeature;
-  locale: string;
+  data: SanityFeature
+  locale: string
 }) => {
   return (
     <div className=" w-full text-start flex  gap-3 md:px-7 md:py-3  items-center z-[2]">
@@ -109,7 +106,7 @@ const LargeFeature = ({
         <p className="opacity-60"> {data.description?.[locale]}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TourFeature;
+export default TourFeature

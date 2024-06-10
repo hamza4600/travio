@@ -1,20 +1,25 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { Country } from "country-state-city";
+"use client"
+import React, { useEffect, useState } from "react"
+import Image from "next/image"
+import { Country } from "country-state-city"
 
 import {
   CaretDown,
   // Dot,
   Minus,
   Plus,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react"
+import { A11y, Controller, Navigation, Scrollbar } from "swiper/modules"
 
-import { Button } from "@/components/ui/button";
-import Container from "@/components/molecules/container";
-import SectionHeader from "@/components/molecules/secHeader";
-import { urlFor } from "../../../../sanity/lib/client";
-import PortableText from "react-portable-text";
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import "swiper/css/scrollbar"
+import { Button } from "@/components/ui/button"
+import Container from "@/components/molecules/container"
+import SectionHeader from "@/components/molecules/secHeader"
+import { urlFor } from "../../../../sanity/lib/client"
+import PortableText from "react-portable-text"
 import {
   formFieldsTn,
   priceTitleTn,
@@ -24,14 +29,15 @@ import {
   enqTn,
   submitTn,
   expandTn,
-} from "@/lib/utils";
+} from "@/lib/utils"
+import { Swiper, SwiperSlide } from "swiper/react"
 
 export default function ItinerarySection({
   data,
   locale,
 }: {
-  data: any;
-  locale: string;
+  data: any
+  locale: string
 }) {
   return (
     <Container
@@ -54,18 +60,18 @@ export default function ItinerarySection({
         {/* </div> */}
       </div>
     </Container>
-  );
+  )
 }
 
 const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
   const [openStatus, setOpenStatus] = useState<boolean[]>(
     Object.assign({}, Array(data?.length ?? 0).fill(false))
-  );
+  )
 
   useEffect(() => {
-    setOpenStatus({ ...openStatus, "0": true });
+    setOpenStatus({ ...openStatus, "0": true })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div className="w-full flex flex-1 flex-col gap-5">
@@ -75,7 +81,7 @@ const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
           onClick={() => {
             setOpenStatus(
               Object.assign({}, Array(data?.length ?? 0).fill(true))
-            );
+            )
           }}
         >
           {expandTn?.[locale]}{" "}
@@ -88,7 +94,7 @@ const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
             locale={locale}
             isOpen={openStatus[index]}
             toggleOpen={() => {
-              setOpenStatus({ ...openStatus, [index]: !openStatus[index] });
+              setOpenStatus({ ...openStatus, [index]: !openStatus[index] })
             }}
             key={index}
             {...day}
@@ -97,8 +103,8 @@ const TravelSchedule = ({ data, locale }: { data?: any; locale: string }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const EnquireTab = ({ locale }: any) => {
   const [formData, setFormData] = useState({
@@ -110,15 +116,15 @@ const EnquireTab = ({ locale }: any) => {
     to: "",
     members: "1",
     details: "",
-  });
+  })
   const [mobileNumber, setMobileNumber] = useState({
     mobileCode: "+1",
     mobileNumber: "",
-  });
+  })
 
   const setValue = (value: string, key: string) => {
-    setFormData({ ...formData, [key]: value });
-  };
+    setFormData({ ...formData, [key]: value })
+  }
 
   return (
     <div className="w-[282px] max-lg:hidden max-lg:min-w-full h-fit font-satoshi rounded-2xl border text-white overflow-hidden bg-primary lg:mt-12">
@@ -151,7 +157,7 @@ const EnquireTab = ({ locale }: any) => {
             className="border border-darkblue/10 text-black rounded p-1 focus:outline-secondary"
             value={formData["name"]}
             onChange={(e) => {
-              setValue(e.target.value, "name");
+              setValue(e.target.value, "name")
             }}
           />
         </div>
@@ -163,7 +169,7 @@ const EnquireTab = ({ locale }: any) => {
             className="border border-darkblue/10 text-black rounded p-1 focus:outline-secondary"
             value={formData["email"]}
             onChange={(e) => {
-              setValue(e.target.value, "email");
+              setValue(e.target.value, "email")
             }}
           />
         </div>
@@ -176,7 +182,7 @@ const EnquireTab = ({ locale }: any) => {
             className="border bg-white border-darkblue/10 text-black rounded p-1 py-2 focus:outline-secondary"
             value={formData["nationality"]}
             onChange={(e) => {
-              setValue(e.target.value, "nationality");
+              setValue(e.target.value, "nationality")
             }}
           >
             <option value="" disabled>
@@ -187,7 +193,7 @@ const EnquireTab = ({ locale }: any) => {
                 <option key={index} value={item.name}>
                   {item.name}
                 </option>
-              );
+              )
             })}
             <option value="Nepal">Nepal</option>
             <option value="India">India</option>
@@ -204,11 +210,11 @@ const EnquireTab = ({ locale }: any) => {
                 setMobileNumber({
                   ...mobileNumber,
                   mobileCode: e.target.value || "+",
-                });
+                })
                 setValue(
                   mobileNumber["mobileCode"] + mobileNumber["mobileNumber"],
                   "phone"
-                );
+                )
               }}
             />
             <input
@@ -220,11 +226,11 @@ const EnquireTab = ({ locale }: any) => {
                 setMobileNumber({
                   ...mobileNumber,
                   mobileNumber: e.target.value,
-                });
+                })
                 setValue(
                   mobileNumber["mobileCode"] + mobileNumber["mobileNumber"],
                   "phone"
-                );
+                )
               }}
             />
           </div>
@@ -238,7 +244,7 @@ const EnquireTab = ({ locale }: any) => {
               className="border border-darkblue/10 focus:outline-secondary text-black rounded p-1"
               value={formData["from"]}
               onChange={(e) => {
-                setValue(e.target.value, "from");
+                setValue(e.target.value, "from")
               }}
             />
           </div>
@@ -250,7 +256,7 @@ const EnquireTab = ({ locale }: any) => {
               className="border border-darkblue/10 text-black rounded p-1 focus:outline-secondary"
               value={formData["to"]}
               onChange={(e) => {
-                setValue(e.target.value, "to");
+                setValue(e.target.value, "to")
               }}
             />
           </div>
@@ -268,7 +274,7 @@ const EnquireTab = ({ locale }: any) => {
                   setValue(
                     Math.max(parseInt(formData["members"]) - 1, 1).toString(),
                     "members"
-                  );
+                  )
                 }}
               >
                 {
@@ -289,7 +295,7 @@ const EnquireTab = ({ locale }: any) => {
                   setValue(
                     Math.min(parseInt(formData["members"]) + 1, 30).toString(),
                     "members"
-                  );
+                  )
                 }}
               >
                 {
@@ -311,7 +317,7 @@ const EnquireTab = ({ locale }: any) => {
             className="border border-darkblue/10 text-black focus:outline-secondary rounded p-1"
             value={formData["details"]}
             onChange={(e) => {
-              setValue(e.target.value, "details");
+              setValue(e.target.value, "details")
             }}
           />
         </div>
@@ -344,8 +350,8 @@ const EnquireTab = ({ locale }: any) => {
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Expandable = ({
   data,
@@ -353,13 +359,24 @@ const Expandable = ({
   toggleOpen,
   locale,
 }: {
-  isOpen: boolean;
-  toggleOpen: any;
-  data: any;
-  locale: string;
+  isOpen: boolean
+  toggleOpen: any
+  data: any
+  locale: string
 }) => {
-  // console the data
-  
+  const [swiper, setSwiper] = React.useState<any>()
+  const prevRef = React.useRef<any>()
+  const nextRef = React.useRef<any>()
+
+  React.useEffect(() => {
+    if (swiper) {
+      swiper.params && (swiper.params.navigation.prevEl = prevRef.current)
+      swiper.params && (swiper.params.navigation.nextEl = nextRef.current)
+      swiper.navigation && swiper.navigation.init()
+      swiper.navigation && swiper.navigation.update()
+    }
+  }, [swiper])
+
   return (
     <div>
       <button
@@ -369,7 +386,7 @@ const Expandable = ({
             : "bg-darkblue/[0.02] text-dimSecondary"
         }   px-7 md:py-4 py-3 ${isOpen ? "rounded-t-2xl  " : "rounded-2xl"}`}
         onClick={() => {
-          toggleOpen();
+          toggleOpen()
         }}
       >
         <p className="font-bold lg:text-[20px] lg:leading-8  font-satoshi">
@@ -429,7 +446,8 @@ const Expandable = ({
               <div className="w-20 my-2  md:mt-[10px] mt-1 border-[#FFBB0B] text-yellow rounded-full md:rounded-[3px] md:border-b-[3px] border-b-[1px]" />
             </div>
           </div>
-          <div className="flex gap-6 max-md:flex-col max-md:items-center max-md:gap-3">
+
+          <div className="hidden md:flex gap-6 max-md:flex-col max-md:items-center max-md:gap-3">
             {data?.activity_cards?.map((data, i: number) => (
               <OptionalActivites
                 key={i}
@@ -441,6 +459,75 @@ const Expandable = ({
               />
             ))}
           </div>
+          <div className="md:hidden">
+            <Swiper
+              modules={[Navigation, Scrollbar, A11y, Controller]}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
+              updateOnWindowResize
+              observer
+              observeParents
+              onSwiper={setSwiper}
+              slidesPerView={1}
+            >
+              {data?.activity_cards?.map((data, i: number) => (
+                <SwiperSlide key={i}>
+                  <OptionalActivites
+                    title={data.name?.[locale]}
+                    img={data.image?.asset?._ref}
+                    level={data.level}
+                    desc={data.description?.[locale]}
+                    price={data.price}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+          <Container className="lg:gap-12 gap-[15px] px-4 flex justify-end md:hidden">
+            <button
+              className={
+                "rounded-full bg-[#3FA9F5] h-7 w-7 md:h-10 flex items-center justify-center md:w-10  -translate-y-1/2 cursor-pointer "
+              }
+              ref={prevRef}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={"scale-x-[-1]"}
+              >
+                <path
+                  d="M12.6003 8.97526C12.6009 9.07719 12.581 9.17823 12.5419 9.27259C12.5027 9.36696 12.445 9.45278 12.372 9.52515L7.64945 14.1721C7.50123 14.318 7.30021 14.3999 7.09061 14.3999C6.881 14.3999 6.67998 14.318 6.53177 14.1721C6.38356 14.0263 6.30029 13.8285 6.30029 13.6222C6.30029 13.416 6.38356 13.2182 6.53177 13.0723L10.7034 8.97526L6.53964 4.87817C6.41069 4.73001 6.34331 4.53943 6.35097 4.34451C6.35862 4.14958 6.44074 3.96468 6.58091 3.82675C6.72109 3.68881 6.909 3.60801 7.1071 3.60048C7.30519 3.59295 7.49887 3.65925 7.64945 3.78613L12.372 8.43311C12.5174 8.57737 12.5994 8.77208 12.6003 8.97526Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+
+            <button
+              className={
+                "rounded-full bg-[#3FA9F5] h-7 w-7  md:h-10 flex items-center justify-center md:w-10 md:top-1/2 -translate-y-1/2 cursor-pointer"
+              }
+              ref={nextRef}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.6003 8.97526C12.6009 9.07719 12.581 9.17823 12.5419 9.27259C12.5027 9.36696 12.445 9.45278 12.372 9.52515L7.64945 14.1721C7.50123 14.318 7.30021 14.3999 7.09061 14.3999C6.881 14.3999 6.67998 14.318 6.53177 14.1721C6.38356 14.0263 6.30029 13.8285 6.30029 13.6222C6.30029 13.416 6.38356 13.2182 6.53177 13.0723L10.7034 8.97526L6.53964 4.87817C6.41069 4.73001 6.34331 4.53943 6.35097 4.34451C6.35862 4.14958 6.44074 3.96468 6.58091 3.82675C6.72109 3.68881 6.909 3.60801 7.1071 3.60048C7.30519 3.59295 7.49887 3.65925 7.64945 3.78613L12.372 8.43311C12.5174 8.57737 12.5994 8.77208 12.6003 8.97526Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+          </Container>
+
           {/* <ExpandableList
             key={data.itinerary_details_lists?.length}
             title="Special Information"
@@ -451,21 +538,21 @@ const Expandable = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const OptionalActivites = ({ title, img, desc, price, level }) => {
-  const isLow = level?.toLowerCase() === "low";
-  const isMedium = level?.toLowerCase() === "medium";
-  const isHigh = level?.toLowerCase() === "high";
+  const isLow = level?.toLowerCase() === "low"
+  const isMedium = level?.toLowerCase() === "medium"
+  const isHigh = level?.toLowerCase() === "high"
   return (
     <div
       style={{ boxShadow: "0px 4px 20px 0px rgba(0, 0, 0, 0.06)" }}
-      className="max-w-[302px] font-satoshi text-darkblue 
+      className="w-[95%] md:max-w-[302px]  font-satoshi text-darkblue 
      rounded-[16px]"
     >
       <Image
-        className="max-w-[302px] rounded-t-[16px]"
+        className="max-w-full rounded-t-[16px]"
         width={302}
         height={201}
         quality={100}
@@ -509,8 +596,8 @@ const OptionalActivites = ({ title, img, desc, price, level }) => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const ExpandableList = ({
   title,
@@ -519,11 +606,11 @@ const ExpandableList = ({
   content,
   locale,
 }: {
-  title: string;
-  icon: any;
-  itinerary_details_list_items?: any;
-  content?: any;
-  locale: string;
+  title: string
+  icon: any
+  itinerary_details_list_items?: any
+  content?: any
+  locale: string
 }) => {
   return (
     <div className="font-satoshi">
@@ -560,5 +647,5 @@ const ExpandableList = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}

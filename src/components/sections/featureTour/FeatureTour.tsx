@@ -1,21 +1,21 @@
-import React from "react";
+import React from "react"
 // import Image from "next/image";
 // import Link from "next/link";
 
 // import { urlFor } from "../../../../sanity/lib/client";
-import { SanityFeaturedToursSection } from "../../../../sanity/lib/types";
+import { SanityFeaturedToursSection } from "../../../../sanity/lib/types"
 
-import Container from "@/components/molecules/container";
-import SectionHeader from "@/components/molecules/secHeader";
-import FeatureCard from "./FeatureCard";
-import Swiper from "@/components/molecules/Swiper";
+import Container from "@/components/molecules/container"
+import SectionHeader from "@/components/molecules/secHeader"
+import FeatureCard from "./FeatureCard"
+import Swiper from "@/components/molecules/Swiper"
 
 export type FeaturedTour = {
-  data: SanityFeaturedToursSection;
-};
+  data: SanityFeaturedToursSection
+}
 
 const FeatureTourSection = (FeaturedTour: any) => {
-  const { locale } = FeaturedTour;
+  const { locale } = FeaturedTour
 
   return (
     <Container className="text-black w-full mt-[50px] md:mb-[90px] mb:[50px]">
@@ -64,7 +64,7 @@ const FeatureTourSection = (FeaturedTour: any) => {
         </div>
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default FeatureTourSection;
+export default FeatureTourSection

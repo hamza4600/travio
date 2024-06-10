@@ -1,13 +1,13 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Text } from "../../ui/text";
-import { Button } from "../../ui/button";
-import { urlFor } from "../../../../sanity/lib/client";
-import { cardButtonTn, saveTn } from "@/lib/utils";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { Text } from "../../ui/text"
+import { Button } from "../../ui/button"
+import { urlFor } from "../../../../sanity/lib/client"
+import { cardButtonTn, saveTn } from "@/lib/utils"
 
 const type =
-  "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center";
+  "text-darkblue font-medium font-satoshi md:text-[14px] md:leading-[22px] text-[12px] leading-4 flex gap-[6px] items-center"
 
 const TourCard = ({
   pic,
@@ -25,15 +25,15 @@ const TourCard = ({
   // Function to format the price with a comma after every third digit
   const formattedPrice = (price) => {
     // if (price === typeof string) {
-    const convPrice = parseInt(price);
+    const convPrice = parseInt(price)
 
     // }
-    return convPrice.toLocaleString();
-  };
+    return convPrice.toLocaleString()
+  }
 
   return (
     <Link
-      className={"flex-shrink-0 max-w-[250px] md:max-w-[302px] "}
+      className={"flex-shrink-0 max-w-[250px] md:max-w-[302px] mx-auto"}
       href={`/${locale}/tours${link}`}
       // href={locale + "tours" + link}
     >
@@ -141,7 +141,7 @@ const TourCard = ({
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default TourCard;
+export default TourCard

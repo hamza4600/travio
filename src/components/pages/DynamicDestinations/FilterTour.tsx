@@ -1,42 +1,33 @@
-"use client";
-import Container from "@/components/molecules/container";
-import SectionHeader from "@/components/molecules/secHeader";
-import React, { useEffect } from "react";
+"use client"
+import Container from "@/components/molecules/container"
+import SectionHeader from "@/components/molecules/secHeader"
+import React, { useEffect } from "react"
 
-import ToureTags from "./touerTags";
-import { getTourByTags } from "@/lib/sanity.TourPage";
-import useSWR from "swr";
-import { useSearchParams } from "next/navigation";
-import TourCard from "@/components/molecules/cards/Card";
-import styled from "styled-components";
-import FilterSidebar from "./FilterSideebar";
-import { Spinner } from "@/components/atom/Spinner";
-
-const RootStyle = styled.div`
-  a {
-    max-width: 100%;
-  }
-  a > div > img {
-    width: 100%;
-  }
-`;
+import ToureTags from "./touerTags"
+import { getTourByTags } from "@/lib/sanity.TourPage"
+import useSWR from "swr"
+import { useSearchParams } from "next/navigation"
+import TourCard from "@/components/molecules/cards/Card"
+import styled from "styled-components"
+import FilterSidebar from "./FilterSideebar"
+import { Spinner } from "@/components/atom/Spinner"
 
 const FilterTourSection = ({ data, locale, tags }) => {
-  const searchParams = useSearchParams();
-  const urlTags = searchParams?.getAll("tag");
-  const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags;
+  const searchParams = useSearchParams()
+  const urlTags = searchParams?.getAll("tag")
+  const articalTags = urlTags && urlTags.length > 0 ? urlTags : tags
 
   const {
     data: tagsToures,
     mutate,
     isLoading,
-  } = useSWR("/tagsToures", () => getTourByTags(articalTags));
+  } = useSWR("/tagsToures", () => getTourByTags(articalTags))
 
-  const header = document.getElementById("headerGet");
+  const header = document.getElementById("headerGet")
 
   useEffect(() => {
-    mutate("/blogsTags");
-  }, [searchParams]);
+    mutate("/blogsTags")
+  }, [searchParams])
 
   return (
     <Container className="md:mb-[90px] mb-[50px]">
@@ -48,7 +39,12 @@ const FilterTourSection = ({ data, locale, tags }) => {
 
       <section className="flex max-xl:flex-col gap-6 md:mt-12 mt-[46px]">
         <div className="w-full max-w-[302px] max-xl:max-w-full">
-          <FilterSidebar locale={locale} data={data?.destination_tags} priceTags={data?.price_tags} durationTags={data?.duration_tags} />
+          <FilterSidebar
+            locale={locale}
+            data={data?.destination_tags}
+            priceTags={data?.price_tags}
+            durationTags={data?.duration_tags}
+          />
         </div>
 
         <div className="max-md:mt-10">
@@ -67,30 +63,29 @@ const FilterTourSection = ({ data, locale, tags }) => {
               Array.isArray(tagsToures) &&
               tagsToures.length > 0 &&
               tagsToures.map((data: any, i: number) => (
-                <RootStyle key={i}>
-                  <TourCard
-                    locale={locale}
-                    link={data?.slug.current}
-                    label={data?.label?.[locale]}
-                    pic={data.hero_section.image?.asset._ref}
-                    mobilePic={data.hero_section.image.mobile?.asset._ref}
-                    tourType={data.hero_section.title?.[locale]}
-                    days={data.overview_card?.duration?.[locale]}
-                    cities={data.overview_card.cities}
-                    countries={data.overview_card.countries}
-                    old_price={
-                      data.price_overrides[0].price.discounted_price[locale]
-                    }
-                    price={data.price_overrides[0].price.initial_price[locale]}
-                  />
-                </RootStyle>
+                <TourCard
+                  key={i}
+                  locale={locale}
+                  link={data?.slug.current}
+                  label={data?.label?.[locale]}
+                  pic={data.hero_section.image?.asset._ref}
+                  mobilePic={data.hero_section.image.mobile?.asset._ref}
+                  tourType={data.hero_section.title?.[locale]}
+                  days={data.overview_card?.duration?.[locale]}
+                  cities={data.overview_card.cities}
+                  countries={data.overview_card.countries}
+                  old_price={
+                    data.price_overrides[0].price.discounted_price[locale]
+                  }
+                  price={data.price_overrides[0].price.initial_price[locale]}
+                />
               ))
             )}
           </div>
         </div>
       </section>
     </Container>
-  );
-};
+  )
+}
 
-export default FilterTourSection;
+export default FilterTourSection
