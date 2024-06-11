@@ -35,7 +35,7 @@ const FilterCountry = ({
         <div className="w-full overflow-x-scroll">
           <div className="px-5">
             <nav
-              className="flex lg:gap-[120px] gap-[30px] md:px-[120px] lg:items-center md:justify-center justify-start items-start"
+              className="flex gap-[30px] lg:items-center md:justify-center justify-start items-start"
               aria-label="Tabs"
             >
               {tabs.map((tab, index) => (
