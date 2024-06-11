@@ -1,24 +1,23 @@
-import { Text } from "@/components/ui/text";
-import React from "react";
-import { urlFor } from "../../../../sanity/lib/client";
-import { usePathname } from "next/navigation";
-import useWindowSize from "@/hooks/useWindows";
+import React from "react"
+import { urlFor } from "../../../../sanity/lib/client"
+import { usePathname } from "next/navigation"
 
 const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
-  const pathname = usePathname();
-  const windows = useWindowSize();
-  const isMobile = windows.width < 1024;
+  const pathname = usePathname()
 
-  const pattren = "/destinations/";
+  const pattren = "/destinations/"
 
-  const hideContent = pathname?.match(pattren);
+  const hideContent = pathname?.match(pattren)
 
   const linearGradient =
-    "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)";
+    "linear-gradient(75.52deg, #000000 1.5%, rgba(0, 0, 0, 0.8) 9.18%, rgba(0, 0, 0, 0.7) 15.93%, rgba(0, 0, 0, 0.6) 37.5%, rgba(0, 0, 0, 0) 63.68%)"
 
   return (
     <>
-      <div style={{ boxShadow: linearGradient }} className="w-full relative">
+      <div
+        style={{ boxShadow: linearGradient }}
+        className="w-full relative mb-10"
+      >
         <img
           className={`lg:w-full max-md:hidden object-cover max-w-[1440px] md:rounded-[24px] rounded-none ${
             hideContent ? " min-h-[420px] " : " h-[420px] "
@@ -33,33 +32,24 @@ const HeroSection = ({ data, locale }: { data: any; locale: string }) => {
           loading="lazy"
           alt={data?.alt?.[locale]}
         />
-        <h1 id={"headerGet"} className="font-satoshi lg:w-full text-white max-lg:hidden font-black absolute z-50 bottom-12 text-center text-[56px] leading-[72px]">
+        <h1
+          id={"headerGet"}
+          className="font-satoshi lg:w-full text-white max-lg:hidden font-black absolute z-50 bottom-12 text-center text-[56px] leading-[72px]"
+        >
           {data.header?.[locale]}
         </h1>
       </div>
-      <div className="md:px-20 px-5 md:mt-12 mt-[18px] items-center flex flex-col">
-        <div className="lg:hidden flex flex-col gap-1 items-center mb-[10px]">
-          <Text
-            variant={"darkblue"}
-            className="font-bold text-2xl"
-          >
-            {data.header?.[locale]}
-          </Text>
-          <div className="border-b border-[#FFBB0B] w-10" />
-        </div>
-
+      {/* <div className="md:px-20 px-5 md:mt-12 mt-[18px] items-center flex flex-col">
         <Text
           variant={"darkblue"}
           fontWeight={"default"}
-          className={`md:text-base leading-6 text-[14px] ${
-            !isMobile && !hideContent && "hidden"
-          }`}
+          className="md:text-base leading-6 text-[14px]"
         >
           {data.content?.[locale]}
         </Text>
-      </div>
+      </div> */}
     </>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

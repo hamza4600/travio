@@ -1,37 +1,37 @@
-import React from "react";
-import { useState } from "react";
+import React from "react"
+import { useState } from "react"
 import {
   // useRouter
   usePathname,
-} from "next/navigation";
+} from "next/navigation"
 
 const Sidebar = ({ sections, locale }) => {
-  const [selectedSection, setSelectedSection] = useState(null);
-  const [selectedSubSection, setSelectedSubSection] = useState(null);
-  const [nestedSlugSection, setNestedSection] = useState(null);
+  const [selectedSection, setSelectedSection] = useState(null)
+  const [selectedSubSection, setSelectedSubSection] = useState(null)
+  const [nestedSlugSection, setNestedSection] = useState(null)
 
   //   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const handleSectionClick = (sectionKey) => {
-    setSelectedSection(sectionKey === selectedSection ? null : sectionKey);
-  };
+    setSelectedSection(sectionKey === selectedSection ? null : sectionKey)
+  }
 
   const handleSubSectionClick = (subSectionSlug) => {
     setSelectedSubSection(
       subSectionSlug === selectedSubSection ? null : subSectionSlug
-    );
+    )
     // router.push(subSectionSlug);
-    window.history.pushState({}, "", `?slug=${subSectionSlug}`);
-  };
+    window.history.pushState({}, "", `?slug=${subSectionSlug}`)
+  }
 
   const handleNestedSection = (subSectionSlug) => {
     setNestedSection(
       subSectionSlug === nestedSlugSection ? null : subSectionSlug
-    );
+    )
     // router.push(subSectionSlug);
-    window.history.pushState({}, "", `?slug=${subSectionSlug}`);
-  };
+    window.history.pushState({}, "", `?slug=${subSectionSlug}`)
+  }
 
   return (
     <div className="sidebar w-full xl:max-w-[390px] flex flex-col gap-3">
@@ -62,7 +62,7 @@ const Sidebar = ({ sections, locale }) => {
               {section.sections.map((subSection) => (
                 <div key={subSection._key}>
                   <button
-                    className={`sub-section-title md:text-[14px] py-2.5 md:leading-[22px] px-6 font-satoshi text-[12px] leading-5 flex gap-4 ${
+                    className={`sub-section-title md:text-[14px] py-2.5 md:leading-[22px] px-6 font-satoshi text-[14px] leading-5 flex gap-4 ${
                       selectedSubSection === subSection?.slug?.current
                         ? "text-primary font-medium "
                         : " text-gray  "
@@ -117,7 +117,7 @@ const Sidebar = ({ sections, locale }) => {
                           )}
                           <button
                             id={`${pathname}/${subSection.slug.current}${nestedSection.slug.current}`}
-                            className={`text-gray font-satoshi md:text-[14px] text-[12px] leading-5 ${
+                            className={`text-gray font-satoshi md:text-[14px] text-[14px] leading-5 ${
                               nestedSlugSection ===
                                 nestedSection?.slug?.current && " text-primary"
                             }`}
@@ -138,7 +138,7 @@ const Sidebar = ({ sections, locale }) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

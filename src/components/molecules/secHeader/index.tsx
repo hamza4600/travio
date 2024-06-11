@@ -5,12 +5,14 @@ interface SectionHeaderProps {
   title: string
   subtitle: string
   centerLine?: boolean
+  content?: any
 }
 
 const SectionHeader: FC<SectionHeaderProps> = ({
   title,
   subtitle,
   centerLine,
+  content,
 }) => {
   return (
     <div
@@ -30,7 +32,16 @@ const SectionHeader: FC<SectionHeaderProps> = ({
           {subtitle}
         </Text>
       </div>
-      <div className="w-[65px] md:w-[100px] border-[#FFBB0B] text-yellow mt-1 md:mt-3 rounded-full md:rounded-[3px] border-b-[3px]" />
+      <div className="w-[65px] md:w-[100px] border-[#FFBB0B] text-yellow mt-4 rounded-full md:rounded-[3px] border-b-[3px]" />
+      <div className="mt-5 w-3/4 mx-auto">
+        <Text
+          variant={"darkblue"}
+          fontWeight={"default"}
+          className="md:text-base leading-6 text-[14px]"
+        >
+          {content}
+        </Text>
+      </div>
     </div>
   )
 }

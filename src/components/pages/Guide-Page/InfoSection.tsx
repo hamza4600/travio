@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import PortableText from "react-portable-text";
+import React, { useState } from "react"
+import PortableText from "react-portable-text"
 
 const removeSpace = (str: string) => {
-  const newStr = str.replace(/\s/g, "-");
-  return newStr.toLowerCase();
-};
+  const newStr = str.replace(/\s/g, "-")
+  return newStr.toLowerCase()
+}
 
 const InfoSection = ({ data, locale }: any) => {
-  const [head, setHead] = useState(0);
+  const [head, setHead] = useState(0)
 
   const handleClickScroll = (name: string) => {
-    const element = document.getElementById(name);
+    const element = document.getElementById(name)
 
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 150,
         behavior: "smooth",
-      });
-      window.history.pushState({}, "", `#${name}`);
+      })
+      window.history.pushState({}, "", `#${name}`)
     }
-  };
+  }
   return (
     <div className="md:py-20 py-10 font-satoshi">
       <div className="lg:flex lg:flex-row lg:gap-x-[2rem] px-5 lg:px-[2rem] gap-20">
@@ -37,8 +37,8 @@ const InfoSection = ({ data, locale }: any) => {
                   className="mb-2 w-full"
                   id={"#" + removeSpace(item.title?.[locale])}
                   onClick={() => {
-                    setHead(index);
-                    handleClickScroll(removeSpace(item.title?.[locale]));
+                    setHead(index)
+                    handleClickScroll(removeSpace(item.title?.[locale]))
                   }}
                 >
                   <div
@@ -61,8 +61,8 @@ const InfoSection = ({ data, locale }: any) => {
           <button
             key={index}
             onClick={() => {
-              setHead(index);
-              handleClickScroll(removeSpace(item?.title?.[locale]));
+              setHead(index)
+              handleClickScroll(removeSpace(item?.title?.[locale]))
             }}
             className={`flex flex-row lg:hidden font-[500] justify-start items-center ${
               head === index ? "text-primary" : "text-darkblue"
@@ -93,7 +93,7 @@ const InfoSection = ({ data, locale }: any) => {
               <div className="md:w-[89px] border-[#FFBB0B] border-b md:border-b-[3px] w-[75px] mt-1 md:mt-2.5 my-3 rounded-full" />
               {item.content?.en && (
                 <PortableText
-                  className="text-darkblue md:text-[16px] md:leading-7 text-[12px] leading-5"
+                  className="text-darkblue md:text-[16px] md:leading-7 text-[14px] leading-5"
                   content={item.content?.[locale]}
                   serializers={{}}
                 />
@@ -103,7 +103,7 @@ const InfoSection = ({ data, locale }: any) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default InfoSection;
+export default InfoSection
