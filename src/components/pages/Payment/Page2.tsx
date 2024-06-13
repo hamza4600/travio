@@ -1,29 +1,29 @@
-import { Control } from "react-hook-form";
+import { Control } from "react-hook-form"
 
-import countries from "../../../utils/countries.json";
-import Input from "../TrailYourTour/Input";
+import countries from "../../../utils/countries.json"
+import Input from "../TrailYourTour/Input"
 export interface IContactInfo {
-  titlePrefix: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
-  dob: string;
-  nationality: string;
-  email: string;
-  mobileCode: string;
-  mobileNumber: string;
-  address: string;
-  town: string;
-  state: string;
-  country: string;
+  titlePrefix: string
+  firstName: string
+  middleName: string
+  lastName: string
+  dob: string
+  nationality: string
+  email: string
+  mobileCode: string
+  mobileNumber: string
+  address: string
+  town: string
+  state: string
+  country: string
   adultPassenger: {
-    titlePrefix: string;
-    firstName: string;
-    middleName: string;
-    lastName: string;
-    dob: string;
-    email: string;
-  }[];
+    titlePrefix: string
+    firstName: string
+    middleName: string
+    lastName: string
+    dob: string
+    email: string
+  }[]
 }
 export default function Page2({
   control,
@@ -31,10 +31,10 @@ export default function Page2({
   addPassenger,
   removePassenger,
 }: {
-  control: Control<any>;
-  adultsNumber: number;
-  addPassenger?: () => void;
-  removePassenger?: () => void;
+  control: Control<any>
+  adultsNumber: number
+  addPassenger?: () => void
+  removePassenger?: () => void
 }) {
   return (
     <div className="md:p-10 md:rounded-2xl overflow-hidden md:border md:border-darkblue/10 flex flex-col gap-10">
@@ -64,10 +64,8 @@ export default function Page2({
                 { label: "Ms", value: "Ms" },
                 { label: "Dr", value: "Dr" },
               ]}
-              rules={{ required: true }}
             />
             <Input
-              rules={{ required: true }}
               name="firstName"
               control={control}
               placeholder="First Name"
@@ -83,7 +81,6 @@ export default function Page2({
             type="text"
           />
           <Input
-            rules={{ required: true }}
             name="lastName"
             control={control}
             placeholder="Last Name"
@@ -94,13 +91,7 @@ export default function Page2({
           <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
             Date of Birth
           </p>
-          <Input
-            name="dob"
-            control={control}
-            placeholder="Date"
-            type="date"
-            rules={{ required: true }}
-          />
+          <Input name="dob" control={control} placeholder="Date" type="date" />
           <div className="flex flex-col gap-2">
             <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
               Nationality
@@ -109,7 +100,6 @@ export default function Page2({
               name="nationality"
               control={control}
               placeholder=" "
-              rules={{ required: true }}
               type="select"
               options={countries.map((c) => ({ value: c.name, label: c.name }))}
             />
@@ -118,12 +108,7 @@ export default function Page2({
             <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
               Email
             </p>
-            <Input
-              rules={{ required: true }}
-              name="email"
-              control={control}
-              type="text"
-            />
+            <Input name="email" control={control} type="text" />
           </div>
           <div className="flex flex-col gap-2">
             <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
@@ -132,7 +117,6 @@ export default function Page2({
             <div className="grid grid-cols-[120px_1fr] gap-3">
               <Input
                 name="mobileCode"
-                rules={{ required: true }}
                 control={control}
                 type="select"
                 options={countries.map((c) => ({
@@ -140,24 +124,14 @@ export default function Page2({
                   label: `${c.name} (${c.dial_code})`,
                 }))}
               />
-              <Input
-                name="mobileNumber"
-                rules={{ required: true }}
-                control={control}
-                type="number"
-              />
+              <Input name="mobileNumber" control={control} type="number" />
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
               Address
             </p>
-            <Input
-              rules={{ required: true }}
-              name="address"
-              control={control}
-              type="text"
-            />
+            <Input name="address" control={control} type="text" />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-2">
@@ -170,12 +144,7 @@ export default function Page2({
               <p className="md:text-base text-[12px] leading-5 font-bold text-darkblue">
                 State
               </p>
-              <Input
-                rules={{ required: true }}
-                name="state"
-                control={control}
-                type="text"
-              />
+              <Input name="state" control={control} type="text" />
             </div>
           </div>
           <div className="flex flex-col gap-2">
@@ -183,7 +152,6 @@ export default function Page2({
               Country
             </p>
             <Input
-              rules={{ required: true }}
               name="country"
               control={control}
               type="select"
@@ -219,7 +187,6 @@ export default function Page2({
               <div className="grid grid-cols-[80px_1fr] gap-3">
                 <Input
                   name={`adultPassenger.${i}.titlePrefix`}
-                  rules={{ required: true }}
                   control={control}
                   placeholder="Prefix"
                   type="select"
@@ -231,7 +198,6 @@ export default function Page2({
                 />
                 <Input
                   name={`adultPassenger.${i}.firstName`}
-                  rules={{ required: true }}
                   control={control}
                   placeholder="First Name"
                   type="text"
@@ -247,7 +213,6 @@ export default function Page2({
               />
               <Input
                 name={`adultPassenger.${i}.lastName`}
-                rules={{ required: true }}
                 control={control}
                 placeholder="Last Name"
                 type="text"
@@ -259,7 +224,6 @@ export default function Page2({
               </p>
               <Input
                 name={`adultPassenger.${i}.dob`}
-                rules={{ required: true }}
                 control={control}
                 placeholder="Date"
                 type="date"
@@ -270,7 +234,6 @@ export default function Page2({
                 Email
               </p>
               <Input
-                rules={{ required: true }}
                 name={`adultPassenger.${i}.email`}
                 control={control}
                 type="text"
@@ -288,5 +251,5 @@ export default function Page2({
         </button>
       )}
     </div>
-  );
+  )
 }

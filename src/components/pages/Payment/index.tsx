@@ -1,24 +1,24 @@
-"use client";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+"use client"
+import { useSearchParams, useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import { SubmitHandler, useForm } from "react-hook-form"
 
-import { localizedString } from "../../../../sanity/lib/client";
+import { localizedString } from "../../../../sanity/lib/client"
 
-import { SanityPricingSection } from "../../../../sanity/lib/types";
+import { SanityPricingSection } from "../../../../sanity/lib/types"
 
-import Layout from "@/components/layout";
+import Layout from "@/components/layout"
 
-import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1";
-import Tabs from "@/components/pages/Payment/Tabs";
-import Page2, { IContactInfo } from "./Page2";
-import Page3 from "./Page3";
+import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1"
+import Tabs from "@/components/pages/Payment/Tabs"
+import Page2, { IContactInfo } from "./Page2"
+import Page3 from "./Page3"
 
-export type PaymentSchema = IPaymentTourExtras & IContactInfo;
+export type PaymentSchema = IPaymentTourExtras & IContactInfo
 export default function Page({ slug, data, locale, globals, promo }) {
   const pricingData: SanityPricingSection = data?.sections?.find(
     (section) => section._type === "pricing_section"
-  ) as SanityPricingSection;
+  ) as SanityPricingSection
 
   const {
     control,
@@ -35,44 +35,46 @@ export default function Page({ slug, data, locale, globals, promo }) {
       adultMembers: 1,
       childrenMembers: 0,
     },
-  });
+  })
 
-  const [optionalVisits, setOptionalVisits] = useState<number>(0);
-  const [roomTypes, setRoomTypes] = useState<number>(0);
-  const [hotelChoice, setHotelChoice] = useState<number>(0);
-  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [optionalVisits, setOptionalVisits] = useState<number>(0)
+  const [roomTypes, setRoomTypes] = useState<number>(0)
+  const [hotelChoice, setHotelChoice] = useState<number>(0)
+  const [totalPrice, setTotalPrice] = useState<number>(0)
   // get url
 
-  const searchParams = useSearchParams();
-  const from = Number(searchParams?.get("from"));
-  const to = Number(searchParams?.get("to"));
+  const searchParams = useSearchParams()
+  const from = Number(searchParams?.get("from"))
+  const to = Number(searchParams?.get("to"))
 
-  const startDate = new Date(from);
-  const endDate = new Date(to);
+  const startDate = new Date(from)
+  const endDate = new Date(to)
+
+  const router = useRouter()
 
   useEffect(() => {
     const unsub = watch((value: any, _info: any) => {
-      const info = _info as { name: keyof typeof value; values: any };
+      const info = _info as { name: keyof typeof value; values: any }
       //@ts-ignore
       if (info.name?.startsWith("optionalVisits")) {
-        let sum = 0;
+        let sum = 0
         for (const cityId in value["optionalVisits"]) {
           const city = data.payment?.extras?.find(
             (city) => city._key === cityId
-          );
+          )
           for (const visitId of value["optionalVisits"][cityId]) {
             if (visitId) {
               const visit = city?.visits?.find(
                 (visit) => visit._key === visitId
-              );
+              )
               if (visit) {
-                sum += Number(visit.price?.discounted_price?.[locale]);
+                sum += Number(visit.price?.discounted_price?.[locale])
               }
             }
           }
         }
-        setOptionalVisits(sum);
-        setTotalPrice((prev) => Number(prev + sum));
+        setOptionalVisits(sum)
+        setTotalPrice((prev) => Number(prev + sum))
       }
       if (info.name === "roomType") {
         const price =
@@ -84,10 +86,10 @@ export default function Page({ slug, data, locale, globals, promo }) {
               ?.rooms?.find(
                 (room) => room.name?.[locale] === info.values.roomType
               )?.price?.discounted_price?.[locale]
-          ) || 0;
-        setRoomTypes(price);
+          ) || 0
+        setRoomTypes(price)
         // set total price price variable with existing amounbt
-        setTotalPrice((prev) => Number(prev + price));
+        setTotalPrice((prev) => Number(prev + price))
       }
       if (info.name === "hotelChoice") {
         // dispatch(setHotel(info.values.hotelChoice));
@@ -96,8 +98,8 @@ export default function Page({ slug, data, locale, globals, promo }) {
             data?.payment?.hotel_types?.find(
               (hotel) => hotel.name?.[locale] === info.values.hotelChoice
             )?.price?.discounted_price?.[locale]
-          ) || 0;
-        setHotelChoice(price1);
+          ) || 0
+        setHotelChoice(price1)
         const price2 =
           Number(
             data?.payment?.hotel_types
@@ -107,26 +109,26 @@ export default function Page({ slug, data, locale, globals, promo }) {
               ?.rooms?.find(
                 (room) => room.name?.[locale] === getValues("roomType")
               )?.price?.discounted_price?.[locale]
-          ) || 0;
-        setRoomTypes(price2);
+          ) || 0
+        setRoomTypes(price2)
         // set total price price variable with existing amounbt
-        setTotalPrice((prev) => Number(prev + price1 + price2));
+        setTotalPrice((prev) => Number(prev + price1 + price2))
       }
-    });
-    return unsub?.unsubscribe;
+    })
+    return unsub?.unsubscribe
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   const onSubmit: SubmitHandler<PaymentSchema> = async (_data) => {
-    setLoading(true);
+    setLoading(true)
     const optionalVisits = Object.keys(_data.optionalVisits).flatMap(
       (cityID) => {
-        const city = data.payment?.extras?.find((city) => city._key === cityID);
+        const city = data.payment?.extras?.find((city) => city._key === cityID)
         return _data.optionalVisits[cityID]
           .filter(Boolean)
           .map((visitID: string) => {
-            const visit = city?.visits?.find((visit) => visit._key === visitID);
+            const visit = city?.visits?.find((visit) => visit._key === visitID)
             return {
               cityID,
               visitID,
@@ -136,10 +138,10 @@ export default function Page({ slug, data, locale, globals, promo }) {
                 // localizedNumber(visit?.price?.discounted_price, locale)
                 visit?.price?.discounted_price?.[locale]
               ),
-            };
-          });
+            }
+          })
       }
-    );
+    )
     const booking: any & { paid: number } = {
       adults: [
         {
@@ -181,34 +183,31 @@ export default function Page({ slug, data, locale, globals, promo }) {
       roomType: _data.roomType,
       to: endDate.toDateString(),
       paid:
-        paymentMethod === "bank"
-          ? 0
-          : bookOnly
-          ? 20000
-          : Number(totalPrice * 100),
-      price: Number(totalPrice) * 100,
+        paymentMethod === "bank" ? 0 : bookOnly ? 20000 : Number(totalPrice),
+      price: Number(totalPrice),
       email: _data.email,
       optionalTours: optionalVisits,
-    };
-    fetch("/api/booking", {
+    }
+
+    fetch("/api/payment", {
       method: "POST",
       body: JSON.stringify(booking),
     })
       .then(async (res) => {
-        // const data = await res.json();
-        alert("Booking sent successfully!. Please wait for confirmation.");
+        const data = await res.json()
+        router.push(data.url)
       })
       .catch((err) => {
-        console.error(err);
+        console.error(err)
       })
       .finally(() => {
-        setLoading(false);
-      });
-  };
-  const [bookOnly, setBookOnly] = useState(false);
+        setLoading(false)
+      })
+  }
+  const [bookOnly, setBookOnly] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState<
     "stripe" | "paypal" | "bank"
-  >("stripe");
+  >("stripe")
   return (
     <Layout
       locale={locale}
@@ -245,12 +244,12 @@ export default function Page({ slug, data, locale, globals, promo }) {
             setValue("adultMembers", getValues("adultMembers") + 1)
           }
           removePassenger={() => {
-            const len = getValues("adultMembers");
-            setValue("adultMembers", len - 1);
+            const len = getValues("adultMembers")
+            setValue("adultMembers", len - 1)
             setValue(
               "adultPassenger",
               getValues("adultPassenger").slice(0, len - 1)
-            );
+            )
           }}
           adultsNumber={watch("adultMembers")}
           control={control}
@@ -264,5 +263,5 @@ export default function Page({ slug, data, locale, globals, promo }) {
         />
       </Tabs>
     </Layout>
-  );
+  )
 }

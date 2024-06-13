@@ -1,22 +1,22 @@
-import Stripe from "stripe";
+import Stripe from "stripe"
 
 export async function POST(req: Request) {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
   try {
-    let event = await req.json();
+    let event = await req.json()
 
     switch (event.type) {
       case "checkout.session.completed":
-        const checkoutSession = event.data.object;
+        const checkoutSession = event.data.object
 
         let schedule = await stripe.subscriptionSchedules.create({
           from_subscription: checkoutSession.subscription,
-        });
+        })
         const phases = schedule.phases.map((phase) => ({
           start_date: phase.start_date,
           end_date: phase.end_date,
           items: phase.items,
-        }));
+        }))
 
         schedule = await stripe.subscriptionSchedules.update(schedule.id, {
           end_behavior: "cancel",
@@ -39,13 +39,14 @@ export async function POST(req: Request) {
               proration_behavior: "none",
             },
           ],
-        });
-        break;
+        })
+        break
       default:
         // Unexpected event type
-        return Response.json({ received: false }, { status: 400 });
+        return Response.json({ received: false }, { status: 400 })
     }
-    return Response.json({ received: true });
+    console.log("Payment Recived, send the data to Supabase")
+    return Response.json({ received: true })
   } catch (error: any) {
     return Response.json(
       {
@@ -54,6 +55,6 @@ export async function POST(req: Request) {
       {
         status: 500,
       }
-    );
+    )
   }
 }

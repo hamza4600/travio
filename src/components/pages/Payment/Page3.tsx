@@ -1,18 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image"
+import Link from "next/link"
+import { useState } from "react"
 
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"
 
-import OptionSelectButton from "@/components/atom/OptionSelectButton";
-import Input from "../TrailYourTour/Input";
+import OptionSelectButton from "@/components/atom/OptionSelectButton"
+import Input from "../TrailYourTour/Input"
 
 export function PaymentMethod({
   paymentMethod,
   setPaymentMethod,
 }: {
-  paymentMethod: string;
-  setPaymentMethod: (x: "stripe" | "paypal" | "bank") => any;
+  paymentMethod: string
+  setPaymentMethod: (x: "stripe" | "paypal" | "bank") => any
 }) {
   return (
     <div className="flex flex-col gap-5">
@@ -41,7 +41,7 @@ export function PaymentMethod({
         <p>Bank Transfer</p>
       </div>
     </div>
-  );
+  )
 }
 export default function Page3({
   totalPrice,
@@ -51,12 +51,12 @@ export default function Page3({
   setPaymentMethod,
   paid,
 }: {
-  totalPrice: number;
-  paymentMethod: "stripe" | "paypal" | "bank";
-  setPaymentMethod: (o: "stripe" | "paypal" | "bank") => void;
-  toggleBookOnly: () => void;
-  bookOnly: boolean;
-  paid?: number;
+  totalPrice: number
+  paymentMethod: "stripe" | "paypal" | "bank"
+  setPaymentMethod: (o: "stripe" | "paypal" | "bank") => void
+  toggleBookOnly: () => void
+  bookOnly: boolean
+  paid?: number
 }) {
   const [formData, setFormData] = useState({
     bookingMode: "payFull",
@@ -68,14 +68,14 @@ export default function Page3({
     agreeTAndC: false,
     readTripInfo: false,
     receiveUpdates: false,
-  });
-  const { control } = useForm();
+  })
+  const { control } = useForm()
   const setValue = (value: any, key: string) => {
     setFormData((prev) => ({
       ...prev,
       [key]: value,
-    }));
-  };
+    }))
+  }
   const CARDS = [
     "/visa_card.png",
     "/mastercard.png",
@@ -83,20 +83,7 @@ export default function Page3({
     "/discover.png",
     "/paypal.png",
     "/bank-transfer.png",
-  ];
-  // const handleSubmit = () => {
-  //   const response = fetch("/api/payment", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       trip: {
-  //         name: "Trip Name",
-  //       },
-  //     }),
-  //   });
-  //   console.log(response);
-  // };
-
-  console.log(setValue, formData);
+  ]
 
   return (
     <div className="md:p-10 md:rounded-2xl overflow-hidden md:border border-darkblue/10 flex flex-col gap-12">
@@ -163,7 +150,7 @@ export default function Page3({
                 key={index}
                 className="w-[50px] h-[32px]"
               />
-            );
+            )
           })}
         </div>
       </div>
@@ -461,5 +448,5 @@ export default function Page3({
         <p>${bookOnly ? 200 : totalPrice}</p>
       </div>
     </div>
-  );
+  )
 }
