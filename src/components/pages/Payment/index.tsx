@@ -13,6 +13,7 @@ import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1"
 import Tabs from "@/components/pages/Payment/Tabs"
 import Page2, { IContactInfo } from "./Page2"
 import Page3 from "./Page3"
+import Stripe from "stripe"
 
 export type PaymentSchema = IPaymentTourExtras & IContactInfo
 export default function Page({ slug, data, locale, globals, promo }) {
@@ -189,16 +190,18 @@ export default function Page({ slug, data, locale, globals, promo }) {
       optionalTours: optionalVisits,
     }
 
-    fetch("/api/payment", {
+    fetch("/api/booking", {
       method: "POST",
       body: JSON.stringify(booking),
     })
       .then(async (res) => {
-        const data = await res.json()
-        router.push(data.url)
+        console.log(await res.json())
+        // const data = await res.json()
+        // router.push(data.url)
+        // console.log(data.metadata)
       })
       .catch((err) => {
-        console.error(err)
+        console.log(err)
       })
       .finally(() => {
         setLoading(false)

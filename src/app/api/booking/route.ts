@@ -1,4 +1,5 @@
 import { createClient } from "@/utils/supabase/server"
+import { error } from "console"
 
 export async function POST(req: Request) {
   try {
@@ -6,22 +7,14 @@ export async function POST(req: Request) {
 
     const body = await req.json()
 
-    const { data: bookingData, error: bookingError } = await supabase
-      .from("booking")
-      .insert([
-        {
-          email: body?.email,
-          data: body,
-        },
-      ])
-    if (bookingError) {
-      return Response.json(
-        {
-          message: bookingError,
-        },
-        { status: 500 }
-      )
-    }
+    const { data: bookingData } = await supabase.from("booking").insert([
+      {
+        email: body?.email,
+        data: body,
+      },
+    ])
+
+    console.log(error)
     return Response.json(bookingData, { status: 201 })
   } catch (error: any) {
     return Response.json(

@@ -26,6 +26,9 @@ const createCheckoutSession = async (
               product_data: {
                 name: name || "Tour",
                 description: `Payment amount is $ ${amount / 100}`,
+                metadata: {
+                  username: "Marwan Hisham",
+                },
               },
               unit_amount: amount,
             },
@@ -49,9 +52,11 @@ const createCheckoutSession = async (
                 interval: "month",
               },
             },
+
             quantity: 1,
           },
         ]
+
   // @ts-ignore
   const session = await stripe.checkout.sessions.create({
     customer: customer.id,
@@ -61,19 +66,23 @@ const createCheckoutSession = async (
     cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
   })
 
-  return Response.json({ url: session.url }, { status: 201 })
+  return Response.json(
+    { url: session.url, status: session.status, metadata: session.metadata },
+    { status: 201 }
+  )
 }
 
 // generate subscription schedule amount calculation
-const calculateSubscriptionAmount = (price: number, months: number) => {
-  // create subscription for remaining months
-  const subscriptionAmount = price / months
-  return Math.round(subscriptionAmount)
-}
+// const calculateSubscriptionAmount = (price: number, months: number) => {
+//   // create subscription for remaining months
+//   const subscriptionAmount = price / months
+//   return Math.round(subscriptionAmount)
+// }
 
 export async function POST(req: Request) {
+  const trip = await req.json()
+
   try {
-    const trip = await req.json()
     console.log("TRIP: ", trip)
     // we have to do these calcuations
     // take the price of tour from trip?.price
