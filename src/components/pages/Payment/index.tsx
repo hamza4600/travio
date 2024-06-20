@@ -13,7 +13,6 @@ import Page1, { IPaymentTourExtras } from "@/components/pages/Payment/Page1"
 import Tabs from "@/components/pages/Payment/Tabs"
 import Page2, { IContactInfo } from "./Page2"
 import Page3 from "./Page3"
-import Stripe from "stripe"
 
 export type PaymentSchema = IPaymentTourExtras & IContactInfo
 export default function Page({ slug, data, locale, globals, promo }) {
@@ -190,22 +189,30 @@ export default function Page({ slug, data, locale, globals, promo }) {
       optionalTours: optionalVisits,
     }
 
-    fetch("/api/booking", {
+    console.log(booking)
+
+    await fetch("/api/booking", {
       method: "POST",
       body: JSON.stringify(booking),
+    }).finally(() => {
+      setLoading(false)
     })
-      .then(async (res) => {
-        console.log(await res.json())
-        // const data = await res.json()
-        // router.push(data.url)
-        // console.log(data.metadata)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+
+    // await fetch("/api/payment", {
+    //   method: "POST",
+    //   body: JSON.stringify(booking),
+    // })
+    //   .then(async (res) => {
+    //     const data = await res.json()
+    //     console.log(data)
+    //     // router.push(data.url)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
+    //   .finally(() => {
+    //     setLoading(false)
+    //   })
   }
   const [bookOnly, setBookOnly] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState<

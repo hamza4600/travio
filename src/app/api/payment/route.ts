@@ -4,8 +4,9 @@ const createCheckoutSession = async (
   amount: number,
   name: string,
   mode: "payment" | "subscription",
-  subscriptionAmount?: number,
-  months?: number
+  // subscriptionAmount?: number,
+  // months?: number,
+  trip: any
 ) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
   const testClock = await stripe.testHelpers.testClocks.create({
@@ -25,12 +26,9 @@ const createCheckoutSession = async (
               currency: "usd",
               product_data: {
                 name: name || "Tour",
-                description: `Payment amount is $ ${amount / 100}`,
-                metadata: {
-                  username: "Marwan Hisham",
-                },
+                description: `Payment amount is $ ${amount}`,
               },
-              unit_amount: amount,
+              unit_amount: amount * 100,
             },
             quantity: 1,
           },
@@ -41,26 +39,44 @@ const createCheckoutSession = async (
               currency: "usd",
               product_data: {
                 name: name || "Tour",
-                description: `Deposit amount is $ ${
-                  amount / 100
-                } and remaining amount is $ ${
-                  subscriptionAmount! / 100
-                } for ${months} months`,
+                description: `Payment amount is $ ${amount}`,
               },
-              unit_amount: amount!,
-              recurring: {
-                interval: "month",
-              },
+              unit_amount: amount * 100,
             },
-
             quantity: 1,
           },
         ]
+  // : [
+  //     {
+  //       price_data: {
+  //         currency: "usd",
+  //         product_data: {
+  //           name: name || "Tour",
+  //           description: `Deposit amount is $ ${
+  //             amount / 100
+  //           } and remaining amount is $ ${
+  //             subscriptionAmount! / 100
+  //           } for ${months} months`,
+  //         },
+  //         unit_amount: amount!,
+  //         recurring: {
+  //           interval: "month",
+  //         },
+  //       },
 
+  //       quantity: 1,
+  //     },
+  //   ]
+
+  console.log(trip)
   // @ts-ignore
   const session = await stripe.checkout.sessions.create({
     customer: customer.id,
     mode: mode,
+    metadata: {
+      name: trip.adults[0].email,
+      phone: trip.adults[0].phone.code + trip.adults[0].phone.number,
+    },
     line_items: line_items,
     success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
     cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
@@ -101,7 +117,7 @@ export async function POST(req: Request) {
 
     console.log("MONTHS: ", months)
 
-    return createCheckoutSession(price, trip.tour, "payment")
+    return createCheckoutSession(price, trip.tour, "payment", trip)
 
     // if the number of months between start and end date is 1-2 then price is full price
     // if (months <= 2) {

@@ -1,5 +1,5 @@
-import { pageLayout } from "./sanity.HomePage";
-import { CLIENT } from "./sanity.const";
+import { pageLayout } from "./sanity.HomePage"
+import { CLIENT } from "./sanity.const"
 
 export async function getPaymentPage(slug: string) {
   const tourData = `*[_type == "tour_page"  && slug.current == "/${slug}"][0]{
@@ -26,21 +26,21 @@ export async function getPaymentPage(slug: string) {
         "price": ^.overview_card.price,
       }
     }
-  }`;
+  }`
 
   const query = `{
         "layout":  ${pageLayout},
         "data" : ${tourData}
-    }`;
+    }`
 
-  return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query)
 }
 
 // for Page SEO
 export async function getTourPaymentPageSeo(slug: string) {
   const query = `*[_type == "tour_page" && slug.current == "/${slug}"][0]{
   meta_data
-}`;
+}`
 
-  return await CLIENT.fetch(query);
+  return await CLIENT.fetch(query)
 }
